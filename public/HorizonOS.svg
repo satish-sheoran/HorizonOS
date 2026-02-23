@@ -1,0 +1,28 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="48" fill="#0B0F1A"></rect>
+
+  <!-- Gradient -->
+  <defs>
+    <linearGradient id="horizonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F8CFF"></stop>
+      <stop offset="100%" stop-color="#8A5CFF"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Horizon Line -->
+  <line x1="40" y1="150" x2="216" y2="150" stroke="url(#horizonGradient)" stroke-width="8" stroke-linecap="round"></line>
+
+  <!-- Rising Arc -->
+  <path d="M56 150 A72 72 0 0 1 200 150" fill="none" stroke="url(#horizonGradient)" stroke-width="10" stroke-linecap="round"></path>
+
+  <!-- Bigger Window Grid -->
+  <g fill="url(#horizonGradient)">
+    <rect x="76" y="60" width="48" height="48" rx="10"></rect>
+    <rect x="132" y="60" width="48" height="48" rx="10"></rect>
+    <rect x="76" y="116" width="48" height="48" rx="10"></rect>
+    <rect x="132" y="116" width="48" height="48" rx="10"></rect>
+  </g>
+
+</svg>
