@@ -48,3 +48,6 @@ Clone the repository and open the project in your favorite editor to explore the
 
 ```bash
 git clone https://github.com/satish-sheoran/HorizonOS.git
+
+## ✨ License
+MIT License © Satish Sheoran

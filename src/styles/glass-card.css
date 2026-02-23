@@ -1,0 +1,13 @@
+/*  GLASS CARD STYLING*/
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.4);
+    transform: translateY(-10px);
+}
