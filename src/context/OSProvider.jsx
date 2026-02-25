@@ -4,8 +4,8 @@ export const OSContext = createContext();
 
 const OSProvider = ({ children }) => {
 
-    const [Wallpaper, setWallpaper] = useState()
-    // const [Wallpaper, setWallpaper] = useState('/assets/wallpaper/mobile/mobile-blue-abstract.png')
+    // const [Wallpaper, setWallpaper] = useState()
+    const [Wallpaper, setWallpaper] = useState('/assets/wallpaper/desktop/glossy-green.jpg')
 
 
     return (
