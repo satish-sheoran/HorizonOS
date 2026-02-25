@@ -6,7 +6,7 @@ import App from './App.jsx'
 import OSProvider from './context/OSProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
-  // <OSProvider>
+  <OSProvider>
     <App />
-  // </OSProvider>
+  </OSProvider>
 )
