@@ -16,9 +16,7 @@ const OSProvider = ({ children }) => {
                 setWallpaper
             }}
         >
-            <div className="wrapper">
-                {children}
-            </div>
+            {children}
         </OSContext.Provider>
     )
 }

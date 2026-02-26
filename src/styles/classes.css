@@ -11,5 +11,9 @@
 }
 
 .glass {
-    @apply bg-white/30 backdrop-blur-md
+    @apply bg-(--bg-glass) backdrop-blur-[12px]
+}
+
+.dock {
+    @apply fixed left-1/2 -translate-x-1/2 bottom-[1vh] z-(--z-dock) rounded-(--border-radius-xl)
 }

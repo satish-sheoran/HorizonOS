@@ -12,8 +12,8 @@ body {
     height: 100%;
 }
 
-#os-root {
-    width: 100%;
+#os-layout {
+    width: 100vw;
     height: 100vh;
     height: 100svh;
     overflow: hidden;
@@ -24,6 +24,7 @@ body {
     /*🌌 BACKGROUND COLORS*/
     --bg-deep-blue: #050816;
     --bg-mid-blue: #0B1120;
+    --bg-glass: rgba(255, 255, 255, 0.3);
     --bg-light-glass: rgba(255, 255, 255, 0.05);
     --bg-white: #F5F5F7;
     --bg-light-gray: #ededf1e3;
@@ -59,6 +60,7 @@ body {
     --border-radius-xxl: 30px;
 
     /* padding  */
+    --padding-xs: 3px;
     --padding-sm: 6px;
     --padding-md: 12px;
     --padding-lg: 18px;
@@ -80,8 +82,10 @@ body {
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
     /* z-index layers */
-    --z-background: 0;
-    --z-window: 10;
-    --z-modal: 50;
-    --z-tooltip: 100;
+    --z-dock: 20;
+    --z-window: 50;
+    --z-window-active: 60;
+    --z-modal: 100;
+    --z-tooltip: 200;
+
 }

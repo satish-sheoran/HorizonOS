@@ -7,7 +7,6 @@ export const useDeviceType = () => {
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
-            console.log(IsMobile)
         };
         window.addEventListener('resize', handleResize);
 

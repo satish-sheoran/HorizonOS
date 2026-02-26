@@ -1,14 +1,9 @@
-import React, { useContext } from 'react'
-import { OSContext } from './context/OSProvider'
+import OSLayout from "./layout/OSLayout"
 
 const App = () => {
 
-  const { Wallpaper, setWallpaper } = useContext(OSContext)
-
   return (
-    <main id='os-root' className='bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${Wallpaper})` }}>
-
-    </main>
+    <OSLayout />
   )
 }
 
