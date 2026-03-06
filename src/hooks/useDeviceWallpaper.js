@@ -41,6 +41,7 @@ export const useWallpaper = () => {
         wallpaperURL: activeWallpaper?.url,
         WallPaperID,
         deviceType,
+        activeWallpaper,
         changeWallPaper
     }
 }

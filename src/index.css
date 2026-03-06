@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -28,7 +26,13 @@ body {
     --bg-light-glass: rgba(255, 255, 255, 0.05);
     --bg-white: #F5F5F7;
     --bg-light-gray: #ededf1e3;
-    --bg-ultra-light-gray: #e8e8eed5;
+    
+    
+    /* text color */
+    --color-white: #F5F5F7;
+    --color-light-gray: #ededf1e3;
+    --color-ultra-light-gray: #e8e8eed5;
+    --color-dark: #1F2937;
 
     /* Box Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -45,6 +49,7 @@ body {
     --font-lg: 20px;
     --font-xl: 24px;
     --font-xxl: 32px;
+    --font-xxxl: 50px;
 
     /* Font weights */
     --weight-normal: 400;
@@ -66,6 +71,8 @@ body {
     --padding-lg: 18px;
     --padding-xl: 24px;
     --padding-xxl: 30px;
+    --padding-smvw: 1.5vw;
+    --padding-lgvw: 3vw;
 
     /* Spacing/Gaps */
     --gap-xs: 4px;
@@ -82,6 +89,7 @@ body {
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
     /* z-index layers */
+    --z-base: 1;
     --z-dock: 20;
     --z-window: 50;
     --z-window-active: 60;

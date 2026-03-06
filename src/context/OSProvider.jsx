@@ -5,15 +5,16 @@ export const OSContext = createContext();
 
 const OSProvider = ({ children }) => {
 
-    // const [Wallpaper, setWallpaper] = useState()
-    const [Wallpaper, setWallpaper] = useState(useWallpaper().wallpaperURL)
+    const AllAboutWallpaper = useWallpaper() //contains details and fn etc. checkout the hook inside which it is return
+    const [Wallpaper, setWallpaper] = useState(AllAboutWallpaper.wallpaperURL)
 
 
     return (
         <OSContext.Provider
             value={{
                 Wallpaper,
-                setWallpaper
+                setWallpaper,
+                AllAboutWallpaper
             }}
         >
             {children}
