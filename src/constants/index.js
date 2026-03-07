@@ -3,8 +3,8 @@ const BASE_DESKTOP_WALLPAPER_URL = '/assets/wallpaper/desktop/';
 
 
 export const DEFAULT_WALLPAPER = {
-    'mobile': 'space', //this is id of wallpapers
-    'desktop': 'gradient-abstract'
+    'mobile': 'morskie', //this is id of wallpapers
+    'desktop': 'digital-art'
 
 }
 export const Wallpapers = {
@@ -22,6 +22,27 @@ export const Wallpapers = {
             theme: 'dark',
             txtColor: 'white',
             url: `${BASE_MOBILE_WALLPAPER_URL}space.webp`
+        },
+        {
+            name: 'Digital-art',
+            id: 'digital-art',
+            theme: 'dark',
+            txtColor: 'white',
+            url: `${BASE_MOBILE_WALLPAPER_URL}digital-art.webp`
+        },
+        {
+            name: 'Galaxy-nature',
+            id: 'galaxy-nature',
+            theme: 'dark',
+            txtColor: 'white',
+            url: `${BASE_MOBILE_WALLPAPER_URL}galaxy-nature.webp`
+        },
+        {
+            name: 'Morskie',
+            id: 'morskie',
+            theme: 'light',
+            txtColor: 'black',
+            url: `${BASE_MOBILE_WALLPAPER_URL}morskie.webp`
         }
     ],
     'desktop': [
@@ -38,6 +59,56 @@ export const Wallpapers = {
             theme: 'dark',
             txtColor: 'white',
             url: `${BASE_DESKTOP_WALLPAPER_URL}space.webp`
+        },
+        {
+            name: 'Digital-art',
+            id: 'digital-art',
+            theme: 'dark',
+            txtColor: 'white',
+            url: `${BASE_DESKTOP_WALLPAPER_URL}digital-art.webp`
+        },
+        {
+            name: 'Galaxy-nature',
+            id: 'galaxy-nature',
+            theme: 'dark',
+            txtColor: 'white',
+            url: `${BASE_DESKTOP_WALLPAPER_URL}galaxy-nature.webp`
+        },
+        {
+            name: 'Morskie',
+            id: 'morskie',
+            theme: 'dark',
+            txtColor: 'white',
+            url: `${BASE_DESKTOP_WALLPAPER_URL}morskie.webp`
         }
     ]
 }
+
+
+export const dockApps = [
+    {
+        id: "calculator",
+        name: "Calculator",
+        icon: '/assets/icons/calculator.webp',
+        canOpen: true,
+    },
+    {
+        id: "notes",
+        name: "Notes",
+        icon: '/assets/icons/notes.webp',
+        canOpen: true,
+    },
+    {
+        id: "settings",
+        name: "Settings",
+        icon: '/assets/icons/settings.webp',
+        canOpen: true,
+    },
+    {
+        id: "clock",
+        name: "Clock",
+        icon: '/assets/icons/clock.webp',
+        canOpen: true,
+    }
+
+]

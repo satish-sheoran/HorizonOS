@@ -4,7 +4,7 @@ import { useDeviceType } from "./useDeviceType";
 
 // this FN manages all the wallpaper change related content : LIKE INITIAL WALLPAPER AS PER DEVICE USING and changing wallpaper based on user selection
 export const useWallpaper = () => {
-    const { IsMobile } = useDeviceType();
+    const IsMobile  = useDeviceType();
 
     //Deciding Device Type
     const deviceType = IsMobile ? 'mobile' : 'desktop';

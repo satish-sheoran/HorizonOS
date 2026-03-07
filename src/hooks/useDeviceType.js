@@ -12,5 +12,5 @@ export const useDeviceType = () => {
 
         return window.removeEventListener('resize', handleResize);
     }, [])
-    return { IsMobile };
+    return IsMobile;
 }

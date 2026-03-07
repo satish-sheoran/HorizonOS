@@ -13,13 +13,18 @@
 }
 
 .glass {
-    @apply bg-(--bg-glass) backdrop-blur-[12px]
+    @apply bg-white/25 backdrop-blur-sm
 }
 
 .dock {
-    @apply fixed left-1/2 -translate-x-1/2 bottom-[1vh] z-(--z-dock) rounded-(--border-radius-xl)
+    @apply fixed left-1/2 -translate-x-1/2 bottom-[1vh] z-(--z-dock) rounded-(--border-radius-xl) p-(--padding-dock) w-[90vw] h-22 md:w-fit md:h-19 select-none md:gap-(--gap-md)
 }
 
-.status-bar{
-    @apply fixed top-0  z-(--z-base) w-full  flex justify-between items-center h-7.5 
+.status-bar {
+    @apply fixed top-0 z-(--z-base) w-full flex justify-between items-center h-7.5
 }
+
+.icon {
+    @apply rounded-(--border-radius-md) relative h-15 md:h-12 w-15 md:w-12 cursor-pointer
+}
+

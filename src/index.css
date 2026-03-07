@@ -12,6 +12,7 @@ body {
 
 #os-layout {
     width: 100vw;
+    width: 100svw;
     height: 100vh;
     height: 100svh;
     overflow: hidden;
@@ -26,13 +27,19 @@ body {
     --bg-light-glass: rgba(255, 255, 255, 0.05);
     --bg-white: #F5F5F7;
     --bg-light-gray: #ededf1e3;
-    
-    
+    --bg-icon: #d8d8db;
+    --bg-gray-glass: rgba(73, 75, 81, 0.35)
+;
+
+
     /* text color */
     --color-white: #F5F5F7;
     --color-light-gray: #ededf1e3;
     --color-ultra-light-gray: #e8e8eed5;
     --color-dark: #1F2937;
+    --color-close: #ff6157;
+    --color-open: #ffc030;
+    --color-minimize: #2acb42;
 
     /* Box Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -73,6 +80,7 @@ body {
     --padding-xxl: 30px;
     --padding-smvw: 1.5vw;
     --padding-lgvw: 3vw;
+    --padding-dock: 12px;
 
     /* Spacing/Gaps */
     --gap-xs: 4px;

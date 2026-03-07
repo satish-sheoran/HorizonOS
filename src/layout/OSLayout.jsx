@@ -5,11 +5,11 @@ import TimeWidget from '../components/TimeWidget'
 import StatusBar from '../components/StatusBar'
 
 const OSLayout = () => {
-    const { Wallpaper, setWallpaper } = useContext(OSContext)
+    const { Wallpaper } = useContext(OSContext)
 
     return (
         <main id='os-layout' className='bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${Wallpaper})` }}>
-            <StatusBar />
+            <StatusBar /> 
             <Dock /> {/*Navigation bar*/}
         </main>
     )

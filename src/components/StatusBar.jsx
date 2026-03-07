@@ -10,7 +10,7 @@ const StatusBar = () => {
     const { AllAboutWallpaper: { activeWallpaper: { txtColor } } } = useContext(OSContext)
 
     return (
-        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw)' style={{ color: txtColor == 'white' ? 'var(--color-white)' : 'black' }}>
+        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{ color: txtColor == 'white' ? 'var(--color-white)' : 'black' }}>
 
             <div className='flex h-full items-center gap-(--gap-xs) cursor-pointer' >
 
