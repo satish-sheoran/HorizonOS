@@ -2,12 +2,12 @@ const BASE_MOBILE_WALLPAPER_URL = '/assets/wallpaper/mobile/';
 const BASE_DESKTOP_WALLPAPER_URL = '/assets/wallpaper/desktop/';
 
 
-export const DEFAULT_WALLPAPER = {
+const DEFAULT_WALLPAPER = {
     'mobile': 'morskie', //this is id of wallpapers
     'desktop': 'digital-art'
 
 }
-export const Wallpapers = {
+const Wallpapers = {
     'mobile': [
         {
             name: 'Gradient Abstract',
@@ -43,6 +43,13 @@ export const Wallpapers = {
             theme: 'light',
             txtColor: 'black',
             url: `${BASE_MOBILE_WALLPAPER_URL}morskie.webp`
+        },
+        {
+            name: 'Modern-gradient',
+            id: 'modern-gradient',
+            theme: 'light',
+            txtColor: 'black',
+            url: `${BASE_MOBILE_WALLPAPER_URL}modern-gradient.webp`
         }
     ],
     'desktop': [
@@ -80,12 +87,19 @@ export const Wallpapers = {
             theme: 'dark',
             txtColor: 'white',
             url: `${BASE_DESKTOP_WALLPAPER_URL}morskie.webp`
+        },
+        {
+            name: 'Modern-gradient',
+            id: 'modern-gradient',
+            theme: 'light',
+            txtColor: 'black',
+            url: `${BASE_DESKTOP_WALLPAPER_URL}modern-gradient.webp`
         }
     ]
 }
 
 
-export const dockApps = [
+const dockApps = [
     {
         id: "calculator",
         name: "Calculator",
@@ -112,3 +126,17 @@ export const dockApps = [
     }
 
 ]
+
+export { DEFAULT_WALLPAPER, Wallpapers, dockApps }
+
+const INITIAL_Z_INDEX = 1000;
+
+
+const WINDOW_CONFIG = {
+    calculator: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+};
+
+export { INITIAL_Z_INDEX, WINDOW_CONFIG };
