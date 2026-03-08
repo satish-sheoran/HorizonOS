@@ -1,16 +1,14 @@
-import React, { useContext } from 'react'
 import TimeNDate from './TimeNDate'
-import { OSContext } from '../context/OSProvider'
 
 import { Wifi, BatteryMedium } from 'lucide-react';
+import { useSelector } from "react-redux";
 
 
 const StatusBar = () => {
 
-    const { AllAboutWallpaper: { activeWallpaper: { txtColor } } } = useContext(OSContext)
-
+    const theme = useSelector((store) => store.wallpaper.theme)
     return (
-        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{ color: txtColor == 'white' ? 'var(--color-white)' : 'black' }}>
+        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{ color: `${theme === 'dark' ? 'var(--color-white)' : 'var(--color-dark)'}` }}>
 
             <div className='flex h-full items-center gap-(--gap-xs) cursor-pointer' >
 
@@ -20,8 +18,8 @@ const StatusBar = () => {
 
             <div className='flex items-center h-full gap-(--gap-xs)'>
 
-                <Wifi className='h-2/3' color={txtColor == 'white' ? 'var(--color-white)' : 'var(--color-dark)'} />
-                <BatteryMedium className='h-2/3' color={txtColor == 'white' ? 'var(--color-white)' : 'var(--color-dark)'} />
+                <Wifi className='h-2/3' />
+                <BatteryMedium className='h-2/3' />
                 <TimeNDate />
             </div>
 

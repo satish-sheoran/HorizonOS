@@ -1,4 +1,3 @@
-import React from 'react'
 import { dockApps } from '../constants'
 
 const Dock = () => {
@@ -11,6 +10,7 @@ const Dock = () => {
 
 
                     <img className={`w-full h-full object-cover object-center rounded-(--border-radius-md) ${id == 'settings' || id == 'clock' ? 'scale-80' : 'scale-100'}`} src={icon} alt={name} />
+
                     {/* it is just to show blackish feel when app is clicked to opened */}
                     <div className='absolute bg-black w-full h-full rounded-(--border-radius-md) top-0 left-0 opacity-0 active:opacity-40'></div>
 
