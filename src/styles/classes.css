@@ -28,3 +28,6 @@
     @apply rounded-(--border-radius-md) relative h-15 md:h-12 w-15 md:w-12 cursor-pointer
 }
 
+.window-header {
+    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-(--bg-window-header) border-b border-(--border-gray-200) select-none text-sm text-(--text-color);
+}

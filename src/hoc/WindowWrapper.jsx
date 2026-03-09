@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLayoutEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Draggable } from "gsap/draggable";
+import { Draggable } from "gsap/Draggable";
 
 const WindowWrapper = (Component, windowKey) => {
 
@@ -49,7 +49,7 @@ const WindowWrapper = (Component, windowKey) => {
 
 
 
-        return <section ref={ref} className={`${windowKey} absolute`} style={{ zIndex }}>
+        return <section ref={ref} className={`${windowKey} absolute w-full top-8`} style={{ zIndex }}>
             <Component />
         </section>
     }

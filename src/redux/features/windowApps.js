@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "../../constants";
 
+
+
 const windowAppSlice = createSlice({
     name: 'windowApps',
     initialState: {

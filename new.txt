@@ -1,0 +1,3 @@
+// implement that apps width also ,where ap will be having full width or half width(normal one in beginning)
+
+2. Give status bar highest z-index and a bg blur 
