@@ -36,12 +36,13 @@
 
 /* window controls */
 .window-controls {
-    @apply flex gap-(--gap-xs) h-full cursor-pointer
+    @apply flex gap-(--gap-xs) h-full
 }
 
 .window-control-btns {
-    @apply rounded-full flex items-center justify-center size-3.5 hover:scale-[1.15] active:scale-[1.05] cursor-pointer transition-all ease-in-out duration-(--transition-medium)
+    @apply rounded-full size-3.5 hover:scale-[1.15] active:scale-[1.05]  transition-all ease-in-out duration-(--transition-medium)
 }
+
 
 /* WIndow controls  */
 
