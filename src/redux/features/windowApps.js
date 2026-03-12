@@ -14,6 +14,7 @@ const windowAppSlice = createSlice({
             const { windowKey, data } = action.payload;
 
             const window = state.apps[windowKey];
+            if (!window) return;
             window.isOpen = true;
             window.zIndex = state.nextZIndex;
             if (data) {
@@ -25,6 +26,7 @@ const windowAppSlice = createSlice({
             const { windowKey } = action.payload;
 
             const window = state.apps[windowKey];
+            if (!window) return;
             window.isOpen = false;
             window.zIndex = INITIAL_Z_INDEX;
             window.data = null;
@@ -33,6 +35,7 @@ const windowAppSlice = createSlice({
             const { windowKey } = action.payload;
 
             const window = state.apps[windowKey];
+            if (!window) return;
             window.zIndex = state.nextZIndex++;
         }
     }

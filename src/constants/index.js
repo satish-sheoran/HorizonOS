@@ -140,3 +140,83 @@ const WINDOW_CONFIG = {
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
+
+
+export const CALC_BTNS = [
+    {
+        symbol: 'AC',
+        id: 'clear'
+    },
+    {
+        symbol: 'X',
+        id: 'Cut'
+    },
+    {
+        symbol: '%',
+        id: 'remainder'
+    },
+    {
+        symbol: '/',
+        id: 'divide'
+    },
+    {
+        symbol: '7',
+        id: 'seven'
+    },
+    {
+        symbol: '8',
+        id: 'eight'
+    },
+    {
+        symbol: '9',
+        id: 'nine'
+    },
+    {
+        symbol: '*',
+        id: 'multiply'
+    },
+    {
+        symbol: '4',
+        id: 'four'
+    },
+    {
+        symbol: '5',
+        id: 'five'
+    },
+    {
+        symbol: '6',
+        id: 'six'
+    },
+    {
+        symbol: '-',
+        id: 'substract'
+    },
+    {
+        symbol: '1',
+        id: 'one'
+    },
+    {
+        symbol: '2',
+        id: 'two'
+    },
+    {
+        symbol: '3',
+        id: 'three'
+    },
+    {
+        symbol: '+',
+        id: 'addition'
+    },
+    {
+        symbol: '0',
+        id: 'zero'
+    },
+    {
+        symbol: '.',
+        id: 'dot'
+    },
+    {
+        symbol: '=',
+        id: 'equals To'
+    }
+]

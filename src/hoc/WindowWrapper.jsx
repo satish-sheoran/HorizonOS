@@ -31,7 +31,7 @@ const WindowWrapper = (Component, windowKey) => {
 
             // Draggable.create() returns an array of draggable instances.
             // Since we are creating only one draggable element, we extract the first instance.
-            const [instance] = Draggable.create(el, { onPress: () => dispatch(focusWindow({ windowKey })) });
+            const [instance] = Draggable.create(el);
 
             // Cleanup draggable instance when component unmounts
             // This removes event listeners and prevents memory leaks
@@ -49,7 +49,7 @@ const WindowWrapper = (Component, windowKey) => {
 
 
 
-        return <section ref={ref} className={`${windowKey} absolute w-full top-8`} style={{ zIndex }}>
+        return <section ref={ref} className={`${windowKey} relative`} style={{ zIndex }}>
             <Component />
         </section>
     }

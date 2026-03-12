@@ -5,14 +5,14 @@ const wallpaperSlice = createSlice({
     name: 'wallpaper',
     initialState: {
         src: window.innerWidth <= 768 ?
-            Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile']).url
+            Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile'])?.url
             :
-            Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop']).url,
+            Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop'])?.url,
 
         theme: window.innerWidth <= 768 ?
-            Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile']).theme
+            Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile'])?.theme
             :
-            Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop']).theme,
+            Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop'])?.theme,
 
     },
     reducers: {

@@ -21,16 +21,29 @@ body {
 
 :root {
     /*🌌 BACKGROUND COLORS*/
-    --bg-deep-blue: #050816;
-    --bg-mid-blue: #0B1120;
     --bg-glass: rgba(255, 255, 255, 0.3);
     --bg-light-glass: rgba(255, 255, 255, 0.05);
     --bg-white: #F5F5F7;
     --bg-light-gray: #ededf1e3;
     --bg-icon: #d8d8db;
     --bg-gray-glass: rgba(73, 75, 81, 0.35);
-    --bg-window-header: #f9fafb;
-    --border-gray-200: #e5e7eb;
+
+    /* light time backgrounds */
+    --bg-light-window-header: #f9fafb;
+    --bg-light-app-body: rgb(237, 237, 241);
+    --bg-light-border: #858586;
+    --bg-light-btn: #1F2937;
+    --bg-light-btn-hover: #182230;
+
+
+
+    /* dark theme baackgrounds and colors  */
+    --bg-dark-window-header: #252525;
+    --bg-dark-app-body: #38383A;
+    --bg-dark-hover-window-options: #2C2C2E;
+    --bg-dark-border: #858586;
+    --bg-dark-btn: #1F91C4;
+    --bg-dark-btn-hover: #227DA6;
 
 
 
@@ -107,5 +120,6 @@ body {
     --z-window-active: 60;
     --z-modal: 100;
     --z-tooltip: 200;
+    --z-top: 2000;
 
 }

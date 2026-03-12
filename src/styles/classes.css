@@ -21,7 +21,7 @@
 }
 
 .status-bar {
-    @apply fixed top-0 z-(--z-base) w-full flex justify-between items-center h-7.5
+    @apply backdrop-blur-sm fixed top-0 z-(--z-top) w-full flex justify-between items-center h-7.5
 }
 
 .icon {
@@ -29,5 +29,23 @@
 }
 
 .window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-(--bg-window-header) border-b border-(--border-gray-200) select-none text-sm text-(--text-color);
+    @apply flex items-center justify-between px-4 py-3 rounded-t-lg border-b select-none text-sm text-(--text-color);
+}
+
+
+/* apps classes */
+.calculator {
+    @apply absolute w-[70%] md:w-[35%] top-15 left-2
+}
+
+.app-body {
+    @apply w-full flex flex-col rounded-b-lg px-4 py-3 gap-2
+}
+
+.calc-result {
+    @apply w-full text-right
+}
+
+.calc-btns {
+    @apply grid grid-cols-4 grid-rows-5 gap-2
 }
