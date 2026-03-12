@@ -37,9 +37,16 @@ const windowAppSlice = createSlice({
             const window = state.apps[windowKey];
             if (!window) return;
             window.zIndex = state.nextZIndex++;
+        },
+        changeWindowScreenSize(state, action) {
+            const { windowKey } = action.payload;
+
+            const window = state.apps[windowKey];
+            if (!window) return;
+            window.fullScreen = window.fullScreen == true ? false : true;
         }
     }
 });
 
-export const { openWindow, closeWindow, focusWindow } = windowAppSlice.actions;
+export const { openWindow, closeWindow, focusWindow, changeWindowScreenSize } = windowAppSlice.actions;
 export default windowAppSlice.reducer;
