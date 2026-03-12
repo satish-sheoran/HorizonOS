@@ -1,6 +1,5 @@
 // implement that apps width also ,where ap will be having full width or half width(normal one in beginning)
 
-2. during dragging apps ek dusre ke upr nhi aa rhe means z-index of focus is not working properly and gives error
 
 
 

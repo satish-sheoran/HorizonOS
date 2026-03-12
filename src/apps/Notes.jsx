@@ -10,6 +10,7 @@ const Notes = () => {
             <div className='w-full'>
                 <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
                     <WindowControls id='notes' />
+                    <p>Notes</p>
                 </div>
             </div>
         </>

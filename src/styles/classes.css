@@ -33,6 +33,19 @@
 }
 
 
+
+/* window controls */
+.window-controls {
+    @apply flex gap-(--gap-xs) h-full cursor-pointer
+}
+
+.window-control-btns {
+    @apply rounded-full flex items-center justify-center size-3.5 hover:scale-[1.15] active:scale-[1.05] cursor-pointer transition-all ease-in-out duration-(--transition-medium)
+}
+
+/* WIndow controls  */
+
+
 /* apps classes */
 .calculator {
     @apply absolute w-[70%] md:w-[35%] top-15 left-2

@@ -54,8 +54,8 @@ body {
     --color-ultra-light-gray: #e8e8eed5;
     --color-dark: #1F2937;
     --color-close: #ff6157;
-    --color-open: #ffc030;
-    --color-minimize: #2acb42;
+    --color-minimize: #ffc030;
+    --color-maximize: #2acb42;
     --text-color: #99a1af;
 
     /* Box Shadows */
@@ -123,3 +123,4 @@ body {
     --z-top: 2000;
 
 }
+

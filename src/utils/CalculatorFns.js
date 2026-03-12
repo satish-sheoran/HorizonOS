@@ -18,7 +18,7 @@ export const CalcRes = (value) => {
 // no. and dot case remaining
 export const appendVal = (Symbol, Field) => {
     let arr = [...Field];
-    if (Field == 'Not Defined') arr = [0];
+    if (Field == 'Not Defined' || Field == 'Infinity' || Field == '-Infinity') arr = [0];
     //  X
     if (Symbol == 'X') {
         if (arr.length >= 1) arr.pop();
