@@ -1,8 +1,12 @@
-// implement that apps width also ,where ap will be having full width or half width(normal one in beginning)
-// window controls pe jb click krenge tb window close ho code likhna baki h 
+3. change text-white as per theme in calculator
 
+4. implement minimzie and maximize app based on its fullScreen variable value and use changeWindowScreenSize fn for it of store
 
+5. write minimize and full screen working of window controls fns in windowCntrlFns.js file
 
+6. also when calculator app is closed using close button then reset result value to 0
+
+7. calculator is not working in mobile version for calculation only (LIKE BTNS ARE NOT WORKING)
 
 
 
@@ -19,7 +23,7 @@
             return () => instance.kill();
         }, [])
 
-
+plan for 6. we will set data in calc itself obj in window config , then from there if it is null then show value 0 else the value itself set is data is returned to write there
 
 
 

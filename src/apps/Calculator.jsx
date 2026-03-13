@@ -2,14 +2,19 @@ import { useSelector } from "react-redux";
 import WindowControls from "../components/WindowControls";
 import WindowWrapper from "../hoc/WindowWrapper"
 import { CALC_BTNS } from "../constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { appendVal, CalcRes } from "../utils/CalculatorFns";
 
 const Calculator = () => {
-    // change text-white as per theme
-    // implement minimzie and maximize app basede on its fullScreen variable value and use changeWindowScreenSize fn for it of store
     const theme = useSelector((store) => store.wallpaper.theme)
-    const [result, setResult] = useState('0')
+    const data = useSelector((store) => store.windowApps.apps['calculator'].data); 
+    const [result, setResult] = useState(data ?? '0') //setting initally value from data of calculator app from its store
+
+    // whenever data in store changes it executes to set the fresh value present in store
+    useEffect(() => {
+        setResult(data ?? '0')
+    }, [data])
+
 
     const calcBtnClck = (symbol) => {
         if (symbol == 'AC') {
@@ -26,7 +31,7 @@ const Calculator = () => {
             <div className='w-full flex flex-col'>
 
                 <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
-                    <WindowControls id='calculator' />
+                    <WindowControls id='calculator' result={result} />
                     <p>Calculator</p>
                 </div>
 

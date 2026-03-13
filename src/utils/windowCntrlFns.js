@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { closeWindow } from "../redux/features/windowApps";
+import { closeWindow, minimizeWindow } from "../redux/features/windowApps";
 
 export const UsewindowControlFns = () => {
 
@@ -13,5 +13,13 @@ export const UsewindowControlFns = () => {
         dispatch(closeWindow({ windowKey }));
     }
 
-    return { closeApp }
+    const minimizeApp = async (windowKey, data) => {
+        const window = apps[windowKey];
+        if (!window) return;
+
+         dispatch(minimizeWindow({ windowKey, data }));
+    }
+
+
+    return { closeApp, minimizeApp }
 }
