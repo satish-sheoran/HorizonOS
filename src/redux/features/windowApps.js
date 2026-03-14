@@ -54,7 +54,17 @@ const windowAppSlice = createSlice({
 
             const window = state.apps[windowKey];
             if (!window) return;
+
             window.fullScreen = window.fullScreen == true ? false : true;
+            if (window.fullScreen) {
+                window.windowRatio.width = 'w-full';
+                window.windowRatio.height = 'h-full';
+            } else {
+                window.windowRatio.width = window.default.width;
+                window.windowRatio.height = window.default.height;
+
+
+            }
         }
     }
 });

@@ -134,10 +134,13 @@ const INITIAL_Z_INDEX = 1000;
 
 // fullscreen value changes when user uses window controls to make the app full screen or default one 
 const WINDOW_CONFIG = {
-    calculator: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false },
-    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false },
-    settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false },
-    clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false },
+    calculator: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-[70%] md:w-[35%]', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
+
+    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
+
+    settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
+    
+    clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

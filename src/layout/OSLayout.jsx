@@ -17,13 +17,13 @@ const OSLayout = () => {
         <main id='os-layout' className='bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${src})` }}>
             <StatusBar />
             <Dock /> {/*Navigation bar*/}
-
-
-            {/* All Apps  */}
-            <CalculatorWindow />
-            <SettingsWindow />
-            <ClockWindow />
-            <NotesWindow />
+            <div className='appsArea relative w-full top-7.5 h-[calc(100vh-30px)]'>
+                {/* All Apps  */}
+                <CalculatorWindow />
+                <SettingsWindow />
+                <ClockWindow />
+                <NotesWindow />
+            </div>
         </main>
     )
 }

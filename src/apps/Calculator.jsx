@@ -28,7 +28,7 @@ const Calculator = () => {
 
     return (
         <>
-            <div className='w-full flex flex-col'>
+            <div className='w-full flex flex-col h-full'>
 
                 <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
                     <WindowControls id='calculator' result={result} />

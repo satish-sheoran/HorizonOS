@@ -1,19 +1,16 @@
-import focusWindow from '../redux/features/windowApps'
-
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useLayoutEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Draggable } from "gsap/Draggable";
 
+
 const WindowWrapper = (Component, windowKey) => {
 
     const Wrapped = () => {
-        const dispatch = useDispatch();
         const apps = useSelector((store) => store.windowApps.apps);
-        const { isOpen, zIndex } = apps[windowKey];
+        const { isOpen, zIndex, windowRatio } = apps[windowKey]; //windowRatio is key present in all app which has height and width of app is written inside and when user click the fullScreen button then its width and height changes by a reducer fn of store 
         const ref = useRef(null);
-
         //  animation
         useGSAP(() => {
             const el = ref.current;
@@ -31,7 +28,13 @@ const WindowWrapper = (Component, windowKey) => {
 
             // Draggable.create() returns an array of draggable instances.
             // Since we are creating only one draggable element, we extract the first instance.
-            const [instance] = Draggable.create(el);
+            const [instance] = Draggable.create(el, {
+                type: "x,y", //direction in which element can be dragged
+                bounds: '.appsArea', // prevents window from leaving this container
+                edgeResistance: 0.5,
+                handle: ".window-header",
+                dragClickables: false,
+            });
 
             // Cleanup draggable instance when component unmounts
             // This removes event listeners and prevents memory leaks
@@ -48,8 +51,7 @@ const WindowWrapper = (Component, windowKey) => {
         }, [isOpen])
 
 
-
-        return <section ref={ref} className={`${windowKey} relative`} style={{ zIndex }}>
+        return <section ref={ref} className={`border ${windowKey} ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out `} style={{ zIndex }}>
             <Component />
         </section>
     }

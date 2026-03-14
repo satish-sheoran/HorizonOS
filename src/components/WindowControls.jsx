@@ -3,7 +3,7 @@ import { UsewindowControlFns } from "../utils/windowCntrlFns"
 // group named class is only written inside this file nor in any other file to write its css, it is just use so that before hovering button, the text remain hidden
 const WindowControls = ({ id, result }) => {
 
-    const { closeApp, minimizeApp } = UsewindowControlFns();
+    const { closeApp, minimizeApp, toggleFullscreen } = UsewindowControlFns();
 
     return (
         <div className="window-controls text-black">
@@ -24,7 +24,9 @@ const WindowControls = ({ id, result }) => {
                 </span>
             </button>
 
-            <button className='group window-control-btns flex-col-center bg-(--color-zoom)'>
+            <button      
+                onClick={() => toggleFullscreen(id)}
+                className='group window-control-btns flex-col-center bg-(--color-zoom)'>
                 <span className="zoom opacity-0 transition-all group-hover:opacity-100 ease-in-out duration-(--transition-medium)">
 
                     <svg width="14" height="14" viewBox="0 0 20 20" fill="black" xmlns="http://www.w3.org/2000/svg">

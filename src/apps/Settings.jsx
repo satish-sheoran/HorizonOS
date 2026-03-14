@@ -7,7 +7,7 @@ const Settings = () => {
 
     return (
         <>
-            <div className='w-full'>
+            <div className='w-full h-full'>
                 <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
                     <WindowControls id='settings' />
                     <p>Settings</p>

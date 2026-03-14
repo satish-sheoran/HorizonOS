@@ -40,7 +40,7 @@
 }
 
 .window-control-btns {
-    @apply rounded-full size-3.5 hover:scale-[1.15] active:scale-[1.05]  transition-all ease-in-out duration-(--transition-medium)
+    @apply rounded-full size-3.5 hover:scale-[1.15] active:scale-[1.05] transition-all ease-in-out duration-(--transition-medium)
 }
 
 
@@ -49,7 +49,7 @@
 
 /* apps classes */
 .calculator {
-    @apply absolute w-[70%] md:w-[35%] top-15 left-2
+    @apply absolute top-8 left-1/2 -translate-x-1/2 
 }
 
 .app-body {
@@ -63,3 +63,25 @@
 .calc-btns {
     @apply grid grid-cols-4 grid-rows-5 gap-2
 }
+
+/* clock app */
+.clock {
+    @apply absolute left-1/2 -translate-x-1/2 top-20
+}
+
+/* clock app */
+
+
+/* notes app */
+.notes {
+    @apply absolute left-1/2 -translate-x-1/2 top-5
+}
+
+/* notes app */
+
+/* setting app */
+.settings {
+    @apply absolute left-1/2 -translate-x-1/2 top-10
+}
+
+/* setting app */
