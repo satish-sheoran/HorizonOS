@@ -1,7 +1,5 @@
-1. change text-white as per theme in calculator
-
-2. calculator is not working in mobile version for calculation only (LIKE BTNS ARE NOT WORKING)
-
+1. when too much text is entered in calculator textarea then it shows scroll bar , so remove it and if user then enter something to apne aap wha pe focus ho like entering digits dikhe na ki old digits jo ki scrolling me upr ja chuki h (bascially auto scroll)
+2. perfrom entry in textarea of calculator based on cursor postion on mobile , it is done now except code of . symbol in fn.js file
 
     // Make window draggable and bring it to front when dragging starts
         useGSAP(() => {

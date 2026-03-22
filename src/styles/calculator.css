@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.calculator {
+    @apply absolute top-8 left-1/2 -translate-x-1/2
+}
+
+.calc-result {
+    @apply w-full text-right resize-none  outline-none h-[40%]  
+}
+
+.calc-btns {
+    @apply grid grid-cols-4 grid-rows-5 gap-2 text-xl
+}

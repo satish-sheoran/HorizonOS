@@ -1,17 +1,16 @@
 import { useSelector } from "react-redux";
+
 import WindowControls from "../components/WindowControls";
+import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper"
 
 const Settings = () => {
-    const theme = useSelector((store) => store.wallpaper.theme)
+    const currDevice = useSelector((store) => store.Device.currDevice);
 
     return (
         <>
             <div className='w-full h-full'>
-                <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
-                    <WindowControls id='settings' />
-                    <p>Settings</p>
-                </div>
+                {currDevice === 'Desktop' ? <WindowControls id='clock' /> : <MobileCntrls id='clock' />}
             </div>
         </>
     )

@@ -1,15 +1,9 @@
 @import "tailwindcss";
 
-.flex-center {
-    @apply flex items-center justify-center
-}
 
-.flex-col-center {
-    @apply flex flex-col items-center justify-center
-}
-
-.abs-center {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+.no-cursor {
+    @apply caret-transparent;
+    /*TO hide cursor of input field*/
 }
 
 .glass {
@@ -32,37 +26,37 @@
     @apply flex items-center justify-between px-4 py-3 rounded-t-lg border-b select-none text-sm text-(--text-color);
 }
 
+.mobile-header {
+    @apply flex items-center justify-between rounded-t-lg border-b select-none text-sm text-(--text-color);
+}
 
 
-/* window controls */
+/* window and mobile controls */
 .window-controls {
     @apply flex gap-(--gap-xs) h-full
+}
+
+.mobile-controls {
+    @apply flex  h-full
 }
 
 .window-control-btns {
     @apply rounded-full size-3.5 hover:scale-[1.15] active:scale-[1.05] transition-all ease-in-out duration-(--transition-medium)
 }
 
+.mobile-control-btns {
+    @apply  h-full  px-1  transition-all ease-in-out duration-(--transition-medium) hover:bg-red-400 active:bg-red-400
+}
 
 /* WIndow controls  */
 
 
 /* apps classes */
-.calculator {
-    @apply absolute top-8 left-1/2 -translate-x-1/2 
-}
 
 .app-body {
     @apply w-full flex flex-col rounded-b-lg px-4 py-3 gap-2
 }
 
-.calc-result {
-    @apply w-full text-right
-}
-
-.calc-btns {
-    @apply grid grid-cols-4 grid-rows-5 gap-2
-}
 
 /* clock app */
 .clock {

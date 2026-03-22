@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.flex-center {
+    @apply flex items-center justify-center
+}
+
+.flex-end-end {
+    @apply flex justify-end items-end
+}
+
+.flex-col-center {
+    @apply flex flex-col items-center justify-center
+}
+
+.abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+}

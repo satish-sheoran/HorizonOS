@@ -47,8 +47,7 @@ const windowAppSlice = createSlice({
             if (data != null) {
                 window.data = data;
             }
-        }
-        ,
+        },
         changeWindowScreenSize(state, action) {
             const { windowKey } = action.payload;
 
@@ -57,8 +56,8 @@ const windowAppSlice = createSlice({
 
             window.fullScreen = window.fullScreen == true ? false : true;
             if (window.fullScreen) {
-                window.windowRatio.width = 'w-full';
-                window.windowRatio.height = 'h-full';
+                window.windowRatio.width = 'w-full md:w-[90%]';
+                window.windowRatio.height = 'h-[75%]';
             } else {
                 window.windowRatio.width = window.default.width;
                 window.windowRatio.height = window.default.height;

@@ -11,6 +11,7 @@ const WindowWrapper = (Component, windowKey) => {
         const apps = useSelector((store) => store.windowApps.apps);
         const { isOpen, zIndex, windowRatio } = apps[windowKey]; //windowRatio is key present in all app which has height and width of app is written inside and when user click the fullScreen button then its width and height changes by a reducer fn of store 
         const ref = useRef(null);
+
         //  animation
         useGSAP(() => {
             const el = ref.current;
@@ -25,14 +26,14 @@ const WindowWrapper = (Component, windowKey) => {
         // Make window draggable and bring it to front when dragging starts
         useGSAP(() => {
             const el = ref.current;
-
+            const handler = el.querySelector('.window-header'); //if we do not use it then all open app will drag together 
             // Draggable.create() returns an array of draggable instances.
             // Since we are creating only one draggable element, we extract the first instance.
             const [instance] = Draggable.create(el, {
                 type: "x,y", //direction in which element can be dragged
                 bounds: '.appsArea', // prevents window from leaving this container
                 edgeResistance: 0.5,
-                handle: ".window-header",
+                handle: handler,
                 dragClickables: false,
             });
 
@@ -51,7 +52,8 @@ const WindowWrapper = (Component, windowKey) => {
         }, [isOpen])
 
 
-        return <section ref={ref} className={`border ${windowKey} ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out `} style={{ zIndex }}>
+
+        return <section ref={ref} className={`${windowKey} ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out `} style={{ zIndex }}>
             <Component />
         </section>
     }
