@@ -37,7 +37,7 @@
 }
 
 .mobile-controls {
-    @apply flex  h-full
+    @apply flex h-full transition-all ease-in-out duration-(--transition-medium) hover:bg-red-400 active:bg-red-400
 }
 
 .window-control-btns {
@@ -45,7 +45,7 @@
 }
 
 .mobile-control-btns {
-    @apply  h-full  px-1  transition-all ease-in-out duration-(--transition-medium) hover:bg-red-400 active:bg-red-400
+    @apply h-full px-1
 }
 
 /* WIndow controls  */

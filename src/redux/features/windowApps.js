@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "../../constants";
 
-
+// USING React-Toastify which will send a toast if the feature is coming soon
 
 const windowAppSlice = createSlice({
     name: 'windowApps',
@@ -38,16 +38,6 @@ const windowAppSlice = createSlice({
             if (!window) return;
             window.zIndex = state.nextZIndex++;
         },
-        minimizeWindow(state, action) {
-            const { windowKey, data } = action.payload;
-            const window = state.apps[windowKey];
-            if (!window) return;
-            window.zIndex = INITIAL_Z_INDEX;
-            window.isOpen = false;
-            if (data != null) {
-                window.data = data;
-            }
-        },
         changeWindowScreenSize(state, action) {
             const { windowKey } = action.payload;
 
@@ -68,5 +58,5 @@ const windowAppSlice = createSlice({
     }
 });
 
-export const { openWindow, closeWindow, focusWindow, changeWindowScreenSize, minimizeWindow } = windowAppSlice.actions;
+export const { openWindow, closeWindow, focusWindow, changeWindowScreenSize } = windowAppSlice.actions;
 export default windowAppSlice.reducer;

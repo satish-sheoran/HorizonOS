@@ -59,7 +59,7 @@ const Calculator = () => {
     return (
         <div className='w-full flex flex-col h-full'>
             {/* header */}
-            {currDevice === 'Desktop' ? <WindowControls id='calculator' result={result} /> : <MobileCntrls id='calculator' result={result} />}
+            {currDevice === 'Desktop' ? <WindowControls id='calculator' /> : <MobileCntrls id='calculator' result={result} />}
 
             {/* body  */}
 

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { changeWindowScreenSize, closeWindow, minimizeWindow } from "../redux/features/windowApps";
+import { changeWindowScreenSize, closeWindow } from "../redux/features/windowApps";
 
 export const UsewindowControlFns = () => {
 
@@ -13,12 +13,7 @@ export const UsewindowControlFns = () => {
         dispatch(closeWindow({ windowKey }));
     }
 
-    const minimizeApp = (windowKey, data) => {
-        const window = apps[windowKey];
-        if (!window) return;
 
-        dispatch(minimizeWindow({ windowKey, data }));
-    }
     const toggleFullscreen = (windowKey) => {
         const window = apps[windowKey];
         if (!window) return;
@@ -26,5 +21,5 @@ export const UsewindowControlFns = () => {
         dispatch(changeWindowScreenSize({ windowKey }))
     }
 
-    return { closeApp, minimizeApp, toggleFullscreen }
+    return { closeApp, toggleFullscreen }
 }

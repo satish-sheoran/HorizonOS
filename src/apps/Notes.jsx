@@ -10,8 +10,11 @@ const Notes = () => {
     return (
         <>
             <div className='w-full h-full'>
-                {currDevice === 'Desktop' ? <WindowControls id='clock' /> : <MobileCntrls id='clock' />}
+                {currDevice === 'Desktop' ? <WindowControls id='notes' /> : <MobileCntrls id='notes' />}
             </div>
+            
+            {/* BODY */}
+            
         </>
     )
 }

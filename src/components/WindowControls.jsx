@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux";
 import { UsewindowControlFns } from "../utils/windowCntrlFns"
+import { toast } from "react-toastify";
 
 // group named class is only written inside this file nor in any other file to write its css, it is just use so that before hovering button, the text remain hidden
-const WindowControls = ({ id, result }) => {
+const WindowControls = ({ id }) => {
     const theme = useSelector((store) => store.wallpaper.theme)
-    const { closeApp, minimizeApp, toggleFullscreen } = UsewindowControlFns();
+    const { closeApp, toggleFullscreen } = UsewindowControlFns();
 
     return (
         <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
-            
+
             <div className="window-controls text-black">
 
                 <button
@@ -20,7 +21,7 @@ const WindowControls = ({ id, result }) => {
                 </button>
 
                 <button
-                    onClick={() => minimizeApp(id, result)}
+                    onClick={() => toast.info('This functionality will be available soon.')}
                     className='group window-control-btns flex-col-center bg-(--color-minimize)'>
                     <span className="opacity-0 transition-all group-hover:opacity-100 ease-in-out duration-(--transition-medium)">
                         <img className="scale-70" src="/assets/icons/minimize.png" alt="-" />
@@ -40,7 +41,7 @@ const WindowControls = ({ id, result }) => {
                     </span>
                 </button>
             </div>
-            <p>{id}</p>
+            <p className="select-none">{id}</p>
         </div>
 
     )
