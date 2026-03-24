@@ -36,7 +36,7 @@ body {
     --btn-light: rgb(32, 32, 32);
     --btn-light-hover: #182230;
 
-    
+
     /* dark theme baackgrounds and colors  */
     --bg-dark-window-header: #252525;
     --bg-dark-app-body: #38383A;
@@ -44,7 +44,7 @@ body {
     --bg-dark-border: #858586;
     --btn-dark: #1F91C4;
     --btn-dark-hover: #227DA6;
-    
+
 
     /* text color */
     --color-white: #F5F5F7;
@@ -118,4 +118,28 @@ body {
     --z-tooltip: 200;
     --z-top: 2000;
 
+}
+
+
+/* Scrollbar of textarea of calculator */
+.calc-result::-webkit-scrollbar {
+    /*👉 Controls thickness of the scrollbar*/
+    width: 6px;
+}
+
+.calc-result::-webkit-scrollbar-track {
+    /*👉 The track is the background rail in which the thumb moves.*/
+    background: transparent;
+}
+
+.calc-result::-webkit-scrollbar-thumb {
+    /* 👉 This is the actual scrollbar handle */
+    background: rgba(255, 255, 255, 0.2);
+    /* light theme adjust */
+    border-radius: 10px;
+}
+
+.calc-result::-webkit-scrollbar-thumb:hover {
+    /* When user hover it becomes more visible */
+    background: rgba(255, 255, 255, 0.4);
 }

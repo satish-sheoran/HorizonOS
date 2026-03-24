@@ -1,8 +1,8 @@
 // FN to make Result = 0 OR clears it
 export const clearResult = (textarea) => {
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         textarea.selectionStart = textarea.selectionEnd = 1;
-    }, 0);
+    });
     return '0';
 }
 
@@ -185,9 +185,11 @@ export const removeElem = (result, start, end, textarea) => {
     let newCursor = Math.max(0, Math.min(start - 1, res.length));
 
     // restore cursor AFTER render
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         textarea.selectionStart = textarea.selectionEnd = newCursor;
-    }, 0);
+        textarea.scrollTop = textarea.scrollHeight;
+
+    });
     return res;
 }
 

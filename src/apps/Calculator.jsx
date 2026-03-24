@@ -22,8 +22,17 @@ const Calculator = () => {
         const textarea = inputRef.current;
         if (!textarea) return;
 
-        let start = textarea.selectionStart; // starting point of selected text of input ex: seelcting no. from 456 in '12345689'
-        let end = textarea.selectionEnd; //ending point of selected text of input 
+        const start =
+            currDevice === 'Desktop'
+                ? result.length
+                : textarea.selectionStart ?? result.length;
+        // starting point of selected text of input ex: seelcting no. from 456 in '12345689' also ?? result.length is writtne bcz sometime on desktop the cursor position misbehaved as cause issues
+
+        const end =
+            currDevice === 'Desktop'
+                ? result.length
+                : textarea.selectionEnd ?? result.length;
+        //ending point of selected text of input 
 
         if (symbol === 'AC') {
             setResult(() => clearResult(textarea))
@@ -33,9 +42,10 @@ const Calculator = () => {
         if (symbol === '=') {
             const { value, cursor } = calculate(result) || { value: 'Error', cursor: 5 };
             setResult(value);
-            setTimeout(() => {
+            requestAnimationFrame(() => {
                 textarea.selectionStart = textarea.selectionEnd = cursor;
-            }, 0);
+                textarea.scrollTop = textarea.scrollHeight;
+            });
             return;
         }
 
@@ -49,9 +59,11 @@ const Calculator = () => {
 
         setResult(value);
 
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             textarea.selectionStart = textarea.selectionEnd = cursor;
-        }, 0);
+            textarea.scrollTop = textarea.scrollHeight;
+
+        });
         return;
     }
 
@@ -76,18 +88,23 @@ const Calculator = () => {
                             e.preventDefault();
                         }
                     }} //prevent typing char ex: abc
-                    onFocus={() => {
+                    onFocus={(e) => {
+                        if (currDevice === 'Desktop') {
+                            e.target.blur();
+                        }
                         const el = inputRef.current;
                         if (!el) return;
 
+                        // Scroll to bottom (for multi-line)
+                        el.scrollTop = el.scrollHeight; //scrollTop = current scroll position
                         const len = result.length;
 
-                        setTimeout(() => {
+                        requestAnimationFrame(() => {
                             el.selectionStart = el.selectionEnd = len;
-                        }, 0);
+                        });
                     }} // to prevent a bug which cause its input point to start
-                    readOnly={window.innerWidth >= 768} //user can not edit if he is not on phone
-                    className={`${getFontClass(result.length)} calc-result ${window.innerWidth >= 768 ? 'no-cursor' : ''} ${theme != 'dark' ? 'text-(--color-black' : 'text-(--color-white)'}`}></textarea>
+                    readOnly={currDevice === 'Desktop'} //user can not edit if he is not on phone
+                    className={`${getFontClass(result.length)} calc-result ${currDevice === 'Desktop' ? 'no-cursor' : ''} ${theme != 'dark' ? 'text-(--color-black)' : 'text-(--color-white)'}`}></textarea>
 
                 <div className={`calc-btns grow select-none`}>
                     {CALC_BTNS.map(({ symbol, id }) => {

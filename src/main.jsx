@@ -13,3 +13,6 @@ createRoot(document.getElementById('root')).render(
     <App />
   </Provider>
 )
+
+
+// requestAnimatioFrame is used because It is more in sync with render → paint cycle, so fewer glitches.

@@ -9,7 +9,7 @@
 }
 
 .calc-result {
-    @apply w-full text-right resize-none outline-none h-[40%]
+    @apply w-full text-right resize-none outline-none h-[40%] px-(--padding-sm) overflow-y-auto whitespace-pre-wrap break-all
 }
 
 .calc-btns {
