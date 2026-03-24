@@ -31,7 +31,7 @@ const Calculator = () => {
         }
 
         if (symbol === '=') {
-            const { value, cursor } = calculate(result)
+            const { value, cursor } = calculate(result) || { value: 'Error', cursor: 5 };
             setResult(value);
             setTimeout(() => {
                 textarea.selectionStart = textarea.selectionEnd = cursor;
@@ -87,13 +87,13 @@ const Calculator = () => {
                         }, 0);
                     }} // to prevent a bug which cause its input point to start
                     readOnly={window.innerWidth >= 768} //user can not edit if he is not on phone
-                    className={`${getFontClass(result.length)} calc-result ${window.innerWidth >= 768 ? 'no-cursor' : ''} ${theme != 'dark' ? 'text-black' : 'text-(--bg-white)'}`}></textarea>
+                    className={`${getFontClass(result.length)} calc-result ${window.innerWidth >= 768 ? 'no-cursor' : ''} ${theme != 'dark' ? 'text-(--color-black' : 'text-(--color-white)'}`}></textarea>
 
                 <div className={`calc-btns grow select-none`}>
                     {CALC_BTNS.map(({ symbol, id }) => {
 
-                        return <button key={id} className={`  ${theme != 'dark' ? 'text-white' : 'text-black'} rounded-md py-1 grow transition-all
-ease-in-out duration-0.3 ${theme != 'dark' ? 'bg-(--bg-light-btn) hover:bg-(--bg-light-btn-hover)' : 'bg-(--bg-dark-btn) hover:bg-(--bg-dark-btn-hover)'}`}
+                        return <button key={id} className={`${theme != 'dark' ? 'text-(--color-white)' : 'text-(--color-black)'} rounded-md py-1 grow transition-all active:scale-98
+ease-in-out duration-0.3 ${theme != 'dark' ? 'bg-(--btn-light) hover:bg-(--btn-light-hover)' : 'bg-(--btn-dark) hover:bg-(--btn-dark-hover)'}`}
                             onClick={() => calcBtnClck(symbol)}
                         >{symbol}
                         </button>

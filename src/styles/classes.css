@@ -15,19 +15,19 @@
 }
 
 .status-bar {
-    @apply backdrop-blur-sm fixed top-0 z-(--z-top) w-full flex justify-between items-center h-7.5
+    @apply backdrop-blur-sm bg-(--bg-status-bar) fixed top-0 z-(--z-top) w-full flex justify-between items-center h-9
 }
 
-.icon {
+.app-icon {
     @apply rounded-(--border-radius-md) relative h-15 md:h-12 w-15 md:w-12 cursor-pointer
 }
 
 .window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg border-b select-none text-sm text-(--text-color);
+    @apply flex items-center justify-between px-4 py-3 rounded-t-lg border-b select-none text-sm text-(--color-dark-gray);
 }
 
 .mobile-header {
-    @apply flex items-center justify-between rounded-t-lg border-b select-none text-sm text-(--text-color);
+    @apply flex items-center justify-between rounded-t-lg border-b select-none text-sm text-(--color-dark-gray);
 }
 
 
@@ -51,7 +51,6 @@
 /* WIndow controls  */
 
 
-/* apps classes */
 
 
 /* clock app */

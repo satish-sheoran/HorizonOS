@@ -10,13 +10,13 @@ const MobileCntrls = ({ id }) => {
     return (
         <div className={`mobile-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
             <p className='px-4 py-3'>{id}</p>
-            <div className="mobile-controls text-black" >
+            <div className="mobile-controls text-(--color-black)" >
 
                 <button
                     onClick={() => closeApp(id)}
                     className='mobile-control-btns flex-col-center '>
                     <span>
-                        <img className="scale-70 " src="/assets/icons/close2.png" alt="X" credit='Flaticon.com' />
+                        <img className="scale-70 text-(--color-white)" src="/assets/icons/close2.png" alt="X" credit='Flaticon.com' />
                     </span>
                 </button>
 

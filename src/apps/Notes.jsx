@@ -17,18 +17,18 @@ const Notes = () => {
             {currDevice === 'Desktop' ? <WindowControls id='notes' /> : <MobileCntrls id='notes' />}
 
             {/* BODY */}
-            <main className={`notes-body ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-window-header)'}`}>
+            <main className={`notes-body ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
-                <nav className={`${theme !== 'dark' ? 'text-black' : 'text-white'}`}>
+                <nav className={`${theme !== 'dark' ? 'text-(--color-black)' : 'text-(--color-white)'}`}>
 
                     <div className="Name-n-options ">
                         <div className={`Notes-Name ${theme != 'dark' ? 'text-(--color-dark)' : 'text-(--color-ultra-light-gray) '}`} >Notes</div>
                         <div className="notes-setting-n-folder">
                             <button onClick={() => toast.info("This functionality will be available soon.")}>
-                                <FolderClosed className="icons" />
+                                <FolderClosed className="note-icons" />
                             </button>
                             <button onClick={() => toast.info("This functionality will be available soon.")}>
-                                <Settings className="icons" />
+                                <Settings className="note-icons" />
                             </button>
                         </div>
                     </div>

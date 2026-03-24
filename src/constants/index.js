@@ -4,7 +4,7 @@ const BASE_DESKTOP_WALLPAPER_URL = '/assets/wallpaper/desktop/';
 
 const DEFAULT_WALLPAPER = {
     'mobile': 'morskie', //this is id of wallpapers
-    'desktop': 'digital-art'
+    'desktop': 'morskie'
 
 }
 const Wallpapers = {
@@ -13,42 +13,36 @@ const Wallpapers = {
             name: 'Gradient Abstract',
             id: 'gradient-abstract',
             theme: 'dark',
-            txtColor: 'white',
             url: `${BASE_MOBILE_WALLPAPER_URL}gradient-abstract.webp`
         },
         {
             name: 'Space',
             id: 'space',
             theme: 'dark',
-            txtColor: 'white',
             url: `${BASE_MOBILE_WALLPAPER_URL}space.webp`
         },
         {
             name: 'Digital-art',
             id: 'digital-art',
             theme: 'dark',
-            txtColor: 'white',
             url: `${BASE_MOBILE_WALLPAPER_URL}digital-art.webp`
         },
         {
             name: 'Galaxy-nature',
             id: 'galaxy-nature',
             theme: 'dark',
-            txtColor: 'white',
             url: `${BASE_MOBILE_WALLPAPER_URL}galaxy-nature.webp`
         },
         {
             name: 'Morskie',
             id: 'morskie',
-            theme: 'light',
-            txtColor: 'black',
+            theme: 'dark',
             url: `${BASE_MOBILE_WALLPAPER_URL}morskie.webp`
         },
         {
             name: 'Modern-gradient',
             id: 'modern-gradient',
             theme: 'light',
-            txtColor: 'black',
             url: `${BASE_MOBILE_WALLPAPER_URL}modern-gradient.webp`
         }
     ],
@@ -57,42 +51,36 @@ const Wallpapers = {
             name: 'Gradient Abstract',
             id: 'gradient-abstract',
             theme: 'light',
-            txtColor: 'black',
             url: `${BASE_DESKTOP_WALLPAPER_URL}gradient-abstract.webp`
         },
         {
             name: 'Space',
             id: 'space',
             theme: 'dark',
-            txtColor: 'white',
             url: `${BASE_DESKTOP_WALLPAPER_URL}space.webp`
         },
         {
             name: 'Digital-art',
             id: 'digital-art',
             theme: 'dark',
-            txtColor: 'white',
             url: `${BASE_DESKTOP_WALLPAPER_URL}digital-art.webp`
         },
         {
             name: 'Galaxy-nature',
             id: 'galaxy-nature',
             theme: 'dark',
-            txtColor: 'white',
             url: `${BASE_DESKTOP_WALLPAPER_URL}galaxy-nature.webp`
         },
         {
             name: 'Morskie',
             id: 'morskie',
-            theme: 'dark',
-            txtColor: 'white',
+            theme: 'light',
             url: `${BASE_DESKTOP_WALLPAPER_URL}morskie.webp`
         },
         {
             name: 'Modern-gradient',
             id: 'modern-gradient',
             theme: 'light',
-            txtColor: 'black',
             url: `${BASE_DESKTOP_WALLPAPER_URL}modern-gradient.webp`
         }
     ]

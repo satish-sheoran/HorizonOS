@@ -8,8 +8,8 @@ export const clearResult = (textarea) => {
 
 // FN which calculate the result
 export const calculate = (value) => {
-    if (value === '0/0') return 'Not Defined';
-    if (value === 'Error') return 'Error';
+    if (value === '0/0') return { value: 'Not Defined', cursor: 'Not Defined'.length };
+    if (value === 'Error') return { value: 'Error', cursor: 'Error'.length };
 
     let expression = value; //the value which will be evaluate later and return its result
     const lastChar = expression[expression.length - 1]; //last character of our input
@@ -41,7 +41,7 @@ export const calculate = (value) => {
         let res = Number(parseFloat(num).toPrecision(20)).toString();
         return { value: res, cursor: res.length };
     } catch {
-        return 'Error';
+        return { value: 'Error', cursor: 'Error'.length };
     }
 };
 
@@ -61,7 +61,7 @@ export const manageEntries = (symbol, Field, start, end) => {
 
     // LOGIC : FOR MAX LENGTH OF A NUMBER
     const lastNumber = Field.split(/[+\-*/%]/).pop(); //Last digit in our whole Field ex: + in '123+'
-    if (lastNumber.length >= 20 && symbol != '.' && !isOperator(symbol)) return Field;
+    if (lastNumber.length >= 20 && symbol != '.' && !isOperator(symbol)) return { value: Field, cursor: Field.length };
 
     let res = null; //result we will return
 
@@ -117,7 +117,10 @@ export const manageEntries = (symbol, Field, start, end) => {
 
         // WE GOT THE CURRNUM
         if (!currNum.includes('.')) {
-            return { value: res.slice(0, start) + '.' + res.slice(start), cursor: start + 1 }
+            //agar dot ki position se just phle +,-,/,% opertor ho to '0' add kro 
+            let add = isOperator(res[start - 1]) ? '0.' : '.';
+            start = add === '0.' ? start + 1 : start
+            return { value: res.slice(0, start) + add + res.slice(start), cursor: start + 1 }
         }
         return { value: Field, cursor: start }; //because if no cases apply, to still we have removed the selected part above OR redo the start!=End case
     }

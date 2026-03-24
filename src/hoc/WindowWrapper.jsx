@@ -1,4 +1,4 @@
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -10,6 +10,7 @@ const WindowWrapper = (Component, windowKey) => {
         const apps = useSelector((store) => store.windowApps.apps);
         const { isOpen, zIndex, windowRatio, fullScreen } = apps[windowKey]; //windowRatio is key present in all app which has height and width of app is written inside and when user click the fullScreen button then its width and height changes by a reducer fn of store 
         const ref = useRef(null);
+        const theme = useSelector(store => store.wallpaper.theme);
         const draggableref = useRef(null);
 
         /*  animation */
@@ -68,7 +69,7 @@ const WindowWrapper = (Component, windowKey) => {
         }, [isOpen])
 
 
-        return <section ref={ref} className={`${fullScreen ? `${windowKey}-full` : windowKey} ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out `} style={{ zIndex }}>
+        return <section ref={ref} className={`${fullScreen ? `${windowKey}-full` : windowKey} border-[1px] rounded-lg border-(--bg-light-border) ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out overflow-hidden `} style={{ zIndex }}>
             <Component />
         </section>
     }

@@ -1,6 +1,6 @@
 1. when too much text is entered in calculator textarea then it shows scroll bar , so remove it and if user then enter something to apne aap wha pe focus ho like entering digits dikhe na ki old digits jo ki scrolling me upr ja chuki h (bascially auto scroll)
 2. qroking on note app
-3. provide border to apps because when apps are above each other it seems to bad 
+3. the close img for mobile is of black so for dark theme it is also dark, fix that 
 
 
     // Make window draggable and bring it to front when dragging starts

@@ -21,42 +21,38 @@ body {
 
 :root {
     /*🌌 BACKGROUND COLORS*/
-    --bg-glass: rgba(255, 255, 255, 0.3);
-    --bg-light-glass: rgba(255, 255, 255, 0.05);
-    --bg-white: #F5F5F7;
-    --bg-light-gray: #ededf1e3;
-    --bg-icon: #d8d8db;
-    --bg-gray-glass: rgba(73, 75, 81, 0.35);
+    --bg-app-icon: #d8d8db;
+    --bg-status-bar: #252525;
+    --bg-close: #ff6157;
+    --bg-minimize: #ffc030;
+    --bg-zoom: #2acb42;
 
-    /* light time backgrounds */
+
+    /* light theme backgrounds */
+    --bg-white: #F5F5F7;
     --bg-light-window-header: #f9fafb;
     --bg-light-app-body: rgb(237, 237, 241);
     --bg-light-border: #858586;
-    --bg-light-btn: #1F2937;
-    --bg-light-btn-hover: #182230;
+    --btn-light: rgb(32, 32, 32);
+    --btn-light-hover: #182230;
 
-
-
+    
     /* dark theme baackgrounds and colors  */
     --bg-dark-window-header: #252525;
     --bg-dark-app-body: #38383A;
     --bg-dark-hover-window-options: #2C2C2E;
     --bg-dark-border: #858586;
-    --bg-dark-btn: #1F91C4;
-    --bg-dark-btn-hover: #227DA6;
-
-
-
+    --btn-dark: #1F91C4;
+    --btn-dark-hover: #227DA6;
+    
 
     /* text color */
     --color-white: #F5F5F7;
     --color-light-gray: #ededf1e3;
     --color-ultra-light-gray: #e8e8eed5;
     --color-dark: #1F2937;
-    --color-close: #ff6157;
-    --color-minimize: #ffc030;
-    --color-zoom: #2acb42;
-    --text-color: #99a1af;
+    --color-black: rgb(0, 0, 0);
+    --color-dark-gray: #99a1af;
 
     /* Box Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -123,4 +119,3 @@ body {
     --z-top: 2000;
 
 }
-

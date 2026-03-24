@@ -8,7 +8,7 @@ const StatusBar = () => {
 
     const theme = useSelector((store) => store.wallpaper.theme)
     return (
-        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{ color: `${theme === 'dark' ? 'var(--color-white)' : 'var(--color-dark)'}` }}>
+        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{ color: `var(--color-white)` }}>
 
             <div className='flex h-full items-center gap-(--gap-xs) cursor-pointer' >
 
