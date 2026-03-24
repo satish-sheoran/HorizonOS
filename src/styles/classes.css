@@ -53,25 +53,13 @@
 
 /* apps classes */
 
-.app-body {
-    @apply w-full flex flex-col rounded-b-lg px-4 py-3 gap-2
-}
-
 
 /* clock app */
 .clock {
     @apply absolute left-1/2 -translate-x-1/2 top-20
 }
 
-/* clock app */
-
-
-/* notes app */
-.notes {
-    @apply absolute left-1/2 -translate-x-1/2 top-5
-}
-
-/* notes app */
+/* clock app *
 
 /* setting app */
 .settings {

@@ -63,7 +63,7 @@ const Calculator = () => {
 
             {/* body  */}
 
-            <div className={`grow flex flex-col justify-end app-body  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+            <div className={`calc-body  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
                 <textarea
                     ref={inputRef}
@@ -87,7 +87,7 @@ const Calculator = () => {
                         }, 0);
                     }} // to prevent a bug which cause its input point to start
                     readOnly={window.innerWidth >= 768} //user can not edit if he is not on phone
-                    className={`${getFontClass(result.length)} calc-result ${window.innerWidth >= 768 ? 'no-cursor' : ''} ${theme != 'dark' ? 'text-black' : 'text-white'}`}></textarea>
+                    className={`${getFontClass(result.length)} calc-result ${window.innerWidth >= 768 ? 'no-cursor' : ''} ${theme != 'dark' ? 'text-black' : 'text-(--bg-white)'}`}></textarea>
 
                 <div className={`calc-btns grow select-none`}>
                     {CALC_BTNS.map(({ symbol, id }) => {

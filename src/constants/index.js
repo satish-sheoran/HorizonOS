@@ -136,10 +136,10 @@ const INITIAL_Z_INDEX = 1000;
 const WINDOW_CONFIG = {
     calculator: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-[70%] md:w-[35%]', height: 'h-[50%] md:h-[60%]' }, default: { width: 'w-[70%] md:w-[35%]', height: 'h-[50%] md:h-[60%]' } },
 
-    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
+    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-[90%] md:w-[55%]', height: 'h-[70%] md:h-[60%]' }, default: { width: 'w-[90%] md:w-[55%]', height: 'h-[70%] md:h-[60%]' } },
 
     settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
-    
+
     clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
 };
 

@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 gsap.registerPlugin(Draggable, useGSAP)
 const App = () => {
 
+  const isMdUp = window.matchMedia("(min-width: 768px)").matches;
   const theme = useSelector(store => store.wallpaper.theme)
   return (
     <>
@@ -17,7 +18,12 @@ const App = () => {
 
       {/* Toast msg like Feature Coming Soon ! */}
       <ToastContainer
-        toastClassName="text-sm select-none"
+        toastClassName="text-sm select-none md:w-fit"
+        toastStyle={{
+          width: isMdUp ? "340px" : "80vw",
+          margin: "0 auto",
+          top : '10px'
+        }}
         position="top-center"
         autoClose={2500}
         limit={1}

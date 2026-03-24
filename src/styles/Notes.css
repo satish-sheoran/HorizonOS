@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+.notes {
+    @apply absolute top-0 left-0
+}
+
+.notes-full {
+    @apply absolute top-0 left-0
+}
+
+@layer base {
+    .notes-body {
+        @apply w-full h-full px-(--padding-lg) py-(--padding-sm) md:px-(--padding-xl);
+
+        nav {
+            @apply flex flex-col gap-(--gap-xs);
+
+            .Name-n-options {
+                @apply flex justify-between items-center;
+
+                .Notes-Name {
+                    @apply text-2xl font-semibold select-none md:text-xl
+                }
+
+                .notes-setting-n-folder {
+                    @apply h-full flex items-center gap-(--gap-md);
+
+                    .icons {
+                        @apply cursor-pointer hover:scale-[1.15] transition-all ease-in-out duration-75 active:scale-100;
+                    }
+                }
+            }
+        }
+    }
+}
