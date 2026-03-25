@@ -10,16 +10,33 @@
 
 @layer base {
     .notes-body {
-        @apply w-full h-full px-(--padding-lg) py-(--padding-sm) md:px-(--padding-xl);
+        @apply w-full h-full flex flex-col px-(--padding-lg) py-(--padding-sm) md:px-(--padding-xl);
 
         nav {
-            @apply flex flex-col gap-(--gap-xs);
+            @apply flex flex-col mb-2 gap-(--gap-xs);
 
             .setting-n-folders {
                 @apply h-full flex items-center justify-end gap-(--gap-md);
 
                 .note-icons {
                     @apply cursor-pointer hover:scale-[1.15] transition-all ease-in-out duration-75 active:scale-100;
+                }
+
+            }
+        }
+
+        footer {
+            @apply w-full px-[25%] pt-3.5;
+
+            div {
+                @apply w-full h-full flex items-center justify-between;
+
+                button{
+                    @apply flex flex-col items-center gap-[1px];
+
+                    span{
+                        @apply font-bold text-sm;
+                    }
                 }
 
             }

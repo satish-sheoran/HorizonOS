@@ -4,5 +4,10 @@
 
 
 
+Remaining :
+in notes app , working on AllNotes.jsx where we show notes and tasks.
+2. switching to different categories
+3. addig tasks 
+4. loading AllNotes.jsx file data based on category then 
 
         

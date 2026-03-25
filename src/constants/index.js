@@ -74,7 +74,7 @@ const Wallpapers = {
         {
             name: 'Morskie',
             id: 'morskie',
-            theme: 'light',
+            theme: 'dark',
             url: `${BASE_DESKTOP_WALLPAPER_URL}morskie.webp`
         },
         {
@@ -124,7 +124,7 @@ const INITIAL_Z_INDEX = 1000;
 const WINDOW_CONFIG = {
     calculator: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-[70%] md:w-[35%]', height: 'h-[50%] md:h-[65%]' }, default: { width: 'w-[70%] md:w-[35%]', height: 'h-[50%] md:h-[65%]' } },
 
-    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-[100%] md:w-[55%]', height: 'h-[80%] md:h-[60%]' }, default: { width: 'w-[100%] md:w-[55%]', height: 'h-[80%] md:h-[60%]' } },
+    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-[100%] md:w-[55%]', height: 'h-[80%] md:h-[70%]' }, default: { width: 'w-[100%] md:w-[55%]', height: 'h-[80%] md:h-[70%]' } },
 
     settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
 

@@ -23,16 +23,21 @@ body {
     /* COLORS  */
     --primary-light-clr: rgb(232, 232, 232);
     --primary-dark-clr: rgb(49, 49, 49);
+    --primary-dark-clr-low: rgb(49, 49, 49, 0.7);
 
     --sec-light-clr: rgb(114, 114, 114);
+    --sec-light-clr-low: rgb(114, 114, 114,0.5);
     --sec-dark-clr: rgb(95, 95, 95);
 
     --third-light-clr: rgb(132, 132, 132);
-    --third-dark-clr: rgb(133, 133, 133);
+    --third-dark-clr: rgb(132, 132, 132);
+    --third-dark-clr-low: rgb(133, 133, 133, 0.7);
 
     --color-dark-gray: #99a1af;
     --color-ultra-light-gray: #e8e8eed5;
     --clr-orange: rgb(237, 129, 20);
+    --clr-dark: rgb(11, 11, 11);
+
 
     /*🌌 BACKGROUND COLORS*/
     --bg-app-icon: #d8d8db;
@@ -41,7 +46,7 @@ body {
     --bg-minimize: #ffc030;
     --bg-zoom: #2acb42;
     --bg-orange: rgb(237, 129, 20);
-    --bg-orange-hover: rgb(237, 129, 20,0.8);
+    --bg-orange-hover: rgb(237, 129, 20, 0.8);
 
     /* light theme backgrounds */
     --bg-light-window-header: #f9fafb;

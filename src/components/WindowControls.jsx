@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 // group named class is only written inside this file nor in any other file to write its css, it is just use so that before hovering button, the text remain hidden
 const WindowControls = ({ id }) => {
     const theme = useSelector((store) => store.wallpaper.theme)
+    const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const { closeApp, toggleFullscreen } = UsewindowControlFns();
 
     return (
@@ -41,7 +42,7 @@ const WindowControls = ({ id }) => {
                     </span>
                 </button>
             </div>
-            <p className={`text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none`}>{id}</p>
+            <p className={`text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none transition-all duration-150 ease-in-out`}>{id === 'notes' ? activeTab : id}</p>
         </div>
 
     )
