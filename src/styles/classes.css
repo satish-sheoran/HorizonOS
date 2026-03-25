@@ -33,7 +33,7 @@
 
 /* window and mobile controls */
 .window-controls {
-    @apply flex gap-(--gap-xs) h-full
+    @apply flex gap-(--gap-xs) h-full items-center
 }
 
 .mobile-controls {

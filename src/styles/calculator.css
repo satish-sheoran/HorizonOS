@@ -9,7 +9,7 @@
 }
 
 .calc-result {
-    @apply w-full text-right resize-none outline-none h-[40%] px-(--padding-sm) overflow-y-auto whitespace-pre-wrap break-all
+    @apply w-full text-right resize-none outline-none  h-[35%] px-(--padding-sm) overflow-y-auto whitespace-pre-wrap break-all
 }
 
 .calc-btns {
@@ -17,5 +17,5 @@
 }
 
 .calc-body {
-    @apply w-full flex flex-col rounded-b-lg px-4 py-3 gap-2 grow justify-end
+    @apply w-full flex flex-col rounded-b-lg px-4 py-3  gap-2 grow justify-end
 }

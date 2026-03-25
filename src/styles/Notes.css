@@ -15,20 +15,13 @@
         nav {
             @apply flex flex-col gap-(--gap-xs);
 
-            .Name-n-options {
-                @apply flex justify-between items-center;
+            .setting-n-folders {
+                @apply h-full flex items-center justify-end gap-(--gap-md);
 
-                .Notes-Name {
-                    @apply text-2xl font-semibold select-none md:text-xl
+                .note-icons {
+                    @apply cursor-pointer hover:scale-[1.15] transition-all ease-in-out duration-75 active:scale-100;
                 }
 
-                .notes-setting-n-folder {
-                    @apply h-full flex items-center gap-(--gap-md);
-
-                    .icons {
-                        @apply cursor-pointer hover:scale-[1.15] transition-all ease-in-out duration-75 active:scale-100;
-                    }
-                }
             }
         }
     }

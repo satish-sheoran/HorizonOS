@@ -10,7 +10,7 @@ const WindowControls = ({ id }) => {
     return (
         <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
 
-            <div className="window-controls text-(--color-black)">
+            <div className="window-controls  text-(--primary-dark-clr)">
 
                 <button
                     onClick={() => closeApp(id)}
@@ -41,7 +41,7 @@ const WindowControls = ({ id }) => {
                     </span>
                 </button>
             </div>
-            <p className="select-none">{id}</p>
+            <p className={`text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none`}>{id}</p>
         </div>
 
     )

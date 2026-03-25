@@ -9,14 +9,15 @@ const MobileCntrls = ({ id }) => {
 
     return (
         <div className={`mobile-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
-            <p className='px-4 py-3'>{id}</p>
-            <div className="mobile-controls text-(--color-black)" >
+            
+            <p className={`px-4 py-1.5  text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none`}>{id}</p>
+            <div className="mobile-controls  text-(--primary-dark-clr)" >
 
                 <button
                     onClick={() => closeApp(id)}
                     className='mobile-control-btns flex-col-center '>
                     <span>
-                        <img className="scale-70 text-(--color-white)" src="/assets/icons/close2.png" alt="X" credit='Flaticon.com' />
+                        <img className="scale-70 text-(--primary-light-clr)" src="/assets/icons/close2.png" alt="X" credit='Flaticon.com' />
                     </span>
                 </button>
 
