@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "../../constants";
 
-// USING React-Toastify which will send a toast if the feature is coming soon
 
 const windowAppSlice = createSlice({
     name: 'windowApps',

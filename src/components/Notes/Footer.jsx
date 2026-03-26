@@ -49,7 +49,7 @@ const Footer = () => {
                        ${theme !== 'dark'
                             ? activeTab === 'Tasks'
                                 ? 'bg-(--sec-dark-clr)'
-                                : 'bg-var(--third-dark-clr-low)'
+                                : 'bg-(--third-dark-clr-low)'
                             : activeTab === 'Tasks'
                                 ? 'bg-(--sec-light-clr)'
                                 : 'bg-(--sec-light-clr-low)'

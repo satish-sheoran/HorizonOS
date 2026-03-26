@@ -6,8 +6,11 @@
 
 Remaining :
 in notes app , working on AllNotes.jsx where we show notes and tasks.
-2. switching to different categories
+2. switching to different categories also change content of notes data
 3. addig tasks 
 4. loading AllNotes.jsx file data based on category then 
 
-        
+
+    WWHAT I DID FOR COMMIT THIS TIME :
+    1. created a reducer in notes slice which will set active category and on clicking different category btn, active categroy is set and it sets its some property which make to look different from the other category as those are not the active One category at that time.
+    so for now just write how categroy will be set with fix 2 category    

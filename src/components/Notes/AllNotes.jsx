@@ -10,11 +10,11 @@ const AllNotes = () => {
             {activeTab === 'Notes' ?
                 <div className="grow border border-amber-400">Notes area</div>
                 :
-                <div
+                <button
                     onClick={() => toast.info("This will be available shortly")}
-                    className={`select-none grow font-bold text-center flex items-center justify-center border border-amber-400
+                    className={`select-none grow font-bold text-center flex items-center justify-center border border-amber-400 outline-none
                          ${theme !== 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--sec-light-clr)'}
-                         `}>This functionality will be <br />available soon 😴 !</div>
+                         `}>This functionality will be <br />available soon 😴 !</button>
             }
         </>
     )
