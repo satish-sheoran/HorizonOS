@@ -4,7 +4,8 @@ const NotesSlice = createSlice({
     name: 'Notes',
     initialState: {
         activeTab: 'Notes',
-        activeCategory: 'All'
+        activeCategory: 'All',
+        openManageFolder: false
     },
     reducers: {
         setActiveTab(state, action) {
@@ -16,10 +17,15 @@ const NotesSlice = createSlice({
             const { category } = action.payload;
             if (!category) return;
             state.activeCategory = category;
+        },
+        setOpenManageFolder(state, action) {
+            const { open } = action.payload;
+            state.openManageFolder = open;
+            return;
         }
     }
 
 })
 
-export const { setActiveTab, setActiveCategory } = NotesSlice.actions;
+export const { setActiveTab, setActiveCategory, setOpenManageFolder } = NotesSlice.actions;
 export default NotesSlice.reducer;

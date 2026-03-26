@@ -8,7 +8,7 @@ const Footer = () => {
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
 
     return (
-        <footer className={`${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+        <footer className={`relative z-20 ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
             <div>
 
                 <button

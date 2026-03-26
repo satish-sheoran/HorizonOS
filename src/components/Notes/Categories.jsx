@@ -5,12 +5,14 @@ const Categories = () => {
     const theme = useSelector((store) => store.wallpaper.theme)
     const activeCategory = useSelector((store) => store.Notes.activeCategory)
     const dispatch = useDispatch();
+    
+
     return (
-        <div className="categories ">
+        <div  className="categories">
 
             <button
                 onClick={() => dispatch(setActiveCategory({ category: 'All' }))}
-                className={` h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out  
+                className={` h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out active:scale-95  
                    ${theme !== 'dark'
                         ? activeCategory === 'All'
                             ? 'bg-(--primary-light-clr) text-(--primary-dark-clr) font-semibold'
@@ -24,7 +26,7 @@ const Categories = () => {
 
             <button
                 onClick={() => dispatch(setActiveCategory({ category: 'Uncategorised' }))}
-                className={` h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out 
+                className={` h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out active:scale-95 
                    ${theme !== 'dark'
                         ? activeCategory === 'Uncategorised'
                             ? 'bg-(--primary-light-clr) text-(--primary-dark-clr) font-semibold'

@@ -69,7 +69,7 @@ const WindowWrapper = (Component, windowKey) => {
         }, [isOpen])
 
 
-        return <section ref={ref} className={`${fullScreen ? `${windowKey}-full` : windowKey} border-[1px] rounded-lg border-(--bg-light-border) ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out overflow-hidden `} style={{ zIndex }}>
+        return <section ref={ref} className={`${fullScreen ? `${windowKey}-full` : windowKey} border rounded-lg border-(--bg-light-border) ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out overflow-hidden `} style={{ zIndex }}>
             <Component />
         </section>
     }

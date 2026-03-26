@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Edit,Delete css of Note app */
+
+
+
+
+/* Edit,Delete css of Note app */
+
 .notes {
     @apply absolute top-0 left-0
 }
@@ -10,13 +17,13 @@
 
 @layer base {
     .notes-body {
-        @apply relative w-full h-full flex flex-col px-(--padding-lg) py-(--padding-sm) md:px-(--padding-xl);
+        @apply relative w-full h-full flex flex-col overflow-hidden px-(--padding-lg) md:px-(--padding-xl);
 
         nav {
             @apply flex flex-col mb-2 gap-(--gap-xs);
 
             .setting-n-folders {
-                @apply h-full flex items-center justify-end gap-(--gap-md);
+                @apply h-full flex items-center justify-end gap-(--gap-md) pt-(--padding-sm);
 
                 .note-icons {
                     @apply cursor-pointer hover:scale-[1.15] transition-all ease-in-out duration-75 active:scale-100;
@@ -44,6 +51,17 @@
                 }
 
             }
+        }
+    }
+}
+
+
+@layer base{
+    .all-folders{
+        @apply inset-0 flex flex-col px-(--padding-lg) py-(--padding-sm) md:px-(--padding-xl);
+
+        .nav{
+            @apply text-base md:text-lg font-semibold flex items-center justify-between; 
         }
     }
 }

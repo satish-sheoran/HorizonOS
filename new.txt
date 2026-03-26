@@ -1,7 +1,7 @@
 1. working on note app
 2. the close img for mobile is of black so for dark theme it is also dark, fix that in all apps
 3. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
-
+4. apps looks different and bad at some devices like : at ipad calculator look too bad fix that 
 
 
 Remaining :
@@ -11,6 +11,6 @@ in notes app , working on AllNotes.jsx where we show notes and tasks.
 4. loading AllNotes.jsx file data based on category then 
 
 
-    WWHAT I DID FOR COMMIT THIS TIME :
-    1. created a reducer in notes slice which will set active category and on clicking different category btn, active categroy is set and it sets its some property which make to look different from the other category as those are not the active One category at that time.
-    so for now just write how categroy will be set with fix 2 category    
+What i did in this commit  :
+created a reducer which sets value of openManageFolder and on the basis of it the animation occurs by changing the position of folder page and tasks page .and in case of task to notes animation same concept is used (change in position) but using which tab is active state of note store
+add animation while switching from notes to tasks OR notes to manage folder 

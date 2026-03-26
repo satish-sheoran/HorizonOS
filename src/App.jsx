@@ -15,7 +15,6 @@ const App = () => {
   return (
     <>
       <OSLayout />
-
       {/* Toast msg like Feature Coming Soon ! */}
       <ToastContainer
         toastClassName="text-sm select-none md:w-fit"
