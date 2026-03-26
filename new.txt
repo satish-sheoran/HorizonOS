@@ -5,12 +5,16 @@
 
 
 Remaining :
-in notes app , working on AllNotes.jsx where we show notes and tasks.
+in notes app , working on content.jsx where we show notes and tasks.
 2. switching to different categories also change content of notes data
 3. addig tasks 
-4. loading AllNotes.jsx file data based on category then 
+4. loading content.jsx file data based on category then 
 
 
 What i did in this commit  :
-created a reducer which sets value of openManageFolder and on the basis of it the animation occurs by changing the position of folder page and tasks page .and in case of task to notes animation same concept is used (change in position) but using which tab is active state of note store
-add animation while switching from notes to tasks OR notes to manage folder 
+Fix GSAP animation bug in AllTasks and restructure notes app content
+
+- Remove conflicting translate-y-[120%] class from AllTasks button that was overriding GSAP inline styles
+- Add isFirstRun ref to set initial position without animation on component mount, then animate on subsequent activeTab changes
+- Move categories element from AllNotes (now Content) to AllTasks for better organization
+- Ensure smooth slide-in/slide-out animations when switching between Notes and Tasks tabs in the notes app

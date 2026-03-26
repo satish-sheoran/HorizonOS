@@ -23,7 +23,7 @@
             @apply flex flex-col mb-2 gap-(--gap-xs);
 
             .setting-n-folders {
-                @apply h-full flex items-center justify-end gap-(--gap-md) pt-(--padding-sm);
+                @apply h-full relative z-20 flex items-center justify-end gap-(--gap-md) pt-(--padding-sm);
 
                 .note-icons {
                     @apply cursor-pointer hover:scale-[1.15] transition-all ease-in-out duration-75 active:scale-100;
@@ -31,8 +31,17 @@
 
             }
 
-            .categories {
-                @apply flex gap-2 items-center
+        }
+
+        .content {
+            @apply relative grow flex;
+
+            .AllNotes {
+                @apply grow flex flex-col gap-1.5;
+
+                .categories {
+                    @apply flex gap-2 items-center;
+                }
             }
         }
 
@@ -56,12 +65,12 @@
 }
 
 
-@layer base{
-    .all-folders{
+@layer base {
+    .all-folders {
         @apply inset-0 flex flex-col px-(--padding-lg) py-(--padding-sm) md:px-(--padding-xl);
 
-        .nav{
-            @apply text-base md:text-lg font-semibold flex items-center justify-between; 
+        .nav {
+            @apply text-base md:text-lg font-semibold flex items-center justify-between;
         }
     }
 }

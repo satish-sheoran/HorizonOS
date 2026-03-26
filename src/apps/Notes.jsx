@@ -4,7 +4,7 @@ import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper"
 import Navbar from "../components/Notes/Navbar";
-import AllNotes from "../components/Notes/AllNotes";
+import Content from "../components/Notes/Content";
 import Footer from "../components/Notes/Footer";
 import Folders from "../components/Notes/Folders";
 import { useRef } from "react";
@@ -21,7 +21,7 @@ const Notes = () => {
         if (!notesBody.current) return;
 
         gsap.to(notesBody.current, {
-            x: isOpen ? '-100%' : '0%',
+            x: isOpen ? '-100%' : '0%', //isOpen refers to if the folder is open or not
             duration: 0.5,
             ease: 'expo.out'
         })
@@ -41,7 +41,7 @@ const Notes = () => {
 
                 <div ref={notesBody} className="notes-body relative translate-x-0">
                     <Navbar />
-                    <AllNotes />
+                    <Content />
                     <Footer />
                 </div>
 

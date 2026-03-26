@@ -6,12 +6,13 @@ import { setOpenManageFolder } from "../../redux/features/NotesStrorage";
 
 const SettingNFolder = () => {
     const dispatch = useDispatch();
+    const theme = useSelector((store) => store.wallpaper.theme)
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used because when switching/opening folders window,the icon shows still,so to fix it,it is used here
 
 
     return (
-        <div className="setting-n-folders ">
+        <div className={`setting-n-folders ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
             {activeTab === 'Notes' ? <button onClick={() => {
                 dispatch(setOpenManageFolder({ open: true }));
