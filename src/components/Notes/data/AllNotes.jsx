@@ -8,6 +8,7 @@ const AllNotes = () => {
     const theme = useSelector((store) => store.wallpaper.theme)
     const notesAnimRef = useRef(null);
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
+    const categories = useSelector(store => store.Notes.allCategories) // call ategories for notes app
 
     useGSAP(() => {
         if (!notesAnimRef.current) return;

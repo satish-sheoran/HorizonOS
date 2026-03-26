@@ -6,7 +6,7 @@ import WindowWrapper from "../hoc/WindowWrapper"
 import Navbar from "../components/Notes/Navbar";
 import Content from "../components/Notes/Content";
 import Footer from "../components/Notes/Footer";
-import Folders from "../components/Notes/Folders";
+import Folders from "../components/Notes/Folder/Folders";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

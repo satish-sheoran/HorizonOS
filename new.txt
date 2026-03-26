@@ -12,9 +12,5 @@ in notes app , working on content.jsx where we show notes and tasks.
 
 
 What i did in this commit  :
-Fix GSAP animation bug in AllTasks and restructure notes app content
+i will work on folders addition ,deletion 
 
-- Remove conflicting translate-y-[120%] class from AllTasks button that was overriding GSAP inline styles
-- Add isFirstRun ref to set initial position without animation on component mount, then animate on subsequent activeTab changes
-- Move categories element from AllNotes (now Content) to AllTasks for better organization
-- Ensure smooth slide-in/slide-out animations when switching between Notes and Tasks tabs in the notes app

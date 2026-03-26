@@ -5,6 +5,7 @@ const DeviceSlice = createSlice({
     name: 'Device',
     initialState: {
         currDevice: window.innerWidth >= 768 ? 'Desktop' : 'Mobile'
+        
     },
     reducers: {
         setDevice(state, action) {

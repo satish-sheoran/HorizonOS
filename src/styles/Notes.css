@@ -65,11 +65,12 @@
 }
 
 
+/* specially for folders */
 @layer base {
     .all-folders {
-        @apply inset-0 flex flex-col px-(--padding-lg) py-(--padding-sm) md:px-(--padding-xl);
+        @apply inset-0 flex flex-col px-(--padding-lg) pt-(--padding-sm) pb-(--padding-md) md:px-(--padding-xl);
 
-        .nav {
+        .folder-nav {
             @apply text-base md:text-lg font-semibold flex items-center justify-between;
         }
     }
