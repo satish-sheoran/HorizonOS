@@ -12,5 +12,4 @@ in notes app , working on content.jsx where we show notes and tasks.
 
 
 What i did in this commit  :
-i will work on folders addition ,deletion 
-
+feat: Add create folder button structure with responsive styling

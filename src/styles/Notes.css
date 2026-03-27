@@ -73,5 +73,13 @@
         .folder-nav {
             @apply text-base md:text-lg font-semibold flex items-center justify-between;
         }
+
+        .folder-content {
+            @apply grow;
+
+            .create-folder {
+                @apply w-full font-semibold rounded-lg flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97 transition-all ease-in-out duration-100;
+            }
+        }
     }
 }

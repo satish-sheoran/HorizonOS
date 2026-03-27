@@ -8,7 +8,7 @@ const FolderNav = () => {
     const theme = useSelector((store) => store.wallpaper.theme)
 
     return (
-        <div className={`folder-nav ${theme !== 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+        <div className={`folder-nav ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
 
             <button onClick={() => {
                 dispatch(setOpenManageFolder({ open: false }));

@@ -27,7 +27,7 @@ body {
 
     --sec-light-clr: rgb(114, 114, 114);
     --sec-light-clr-low: rgb(114, 114, 114,0.5);
-    --sec-dark-clr: rgb(95, 95, 95);
+    --sec-dark-clr: #858586;
 
     --third-light-clr: rgb(132, 132, 132);
     --third-dark-clr: rgb(132, 132, 132);
