@@ -39,7 +39,7 @@ const FolderCategory = () => {
                             }
                             `}>
                         <Check strokeWidth={2.5} className={`${activeCategory === category ? 'text-(--bg-minimize)' : 'text-transparent'}`} /> {/* on hidden,it do not reserve space so used text-transparent */}
-                        <span>{category}</span>
+                        <span>{category.length>=17?category.slice(0,17)+'...':category}</span>
                         <span>Count</span>
                     </button>
                 })

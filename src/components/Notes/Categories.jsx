@@ -24,7 +24,7 @@ const Categories = () => {
                                     : 'text-(--sec-dark-clr)'
                             }
                             `}>
-                        {category}
+                        {category.length>=17?category.slice(0,17)+'...':category}
                     </button>
                 })
             }

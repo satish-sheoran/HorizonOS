@@ -1,6 +1,6 @@
 1. working on note app
-3. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
-4. apps looks different and bad at some devices like : at ipad calculator look too bad fix that 
+2. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
+3. apps looks different and bad at some devices like : at ipad calculator look too bad fix that 
 
 
 Remaining :
@@ -12,10 +12,4 @@ in notes app , working on content.jsx where we show notes and tasks.
 
 
 What i did in this commit  :
-feat: add responsive category display in notes folder manage area
-
-- Display categories in folder content with styling
-- Add onClick functionality to these categories btns in folder manage area to  change activeCategory in notes slice
-- Create reducer for folder content width tracking
-- Implement responsive grid: 1 column (<768px), 2 columns (768-1199px), 3 columns (≥1200px) to showscase folder manager's categories
-- (fix) : The close icon is now visible on both themes in mobile controls to close the app
+feat : if length of category name is more than equal to 17 then return its category.slice(0,17) else category

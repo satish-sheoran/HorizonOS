@@ -20,7 +20,7 @@ const FolderContent = () => {
         if (!Number.isFinite(width) || width <= 0) return; //if width is not a number or less than or equal to 0 then do not update the width in the store
 
         dispatch(setWidthOfFolderContent({ width }));
-        console.log('FolderContent width', { fullScreen, width });
+        // console.log('FolderContent width', { fullScreen, width });
     }
 
     useEffect(() => {

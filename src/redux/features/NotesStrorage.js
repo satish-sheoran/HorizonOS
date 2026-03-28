@@ -7,7 +7,7 @@ const NotesSlice = createSlice({
         activeTab: 'Notes',
         activeCategory: 'All',
         openManageFolder: false,
-        allCategories: ['All', 'Uncategorized', 'trila'], // it will contain all the categories of notes, by default it will contain All and Uncategorized, All will show all the notes and Uncategorized will show the notes which do not have any category
+        allCategories: ['All', 'Uncategorized'], // it will contain all the categories of notes, by default it will contain All and Uncategorized, All will show all the notes and Uncategorized will show the notes which do not have any category
         folderContentWidth: 0, // it is width of folder-content named class elem whose value will be used in folder Category component and based on its value we will device if categories will be shown in one column or two column
     },
     reducers: {
