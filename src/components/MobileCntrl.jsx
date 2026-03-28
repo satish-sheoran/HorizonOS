@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { UsewindowControlFns } from "../utils/windowCntrlFns"
+import { X } from "lucide-react";
 
 // group named class is only written inside this file nor in any other file to write its css, it is just use so that before hovering button, the text remain hidden
 const MobileCntrls = ({ id }) => {
@@ -18,9 +19,7 @@ const MobileCntrls = ({ id }) => {
                 <button
                     onClick={() => closeApp(id)}
                     className='mobile-control-btns flex-col-center '>
-                    <span>
-                        <img className="scale-70 text-(--primary-light-clr)" src="/assets/icons/close2.png" alt="X" credit='Flaticon.com' />
-                    </span>
+                    <X strokeWidth={3} size={24} className={`${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`} />
                 </button>
 
             </div>

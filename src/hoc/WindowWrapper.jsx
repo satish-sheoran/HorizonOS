@@ -10,7 +10,6 @@ const WindowWrapper = (Component, windowKey) => {
         const apps = useSelector((store) => store.windowApps.apps);
         const { isOpen, zIndex, windowRatio, fullScreen } = apps[windowKey]; //windowRatio is key present in all app which has height and width of app is written inside and when user click the fullScreen button then its width and height changes by a reducer fn of store 
         const ref = useRef(null);
-        const theme = useSelector(store => store.wallpaper.theme);
         const draggableref = useRef(null);
 
         /*  animation */

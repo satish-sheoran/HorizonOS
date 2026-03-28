@@ -74,7 +74,7 @@ const Wallpapers = {
         {
             name: 'Morskie',
             id: 'morskie',
-            theme: 'dark',
+            theme: 'light',
             url: `${BASE_DESKTOP_WALLPAPER_URL}morskie.webp`
         },
         {

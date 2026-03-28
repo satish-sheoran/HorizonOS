@@ -14,7 +14,7 @@ const CreateFolder = () => {
                     : 'bg-(--primary-dark-clr) text-(--primary-light-clr) hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr)'
                 }
                 `}>
-            <p className='plus-icon-div bg-amber-400 rounded-full p-1 flex items-center justify-center text-(--primary-light-clr)'>
+            <p className='plus-icon-div'>
                 <Plus strokeWidth={3.5} size={14} />
             </p>
             <span className='select-none text-sm'>New Folder</span>
