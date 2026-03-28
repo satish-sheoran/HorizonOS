@@ -92,6 +92,8 @@
                     @apply rounded-lg flex items-center justify-between px-2 active:scale-97 transition-all ease-in-out duration-100 py-2.5
                 }
             }
+
+            
         }
     }
 }

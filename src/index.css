@@ -26,7 +26,7 @@ body {
     --primary-dark-clr-low: rgb(49, 49, 49, 0.7);
 
     --sec-light-clr: rgb(114, 114, 114);
-    --sec-light-clr-low: rgb(114, 114, 114,0.5);
+    --sec-light-clr-low: rgb(114, 114, 114, 0.5);
     --sec-dark-clr: #858586;
 
     --third-light-clr: rgb(132, 132, 132);
@@ -47,6 +47,8 @@ body {
     --bg-zoom: #2acb42;
     --bg-orange: rgb(237, 129, 20);
     --bg-orange-hover: rgb(237, 129, 20, 0.8);
+    --bg-ok-btn: rgb(38, 122, 247);
+    --bg-ok-btn-hover: rgb(57, 132, 249);
 
     /* light theme backgrounds */
     --bg-light-window-header: #f9fafb;

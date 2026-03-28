@@ -8,8 +8,15 @@ in notes app , working on content.jsx where we show notes and tasks.
 2. switching to different categories also change content of notes data
 3. addig tasks 
 4. loading content.jsx file data based on category then 
-5. some apps will overflow (except claculator) some part like ccategories, notes in notes area .so manage that also 
+5. some apps will overflow (except claculator) some part like categories, notes in notes area .so manage that also 
+6. when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
+
 
 
 What i did in this commit  :
-feat : if length of category name is more than equal to 17 then return its category.slice(0,17) else category
+feat: Add responsive CreateFolderPopUp component with default input value management
+
+- Implement popup design (except its responsiveness as per device)
+- Add create/cancel folder functionality
+- Add Notes slice state for tracking default input values
+- Update addCategory reducer to manage default value increments for unnamed folders
