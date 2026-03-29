@@ -12,8 +12,6 @@ body {
 
 #os-layout {
     width: 100vw;
-    width: 100svw;
-    height: 100vh;
     height: 100svh;
     overflow: hidden;
     position: relative;
@@ -150,4 +148,62 @@ body {
 .calc-result::-webkit-scrollbar-thumb:hover {
     /* When user hover it becomes more visible */
     background: rgba(255, 255, 255, 0.4);
+}
+
+
+
+/* NOTES's folder manager category overflow manage */
+@media screen and (max-width: 768px) {
+.categories{
+    --webkit-overflow-scrolling : touch;
+    padding-top : 5px;
+}
+    .folder-category-list {
+        --webkit-overflow-scrolling: touch;
+        padding-right: 10px;
+        
+        /* For smooth scrolling on mobile devices */
+    }
+
+    .folder-category-list::-webkit-scrollbar,
+    .categories::-webkit-scrollbar {
+        /*👉 Controls thickness of the scrollbar*/
+        width: 7px;
+    }
+
+    .folder-category-list::-webkit-scrollbar-track , 
+    .categories::-webkit-scrollbar-track {
+        /*👉 The track is the background rail in which the thumb moves.*/
+        background: transparent;
+    }
+
+    .folder-category-list::-webkit-scrollbar-thumb,
+    .categories::-webkit-scrollbar-thumb {
+        /* 👉 This is the actual scrollbar handle */
+        background: var(--sec-dark-clr);
+        /* light theme adjust */
+        border-radius: 10px;
+    }
+
+    .folder-category-list::-webkit-scrollbar-thumb:hover,
+    .categories::-webkit-scrollbar-thumb:hover {
+        /* When user hover it becomes more visible */
+        background: rgba(116, 114, 114, 0.4);
+    }
+
+}
+
+@media screen and (min-width: 769px) {
+
+    .folder-category-list,.categories {
+        scrollbar-width: none;
+        /* For Firefox */
+        --webkit-overflow-scrolling: touch;
+        /* For smooth scrolling on mobile devices */
+    }
+
+    .folder-category-list::-webkit-scrollbar,.categories::-webkit-scrollbar {
+        display: none;
+        /* For Chrome, Safari, and Opera */
+    }
 }

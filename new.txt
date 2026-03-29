@@ -13,10 +13,10 @@ in notes app , working on content.jsx where we show notes and tasks.
 
 
 
-What i did in this commit  :
-feat: Add responsive CreateFolderPopUp component with default input value management
+remainig for next commit :
+animation of showing and removing the create folder pop up
+proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
-- Implement popup design (except its responsiveness as per device)
-- Add create/cancel folder functionality
-- Add Notes slice state for tracking default input values
-- Update addCategory reducer to manage default value increments for unnamed folders
+What i did in this commit  :
+1. width of create folder pop up as per device is set
+2. manage overflow of categories in notes and note's manage folder area's categories different for mobile and desktop

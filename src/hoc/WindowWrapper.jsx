@@ -33,7 +33,7 @@ const WindowWrapper = (Component, windowKey) => {
             const [instance] = Draggable.create(el, {
                 type: "x,y", //direction in which element can be dragged
                 bounds: '.appsArea', // prevents window from leaving this container
-                edgeResistance: 0.5,
+                edgeResistance: 0.7,
                 handle: handler,
                 dragClickables: false,
             });

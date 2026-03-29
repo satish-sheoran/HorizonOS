@@ -68,17 +68,17 @@
 /* specially for folders */
 @layer base {
     .all-folders {
-        @apply inset-0 flex flex-col px-(--padding-lg) pt-(--padding-sm) pb-(--padding-md) md:px-(--padding-xl);
+        @apply inset-0 flex flex-col pt-(--padding-sm) pb-(--padding-md);
 
         .folder-nav {
-            @apply text-base md:text-lg font-semibold flex items-center justify-between;
+            @apply text-base md:text-lg font-semibold flex items-center justify-between px-(--padding-lg) md:px-(--padding-xl);
         }
 
         .folder-content {
-            @apply grow flex flex-col gap-2;
+            @apply grow flex flex-col gap-2 px-(--padding-lg) md:px-(--padding-xl) min-h-0;
 
             .create-folder {
-                @apply w-full font-semibold rounded-lg flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97 transition-all ease-in-out duration-100;
+                @apply w-full font-semibold rounded-xl flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97 transition-all ease-in-out duration-100 mt-1;
 
                 .plus-icon-div {
                     @apply bg-(--bg-minimize) rounded-full p-1 flex items-center justify-center text-(--primary-light-clr);
@@ -86,14 +86,17 @@
             }
 
             .folder-category-list {
-                @apply transition-all duration-150 ease-in-out grid gap-2;
+                @apply  grow min-h-0 transition-all duration-150 ease-in-out grid gap-3 overflow-y-auto;
+                align-content: start;
+
 
                 button {
-                    @apply rounded-lg flex items-center justify-between px-2 active:scale-97 transition-all ease-in-out duration-100 py-2.5
+                    @apply w-full h-fit outline-none rounded-lg flex items-center justify-between px-2 active:scale-97 transition-all ease-in-out duration-100 py-2.5;
+                    touch-action : pan-y; /* Allow vertical scrolling on touch devices */   
                 }
             }
 
-            
+
         }
     }
 }

@@ -21,7 +21,7 @@ const Notes = () => {
         if (!notesBody.current) return;
 
         gsap.to(notesBody.current, {
-            x: isOpen ? '-100%' : '0%', //isOpen refers to if the folder is open or not
+            x: isOpen ? '-100%' : '0%', //isOpen refers to if the folder is open or not,
             duration: 0.5,
             ease: 'expo.out'
         })

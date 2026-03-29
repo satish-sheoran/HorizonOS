@@ -9,12 +9,12 @@ const Categories = () => {
 
 
     return (
-        <div className="categories">
+        <div className="categories w-full py-2 rounded-xl overflow-x-auto">
             {
                 categories.map((category) => {
                     return <button key={category}
                         onClick={() => dispatch(setActiveCategory({ category }))}
-                        className={` h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out active:scale-95
+                        className={`shrink-0 h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out active:scale-95
                             ${theme !== 'dark' ?
                                 activeCategory === category
                                     ? 'bg-(--primary-light-clr) text-(--primary-dark-clr) font-semibold'

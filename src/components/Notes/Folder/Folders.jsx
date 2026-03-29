@@ -21,7 +21,7 @@ const Folders = () => {
   }, [isOpen])
 
   return (
-    <div ref={elem} className={`absolute gap-4  all-folders transform-x-full ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+    <div ref={elem} className={`absolute gap-4 all-folders transform-x-full ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
       <FolderNav />
       <FolderContent />

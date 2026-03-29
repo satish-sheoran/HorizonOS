@@ -13,7 +13,7 @@ const FolderCategory = () => {
     const folderContentWidth = useSelector((store) => store.Notes.folderContentWidth); //the width based on which sets if categories should so in one column or more 
 
     return (
-        <div className={`folder-category-list
+        <div className={`overflow-y-auto rounded-xl folder-category-list
         ${folderContentWidth>=768?
             `${folderContentWidth>=1200? 'grid-cols-3' :'grid-cols-2'}`
             :
@@ -38,9 +38,9 @@ const FolderCategory = () => {
                                 }`
                             }
                             `}>
-                        <Check strokeWidth={2.5} className={`${activeCategory === category ? 'text-(--bg-minimize)' : 'text-transparent'}`} /> {/* on hidden,it do not reserve space so used text-transparent */}
-                        <span>{category.length>=17?category.slice(0,17)+'...':category}</span>
-                        <span>Count</span>
+                        <Check strokeWidth={2.5} className={`select-none ${activeCategory === category ? 'text-(--bg-minimize)' : 'text-transparent'}`} /> {/* on hidden,it do not reserve space so used text-transparent */}
+                        <span className="select-none">{category.length>=17?category.slice(0,17)+'...':category}</span>
+                        <span className="select-none">Count</span>
                     </button>
                 })
             }
