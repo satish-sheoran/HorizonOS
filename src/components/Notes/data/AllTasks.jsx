@@ -33,7 +33,7 @@ const AllTasks = () => {
     return (
         <button ref={taskAnimRef}
             onClick={() => toast.info("This will be available shortly")}
-            className={`absolute inset-0 select-none  font-bold text-center flex items-center justify-center border border-amber-400 outline-none
+            className={`absolute inset-0 select-none  font-bold text-center flex items-center justify-center outline-none
                          ${theme !== 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--sec-light-clr)'} ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
                          `}> This functionality will be < br /> available soon 😴 !
         </button >

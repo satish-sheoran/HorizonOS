@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addCategory, setCreateFolderPopUp } from '../../../redux/features/NotesStrorage';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const CreateFolderPopUp = () => {
     const createFldrInputRef = useRef(null)
@@ -10,6 +12,7 @@ const CreateFolderPopUp = () => {
     const createFolderPopUp = useSelector((store) => store.Notes.createFolderPopUp);
     const defaultValOfInput = useSelector((store) => store.Notes.defaultValOfInput); //defautly it is 'Unnamed folder' and when user create a new folder with default name then it will be in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
     const device = useSelector((store) => store.Device.currDevice);
+    const popUpElem = useRef(null);
 
     // pre select the input text when the popup is opened
     useEffect(() => {
@@ -18,8 +21,22 @@ const CreateFolderPopUp = () => {
         }
     }, [createFolderPopUp])
 
+    useGSAP(() => {
+        if (!popUpElem.current) return;
+
+        gsap.fromTo(popUpElem.current, {
+            scale: createFolderPopUp ? 0 : 1,
+        },{
+            scale : createFolderPopUp ? 1 : 0,
+            duration : 0.65,
+            force3D : true, //to make animation a bit smooth as it deals with scales (forcw3D)
+            ease : 'expo.out'
+        })
+
+    }, [createFolderPopUp])
+
     return (
-        <div className={`create-folder-parent absolute top-0 left-0 inset-0 flex flex-col`}>
+        <div  className={`${createFolderPopUp?'block':'hidden'} create-folder-parent absolute top-0 left-0 inset-0 flex flex-col`}>
 
             {/* overlay */}
             <div
@@ -27,7 +44,7 @@ const CreateFolderPopUp = () => {
                 className='overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'></div>
 
             {/* actual  */}
-            <div className={`${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
+            <div ref={popUpElem}  className={`${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
             ${theme !== 'dark' ?
                     "bg-(--bg-light-window-header)"
                     :
