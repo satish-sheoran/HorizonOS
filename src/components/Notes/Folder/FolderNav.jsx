@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { ArrowLeft, Trash2 } from 'lucide-react'
 import { useState } from "react";
 
-import {  setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
+import {  manageDeletedCategories, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
 import ConfirmDeletePopUp from './ConfirmDeletePopUp'
 
 
@@ -23,6 +23,7 @@ const FolderNav = () => {
                 startDeletingCat === true ?
                     <button onClick={() => {
                         dispatch(setStartDeletingCat({ start: false }));
+                        dispatch(manageDeletedCategories({ category: 'Empty Trash' })) // empty the deletedCategories in notes storage when user exit from deleting mode to remove the select icons from categories
                     }} className='text-(--bg-ok-btn-hover) hover:text-(--bg-ok-btn) active:scale-95'>
                         <span>Cancel</span>
                     </button>

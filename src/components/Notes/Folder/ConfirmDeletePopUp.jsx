@@ -47,13 +47,13 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp }) => {
 
                 <span className='text-lg'>Delete folder</span>
 
-                <span className={`text-sm ${theme !== 'dark' ? 'text-(--sec-light-clr)' : 'text-(--sec-light-clr)'}`}>Delete 2 items ?</span>
+                <span className={`text-sm ${theme !== 'dark' ? 'text-(--sec-light-clr)' : 'text-(--sec-light-clr)'}`}>Delete {deletedCategories.length} items ?</span>
 
                 <div className={`w-full flex items-center gap-2`}>
 
                     <button
                         onClick={() => setOpenDeletePopUp(false)}
-                        className={`w-[calc(50%-2px)] py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
+                        className={`w-[calc(50%-2px)] py-3.5 md:py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
 
                     <button
                         onClick={() => {
@@ -61,7 +61,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp }) => {
                             dispatch(setStartDeletingCat({ start: false })); // exit delete mode after deleting category/categories
                             setOpenDeletePopUp(false); //after delete close the pop up
                         }}
-                        className={`grow  py-2.5 text-sm font-bold rounded-xl select-none bg-(--bg-ok-btn) hover:bg-(--bg-ok-btn-hover) active:bg-(--bg-ok-btn-hover) active:scale-96 text-(--primary-light-clr)`}>DELETE</button>
+                        className={`grow  py-3.5 md:py-2.5 text-sm font-bold rounded-xl select-none bg-(--bg-ok-btn) hover:bg-(--bg-ok-btn-hover) active:bg-(--bg-ok-btn-hover) active:scale-96 text-(--primary-light-clr)`}>DELETE</button>
                 </div>
 
 

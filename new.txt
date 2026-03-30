@@ -15,7 +15,6 @@ in notes app , working on content.jsx where we show notes and tasks.
 
 remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
-create a pop up before deleting categories for confirmation of deleting categories
 
 What i did in this commit  :
 1. created a confirm delete pop up before deleting cateogries

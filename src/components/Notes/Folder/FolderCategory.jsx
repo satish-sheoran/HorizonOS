@@ -58,7 +58,7 @@ const FolderCategory = () => {
                                 ${deletedCategories.includes(category) ? 'bg-(--bg-orange)'
                                         :
                                         theme !== 'dark' ?
-                                            'bg-(--bg-dark-border)'
+                                            'bg-(--btn-light-hover)'
                                             :
                                             'bg-(--bg-light-border)'
 
