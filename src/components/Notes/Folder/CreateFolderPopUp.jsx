@@ -59,7 +59,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) 
                 <div className='w-full folder-creation-btns flex items-center justify-between gap-2'>
                     <button
                         onClick={() => setOpencreateFolderPopUp(false)}
-                        className={`w-[calc(50%-2px)] py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--third-light-clr)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
+                        className={`w-[calc(50%-2px)] py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
 
                     <button
                         onClick={() => {

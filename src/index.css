@@ -53,7 +53,7 @@ body {
     --bg-light-app-body: rgb(237, 237, 241);
     --bg-light-border: #858586;
     --btn-light: #FFFFFF;
-    --btn-light-hover: rgb(114, 114, 114, 0.1);
+    --btn-light-hover: rgba(209, 205, 205, 0.938);
 
     /* dark theme baackgrounds and colors  */
     --bg-dark-window-header: #252525;

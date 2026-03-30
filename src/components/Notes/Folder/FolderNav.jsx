@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { ArrowLeft, Trash2 } from 'lucide-react'
+import { useState } from "react";
 
-import { removeCategory, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
+import {  setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
+import ConfirmDeletePopUp from './ConfirmDeletePopUp'
 
 
 const FolderNav = () => {
     const dispatch = useDispatch();
+    const [openDeletePopUp, setOpenDeletePopUp] = useState(false);
 
     const theme = useSelector((store) => store.wallpaper.theme);
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
@@ -41,8 +44,7 @@ const FolderNav = () => {
                         toast.info("Select categories to delete !")
                         return;
                     } else {
-                        dispatch(removeCategory({ category: deletedCategories }));
-                        dispatch(setStartDeletingCat({ start: false })); // exit delete mode after deleting category/categories
+                        setOpenDeletePopUp(true);
                     }
                 }}
                     className='active:scale-95'>
@@ -53,6 +55,10 @@ const FolderNav = () => {
                     <span>Edit</span>
                 </button>
             }
+
+            {/* delete pop up  */}
+            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} />}
+
         </div>)
 }
 
