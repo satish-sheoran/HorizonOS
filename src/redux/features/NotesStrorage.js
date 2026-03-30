@@ -12,7 +12,8 @@ const NotesSlice = createSlice({
         createFolderPopUp: false, // it will be used to show or hide the create folder popup
         defaultValOfInput: 'Unnamed folder',
         baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
-        startDeletingCat: false, //it keeps track if user has started deleting category or not, if yes then show select icons on category ` 
+        startDeletingCat: false, //it keeps track if user has started deleting category or not, if yes then show select icons on category `
+        deletedCategories: [] // it will keep the track of categories which are selected to be deleted when user start deleting category, it will be used in manage folder component when user click on delete button to delete the selected categories 
     },
     reducers: {
         setActiveTab(state, action) {
@@ -70,10 +71,19 @@ const NotesSlice = createSlice({
             if (typeof start !== "boolean" || start === undefined || start === null) return;
             state.startDeletingCat = start;
             return;
+        },
+        manageDeletedCategories(state, action) {
+            const { category } = action.payload;
+            if (!category || category === 'All' || category === 'Uncategorized') return;
+            if (state.deletedCategories.includes(category)) {
+                state.deletedCategories = state.deletedCategories.filter((cat) => cat !== category); // if category is already in the deletedCategories array then remove it from the array
+                return;
+            }
+            state.deletedCategories.push(category); // if category is not in the deletedCategories array then add it to the array
+
         }
 
     }
-
 })
 
 export const {
@@ -84,6 +94,7 @@ export const {
     removeCategory,
     setWidthOfFolderContent,
     setCreateFolderPopUp,
-    setStartDeletingCat
+    setStartDeletingCat,
+    manageDeletedCategories
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

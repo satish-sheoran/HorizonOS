@@ -10,7 +10,7 @@ const FolderContent = () => {
     const theme = useSelector((store) => store.wallpaper.theme)
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isFolderManagerOpen = useSelector((store) => store.Notes.openManageFolder)
-
+    const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat) //it keeps track if user started edit mode to delete category or not ,if true then do not show create folder btn
 
     // fn which will update the width of folder content in the store, it will be used in folder category component to decide if categories should be shown in one column or more based on the width of folder content
     const updateFolderContentWidth = (folderContent) => {
@@ -55,7 +55,7 @@ const FolderContent = () => {
             <FolderCategory />
 
             {/* create folder btn */}
-            <CreateFolder />
+            {startDeletingCat === false && < CreateFolder />}
         </div>
     )
 }

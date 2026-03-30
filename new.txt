@@ -17,4 +17,5 @@ remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 What i did in this commit  :
-i will create UI to delete categories , for now just using edit button and later for mobile using long press
+1. hide add category btn if edit mode to delete categories is opened OR true.
+2. created state variable  (array) in notes slice  which keeps track of categories selected to delete and a reducer to manage this state variable value .
