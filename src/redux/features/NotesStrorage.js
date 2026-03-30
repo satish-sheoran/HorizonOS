@@ -12,6 +12,7 @@ const NotesSlice = createSlice({
         createFolderPopUp: false, // it will be used to show or hide the create folder popup
         defaultValOfInput: 'Unnamed folder',
         baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
+        startDeletingCat: false, //it keeps track if user has started deleting category or not, if yes then show select icons on category ` 
     },
     reducers: {
         setActiveTab(state, action) {
@@ -63,11 +64,26 @@ const NotesSlice = createSlice({
             if (typeof open !== "boolean" || open === undefined || open === null) return;
             state.createFolderPopUp = open;
             return;
+        },
+        setStartDeletingCat(state, action) {
+            const { start } = action.payload;
+            if (typeof start !== "boolean" || start === undefined || start === null) return;
+            state.startDeletingCat = start;
+            return;
         }
 
     }
 
 })
 
-export const { setActiveTab, setActiveCategory, setOpenManageFolder, addCategory, removeCategory, setWidthOfFolderContent, setCreateFolderPopUp } = NotesSlice.actions;
+export const {
+    setActiveTab,
+    setActiveCategory,
+    setOpenManageFolder,
+    addCategory,
+    removeCategory,
+    setWidthOfFolderContent,
+    setCreateFolderPopUp,
+    setStartDeletingCat
+} = NotesSlice.actions;
 export default NotesSlice.reducer;

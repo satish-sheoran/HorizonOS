@@ -14,9 +14,7 @@ in notes app , working on content.jsx where we show notes and tasks.
 
 
 remainig for next commit :
-animation of showing and removing the create folder pop up
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 What i did in this commit  :
-1. width of create folder pop up as per device is set
-2. manage overflow of categories in notes and note's manage folder area's categories different for mobile and desktop
+i will create UI to delete categories , for now just using edit button and later for mobile using long press
