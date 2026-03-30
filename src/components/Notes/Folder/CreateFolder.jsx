@@ -1,19 +1,16 @@
 import { Plus } from 'lucide-react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setCreateFolderPopUp } from '../../../redux/features/NotesStrorage';
+import { useSelector } from 'react-redux'
 import CreateFolderPopUp from './CreateFolderPopUp';
+import { useState } from 'react';
 
 const CreateFolder = () => {
-    const dispatch = useDispatch();
     const theme = useSelector((store) => store.wallpaper.theme);
-    const createFolderPopUp = useSelector((store) => store.Notes.createFolderPopUp);
+    const [opencreateFolderPopUp, setOpencreateFolderPopUp] = useState(false)
 
     return (
         <>
             <button
-                onClick={() => {
-                    dispatch(setCreateFolderPopUp({ open: true }));
-                }}
+                onClick={() => setOpencreateFolderPopUp(true)}
                 className={`create-folder
                 ${theme !== 'dark' ?
                         'bg-(--bg-light-window-header) text-(--primary-dark-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr)'
@@ -26,7 +23,7 @@ const CreateFolder = () => {
                 <span className='select-none text-sm'>New Folder</span>
             </button>
 
-            {createFolderPopUp === true && <CreateFolderPopUp />}
+            {opencreateFolderPopUp === true && <CreateFolderPopUp opencreateFolderPopUp={opencreateFolderPopUp} setOpencreateFolderPopUp={setOpencreateFolderPopUp} />}
         </>
     )
 }
