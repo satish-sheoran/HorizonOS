@@ -9,7 +9,6 @@ const NotesSlice = createSlice({
         openManageFolder: false,
         allCategories: ['All', 'Uncategorized'], // it will contain all the categories of notes, by default it will contain All and Uncategorized, All will show all the notes and Uncategorized will show the notes which do not have any category
         folderContentWidth: 0, // it is width of folder-content named class elem whose value will be used in folder Category component and based on its value we will device if categories will be shown in one column or two column
-        defaultValOfInput: 'Unnamed folder',
         baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
         startDeletingCat: false, //it keeps track if user has started deleting category or not, if yes then show select icons on category `
         deletedCategories: [] // it will keep the track of categories which are selected to be deleted when user start deleting category, it will be used in manage folder component when user click on delete button to delete the selected categories 
@@ -31,16 +30,15 @@ const NotesSlice = createSlice({
             return;
         },
         addCategory(state, action) {
-            const { category } = action.payload;
+            const { category, defaultName } = action.payload;
             if (!category || typeof category !== "string") return;
             if (state.allCategories.includes(category)) {
                 toast.info("Category already exists !");
                 return; // if category already exists then do not add it again
             }
             state.allCategories.push(category);
-            if (category.startsWith(state.defaultValOfInput)) {
+            if (defaultName && category.startsWith(defaultName)) {
                 state.baseNumberForDefaultFolder += 1; // increment the number for default folder name when user create a new folder with default name
-                state.defaultValOfInput = 'Unnamed folder' + state.baseNumberForDefaultFolder; // update the default value for input field for next folder creation with default name
             }
             return;
         },

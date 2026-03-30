@@ -17,5 +17,10 @@ remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 What i did in this commit  :
-1. updated delete category reducer by adding one conditions which clears the delete categories array
-2. removed createFolderPopUp from store and used it as useState as it is only used to open and closed create FOlder pop up and thus it was passed as props
+refactor(notes) : remove UI-dependent default value and handle folder naming via payload
+
+- defaultValue named variable removed from notes slice which was used for default value of create folder input
+- created a local variable which provides that value to input field
+- passed that variable to add category reducer to check if default named is used for folder
+- if yes, then a variable in slice value increases 
+- its value then used with defaultValue variable which directly updated input field value 

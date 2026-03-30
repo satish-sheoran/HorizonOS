@@ -7,11 +7,13 @@ import gsap from 'gsap';
 
 const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) => {
     const createFldrInputRef = useRef(null)
-    const dispatch = useDispatch();
-    const theme = useSelector((store) => store.wallpaper.theme);
-    const defaultValOfInput = useSelector((store) => store.Notes.defaultValOfInput); //defautly it is 'Unnamed folder' and when user create a new folder with default name then it will be in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
-    const device = useSelector((store) => store.Device.currDevice);
     const popUpElem = useRef(null);
+    const dispatch = useDispatch();
+
+    const theme = useSelector((store) => store.wallpaper.theme);
+    const device = useSelector((store) => store.Device.currDevice);
+    const defaultNumForDefaultFolder = useSelector((store) => store.Notes.baseNumberForDefaultFolder);
+    const defaultValOfInput = 'Unnamed folder' + (defaultNumForDefaultFolder > 0 ? defaultNumForDefaultFolder : ''); // it will be the default value for input field when user create a new folder with default name, if user has already created folder with default name then it will add number at the end of default name otherwise it will be just Unnamed folder
 
     // pre select the input text when the popup is opened
     useEffect(() => {
@@ -67,7 +69,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) 
 
                             if (!catName) return;
 
-                            dispatch(addCategory({ category: catName }));
+                            dispatch(addCategory({ category: catName, defaultName: defaultValOfInput }));
                             setOpencreateFolderPopUp(false);
                         }}
                         className={`grow  py-2.5 text-sm font-bold rounded-xl select-none bg-(--bg-ok-btn) hover:bg-(--bg-ok-btn-hover) active:bg-(--bg-ok-btn-hover) active:scale-96 text-(--primary-light-clr)`}>OK</button>
