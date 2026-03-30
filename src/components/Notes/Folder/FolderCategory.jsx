@@ -24,6 +24,7 @@ const FolderCategory = () => {
                 categories.map((category) => {
                     return <button key={category}
                         onClick={() => {
+                            if (startDeletingCat === true) return; // if user has started deleting category then do not allow to select category
                             dispatch(setActiveCategory({ category }));
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
