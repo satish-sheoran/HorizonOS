@@ -17,10 +17,6 @@ remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 What i did in this commit  :
-refactor(notes) : remove UI-dependent default value and handle folder naming via payload
-
-- defaultValue named variable removed from notes slice which was used for default value of create folder input
-- created a local variable which provides that value to input field
-- passed that variable to add category reducer to check if default named is used for folder
-- if yes, then a variable in slice value increases 
-- its value then used with defaultValue variable which directly updated input field value 
+1. delete categories functionality added 
+2. if active category also gets deleted then set All as active category by updating remove Cateogry reducer
+3. if try to delete with delete Category array empty then return a toast

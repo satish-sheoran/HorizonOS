@@ -50,6 +50,10 @@ const NotesSlice = createSlice({
             } else {
                 state.allCategories = state.allCategories.filter((cat) => cat !== category); //remove single category which is passed as string
             }
+            state.deletedCategories = []; // after deleting category/categories empty the deletedCategories array to remove the deleted categories from the array as now they are deleted
+
+            // if active category is deleted then set active category to All
+            if (!state.allCategories.includes(state.activeCategory)) state.activeCategory = 'All';
             return;
         },
         setWidthOfFolderContent(state, action) {

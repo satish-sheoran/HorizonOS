@@ -2,11 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { ArrowLeft, Trash2 } from 'lucide-react'
 
-import { setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
+import { removeCategory, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
+
+
 const FolderNav = () => {
     const dispatch = useDispatch();
+
     const theme = useSelector((store) => store.wallpaper.theme);
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
+    const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
 
     return (
         <div className={`folder-nav ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
@@ -32,7 +36,16 @@ const FolderNav = () => {
 
             {/* if start editing then show delete button,else show edit button  */}
             {startDeletingCat === true ?
-                <button onClick={() => toast.info("This functionality will be available soon.")} className='active:scale-95'>
+                <button onClick={() => {
+                    if (deletedCategories.length === 0) {
+                        toast.info("Select categories to delete !")
+                        return;
+                    } else {
+                        dispatch(removeCategory({ category: deletedCategories }));
+                        dispatch(setStartDeletingCat({ start: false })); // exit delete mode after deleting category/categories
+                    }
+                }}
+                    className='active:scale-95'>
                     <Trash2 strokeWidth={2} />
                 </button>
                 :
