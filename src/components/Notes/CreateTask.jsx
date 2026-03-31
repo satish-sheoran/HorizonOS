@@ -11,6 +11,7 @@ const CreateTask = () => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [newTaskDesc, setNewTaskDesc] = useState('');
     const [CurrTime, setCurrTime] = useState(new Date());
+        
 
     useEffect(() => {
         const intrvl = setInterval(() => {

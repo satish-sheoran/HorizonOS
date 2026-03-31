@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
@@ -7,18 +7,32 @@ import Navbar from "../components/Notes/Navbar";
 import Content from "../components/Notes/Content";
 import Footer from "../components/Notes/Footer";
 import Folders from "../components/Notes/Folder/Folders";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CreateTask from "../components/Notes/CreateTask";
+import { setCreateTaskOpen } from "../redux/features/NotesStrorage";
 
 const Notes = () => {
     const notesBody = useRef(null);
+    const dispatch = useDispatch()
 
     const currDevice = useSelector((store) => store.Device.currDevice);
     const theme = useSelector((store) => store.wallpaper.theme)
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
     const isCreateTaskOpen = useSelector(store => store.Notes.CreateTaskOpen) // it is here to check if create task  pop up is open
+    const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
+
+    // if apps closes then close the create task pop up if it is open
+    useEffect(() => {
+        if (!isNotesOpen) {
+            const closeCreateTask = () => {
+                dispatch(setCreateTaskOpen({ open: false }))
+            }
+            closeCreateTask();
+        }
+        return;
+    }, [isNotesOpen, dispatch])
 
 
     useGSAP(() => {

@@ -17,6 +17,10 @@ remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 
+What i did in this commit :
+feat (notes) : closing the notes app closes :
 
-1. hide then scrollbar of parent of textarea's ,  and then adding task ,
-also try movement using thumb 
+-  new task pop up (if open)
+- create new category pop up (if open)
+- edit mode to delete categories (if open) 
+- delete categories pop up (if open) 

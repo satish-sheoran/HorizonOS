@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { ArrowLeft, Trash2 } from 'lucide-react'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import {  manageDeletedCategories, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
+import { manageDeletedCategories, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
 import ConfirmDeletePopUp from './ConfirmDeletePopUp'
 
 
@@ -14,6 +14,21 @@ const FolderNav = () => {
     const theme = useSelector((store) => store.wallpaper.theme);
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
+    const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
+
+    // if apps closes then close the edit mode to delete categories if it is open, also clears the deleteCategories and close the delete pop up if open 
+    useEffect(() => {
+        if (!isNotesOpen) {
+            const closeDeleteCat = () => {
+                setOpenDeletePopUp(false);
+                dispatch(manageDeletedCategories({ category: 'Empty Trash' })) // empty the deletedCategories in notes storage when notes app is closed to remove the select icons from categories when user open the notes app again
+                dispatch(setStartDeletingCat({ start: false }))
+            }
+            closeDeleteCat();
+        }
+        return;
+    }, [isNotesOpen, dispatch])
+
 
     return (
         <div className={`folder-nav ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
