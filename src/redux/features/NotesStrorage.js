@@ -10,8 +10,9 @@ const NotesSlice = createSlice({
         allCategories: ['All', 'Uncategorized'], // it will contain all the categories of notes, by default it will contain All and Uncategorized, All will show all the notes and Uncategorized will show the notes which do not have any category
         folderContentWidth: 0, // it is width of folder-content named class elem whose value will be used in folder Category component and based on its value we will device if categories will be shown in one column or two column
         baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
-        startDeletingCat: false, //it keeps track if user has started deleting category or not, if yes then show select icons on category `
-        deletedCategories: [] // it will keep the track of categories which are selected to be deleted when user start deleting category, it will be used in manage folder component when user click on delete button to delete the selected categories 
+        startDeletingCat: false, //it track if user has started deleting category or not, if yes then show select icons on category `
+        deletedCategories: [], // tracks categories selected to delete
+        CreateTaskOpen: false, // it is used to track if create task pop up is open or not
     },
     reducers: {
         setActiveTab(state, action) {
@@ -80,8 +81,13 @@ const NotesSlice = createSlice({
             }
             state.deletedCategories.push(category); // if category is not in the deletedCategories array then add it to the array
 
+        },
+        setCreateTaskOpen(state, action) {
+            const { open } = action.payload;
+            if (typeof open !== "boolean" || open === undefined || open === null) return;
+            state.CreateTaskOpen = open;
+            return;
         }
-
     }
 })
 
@@ -93,6 +99,7 @@ export const {
     removeCategory,
     setWidthOfFolderContent,
     setStartDeletingCat,
-    manageDeletedCategories
+    manageDeletedCategories,
+    setCreateTaskOpen
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

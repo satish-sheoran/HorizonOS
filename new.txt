@@ -8,7 +8,7 @@ in notes app , working on content.jsx where we show notes and tasks.
 2. switching to different categories also change content of notes data
 3. addig tasks 
 4. loading content.jsx file data based on category then 
-5. some apps will overflow (except claculator) some part like categories, notes in notes area .so manage that also 
+
 6. when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
 
 
@@ -16,5 +16,7 @@ in notes app , working on content.jsx where we show notes and tasks.
 remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
-What i did in this commit  :
-1. created a confirm delete pop up before deleting cateogries
+
+
+1. hide then scrollbar of parent of textarea's ,  and then adding task ,
+also try movement using thumb 

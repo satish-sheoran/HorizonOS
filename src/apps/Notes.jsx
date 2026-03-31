@@ -10,12 +10,16 @@ import Folders from "../components/Notes/Folder/Folders";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import CreateTask from "../components/Notes/CreateTask";
 
 const Notes = () => {
+    const notesBody = useRef(null);
+
     const currDevice = useSelector((store) => store.Device.currDevice);
     const theme = useSelector((store) => store.wallpaper.theme)
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
-    const notesBody = useRef(null);
+    const isCreateTaskOpen = useSelector(store => store.Notes.CreateTaskOpen) // it is here to check if create task  pop up is open
+
 
     useGSAP(() => {
         if (!notesBody.current) return;
@@ -45,6 +49,8 @@ const Notes = () => {
                     <Footer />
                 </div>
 
+                {/*  pop up which opens create task   */}
+                {isCreateTaskOpen === true && <CreateTask />}
 
             </main>
         </div >

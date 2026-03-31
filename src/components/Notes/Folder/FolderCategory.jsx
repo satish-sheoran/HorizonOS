@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { manageDeletedCategories, setActiveCategory, setOpenManageFolder } from "../../../redux/features/NotesStrorage";
-import { Check, CheckCheck } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 // count show remaining
 

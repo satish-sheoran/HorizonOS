@@ -207,3 +207,14 @@ body {
         /* For Chrome, Safari, and Opera */
     }
 }
+
+
+
+/* new task */
+.task-desc-parent,.newTask-title,.newTask-desc{
+        /* to remove scrollbar from textarea */
+        scrollbar-width: none;
+        /* For Firefox */
+        -webkit-scrollbar: none;
+        /* For Chrome, Safari, and Opera */
+}
