@@ -18,19 +18,24 @@ proper manage of overflow of categories (both) for mobile so that it become scro
 
 
 What i did in last commit :
-feat (notes) : closing the notes app closes :
+feat(notes): display notes UI with basic structure (layout and sizing pending of notes container and Individual note)
 
--  new task pop up (if open)
-- create new category pop up (if open)
-- edit mode to delete categories (if open) 
-- delete categories pop up (if open) 
+- AllNotes Component name changed to NotesArea
+- New Component For Notes Code
+- dynamically showing based on active cateogry
+- Handling of Note without Title OR Description
+- dynamically showing count of notes in Folder manage area
+
+
 
 what to do now :
-create states for new task desc and title .
-set it inside current activr category
-create structure of storing all tasks 
-then display them based on their category and requested active category
-save categories and tasks in local storage or DB 
-create animation for opning of new task page
-fix scrolling using thum in overflow (tasks,categories of tasks and manage folder)
+save categories and tasks/notes in local storage or DB 
+create animation for opning of new task page 
+fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
+manager overflow in notes area
+create animation for opening of a note 
+manage deletion of notes comes under deleting category
+selection and then deleting notes
+ animation on selection of notes for deletion
+opening Individual note to let user edit it
 (NOTES APP DONE THEN)

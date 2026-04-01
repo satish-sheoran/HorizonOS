@@ -16,11 +16,11 @@ const NotesSlice = createSlice({
         CreateTaskOpen: false, // it is used to track if create task pop up is open or not
         Notes: [
             {
-                id: 'a12@1', //id will be random of 5 charaacters including 0-9,a-z,A-Z and special chars : '@$&!#'
+                id: 'a12@1#$', //id will be random of 5 charaacters including 0-9,a-z,A-Z and special chars : '@$&!#'
                 category: 'Uncategorized',
-                title: 'Welcome to Notes App',
+                title: 'Welcome to Notes App Default Note',
                 desc: 'This is your first note, you can edit or delete it. You can also create new notes and organize them into categories. Enjoy using the app!',
-                date: Date.now()
+                timeStamp: Date.now()
             },
         ], // all notes 
     },
@@ -28,28 +28,28 @@ const NotesSlice = createSlice({
         addNote(state, action) {
             const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
             const { title, desc } = action.payload;
-            let category, date, id;
+            let category, timeStamp, id;
 
             category = state.activeCategory === 'All'
                 ? 'Uncategorized'
                 : state.activeCategory;
 
-            id = Array.from({ length: 5 }, () =>
+            id = Array.from({ length: 7 }, () =>
                 chars[Math.floor(Math.random() * chars.length)]
             ).join("");
 
             let idExists = state.Notes.some((notes) => notes.id === id); //checking if id exists 
             // ensure unique id 
             while (idExists) {
-                id = Array.from({ length: 5 }, () =>
+                id = Array.from({ length: 7 }, () =>
                     chars[Math.floor(Math.random() * chars.length)]
                 ).join("");
                 idExists = state.Notes.some((notes) => notes.id === id); //now check if it exists or not again 
             }
 
-            date = Date.now();
+            timeStamp = Date.now();
 
-            state.Notes.push({ id, category, title, desc, date });
+            state.Notes.push({ id, category, title, desc, timeStamp });
         },
         setActiveTab(state, action) {
             const { tab } = action.payload;

@@ -13,6 +13,8 @@ const FolderCategory = () => {
     const folderContentWidth = useSelector((store) => store.Notes.folderContentWidth); //the width based on which sets if categories should so in one column or more 
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat); //it keeps track if user has started deleting category or not, if yes then show select icons on category `
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); // all categories which are selected to delete
+    const Notes = useSelector(store => store.Notes.Notes) //all notes just using them for showing count of notes in each category 
+
 
 
     return (
@@ -66,7 +68,7 @@ const FolderCategory = () => {
                                     {deletedCategories?.includes(category) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
                                 </span>
                                 :
-                                <span className='select-none'>Count</span>
+                                <span className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note=> note.category===category).length}</span>
                         }
 
 

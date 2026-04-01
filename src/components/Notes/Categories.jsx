@@ -17,7 +17,7 @@ const Categories = () => {
                         className={`shrink-0 h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out active:scale-95
                             ${theme !== 'dark' ?
                                 activeCategory === category
-                                    ? 'bg-(--primary-light-clr) text-(--primary-dark-clr) font-semibold'
+                                    ? 'bg-(--bg-light-window-header) text-(--primary-dark-clr) font-semibold'
                                     : 'text-(--sec-light-clr)'
                                 : activeCategory === category ?
                                     'bg-(--primary-dark-clr) text-(--primary-light-clr) font-semibold'

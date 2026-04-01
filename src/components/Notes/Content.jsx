@@ -1,11 +1,11 @@
-import AllNotes from "./data/AllNotes"
 import AllTasks from "./data/AllTasks"
+import NotesArea from "./data/NotesArea"
 
 const Content = () => {
 
     return (
         <div className="content">
-            <AllNotes />
+            <NotesArea />
             <AllTasks />
         </div>
     )
