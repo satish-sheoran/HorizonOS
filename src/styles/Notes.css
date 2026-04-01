@@ -40,7 +40,7 @@
                 @apply relative grow flex flex-col gap-1.5;
 
                 .categories {
-                    @apply flex gap-2 items-center;
+                    @apply flex gap-2 items-center overflow-x-auto;
                 }
             }
         }

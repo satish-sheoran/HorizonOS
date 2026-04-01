@@ -7,14 +7,50 @@ const NotesSlice = createSlice({
         activeTab: 'Notes',
         activeCategory: 'All',
         openManageFolder: false,
+
         allCategories: ['All', 'Uncategorized'], // it will contain all the categories of notes, by default it will contain All and Uncategorized, All will show all the notes and Uncategorized will show the notes which do not have any category
         folderContentWidth: 0, // it is width of folder-content named class elem whose value will be used in folder Category component and based on its value we will device if categories will be shown in one column or two column
         baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
         startDeletingCat: false, //it track if user has started deleting category or not, if yes then show select icons on category `
         deletedCategories: [], // tracks categories selected to delete
         CreateTaskOpen: false, // it is used to track if create task pop up is open or not
+        Notes: [
+            {
+                id: 'a12@1', //id will be random of 5 charaacters including 0-9,a-z,A-Z and special chars : '@$&!#'
+                category: 'Uncategorized',
+                title: 'Welcome to Notes App',
+                desc: 'This is your first note, you can edit or delete it. You can also create new notes and organize them into categories. Enjoy using the app!',
+                date: Date.now()
+            },
+        ], // all notes 
     },
     reducers: {
+        addNote(state, action) {
+            const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
+            const { title, desc } = action.payload;
+            let category, date, id;
+
+            category = state.activeCategory === 'All'
+                ? 'Uncategorized'
+                : state.activeCategory;
+
+            id = Array.from({ length: 5 }, () =>
+                chars[Math.floor(Math.random() * chars.length)]
+            ).join("");
+
+            let idExists = state.Notes.some((notes) => notes.id === id); //checking if id exists 
+            // ensure unique id 
+            while (idExists) {
+                id = Array.from({ length: 5 }, () =>
+                    chars[Math.floor(Math.random() * chars.length)]
+                ).join("");
+                idExists = state.Notes.some((notes) => notes.id === id); //now check if it exists or not again 
+            }
+
+            date = Date.now();
+
+            state.Notes.push({ id, category, title, desc, date });
+        },
         setActiveTab(state, action) {
             const { tab } = action.payload;
             if (!tab) return;
@@ -27,8 +63,9 @@ const NotesSlice = createSlice({
         },
         setOpenManageFolder(state, action) {
             const { open } = action.payload;
+            if (typeof open !== "boolean") return;
             state.openManageFolder = open;
-            return;
+
         },
         addCategory(state, action) {
             const { category, defaultName } = action.payload;
@@ -41,12 +78,13 @@ const NotesSlice = createSlice({
             if (defaultName && category.startsWith(defaultName)) {
                 state.baseNumberForDefaultFolder += 1; // increment the number for default folder name when user create a new folder with default name
             }
-            return;
+
         },
         removeCategory(state, action) {
             const { category } = action.payload;
             if (!category) return;
-            if (typeof category === "object") {
+
+            if (Array.isArray(category)) {
                 state.allCategories = state.allCategories.filter((cat) => !category.includes(cat)); //if multiple category is passed as array then filter all the categories which are in the array
             } else {
                 state.allCategories = state.allCategories.filter((cat) => cat !== category); //remove single category which is passed as string
@@ -55,7 +93,6 @@ const NotesSlice = createSlice({
 
             // if active category is deleted then set active category to All
             if (!state.allCategories.includes(state.activeCategory)) state.activeCategory = 'All';
-            return;
         },
         setWidthOfFolderContent(state, action) {
             const width = Number(action.payload.width);
@@ -64,9 +101,9 @@ const NotesSlice = createSlice({
         },
         setStartDeletingCat(state, action) {
             const { start } = action.payload;
-            if (typeof start !== "boolean" || start === undefined || start === null) return;
+            if (typeof start !== "boolean") return;
             state.startDeletingCat = start;
-            return;
+
         },
         manageDeletedCategories(state, action) {
             const { category } = action.payload;
@@ -75,23 +112,27 @@ const NotesSlice = createSlice({
                 state.deletedCategories = [];
                 return;
             }
+
+            // if cateogry is their then remove it (user want to unselect it) else add to it
+
             if (state.deletedCategories.includes(category)) {
-                state.deletedCategories = state.deletedCategories.filter((cat) => cat !== category); // if category is already in the deletedCategories array then remove it from the array
+                state.deletedCategories = state.deletedCategories.filter((cat) => cat !== category)
                 return;
             }
-            state.deletedCategories.push(category); // if category is not in the deletedCategories array then add it to the array
+            state.deletedCategories.push(category);
 
         },
         setCreateTaskOpen(state, action) {
             const { open } = action.payload;
-            if (typeof open !== "boolean" || open === undefined || open === null) return;
+            if (typeof open !== "boolean") return;
             state.CreateTaskOpen = open;
-            return;
+
         }
     }
 })
 
 export const {
+    addNote,
     setActiveTab,
     setActiveCategory,
     setOpenManageFolder,

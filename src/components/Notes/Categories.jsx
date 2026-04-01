@@ -9,7 +9,7 @@ const Categories = () => {
 
 
     return (
-        <div className="categories w-full py-2 rounded-xl overflow-x-auto">
+        <div className="categories w-full py-2 rounded-xl ">
             {
                 categories.map((category) => {
                     return <button key={category}

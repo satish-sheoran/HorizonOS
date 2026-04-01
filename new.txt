@@ -17,10 +17,20 @@ remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 
-What i did in this commit :
+What i did in last commit :
 feat (notes) : closing the notes app closes :
 
 -  new task pop up (if open)
 - create new category pop up (if open)
 - edit mode to delete categories (if open) 
 - delete categories pop up (if open) 
+
+what to do now :
+create states for new task desc and title .
+set it inside current activr category
+create structure of storing all tasks 
+then display them based on their category and requested active category
+save categories and tasks in local storage or DB 
+create animation for opning of new task page
+fix scrolling using thum in overflow (tasks,categories of tasks and manage folder)
+(NOTES APP DONE THEN)

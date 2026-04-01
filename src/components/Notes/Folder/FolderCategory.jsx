@@ -55,7 +55,7 @@ const FolderCategory = () => {
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
                                 <span className={`rounded-full w-5.5 h-5.5 flex items-center justify-center
 
-                                ${deletedCategories.includes(category) ? 'bg-(--bg-orange)'
+                                ${deletedCategories?.includes(category) ? 'bg-(--bg-orange)'
                                         :
                                         theme !== 'dark' ?
                                             'bg-(--btn-light-hover)'
@@ -63,7 +63,7 @@ const FolderCategory = () => {
                                             'bg-(--bg-light-border)'
 
                                     }`}>
-                                    {deletedCategories.includes(category) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
+                                    {deletedCategories?.includes(category) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
                                 </span>
                                 :
                                 <span className='select-none'>Count</span>
