@@ -16,7 +16,7 @@ const OSLayout = () => {
             <StatusBar />
             <Dock /> {/*Navigation bar*/}
 
-            <div className='appsArea relative w-full top-9 h-[calc(100vh-36px)]'>
+            <div className='appsArea relative w-full h-full'>
                 {/* All Apps  */}
                 <CalculatorWindow />
                 <SettingsWindow />

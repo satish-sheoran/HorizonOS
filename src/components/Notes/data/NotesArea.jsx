@@ -12,6 +12,7 @@ const NotesArea = () => {
     const notesAnimRef = useRef(null);
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
 
+    // animation for notes when switching with task area
     useGSAP(() => {
         if (!notesAnimRef.current) return;
         gsap.to(notesAnimRef.current, {
@@ -22,15 +23,17 @@ const NotesArea = () => {
 
     }, [activeTab])
 
+
+
     return (
-        <div ref={notesAnimRef} className='NotesArea'>
+        <div ref={notesAnimRef} className='NotesArea relative'>
             <Categories />
 
             <AllNotes />
             {/* Add new task rounded btn */}
             <button
                 onClick={() => dispatch(setCreateTaskOpen({ open: true }))}
-                className='fixed rounded-full p-3.5 md:p-2 right-6 bottom-7 text-(--primary-light-clr) bg-(--bg-minimize) hover:bg-(--bg-orange) active:scale-96 transition-colors duration-300'>
+                className='fixed z-100 rounded-full p-3.5 md:p-2 right-6 bottom-7 text-(--primary-light-clr) bg-(--bg-minimize) hover:bg-(--bg-orange) active:scale-96 transition-colors duration-300'>
                 <Plus strokeWidth={2.5} />
             </button>
         </div>

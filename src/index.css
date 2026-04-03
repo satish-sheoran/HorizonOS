@@ -11,10 +11,10 @@ body {
 }
 
 #os-layout {
-    width: 100vw;
-    height: 100svh;
-    overflow: hidden;
+    width: 100%;
+    height: 100dvh;
     position: relative;
+    /* overflow:hidden */
 }
 
 :root {
@@ -154,14 +154,15 @@ body {
 
 /* NOTES's folder manager category overflow manage */
 @media screen and (max-width: 768px) {
-.categories{
-    --webkit-overflow-scrolling : touch;
-    padding-top : 5px;
-}
-    .folder-category-list {
+    .categories {
+        --webkit-overflow-scrolling: touch;
+        padding-top: 5px;
+    }
+
+    .folder-category-list,.AllNotes-container {
         --webkit-overflow-scrolling: touch;
         padding-right: 10px;
-        
+
         /* For smooth scrolling on mobile devices */
     }
 
@@ -171,7 +172,7 @@ body {
         width: 7px;
     }
 
-    .folder-category-list::-webkit-scrollbar-track , 
+    .folder-category-list::-webkit-scrollbar-track,
     .categories::-webkit-scrollbar-track {
         /*👉 The track is the background rail in which the thumb moves.*/
         background: transparent;
@@ -195,14 +196,16 @@ body {
 
 @media screen and (min-width: 769px) {
 
-    .folder-category-list,.categories {
+    .folder-category-list,
+    .categories,.AllNotes-container {
         scrollbar-width: none;
         /* For Firefox */
         --webkit-overflow-scrolling: touch;
         /* For smooth scrolling on mobile devices */
     }
 
-    .folder-category-list::-webkit-scrollbar,.categories::-webkit-scrollbar {
+    .folder-category-list::-webkit-scrollbar,
+    .categories::-webkit-scrollbar,.AllNotes-container::-webkit-scrollbar {
         display: none;
         /* For Chrome, Safari, and Opera */
     }
@@ -211,10 +214,12 @@ body {
 
 
 /* new task */
-.task-desc-parent,.newTask-title,.newTask-desc{
-        /* to remove scrollbar from textarea */
-        scrollbar-width: none;
-        /* For Firefox */
-        -webkit-scrollbar: none;
-        /* For Chrome, Safari, and Opera */
+.task-desc-parent,
+.newTask-title,
+.newTask-desc {
+    /* to remove scrollbar from textarea */
+    scrollbar-width: none;
+    /* For Firefox */
+    -webkit-scrollbar: none;
+    /* For Chrome, Safari, and Opera */
 }

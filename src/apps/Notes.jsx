@@ -46,18 +46,20 @@ const Notes = () => {
     }, [isOpen])
 
     return (
-        <div className="w-full h-full flex flex-col">
+        <div className=" w-full h-full flex flex-col">
 
             {currDevice === 'Desktop' ? <WindowControls id='notes' /> : <MobileCntrls id='notes' />}
 
-            {/* BODY */}
-            <main className={`relative grow w-full ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+            {/* BODY  , flex-1 means grow ,  
+            shrink (if needed)
+            and min-h-0 all together*/}
+            <main className={`relative  flex-1 w-full ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
 
                 {/* manage folder  which appears when openNotesFolder variable value changes in store . if it is close then return these all  */}
                 <Folders />
 
-                <div ref={notesBody} className="notes-body relative translate-x-0">
+                <div ref={notesBody} className="notes-body translate-x-0">
                     <Navbar />
                     <Content />
                     <Footer />

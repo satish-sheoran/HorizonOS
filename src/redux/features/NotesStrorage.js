@@ -23,6 +23,7 @@ const NotesSlice = createSlice({
                 timeStamp: Date.now()
             },
         ], // all notes 
+        NotesContainerWidth: 0 //used to set colums in notes area and then as per that,set width of 1 note 
     },
     reducers: {
         addNote(state, action) {
@@ -99,6 +100,11 @@ const NotesSlice = createSlice({
             if (!Number.isFinite(width) || !width || width <= 0) return; //isFinite check if the value is a number and not infinity and also check if it is greater than 0
             state.folderContentWidth = width;
         },
+        setNotesContainerWidth(state, action) {
+            const width = Number(action.payload.width);
+            if (!Number.isFinite(width) || !width || width <= 0) return;
+            state.NotesContainerWidth = width;
+        },
         setStartDeletingCat(state, action) {
             const { start } = action.payload;
             if (typeof start !== "boolean") return;
@@ -141,6 +147,7 @@ export const {
     setWidthOfFolderContent,
     setStartDeletingCat,
     manageDeletedCategories,
-    setCreateTaskOpen
+    setCreateTaskOpen,
+    setNotesContainerWidth
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

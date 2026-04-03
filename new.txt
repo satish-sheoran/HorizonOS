@@ -17,25 +17,25 @@ remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 
-What i did in last commit :
-feat(notes): display notes UI with basic structure (layout and sizing pending of notes container and Individual note)
+What i did :
+feat(notes): add Pinterest-style masonry layout to eliminate grid 
 
-- AllNotes Component name changed to NotesArea
-- New Component For Notes Code
-- dynamically showing based on active cateogry
-- Handling of Note without Title OR Description
-- dynamically showing count of notes in Folder manage area
+- Uses masonry layout for showcase notes just like pintrest
+- created a initial state in notes slice which tracks width of notes container and a reducer to set its value,
+- Body tag overflow fixed : Using disable zoom and setting up height of appsArea class tag
+- Still Remaining the thumb scrolling issue for mobile in all overflow items
+- installation of : npm i react-masonry-css
 
 
 
-what to do now :
+what i did in this commit  :
 save categories and tasks/notes in local storage or DB 
 create animation for opning of new task page 
 fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
-manager overflow in notes area
 create animation for opening of a note 
 manage deletion of notes comes under deleting category
 selection and then deleting notes
  animation on selection of notes for deletion
 opening Individual note to let user edit it
 (NOTES APP DONE THEN)
+

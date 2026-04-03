@@ -8,16 +8,16 @@
 /* Edit,Delete css of Note app */
 
 .notes {
-    @apply absolute top-0 left-0
+    @apply absolute top-9 left-0
 }
 
 .notes-full {
-    @apply absolute top-0 left-0
+    @apply absolute top-9 left-0
 }
 
 @layer base {
     .notes-body {
-        @apply relative w-full h-full flex flex-col overflow-hidden px-(--padding-lg) md:px-(--padding-xl);
+        @apply absolute inset-0 overflow-hidden flex flex-col  px-(--padding-lg) md:px-(--padding-xl);
 
         nav {
             @apply flex flex-col mb-2 gap-(--gap-xs);
@@ -34,10 +34,10 @@
         }
 
         .content {
-            @apply relative grow flex;
+            @apply   relative flex-1 min-h-0 overflow-hidden ;
 
             .NotesArea {
-                @apply relative grow flex flex-col gap-1.5;
+                @apply relative min-h-0 h-full flex flex-col gap-1.5;
 
                 .categories {
                     @apply flex gap-2 items-center overflow-x-auto;
@@ -75,7 +75,7 @@
         }
 
         .folder-content {
-            @apply grow flex flex-col gap-2 px-(--padding-lg) md:px-(--padding-xl) min-h-0;
+            @apply flex-1 flex flex-col gap-2 px-(--padding-lg) md:px-(--padding-xl) min-h-0;
 
             .create-folder {
                 @apply w-full font-semibold rounded-xl flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97 transition-all ease-in-out duration-100 mt-1;
@@ -86,7 +86,7 @@
             }
 
             .folder-category-list {
-                @apply  grow min-h-0 transition-all duration-150 ease-in-out grid gap-3 overflow-y-auto;
+                @apply   flex-1  transition-all duration-150 ease-in-out grid gap-3 overflow-y-auto;
                 align-content: start;
 
 
