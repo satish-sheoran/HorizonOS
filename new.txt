@@ -18,19 +18,10 @@ proper manage of overflow of categories (both) for mobile so that it become scro
 
 
 What i did :
-feat(notes): add Pinterest-style masonry layout to eliminate grid 
-
-- Uses masonry layout for showcase notes just like pintrest
-- created a initial state in notes slice which tracks width of notes container and a reducer to set its value,
-- Body tag overflow fixed : Using disable zoom and setting up height of appsArea class tag
-- Still Remaining the thumb scrolling issue for mobile in all overflow items
-- installation of : npm i react-masonry-css
-
-
+"feat: Add animation for opening/closing create task popup"
 
 what i did in this commit  :
 save categories and tasks/notes in local storage or DB 
-create animation for opning of new task page 
 fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
 create animation for opening of a note 
 manage deletion of notes comes under deleting category

@@ -1,13 +1,19 @@
 import { ArrowLeftIcon, Check, Redo2, Undo2 } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useEffect, useRef, useState } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+
 import { addNote, setCreateTaskOpen } from '../../redux/features/NotesStrorage';
-import { useEffect, useState } from 'react';
 import { formatDate, formatTime } from '../../utils/formatTime';
+import { CustomEase } from 'gsap/all';
 
 const CreateTask = () => {
     const dispatch = useDispatch();
+    const newTaskContainer = useRef(null)
     const theme = useSelector((store) => store.wallpaper.theme);
+    const isNewTaskOpen = useSelector((store) => store.Notes.CreateTaskOpen)
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [newTaskDesc, setNewTaskDesc] = useState('');
     const [CurrTime, setCurrTime] = useState(new Date());
@@ -30,8 +36,23 @@ const CreateTask = () => {
         el.style.height = el.scrollHeight + 'px';
     }
 
+
+    useGSAP(() => {
+        if (!newTaskContainer.current) return;
+
+        gsap.to(newTaskContainer.current, {
+            x: isNewTaskOpen ? '0%' : "100%",
+            y: isNewTaskOpen ? '0%' : "100%",
+            scale: isNewTaskOpen ? 1 : 0.8,
+            opacity: isNewTaskOpen ? 1 : 0,
+            duration: 0.3,
+            ease: 'sine.inOut'
+        })
+
+    }, [isNewTaskOpen])
+
     return (
-        <div className={`absolute inset-0 flex flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
+        <div ref={newTaskContainer} className={`new-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
         ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
         `}>
 

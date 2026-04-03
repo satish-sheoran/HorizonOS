@@ -53,7 +53,7 @@ const Notes = () => {
             {/* BODY  , flex-1 means grow ,  
             shrink (if needed)
             and min-h-0 all together*/}
-            <main className={`relative  flex-1 w-full ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+            <main className={` relative  flex-1 w-full ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
 
                 {/* manage folder  which appears when openNotesFolder variable value changes in store . if it is close then return these all  */}
@@ -66,8 +66,8 @@ const Notes = () => {
                 </div>
 
                 {/*  pop up which opens create task   */}
-                {isCreateTaskOpen === true && <CreateTask />}
-
+                {/* {isCreateTaskOpen === true && <CreateTask />} */}
+                <CreateTask />
             </main>
         </div >
     )
