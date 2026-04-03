@@ -34,14 +34,15 @@ Whether on mobile, tablet, or desktop, the interface adapts gracefully, with smo
 
 HorizonOS is built using modern frontend technologies and libraries:
 
-🔹 **React 19** — Component-based UI development  
-🔹 **Vite** — Fast build tool and development server  
-🔹 **Tailwind CSS** — Utility-first responsive styling  
-🔹 **Redux Toolkit** — State management for app and window control  
-🔹 **GSAP** — High-performance animations and interactions  
-🔹 **React Toastify** — User notifications and feedback system  
-🔹 **Lucide React** — Icon library for clean UI elements  
-🔹 **CSS3** — Custom styling and layout enhancements  
+🔹 React — Component-based UI development  
+🔹 Vite — Fast build tool and development server  
+🔹 Tailwind CSS — Utility-first responsive styling  
+🔹 react-masonry-css — Pinterest-style responsive masonry layout  
+🔹 Redux Toolkit — State management for app and window control  
+🔹 GSAP — High-performance animations and interactions  
+🔹 React Toastify — User notifications and feedback system  
+🔹 Lucide React — Icon library for clean UI elements  
+🔹 CSS3 — Custom styling and layout enhancements  
 
 ---
 
