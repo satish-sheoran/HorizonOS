@@ -17,14 +17,18 @@ remainig for next commit :
 proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
 
 
-What i did :
-"feat: Add animation for opening/closing create task popup"
+What i did for this commit:
+feat: implement localStorage support for notes and categories
 
-what i did in this commit  :
-save categories and tasks/notes in local storage or DB 
+- implement logic to save notes and categories in localStorage  
+- create two functions to get categories and notes from localStorage  
+- if data (categories || notes ) is not present or invalid, fallback to default values
+- On Deletion of a category ,notes under that cateogry also get deleted 
+- FIX : Setting up new Task Title and Desc = '' after adding a note
+
+what is remainong for note app   :
 fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
 create animation for opening of a note 
-manage deletion of notes comes under deleting category
 selection and then deleting notes
  animation on selection of notes for deletion
 opening Individual note to let user edit it

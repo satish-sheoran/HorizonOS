@@ -1,20 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-const NotesSlice = createSlice({
-    name: 'Notes',
-    initialState: {
-        activeTab: 'Notes',
-        activeCategory: 'All',
-        openManageFolder: false,
+const getCategories = () => {
+    try {
+        const stored = JSON.parse(localStorage.getItem('Categories'));
+        return Array.isArray(stored) ? stored : ['All', 'Uncategorized'];
+    } catch {
+        return ['All', 'Uncategorized'];
+    }
+};
 
-        allCategories: ['All', 'Uncategorized'], // it will contain all the categories of notes, by default it will contain All and Uncategorized, All will show all the notes and Uncategorized will show the notes which do not have any category
-        folderContentWidth: 0, // it is width of folder-content named class elem whose value will be used in folder Category component and based on its value we will device if categories will be shown in one column or two column
-        baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
-        startDeletingCat: false, //it track if user has started deleting category or not, if yes then show select icons on category `
-        deletedCategories: [], // tracks categories selected to delete
-        CreateTaskOpen: false, // it is used to track if create task pop up is open or not
-        Notes: [
+const getNotes = () => {
+    try {
+        const stored = JSON.parse(localStorage.getItem('Notes'));
+        return Array.isArray(stored) ? stored : [
             {
                 id: 'a12@1#$', //id will be random of 5 charaacters including 0-9,a-z,A-Z and special chars : '@$&!#'
                 category: 'Uncategorized',
@@ -22,7 +21,35 @@ const NotesSlice = createSlice({
                 desc: 'This is your first note, you can edit or delete it. You can also create new notes and organize them into categories. Enjoy using the app!',
                 timeStamp: Date.now()
             },
-        ], // all notes 
+        ];
+    } catch {
+        return [
+            {
+                id: 'a12@1#$', //id will be random of 5 charaacters including 0-9,a-z,A-Z and special chars : '@$&!#'
+                category: 'Uncategorized',
+                title: 'Welcome to Notes App Default Note',
+                desc: 'This is your first note, you can edit or delete it. You can also create new notes and organize them into categories. Enjoy using the app!',
+                timeStamp: Date.now()
+            },
+        ];
+    }
+};
+
+
+const NotesSlice = createSlice({
+    name: 'Notes',
+    initialState: {
+        activeTab: 'Notes',
+        activeCategory: 'All',
+        openManageFolder: false,
+
+        allCategories: getCategories(), // it will contain all the categories of notes, by default it will contain All and Uncategorized, All will show all the notes and Uncategorized will show the notes which do not have any category
+        folderContentWidth: 0, // it is width of folder-content named class elem whose value will be used in folder Category component and based on its value we will device if categories will be shown in one column or two column
+        baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
+        startDeletingCat: false, //it track if user has started deleting category or not, if yes then show select icons on category `
+        deletedCategories: [], // tracks categories selected to delete
+        CreateTaskOpen: false, // it is used to track if create task pop up is open or not
+        Notes: getNotes(),// all notes 
         NotesContainerWidth: 0 //used to set colums in notes area and then as per that,set width of 1 note 
     },
     reducers: {
@@ -51,6 +78,7 @@ const NotesSlice = createSlice({
             timeStamp = Date.now();
 
             state.Notes.push({ id, category, title, desc, timeStamp });
+            localStorage.setItem('Notes', JSON.stringify(state.Notes))
         },
         setActiveTab(state, action) {
             const { tab } = action.payload;
@@ -76,6 +104,8 @@ const NotesSlice = createSlice({
                 return; // if category already exists then do not add it again
             }
             state.allCategories.push(category);
+            localStorage.setItem('Categories', JSON.stringify(state.allCategories))
+
             if (defaultName && category.startsWith(defaultName)) {
                 state.baseNumberForDefaultFolder += 1; // increment the number for default folder name when user create a new folder with default name
             }
@@ -87,13 +117,22 @@ const NotesSlice = createSlice({
 
             if (Array.isArray(category)) {
                 state.allCategories = state.allCategories.filter((cat) => !category.includes(cat)); //if multiple category is passed as array then filter all the categories which are in the array
+                state.Notes = state.Notes.filter(note => !category.includes(note.category)); //delete notes under that category
+
             } else {
                 state.allCategories = state.allCategories.filter((cat) => cat !== category); //remove single category which is passed as string
+                state.Notes = state.Notes.filter((note) => note.category !== category); //deleting note under that cateogry
             }
             state.deletedCategories = []; // after deleting category/categories empty the deletedCategories array to remove the deleted categories from the array as now they are deleted
 
             // if active category is deleted then set active category to All
             if (!state.allCategories.includes(state.activeCategory)) state.activeCategory = 'All';
+
+
+            //saving updated categories and notes to local storage
+            localStorage.setItem('Categories', JSON.stringify(state.allCategories))
+            localStorage.setItem('Notes', JSON.stringify(state.Notes))
+
         },
         setWidthOfFolderContent(state, action) {
             const width = Number(action.payload.width);

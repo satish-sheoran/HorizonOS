@@ -19,6 +19,7 @@ const CreateTask = () => {
     const [CurrTime, setCurrTime] = useState(new Date());
 
     // to display current time and date exactly 
+
     useEffect(() => {
         const intrvl = setInterval(() => {
             setCurrTime(new Date());
@@ -65,6 +66,8 @@ const CreateTask = () => {
                         dispatch(setCreateTaskOpen({ open: false }))
                         if (!newTaskTitle && !newTaskDesc) return; // if both title and desc is empty then do not add note and just close create task page
                         dispatch(addNote({ title: newTaskTitle || '', desc: newTaskDesc || '' }))
+                        setNewTaskTitle('')
+                        setNewTaskDesc('')
                     }}>
                         <ArrowLeftIcon size={27} strokeWidth={2} />
                     </button>
@@ -83,6 +86,8 @@ const CreateTask = () => {
                         if (!newTaskTitle && !newTaskDesc) return; // if both title and desc is empty then do not add note and just close create task page
 
                         dispatch(addNote({ title: newTaskTitle || '', desc: newTaskDesc || '' }))
+                        setNewTaskTitle('')
+                        setNewTaskDesc('')
                     }}>
                         <Check size={32} />
                     </button>
