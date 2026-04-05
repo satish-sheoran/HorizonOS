@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
 
 import { formatDateTime } from '../../../utils/formatTime'
-import { setNotesContainerWidth } from '../../../redux/features/NotesStrorage'
+import { manageEditTask, setNotesContainerWidth } from '../../../redux/features/NotesStrorage'
 
 
 const AllNotes = () => {
@@ -55,7 +55,7 @@ const AllNotes = () => {
 
 
     return (
-        <div className={` flex-1 AllNotes-container  overflow-y-auto  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}  
+        <div className={` flex-1  AllNotes-container  overflow-y-auto  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}  
         
         `}
         >
@@ -67,8 +67,11 @@ const AllNotes = () => {
                         columnClassName="flex flex-col gap-3"
                     >
                         {Notes.map(({ title, id, desc, timeStamp }) => (
-                            <div key={id}
-                                className={`w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 cursor-pointer 
+                            <div
+                                onContextMenu={(e) => e.preventDefault()} //to hide right click options like back,developer mode,copy etc.
+                                onClick={() => dispatch(manageEditTask({ open: true, TaskId: id }))}
+                                key={id}
+                                className={`w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 cursor-pointer active:scale-95 
                     ${theme !== 'dark'
                                         ? 'bg-(--bg-light-window-header)'
                                         :

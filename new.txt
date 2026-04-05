@@ -18,13 +18,7 @@ proper manage of overflow of categories (both) for mobile so that it become scro
 
 
 What i did for this commit:
-feat: implement localStorage support for notes and categories
-
-- implement logic to save notes and categories in localStorage  
-- create two functions to get categories and notes from localStorage  
-- if data (categories || notes ) is not present or invalid, fallback to default values
-- On Deletion of a category ,notes under that cateogry also get deleted 
-- FIX : Setting up new Task Title and Desc = '' after adding a note
+ID is passed to manaeEdit task and it is opewning but then title and desc is not shown in the textarea
 
 what is remainong for note app   :
 fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)

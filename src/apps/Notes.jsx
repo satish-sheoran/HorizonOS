@@ -12,6 +12,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CreateTask from "../components/Notes/CreateTask";
 import { setCreateTaskOpen } from "../redux/features/NotesStrorage";
+import EditTask from "../components/Notes/EditTask";
 
 const Notes = () => {
     const notesBody = useRef(null);
@@ -68,6 +69,7 @@ const Notes = () => {
                 {/*  pop up which opens create task   */}
                 {/* {isCreateTaskOpen === true && <CreateTask />} */}
                 <CreateTask />
+                <EditTask />
             </main>
         </div >
     )

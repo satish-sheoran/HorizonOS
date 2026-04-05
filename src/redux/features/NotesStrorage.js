@@ -50,10 +50,25 @@ const NotesSlice = createSlice({
         deletedCategories: [], // tracks categories selected to delete
         CreateTaskOpen: false, // it is used to track if create task pop up is open or not
         Notes: getNotes(),// all notes 
-        NotesContainerWidth: 0 //used to set colums in notes area and then as per that,set width of 1 note 
+        NotesContainerWidth: 0, //used to set colums in notes area and then as per that,set width of 1 note 
+        EditTaskOpen: { open: false, TaskId: '' }
     },
     reducers: {
         addNote(state, action) {
+            // Task being edited area
+            if (action.payload.TaskId) {
+                const { title, desc, TaskId } = action.payload
+
+                const itemIdx = state.Notes.findIndex(item => item.id === TaskId);
+                state.Notes[itemIdx] = { ...state.Notes[itemIdx], title, desc };
+
+                localStorage.setItem('Notes', JSON.stringify(state.Notes));
+
+                state.EditTaskOpen = { open: false, TaskId: '' };
+                return;
+            }
+
+            // task adding area
             const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
             const { title, desc } = action.payload;
             let category, timeStamp, id;
@@ -172,6 +187,19 @@ const NotesSlice = createSlice({
             if (typeof open !== "boolean") return;
             state.CreateTaskOpen = open;
 
+        },
+        manageEditTask(state, action) {
+            if (action.payload.open === false) { //close it
+                state.EditTaskOpen.open = false;
+                state.EditTaskOpen.TaskId = '';
+                return;
+            }
+
+            const { TaskId } = action.payload;
+            if (!TaskId) return;
+            state.EditTaskOpen.open = true
+            state.EditTaskOpen.TaskId = TaskId
+
         }
     }
 })
@@ -187,6 +215,7 @@ export const {
     setStartDeletingCat,
     manageDeletedCategories,
     setCreateTaskOpen,
-    setNotesContainerWidth
+    setNotesContainerWidth,
+    manageEditTask
 } = NotesSlice.actions;
 export default NotesSlice.reducer;
