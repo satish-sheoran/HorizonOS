@@ -1,23 +1,49 @@
-import { ArrowLeftIcon, Check, Redo2, Undo2 } from 'lucide-react'
+import { ArrowLeftIcon, Check, FolderClosed, Redo2, Undo2 } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useEffect, useRef, useState } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 import { addNote, manageEditTask } from '../../redux/features/NotesStrorage';
 import { formatDate, formatTime } from '../../utils/formatTime';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 const EditTask = () => {
     const dispatch = useDispatch();
     const EditTaskContainer = useRef(null)
-    const theme = useSelector((store) => store.wallpaper.theme);
 
+    const theme = useSelector((store) => store.wallpaper.theme);
     const { open, TaskId } = useSelector((store) => store.Notes.EditTaskOpen)
     const Notes = useSelector(store => store.Notes.Notes);
+    const Categories = useSelector(store => store.Notes.allCategories)
+
+
     const [currTaskTitle, setCurrTaskTitle] = useState('');
     const [currTaskDesc, setCurrTaskDesc] = useState('');
+    const [currCategory, setcurrCategory] = useState('');
     const [CurrTime, setCurrTime] = useState(new Date());
+    const [isSetCatOpen, setCatOpen] = useState(false) //to open/close category select options to change cateogry of edititng note 
+
+    useGSAP(() => {
+        const parent = document.querySelector('.menu');
+        if (!parent) return;
+
+        gsap.fromTo(parent, {
+            scaleY: 0,
+            opacity: 0,
+            transformOrigin: "top"
+        },
+            {
+                scaleY: isSetCatOpen ? 1 : 0,
+                width: 'auto',
+                height: 'auto',
+                opacity: isSetCatOpen ? 1 : 0,
+                y: isSetCatOpen ? 0 : -10,
+                duration: 0.35,
+                ease: 'expo.out'
+            })
+
+    }, [isSetCatOpen])
 
 
 
@@ -30,6 +56,7 @@ const EditTask = () => {
 
             setCurrTaskTitle(currNote.title || '');
             setCurrTaskDesc(currNote.desc || '');
+            setcurrCategory(currNote.category || 'All')
         }
         update()
 
@@ -67,6 +94,7 @@ const EditTask = () => {
         })
     }, [open])
 
+
     return (
         <div ref={EditTaskContainer} className={`edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
         ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
@@ -75,29 +103,79 @@ const EditTask = () => {
             {/* nav icons */}
             <div className="edit-tasks-controls flex items-center justify-between px-(--padding-lg) md:px-(--padding-xl)">
 
-                {/* arrow icon */}
-                <div className={`${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
-                    <button className='active:scale-93 transition-all duration-100 ease-in' onClick={() => {
+                {/* arrow icon and cateogry */}
+                <div className={` flex gap-4 items-center ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+                    <button className='active:scale-93 transition-all duration-100 ease-in' onPointerUp={() => {
+                        setCatOpen(false)
                         dispatch(manageEditTask({ open: false }))
-                        dispatch(addNote({ TaskId, title: currTaskTitle, desc: currTaskDesc }))
+                        dispatch(addNote({ TaskId, title: currTaskTitle, desc: currTaskDesc, category: currCategory }))
                         setCurrTaskTitle('')
                         setCurrTaskDesc('')
                     }}>
                         <ArrowLeftIcon size={27} strokeWidth={2} />
                     </button>
+
+                    {/* category and changing it */}
+                    <div
+                        onPointerUp={() => {
+                            if (!isSetCatOpen) setCatOpen(true);
+                        }}
+                        className={`cursor-pointer select-none relative px-3.5 py-1  rounded-xl flex items-center gap-2  
+                        ${theme !== 'dark'
+                                ? 'bg-(--bg-light-window-header)'
+                                :
+                                'bg-(--primary-dark-clr)'
+                            }
+                        `}>
+                        <FolderClosed size={20} />
+                        <div
+                            className={`select-none flex gap-2 font-bold transition-all duration-75 ease-in
+                            ${theme != 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}
+                            `}>{currCategory}</div>
+
+                        {/* all categories layer which comes only when we hovrer or click the menu btn  */}
+                        <div className={`menu absolute z-50 select-none cursor-pointer top-0 left-0 flex flex-col rounded-lg overflow-hidden w-full 
+                        ${theme !== 'dark'
+                                ? 'bg-(--bg-light-window-header)'
+                                :
+                                'bg-(--primary-dark-clr)'
+                            }
+                        `}>{
+                                Categories.map(category => (
+                                    category !== 'All' && <div
+                                        key={category}
+                                        onPointerUp={(e) => {
+                                            e.stopPropagation(); // 🔥 important
+                                            setCatOpen(false)
+                                            setcurrCategory(category)
+                                        }}
+                                        className={`font-semibold  flex justify-between items-center  px-4 py-1.5
+                                        ${currCategory === category ? 'bg-(--bg-currCat) text-(--text-currCat)' :
+                                                theme !== 'dark' ? 'bg-(--bg-light-window-header) text-(--primary-dark-clr)' : 'bg-(--primary-dark-clr) text-(--primary-light-clr)'}
+                     ${currCategory !== category ?
+                                                theme !== 'dark' ? 'hover:bg-(--sec-light-clr)' : 'hover:bg-(--sec-dark-clr)'
+                                                : ''}
+
+                                        `}>
+                                        {category} <Check size={20} className={`${category === currCategory ? '' : 'hidden'}`} />
+                                    </div>
+                                ))
+                            }</div>
+                    </div>
                 </div>
 
                 {/* other its nav icons */}
                 <div className={`flex items-center gap-3 ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
-                    <button className='active:scale-93 transition-all duration-100 ease-in' onClick={() => toast.info('Functionality will be added soon')}>
+                    <button className='active:scale-93 transition-all duration-100 ease-in' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Undo2 size={27} />
                     </button>
-                    <button className='active:scale-93 transition-all duration-100 ease-in' onClick={() => toast.info('Functionality will be added soon')}>
+                    <button className='active:scale-93 transition-all duration-100 ease-in' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Redo2 size={27} />
                     </button>
-                    <button className='active:scale-93 transition-all duration-100 ease-in' onClick={() => {
+                    <button className='active:scale-93 transition-all duration-100 ease-in' onPointerUp={() => {
+                        setCatOpen(false)
                         dispatch(manageEditTask({ open: false }))
-                        dispatch(addNote({ TaskId, title: currTaskTitle || '', desc: currTaskDesc || "" }))
+                        dispatch(addNote({ TaskId, title: currTaskTitle || '', desc: currTaskDesc || "", category: currCategory }))
                         setCurrTaskTitle('')
                         setCurrTaskDesc('')
                     }}>

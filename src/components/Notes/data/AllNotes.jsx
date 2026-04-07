@@ -56,53 +56,54 @@ const AllNotes = () => {
 
     return (
         <div className={` flex-1  AllNotes-container  overflow-y-auto  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}  
-        
         `}
         >
             {
                 Notes.length > 0 ?
                     <Masonry
                         breakpointCols={cols}
-                        className="flex gap-3"
+                        className="flex gap-3 w-full h-full "
                         columnClassName="flex flex-col gap-3"
                     >
                         {Notes.map(({ title, id, desc, timeStamp }) => (
-                            <div
-                                onContextMenu={(e) => e.preventDefault()} //to hide right click options like back,developer mode,copy etc.
+                            <button
                                 onClick={() => dispatch(manageEditTask({ open: true, TaskId: id }))}
                                 key={id}
-                                className={`w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 cursor-pointer active:scale-95 
+                                className={` w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 cursor-pointer active:scale-95 
                     ${theme !== 'dark'
                                         ? 'bg-(--bg-light-window-header)'
                                         :
                                         'bg-(--primary-dark-clr)'
                                     }                            
                         `}>
-                                <h3 className={`select-none line-clamp-1 text-[1.3rem] font-bold ${theme !== 'dark' ?
-                                    'text-(--primary-dark-clr)'
-                                    :
-                                    'text-(--primary-light-clr)'
-                                    }`}>
+                                <h3
+                                    className={`select-none line-clamp-1 text-[1.3rem] font-bold ${theme !== 'dark' ?
+                                        'text-(--primary-dark-clr)'
+                                        :
+                                        'text-(--primary-light-clr)'
+                                        }`}>
                                     {title ? title : desc}
 
                                 </h3>
 
-                                <p className={`select-none text-[0.82rem] line-clamp-5 font-[650]
+                                <p
+                                    className={`select-none text-[0.82rem] line-clamp-5 font-[650]
                             ${theme !== 'dark' ?
-                                        'text-(--sec-dark-clr)'
-                                        :
-                                        'text-(--third-light-clr)'}
+                                            'text-(--sec-dark-clr)'
+                                            :
+                                            'text-(--third-light-clr)'}
                             `}>
                                     {title && desc ? desc : 'No Text'} {/* if title and desc exist, display desc; otherwise, display 'No Text' */}
                                 </p>
 
-                                <span className={`select-none text-[0.73rem] font-semibold ${theme !== 'dark' ?
-                                    'text-(--third-dark-clr)'
-                                    : 'text-(--third-light-clr)'
-                                    }`}>
+                                <span
+                                    className={`select-none text-[0.73rem] font-semibold ${theme !== 'dark' ?
+                                        'text-(--third-dark-clr)'
+                                        : 'text-(--third-light-clr)'
+                                        }`}>
                                     {formatDateTime(timeStamp)}
                                 </span>
-                            </div>
+                            </button>
                         ))
                         }
                     </Masonry>

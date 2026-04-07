@@ -22,6 +22,7 @@ body {
     --primary-light-clr: rgb(232, 232, 232);
     --primary-dark-clr: rgb(49, 49, 49);
     --primary-dark-clr-low: rgb(49, 49, 49, 0.7);
+    --text-currCat: rgb(38, 121, 243);
 
     --sec-light-clr: rgb(114, 114, 114);
     --sec-light-clr-low: rgb(114, 114, 114, 0.5);
@@ -47,6 +48,7 @@ body {
     --bg-orange-hover: rgb(237, 129, 20, 0.8);
     --bg-ok-btn: rgb(38, 122, 247);
     --bg-ok-btn-hover: rgb(57, 132, 249);
+    --bg-currCat: rgb(31, 48, 76);
 
     /* light theme backgrounds */
     --bg-light-window-header: #f9fafb;
@@ -159,7 +161,8 @@ body {
         padding-top: 5px;
     }
 
-    .folder-category-list,.AllNotes-container {
+    .folder-category-list,
+    .AllNotes-container {
         --webkit-overflow-scrolling: touch;
         padding-right: 10px;
 
@@ -197,7 +200,8 @@ body {
 @media screen and (min-width: 769px) {
 
     .folder-category-list,
-    .categories,.AllNotes-container {
+    .categories,
+    .AllNotes-container {
         scrollbar-width: none;
         /* For Firefox */
         --webkit-overflow-scrolling: touch;
@@ -205,7 +209,8 @@ body {
     }
 
     .folder-category-list::-webkit-scrollbar,
-    .categories::-webkit-scrollbar,.AllNotes-container::-webkit-scrollbar {
+    .categories::-webkit-scrollbar,
+    .AllNotes-container::-webkit-scrollbar {
         display: none;
         /* For Chrome, Safari, and Opera */
     }

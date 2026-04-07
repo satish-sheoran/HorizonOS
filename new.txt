@@ -18,13 +18,19 @@ proper manage of overflow of categories (both) for mobile so that it become scro
 
 
 What i did for this commit:
-ID is passed to manaeEdit task and it is opewning but then title and desc is not shown in the textarea
+Add category selection in edit task
+
+- Shows All categories on clicking current category
+- Sync selected value with component state
+- Persist selected category on update
+- Styled the category option and its dropdown
+(Not commited)
+
 
 what is remainong for note app   :
 fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
-create animation for opening of a note 
 selection and then deleting notes
  animation on selection of notes for deletion
-opening Individual note to let user edit it
+ (ADDITIONAL FEATURE) : let user change or select category of note ,during note creation or editing
 (NOTES APP DONE THEN)
 

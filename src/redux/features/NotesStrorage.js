@@ -57,10 +57,10 @@ const NotesSlice = createSlice({
         addNote(state, action) {
             // Task being edited area
             if (action.payload.TaskId) {
-                const { title, desc, TaskId } = action.payload
+                const { title, desc, TaskId ,category} = action.payload
 
                 const itemIdx = state.Notes.findIndex(item => item.id === TaskId);
-                state.Notes[itemIdx] = { ...state.Notes[itemIdx], title, desc };
+                state.Notes[itemIdx] = { ...state.Notes[itemIdx], title, desc ,category};
 
                 localStorage.setItem('Notes', JSON.stringify(state.Notes));
 
