@@ -47,7 +47,9 @@ const NotesSlice = createSlice({
         folderContentWidth: 0, // it is width of folder-content named class elem whose value will be used in folder Category component and based on its value we will device if categories will be shown in one column or two column
         baseNumberForDefaultFolder: 0, // it will be used to keep track of the number for default folder name when user create a new folder with default name in format Unnamed folder + number and number will be incremented by 1 every time user create a new folder without changing the default name
         startDeletingCat: false, //it track if user has started deleting category or not, if yes then show select icons on category `
+        startDeletingNotes: false, //it track if user has started deleting notes or not, if yes then show select icons on notes `
         deletedCategories: [], // tracks categories selected to delete
+        deletedNotes: [], // tracks notes selected to delete
         CreateTaskOpen: false, // it is used to track if create task pop up is open or not
         Notes: getNotes(),// all notes 
         NotesContainerWidth: 0, //used to set colums in notes area and then as per that,set width of 1 note 
@@ -57,10 +59,10 @@ const NotesSlice = createSlice({
         addNote(state, action) {
             // Task being edited area
             if (action.payload.TaskId) {
-                const { title, desc, TaskId ,category} = action.payload
+                const { title, desc, TaskId, category } = action.payload
 
                 const itemIdx = state.Notes.findIndex(item => item.id === TaskId);
-                state.Notes[itemIdx] = { ...state.Notes[itemIdx], title, desc ,category};
+                state.Notes[itemIdx] = { ...state.Notes[itemIdx], title, desc, category };
 
                 localStorage.setItem('Notes', JSON.stringify(state.Notes));
 
@@ -165,6 +167,11 @@ const NotesSlice = createSlice({
             state.startDeletingCat = start;
 
         },
+        setStartDeletingNotes(state, action) {
+            const { start } = action.payload;
+            if (typeof start !== "boolean") return;
+            state.startDeletingNotes = start;
+        },
         manageDeletedCategories(state, action) {
             const { category } = action.payload;
             if (!category || category === 'All' || category === 'Uncategorized') return;
@@ -200,6 +207,17 @@ const NotesSlice = createSlice({
             state.EditTaskOpen.open = true
             state.EditTaskOpen.TaskId = TaskId
 
+        },
+        manageDeletedNotes(state, action) {
+            const { noteId } = action.payload;
+            if (!noteId) return;
+
+            if (state.deletedNotes.includes(noteId)) {
+                state.deletedNotes = state.deletedNotes.filter((id) => id !== noteId);
+                return;
+            }
+            state.deletedNotes.push(noteId);
+
         }
     }
 })
@@ -213,9 +231,11 @@ export const {
     removeCategory,
     setWidthOfFolderContent,
     setStartDeletingCat,
+    setStartDeletingNotes,
     manageDeletedCategories,
     setCreateTaskOpen,
     setNotesContainerWidth,
-    manageEditTask
+    manageEditTask,
+    manageDeletedNotes
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

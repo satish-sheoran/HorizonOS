@@ -1,16 +1,18 @@
 import { useEffect } from 'react'
-import { NotebookPen } from 'lucide-react'
+import { Check, NotebookPen } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
 
 import { formatDateTime } from '../../../utils/formatTime'
-import { manageEditTask, setNotesContainerWidth } from '../../../redux/features/NotesStrorage'
+import { manageDeletedNotes, manageEditTask, setNotesContainerWidth } from '../../../redux/features/NotesStrorage'
 
 
 const AllNotes = () => {
     const dispatch = useDispatch();
     const theme = useSelector((store) => store.wallpaper.theme)
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
+    const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
+    const deletingNotes = useSelector(store => store.Notes.deletedNotes)
     const activeCategory = useSelector(store => store.Notes.activeCategory) // notes tab Or task tab for notes app
     // all notes in the app
     const Notes = useSelector(store => activeCategory === 'All' ? store.Notes.Notes : store.Notes.Notes.filter(note => note.category === activeCategory)) //notes based on active category
@@ -67,9 +69,16 @@ const AllNotes = () => {
                     >
                         {Notes.map(({ title, id, desc, timeStamp }) => (
                             <button
-                                onClick={() => dispatch(manageEditTask({ open: true, TaskId: id }))}
+                                onClick={() => {
+                                    if (isDeleteNoteOpen !== true) {
+                                        dispatch(manageEditTask({ open: true, TaskId: id }))
+                                    }
+                                    else {
+                                        dispatch(manageDeletedNotes({ noteId: id }))
+                                    }
+                                }}
                                 key={id}
-                                className={` w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 cursor-pointer active:scale-95 
+                                className={`relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 
                     ${theme !== 'dark'
                                         ? 'bg-(--bg-light-window-header)'
                                         :
@@ -103,6 +112,25 @@ const AllNotes = () => {
                                         }`}>
                                     {formatDateTime(timeStamp)}
                                 </span>
+
+                                {/* absolute button used to delete note */}
+                                {
+                                    isDeleteNoteOpen === true &&
+                                    <span className={`absolute bottom-2 right-2 rounded-full w-5.5 h-5.5 flex items-center justify-center
+
+                                ${deletingNotes?.includes(id) ? 'bg-(--bg-orange)'
+                                            :
+                                            theme !== 'dark' ?
+                                                'bg-(--btn-light-hover)'
+                                                :
+                                                'bg-(--bg-light-border)'
+
+                                        }`}>
+                                        {deletingNotes?.includes(id) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
+                                    </span>
+
+                                }
+
                             </button>
                         ))
                         }

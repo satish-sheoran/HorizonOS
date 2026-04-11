@@ -18,19 +18,16 @@ proper manage of overflow of categories (both) for mobile so that it become scro
 
 
 What i did for this commit:
-Add category selection in edit task
+feat: implement edit mode for deleting notes
 
-- Shows All categories on clicking current category
-- Sync selected value with component state
-- Persist selected category on update
-- Styled the category option and its dropdown
-(Not commited)
+- Add initial states for edit mode toggle and selected notes array
+- Handle click events on individual notes based on edit mode
+- Style selection indicator box for notes in edit mode
+- Remaining :Prepare delete functionality (reducer to be implemented)
 
 
 what is remainong for note app   :
 fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
 selection and then deleting notes
- animation on selection of notes for deletion
- (ADDITIONAL FEATURE) : let user change or select category of note ,during note creation or editing
 (NOTES APP DONE THEN)
 
