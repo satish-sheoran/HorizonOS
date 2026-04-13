@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-import { removeCategory, setStartDeletingCat } from '../../../redux/features/NotesStrorage';
+import { removeCategory, removeNotes, setStartDeletingCat, setStartDeletingNotes } from '../../../redux/features/NotesStrorage';
+import { toast } from 'react-toastify';
 
 
-const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp }) => {
+const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn }) => {
     const DeletPopElem = useRef(null);
     const dispatch = useDispatch();
 
     const theme = useSelector((store) => store.wallpaper.theme);
     const device = useSelector((store) => store.Device.currDevice);
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
+    const deletedNotes = useSelector((store) => store.Notes.deletedNotes); //notes which are selected to delete
 
 
     useGSAP(() => {
@@ -38,7 +40,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp }) => {
                 className='overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'></div>
 
 
-            <div ref={DeletPopElem} className={`${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-3 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
+            <div ref={DeletPopElem} className={`${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'}  h-fit absolute rounded-2xl py-3.5  px-2.5 gap-3 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
             ${theme !== 'dark' ?
                     "bg-(--bg-light-window-header)"
                     :
@@ -47,7 +49,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp }) => {
 
                 <span className='text-lg'>Delete folder</span>
 
-                <span className={`text-sm ${theme !== 'dark' ? 'text-(--sec-light-clr)' : 'text-(--sec-light-clr)'}`}>Delete {deletedCategories.length} items ?</span>
+                <span className={`text-sm ${theme !== 'dark' ? 'text-(--sec-light-clr)' : 'text-(--sec-light-clr)'}`}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : deletedCategories.length} items ?</span>
 
                 <div className={`w-full flex items-center gap-2`}>
 
@@ -57,8 +59,21 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp }) => {
 
                     <button
                         onClick={() => {
+                            if (WorkingOn === 'Notes') {
+                                // Handle note deletion logic here
+                                dispatch(removeNotes({ NotesIds: deletedNotes }))
+                                dispatch(setStartDeletingNotes({ start: false }))
+                                setOpenDeletePopUp(false); //after delete close the pop up
+
+                                toast.info('Notes Deleted Successfully')
+
+                                return;
+                            }
+
                             dispatch(removeCategory({ category: deletedCategories }));
                             dispatch(setStartDeletingCat({ start: false })); // exit delete mode after deleting category/categories
+                            toast.info('Categories Deleted Successfully')
+
                             setOpenDeletePopUp(false); //after delete close the pop up
                         }}
                         className={`grow  py-3.5 md:py-2.5 text-sm font-bold rounded-xl select-none bg-(--bg-ok-btn) hover:bg-(--bg-ok-btn-hover) active:bg-(--bg-ok-btn-hover) active:scale-96 text-(--primary-light-clr)`}>DELETE</button>
@@ -66,7 +81,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp }) => {
 
 
             </div>
-        </div>
+        </div >
 
 
     )

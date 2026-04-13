@@ -73,7 +73,7 @@ const FolderNav = () => {
             }
 
             {/* delete pop up  */}
-            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} />}
+            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn='Categories' />}
 
         </div>)
 }

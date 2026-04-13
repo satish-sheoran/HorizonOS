@@ -211,12 +211,29 @@ const NotesSlice = createSlice({
         manageDeletedNotes(state, action) {
             const { noteId } = action.payload;
             if (!noteId) return;
+            if (noteId === 'Empty Trash') { //if app is closed or user exits delete mode without deleting cateogry.
+                state.deletedNotes = [];
+            }
 
             if (state.deletedNotes.includes(noteId)) {
                 state.deletedNotes = state.deletedNotes.filter((id) => id !== noteId);
                 return;
             }
             state.deletedNotes.push(noteId);
+
+        }, removeNotes(state, action) {
+            const { NotesIds } = action.payload;
+            if (!NotesIds) return;
+
+            if (Array.isArray(NotesIds)) {
+                state.Notes = state.Notes.filter(({ id }) => !NotesIds.includes(id)); //if multiple notes ID is passed as array then filter all the notes which are in the array
+
+            } else {
+                state.Notes = state.Notes.filter(({ id }) => id !== NotesIds); //remove single note which is passed as using its ID
+            }
+            state.deletedNotes = []; // after deleting notes empty the deletedNotes array to remove the deleted notes from the array as now they are deleted
+
+            localStorage.setItem('Notes', JSON.stringify(state.Notes))
 
         }
     }
@@ -236,6 +253,7 @@ export const {
     setCreateTaskOpen,
     setNotesContainerWidth,
     manageEditTask,
-    manageDeletedNotes
+    manageDeletedNotes,
+    removeNotes
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

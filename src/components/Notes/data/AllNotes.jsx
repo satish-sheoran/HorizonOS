@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
 
 import { formatDateTime } from '../../../utils/formatTime'
-import { manageDeletedNotes, manageEditTask, setNotesContainerWidth } from '../../../redux/features/NotesStrorage'
+import { manageDeletedNotes, manageEditTask, setNotesContainerWidth, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
+import useLongPress from '../../../hooks/Use-long-press';
 
 
 const AllNotes = () => {
@@ -16,8 +17,11 @@ const AllNotes = () => {
     const activeCategory = useSelector(store => store.Notes.activeCategory) // notes tab Or task tab for notes app
     // all notes in the app
     const Notes = useSelector(store => activeCategory === 'All' ? store.Notes.Notes : store.Notes.Notes.filter(note => note.category === activeCategory)) //notes based on active category
+
+
     const NotesContainerWidth = useSelector(store => store.Notes.NotesContainerWidth);
 
+    const { Handlers, isLongPress } = useLongPress() //custom hook to trigger if user did long press
 
     useEffect(() => {
         // getting width of notes area 
@@ -69,14 +73,23 @@ const AllNotes = () => {
                     >
                         {Notes.map(({ title, id, desc, timeStamp }) => (
                             <button
-                                onClick={() => {
-                                    if (isDeleteNoteOpen !== true) {
-                                        dispatch(manageEditTask({ open: true, TaskId: id }))
+                                {...(!isDeleteNoteOpen ? Handlers : {})} //adding long press handler only if delete mode is off
+                                onClick={(e) => {
+                                    if (isLongPress.current) {
+                                        e.preventDefault(); // stop accidental click behavior
+
+                                        if (!isDeleteNoteOpen) {
+                                            dispatch(setStartDeletingNotes({ start: true }));
+                                        }
+
+                                        dispatch(manageDeletedNotes({ noteId: id }));
+                                        return; // 🚨 STOP here
                                     }
-                                    else {
-                                        dispatch(manageDeletedNotes({ noteId: id }))
-                                    }
+
+                                    dispatch(manageEditTask({ open: true, TaskId: id }));
                                 }}
+// on click works as want but not opening edit mode on mobile only 
+
                                 key={id}
                                 className={`relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 
                     ${theme !== 'dark'

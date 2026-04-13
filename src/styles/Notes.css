@@ -46,7 +46,7 @@
         }
 
         footer {
-            @apply w-full px-[25%] pt-3.5;
+            @apply w-full  pt-3.5;
 
             div {
                 @apply w-full h-full flex items-center justify-between;

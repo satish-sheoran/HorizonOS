@@ -13,21 +13,21 @@ in notes app , working on content.jsx where we show notes and tasks.
 
 
 
-remainig for next commit :
-proper manage of overflow of categories (both) for mobile so that it become scrolling using thumb also 
-
 
 What i did for this commit:
-feat: implement edit mode for deleting notes
+feat: implement Delete Notes Feature and Long Press Hook
 
-- Add initial states for edit mode toggle and selected notes array
-- Handle click events on individual notes based on edit mode
-- Style selection indicator box for notes in edit mode
-- Remaining :Prepare delete functionality (reducer to be implemented)
+- Add reducer to Delete Notes
+- Swtiching of Notes App Footer based on Note Edit Mode Open/Close
+- Redefined Delete Pop UP to handle Both Note/Cateogry Deleting
+- Hook : Long press which detect if user has did long press On particular item OR Not
+- Added Long Press To Open Edit Mode to Delete Notes
+- ISSUE : Long press not working on mobile devices
 
 
 what is remainong for note app   :
+- add animation when user long press the note and for changing of footer during opening/closing of eidt mode to delete notes
+fix : long press working on mobilr
 fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
-selection and then deleting notes
 (NOTES APP DONE THEN)
 

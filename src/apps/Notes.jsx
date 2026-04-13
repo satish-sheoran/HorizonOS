@@ -7,12 +7,13 @@ import Navbar from "../components/Notes/Navbar";
 import Content from "../components/Notes/Content";
 import Footer from "../components/Notes/Footer";
 import Folders from "../components/Notes/Folder/Folders";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CreateTask from "../components/Notes/CreateTask";
 import { setCreateTaskOpen } from "../redux/features/NotesStrorage";
 import EditTask from "../components/Notes/EditTask";
+import ConfirmDeletePopUp from "../components/Notes/Folder/ConfirmDeletePopUp";
 
 const Notes = () => {
     const notesBody = useRef(null);
@@ -23,6 +24,7 @@ const Notes = () => {
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
     const isCreateTaskOpen = useSelector(store => store.Notes.CreateTaskOpen) // it is here to check if create task  pop up is open
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
+
 
     // if apps closes then close the create task pop up if it is open
     useEffect(() => {
@@ -63,7 +65,9 @@ const Notes = () => {
                 <div ref={notesBody} className="notes-body translate-x-0">
                     <Navbar />
                     <Content />
-                    <Footer />
+                    <Footer  />
+
+
                 </div>
 
                 {/*  pop up which opens create task   */}
