@@ -162,6 +162,7 @@ const EditTask = () => {
                                 ))
                             }</div>
                     </div>
+
                 </div>
 
                 {/* other its nav icons */}

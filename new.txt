@@ -3,31 +3,19 @@
 3. apps looks different and bad at some devices like : at ipad calculator look too bad fix that 
 
 
-Remaining :
-in notes app , working on content.jsx where we show notes and tasks.
-2. switching to different categories also change content of notes data
-3. addig tasks 
-4. loading content.jsx file data based on category then 
-
-6. when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
-
-
-
 
 What i did for this commit:
-feat: implement Delete Notes Feature and Long Press Hook
+feat: add long press animation and smooth footer transition for delete mode
 
-- Add reducer to Delete Notes
-- Swtiching of Notes App Footer based on Note Edit Mode Open/Close
-- Redefined Delete Pop UP to handle Both Note/Cateogry Deleting
-- Hook : Long press which detect if user has did long press On particular item OR Not
-- Added Long Press To Open Edit Mode to Delete Notes
+feat: trigger long press action immediately 
+- show visual feedback on long press
+- animate footer when entering/exiting delete mode
+- remove dependency on click event after touchend
+
+
+fix : long press working on mobile
+fix : scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
+fix : when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
 - ISSUE : Long press not working on mobile devices
-
-
-what is remainong for note app   :
-- add animation when user long press the note and for changing of footer during opening/closing of eidt mode to delete notes
-fix : long press working on mobilr
-fix scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
 (NOTES APP DONE THEN)
 

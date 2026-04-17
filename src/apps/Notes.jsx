@@ -7,13 +7,12 @@ import Navbar from "../components/Notes/Navbar";
 import Content from "../components/Notes/Content";
 import Footer from "../components/Notes/Footer";
 import Folders from "../components/Notes/Folder/Folders";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CreateTask from "../components/Notes/CreateTask";
-import { setCreateTaskOpen } from "../redux/features/NotesStrorage";
+import { setCreateTaskOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditTask } from "../redux/features/NotesStrorage";
 import EditTask from "../components/Notes/EditTask";
-import ConfirmDeletePopUp from "../components/Notes/Folder/ConfirmDeletePopUp";
 
 const Notes = () => {
     const notesBody = useRef(null);
@@ -22,17 +21,20 @@ const Notes = () => {
     const currDevice = useSelector((store) => store.Device.currDevice);
     const theme = useSelector((store) => store.wallpaper.theme)
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
-    const isCreateTaskOpen = useSelector(store => store.Notes.CreateTaskOpen) // it is here to check if create task  pop up is open
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
 
 
-    // if apps closes then close the create task pop up if it is open
+    // if apps closes => CLOSE  create task , edit task,folder manager,deleting notes OR deleting category
     useEffect(() => {
         if (!isNotesOpen) {
-            const closeCreateTask = () => {
+            const closeAll = () => {
                 dispatch(setCreateTaskOpen({ open: false }))
+                dispatch(setOpenManageFolder({ open: false }))
+                dispatch(setStartDeletingCat({ start: false }))
+                dispatch(setStartDeletingNotes({ start: false }))
+                dispatch(manageEditTask({ open: false }))
             }
-            closeCreateTask();
+            closeAll();
         }
         return;
     }, [isNotesOpen, dispatch])
@@ -65,13 +67,12 @@ const Notes = () => {
                 <div ref={notesBody} className="notes-body translate-x-0">
                     <Navbar />
                     <Content />
-                    <Footer  />
+                    <Footer />
 
 
                 </div>
 
                 {/*  pop up which opens create task   */}
-                {/* {isCreateTaskOpen === true && <CreateTask />} */}
                 <CreateTask />
                 <EditTask />
             </main>

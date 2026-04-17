@@ -4,6 +4,8 @@ import { setActiveTab, setStartDeletingNotes } from "../../redux/features/NotesS
 import { toast } from "react-toastify";
 import { useState } from "react";
 import ConfirmDeletePopUp from './Folder/ConfirmDeletePopUp'
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Footer = () => {
     const dispatch = useDispatch();
@@ -13,9 +15,28 @@ const Footer = () => {
     const deletedNotes = useSelector(store => store.Notes.deletedNotes);
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false); //used to open delete pop up to delete notes 
 
+
+    // animation for entry of cntrls of nots (delete,close editing etc.)
+    useGSAP(() => {
+        const elems = document.querySelectorAll('.note-cntrl-btns')
+        if (!elems) return;
+
+        if (isDeleteNoteOpen) {
+            gsap.fromTo(elems, {
+                scale: 0.5
+            }, {
+                scale: 1,
+                duration: 0.4,
+                ease : 'power1.out'
+            })
+        }
+        
+
+    }, [isDeleteNoteOpen])
+
     return (
         <footer className={`${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
-            <div>
+            <div className='pb-1'>
                 {
                     isDeleteNoteOpen === false ?
                         <>
@@ -78,8 +99,8 @@ const Footer = () => {
                         :
                         <>
                             <button
-                                className="active:scale-95"
-                                onClick={() => dispatch(setStartDeletingNotes({ start : false}))}
+                                className="note-cntrl-btns active:scale-95"
+                                onClick={() => dispatch(setStartDeletingNotes({ start: false }))}
 
                             >
                                 <X size={22} strokeWidth={2} className={`
@@ -100,7 +121,7 @@ const Footer = () => {
                             </button>
 
                             <button
-                                className="active:scale-95"
+                                className="note-cntrl-btns active:scale-95"
                                 onClick={() => toast.info('Feature Coming Soon')}
 
                             >
@@ -123,7 +144,7 @@ ${theme != 'dark' ?
                             </button>
 
                             <button
-                                className="active:scale-95"
+                                className="note-cntrl-btns active:scale-95"
                                 onClick={() => toast.info('Feature Coming Soon')}
 
                             >
@@ -146,7 +167,7 @@ ${theme != 'dark' ?
                             </button>
 
                             <button
-                                className="active:scale-95"
+                                className="note-cntrl-btns active:scale-95"
                                 onClick={() => {
                                     if (deletedNotes.length === 0) {
                                         toast.info("Select notes to delete !")

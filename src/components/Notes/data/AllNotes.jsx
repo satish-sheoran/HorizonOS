@@ -21,7 +21,9 @@ const AllNotes = () => {
 
     const NotesContainerWidth = useSelector(store => store.Notes.NotesContainerWidth);
 
-    const { Handlers, isLongPress } = useLongPress() //custom hook to trigger if user did long press
+    const { Handlers, isLongPress } = useLongPress(() => {
+        if (!isDeleteNoteOpen) dispatch(setStartDeletingNotes({ start: true }));
+    }) //custom hook to trigger if user did long press
 
     useEffect(() => {
         // getting width of notes area 
@@ -74,13 +76,17 @@ const AllNotes = () => {
                         {Notes.map(({ title, id, desc, timeStamp }) => (
                             <button
                                 {...(!isDeleteNoteOpen ? Handlers : {})} //adding long press handler only if delete mode is off
+                                // onMouseDown={() => {
+                                // if (!isDeleteNoteOpen) dispatch(setStartDeletingNotes({ start: true }));
+                                // dispatch(manageDeletedNotes({ noteId: id }));
+
+                                // }}
+
                                 onClick={(e) => {
                                     if (isLongPress.current) {
                                         e.preventDefault(); // stop accidental click behavior
 
-                                        if (!isDeleteNoteOpen) {
-                                            dispatch(setStartDeletingNotes({ start: true }));
-                                        }
+                                        if (!isDeleteNoteOpen) dispatch(setStartDeletingNotes({ start: true }));
 
                                         dispatch(manageDeletedNotes({ noteId: id }));
                                         return; // 🚨 STOP here
@@ -88,7 +94,7 @@ const AllNotes = () => {
 
                                     dispatch(manageEditTask({ open: true, TaskId: id }));
                                 }}
-// on click works as want but not opening edit mode on mobile only 
+                                // on click works as want but not opening edit mode on mobile only
 
                                 key={id}
                                 className={`relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 

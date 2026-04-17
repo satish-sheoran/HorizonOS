@@ -19,12 +19,11 @@ const FolderNav = () => {
     // if apps closes then close the edit mode to delete categories if it is open, also clears the deleteCategories and close the delete pop up if open 
     useEffect(() => {
         if (!isNotesOpen) {
-            const closeDeleteCat = () => {
+            const closePopUp = () => {
                 setOpenDeletePopUp(false);
                 dispatch(manageDeletedCategories({ category: 'Empty Trash' })) // empty the deletedCategories in notes storage when notes app is closed to remove the select icons from categories when user open the notes app again
-                dispatch(setStartDeletingCat({ start: false }))
             }
-            closeDeleteCat();
+            closePopUp();
         }
         return;
     }, [isNotesOpen, dispatch])

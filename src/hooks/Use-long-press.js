@@ -3,7 +3,7 @@
 import { useRef } from "react";
 
 // target defines if it used on notes/categories
-export default function useLongPress() {
+export default function useLongPress(onLongPress) {
 
     const timerRef = useRef(null);
     const isLongPressRef = useRef(false)
@@ -12,6 +12,8 @@ export default function useLongPress() {
         isLongPressRef.current = false;
         timerRef.current = setTimeout(() => {
             isLongPressRef.current = true;
+            onMouseUp(); // clear timer after long press is triggered to prevent memory leaks
+            onLongPress?.();
         }, 700)
     }
 
@@ -23,6 +25,8 @@ export default function useLongPress() {
         isLongPressRef.current = false;
         timerRef.current = setTimeout(() => {
             isLongPressRef.current = true;
+            onTouchEnd(); // clear timer after long press is triggered to prevent memory leaks
+            onLongPress?.();
         }, 700)
     }
 
@@ -37,6 +41,6 @@ export default function useLongPress() {
             onTouchStart,
             onTouchEnd
         },
-        isLongPress : isLongPressRef
+        isLongPress: isLongPressRef
     }
 }
