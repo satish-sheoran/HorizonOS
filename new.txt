@@ -5,14 +5,18 @@
 
 
 What i did for this commit:
-feat: add long press animation and smooth footer transition for delete mode
+refactor: split calculator into hook and UI components
 
-feat: trigger long press action immediately 
-- show visual feedback on long press
-- animate footer when entering/exiting delete mode
-- remove dependency on click event after touchend
+- extract calculation and cursor logic into useCalculator hook
+- separate display and button grid into CalcDisplay and CalcButtons
+- simplify main Calculator component structure
+- improve readability and maintainability without changing behavior
 
 
+
+
+
+BUGS : 
 fix : long press working on mobile
 fix : scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
 fix : when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
