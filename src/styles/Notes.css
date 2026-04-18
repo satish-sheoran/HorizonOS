@@ -12,7 +12,7 @@
 }
 
 .notes-full {
-    @apply absolute top-9 left-0
+    @apply absolute top-0 left-0
 }
 
 @layer base {

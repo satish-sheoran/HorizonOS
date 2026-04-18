@@ -5,13 +5,7 @@
 
 
 What i did for this commit:
-refactor: split calculator into hook and UI components
-
-- extract calculation and cursor logic into useCalculator hook
-- separate display and button grid into CalcDisplay and CalcButtons
-- simplify main Calculator component structure
-- improve readability and maintainability without changing behavior
-
+fix : Opening Notes In FullScreen Causes Overflow 
 
 
 

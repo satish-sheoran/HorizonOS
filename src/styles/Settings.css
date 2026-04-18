@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.settings {
+    @apply absolute top-9 left-1/3
+}
+
+.settings-full {
+    @apply absolute top-0 left-0
+}

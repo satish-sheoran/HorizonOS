@@ -14,6 +14,9 @@ import CreateTask from "../components/Notes/CreateTask";
 import { setCreateTaskOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditTask } from "../redux/features/NotesStrorage";
 import EditTask from "../components/Notes/EditTask";
 
+
+ /* flex-1 means grow , shrink (if needed) and min-h-0 all together*/
+
 const Notes = () => {
     const notesBody = useRef(null);
     const dispatch = useDispatch()
@@ -39,7 +42,7 @@ const Notes = () => {
         return;
     }, [isNotesOpen, dispatch])
 
-
+// Animation for opening and closing folder manager
     useGSAP(() => {
         if (!notesBody.current) return;
 
@@ -53,29 +56,28 @@ const Notes = () => {
     return (
         <div className=" w-full h-full flex flex-col">
 
-            {currDevice === 'Desktop' ? <WindowControls id='notes' /> : <MobileCntrls id='notes' />}
-
-            {/* BODY  , flex-1 means grow ,  
-            shrink (if needed)
-            and min-h-0 all together*/}
-            <main className={` relative  flex-1 w-full ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+            {currDevice === 'Desktop' ?
+                <WindowControls id='notes' />
+                : <MobileCntrls id='notes' />}
 
 
-                {/* manage folder  which appears when openNotesFolder variable value changes in store . if it is close then return these all  */}
-                <Folders />
-
-                <div ref={notesBody} className="notes-body translate-x-0">
-                    <Navbar />
-                    <Content />
-                    <Footer />
+            {/* BODY */}
+                <main className={` relative  flex-1 w-full ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
 
-                </div>
+                    {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}
+                    <Folders />
 
-                {/*  pop up which opens create task   */}
-                <CreateTask />
-                <EditTask />
-            </main>
+                    <div ref={notesBody} className="notes-body translate-x-0">
+                        <Navbar />
+                        <Content />
+                        <Footer />
+                    </div>
+
+                    {/*  pop up which opens create task   */}
+                    <CreateTask />
+                    <EditTask />
+                </main>
         </div >
     )
 }
