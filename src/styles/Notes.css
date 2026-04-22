@@ -8,7 +8,7 @@
 /* Edit,Delete css of Note app */
 
 .notes {
-    @apply absolute top-9 left-0
+    @apply absolute top-0 sm:top-9 left-0
 }
 
 .notes-full {

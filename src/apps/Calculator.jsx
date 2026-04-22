@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import WindowControls from "../components/WindowControls";
 import WindowWrapper from "../hoc/WindowWrapper"
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 import MobileCntrls from "../components/MobileCntrl";
 import CalcButtons from "../components/Calculator/CalcButtons";
 import CalcDisplay from "../components/Calculator/CalcDisplay";
@@ -19,11 +19,11 @@ const Calculator = () => {
         setResult(data ?? '0')
     }, [data])
 
-const {inputRef , calcBtnClck} = UseCalculator(currDevice,result,setResult)
+    const { inputRef, calcBtnClck } = UseCalculator(currDevice, result, setResult)
 
 
     return (
-        <div className='w-full flex flex-col h-full'>
+        <div className={`w-full h-full flex flex-col ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
             {/* header */}
             {currDevice === 'Desktop' ?
                 <WindowControls id='calculator' />
@@ -31,7 +31,7 @@ const {inputRef , calcBtnClck} = UseCalculator(currDevice,result,setResult)
 
 
             {/* body  */}
-            <div className={`calc-body  
+            <div className={`calc-body 
                 ${theme != 'dark' ?
                     'bg-(--bg-light-app-body)'
                     : 'bg-(--bg-dark-app-body)'}`}>
@@ -43,7 +43,6 @@ const {inputRef , calcBtnClck} = UseCalculator(currDevice,result,setResult)
                     currDevice={currDevice}
                     theme={theme}
                 />
-
                 <div className={`calc-btns grow select-none`}>
                     <CalcButtons
                         theme={theme}

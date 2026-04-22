@@ -5,7 +5,6 @@
 
 
 What i did for this commit:
-fix : Opening Notes In FullScreen Causes Overflow 
 
 
 
@@ -15,5 +14,3 @@ fix : long press working on mobile
 fix : scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
 fix : when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
 - ISSUE : Long press not working on mobile devices
-(NOTES APP DONE THEN)
-

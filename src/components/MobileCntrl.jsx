@@ -18,7 +18,7 @@ const MobileCntrls = ({ id }) => {
 
                 <button
                     onClick={() => closeApp(id)}
-                    className='mobile-control-btns flex-col-center '>
+                    className='mobile-control-btns flex-col-center'>
                     <X strokeWidth={3} size={24} className={`${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`} />
                 </button>
 

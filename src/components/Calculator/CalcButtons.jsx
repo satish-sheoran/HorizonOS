@@ -9,10 +9,10 @@ const CalcButtons = ({theme , calcBtnClck}) => {
                     const isOperator = ['AC', 'X', '%', '/', '*', '-', '+'].includes(symbol);
 
                     return <button key={id}
-                        className={`${theme != 'dark' ?
+                        className={` ${theme != 'dark' ?
                             `${isOperator ? 'text-(--clr-orange)' : 'text-(--primary-dark-clr)'}`
                             : `${isOperator ? 'text-(--clr-orange)' : 'text-(--primary-light-clr)'}`}  
-                                rounded-md py-1 font-bold grow transition-all active:scale-95 ease-in-out duration-0.3 
+                                rounded-2xl py-1 sm:rounded-xl font-bold  transition-all active:scale-95 ease-in-out duration-0.3 
 
                             ${theme != 'dark' ?
                                 `${symbol === '=' ? 'bg-(--bg-orange) hover:bg-(--bg-orange-hover)' : 'bg-(--btn-light) hover:bg-(--btn-light-hover)'}`
