@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { manageDeletedCategories, setActiveCategory, setOpenManageFolder } from "../../../redux/features/NotesStrorage";
+import { manageDeletedCategories, setActiveCategory, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
 import { Check } from 'lucide-react';
+import useLongPress from '../../../hooks/Use-long-press';
 
 // count show remaining
 
@@ -16,6 +17,11 @@ const FolderCategory = () => {
     const Notes = useSelector(store => store.Notes.Notes) //all notes just using them for showing count of notes in each category 
 
 
+    const { Handlers, isLongPress } = useLongPress(() => {
+        if (!startDeletingCat) dispatch(setStartDeletingCat({ start: true }));
+    })
+    //detects long press to open edit mode to delete notes
+
 
     return (
         <div className={`overflow-y-auto rounded-xl folder-category-list
@@ -27,11 +33,18 @@ const FolderCategory = () => {
             {
                 categories.map((category) => {
                     return <button key={category}
-                        onClick={() => {
-                            if (startDeletingCat === true) {
-                                dispatch(manageDeletedCategories({ category }));
-                                return;
-                            } // if user has started deleting category then do not allow to select category and send the current catogry to deletedCategories in notes storage slice to add/remove from deletedCategories
+                        {...(!startDeletingCat ? Handlers : {})} //adding long press handler only if delete mode is off
+
+                        onClick={(e) => {
+                            if (isLongPress.current) {
+                                e.preventDefault(); // to prevent on click event when long press is detected
+
+                                if (!startDeletingCat) dispatch(setStartDeletingCat({ start: true })); // if user has not started deleting category then start delete mode on long press
+
+                                if(category !== 'All' && category !== 'Uncategorized') dispatch(manageDeletedCategories({ category }));
+return;
+                            }
+                            
                             dispatch(setActiveCategory({ category }));
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
@@ -68,7 +81,7 @@ const FolderCategory = () => {
                                     {deletedCategories?.includes(category) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
                                 </span>
                                 :
-                                <span className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note=> note.category===category).length}</span>
+                                <span className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note => note.category === category).length}</span>
                         }
 
 

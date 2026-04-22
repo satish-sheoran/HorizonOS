@@ -126,7 +126,7 @@ const WINDOW_CONFIG = {
 
     notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-full md:min-w-[55%]', height: 'h-full sm:h-[90%] md:h-[75%]' }, default: { width: 'w-full md:min-w-[55%]', height: 'h-full sm:h-[90%] md:h-[75%]' } },
 
-    settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
+    settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'w-full', height: 'h-full sm:h-[90%] md:h-[75%]' }, default: { width: 'w-full', height: 'h-full sm:h-[90%] md:h-[75%]' } },
 
     clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
 };

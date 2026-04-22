@@ -76,11 +76,7 @@ const AllNotes = () => {
                         {Notes.map(({ title, id, desc, timeStamp }) => (
                             <button
                                 {...(!isDeleteNoteOpen ? Handlers : {})} //adding long press handler only if delete mode is off
-                                // onMouseDown={() => {
-                                // if (!isDeleteNoteOpen) dispatch(setStartDeletingNotes({ start: true }));
-                                // dispatch(manageDeletedNotes({ noteId: id }));
 
-                                // }}
 
                                 onClick={(e) => {
                                     if (isLongPress.current) {
