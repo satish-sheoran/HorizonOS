@@ -1,6 +1,4 @@
-1. working on note app
 2. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
-3. apps looks different and bad at some devices like : at ipad calculator look too bad fix that 
 
 
 
@@ -10,7 +8,5 @@ What i did for this commit:
 
 
 BUGS : 
-fix : long press working on mobile
 fix : scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
 fix : when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
-- ISSUE : Long press not working on mobile devices
