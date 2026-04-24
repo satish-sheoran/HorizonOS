@@ -1,12 +1,8 @@
-2. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
+1. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
 
 
 
 What i did for this commit:
-
-
-
-
-BUGS : 
+- use currnt device value from store so that if device is mobile , then disable dragging
 fix : scrolling using thumb in overflow (tasks,categories of tasks and manage folder)
-fix : when create folder button is clicked and pop up open then app moved upward because as it opens keyboard, so fix it also .
+fix: prevent long press trigger during horizontal scroll by cancelling on touch move

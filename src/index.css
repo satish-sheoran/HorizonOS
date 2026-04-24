@@ -129,102 +129,14 @@ body {
 }
 
 
-/* Scrollbar of textarea of calculator */
-.calc-result::-webkit-scrollbar {
-    /*👉 Controls thickness of the scrollbar*/
-    width: 6px;
-}
 
-.calc-result::-webkit-scrollbar-track {
-    /*👉 The track is the background rail in which the thumb moves.*/
-    background: transparent;
-}
-
-.calc-result::-webkit-scrollbar-thumb {
-    /* 👉 This is the actual scrollbar handle */
-    background: rgba(255, 255, 255, 0.2);
-    /* light theme adjust */
-    border-radius: 10px;
-}
-
-.calc-result::-webkit-scrollbar-thumb:hover {
-    /* When user hover it becomes more visible */
-    background: rgba(255, 255, 255, 0.4);
-}
-
-
-
-/* NOTES's folder manager category overflow manage */
-@media screen and (max-width: 768px) {
-    .categories {
-        --webkit-overflow-scrolling: touch;
-        padding-top: 5px;
-    }
-
-    .folder-category-list,
-    .AllNotes-container {
-        --webkit-overflow-scrolling: touch;
-        padding-right: 10px;
-
-        /* For smooth scrolling on mobile devices */
-    }
-
-    .folder-category-list::-webkit-scrollbar,
-    .categories::-webkit-scrollbar {
-        /*👉 Controls thickness of the scrollbar*/
-        width: 7px;
-    }
-
-    .folder-category-list::-webkit-scrollbar-track,
-    .categories::-webkit-scrollbar-track {
-        /*👉 The track is the background rail in which the thumb moves.*/
-        background: transparent;
-    }
-
-    .folder-category-list::-webkit-scrollbar-thumb,
-    .categories::-webkit-scrollbar-thumb {
-        /* 👉 This is the actual scrollbar handle */
-        background: var(--sec-dark-clr);
-        /* light theme adjust */
-        border-radius: 10px;
-    }
-
-    .folder-category-list::-webkit-scrollbar-thumb:hover,
-    .categories::-webkit-scrollbar-thumb:hover {
-        /* When user hover it becomes more visible */
-        background: rgba(116, 114, 114, 0.4);
-    }
-
-}
-
-@media screen and (min-width: 769px) {
-
-    .folder-category-list,
-    .categories,
-    .AllNotes-container {
-        scrollbar-width: none;
-        /* For Firefox */
-        --webkit-overflow-scrolling: touch;
-        /* For smooth scrolling on mobile devices */
-    }
-
-    .folder-category-list::-webkit-scrollbar,
-    .categories::-webkit-scrollbar,
-    .AllNotes-container::-webkit-scrollbar {
-        display: none;
-        /* For Chrome, Safari, and Opera */
-    }
-}
-
-
-
-/* new task */
-.task-desc-parent,
+/* TO HIDE SCROLLBARS OF OVERFLOWS AREAS */
+.calc-result,
+.categories,
+.AllNotes-container,
+.folder-category-list,
 .newTask-title,
-.newTask-desc {
-    /* to remove scrollbar from textarea */
+.newTask-desc,
+.task-desc-parent{
     scrollbar-width: none;
-    /* For Firefox */
-    -webkit-scrollbar: none;
-    /* For Chrome, Safari, and Opera */
 }

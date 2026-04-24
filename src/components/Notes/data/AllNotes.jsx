@@ -70,8 +70,8 @@ const AllNotes = () => {
                 Notes.length > 0 ?
                     <Masonry
                         breakpointCols={cols}
-                        className="flex gap-3 w-full h-full "
-                        columnClassName="flex flex-col gap-3"
+                        className="flex gap-2.5 w-full h-full "
+                        columnClassName="flex flex-col gap-2.5"
                     >
                         {Notes.map(({ title, id, desc, timeStamp }) => (
                             <button
@@ -101,17 +101,19 @@ const AllNotes = () => {
                                     }                            
                         `}>
                                 <h3
-                                    className={`select-none line-clamp-1 text-[1.3rem] font-bold ${theme !== 'dark' ?
-                                        'text-(--primary-dark-clr)'
-                                        :
-                                        'text-(--primary-light-clr)'
+                                    className={`break-all
+ select-none line-clamp-1 text-[1.3rem] font-bold ${theme !== 'dark' ?
+                                            'text-(--primary-dark-clr)'
+                                            :
+                                            'text-(--primary-light-clr)'
                                         }`}>
                                     {title ? title : desc}
 
                                 </h3>
 
                                 <p
-                                    className={`select-none text-[0.82rem] line-clamp-5 font-[650]
+                                    className={`break-all
+ select-none text-[0.82rem] line-clamp-5 font-[650]
                             ${theme !== 'dark' ?
                                             'text-(--sec-dark-clr)'
                                             :
@@ -120,31 +122,36 @@ const AllNotes = () => {
                                     {title && desc ? desc : 'No Text'} {/* if title and desc exist, display desc; otherwise, display 'No Text' */}
                                 </p>
 
-                                <span
-                                    className={`select-none text-[0.73rem] font-semibold ${theme !== 'dark' ?
-                                        'text-(--third-dark-clr)'
-                                        : 'text-(--third-light-clr)'
-                                        }`}>
-                                    {formatDateTime(timeStamp)}
-                                </span>
-
-                                {/* absolute button used to delete note */}
-                                {
-                                    isDeleteNoteOpen === true &&
-                                    <span className={`absolute bottom-2 right-2 rounded-full w-5.5 h-5.5 flex items-center justify-center
-
-                                ${deletingNotes?.includes(id) ? 'bg-(--bg-orange)'
-                                            :
-                                            theme !== 'dark' ?
-                                                'bg-(--btn-light-hover)'
-                                                :
-                                                'bg-(--bg-light-border)'
-
-                                        }`}>
-                                        {deletingNotes?.includes(id) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
+                                <div className='flex items-center justify-between gap-1 overflow-hidden'>
+                                    <span
+                                        className={`block whitespace-nowrap text-ellipsis select-none 
+                                            text-[0.68rem] 
+                                            font-semibold 
+                                            ${theme !== 'dark' ?
+                                                'text-(--third-dark-clr)'
+                                                : 'text-(--third-light-clr)'
+                                            }`}>
+                                        {formatDateTime(timeStamp)}
                                     </span>
 
-                                }
+                                    {/* absolute button used to delete note */}
+                                    {
+                                        isDeleteNoteOpen === true &&
+                                        <span className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
+
+                                ${deletingNotes?.includes(id) ? 'bg-(--bg-orange)'
+                                                :
+                                                theme !== 'dark' ?
+                                                    'bg-(--btn-light-hover)'
+                                                    :
+                                                    'bg-(--bg-light-border)'
+
+                                            }`}>
+                                            {deletingNotes?.includes(id) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
+                                        </span>
+
+                                    }
+                                </div>
 
                             </button>
                         ))

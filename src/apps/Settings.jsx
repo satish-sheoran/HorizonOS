@@ -19,7 +19,6 @@ const Settings = () => {
 
 
             <section className="setting-body grow">
-
             </section>
 
         </div>

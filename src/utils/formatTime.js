@@ -19,7 +19,7 @@ export function formatDate(date) {
 export function formatDateTime(timestamp) {
 
     const DateTime = new Date(timestamp).toLocaleString('en-US', {
-        month: 'long',
+        month: 'short',
         day: '2-digit',
         year: 'numeric',
         hour: '2-digit',
