@@ -40,7 +40,7 @@ function UseCalculator(currDevice,result,setResult) {
             return;
         }
 
-        // Enty Cases
+        // Entry Cases
         const { value, cursor } = manageEntries(symbol, result, start, end);
 
         setResult(value);
@@ -52,6 +52,8 @@ function UseCalculator(currDevice,result,setResult) {
         });
         return;
     }
+
+    
 return {inputRef, calcBtnClck}
 }
 

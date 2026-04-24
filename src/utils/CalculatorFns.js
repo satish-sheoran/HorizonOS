@@ -141,7 +141,7 @@ export const manageEntries = (symbol, Field, start, end) => {
                 if (pos === start) res = Field.slice(0, pos) + symbol + Field.slice(pos + 1)
             }
 
-            return { value: res, cursor: start + 1 };
+            return { value: res, cursor: start };
         }
 
         // IF operator is NO where (Neither before nore after the cursor)
