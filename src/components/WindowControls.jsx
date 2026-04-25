@@ -9,7 +9,11 @@ const WindowControls = ({ id }) => {
     const { closeApp, toggleFullscreen } = UsewindowControlFns();
 
     return (
-        <div className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
+        <div
+        onDoubleClick={()=>{
+           toggleFullscreen(id) 
+        }}
+         className={`window-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
 
             <div className="window-controls  text-(--primary-dark-clr)">
 

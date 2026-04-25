@@ -4,7 +4,7 @@ const BASE_DESKTOP_WALLPAPER_URL = '/assets/wallpaper/desktop/';
 
 const DEFAULT_WALLPAPER = {
     'mobile': 'morskie', //this is id of wallpapers
-    'desktop': 'morskie'
+    'desktop': 'gradient-abstract'
 
 }
 const Wallpapers = {

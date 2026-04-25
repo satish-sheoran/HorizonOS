@@ -3,3 +3,6 @@
 
 
 What i did for this commit:
+-- dbl clicking window controls toggle app's fullscreen value
+-- hide the scrollbar of body ,html when we drag the app outside the screen
+-- basic minimal desgin for settings app 

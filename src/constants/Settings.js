@@ -1,6 +1,7 @@
 export const SETTINGS_SECTIONS = [
     {
         title: 'About OS',
+        icon: 'Info',
         options: [
             {
                 Name: 'OS_Name',
@@ -21,24 +22,28 @@ export const SETTINGS_SECTIONS = [
     },
     {
         title: 'Display',
+        icon: 'Monitor',
         options: [
 
         ]
     },
     {
         title: 'Apps',
+                icon: 'LayoutGrid',
         options: [
 
         ]
     },
     {
         title: 'Additional Settings',
+                icon: 'HousePlus',
         options: [
 
         ]
     },
     {
         title: 'Feedback',
+                icon: 'MessageCircleQuestionMark',
         options: [
 
         ]

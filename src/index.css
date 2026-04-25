@@ -137,6 +137,8 @@ body {
 .folder-category-list,
 .newTask-title,
 .newTask-desc,
-.task-desc-parent{
+.task-desc-parent,
+body,
+html{
     scrollbar-width: none;
 }
