@@ -1,8 +1,14 @@
 1. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
-
+2. how to remove web page not secure 
+3. IN AboutUs.jsx :     // TODO : fix proper height chain ( temporary 90% height)
 
 
 What i did for this commit:
--- dbl clicking window controls toggle app's fullscreen value
--- hide the scrollbar of body ,html when we drag the app outside the screen
--- basic minimal desgin for settings app 
+feat(settings) : implement settings structure and About OS UI
+
+- added section-based layout (About, Display, Apps etc.)
+- implemented dynamic content rendering per section
+- added responsive layout for mobile and desktop (to showcase sections and content of sections[apps,about OS])
+-  desgined About OS page (info,ceritification etc.)
+- Additional opening of deeper options of About OS pending
+- BUG : temporary height workaround for overflow issue with content area of settings app

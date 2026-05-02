@@ -1,51 +1,58 @@
+
 export const SETTINGS_SECTIONS = [
     {
         title: 'About OS',
         icon: 'Info',
-        options: [
-            {
-                Name: 'OS_Name',
-                Value: 'Horizon OS',
-                clickable: false
-            },
-            {
-                Name: 'OS_version',
-                Value: '1.0.0',
-                clickable: false
-            },
-            {
-                Name: 'Detailed_info_and_specs',
-                Value: 'Horizon OS is a cutting-edge operating system designed for seamless performance and user-friendly experience. It features a sleek interface, robust security measures, and a wide range of applications to enhance productivity and entertainment. With regular updates and support, Horizon OS ensures that users have access to the latest features and improvements.',
-                clickable: true
-            }
-        ]
+        options: {
+            main: [{
+                option: 'OS name',
+                value: 'Horizon OS'
+            }, {
+                option: 'Storage',
+                value: '20.3 GB/64 GB'
+            }],
+            other: [
+                {
+                    option: 'OS version',
+                    value: '1.0.10.0 HRZNNV'
+                },
+                {
+                    option: 'Developer',
+                    value: 'Satish Sheoran'
+                },
+                {
+                    option: 'About HorizonOS',
+                    value: ''
+                },
+                {
+                    option: 'Factory reset',
+                    value: ''
+                },
+                {
+                    option: 'Certification',
+                    value: ''
+                }
+            ]
+        }
     },
     {
         title: 'Display',
         icon: 'Monitor',
-        options: [
 
-        ]
     },
     {
         title: 'Apps',
-                icon: 'LayoutGrid',
-        options: [
+        icon: 'LayoutGrid',
 
-        ]
     },
     {
         title: 'Additional Settings',
-                icon: 'HousePlus',
-        options: [
+        icon: 'HousePlus',
 
-        ]
     },
     {
         title: 'Feedback',
-                icon: 'MessageCircleQuestionMark',
-        options: [
+        icon: 'MessageCircleQuestionMark',
 
-        ]
     }
 ]

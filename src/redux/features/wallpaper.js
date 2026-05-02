@@ -19,9 +19,12 @@ const wallpaperSlice = createSlice({
         setWallpaper(state, action) {
             state.src = action.payload.src;
             state.theme = action.payload.theme;
+        },
+        changeTheme(state,action){
+            state.theme = state.theme === 'dark'?'light':'dark';
         }
     }
 })
 
-export const { setWallpaper } = wallpaperSlice.actions;
+export const { setWallpaper,changeTheme } = wallpaperSlice.actions;
 export default wallpaperSlice.reducer;

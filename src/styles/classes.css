@@ -27,7 +27,7 @@
 }
 
 .mobile-header {
-    @apply flex items-center justify-between rounded-t-lg border-b select-none text-sm text-(--color-dark-gray);
+    @apply flex items-center justify-between  border-b select-none text-sm text-(--color-dark-gray);
 }
 
 
