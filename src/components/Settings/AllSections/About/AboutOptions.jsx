@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react"
-import { SETTINGS_SECTIONS } from "../../../../../constants/Settings"
+import { SETTINGS_SECTIONS } from "../../../../constants/Settings"
 import { toast } from "react-toastify";
 
 const AboutOptions = ({ theme }) => {
@@ -8,7 +8,7 @@ const AboutOptions = ({ theme }) => {
     const otherOptions = SETTINGS_SECTIONS.find(sec => sec.title === 'About OS').options.other
 
     return (
-        <section className='shrink-0 w-full gap-4 flex flex-col '>
+        <section className='py-2 flex-1 w-full gap-4 flex flex-col '>
 
             {/* NAME,VERSION */}
             <div className={`w-full px-[2.5%]`}>

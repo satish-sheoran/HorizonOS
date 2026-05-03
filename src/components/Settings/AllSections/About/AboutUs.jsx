@@ -1,6 +1,6 @@
 import React from 'react'
 import { OS_NAME } from '../../../../constants'
-import AboutOptions from './AboutUS/AboutOptions'
+import AboutOptions from './AboutOptions'
 
 const AboutUs = ({ theme }) => {
 
