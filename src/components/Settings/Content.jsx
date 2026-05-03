@@ -8,14 +8,17 @@ const Content = ({ currDevice, activeSection, setShowContent }) => {
     const theme = useSelector((store) => store.wallpaper.theme)
 
     return (
-        <section className={`overflow-hidden grow flex flex-col ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
+        <section className={`h-full ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
 
             {/* toolbar for back and save options */}
             {currDevice !== 'Desktop' && <Toolbar setShowContent={setShowContent} theme={theme} />}
 
+            <div className='about-us-overflow-area overflow-y-auto w-full h-full flex flex-col gap-5'>
 
-            {/* <AboutUs /> */}
-            {activeSection === 'About OS' && <AboutUs theme={theme} />}
+                {/* <AboutUs /> */}
+                {activeSection === 'About OS' && <AboutUs theme={theme} />}
+                
+            </div>
 
         </section>
     )

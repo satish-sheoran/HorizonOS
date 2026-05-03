@@ -21,25 +21,27 @@ const Settings = () => {
                 : <MobileCntrls id='settings' />
             }
 
-            <section className={`setting-body grow flex ${theme !== 'dark' ? 'bg-(--primary-light-clr) ' : 'bg-(--bg-dark-app-body)'}`}>
+            <main className={`setting-body w-full relative flex-1  ${theme !== 'dark' ? 'bg-(--primary-light-clr) ' : 'bg-(--bg-dark-app-body)'}`}>
 
-                {/* FOR DESKTOPS */}
-                {currDevice === 'Desktop' && (
-                    <>
-                        <Sections currDevice={currDevice} theme={theme} activeSection={activeSection} setShowContent={setshowContent} />
-                        <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} />
-                    </>
-                )}
 
-                {/* FOR MOBILES */}
-                {currDevice !== 'Desktop' && (
-                    !showContent ?
-                        <Sections currDevice={currDevice} theme={theme} activeSection={activeSection} setShowContent={setshowContent} />
-                        :
-                        <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} />
-                )}
+                <section className="absolute inset-0 overflow-hidden flex">
 
-            </section>
+                    {/* FOR DESKTOPS */}
+                    {currDevice === 'Desktop' && (
+                        <>
+                            <Sections currDevice={currDevice} theme={theme} activeSection={activeSection} setShowContent={setshowContent} />
+                            <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} />
+                        </>
+                    )}
+                    {/* FOR MOBILES */}
+                    {currDevice !== 'Desktop' && (
+                        !showContent ?
+                            <Sections currDevice={currDevice} theme={theme} activeSection={activeSection} setShowContent={setshowContent} />
+                            :
+                            <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} />
+                    )}
+                </section>
+            </main>
 
         </div>
     )

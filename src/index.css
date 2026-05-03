@@ -138,9 +138,9 @@ body {
 .newTask-title,
 .newTask-desc,
 .task-desc-parent,
+.about-us-overflow-area,
 body,
-html,
-.about-us-overflow-area
-{
+html{
     scrollbar-width: none;
 }
+ 

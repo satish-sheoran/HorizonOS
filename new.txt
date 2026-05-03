@@ -4,11 +4,6 @@
 
 
 What i did for this commit:
-feat(settings) : implement settings structure and About OS UI
+fix(BUG) : temporary height workaround for overflow issue with content area of settings app
 
-- added section-based layout (About, Display, Apps etc.)
-- implemented dynamic content rendering per section
-- added responsive layout for mobile and desktop (to showcase sections and content of sections[apps,about OS])
--  desgined About OS page (info,ceritification etc.)
 - Additional opening of deeper options of About OS pending
-- BUG : temporary height workaround for overflow issue with content area of settings app
