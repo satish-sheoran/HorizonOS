@@ -213,3 +213,10 @@ export const CALC_BTNS = [
         id: 'equals To'
     }
 ]
+
+export const THEMES = [
+    {
+        Theme: 'light'
+    }, {
+        Theme: 'dark'
+    }]

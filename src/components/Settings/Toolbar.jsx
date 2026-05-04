@@ -7,7 +7,7 @@ const Toolbar = ({ setShowContent, theme }) => {
         <section className={`w-full px-[2.5%] py-(--padding-sm) flex items-center justify-between  ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
 
             <span className={`active:scale-97 ${theme !== 'dark'?'text-(--primary-dark-clr)':'text-(--primary-light-clr)'}`} onClick={() => setShowContent(false)}>
-                <ArrowLeft strokeWidth={2} className={`w-full h-full`} />
+                <ArrowLeft size={27} strokeWidth={2} className={`w-full h-full`} />
             </span>
 
         </section>

@@ -1,17 +1,15 @@
 import Dock from '../components/Dock'
 import StatusBar from '../components/StatusBar'
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import CalculatorWindow from '../apps/Calculator'
 import SettingsWindow from '../apps/Settings'
 import ClockWindow from '../apps/Clock'
 import NotesWindow from '../apps/Notes'
-import { changeTheme } from '../redux/features/wallpaper'
 
 const OSLayout = () => {
     // getting wallapaper src from one of store's Slice
     const src = useSelector((store) => store.wallpaper.src)
-    const dispatch = useDispatch();
 
     return (
         <main id='os-layout' className='bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${src})` }}>
@@ -25,6 +23,7 @@ const OSLayout = () => {
                 <ClockWindow />
                 <NotesWindow />
             </div>
+
         </main>
     )
 }

@@ -33,12 +33,20 @@ export const SETTINGS_SECTIONS = [
                     value: ''
                 }
             ]
-        }
+        },
+
     },
     {
         title: 'Display',
         icon: 'Monitor',
-
+        extraQuery: [
+            {
+                query: 'Change wallpaper'
+            },
+            {
+                query: 'About Developer and Horizon OS'
+            }
+        ]
     },
     {
         title: 'Apps',

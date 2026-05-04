@@ -4,6 +4,7 @@
 
 
 What i did for this commit:
-fix(BUG) : temporary height workaround for overflow issue with content area of settings app
+feat : Designed Dispaly  page (change theme etc.)
 
-- Additional opening of deeper options of About OS pending
+
+Working on display area 

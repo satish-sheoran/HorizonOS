@@ -31,13 +31,12 @@ const AboutOptions = ({ theme }) => {
             <div className='w-full'>
                 {
                     otherOptions?.map(({ option, value }) => {
-                        return <>
+                        return <div key={option}>
                             {/* HR tag */}
                             {option === 'Certification' && <div className={`my-4 md:my-3 px-5 md:px-4 `}>
                                 <hr className={`w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
                             </div>}
-
-                            <div
+                            <div 
                                 onClick={() => {
                                     if (value !== '') return;
                                     toast.info('Coming Soon !')
@@ -51,7 +50,7 @@ const AboutOptions = ({ theme }) => {
                                     </span>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     })
                 }
 

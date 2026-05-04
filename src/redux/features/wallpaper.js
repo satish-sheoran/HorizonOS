@@ -21,7 +21,7 @@ const wallpaperSlice = createSlice({
             state.theme = action.payload.theme;
         },
         changeTheme(state,action){
-            state.theme = state.theme === 'dark'?'light':'dark';
+            state.theme = action.payload.theme === 'dark'?'dark':'light';
         }
     }
 })
