@@ -4,9 +4,9 @@ import React from 'react'
 const Toolbar = ({ setShowContent, theme }) => {
 
     return (
-        <section className={`w-full px-[2.5%] py-(--padding-sm) flex items-center justify-between  ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+        <section className={`duration-500 ease-out w-full px-[2.5%] py-(--padding-sm) flex items-center justify-between  ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
 
-            <span className={`active:scale-97 ${theme !== 'dark'?'text-(--primary-dark-clr)':'text-(--primary-light-clr)'}`} onClick={() => setShowContent(false)}>
+            <span className={`duration-500 ease-out active:scale-97 ${theme !== 'dark'?'text-(--primary-dark-clr)':'text-(--primary-light-clr)'}`} onClick={() => setShowContent(false)}>
                 <ArrowLeft size={27} strokeWidth={2} className={`w-full h-full`} />
             </span>
 

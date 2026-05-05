@@ -21,7 +21,7 @@ const Settings = () => {
                 : <MobileCntrls id='settings' />
             }
 
-            <main className={`setting-body w-full relative flex-1  ${theme !== 'dark' ? 'bg-(--primary-light-clr) ' : 'bg-(--bg-dark-app-body)'}`}>
+            <main className={`setting-body w-full relative flex-1 duration-500 ease-out  ${theme !== 'dark' ? 'bg-(--primary-light-clr) ' : 'bg-(--bg-dark-app-body)'}`}>
 
 
                 <section className="absolute inset-0 overflow-hidden flex">

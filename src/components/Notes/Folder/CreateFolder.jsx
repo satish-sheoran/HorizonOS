@@ -24,7 +24,7 @@ const CreateFolder = () => {
         <>
             <button
                 onClick={() => setOpencreateFolderPopUp(true)}
-                className={`create-folder
+                className={`duration-500 ease-out create-folder
                 ${theme !== 'dark' ?
                         'bg-(--bg-light-window-header) text-(--primary-dark-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr)'
                         : 'bg-(--primary-dark-clr) text-(--primary-light-clr) hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr)'

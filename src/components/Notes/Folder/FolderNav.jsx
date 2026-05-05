@@ -30,7 +30,7 @@ const FolderNav = () => {
 
 
     return (
-        <div className={`folder-nav ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+        <div className={`duration-500 ease-out folder-nav ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
 
             {/* if start editing then show cancel button to exit editing mode else just show button to go back to tasks area */}
             {

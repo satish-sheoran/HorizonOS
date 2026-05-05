@@ -40,7 +40,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn }) 
                 className='overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'></div>
 
 
-            <div ref={DeletPopElem} className={`${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'}  h-fit absolute rounded-2xl py-3.5  px-2.5 gap-3 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
+            <div ref={DeletPopElem} className={`duration-500 ease-out ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'}  h-fit absolute rounded-2xl py-3.5  px-2.5 gap-3 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
             ${theme !== 'dark' ?
                     "bg-(--bg-light-window-header)"
                     :
@@ -49,13 +49,13 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn }) 
 
                 <span className='text-lg'>Delete folder</span>
 
-                <span className={`text-sm ${theme !== 'dark' ? 'text-(--sec-light-clr)' : 'text-(--sec-light-clr)'}`}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : deletedCategories.length} items ?</span>
+                <span className={`duration-500 ease-out text-sm ${theme !== 'dark' ? 'text-(--sec-light-clr)' : 'text-(--sec-light-clr)'}`}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : deletedCategories.length} items ?</span>
 
                 <div className={`w-full flex items-center gap-2`}>
 
                     <button
                         onClick={() => setOpenDeletePopUp(false)}
-                        className={`w-[calc(50%-2px)] py-3.5 md:py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
+                        className={`duration-500 ease-out w-[calc(50%-2px)] py-3.5 md:py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
 
                     <button
                         onClick={() => {

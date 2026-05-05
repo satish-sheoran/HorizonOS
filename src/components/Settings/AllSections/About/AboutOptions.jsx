@@ -13,10 +13,10 @@ const AboutOptions = ({ theme }) => {
             {/* NAME,VERSION */}
             <div className={`w-full px-[2.5%]`}>
                 {mainOptions?.map(({ option, value }, idx) => {
-                    return <div key={option} className={`${idx === 0 ? 'rounded-t-xl pt-6 pb-3 md:pt-4 md:pb-2' : 'rounded-b-xl pt-3 pb-6 md:pt-2 md:pb-4'} px-6 md:px-4 flex items-center justify-between
+                    return <div key={option} className={`duration-500 ease-out ${idx === 0 ? 'rounded-t-xl pt-6 pb-3 md:pt-4 md:pb-2' : 'rounded-b-xl pt-3 pb-6 md:pt-2 md:pb-4'} px-6 md:px-4 flex items-center justify-between
              ${theme !== 'dark' ? 'bg-(--bg-light-window-header) hover:bg-(--bg-light-app-body) active:bg-(--bg-light-app-body)' : 'bg-(--primary-dark-clr) hover:bg-(--third-light-clr) active:bg-(--third-light-clr)'}`}>
 
-                        <span className={`select-none cursor-default font-bold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{option}</span>
+                        <span className={`duration-500 ease-out select-none cursor-default font-bold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{option}</span>
                         <span className='select-none cursor-pointer text-(--sec-light-clr) font-semibold'>{value}</span>
 
                     </div>
@@ -34,7 +34,7 @@ const AboutOptions = ({ theme }) => {
                         return <div key={option}>
                             {/* HR tag */}
                             {option === 'Certification' && <div className={`my-4 md:my-3 px-5 md:px-4 `}>
-                                <hr className={`w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
+                                <hr className={`duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
                             </div>}
                             <div 
                                 onClick={() => {
@@ -42,7 +42,7 @@ const AboutOptions = ({ theme }) => {
                                     toast.info('Coming Soon !')
                                 }
                                 }
-                                className={`select-none  px-5 py-4 md:px-4 md:py-3 font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr) hover:bg-(--bg-light-app-body) active:bg-(--bg-light-app-body)' : 'text-(--primary-light-clr) hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr)'}`}>
+                                className={`duration-500 ease-out select-none  px-5 py-4 md:px-4 md:py-3 font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr) hover:bg-(--bg-light-app-body) active:bg-(--bg-light-app-body)' : 'text-(--primary-light-clr) hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr)'}`}>
                                 <div className='active:scale-98 flex items-center justify-between'>
                                     <span>{option}</span>
                                     <span className={`${value === '' ? '' : 'text-(--sec-light-clr)'}`}>

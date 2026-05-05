@@ -11,15 +11,15 @@ const MobileCntrls = ({ id }) => {
     const { closeApp } = UsewindowControlFns();
 
     return (
-        <div className={`mobile-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
+        <div className={`duration-500 ease-out mobile-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
 
-            <p className={`px-4 py-1.5  text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none transition-all duration-150 ease-in-out`}>{id === 'notes' ? activeTab : id}</p>
+            <p className={`px-4 py-1.5  text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none transition-all           duration-500 ease-out`}>{id === 'notes' ? activeTab : id}</p>
             <div className="mobile-controls  text-(--primary-dark-clr)" >
 
                 <button
                     onClick={() => closeApp(id)}
                     className='mobile-control-btns flex-col-center'>
-                    <X strokeWidth={3} size={24} className={`${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`} />
+                    <X strokeWidth={3} size={24} className={`duration-500 ease-out ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`} />
                 </button>
 
             </div>

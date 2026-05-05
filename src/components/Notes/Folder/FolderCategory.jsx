@@ -48,7 +48,7 @@ return;
                             dispatch(setActiveCategory({ category }));
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
-                        className={`
+                        className={`duration-500 ease-out 
                             ${theme !== 'dark' ? `
                                 bg-(--bg-light-window-header) text-(--primary-dark-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr) 
                                 ${activeCategory === category ?
@@ -60,7 +60,7 @@ return;
                                 }`
                             }
                             `}>
-                        <Check strokeWidth={2.5} className={`select-none ${activeCategory === category ? 'text-(--bg-minimize)' : 'text-transparent'}`} /> {/* on hidden,it do not reserve space so used text-transparent */}
+                        <Check strokeWidth={2.5} className={`duration-500 ease-out select-none ${activeCategory === category ? 'text-(--bg-minimize)' : 'text-transparent'}`} /> {/* on hidden,it do not reserve space so used text-transparent */}
 
                         <span className="select-none">{category.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
 
@@ -68,7 +68,7 @@ return;
                         {/* count and selection area to delete cateogries */}
                         {
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
-                                <span className={`rounded-full w-5.5 h-5.5 flex items-center justify-center
+                                <span className={`duration-500 ease-out rounded-full w-5.5 h-5.5 flex items-center justify-center
 
                                 ${deletedCategories?.includes(category) ? 'bg-(--bg-orange)'
                                         :

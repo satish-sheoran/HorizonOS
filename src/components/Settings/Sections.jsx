@@ -9,11 +9,11 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
     const dispatch = useDispatch()
 
     return (
-        <section className={`overflow-y-auto ${currDevice === 'Desktop' ? 'w-1/4 border-r' : 'w-full'} h-full  flex flex-col items-center ${theme !=='dark'?'border-(--sec-light-clr)':'border-(--sec-dark-clr)'}`}>
+        <section className={`duration-500 ease-out overflow-y-auto ${currDevice === 'Desktop' ? 'w-1/4 border-r' : 'w-full'} h-full  flex flex-col items-center ${theme !=='dark'?'border-(--sec-light-clr)':'border-(--sec-dark-clr)'}`}>
 
             {SETTINGS_SECTIONS?.map(({ title, icon }, idx) => {
                 const Icon = Icons[icon]
-                return <div className={`relative cursor-default select-none py-3 w-full text-lg font-bold 
+                return <div className={`duration-500 ease-out relative cursor-default select-none py-3 w-full text-lg font-bold 
                             ${theme !== 'dark' ?
                         'bg-(--primary-light-clr) hover:bg-(--bg-light-app-body) active:bg-(--bg-light-app-body) text-(--primary-dark-clr)'
                         :
@@ -29,7 +29,7 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
                     <div className="relative w-full px-[3.5%] md:px-[4.5%] active:scale-97"> {/*JUST wrapper used to add scale during active so user feels the click*/}
 
                         {currDevice === 'Desktop' && activeSection === title &&
-                            <div className={`absolute ${theme !=='dark'?'bg-(--color-dark-gray)':'bg-(--primary-light-clr)'} left-0 w-1 h-full`}>
+                            <div className={`duration-500 ease-out absolute ${theme !=='dark'?'bg-(--color-dark-gray)':'bg-(--primary-light-clr)'} left-0 w-1 h-full`}>
                             </div>}
 
                         <div className="flex w-full items-center justify-between">

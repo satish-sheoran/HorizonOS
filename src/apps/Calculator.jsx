@@ -23,7 +23,7 @@ const Calculator = () => {
 
 
     return (
-        <div className={`w-full h-full flex flex-col ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+        <div className={`w-full h-full flex flex-col duration-500 ease-out ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
             {/* header */}
             {currDevice === 'Desktop' ?
                 <WindowControls id='calculator' />
@@ -31,7 +31,7 @@ const Calculator = () => {
 
 
             {/* body  */}
-            <div className={`calc-body 
+            <div className={`calc-body duration-500 ease-out 
                 ${theme != 'dark' ?
                     'bg-(--bg-light-app-body)'
                     : 'bg-(--bg-dark-app-body)'}`}>

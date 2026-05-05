@@ -9,13 +9,13 @@ const ExtraQuery = ({ theme, Device, fullScreen, Section }) => {
 
             <div className={`${!fullScreen ? 'w-full' : 'w-fit'} h-fit flex flex-col gap-4`}>
 
-                <div className={`flex flex-col gap-2 rounded-xl 
+                <div className={`duration-500 ease-out flex flex-col gap-2 rounded-xl 
                     ${!fullScreen ?
                         `py-4 px-5 ${theme !== 'dark' ? 'bg-(--bg-light-window-header)' : 'bg-(--primary-dark-clr)'}`
                         : ''}
                     `}>
 
-                    <p className={`w-fit ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} font-bold select-none`}>Need other settings?</p>
+                    <p className={`duration-500 ease-out w-fit ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} font-bold select-none`}>Need other settings?</p>
 
                     <div className={`w-fit flex flex-col gap-1 text-(--text-currCat) text-sm select-none`}>
 

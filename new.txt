@@ -4,6 +4,10 @@
 
 
 What i did for this commit:
-feat: structure remaining settings sections with overflow handling and shared query box
+feat : implement automatic theme functionality
 
-Working on display area 
+- created a hook which automatically set theme based on time (sunrise,sunset)
+- Created a button in Display to toggle automatic theme
+- created reducer to set toggle automatic theme value
+- added easing and duration to all tags for smooth animation between switching theme
+

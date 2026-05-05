@@ -4,7 +4,7 @@ const BASE_DESKTOP_WALLPAPER_URL = '/assets/wallpaper/desktop/';
 export const OS_NAME = 'Horizon OS';
 
 const DEFAULT_WALLPAPER = {
-    'mobile': 'gradient-abstract', //this is id of wallpapers
+    'mobile': 'morskie', //this is id of wallpapers
     'desktop': 'morskie'
 
 }

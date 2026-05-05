@@ -6,7 +6,7 @@ const Navbar = () => {
     const theme = useSelector((store) => store.wallpaper.theme)
 
     return (
-        <nav className={`${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} `}>
+        <nav className={`duration-500 ease-out ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} `}>
             <SettingNFolder />
         </nav>
     )

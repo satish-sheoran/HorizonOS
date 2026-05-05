@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { Draggable } from "gsap/Draggable";
 import { Slide, ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
+import { useAutoTheme } from "./utils/AutoSetTheme";
 
 
 gsap.registerPlugin(Draggable, useGSAP)
@@ -35,6 +36,10 @@ const App = () => {
         pauseOnHover={false}
         theme={theme}
         transition={Slide} />
+
+
+        {/* Auto set theme fn */}
+        {useAutoTheme()}
     </>
   )
 }

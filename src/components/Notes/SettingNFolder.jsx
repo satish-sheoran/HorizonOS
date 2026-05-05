@@ -12,7 +12,7 @@ const SettingNFolder = () => {
 
 
     return (
-        <div className={`setting-n-folders ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+        <div className={`duration-500 ease-out setting-n-folders ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
             {activeTab === 'Notes' ? <button onClick={() => {
                 dispatch(setOpenManageFolder({ open: true }));

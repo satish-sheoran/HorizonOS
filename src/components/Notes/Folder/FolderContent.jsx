@@ -49,7 +49,7 @@ const FolderContent = () => {
 
 
     return (
-        <div className={` folder-content ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+        <div className={`duration-500 ease-out folder-content ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
             {/* categories */}
             <FolderCategory />

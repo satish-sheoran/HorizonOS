@@ -35,7 +35,7 @@ const Footer = () => {
     }, [isDeleteNoteOpen])
 
     return (
-        <footer className={`${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+        <footer className={`duration-500 ease-out ${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
             <div className='pb-1'>
                 {
                     isDeleteNoteOpen === false ?
@@ -45,7 +45,7 @@ const Footer = () => {
                                     dispatch(setActiveTab({ tab: 'Notes' }))
                                 }}
                             >
-                                <TextAlignStart size={22} strokeWidth={2} className={`
+                                <TextAlignStart size={22} strokeWidth={2} className={`duration-500 ease-out 
                            ${theme !== 'dark'
                                         ? activeTab === 'Notes'
                                             ? 'bg-(--sec-dark-clr)'
@@ -54,10 +54,10 @@ const Footer = () => {
                                             ? 'bg-(--sec-light-clr)'
                                             : 'bg-(--sec-light-clr-low)'
                                     } 
-                        rounded px-[1.2px] transition-all duration-150 ease-in-out 
+                        rounded px-[1.2px] 
                         ${theme != 'dark' ? 'stroke-(--bg-light-app-body)' : 'stroke-(--bg-dark-app-body)'}`} />
 
-                                <span className={`transition-all duration-150 ease-in-out
+                                <span className={`duration-500 ease-out
                     ${theme !== 'dark' ?
                                         activeTab === 'Notes'
                                             ? 'text-(--sec-dark-clr)'
@@ -83,8 +83,8 @@ const Footer = () => {
                                             ? 'bg-(--sec-light-clr)'
                                             : 'bg-(--sec-light-clr-low)'
                                     }
-                        rounded transition-all duration-150 ease-in-out ${theme != 'dark' ? 'stroke-(--bg-light-app-body)' : 'stroke-(--bg-dark-app-body)'}`} />
-                                <span className={`transition-all duration-150 ease-in-out 
+                        rounded duration-500 ease-out ${theme != 'dark' ? 'stroke-(--bg-light-app-body)' : 'stroke-(--bg-dark-app-body)'}`} />
+                                <span className={`duration-500 ease-out 
                        ${theme !== 'dark' ?
                                         activeTab === 'Tasks'
                                             ? 'text-(--sec-dark-clr)'
@@ -104,14 +104,14 @@ const Footer = () => {
 
                             >
                                 <X size={22} strokeWidth={2} className={`
-                        rounded px-[1.2px] transition-all duration-150 ease-in-out 
+                        rounded px-[1.2px] duration-500 ease-out  
                         ${theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span className={`transition-all duration-150 ease-in-out
+                                <span className={`duration-500 ease-out 
                     ${theme !== 'dark' ?
                                         'text-(--primary-dark-clr)'
                                         : 'text-(--primary-light-clr)'
@@ -127,14 +127,14 @@ const Footer = () => {
                             >
                                 <PinOff size={22} strokeWidth={2} className={`
                                     
-                        rounded px-[1.2px] transition-all duration-150 ease-in-out 
+                        rounded px-[1.2px] transition-all duration-500 ease-out 
 ${theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span className={`transition-all duration-150 ease-in-out
+                                <span className={`transition-all duration-500 ease-out
                                      ${theme !== 'dark' ?
                                         'text-(--primary-dark-clr)'
                                         : 'text-(--primary-light-clr)'
@@ -150,14 +150,14 @@ ${theme != 'dark' ?
                             >
                                 <FolderInput size={22} strokeWidth={2} className={`
                                      
-                        rounded px-[1.2px] transition-all duration-150 ease-in-out 
+                        rounded px-[1.2px] transition-all duration-500 ease-out 
 ${theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span className={`transition-all duration-150 ease-in-out
+                                <span className={`transition-all duration-500 ease-out 
  ${theme !== 'dark' ?
                                         'text-(--primary-dark-clr)'
                                         : 'text-(--primary-light-clr)'
@@ -178,13 +178,13 @@ ${theme != 'dark' ?
                                 }}
                             >
                                 <Trash size={22} strokeWidth={2} className={`
-                        rounded px-[1.2px] transition-all duration-150 ease-in-out 
+                        rounded px-[1.2px] transition-all duration-500 ease-out  
 ${theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}                        `} />
 
-                                <span className={`transition-all duration-150 ease-in-out
+                                <span className={`transition-all duration-500 ease-out 
                                     ${theme !== 'dark' ?
                                         'text-(--primary-dark-clr)'
                                         : 'text-(--primary-light-clr)'

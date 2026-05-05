@@ -63,7 +63,7 @@ const AllNotes = () => {
 
 
     return (
-        <div className={` flex-1  AllNotes-container  overflow-y-auto  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}  
+        <div className={` flex-1  AllNotes-container duration-500 ease-out  overflow-y-auto  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}  
         `}
         >
             {
@@ -93,7 +93,7 @@ const AllNotes = () => {
                                 // on click works as want but not opening edit mode on mobile only
 
                                 key={id}
-                                className={`relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 
+                                className={`duration-500 ease-out relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 
                     ${theme !== 'dark'
                                         ? 'bg-(--bg-light-window-header)'
                                         :
@@ -101,7 +101,7 @@ const AllNotes = () => {
                                     }                            
                         `}>
                                 <h3
-                                    className={`break-all
+                                    className={`duration-500 ease-out break-all
  select-none line-clamp-1 text-[1.3rem] font-bold ${theme !== 'dark' ?
                                             'text-(--primary-dark-clr)'
                                             :
@@ -112,7 +112,7 @@ const AllNotes = () => {
                                 </h3>
 
                                 <p
-                                    className={`break-all
+                                    className={`duration-500 ease-out break-all
  select-none text-[0.82rem] line-clamp-5 font-[650]
                             ${theme !== 'dark' ?
                                             'text-(--sec-dark-clr)'
@@ -124,7 +124,7 @@ const AllNotes = () => {
 
                                 <div className='flex items-center justify-between gap-1 overflow-hidden'>
                                     <span
-                                        className={`block whitespace-nowrap text-ellipsis select-none 
+                                        className={`duration-500 ease-out block whitespace-nowrap text-ellipsis select-none 
                                             text-[0.68rem] 
                                             font-semibold 
                                             ${theme !== 'dark' ?
@@ -137,7 +137,7 @@ const AllNotes = () => {
                                     {/* absolute button used to delete note */}
                                     {
                                         isDeleteNoteOpen === true &&
-                                        <span className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
+                                        <span className={`duration-500 ease-out rounded-full w-4.5 h-4.5 flex items-center justify-center
 
                                 ${deletingNotes?.includes(id) ? 'bg-(--bg-orange)'
                                                 :

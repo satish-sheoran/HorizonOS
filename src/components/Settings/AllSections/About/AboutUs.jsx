@@ -9,7 +9,7 @@ const AboutUs = ({ theme }) => {
       
       <div className='shrink-0 w-full h-[40%] px-[2.5%] flex flex-col items-center justify-center gap-2'>
 
-        <span className={`select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
+        <span className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
         </span>
 
         <span className='select-none cursor-default text-(--sec-light-clr)'> 1.0.10.0 HRZNNV</span>

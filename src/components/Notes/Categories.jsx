@@ -14,7 +14,7 @@ const Categories = () => {
                 categories.map((category) => {
                     return <button key={category}
                         onClick={() => dispatch(setActiveCategory({ category }))}
-                        className={`shrink-0 h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg transition-all duration-150 ease-in-out active:scale-95
+                        className={`shrink-0 h-fit text-md md:text-lg  px-3.5 py-1 rounded-lg duration-500 ease-out active:scale-95
                             ${theme !== 'dark' ?
                                 activeCategory === category
                                     ? 'bg-(--bg-light-window-header) text-(--primary-dark-clr) font-semibold'
@@ -24,7 +24,7 @@ const Categories = () => {
                                     : 'text-(--sec-dark-clr)'
                             }
                             `}>
-                        {category.length>=17?category.slice(0,17)+'...':category}
+                        {category.length >= 17 ? category.slice(0, 17) + '...' : category}
                     </button>
                 })
             }
