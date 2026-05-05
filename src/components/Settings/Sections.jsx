@@ -45,7 +45,8 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
 
                 </div>
             })}
-        </section>)
+        </section>
+        )
 }
 
 export default Sections

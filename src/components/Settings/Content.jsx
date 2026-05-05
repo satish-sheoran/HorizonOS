@@ -1,8 +1,12 @@
 import React from 'react'
 import Toolbar from './Toolbar'
 import { useSelector } from 'react-redux'
+
 import AboutUs from './AllSections/About/AboutUs'
 import Display from './AllSections/Display/Display'
+import Apps from './AllSections/Apps/Apps'
+import Additional from './AllSections/Additional/Additional'
+import Feedback from './AllSections/Feedback/Feedback'
 
 const Content = ({ currDevice, activeSection, setShowContent }) => {
 
@@ -25,6 +29,10 @@ const Content = ({ currDevice, activeSection, setShowContent }) => {
                 </div>
             </div>
             }
+
+            {activeSection === 'Apps' && <Apps theme={theme} />}
+            {activeSection === 'Additional Settings' && <Additional theme={theme} />}
+            {activeSection === 'Feedback' && <Feedback theme={theme} />}
 
         </section>
     )

@@ -51,16 +51,39 @@ export const SETTINGS_SECTIONS = [
     {
         title: 'Apps',
         icon: 'LayoutGrid',
-
+        extraQuery: [
+            {
+                query: 'Change wallpaper'
+            },
+            {
+                query: 'About Developer and Horizon OS'
+            }
+        ]
     },
     {
         title: 'Additional Settings',
         icon: 'HousePlus',
+        extraQuery: [
+            {
+                query: 'Change wallpaper'
+            },
+            {
+                query: 'About Developer and Horizon OS'
+            }
+        ]
 
     },
     {
         title: 'Feedback',
         icon: 'MessageCircleQuestionMark',
+        extraQuery: [
+            {
+                query: 'Change wallpaper'
+            },
+            {
+                query: 'About Developer and Horizon OS'
+            }
+        ]
 
     }
 ]

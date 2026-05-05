@@ -4,7 +4,6 @@
 
 
 What i did for this commit:
-feat : Designed Dispaly  page (change theme etc.)
-
+feat: structure remaining settings sections with overflow handling and shared query box
 
 Working on display area 

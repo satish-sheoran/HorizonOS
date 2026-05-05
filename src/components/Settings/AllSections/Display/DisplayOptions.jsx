@@ -1,36 +1,36 @@
 import React from 'react'
-import { THEMES } from '../../../../constants'
-import { Store } from 'lucide-react'
-import { useDispatch } from 'react-redux'
-import { changeTheme } from '../../../../redux/features/wallpaper'
+import { ChevronRight, Store } from 'lucide-react'
+import ThemeSelection from './ThemeSelection'
+import { toast } from 'react-toastify'
 
 const DisplayOptions = ({ Device, theme, fullScreen }) => {
 
-const dispatch = useDispatch()
 
     return (
-        <section className={`about-us-overflow-area flex flex-col ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto'}`}>
+        <section className={`about-us-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto'}`}>
 
             {/* THEME SELECtION */}
-            <div className={`setting-theme-div grid grid-cols-2 mb-4 gap-0 justify-between ${Device !== 'Desktop' ? 'w-full' : !fullScreen?'max-w-[calc(400px)]':'max-w-125'}`}>
+            <ThemeSelection theme={theme} fullScreen={fullScreen} Device={Device} />
 
-                {THEMES.map(({ Theme }, idx) => {
 
-                    return <div
-                    onClick={()=>dispatch(changeTheme({theme : Theme}))}
-                    key={idx} className={`${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} flex flex-col p-2 gap-1.5 md:py-3 md:pl-3 aspect-square  ${fullScreen ? 'md:max-w-62.5 max-h-62.5' : 'md:max-w-50 md:max-h-50'}`}>
-
-                        <img src={`/public/assets/theme-imgs/${Theme}-theme.webp`} className={`select-none w-full h-full object-cover object-center rounded-xl ${theme === Theme ? 'outline-(--text-currCat) outline-3' : ''}`} alt={`${Theme} theme`} />
-
-                        <span className={`mx-auto font-bold first-letter:uppercase select-none`}>{Theme} mode</span>
-
-                    </div>
-                })}
-
+            {/* More Dark options to manage specifically add dark to spefic apps parmanently */}
+            <div
+                onClick={() => {
+                    toast.info('Coming Soon !')
+                }
+                }
+                className={`select-none  px-5 py-4 md:px-4 md:py-3 font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr) hover:bg-(--bg-light-app-body) active:bg-(--bg-light-app-body)' : 'text-(--primary-light-clr) hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr)'}`}>
+                <div className='active:scale-98 flex items-center justify-between'>
+                    <span>Dark mode options</span>
+                    <span className={`'text-(--sec-light-clr)'}`}>
+                        <ChevronRight />
+                    </span>
+                </div>
             </div>
 
 
-        </section>)
+        </section>
+        )
 }
 
 export default DisplayOptions
