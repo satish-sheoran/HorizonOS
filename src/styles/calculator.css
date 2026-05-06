@@ -13,7 +13,7 @@
 }
 
 .calc-result {
-    @apply w-full text-right resize-none outline-none  h-[35%] px-(--padding-sm) overflow-y-auto whitespace-pre-wrap break-all
+    @apply w-full text-right resize-none outline-none h-[40%] md:h-[35%] px-(--padding-sm) overflow-y-auto whitespace-pre-wrap break-all
 }
 
 .calc-btns {

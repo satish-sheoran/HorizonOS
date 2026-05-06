@@ -76,7 +76,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn }) 
 
                             setOpenDeletePopUp(false); //after delete close the pop up
                         }}
-                        className={`grow  py-3.5 md:py-2.5 text-sm font-bold rounded-lg select-none bg-(--bg-ok-btn) hover:bg-(--bg-ok-btn-hover) active:bg-(--bg-ok-btn-hover) active:scale-96 text-(--primary-light-clr)`}>DELETE</button>
+                        className={`grow  py-3.5 md:py-2.5 text-sm font-bold rounded-lg select-none bg-(--color-accent) hover:bg-(--color-light-accent) active:bg-(--color-light-accent) active:scale-96 text-(--primary-light-clr)`}>DELETE</button>
                 </div>
 
 

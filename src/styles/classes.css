@@ -15,7 +15,7 @@
 }
 
 .status-bar {
-    @apply backdrop-blur-sm bg-(--bg-status-bar) fixed top-0 z-(--z-top) w-full flex justify-between items-center h-9
+    @apply backdrop-blur-sm bg-(--bg-dark-header) fixed top-0 z-(--z-top) w-full flex justify-between items-center h-9
 }
 
 .app-icon {
@@ -23,11 +23,11 @@
 }
 
 .window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg border-b select-none text-sm text-(--color-dark-gray);
+    @apply flex items-center justify-between px-4 py-3 rounded-t-lg  select-none text-sm text-(--color-dark-gray);
 }
 
 .mobile-header {
-    @apply flex items-center justify-between  border-b select-none text-sm text-(--color-dark-gray);
+    @apply flex items-center justify-between  select-none text-sm text-(--color-dark-gray);
 }
 
 

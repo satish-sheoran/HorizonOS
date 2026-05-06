@@ -14,14 +14,16 @@ const Settings = () => {
     const [showContent, setshowContent] = useState(false) //used to open the content section on mobile when a section is selected
 
     return (
-        <div className={`w-full h-full flex flex-col`}>
+        <div className={`w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
+                    'bg-(--primary-light-clr)'
+                    : 'bg-(--bg-dark-app-body)'}`}>
 
             {currDevice === 'Desktop' ?
                 <WindowControls id='settings' />
                 : <MobileCntrls id='settings' />
             }
 
-            <main className={`setting-body w-full relative flex-1 duration-500 ease-out  ${theme !== 'dark' ? 'bg-(--primary-light-clr) ' : 'bg-(--bg-dark-app-body)'}`}>
+            <main className={`setting-body w-full relative flex-1 `}>
 
 
                 <section className="absolute inset-0 overflow-hidden flex">

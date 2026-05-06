@@ -11,9 +11,9 @@ const MobileCntrls = ({ id }) => {
     const { closeApp } = UsewindowControlFns();
 
     return (
-        <div className={`duration-500 ease-out mobile-header border-b ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
+        <div className={`transition-colors duration-500 ease-out mobile-header border-b  ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-header) border-(--bg-dark-border)'}`}>
 
-            <p className={`px-4 py-1.5  text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none transition-all           duration-500 ease-out`}>{id === 'notes' ? activeTab : id}</p>
+            <p className={`px-4 py-1.5  text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-light-gray) '} select-none transition-all           duration-500 ease-out`}>{id === 'notes' ? activeTab : id}</p>
             <div className="mobile-controls  text-(--primary-dark-clr)" >
 
                 <button

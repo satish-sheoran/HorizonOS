@@ -54,7 +54,9 @@ const Notes = () => {
     }, [isOpen])
 
     return (
-        <div className=" w-full h-full flex flex-col">
+        <div className={`w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
+                    'bg-(--primary-light-clr)'
+                    : 'bg-(--bg-dark-app-body)'}`}>
 
             {currDevice === 'Desktop' ?
                 <WindowControls id='notes' />
@@ -62,7 +64,7 @@ const Notes = () => {
 
 
             {/* BODY */}
-                <main className={` relative  flex-1 w-full transition-colors duration-500 ease-out ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+                <main className={` relative  flex-1 w-full`}>
 
 
                     {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}

@@ -70,7 +70,7 @@ return;
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
                                 <span className={`duration-500 ease-out rounded-full w-5.5 h-5.5 flex items-center justify-center
 
-                                ${deletedCategories?.includes(category) ? 'bg-(--bg-orange)'
+                                ${deletedCategories?.includes(category) ? 'bg-(--color-orange)'
                                         :
                                         theme !== 'dark' ?
                                             'bg-(--btn-light-hover)'

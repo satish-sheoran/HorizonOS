@@ -20,7 +20,7 @@ const Categories = () => {
                                     ? 'bg-(--bg-light-window-header) text-(--primary-dark-clr) font-semibold'
                                     : 'text-(--sec-light-clr)'
                                 : activeCategory === category ?
-                                    'bg-(--primary-dark-clr) text-(--primary-light-clr) font-semibold'
+                                    'bg-(--bg-dark-header) text-(--primary-light-clr) font-semibold'
                                     : 'text-(--sec-dark-clr)'
                             }
                             `}>

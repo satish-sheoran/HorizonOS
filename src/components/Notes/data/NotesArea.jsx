@@ -33,7 +33,7 @@ const NotesArea = () => {
             {/* Add new task rounded btn */}
             <button
                 onClick={() => dispatch(setCreateTaskOpen({ open: true }))}
-                className='fixed z-100 rounded-full p-3.5 md:p-2 right-6 bottom-7 text-(--primary-light-clr) bg-(--bg-minimize) hover:bg-(--bg-orange) active:scale-96 transition-colors duration-300 ease-out'>
+                className='fixed z-100 rounded-full p-3.5 md:p-2 right-6 bottom-7 text-(--primary-light-clr) bg-(--bg-minimize) hover:bg-(--color-orange) active:scale-96 transition-colors duration-300 ease-out'>
                 <Plus strokeWidth={2.5} />
             </button>
         </div>

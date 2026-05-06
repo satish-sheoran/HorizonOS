@@ -38,7 +38,7 @@ const FolderNav = () => {
                     <button onClick={() => {
                         dispatch(setStartDeletingCat({ start: false }));
                         dispatch(manageDeletedCategories({ category: 'Empty Trash' })) // empty the deletedCategories in notes storage when user exit from deleting mode to remove the select icons from categories
-                    }} className='text-(--bg-ok-btn-hover) hover:text-(--bg-ok-btn) active:scale-95'>
+                    }} className='text-(--color-light-accent) hover:text-(--color-accent) active:scale-95'>
                         <span>Cancel</span>
                     </button>
                     :
@@ -66,7 +66,7 @@ const FolderNav = () => {
                     <Trash2 strokeWidth={2} />
                 </button>
                 :
-                <button onClick={() => dispatch(setStartDeletingCat({ start: true }))} className='text-(--bg-ok-btn-hover) hover:text-(--bg-ok-btn) active:scale-95'>
+                <button onClick={() => dispatch(setStartDeletingCat({ start: true }))} className='text-(--color-light-accent) hover:text-(--color-accent) active:scale-95'>
                     <span>Edit</span>
                 </button>
             }

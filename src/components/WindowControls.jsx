@@ -10,10 +10,10 @@ const WindowControls = ({ id }) => {
 
     return (
         <div
-        onDoubleClick={()=>{
-           toggleFullscreen(id) 
-        }}
-         className={`window-header border-b duration-500 ease-out ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--bg-light-border)' : 'bg-(--bg-dark-window-header) border-(--bg-dark-border)'}`}>
+            onDoubleClick={() => {
+                toggleFullscreen(id)
+            }}
+            className={`window-header border-b-[0.5px] duration-500 ease-out ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--sec-light-clr)' : 'bg-(--bg-dark-header) border-(--sec-light-clr)'}`}>
 
             <div className="window-controls  text-(--primary-dark-clr)">
 
@@ -46,7 +46,7 @@ const WindowControls = ({ id }) => {
                     </span>
                 </button>
             </div>
-            <p className={`text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-ultra-light-gray) '} select-none transition-all duration-150 ease-in-out`}>{id === 'notes' ? activeTab : id}</p>
+            <p className={`text-2xl font-bold capitalize md:text-xl ${theme != 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--color-light-gray) '} select-none transition-all duration-150 ease-in-out`}>{id === 'notes' ? activeTab : id}</p>
         </div>
 
     )

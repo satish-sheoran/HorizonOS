@@ -54,7 +54,7 @@ const CreateTask = () => {
 
     return (
         <div ref={newTaskContainer} className={`transition-colors duration-500 ease-out new-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
-        ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
+        ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-app-body)'}
         `}>
 
             {/* nav icons */}

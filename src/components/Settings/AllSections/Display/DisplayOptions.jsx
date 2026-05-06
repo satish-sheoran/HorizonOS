@@ -1,27 +1,38 @@
 import React from 'react'
-import ThemeSelection from './ThemeSelection'
-import DarkOptions from './DarkOptions'
-import ToggleButton from '../../../UI/ToggleButton'
-import { useDispatch } from 'react-redux'
-import { setAutoTheme } from '../../../../redux/features/wallpaper'
+import Theme from './Sections/Theme'
+import Screen from './Sections/Screen'
+import Font from './Sections/Font'
 
 const DisplayOptions = ({ Device, theme, fullScreen }) => {
 
-    const dispatch = useDispatch()
-    const performAction = () => dispatch(setAutoTheme())
 
     return (
-        <section className={`about-us-overflow-area flex flex-col gap-2.5 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto'}`}>
-
-            {/* THEME SELECtION */}
-            <ThemeSelection theme={theme} fullScreen={fullScreen} Device={Device} />
+        <section className={`display-overflow-area flex flex-col gap-2.5 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto'}`}>
 
 
-            {/* More Dark options to manage specifically add dark to spefic apps parmanently */}
-            <DarkOptions theme={theme} />
+            {/* THEME RELATED  */}
+            <Theme theme={theme} fullScreen={fullScreen} Device={Device} />
 
-            {/* Auto Set theme btn */}
-            <ToggleButton theme={theme} action='Automatic theme' performAction={performAction} />
+            {/* HR */}
+            <div className='px-[6%] md:px-[2.5%]'>
+                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
+            </div>
+
+            {/* SCREEN RELATED */}
+            <Screen theme={theme} fullScreen={fullScreen} Device={Device} />
+
+            {/* HR */}
+            <div className='px-[6%] md:px-[2.5%]'>
+                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
+            </div>
+
+            <Font theme={theme} fullScreen={fullScreen} Device={Device} />
+
+
+            {/* HR */}
+            <div className='px-[6%] md:px-[2.5%]'>
+                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
+            </div>
 
         </section>
     )

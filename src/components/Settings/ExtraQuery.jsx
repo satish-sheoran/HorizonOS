@@ -17,7 +17,7 @@ const ExtraQuery = ({ theme, Device, fullScreen, Section }) => {
 
                     <p className={`duration-500 ease-out w-fit ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} font-bold select-none`}>Need other settings?</p>
 
-                    <div className={`w-fit flex flex-col gap-1 text-(--text-currCat) text-sm select-none`}>
+                    <div className={`w-fit flex flex-col gap-1 text-(--color-accent) text-sm select-none`}>
 
                         {SETTINGS_SECTIONS.find(({ title }) => title === Section)?.extraQuery?.map(({ query }, idx) => {
                             return <span key={idx}

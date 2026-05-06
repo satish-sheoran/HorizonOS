@@ -18,52 +18,54 @@ body {
 }
 
 :root {
-    /* COLORS  */
-    --primary-light-clr: rgb(232, 232, 232);
-    --primary-dark-clr: rgb(49, 49, 49);
-    --primary-dark-clr-low: rgb(49, 49, 49, 0.7);
-    --text-currCat: rgb(38, 121, 243);
-
-    --sec-light-clr: rgb(114, 114, 114);
-    --sec-light-clr-low: rgb(114, 114, 114, 0.5);
-    --sec-dark-clr: #565657;
-
-    --third-light-clr: rgb(132, 132, 132);
-    --third-dark-clr: rgb(132, 132, 132);
-    --third-dark-clr-low: rgb(133, 133, 133, 0.7);
-
-    --color-dark-gray: #99a1af;
-    --color-ultra-light-gray: #e8e8eed5;
-    --clr-orange: rgb(237, 129, 20);
-    --clr-dark: rgb(11, 11, 11);
-
-
-    /*🌌 BACKGROUND COLORS*/
+    /* NEUTRAL */
+    --color-accent: rgb(38, 121, 243);
+    --color-light-accent: #3f84f9;
+    --color-light-gray: #e8e8eed5;
+    --color-orange: rgb(237, 129, 20);
+    --color-light-orange: rgb(237, 129, 20, 0.9);
+    --color-gray: rgb(132, 132, 132);
     --bg-app-icon: #d8d8db;
-    --bg-status-bar: #252525;
+
     --bg-close: #ff6157;
     --bg-minimize: #ffc030;
     --bg-zoom: #2acb42;
-    --bg-orange: rgb(237, 129, 20);
-    --bg-orange-hover: rgb(237, 129, 20, 0.8);
-    --bg-ok-btn: rgb(38, 122, 247);
-    --bg-ok-btn-hover: rgb(57, 132, 249);
-    --bg-currCat: rgb(31, 48, 76);
 
-    /* light theme backgrounds */
-    --bg-light-window-header: #f9fafb;
-    --bg-light-app-body: rgb(237, 237, 241);
-    --bg-light-border: #858586;
+
+    /* LIGHT THEME  */
+    --primary-light-clr: rgb(232, 232, 232);
+
+    --sec-light-clr: rgb(114, 114, 114);
+    --sec-light-clr-low: rgb(114, 114, 114, 0.5);
+
+    --bg-light-window-header: #f3f4f6;
     --btn-light: #FFFFFF;
     --btn-light-hover: rgba(209, 205, 205, 0.938);
 
-    /* dark theme baackgrounds and colors  */
-    --bg-dark-window-header: #252525;
+
+
+
+    /* DARK THEME */
+    --primary-dark-clr: rgb(49, 49, 49);
+    --primary-dark-clr-low: rgb(49, 49, 49, 0.7);
+    --sec-dark-clr: #565657;
+    
+    --bg-dark-header: #252525;
+
     --bg-dark-app-body: #38383A;
     --bg-dark-hover-window-options: #2C2C2E;
     --bg-dark-border: #858586;
     --btn-dark: #242424;
     --btn-dark-hover: rgba(95, 95, 95, 0.1);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -140,7 +142,6 @@ body {
 .task-desc-parent,
 .about-us-overflow-area,
 body,
-html{
+html {
     scrollbar-width: none;
 }
- 

@@ -72,7 +72,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) 
                             dispatch(addCategory({ category: catName, defaultName: defaultValOfInput }));
                             setOpencreateFolderPopUp(false);
                         }}
-                        className={`grow  py-3.5 md:py-2.5 text-sm font-bold rounded-xl select-none bg-(--bg-ok-btn) hover:bg-(--bg-ok-btn-hover) active:bg-(--bg-ok-btn-hover) active:scale-96 text-(--primary-light-clr)`}>OK</button>
+                        className={`grow  py-3.5 md:py-2.5 text-sm font-bold rounded-xl select-none bg-(--color-accent) hover:bg-(--color-light-accent) active:bg-(--color-light-accent) active:scale-96 text-(--primary-light-clr)`}>OK</button>
 
                 </div>
             </div>

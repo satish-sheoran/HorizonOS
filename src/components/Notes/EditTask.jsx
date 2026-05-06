@@ -97,7 +97,7 @@ const EditTask = () => {
 
     return (
         <div ref={EditTaskContainer} className={`transition-colors duration-500 ease-out edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
-        ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
+        ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-app-body)'}
         `}>
 
             {/* nav icons */}
@@ -150,7 +150,7 @@ const EditTask = () => {
                                             setcurrCategory(category)
                                         }}
                                         className={`duration-500 ease-out font-semibold  flex justify-between items-center  px-4 py-1.5
-                                        ${currCategory === category ? 'bg-(--bg-currCat) text-(--text-currCat)' :
+                                        ${currCategory === category ? 'bg-(--color-accent) text-(--color-accent)' :
                                                 theme !== 'dark' ? 'bg-(--bg-light-window-header) text-(--primary-dark-clr)' : 'bg-(--primary-dark-clr) text-(--primary-light-clr)'}
                      ${currCategory !== category ?
                                                 theme !== 'dark' ? 'hover:bg-(--sec-light-clr)' : 'hover:bg-(--sec-dark-clr)'
@@ -202,7 +202,7 @@ const EditTask = () => {
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>
 
-                <div className="text-(--color-dark-gray) font-bold shrink-0 date-charCount flex gap-3 ">
+                <div className="text-(--color-gray) font-bold shrink-0 date-charCount flex gap-3 ">
                     <span>{formattedDate} {formattedTime}</span>
                     |
                     <span>{currTaskDesc.replace(/\s/g, "").length} characters</span>

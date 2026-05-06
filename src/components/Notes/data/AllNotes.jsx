@@ -97,7 +97,7 @@ const AllNotes = () => {
                     ${theme !== 'dark'
                                         ? 'bg-(--bg-light-window-header)'
                                         :
-                                        'bg-(--primary-dark-clr)'
+                                        'bg-(--bg-dark-header)'
                                     }                            
                         `}>
                                 <h3
@@ -117,7 +117,7 @@ const AllNotes = () => {
                             ${theme !== 'dark' ?
                                             'text-(--sec-dark-clr)'
                                             :
-                                            'text-(--third-light-clr)'}
+                                            'text-(--color-gray)'}
                             `}>
                                     {title && desc ? desc : 'No Text'} {/* if title and desc exist, display desc; otherwise, display 'No Text' */}
                                 </p>
@@ -128,8 +128,8 @@ const AllNotes = () => {
                                             text-[0.68rem] 
                                             font-semibold 
                                             ${theme !== 'dark' ?
-                                                'text-(--third-dark-clr)'
-                                                : 'text-(--third-light-clr)'
+                                                'text-(--color-gray)'
+                                                : 'text-(--color-gray)'
                                             }`}>
                                         {formatDateTime(timeStamp)}
                                     </span>
@@ -139,7 +139,7 @@ const AllNotes = () => {
                                         isDeleteNoteOpen === true &&
                                         <span className={`duration-500 ease-out rounded-full w-4.5 h-4.5 flex items-center justify-center
 
-                                ${deletingNotes?.includes(id) ? 'bg-(--bg-orange)'
+                                ${deletingNotes?.includes(id) ? 'bg-(--color-orange)'
                                                 :
                                                 theme !== 'dark' ?
                                                     'bg-(--btn-light-hover)'
@@ -165,7 +165,8 @@ const AllNotes = () => {
                         </div>
                     )
             }
-        </div >)
+        </div >
+        )
 }
 
 export default AllNotes

@@ -9,16 +9,16 @@ const CalcButtons = ({theme , calcBtnClck}) => {
                     const isOperator = ['AC', 'X', '%', '/', '*', '-', '+'].includes(symbol);
 
                     return <button key={id}
-                        className={`duration-500 ease-out ${theme != 'dark' ?
+                        className={`transition-colors duration-500 ease-out ${theme != 'dark' ?
                             `${isOperator ? 'text-(--clr-orange)' : 'text-(--primary-dark-clr)'}`
                             : `${isOperator ? 'text-(--clr-orange)' : 'text-(--primary-light-clr)'}`}  
                                 rounded-2xl py-1 sm:rounded-xl font-bold  active:scale-95  
 
                             ${theme != 'dark' ?
-                                `${symbol === '=' ? 'bg-(--bg-orange) hover:bg-(--bg-orange-hover)' : 'bg-(--btn-light) hover:bg-(--btn-light-hover)'}`
-                                : `${symbol === '=' ? 'bg-(--bg-orange) hover:bg-(--bg-orange-hover)' : 'bg-(--btn-dark) hover:bg-(--btn-dark-hover)'}`}  
+                                `${symbol === '=' ? 'bg-(--color-orange) hover:bg-(--color-light-orange)' : 'bg-(--btn-light) hover:bg-(--btn-light-hover)'}`
+                                : `${symbol === '=' ? 'bg-(--color-orange) hover:bg-(--color-light-orange)' : 'bg-(--btn-dark) hover:bg-(--btn-dark-hover)'}`}  
 
-                            ${['AC', 'X', '%', '/', '*', '-', '+'].includes(symbol) ? 'text-(--clr-orange)' : ''}`}
+                            ${['AC', 'X', '%', '/', '*', '-', '+'].includes(symbol) ? 'text-(--color-orange)' : ''}`}
                         onClick={() => calcBtnClck(symbol)}
                     >{symbol}
                     </button>

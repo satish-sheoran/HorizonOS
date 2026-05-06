@@ -55,7 +55,7 @@ const Footer = () => {
                                             : 'bg-(--sec-light-clr-low)'
                                     } 
                         rounded px-[1.2px] 
-                        ${theme != 'dark' ? 'stroke-(--bg-light-app-body)' : 'stroke-(--bg-dark-app-body)'}`} />
+                        ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
 
                                 <span className={`duration-500 ease-out
                     ${theme !== 'dark' ?
@@ -83,7 +83,7 @@ const Footer = () => {
                                             ? 'bg-(--sec-light-clr)'
                                             : 'bg-(--sec-light-clr-low)'
                                     }
-                        rounded duration-500 ease-out ${theme != 'dark' ? 'stroke-(--bg-light-app-body)' : 'stroke-(--bg-dark-app-body)'}`} />
+                        rounded duration-500 ease-out ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
                                 <span className={`duration-500 ease-out 
                        ${theme !== 'dark' ?
                                         activeTab === 'Tasks'

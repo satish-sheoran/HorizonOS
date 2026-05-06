@@ -3,4 +3,4 @@
 
 
 What i did for this commit:
-refactor : Removed un-necessary bg-colors
+feat: implement display settings UI (layout and styling, pending interactions (deep opening of settings) )
