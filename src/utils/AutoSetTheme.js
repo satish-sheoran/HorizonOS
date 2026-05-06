@@ -15,7 +15,7 @@ export const useAutoTheme = () => {
         const hr = new Date().getHours();
         const isDark = hr >= 17 || hr < 7;
 
-        dispatch(changeTheme({ theme: isDark ? 'dark' : 'light' }))
+        dispatch(changeTheme({ theme: isDark ? 'dark' : 'light', AutoTheme: true }))
 
     }, [AutoTheme, dispatch])
 
