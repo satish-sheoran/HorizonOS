@@ -63,7 +63,7 @@ const AllNotes = () => {
 
 
     return (
-        <div className={` flex-1  AllNotes-container duration-500 ease-out  overflow-y-auto  ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}  
+        <div className={` flex-1  AllNotes-container duration-500 ease-out  overflow-y-auto    
         `}
         >
             {

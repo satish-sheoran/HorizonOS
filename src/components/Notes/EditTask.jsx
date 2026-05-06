@@ -96,7 +96,7 @@ const EditTask = () => {
 
 
     return (
-        <div ref={EditTaskContainer} className={`duration-300 ease-out edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
+        <div ref={EditTaskContainer} className={`transition-colors duration-500 ease-out edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
         ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
         `}>
 
@@ -104,7 +104,7 @@ const EditTask = () => {
             <div className="edit-tasks-controls flex items-center justify-between px-(--padding-lg) md:px-(--padding-xl)">
 
                 {/* arrow icon and cateogry */}
-                <div className={`duration-500 ease-out flex gap-4 items-center ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+                <div className={`transition-colors duration-500 ease-out flex gap-4 items-center ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
                     <button className='active:scale-93 transition-all duration-100 ease-in' onPointerUp={() => {
                         setCatOpen(false)
                         dispatch(manageEditTask({ open: false }))
@@ -134,7 +134,7 @@ const EditTask = () => {
                             `}>{currCategory}</div>
 
                         {/* all categories layer which comes only when we hovrer or click the menu btn  */}
-                        <div className={`duration-500 ease-out menu absolute z-50 select-none cursor-pointer top-0 left-0 flex flex-col rounded-lg overflow-hidden w-full 
+                        <div className={`transition-colors duration-500 ease-out menu absolute z-50 select-none cursor-pointer top-0 left-0 flex flex-col rounded-lg overflow-hidden w-full 
                         ${theme !== 'dark'
                                 ? 'bg-(--bg-light-window-header)'
                                 :
@@ -188,7 +188,7 @@ const EditTask = () => {
 
 
             {/* textarea inputs */}
-            <div className='eidt-task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto px-(--padding-lg) md:px-(--padding-xl)'>
+            <div className='edit-task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto px-(--padding-lg) md:px-(--padding-xl)'>
 
                 <textarea spellCheck={false}
                     value={currTaskTitle}

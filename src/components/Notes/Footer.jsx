@@ -35,7 +35,7 @@ const Footer = () => {
     }, [isDeleteNoteOpen])
 
     return (
-        <footer className={`duration-500 ease-out ${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+        <footer className={`transition-colors duration-500 ease-out ${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 `}>
             <div className='pb-1'>
                 {
                     isDeleteNoteOpen === false ?

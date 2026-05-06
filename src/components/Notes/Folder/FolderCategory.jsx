@@ -36,7 +36,7 @@ const FolderCategory = () => {
                         {...(!startDeletingCat ? Handlers : {})} //adding long press handler only if delete mode is off
 
                         onClick={(e) => {
-                            if (isLongPress.current) {
+                            if (isLongPress.current || startDeletingCat) {
                                 e.preventDefault(); // to prevent on click event when long press is detected
 
                                 if (!startDeletingCat) dispatch(setStartDeletingCat({ start: true })); // if user has not started deleting category then start delete mode on long press

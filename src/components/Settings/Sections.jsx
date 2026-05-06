@@ -15,9 +15,9 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
                 const Icon = Icons[icon]
                 return <div className={`duration-500 ease-out relative cursor-default select-none py-3 w-full text-lg font-bold 
                             ${theme !== 'dark' ?
-                        'bg-(--primary-light-clr) hover:bg-(--bg-light-app-body) active:bg-(--bg-light-app-body) text-(--primary-dark-clr)'
+                        ' hover:bg-(--bg-light-app-body) active:bg-(--bg-light-app-body) text-(--primary-dark-clr)'
                         :
-                        'bg-(--bg-dark-app-body) hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr) text-(--primary-light-clr)'
+                        ' hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr) text-(--primary-light-clr)'
                     }                                
                             
                         `} key={idx}

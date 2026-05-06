@@ -45,21 +45,21 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) 
                 className='overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'></div>
 
             {/* actual  */}
-            <div ref={popUpElem} className={`duration-500 ease-out ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
+            <div ref={popUpElem} className={`transition-colors duration-500 ease-out ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
             ${theme !== 'dark' ?
                     "bg-(--bg-light-window-header)"
                     :
                     "bg-(--primary-dark-clr)"
                 }
             `}>
-                <span className={`duration-500 ease-out select-none font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>New Folder</span>
+                <span className={`transition-colors duration-500 ease-out select-none font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>New Folder</span>
 
-                <input spellCheck={false} ref={createFldrInputRef} maxLength={80} autoFocus className={`duration-500 ease-out create-flder-input w-full border-2 border-blue-600 outline-none font-semibold rounded-2xl px-2.5 py-2 ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`} type="text" placeholder='Enter Text' defaultValue={defaultValOfInput} />
+                <input spellCheck={false} ref={createFldrInputRef} maxLength={80} autoFocus className={`transition-colors duration-500 ease-out create-flder-input w-full border-2 border-blue-600 outline-none font-semibold rounded-2xl px-2.5 py-2 ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`} type="text" placeholder='Enter Text' defaultValue={defaultValOfInput} />
 
                 <div className='w-full folder-creation-btns flex items-center justify-between gap-2'>
                     <button
                         onClick={() => setOpencreateFolderPopUp(false)}
-                        className={`duration-500 ease-out w-[calc(50%-2px)] py-3.5 md:py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
+                        className={`transition-colors duration-500 ease-out w-[calc(50%-2px)] py-3.5 md:py-2.5 text-sm font-bold select-none  active:scale-96 rounded-xl hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
 
                     <button
                         onClick={() => {

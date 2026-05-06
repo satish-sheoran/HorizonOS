@@ -62,7 +62,7 @@ const Notes = () => {
 
 
             {/* BODY */}
-                <main className={` relative  flex-1 w-full duration-500 ease-out ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
+                <main className={` relative  flex-1 w-full transition-colors duration-500 ease-out ${theme != 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}`}>
 
 
                     {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}

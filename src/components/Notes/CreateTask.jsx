@@ -53,7 +53,7 @@ const CreateTask = () => {
     }, [isNewTaskOpen])
 
     return (
-        <div ref={newTaskContainer} className={`duration-500 ease-out new-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
+        <div ref={newTaskContainer} className={`transition-colors duration-500 ease-out new-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
         ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
         `}>
 
@@ -61,7 +61,7 @@ const CreateTask = () => {
             <div className="create-tasks-controls flex items-center justify-between px-(--padding-lg) md:px-(--padding-xl)">
 
                 {/* arrow icon */}
-                <div className={`duration-500 ease-out ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+                <div className={`transition-colors duration-500 ease-out ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
                     <button className='active:scale-93 transition-all duration-100 ease-in' onClick={() => {
                         dispatch(setCreateTaskOpen({ open: false }))
                         if (!newTaskTitle && !newTaskDesc) return; // if both title and desc is empty then do not add note and just close create task page
@@ -74,7 +74,7 @@ const CreateTask = () => {
                 </div>
 
                 {/* other its nav icons */}
-                <div className={`duration-500 ease-out flex items-center gap-3 ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+                <div className={`transition-colors duration-500 ease-out flex items-center gap-3 ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
                     <button className='active:scale-93 transition-all duration-100 ease-in' onClick={() => toast.info('Functionality will be added soon')}>
                         <Undo2 size={27} />
                     </button>
