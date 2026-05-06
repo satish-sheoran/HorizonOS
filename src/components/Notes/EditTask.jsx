@@ -96,7 +96,7 @@ const EditTask = () => {
 
 
     return (
-        <div ref={EditTaskContainer} className={`duration-500 ease-out edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
+        <div ref={EditTaskContainer} className={`duration-300 ease-out edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
         ${theme !== 'dark' ? 'bg-(--bg-light-app-body)' : 'bg-(--bg-dark-app-body)'}
         `}>
 

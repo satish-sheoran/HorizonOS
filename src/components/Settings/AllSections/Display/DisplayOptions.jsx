@@ -1,7 +1,7 @@
 import React from 'react'
 import ThemeSelection from './ThemeSelection'
 import DarkOptions from './DarkOptions'
-import ToggleButton from '../../ToggleButton'
+import ToggleButton from '../../../UI/ToggleButton'
 import { useDispatch } from 'react-redux'
 import { setAutoTheme } from '../../../../redux/features/wallpaper'
 

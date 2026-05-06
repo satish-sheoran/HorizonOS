@@ -1,7 +1,6 @@
 1. the toast is limited to 1 but if i click something which generates toasts multiple time then toast comes after one finishes . so fix it 
 2. how to remove web page not secure 
-3. IN AboutUs.jsx :     // TODO : fix proper height chain ( temporary 90% height)
 
 
 What i did for this commit:
-feat: create reusable toggle component and refine auto theme logic with manual override
+refactor: organize reusable toggle component and TimeNDate component into ui folder

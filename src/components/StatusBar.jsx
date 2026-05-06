@@ -1,4 +1,4 @@
-import TimeNDate from './TimeNDate'
+import TimeNDate from './UI/TimeNDate'
 
 import { Wifi, BatteryMedium } from 'lucide-react';
 import { OS_NAME } from '../constants';

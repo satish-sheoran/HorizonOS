@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { formatDate, formatTime } from '../utils/formatTime';
+import { formatDate, formatTime } from '../../utils/formatTime';
 
 const TimeNDate = () => {
 
