@@ -3,4 +3,4 @@
 
 
 What i did for this commit:
-feat: implement display settings UI (layout and styling, pending interactions (deep opening of settings) )
+refactor : improve UI colors and overall visual appearance

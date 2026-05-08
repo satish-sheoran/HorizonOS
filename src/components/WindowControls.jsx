@@ -13,7 +13,7 @@ const WindowControls = ({ id }) => {
             onDoubleClick={() => {
                 toggleFullscreen(id)
             }}
-            className={`window-header border-b-[0.5px] duration-500 ease-out ${theme != 'dark' ? 'bg-(--bg-light-window-header) border-(--sec-light-clr)' : 'bg-(--bg-dark-header) border-(--sec-light-clr)'}`}>
+            className={`window-header border-b duration-500 ease-out ${theme != 'dark' ? 'bg-(--primary-light-clr) border-(--third-light-clr)' : 'bg-(--bg-dark-header) border-(--sec-dark-clr)'}`}>
 
             <div className="window-controls  text-(--primary-dark-clr)">
 

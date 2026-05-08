@@ -23,9 +23,9 @@ body {
     --color-light-accent: #3f84f9;
     --color-light-gray: #e8e8eed5;
     --color-orange: rgb(237, 129, 20);
-    --color-light-orange: rgb(237, 129, 20, 0.9);
     --color-gray: rgb(132, 132, 132);
-    --bg-app-icon: #d8d8db;
+    --color-green: rgb(38, 165, 22);
+    --color-lime: rgb(133, 242, 144);
 
     --bg-close: #ff6157;
     --bg-minimize: #ffc030;
@@ -33,30 +33,26 @@ body {
 
 
     /* LIGHT THEME  */
-    --primary-light-clr: rgb(232, 232, 232);
-
-    --sec-light-clr: rgb(114, 114, 114);
-    --sec-light-clr-low: rgb(114, 114, 114, 0.5);
-
-    --bg-light-window-header: #f3f4f6;
-    --btn-light: #FFFFFF;
+    /* --primary-light-clr: rgb(232, 232, 232); */
+    --primary-light-clr: rgb(252, 252, 254);
+    --sec-light-clr: rgb(246, 246, 248);
+    --third-light-clr: rgb(233, 233, 235);
+    --grayish-light-clr : rgb(128, 128, 128);
     --btn-light-hover: rgba(209, 205, 205, 0.938);
 
 
 
 
     /* DARK THEME */
-    --primary-dark-clr: rgb(49, 49, 49);
+    --primary-dark-clr: rgb(1, 1, 1);
     --primary-dark-clr-low: rgb(49, 49, 49, 0.7);
-    --sec-dark-clr: #565657;
-    
+    --sec-dark-clr: rgb(23, 23, 25);
+    --third-dark-clr: rgb(45, 45, 47);
+    --grayish-dark-clr: rgb(145, 145, 145);
+
     --bg-dark-header: #252525;
 
     --bg-dark-app-body: #38383A;
-    --bg-dark-hover-window-options: #2C2C2E;
-    --bg-dark-border: #858586;
-    --btn-dark: #242424;
-    --btn-dark-hover: rgba(95, 95, 95, 0.1);
 
 
 
@@ -141,6 +137,7 @@ body {
 .newTask-desc,
 .task-desc-parent,
 .about-us-overflow-area,
+.display-overflow-area,
 body,
 html {
     scrollbar-width: none;

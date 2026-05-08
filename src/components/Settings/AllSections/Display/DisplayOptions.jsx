@@ -14,24 +14,24 @@ const DisplayOptions = ({ Device, theme, fullScreen }) => {
             <Theme theme={theme} fullScreen={fullScreen} Device={Device} />
 
             {/* HR */}
-            <div className='px-[6%] md:px-[2.5%]'>
-                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
+            <div className='px-[6%] md:px-[3%]'>
+                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
             </div>
 
             {/* SCREEN RELATED */}
             <Screen theme={theme} fullScreen={fullScreen} Device={Device} />
 
             {/* HR */}
-            <div className='px-[6%] md:px-[2.5%]'>
-                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
+            <div className='px-[6%] md:px-[3%]'>
+                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
             </div>
 
             <Font theme={theme} fullScreen={fullScreen} Device={Device} />
 
 
             {/* HR */}
-            <div className='px-[6%] md:px-[2.5%]'>
-                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-light-clr)' : 'border-(--sec-dark-clr)'}`} />
+            <div className='px-[6%] md:px-[3%]'>
+                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
             </div>
 
         </section>

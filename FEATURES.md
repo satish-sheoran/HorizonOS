@@ -25,3 +25,8 @@
 
 
 
+
+## Notes app
+1.when user hover addnew task button then buttons zooms a bit and plujs icon rotate 360 then satt,e down to normal postion again 
+
+

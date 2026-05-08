@@ -11,7 +11,7 @@ const ExtraQuery = ({ theme, Device, fullScreen, Section }) => {
 
                 <div className={`duration-500 ease-out flex flex-col gap-2 rounded-xl 
                     ${!fullScreen ?
-                        `py-4 px-5 ${theme !== 'dark' ? 'bg-(--bg-light-window-header)' : 'bg-(--primary-dark-clr)'}`
+                        `py-4 px-5 ${theme !== 'dark' ? 'bg-(--third-light-clr)' : 'bg-(--third-dark-clr)'}`
                         : ''}
                     `}>
 

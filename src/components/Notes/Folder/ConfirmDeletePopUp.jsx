@@ -40,22 +40,24 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn }) 
                 className='overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'></div>
 
 
-            <div ref={DeletPopElem} className={`transition-colors duration-500 ease-out ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'}  h-fit absolute rounded-2xl py-3.5 px-4 md:px-3 gap-3 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
+            <div ref={DeletPopElem} className={`transition-colors duration-500 ease-out ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'}  h-fit absolute rounded-2xl py-3.5 px-4 md:px-3 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
             ${theme !== 'dark' ?
-                    "bg-(--bg-light-window-header)"
+                    "bg-(--primary-light-clr)"
                     :
-                    "bg-(--primary-dark-clr)"
+                    "bg-(--third-dark-clr)"
                 }`}>
 
-                <span className={`text-lg ${theme !=='dark'?'text-(--primary-dark-clr)':'text-(--primary-light-clr)'}`}>Delete folder</span>
+                <span className={`font-semibold text-lg ${theme !=='dark'?'text-(--primary-dark-clr)':'text-(--primary-light-clr)'}`}>Delete folder</span>
 
-                <span className={`transition-colors duration-500 ease-out text-sm ${theme !== 'dark' ? 'text-(--sec-light-clr)' : 'text-(--sec-light-clr)'}`}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : deletedCategories.length} items ?</span>
+                <span className={`transition-colors duration-500 ease-out text-sm ${theme !== 'dark' ? 'text-(--grayish-dark-clr)' : 'text-(--grayish-light-clr)'}`}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : deletedCategories.length} items ?</span>
 
                 <div className={`w-full flex items-center gap-2`}>
 
                     <button
                         onClick={() => setOpenDeletePopUp(false)}
-                        className={`transition-colors duration-500 ease-out w-[calc(50%-2px)] py-3.5 md:py-2.5 text-sm font-bold select-none  active:scale-96 rounded-lg hover:bg-(--btn-light-hover)  ${theme !== 'dark' ? 'bg-(--primary-light-clr) text-(--primary-dark-clr)' : 'bg-(--sec-light-clr) text-(--primary-light-clr)'}`}>Cancel</button>
+                        className={`transition-colors duration-500 ease-out w-[calc(50%-2px)] py-3.5 md:py-2.5 text-sm font-bold select-none  active:scale-96 rounded-lg 
+                         ${theme !== 'dark' ? 'bg-(--btn-light-hover) hover:bg-(--grayish-dark-clr) text-(--primary-light-clr)' 
+                         : 'bg-(--grayish-dark-clr) text-(--primary-light-clr) hover:bg-(--btn-light-hover)'}`}>Cancel</button>
 
                     <button
                         onClick={() => {

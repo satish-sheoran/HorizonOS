@@ -95,9 +95,9 @@ const AllNotes = () => {
                                 key={id}
                                 className={`duration-500 ease-out relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 
                     ${theme !== 'dark'
-                                        ? 'bg-(--bg-light-window-header)'
+                                        ? 'bg-(--third-light-clr)'
                                         :
-                                        'bg-(--bg-dark-header)'
+                                        'bg-(--third-dark-clr)'
                                     }                            
                         `}>
                                 <h3
@@ -115,7 +115,7 @@ const AllNotes = () => {
                                     className={`duration-500 ease-out break-all
  select-none text-[0.82rem] line-clamp-5 font-[650]
                             ${theme !== 'dark' ?
-                                            'text-(--sec-dark-clr)'
+                                            'text-(--grayish-dark-clr)'
                                             :
                                             'text-(--color-gray)'}
                             `}>
@@ -144,7 +144,7 @@ const AllNotes = () => {
                                                 theme !== 'dark' ?
                                                     'bg-(--btn-light-hover)'
                                                     :
-                                                    'bg-(--bg-light-border)'
+                                                    'bg-(--bg-dark-app-body)'
 
                                             }`}>
                                             {deletingNotes?.includes(id) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
@@ -159,7 +159,7 @@ const AllNotes = () => {
                     </Masonry>
                     :
                     (
-                        <div className={`w-full h-full flex flex-col items-center justify-center ${theme !== 'dark' ? 'text-(--btn-light-hover)' : 'text-(--sec-light-clr)'}`}>
+                        <div className={`w-full h-full flex flex-col items-center justify-center ${theme !== 'dark' ? 'text-(--btn-light-hover)' : 'text-(--third-light-clr)'}`}>
                             <NotebookPen size={30} />
                             <span>No notes here yet</span>
                         </div>

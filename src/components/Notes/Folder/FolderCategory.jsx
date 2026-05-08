@@ -49,14 +49,13 @@ return;
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
                         className={`duration-500 ease-out 
-                            ${theme !== 'dark' ? `
-                                bg-(--bg-light-window-header) text-(--primary-dark-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr) 
+                            ${theme !== 'dark' ?`
                                 ${activeCategory === category ?
-                                    'text-(--primary-dark-clr) font-bold' : 'text-(--sec-dark-clr) font-semibold'
+                                    'bg-(--color-light-accent)  text-(--primary-light-clr) font-bold' : 'bg-(--third-light-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr) text-(--sec-dark-clr) font-semibold'
                                 }`
                                 :
-                                `bg-(--primary-dark-clr)  hover:bg-(--sec-light-clr) active:bg-(--sec-light-clr) ${activeCategory === category ?
-                                    'text-(--primary-light-clr) font-bold' : 'text-(--sec-dark-clr) font-semibold'
+                                ` ${activeCategory === category ?
+                                    'bg-(--color-light-accent) text-(--primary-light-clr) font-bold' : 'bg-(--third-dark-clr)  hover:bg-(--grayish-dark-clr) active:bg-(--grayish-dark-clr) text-(--sec-light-clr) font-semibold'
                                 }`
                             }
                             `}>
@@ -75,7 +74,7 @@ return;
                                         theme !== 'dark' ?
                                             'bg-(--btn-light-hover)'
                                             :
-                                            'bg-(--bg-light-border)'
+                                            'bg-(--grayish-dark-clr)'
 
                                     }`}>
                                     {deletedCategories?.includes(category) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}

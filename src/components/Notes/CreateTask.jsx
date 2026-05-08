@@ -54,7 +54,7 @@ const CreateTask = () => {
 
     return (
         <div ref={newTaskContainer} className={`transition-colors duration-500 ease-out new-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden 
-        ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-app-body)'}
+        ${theme !== 'dark' ? 'bg-(--sec-light-clr)' : 'bg-(--bg-dark-app-body)'}
         `}>
 
             {/* nav icons */}
@@ -104,14 +104,14 @@ const CreateTask = () => {
                     onChange={(e) => setNewTaskTitle(e.target.value)}
                     name="newTask-title"
                     className={`duration-500 ease-out newTask-title rounded-lg shrink-0 p-1 font-bold text-xl placeholder:text-xl h-fit resize-none  outline-none  
-                        ${theme !== 'dark' ? 'text-(--primary-dark-clr) placeholder:text-(--btn-light-hover)' : 'text-(--primary-light-clr) placeholder:text-(--sec-light-clr)'}
+                        ${theme !== 'dark' ? 'text-(--primary-dark-clr) placeholder:text-(--btn-light-hover)' : 'text-(--primary-light-clr) placeholder:text-(--grayish-light-clr)'}
                     `}
                     placeholder='Title'
                     rows={1}
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>
 
-                <div className="text-(--color-dark-gray) font-bold shrink-0 date-charCount flex gap-3 ">
+                <div className={`text-(--color-gray)  font-bold shrink-0 date-charCount flex gap-3 `}>
                     <span>{formattedDate} {formattedTime}</span>
                     |
                     <span>{newTaskDesc.replace(/\s/g, "").length} characters</span>
@@ -123,7 +123,7 @@ const CreateTask = () => {
                     onChange={(e) => setNewTaskDesc(e.target.value)}
                     name="newTask-desc"
                     className={`duration-500 ease-out newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-xl font-bold placeholder:text-xl outline-none 
-                         ${theme !== 'dark' ? 'text-(--primary-dark-clr) placeholder:text-(--btn-light-hover)' : 'text-(--primary-light-clr) placeholder:text-(--sec-light-clr)'}
+                         ${theme !== 'dark' ? 'text-(--primary-dark-clr) placeholder:text-(--btn-light-hover)' : 'text-(--primary-light-clr) placeholder:text-(--grayish-light-clr)'}
                         `}
                     placeholder='Start typing'
                     onInput={(e) => handleSize(e.target)}

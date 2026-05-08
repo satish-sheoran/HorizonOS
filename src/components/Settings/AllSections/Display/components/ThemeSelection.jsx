@@ -10,7 +10,7 @@ const ThemeSelection = ({ theme, fullScreen, Device }) => {
 
     return (
         <div className='w-full flex flex-col mb-1.5'>
-            <span className='pl-[6%] md:pl-[4%] text-(--sec-light-clr) text-sm font-bold select-none'>Colour scheme</span>
+            <span className='px-[3%] md:px-[2%] text-(--grayish-dark-clr) text-sm font-bold select-none'>Colour scheme</span>
 
             <div className={`px-[2%] md:pl-[1%] setting-theme-div grid grid-cols-2 md:flex  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'max-w-100' : 'max-w-125'}`}>
 

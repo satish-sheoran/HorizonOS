@@ -11,7 +11,7 @@ const SettingNFolder = () => {
 
 
     return (
-        <div className={`duration-500 ease-out setting-n-folders `}>
+        <div className={`transition-colors duration-500 ease-out setting-n-folders `}>
 
             {activeTab === 'Notes' ? <button onClick={() => {
                 dispatch(setOpenManageFolder({ open: true }));

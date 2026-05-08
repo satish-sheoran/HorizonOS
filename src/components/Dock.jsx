@@ -9,7 +9,7 @@ const Dock = () => {
 
             {dockApps.map(({ id, name, icon, canOpen }) => {
                 return <button
-                    key={id} className={`app-icon active:scale-90 ${canOpen ? 'opacity-100' : 'opacity-70'} bg-(--bg-app-icon) overflow-hidden`}
+                    key={id} className={`app-icon active:scale-90 ${canOpen ? 'opacity-100' : 'opacity-70'} bg-(--primary-light-clr) overflow-hidden`}
                     onClick={() => toggleApp({ id, canOpen })} >
 
 

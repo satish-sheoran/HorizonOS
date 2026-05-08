@@ -55,7 +55,7 @@ const Notes = () => {
 
     return (
         <div className={`w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
-                    'bg-(--primary-light-clr)'
+                    'bg-(--sec-light-clr)'
                     : 'bg-(--bg-dark-app-body)'}`}>
 
             {currDevice === 'Desktop' ?

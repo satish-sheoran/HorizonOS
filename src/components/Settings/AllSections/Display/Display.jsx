@@ -9,7 +9,7 @@ const Display = ({ theme }) => {
 
 
     return (
-        <div className={`about-us-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+        <div className={`display-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
             <DisplayOptions theme={theme} fullScreen={fullScreen} Device={Device} />
 

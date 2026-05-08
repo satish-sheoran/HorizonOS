@@ -45,14 +45,14 @@ const Footer = () => {
                                     dispatch(setActiveTab({ tab: 'Notes' }))
                                 }}
                             >
-                                <TextAlignStart size={22} strokeWidth={2} className={`duration-500 ease-out 
+                                <TextAlignStart size={22} strokeWidth={2} className={`transition-colors duration-500 ease-out 
                            ${theme !== 'dark'
                                         ? activeTab === 'Notes'
                                             ? 'bg-(--sec-dark-clr)'
-                                            : 'bg-(--third-dark-clr-low)'
+                                            : 'bg-(--grayish-dark-clr)'
                                         : activeTab === 'Notes'
                                             ? 'bg-(--sec-light-clr)'
-                                            : 'bg-(--sec-light-clr-low)'
+                                            : 'bg-(--grayish-light-clr)'
                                     } 
                         rounded px-[1.2px] 
                         ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
@@ -61,10 +61,10 @@ const Footer = () => {
                     ${theme !== 'dark' ?
                                         activeTab === 'Notes'
                                             ? 'text-(--sec-dark-clr)'
-                                            : 'text-(--third-dark-clr-low)'
+                                            : 'text-(--grayish-dark-clr)'
                                         : activeTab === 'Notes'
                                             ? 'text-(--sec-light-clr)'
-                                            : 'text-(--sec-light-clr-low)'
+                                            : 'text-(--grayish-light-clr)'
                                     }
                          `}>Notes</span>
                             </button>
@@ -78,20 +78,20 @@ const Footer = () => {
                        ${theme !== 'dark'
                                         ? activeTab === 'Tasks'
                                             ? 'bg-(--sec-dark-clr)'
-                                            : 'bg-(--third-dark-clr-low)'
+                                            : 'bg-(--grayish-dark-clr)'
                                         : activeTab === 'Tasks'
                                             ? 'bg-(--sec-light-clr)'
-                                            : 'bg-(--sec-light-clr-low)'
+                                            : 'bg-(--grayish-light-clr)'
                                     }
                         rounded duration-500 ease-out ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
                                 <span className={`duration-500 ease-out 
                        ${theme !== 'dark' ?
                                         activeTab === 'Tasks'
                                             ? 'text-(--sec-dark-clr)'
-                                            : 'text-(--third-dark-clr-low)'
+                                            : 'text-(--grayish-dark-clr)'
                                         : activeTab === 'Tasks'
                                             ? 'text-(--sec-light-clr)'
-                                            : 'text-(--sec-light-clr-low)'
+                                            : 'text-(--grayish-light-clr)'
                                     }                        
                         `}>Tasks</span>
                             </button>

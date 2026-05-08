@@ -10,7 +10,7 @@ const Clock = () => {
 
 
     return (
-        <div className={`w-full h-full duration-500 ease-out ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-app-body)'}`}>
+        <div className={`w-full h-full duration-500 ease-out ${theme !== 'dark' ? 'bg-(--sec-light-clr)' : 'bg-(--bg-dark-app-body)'}`}>
             {currDevice === 'Desktop' ? <WindowControls id='clock' /> : <MobileCntrls id='clock' />}
         </div >
     )
