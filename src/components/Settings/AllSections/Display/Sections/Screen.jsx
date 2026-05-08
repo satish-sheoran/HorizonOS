@@ -2,7 +2,7 @@ import React from 'react'
 import ColourScheme from '../components/ColourScheme'
 import RefreshRate from '../components/RefreshRate'
 
-const Screen = ({ theme, fullScreen, Device }) => {
+const Screen = ({ options,theme, fullScreen, Device }) => {
     return (
         <section className={`w-full flex flex-col gap-2`}>
 

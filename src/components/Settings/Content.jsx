@@ -1,14 +1,24 @@
 import React from 'react'
-import Toolbar from './Toolbar'
 import { useSelector } from 'react-redux'
 
+import Toolbar from './Toolbar'
 import AboutUs from './AllSections/About/AboutUs'
 import Display from './AllSections/Display/Display'
 import Apps from './AllSections/Apps/Apps'
-import Additional from './AllSections/Additional/Additional'
+import AdditionalSettings from './AllSections/Additional/AdditionalSettings'
 import Feedback from './AllSections/Feedback/Feedback'
+import { SETTINGS_SECTIONS } from '../../constants/Settings'
+
+const SETTINGS_COMPONENTS = {
+    AboutUs,
+    Display,
+    Apps,
+    AdditionalSettings,
+    Feedback,
+};
 
 const Content = ({ currDevice, activeSection, setShowContent }) => {
+
 
     const theme = useSelector((store) => store.wallpaper.theme)
 
@@ -18,21 +28,26 @@ const Content = ({ currDevice, activeSection, setShowContent }) => {
             {/* toolbar for back and save options */}
             {currDevice !== 'Desktop' && <Toolbar setShowContent={setShowContent} theme={theme} />}
 
-            {/* display content based on current active section */}
-            {activeSection === 'About OS' && <AboutUs theme={theme} />}
+            {
+                SETTINGS_SECTIONS.map(({ title }) => {
+                    const compName = title.replaceAll(' ', '');
+                    const Component = SETTINGS_COMPONENTS[compName];
 
-            {activeSection === 'Display' &&
-            // Extra div is used bcz due to some issue on fullScreen,the DisplayOptions was overflowying even on w-[80%]
-            <div className='relative grow'>
-                <div className='absolute inset-0'>
-                    <Display theme={theme} />
-                </div>
-            </div>
+                    if (!Component || activeSection !== title) return null;
+
+                    if (compName === 'Display') {
+                        return <div key={title}
+                            className='relative grow'>
+                            <div className='absolute inset-0'>
+                                <Component
+                                    Section={title}
+                                    theme={theme} />
+                            </div>
+                        </div>
+                    }
+                    return <Component key={title} Section={title} theme={theme} />
+                })
             }
-
-            {activeSection === 'Apps' && <Apps theme={theme} />}
-            {activeSection === 'Additional Settings' && <Additional theme={theme} />}
-            {activeSection === 'Feedback' && <Feedback theme={theme} />}
 
         </section>
     )

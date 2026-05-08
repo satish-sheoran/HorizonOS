@@ -1,7 +1,8 @@
 const BASE_MOBILE_WALLPAPER_URL = '/assets/wallpaper/mobile/';
 const BASE_DESKTOP_WALLPAPER_URL = '/assets/wallpaper/desktop/';
 
-export const OS_NAME = 'Horizon OS';
+
+
 
 const DEFAULT_WALLPAPER = {
     'mobile': 'morskie', //this is id of wallpapers

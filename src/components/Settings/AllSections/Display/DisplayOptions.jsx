@@ -2,37 +2,45 @@ import React from 'react'
 import Theme from './Sections/Theme'
 import Screen from './Sections/Screen'
 import Font from './Sections/Font'
+import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
 
-const DisplayOptions = ({ Device, theme, fullScreen }) => {
+const DISPLAY_SECTIONS = {
+    Theme,
+    Screen,
+    Font
+}
 
+
+const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
+
+    const currentSection = SETTINGS_SECTIONS.find(
+        sec => sec.title === Section
+    );
 
     return (
-        <section className={`display-overflow-area flex flex-col gap-2.5 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto'}`}>
+        <section className={`display-overflow-area  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto'}`}>
 
 
-            {/* THEME RELATED  */}
-            <Theme theme={theme} fullScreen={fullScreen} Device={Device} />
+            {/* ALL SECTIONS OF DISPLAY RENDRING HERE*/}
+            {currentSection?.options?.map(({ Name, options}, idx) => {
+                const Component = DISPLAY_SECTIONS[Name];
+                if (!Component) return null;
 
-            {/* HR */}
-            <div className='px-[6%] md:px-[3%]'>
-                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
-            </div>
+                return <div className='flex flex-col gap-2.5' key={idx}>
+                    <Component
+                    options={options}
+                        theme={theme}
+                        fullScreen={fullScreen}
+                        Device={Device}
+                    />
+                    {/* HR */}
+                    <div className='mb-2.5 px-[6%] md:px-[3%]'>
+                        <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
+                    </div>
+                </div>
+            })}
 
-            {/* SCREEN RELATED */}
-            <Screen theme={theme} fullScreen={fullScreen} Device={Device} />
 
-            {/* HR */}
-            <div className='px-[6%] md:px-[3%]'>
-                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
-            </div>
-
-            <Font theme={theme} fullScreen={fullScreen} Device={Device} />
-
-
-            {/* HR */}
-            <div className='px-[6%] md:px-[3%]'>
-                <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
-            </div>
 
         </section>
     )

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import ExtraQuery from '../../ExtraQuery'
 import AppsOptions from './AppsOptions'
 
-const Apps = ({theme}) => {
+const Apps = ({Section,theme}) => {
 
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)

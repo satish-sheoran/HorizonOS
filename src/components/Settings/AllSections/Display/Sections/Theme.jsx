@@ -5,7 +5,7 @@ import ThemeSelection from '../components/ThemeSelection'
 import DarkOptions from '../components/DarkOptions'
 import ToggleButton from '../../../../UI/ToggleButton'
 
-const Theme = ({ theme, fullScreen, Device }) => {
+const Theme = ({ options,theme, fullScreen, Device }) => {
 
     const dispatch = useDispatch()
     const performAction = () => dispatch(setAutoTheme())

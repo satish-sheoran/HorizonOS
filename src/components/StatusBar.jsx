@@ -1,7 +1,7 @@
 import TimeNDate from './UI/TimeNDate'
 
 import { Wifi, BatteryMedium } from 'lucide-react';
-import { OS_NAME } from '../constants';
+import { OS_NAME } from '../constants/Settings';
 
 const StatusBar = () => {
 

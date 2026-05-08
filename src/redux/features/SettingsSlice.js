@@ -4,7 +4,7 @@ import { SETTINGS_SECTIONS } from "../../constants/Settings";
 const SettingsSlice = createSlice({
     name: 'Settings',
     initialState: {
-        Section : 'About OS',
+        Section : 'About Us',
     },
     reducers: {
         setSection(state, action) {

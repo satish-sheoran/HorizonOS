@@ -1,44 +1,61 @@
+export const OS_NAME = 'Horizon OS';
+export const OS_VERSION = '1.0.10.0 HRZNNV';
+
 
 export const SETTINGS_SECTIONS = [
     {
-        title: 'About OS',
+        title: 'About Us',
         icon: 'Info',
-        options: {
-            main: [{
-                option: 'OS name',
-                value: 'Horizon OS'
-            }, {
-                option: 'Storage',
+        options: [
+            {
+                Name: 'OS name',
+                value: OS_NAME
+            },
+            {
+                Name: 'Storage',
                 value: '20.3 GB/64 GB'
-            }],
-            other: [
-                {
-                    option: 'OS version',
-                    value: '1.0.10.0 HRZNNV'
-                },
-                {
-                    option: 'Developer',
-                    value: 'Satish Sheoran'
-                },
-                {
-                    option: 'About HorizonOS',
-                    value: ''
-                },
-                {
-                    option: 'Factory reset',
-                    value: ''
-                },
-                {
-                    option: 'Certification',
-                    value: ''
-                }
-            ]
-        },
+            },
+            {
+                Name: 'OS version',
+                value: OS_VERSION
+            },
+            {
+                Name: 'Developer',
+                value: 'Satish Sheoran'
+            },
+            {
+                Name: 'About HorizonOS',
+                value: ''
+            },
+            {
+                Name: 'Factory reset',
+                value: ''
+            },
+            {
+                Name: 'Certification',
+                value: ''
+            }
 
+        ]
     },
     {
         title: 'Display',
         icon: 'Monitor',
+        options: [
+            {
+                Name: 'Theme',
+                options: []
+
+            },
+            {
+                Name: 'Screen',
+                options: []
+            },
+            {
+                Name: 'Font',
+                options: []
+            }
+        ],
         extraQuery: [
             {
                 query: 'Change wallpaper'

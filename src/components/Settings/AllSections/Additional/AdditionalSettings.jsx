@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import AdditionalOptions from './AdditionalOptions'
 import ExtraQuery from '../../ExtraQuery'
 
-const Additional = ({theme}) => {
+const AdditionalSettings = ({Section,theme}) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
   const Device = useSelector((store) => store.Device.currDevice)
@@ -19,4 +19,4 @@ const Additional = ({theme}) => {
     </div>)
 }
 
-export default Additional
+export default AdditionalSettings

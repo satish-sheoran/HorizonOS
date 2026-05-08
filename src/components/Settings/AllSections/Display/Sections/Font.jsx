@@ -2,7 +2,7 @@ import React from 'react'
 import FontName from '../components/FontName'
 import FontSetting from '../components/FontSetting'
 
-const Font = ({ theme, Device, fullScreen }) => {
+const Font = ({ options,theme, Device, fullScreen }) => {
     return (
         <section className={`w-full flex flex-col gap-2`}>
 
