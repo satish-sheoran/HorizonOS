@@ -3,11 +3,7 @@
 
 
 What i did for this commit:
-refactor: replace manual settings rendering with dynamic component mapper (in Settings)
+refactor : Added dynamic rendring for options inside settings section (Display -> Theme,Font and Screen)
 
-- Added dynamic rendring for settings sections (Display,About US etc.)
-- Added dynamic rendering for options inside each setting section
 - Structured settings data and UI configuration in Settings constants file
-- Improved scalability and maintainbility of Settings app architecture
-- prepared nested option rendering structure for deeper settings navigation
 

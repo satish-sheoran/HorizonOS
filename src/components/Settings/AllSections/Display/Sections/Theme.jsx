@@ -5,7 +5,13 @@ import ThemeSelection from '../components/ThemeSelection'
 import DarkOptions from '../components/DarkOptions'
 import ToggleButton from '../../../../UI/ToggleButton'
 
-const Theme = ({ options,theme, fullScreen, Device }) => {
+const ThemeComponent = {
+    ThemeSelection,
+    DarkOptions,
+    ToggleButton
+}
+
+const Theme = ({ options, sectionName, theme, fullScreen, Device }) => {
 
     const dispatch = useDispatch()
     const performAction = () => dispatch(setAutoTheme())
@@ -13,15 +19,31 @@ const Theme = ({ options,theme, fullScreen, Device }) => {
     return (
         <div className={`flex flex-col w-full pt-2.5 `}>
 
-            {/* THEME SELECtION */}
-            <ThemeSelection theme={theme} fullScreen={fullScreen} Device={Device} />
+            <span className='ml-[6%] md:ml-[4%] text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
+            {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
+            {
+                options?.map(({ option, value }, idx) => {
+                    const Component = ThemeComponent[option];
 
+                    if (!Component) return null;
+                    if (option === 'ToggleButton') {
+                        return <Component
+                            key={idx}
+                            theme={theme}
+                            action={value} performAction={performAction}
+                        />
+                    }
 
-            {/* More Dark options to manage specifically add dark to spefic apps parmanently */}
-            <DarkOptions theme={theme} />
+                    return <Component
+                        key={idx}
+                        theme={theme}
+                        value={value}
+                        fullScreen={fullScreen}
+                        Device={Device}
+                    />
+                })
+            }
 
-            {/* Auto Set theme btn */}
-            <ToggleButton theme={theme} action='Automatic theme' performAction={performAction} />
         </div>
     )
 }

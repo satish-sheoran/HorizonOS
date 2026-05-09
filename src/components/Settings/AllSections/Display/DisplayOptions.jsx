@@ -22,13 +22,14 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
 
 
             {/* ALL SECTIONS OF DISPLAY RENDRING HERE*/}
-            {currentSection?.options?.map(({ Name, options}, idx) => {
+            {currentSection?.options?.map(({ Name, options,secName}, idx) => {
                 const Component = DISPLAY_SECTIONS[Name];
                 if (!Component) return null;
 
                 return <div className='flex flex-col gap-2.5' key={idx}>
                     <Component
                     options={options}
+                    sectionName={secName}
                         theme={theme}
                         fullScreen={fullScreen}
                         Device={Device}

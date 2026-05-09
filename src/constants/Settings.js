@@ -44,16 +44,41 @@ export const SETTINGS_SECTIONS = [
         options: [
             {
                 Name: 'Theme',
-                options: []
+                secName: 'Colour scheme',
+                options: [{
+                    option: 'ThemeSelection',
+                    value: '',
+                }, {
+                    option: 'DarkOptions',
+                    value: 'Dark mode options',
+                }, {
+                    option: 'ToggleButton',
+                    value: 'Automatic theme'
+                }]
 
             },
             {
                 Name: 'Screen',
-                options: []
+                secName: 'Screen',
+                options: [{
+                    option: 'ColourScheme',
+                    value: 'Colour Scheme',
+                }, {
+                    option: 'RefreshRate',
+                    value: 'Refresh rate'
+                }
+                ]
             },
             {
                 Name: 'Font',
-                options: []
+                secName: 'Font',
+                options: [{
+                    option: 'FontName',
+                    value: 'Font',
+                }, {
+                    option: 'FontSetting',
+                    value: 'Font settings'
+                }]
             }
         ],
         extraQuery: [
@@ -68,6 +93,7 @@ export const SETTINGS_SECTIONS = [
     {
         title: 'Apps',
         icon: 'LayoutGrid',
+        options : [],
         extraQuery: [
             {
                 query: 'Change wallpaper'
