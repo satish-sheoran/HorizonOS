@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setAutoTheme } from '../../../../../redux/features/wallpaper'
 import ThemeSelection from '../components/ThemeSelection'
 import DarkOptions from '../components/DarkOptions'
@@ -8,13 +8,15 @@ import ToggleButton from '../../../../UI/ToggleButton'
 const ThemeComponent = {
     ThemeSelection,
     DarkOptions,
-    ToggleButton
+    AutomaticTheme: ToggleButton
 }
 
 const Theme = ({ options, sectionName, theme, fullScreen, Device }) => {
 
     const dispatch = useDispatch()
     const performAction = () => dispatch(setAutoTheme())
+    const isAutoTheme = useSelector((store) => store.wallpaper.isAutoTheme)
+
 
     return (
         <div className={`flex flex-col w-full pt-2.5 `}>
@@ -26,11 +28,13 @@ const Theme = ({ options, sectionName, theme, fullScreen, Device }) => {
                     const Component = ThemeComponent[option];
 
                     if (!Component) return null;
-                    if (option === 'ToggleButton') {
-                        return <Component
+                    if (option === 'AutomaticTheme') {
+                        return <ToggleButton
                             key={idx}
                             theme={theme}
-                            action={value} performAction={performAction}
+                            action={value}
+                            performAction={performAction}
+                            isActionActive={isAutoTheme}
                         />
                     }
 

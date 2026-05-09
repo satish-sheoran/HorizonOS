@@ -12,7 +12,7 @@ const Apps = ({Section,theme}) => {
     return (
         <div className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
-            <AppsOptions theme={theme} fullScreen={fullScreen} Device={Device} />
+            <AppsOptions Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
 
             <ExtraQuery theme={theme} Device={Device} fullScreen={fullScreen} Section='Apps' />
 

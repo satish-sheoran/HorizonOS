@@ -2,13 +2,13 @@ import { ChevronRight } from "lucide-react"
 import { SETTINGS_SECTIONS } from "../../../../constants/Settings"
 import { toast } from "react-toastify";
 
-const AboutOptions = ({ Section, theme }) => {
+const AboutOptions = ({ Section, theme,Device,fullScreen }) => {
 
     const OPTIONS = SETTINGS_SECTIONS.find(sec => sec.title === Section).options;
 
 
     return (
-        <section className='py-2 flex-1 w-full gap-4 flex flex-col '>
+        <section className={`py-2 flex-1 w-full gap-4 flex flex-col  ${Device === 'Desktop' && fullScreen ? 'pb-5' : ''}`}>
 
             {/* NAME, VERSION */}
             <div className={`w-full px-[3%]`}>

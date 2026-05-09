@@ -138,6 +138,8 @@ body {
 .task-desc-parent,
 .about-us-overflow-area,
 .display-overflow-area,
+.app-overflow-area,
+.additional-overflow-area,
 body,
 html {
     scrollbar-width: none;

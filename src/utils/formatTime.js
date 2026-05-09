@@ -1,11 +1,11 @@
-export function formatTime(date, is24hr = false) {
+export function formatTime(date, is12hr = false) {
 
     const Time = date.toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit',
-        hour12: is24hr
+        hour12: is12hr
     })
-    return is24hr ? Time.toUpperCase() : Time;
+    return is12hr ? Time.toUpperCase() : Time;
 }
 
 export function formatDate(date) {

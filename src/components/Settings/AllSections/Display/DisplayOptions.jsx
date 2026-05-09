@@ -10,7 +10,7 @@ const DISPLAY_SECTIONS = {
     Font
 }
 
-
+// SECTION MEANS TITLE : APPS/DISPLAY ETC.
 const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
 
     const currentSection = SETTINGS_SECTIONS.find(
@@ -18,7 +18,7 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
     );
 
     return (
-        <section className={`display-overflow-area  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto'}`}>
+        <section className={`display-overflow-area  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5'}`}>
 
 
             {/* ALL SECTIONS OF DISPLAY RENDRING HERE*/}
@@ -35,9 +35,11 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
                         Device={Device}
                     />
                     {/* HR */}
-                    <div className='mb-2.5 px-[6%] md:px-[3%]'>
-                        <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
-                    </div>
+                    {idx < currentSection.options.length - 1 && (
+                        <div className='mb-2.5 px-[6%] md:px-[3%]'>
+                            <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
+                        </div>
+                    )}
                 </div>
             })}
 

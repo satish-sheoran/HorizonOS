@@ -9,7 +9,8 @@ const FontName = ({ theme ,value,fullScreen,Device}) => {
                 <span>{value}</span>
                 <span className='text-(--grayish-dark-clr)'>Default</span>
             </div>
-        </div>)
+        </div>
+        )
 }
 
 export default FontName

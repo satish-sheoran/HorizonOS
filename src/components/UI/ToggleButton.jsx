@@ -1,11 +1,7 @@
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-const ToggleButton = ({ theme, action, performAction }) => {
-
-    const isAutoTheme = useSelector((store) => store.wallpaper.isAutoTheme)
-
+const ToggleButton = ({ theme, action, performAction ,isActionActive}) => {
 
     return (
         <div
@@ -16,14 +12,14 @@ const ToggleButton = ({ theme, action, performAction }) => {
 
                 <span>{action}</span>
                 <button
-                    className={`${isAutoTheme
+                    className={`${isActionActive
                         ? 'bg-(--color-accent)'
                         : theme !== 'dark' ? 'bg-(--btn-light-hover)' : 'bg-(--sec-dark-clr)'
                         }
                      outline-none cursor-pointer relative  w-14 h-8 p-1.5  rounded-full transition-all duration-500 ease-out`}>
 
                     <div className={`${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--color-light-gray)'} theme-toggle-circle w-5 h-5 absolute top-1.5  rounded-full transition-all duration-300 ease-out
-                    ${isAutoTheme
+                    ${isActionActive
                             ? 'translate-x-6'
                             : 'translate-x-0'
                         }`}></div>

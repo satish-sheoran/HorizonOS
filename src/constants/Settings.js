@@ -52,7 +52,7 @@ export const SETTINGS_SECTIONS = [
                     option: 'DarkOptions',
                     value: 'Dark mode options',
                 }, {
-                    option: 'ToggleButton',
+                    option: 'AutomaticTheme',
                     value: 'Automatic theme'
                 }]
 
@@ -93,7 +93,23 @@ export const SETTINGS_SECTIONS = [
     {
         title: 'Apps',
         icon: 'LayoutGrid',
-        options : [],
+        options: [{
+            Name: 'AppsArea',
+            secName: 'App Management',
+            options: [{
+                option: 'SystemApps',
+                value: 'System apps',
+            }, {
+                option: 'ManageApps',
+                value: 'Manage apps'
+            }, {
+                option: 'UninstallApps',
+                value: 'Uninstall apps'
+            }, {
+                option: 'AppLock',
+                value: 'App lock',
+            },]
+        }],
         extraQuery: [
             {
                 query: 'Change wallpaper'
@@ -106,6 +122,34 @@ export const SETTINGS_SECTIONS = [
     {
         title: 'Additional Settings',
         icon: 'HousePlus',
+        options: [
+            {
+                Name: 'DeviceSection',
+                secName: 'Device',
+                options: [
+                    {
+                        option : 'WallpaperBehaviour',
+                        value : 'Change wallpaper'
+                    },
+                    {
+                        option: 'DateNTime',
+                        value: '12hr format',
+                    }
+                ]
+            }, {
+                Name: 'AdditionalSection',
+                secName: 'Additional',
+                options: [{
+                    option: 'ResetSettings',
+                    value: 'Reset settings'
+                }, {
+                    option: 'DeveloperOptions',
+                    value: 'Developer options'
+                }
+                ]
+            }
+
+        ],
         extraQuery: [
             {
                 query: 'Change wallpaper'

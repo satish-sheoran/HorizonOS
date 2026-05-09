@@ -35,17 +35,15 @@ const Content = ({ currDevice, activeSection, setShowContent }) => {
 
                     if (!Component || activeSection !== title) return null;
 
-                    if (compName === 'Display') {
-                        return <div key={title}
-                            className='relative grow'>
-                            <div className='absolute inset-0'>
-                                <Component
-                                    Section={title}
-                                    theme={theme} />
-                            </div>
+                    return <div key={title}
+                        className='relative grow'>
+                        <div className='absolute inset-0'>
+                            <Component
+                                Section={title}
+                                theme={theme} />
                         </div>
-                    }
-                    return <Component key={title} Section={title} theme={theme} />
+                    </div>
+
                 })
             }
 

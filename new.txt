@@ -3,7 +3,7 @@
 
 
 What i did for this commit:
-refactor : Added dynamic rendring for options inside settings section (Display -> Theme,Font and Screen)
+feat : structure responsive settings sections ( Apps,Additional Settings) and their options
 
 - Structured settings data and UI configuration in Settings constants file
-
+- Implement 12hr format state management using reducer fn. and initial state

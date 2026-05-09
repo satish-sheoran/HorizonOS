@@ -14,7 +14,7 @@ const Feedback = ({ Section,theme }) => {
 
       <FeedbackOptions theme={theme} fullScreen={fullScreen} Device={Device} />
 
-      <ExtraQuery theme={theme} Device={Device} fullScreen={fullScreen} Section='Feedback' />
+      <ExtraQuery theme={theme} Device={Device} fullScreen={fullScreen} Section={Section} />
 
 
     </div>)
