@@ -36,7 +36,14 @@ export const SETTINGS_SECTIONS = [
                 value: ''
             }
 
-        ]
+        ],
+        DeepOptions : [{
+            Name : 'About HorizonOS'
+        },{
+            Name : 'Certification'
+        },{
+            Name : 'Factory reset'
+        }]
     },
     {
         title: 'Display',
@@ -81,6 +88,13 @@ export const SETTINGS_SECTIONS = [
                 }]
             }
         ],
+        DeepOptions: [{
+            Name: 'Dark mode options Deep'
+        }, {
+            Name: 'Colour Scheme Deep'
+        }, {
+            Name: 'Font settings Deep'
+        }],
         extraQuery: [
             {
                 query: 'Change wallpaper'
@@ -117,7 +131,16 @@ export const SETTINGS_SECTIONS = [
             {
                 query: 'About Developer and Horizon OS'
             }
-        ]
+        ],
+        DeepOptions: [{
+            Name: 'App lock Deep'
+        }, {
+            Name: 'Manage apps Deep'
+        }, {
+            Name: 'System apps Deep'
+        },{
+            Name : 'Uninstall apps Deep'
+        }]
     },
     {
         title: 'Additional Settings',
@@ -128,13 +151,13 @@ export const SETTINGS_SECTIONS = [
                 secName: 'Device',
                 options: [
                     {
-                        option : 'WallpaperBehaviour',
-                        value : 'Change wallpaper'
+                        option: 'WallpaperBehaviour',
+                        value: 'Change wallpaper'
                     },
                     {
                         option: 'DateNTime',
                         value: '12hr format',
-                    }
+                    },
                 ]
             }, {
                 Name: 'AdditionalSection',
@@ -157,7 +180,14 @@ export const SETTINGS_SECTIONS = [
             {
                 query: 'About Developer and Horizon OS'
             }
-        ]
+        ],
+         DeepOptions: [{
+            Name: 'Change wallpaper Deep'
+        }, {
+            Name: 'Developer options Deep'
+        }, {
+            Name: 'Reset settings Deep'
+        }]
 
     },
     {

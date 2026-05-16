@@ -1,12 +1,18 @@
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
 import { toast } from 'react-toastify'
+import {useDispatch} from 'react-redux'
+import {setActivePanel} from '../../../../../redux/features/SettingsSlice'
+
 
 const SystemApps = ({value,fullScreen,Device,theme}) => {
+    const dispatch = useDispatch();
     return (
         <div
             onClick={() => {
-                toast.info('Coming Soon !')
+                                // dispatch(setActivePanel({panel : 'SystemappsDeep'}))
+
+                toast.info('This feature is currently under development. Stay tuned for updates!')
             }
             }
             className={`px-[3%] md:px-[2%]  select-none  font-semibold `}>

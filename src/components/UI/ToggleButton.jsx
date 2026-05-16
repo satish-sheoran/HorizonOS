@@ -18,7 +18,7 @@ const ToggleButton = ({ theme, action, performAction ,isActionActive}) => {
                         }
                      outline-none cursor-pointer relative  w-14 h-8 p-1.5  rounded-full transition-all duration-500 ease-out`}>
 
-                    <div className={`${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--color-light-gray)'} theme-toggle-circle w-5 h-5 absolute top-1.5  rounded-full transition-all duration-300 ease-out
+                    <div className={`bg-(--primary-light-clr) theme-toggle-circle w-5 h-5 absolute top-1.5  rounded-full transition-all duration-300 ease-out
                     ${isActionActive
                             ? 'translate-x-6'
                             : 'translate-x-0'

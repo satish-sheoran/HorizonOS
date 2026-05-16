@@ -3,4 +3,9 @@
 
 
 What i did for this commit:
-feat: optimize asset loading (using preloads and prefetch)
+feat : add dynmaic rendering and navigation for deep settings options
+
+- Created a Animation wrapper component to add animation and wrapping the option component
+- created a reducer and initial state to handle current active deep option
+- Dispatch of options is comment out to set active options for those which will be available soon
+- Currently working on About US deep options content showing and rendering

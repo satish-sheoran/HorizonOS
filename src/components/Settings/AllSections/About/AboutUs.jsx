@@ -1,12 +1,25 @@
 import React from 'react'
-import { OS_NAME, OS_VERSION } from '../../../../constants/Settings'
-import AboutOptions from './AboutOptions'
 import { useSelector } from 'react-redux'
+
+import { OS_NAME, OS_VERSION, SETTINGS_SECTIONS } from '../../../../constants/Settings'
+import AboutOptions from './AboutOptions'
+import AnimationWrapper from '../../../UI/AnimationWrapper'
+import AboutHorizonOS from './DeepOptions/AboutHorizonOS'
+import Certification from './DeepOptions/Certification'
+import Factoryreset from './DeepOptions/Factoryreset'
+
+const DEEP_OPTIONS = {
+  AboutHorizonOS,
+  Factoryreset,
+  Certification
+}
 
 const AboutUs = ({ Section, theme }) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
   const Device = useSelector((store) => store.Device.currDevice)
+  const activePanel = useSelector((store) => store.Settings.activePanel)
+  const OPTIONS = SETTINGS_SECTIONS.find(sec => sec.title === Section).DeepOptions;
 
 
   return (
@@ -22,6 +35,20 @@ const AboutUs = ({ Section, theme }) => {
 
 
       <AboutOptions Section={Section} theme={theme} OS_NAME={OS_NAME} Device={Device} fullScreen={fullScreen} />
+
+
+      <AnimationWrapper activePanel={activePanel}>
+        {OPTIONS?.map(({ Name }) => {
+          const compName = Name.replaceAll(' ', '');
+          const Component = DEEP_OPTIONS[compName];
+
+          if (!Component || activePanel !== compName) return null;
+
+          return <Component />
+        })}
+      </AnimationWrapper>
+
+
     </div>
   )
 }

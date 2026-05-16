@@ -1,12 +1,27 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+
 import DisplayOptions from './DisplayOptions'
 import ExtraQuery from '../../ExtraQuery'
-const Display = ({ Section,theme }) => {
+import AnimationWrapper from '../../../UI/AnimationWrapper'
+import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
+import DarkmodeoptionsDeep from './DeepOptions/DarkmodeoptionsDeep'
+import FontsettingsDeep from './DeepOptions/FontsettingsDeep'
+import ColourSchemeDeep from './DeepOptions/ColourSchemeDeep'
+
+
+const DEEP_OPTIONS = {
+    DarkmodeoptionsDeep,
+    FontsettingsDeep,
+    ColourSchemeDeep
+}
+
+const Display = ({ Section, theme }) => {
 
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)
-
+    const activePanel = useSelector((store) => store.Settings.activePanel)
+    const OPTIONS = SETTINGS_SECTIONS.find(sec => sec.title === Section).DeepOptions;
 
     return (
         <div className={`display-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
@@ -14,6 +29,20 @@ const Display = ({ Section,theme }) => {
             <DisplayOptions Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
 
             <ExtraQuery theme={theme} Device={Device} fullScreen={fullScreen} Section={Section} />
+
+
+            {/* DEEP OPTIONS */}
+            <AnimationWrapper activePanel={activePanel}>
+                {OPTIONS?.map(({ Name }) => {
+                    const compName = Name.replaceAll(' ', '');
+                    const Component = DEEP_OPTIONS[compName];
+
+                    if (!Component || activePanel !== compName) return null;
+
+                    return <Component />
+                })}
+            </AnimationWrapper>
+
 
         </div>
     )

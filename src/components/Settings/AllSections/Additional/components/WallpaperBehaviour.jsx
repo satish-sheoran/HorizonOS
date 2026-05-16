@@ -1,11 +1,15 @@
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
+import {setActivePanel} from '../../../../../redux/features/SettingsSlice'
 
 const WallpaperBehaviour = ({value,fullScreen,Device,theme}) => {
+    const dispatch = useDispatch();
     return (
         <div
             onClick={() => {
+// dispatch(setActivePanel({ panel: 'ChangewallpaperDeep' }))
                 toast.info('Coming Soon !')
             }
             }
