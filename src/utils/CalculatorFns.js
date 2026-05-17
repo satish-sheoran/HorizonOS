@@ -75,81 +75,14 @@ export const manageEntries = (symbol, Field, start, end) => {
     res = res ?? Field;
 
     /* ALL CASES */
-
     // 1.  Case of '.' 
     if (symbol == '.') {
-        let allNums = res.split('');  // returns [1,2,+,2,.,3,-,2] for  "12+2.3-2"
-
-        // Starting and ending index of our number on which we are trying to add '.' Ex - 456 in '12+4.56-8'
-        let firstOpratorAfterStartPosition = allNums.findIndex((el, i) => {
-            return i >= start && typeof el === "string" && isOperator(el);
-        });
-        let firstOpratorBeforeStartPosition = -1;
-        for (let i = start - 1; i >= 0; i--) {
-            if (typeof allNums[i] === "string" && isOperator(allNums[i])) {
-                firstOpratorBeforeStartPosition = i;
-                break;
-            }
-        }
-        let currNum; //the no on which operation is being checked . ex: 34 in 1.2+34 if it includes a . OR not
-
-
-        /* CASES*/
-        if (firstOpratorAfterStartPosition === -1 && firstOpratorBeforeStartPosition === -1) {
-            // khi bhi opertor na ho 
-            currNum = res;
-
-        }
-        else if (firstOpratorBeforeStartPosition === -1 || firstOpratorAfterStartPosition === -1) {
-            // bs phle || baadme operator ho 
-            if (firstOpratorAfterStartPosition === -1) {
-                currNum = res.slice(firstOpratorBeforeStartPosition + 1);
-            } else {
-                currNum = res.slice(0, start - 1);
-            }
-
-        }
-        else {
-            // dono jgh operator ho 
-            currNum = res.slice(firstOpratorBeforeStartPosition + 1, firstOpratorAfterStartPosition);
-        }
-        /*CASES DONE */
-
-        // WE GOT THE CURRNUM
-        if (!currNum.includes('.')) {
-            //agar dot ki position se just phle +,-,/,% opertor ho to '0' add kro 
-            let add = isOperator(res[start - 1]) ? '0.' : '.';
-            start = add === '0.' ? start + 1 : start
-            return { value: res.slice(0, start) + add + res.slice(start), cursor: start + 1 }
-        }
-        return { value: Field, cursor: start }; //because if no cases apply, to still we have removed the selected part above OR redo the start!=End case
+        return ManageDotEntry(start, end, isOperator, res);
     }
 
     /* 2. Case of  +,-,/,*,%  Operator */
     if (isOperator(symbol)) {
-        //Checking if there is already symbol just before OR after the cursor 
-        if (isOperator(res[start]) || isOperator(res[start - 1])) {
-
-            let pos = isOperator(res[start - 1]) ? start - 1 : start; //Position where we do operation OR add our symbol
-
-            if (pos === start - 1) {
-                // Even if there is symbol before and after the cursor and user chooses to add operator then we will just repalce the current symbol with the before one symbol 
-                res = res.slice(0, pos) + symbol + res.slice(pos + 1);
-            }
-            else {
-                // IF operator is after the symobl then replace current one with that
-                if (pos === start) res = Field.slice(0, pos) + symbol + Field.slice(pos + 1)
-            }
-
-            return { value: res, cursor: start };
-        }
-
-        // IF operator is NO where (Neither before nore after the cursor)
-        res = res.slice(0, start) + symbol + Field.slice(start);
-        let newCursor = Math.max(0, Math.min(start + 1, res.length));
-
-
-        return { value: res, cursor: newCursor };
+        return ManageOperatorEntry(res, symbol, isOperator, start, Field)
     }
 
     /* 3. Number (1234567890) Case */
@@ -196,12 +129,91 @@ export const removeElem = (result, start, end, textarea) => {
 
 // FN which returns font size as per no. of chars in our input field
 export const getFontClass = (len) => {
-    if (len <= 10) return 'text-3xl md:text-4xl';
-    if (len <= 20) return 'text-2xl md:text-3xl';
-    if (len <= 30) return 'text-xl md:text-2xl';
-    return 'text-lg md:text-2xl';
+    if (len <= 10) return 'text-4xl md:text-4xl';
+    if (len <= 20) return 'text-3xl md:text-3xl';
+    return 'text-3xl md:text-2xl';
 };
 
 
 
 // EVERYTHING IS FINE JUST WRITE THE CODE PROPERLY , so in future if i read it then it do not give headache
+export const ManageDotEntry = (start, end, isOperator, res) => {
+    let allNums = res.split('');  // returns [1,2,+,2,.,3,-,2] for  "12+2.3-2"
+
+    // Starting and ending index of our number on which we are trying to add '.' Ex - 456 in '12+4.56-8'
+    let firstOpratorAfterStartPosition = allNums.findIndex((el, i) => {
+        return i >= start && typeof el === "string" && isOperator(el);
+    });
+    let firstOpratorBeforeStartPosition = -1;
+    for (let i = start - 1; i >= 0; i--) {
+        if (typeof allNums[i] === "string" && isOperator(allNums[i])) {
+            firstOpratorBeforeStartPosition = i;
+            break;
+        }
+    }
+    let currNum; //the no on which operation is being checked . ex: 34 in 1.2+34 if it includes a . OR not
+
+
+    /* CASES*/
+    if (firstOpratorAfterStartPosition === -1 && firstOpratorBeforeStartPosition === -1) {
+        // khi bhi opertor na ho 
+        currNum = res;
+
+    }
+    else if (firstOpratorBeforeStartPosition === -1 || firstOpratorAfterStartPosition === -1) {
+        // bs phle || baadme operator ho 
+        if (firstOpratorAfterStartPosition === -1) {
+            currNum = res.slice(firstOpratorBeforeStartPosition + 1);
+        } else {
+            currNum = res.slice(0, start - 1);
+        }
+
+    }
+    else {
+        // dono jgh operator ho 
+        currNum = res.slice(firstOpratorBeforeStartPosition + 1, firstOpratorAfterStartPosition);
+    }
+    /*CASES DONE */
+
+    // WE GOT THE CURRNUM
+    if (!currNum.includes('.')) {
+        //agar dot ki position se just phle +,-,/,% opertor ho to '0' add kro 
+        let add = isOperator(res[start - 1]) ? '0.' : '.';
+        start = add === '0.' ? start + 1 : start
+        return { value: res.slice(0, start) + add + res.slice(start), cursor: start + 1 }
+    }
+    return { value: Field, cursor: start }; //because if no cases apply, to still we have removed the selected part above OR redo the start!=End case
+}
+
+// MANAGES +,-,*,/,% OPERATOR ENTRY
+export const ManageOperatorEntry = (res, symbol, isOperator, start, Field) => {
+
+    // if trying to add symbol at start
+    if (start <=1) return {value : res,cursor : start};
+
+    //Checking if there is already symbol just before OR after the cursor 
+    if (isOperator(res[start]) || isOperator(res[start - 1])) {
+
+
+        let pos = isOperator(res[start - 1]) ? start - 1 : start; //Position where we do operation OR add our symbol
+
+        if (pos === start - 1) {
+            // Even if there is symbol before and after the cursor and user chooses to add operator then we will just repalce the current symbol with the before one symbol 
+            res = res.slice(0, pos) + symbol + res.slice(pos + 1);
+        }
+        else {
+            // IF operator is after the symobl then replace current one with that
+            if (pos === start) res = Field.slice(0, pos) + symbol + Field.slice(pos + 1)
+        }
+
+        return { value: res, cursor: start };
+    }
+
+    // IF operator is NO where (Neither before nore after the cursor)
+    res = res.slice(0, start) + symbol + Field.slice(start);
+    let newCursor = Math.max(0, Math.min(start + 1, res.length));
+
+
+    return { value: res, cursor: newCursor };
+
+}

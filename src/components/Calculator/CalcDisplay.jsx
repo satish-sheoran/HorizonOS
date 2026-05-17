@@ -34,14 +34,6 @@ const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, theme }) => {
             }} // to prevent a bug which cause its input point to start
             readOnly={currDevice === 'Desktop'} //user can not edit if he is not on phone
             className={`transition-colors duration-500 ease-out ${getFontClass(result.length)} calc-result ${currDevice === 'Desktop' ? 'no-cursor' : ''} ${theme !=='dark'?'text-(--primary-dark-clr)':'text-(--primary-light-clr)'}`}>
-            {/* {
-                resultSplit.map((char, idx) => {
-                    const isOperator = ['%', '/', '*', '-', '+', '.'].includes(char);
-                    return <span key={idx} className={`${isOperator ? 'text-(--color-lime)' : theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
-                        {char}
-                    </span>
-                })
-            } */}
         </textarea >
     )
 }
