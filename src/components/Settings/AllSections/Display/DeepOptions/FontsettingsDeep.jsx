@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FontsettingsDeep = () => {
+const FontsettingsDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>FontsettingsDeep</div>
   )

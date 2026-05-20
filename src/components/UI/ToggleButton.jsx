@@ -1,14 +1,15 @@
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
 
-const ToggleButton = ({ theme, action, performAction ,isActionActive}) => {
+const ToggleButton = ({ theme, action, performAction, isActionActive }) => {
 
     return (
         <div
-            onClick={performAction}
-            className={`px-[3%] md:px-[2%] select-none font-semibold `}>
+            className={`select-none font-semibold `}>
 
-            <div className={`rounded-xl px-2 py-4 md:py-3 flex items-center justify-between ${theme !== 'dark' ? 'text-(--primary-dark-clr) hover:bg-(--third-light-clr) active:bg-(--third-light-clr)' : 'text-(--primary-light-clr) hover:bg-(--color-gray) active:bg-(--color-gray)'}`}>
+            <div
+                onClick={performAction}
+                className={`rounded-xl px-2 py-4 md:py-3 flex items-center justify-between ${theme !== 'dark' ? 'text-(--primary-dark-clr) hover:bg-(--third-light-clr) active:bg-(--third-light-clr)' : 'text-(--primary-light-clr) hover:bg-(--color-gray) active:bg-(--color-gray)'}`}>
 
                 <span>{action}</span>
                 <button

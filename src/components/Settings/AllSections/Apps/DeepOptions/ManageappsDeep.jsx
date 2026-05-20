@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ManageappsDeep = () => {
+const ManageappsDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>ManageappsDeep</div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SystemappsDeep = () => {
+const SystemappsDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>SystemappsDeep</div>
   )

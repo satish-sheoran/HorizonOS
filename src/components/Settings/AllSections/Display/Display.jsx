@@ -24,7 +24,7 @@ const Display = ({ Section, theme }) => {
     const OPTIONS = SETTINGS_SECTIONS.find(sec => sec.title === Section).DeepOptions;
 
     return (
-        <div className={`display-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+        <div className={`display-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
             <DisplayOptions Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
 
@@ -39,7 +39,7 @@ const Display = ({ Section, theme }) => {
 
                     if (!Component || activePanel !== compName) return null;
 
-                    return <Component />
+                    return <Component Section={Section} Device={Device} fullScreen={fullScreen} />
                 })}
             </AnimationWrapper>
 

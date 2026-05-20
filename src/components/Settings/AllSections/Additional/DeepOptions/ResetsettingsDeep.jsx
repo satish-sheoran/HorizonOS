@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ResetsettingsDeep = () => {
+const ResetsettingsDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>ResetsettingsDeep</div>
   )

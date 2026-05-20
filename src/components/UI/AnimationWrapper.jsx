@@ -16,8 +16,7 @@ const AnimationWrapper = ({ children, activePanel }) => {
 
 
     return (
-        <div className={`${activePanel !== '' ? '' : 'hidden'} border border-amber-300 absolute inset-0 bg-red-400`} ref={Animref}>
-            HII
+        <div className={`${activePanel !== '' ? '' : 'hidden'} overflow-hidden absolute inset-0 bg-red-400`} ref={Animref}>
             {children}
             </div>
     )

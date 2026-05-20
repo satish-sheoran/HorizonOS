@@ -14,7 +14,7 @@ const Settings = () => {
     const [showContent, setshowContent] = useState(false) //used to open the content section on mobile when a section is selected
 
     return (
-        <div className={`w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
+        <div className={` w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
                     'bg-(--sec-light-clr)'
                     : 'bg-(--bg-dark-app-body)'}`}>
 

@@ -11,7 +11,7 @@ const ThemeSelection = ({ theme, fullScreen, Device }) => {
     return (
         <div className='w-full  mb-1.5'>
 
-            <div className={`px-[2%] md:pl-[1%] setting-theme-div grid grid-cols-2 md:flex  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'max-w-100' : 'max-w-125'}`}>
+            <div className={`setting-theme-div grid grid-cols-2 md:flex  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'max-w-100' : 'max-w-125'}`}>
 
                 {THEMES.map(({ Theme }, idx) => {
 

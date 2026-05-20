@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UninstallappsDeep = () => {
+const UninstallappsDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>UninstallappsDeep</div>
   )

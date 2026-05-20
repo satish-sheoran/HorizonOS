@@ -3,4 +3,10 @@
 
 
 What i did for this commit:
-refactor : structured Calculator Fns properly
+fix(settings) : refactor padding-x and fix option click behaviour
+
+- resolve fullScreen border radius on desktop
+- clicking in-side of option,triggering that option
+
+FIXES And ADDITION TO CALC:
+style symbols in textarea of calc, redefined propeerly and fix number max length

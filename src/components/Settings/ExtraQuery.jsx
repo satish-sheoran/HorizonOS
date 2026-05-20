@@ -5,7 +5,7 @@ import { SETTINGS_SECTIONS } from '../../constants/Settings'
 
 const ExtraQuery = ({ theme, Device, fullScreen, Section }) => {
     return (
-        <div className={`flex  pt-3 pb-5 px-[2.5%] md:px-[2%] ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
+        <div className={`flex  pt-3 pb-5 ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
 
             <div className={`${!fullScreen ? 'w-full' : 'w-fit'} h-fit flex flex-col gap-4`}>
 

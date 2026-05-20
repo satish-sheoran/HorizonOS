@@ -11,7 +11,7 @@ const Screen = ({ options, sectionName, theme, fullScreen, Device }) => {
     return (
         <section className={`w-full flex flex-col gap-2`}>
 
-            <span className='ml-[6%] md:ml-[4%] text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
+            <span className='text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
 
             <div className='w-full flex flex-col'>
                 {/* DISPLAYING OPTIONS UNDER Screen SECTION :  Colour Scheme,Refresh Rate */}

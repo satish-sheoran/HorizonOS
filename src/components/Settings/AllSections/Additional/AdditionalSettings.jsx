@@ -24,7 +24,7 @@ const AdditionalSettings = ({ Section, theme }) => {
 
 
   return (
-    <div className={`additional-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+    <div className={`additional-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto  px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
       <AdditionalOptions theme={theme} fullScreen={fullScreen} Device={Device} Section={Section} />
 
@@ -39,7 +39,7 @@ const AdditionalSettings = ({ Section, theme }) => {
 
           if (!Component || activePanel !== compName) return null;
 
-          return <Component />
+          return <Component Section={Section} Device={Device} fullScreen={fullScreen} />
         })}
       </AnimationWrapper>
 

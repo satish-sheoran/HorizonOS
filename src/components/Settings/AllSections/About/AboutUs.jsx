@@ -23,9 +23,9 @@ const AboutUs = ({ Section, theme }) => {
 
 
   return (
-    <div className={`about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-5 `}>
+    <div className={`px-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-5 `}>
 
-      <div className='shrink-0 w-full h-[40%] px-[2.5%] flex flex-col items-center justify-center gap-2'>
+      <div className='shrink-0 w-full h-[35%] flex flex-col items-center justify-center gap-2'>
 
         <span className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
         </span>
@@ -44,7 +44,7 @@ const AboutUs = ({ Section, theme }) => {
 
           if (!Component || activePanel !== compName) return null;
 
-          return <Component />
+          return <Component Section={Section} fullScreen={fullScreen} Device={Device} />
         })}
       </AnimationWrapper>
 

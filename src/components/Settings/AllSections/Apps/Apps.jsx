@@ -24,7 +24,7 @@ const Apps = ({ Section, theme }) => {
 const activePanel = useSelector((store)=>store.Settings.activePanel);
 
     return (
-        <div className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+        <div className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
             <AppsOptions Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
 
@@ -37,7 +37,7 @@ const activePanel = useSelector((store)=>store.Settings.activePanel);
 
                     if (!Component || activePanel !== compName) return null;
 
-                    return <Component />
+                    return <Component Section={Section} Device={Device} fullScreen={fullScreen} />
                 })}
             </AnimationWrapper>
 

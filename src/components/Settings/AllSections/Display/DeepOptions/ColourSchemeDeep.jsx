@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ColourSchemeDeep = () => {
+const ColourSchemeDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>ColourSchemeDeep</div>
   )

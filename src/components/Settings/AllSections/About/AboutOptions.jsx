@@ -12,7 +12,7 @@ const AboutOptions = ({ Section, theme, Device, fullScreen }) => {
         <section className={`py-2 flex-1 w-full gap-4 flex flex-col  ${Device === 'Desktop' && fullScreen ? 'pb-5' : ''}`}>
 
             {/* NAME, VERSION */}
-            <div className={`w-full px-[3%]`}>
+            <div className={`w-full`}>
                 {OPTIONS?.map(({ Name, value }, idx) => {
                     return idx < 2 ?
                         (
@@ -38,7 +38,7 @@ const AboutOptions = ({ Section, theme, Device, fullScreen }) => {
                         (
                             <div key={idx}>
                                 {/* HR tag */}
-                                {Name === 'Certification' && <div className={`my-4 md:my-3 px-[6%] md:px-[2.5%] `}>
+                                {Name === 'Certification' && <div className={`my-4 md:my-3 `}>
                                     <hr className={`duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
                                 </div>}
                                 <div
@@ -48,7 +48,7 @@ const AboutOptions = ({ Section, theme, Device, fullScreen }) => {
                                         dispatch(setActivePanel({panel : option}))
                                     }
                                     }
-                                    className={`select-none  px-5 md:px-4 font-semibold `}>
+                                    className={`select-none font-semibold `}>
 
                                     <div className={`rounded-xl px-2 py-3 md:py-3  flex items-center justify-between ${theme !== 'dark' ? 'text-(--primary-dark-clr) hover:bg-(--third-light-clr) active:bg-(--third-light-clr)' : 'text-(--primary-light-clr) hover:bg-(--color-gray) active:bg-(--color-gray)'}`}>
                                         <span>{Name}</span>

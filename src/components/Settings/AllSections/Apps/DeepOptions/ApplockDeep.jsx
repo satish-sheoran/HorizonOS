@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ApplockDeep = () => {
+const ApplockDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>ApplockDeep</div>
   )

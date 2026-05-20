@@ -16,7 +16,7 @@ const AdditionalOptions = ({ Section, theme, Device, fullScreen }) => {
         sec => sec.title === Section
     );
     return (
-        <section className={`additional-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5'}`}>
+        <section className={`additional-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5 px-[2.5%]'}`}>
 
             {
                 currentSection?.options?.map(({ options, Name, secName, }, idx) => {
@@ -33,7 +33,7 @@ const AdditionalOptions = ({ Section, theme, Device, fullScreen }) => {
                         />
 
                         {/* HR */}
-                        {idx < currentSection.options.length - 1 && <div className='mb-2.5 px-[6%] md:px-[3%]'>
+                        {idx < currentSection.options.length - 1 && <div className='mb-2.5'>
                             <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
                         </div>}
                     </div>

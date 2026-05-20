@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChangewallpaperDeep = () => {
+const ChangewallpaperDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>ChangewallpaperDeep</div>
   )

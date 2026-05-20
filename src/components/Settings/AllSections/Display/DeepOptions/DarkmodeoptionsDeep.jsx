@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DarkmodeoptionsDeep = () => {
+const DarkmodeoptionsDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>DarkmodeoptionsDeep</div>
   )

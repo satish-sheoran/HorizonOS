@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeveloperoptionsDeep = () => {
+const DeveloperoptionsDeep = ({Section,Device,fullScreen}) => {
   return (
     <div>DeveloperoptionsDeep</div>
   )

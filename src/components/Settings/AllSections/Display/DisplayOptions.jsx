@@ -18,7 +18,7 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
     );
 
     return (
-        <section className={`display-overflow-area  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5'}`}>
+        <section className={`display-overflow-area  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5 px-[2.5%]'}`}>
 
 
             {/* ALL SECTIONS OF DISPLAY RENDRING HERE*/}
@@ -36,7 +36,7 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
                     />
                     {/* HR */}
                     {idx < currentSection.options.length - 1 && (
-                        <div className='mb-2.5 px-[6%] md:px-[3%]'>
+                        <div className='mb-2.5'>
                             <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
                         </div>
                     )}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Certification = () => {
+const Certification = ({Section,Device,fullScreen}) => {
   return (
     <div>Certification</div>
   )
