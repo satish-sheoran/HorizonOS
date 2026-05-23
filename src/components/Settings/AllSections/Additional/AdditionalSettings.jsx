@@ -32,7 +32,7 @@ const AdditionalSettings = ({ Section, theme }) => {
 
       {/* DEEP OPTIONS */}
 
-      <AnimationWrapper activePanel={activePanel}>
+      <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} theme={theme} fullScreen={fullScreen}>
         {OPTIONS?.map(({ Name }) => {
           const compName = Name.replaceAll(' ', '');
           const Component = DEEP_OPTIONS[compName];

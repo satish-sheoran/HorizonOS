@@ -43,7 +43,15 @@ export const SETTINGS_SECTIONS = [
             Name : 'Certification'
         },{
             Name : 'Factory reset'
-        }]
+        }],
+         extraQuery: [
+            {
+                query: 'Change wallpaper'
+            },
+            {
+                query: 'About Developer and Horizon OS'
+            }
+        ]
     },
     {
         title: 'Display',

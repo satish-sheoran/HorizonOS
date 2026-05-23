@@ -37,7 +37,7 @@ const AboutUs = ({ Section, theme }) => {
       <AboutOptions Section={Section} theme={theme} OS_NAME={OS_NAME} Device={Device} fullScreen={fullScreen} />
 
 
-      <AnimationWrapper activePanel={activePanel}>
+      <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} theme={theme} fullScreen={fullScreen}>
         {OPTIONS?.map(({ Name }) => {
           const compName = Name.replaceAll(' ', '');
           const Component = DEEP_OPTIONS[compName];

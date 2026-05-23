@@ -30,7 +30,7 @@ const activePanel = useSelector((store)=>store.Settings.activePanel);
 
             <ExtraQuery theme={theme} Device={Device} fullScreen={fullScreen} Section='Apps' />
 
-            <AnimationWrapper activePanel={activePanel}>
+            <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} theme={theme} fullScreen={fullScreen}>
                 {OPTIONS?.map(({ Name }) => {
                     const compName = Name.replaceAll(' ', '');
                     const Component = DEEP_OPTIONS[compName];

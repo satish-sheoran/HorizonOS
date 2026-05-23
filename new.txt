@@ -3,10 +3,9 @@
 
 
 What i did for this commit:
-fix(settings) : refactor padding-x and fix option click behaviour
+feat(settings) : Structure the deep options opening div and Animation Wrapper 
 
-- resolve fullScreen border radius on desktop
-- clicking in-side of option,triggering that option
+- Now On fullScreen on desktop ,queries also show on right as same as it used to show normally in each section
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
