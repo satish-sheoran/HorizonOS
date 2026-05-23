@@ -1,13 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import Toolbar from './Toolbar'
+import Toolbar from '../UI/Toolbar'
 import AboutUs from './AllSections/About/AboutUs'
 import Display from './AllSections/Display/Display'
 import Apps from './AllSections/Apps/Apps'
 import AdditionalSettings from './AllSections/Additional/AdditionalSettings'
 import Feedback from './AllSections/Feedback/Feedback'
 import { SETTINGS_SECTIONS } from '../../constants/Settings'
+import { setActivePanel } from '../../redux/features/SettingsSlice'
 
 const SETTINGS_COMPONENTS = {
     AboutUs,
@@ -18,15 +19,18 @@ const SETTINGS_COMPONENTS = {
 };
 
 const Content = ({ currDevice, activeSection, setShowContent }) => {
-
-
+    const dispatch = useDispatch()
     const theme = useSelector((store) => store.wallpaper.theme)
+    const activePanel = useSelector((store) => store.Settings.activePanel)
+
+    const setShowContentFalse = () => setShowContent(false)
+    const setActivePanelEmpty = () => dispatch(setActivePanel({ panel: '' }))
 
     return (
         <section className={`relative h-full  flex flex-col ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
 
             {/* toolbar for back and save options */}
-            {currDevice !== 'Desktop' && <Toolbar setShowContent={setShowContent} theme={theme} />}
+            {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} theme={theme} />}
 
             {
                 SETTINGS_SECTIONS.map(({ title }) => {
