@@ -32,9 +32,6 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
                     py-2 relative w-full rounded-xl px-[3.5%] md:px-[4.5%] active:scale-97`}>
                         {/*JUST wrapper used to add scale during active so user feels the click*/}
 
-                        {/* {currDevice === 'Desktop' && activeSection === title &&
-                                <div className={`duration-500 ease-out absolute ${theme !== 'dark' ? 'bg-(--primary-dark-clr)' : 'bg-(--primary-dark-clr)'} left-0 w-1 h-full`}>
-                                </div>} */}
 
                         <div className="flex w-full items-center justify-between">
                             <div className='md:text-md flex gap-1.5 items-center '>

@@ -3,11 +3,10 @@
 
 
 What i did for this commit:
-refactor(settings UI comp): Improve functionality of Toolbar of settings app
+feat : Structured AboutUS option opening component
 
-- It perfrom the action it is ordered to do
-- In Content file of setting,we are passing the action to it
-- Example : If active Panel have some value(deep option is opened) then it closes that panel onClicking it . If not then on Mobile onClicking it, it closes that particular opened section and shows All sections
+- How it will be structured OR its look
+- Styling It properly remaining
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

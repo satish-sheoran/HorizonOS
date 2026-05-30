@@ -21,7 +21,7 @@ const AnimationWrapper = ({ children, activePanel, Section, fullScreen, Device, 
             'bg-(--sec-light-clr)'
             : 'bg-(--bg-dark-app-body)'}`} ref={Animref}>
 
-            <div className={`w-full h-full grow flex  border border-red-300 ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+            <div className={`settings-deepCommon-overflow-UI w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
                 {children}
                 {/* QUERIES */}

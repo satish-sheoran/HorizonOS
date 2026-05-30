@@ -32,7 +32,8 @@ body {
     --bg-zoom: #2acb42;
 
 
-    /* LIGHT THEME  */
+    /* LIGHT THEME
+      */
     /* --primary-light-clr: rgb(232, 232, 232); */
     --primary-light-clr: rgb(252, 252, 254);
     --sec-light-clr: rgb(246, 246, 248);
@@ -140,6 +141,8 @@ body {
 .display-overflow-area,
 .app-overflow-area,
 .additional-overflow-area,
+.deep-about-us,
+.settings-deepCommon-overflow-UI,
 body,
 html {
     scrollbar-width: none;
