@@ -95,7 +95,7 @@ const AllNotes = () => {
                                 key={id}
                                 className={`duration-500 ease-out relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 
                     ${theme !== 'dark'
-                                        ? 'bg-(--third-light-clr)'
+                                        ? 'bg-(--primary-light-clr)'
                                         :
                                         'bg-(--third-dark-clr)'
                                     }                            

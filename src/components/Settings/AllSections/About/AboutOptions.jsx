@@ -52,7 +52,7 @@ const AboutOptions = ({ Section, theme, Device, fullScreen }) => {
 
                                     <div className={`rounded-xl px-2 py-3 md:py-3  flex items-center justify-between ${theme !== 'dark' ? 'text-(--primary-dark-clr) hover:bg-(--third-light-clr) active:bg-(--third-light-clr)' : 'text-(--primary-light-clr) hover:bg-(--color-gray) active:bg-(--color-gray)'}`}>
                                         <span>{Name}</span>
-                                        <span className={`${value === '' ? '' : 'text-(--grayish-dark-clr)'}`}>
+                                        <span className={`${value === '' ? '' : value === 'Satish Sheoran'?'text-(--color-accent) font-bold':'text-(--grayish-dark-clr)'}`}>
                                             {value !== '' ? value : <ChevronRight />}
                                         </span>
                                     </div>

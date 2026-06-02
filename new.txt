@@ -3,10 +3,12 @@
 
 
 What i did for this commit:
-feat : Structured AboutUS option opening component
+feat : Styled Deep Option of About : About OS
 
-- How it will be structured OR its look
-- Styling It properly remaining
+- Added background colors,improve structure and look 
+- fix : postioning of Section Name of Apps Section
+- Changes Colors of Some texts
+
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

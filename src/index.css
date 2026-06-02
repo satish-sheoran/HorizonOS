@@ -21,6 +21,7 @@ body {
     /* NEUTRAL */
     --color-accent: rgb(38, 121, 243);
     --color-light-accent: #3f84f9;
+    --color-ultra-light-accent: #b5cbf8e0;
     --color-light-gray: #e8e8eed5;
     --color-orange: rgb(237, 129, 20);
     --color-gray: rgb(132, 132, 132);
@@ -34,9 +35,9 @@ body {
 
     /* LIGHT THEME
       */
-    /* --primary-light-clr: rgb(232, 232, 232); */
-    --primary-light-clr: rgb(252, 252, 254);
-    --sec-light-clr: rgb(246, 246, 248);
+      --color-lightDarkish-white: #EEF2F7;
+    --primary-light-clr: #FFFFFF;
+    --sec-light-clr: #F3F4F6;
     --third-light-clr: rgb(233, 233, 235);
     --grayish-light-clr : rgb(128, 128, 128);
     --btn-light-hover: rgba(209, 205, 205, 0.938);
