@@ -29,7 +29,7 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
                             :
                             ' hover:bg-(--color-gray) active:bg-(--color-gray) text-(--primary-light-clr)'
                         }
-                    py-2 relative w-full rounded-xl px-[3.5%] md:px-[4.5%] active:scale-97`}>
+                    py-2 relative w-full rounded-2xl px-[3.5%] md:px-[4.5%] active:scale-97`}>
                         {/*JUST wrapper used to add scale during active so user feels the click*/}
 
 

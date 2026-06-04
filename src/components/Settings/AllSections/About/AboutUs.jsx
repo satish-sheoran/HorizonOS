@@ -5,13 +5,11 @@ import { OS_NAME, OS_VERSION, SETTINGS_SECTIONS } from '../../../../constants/Se
 import AboutOptions from './AboutOptions'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
 import AboutHorizonOS from './DeepOptions/AboutHorizonOS'
-import Certification from './DeepOptions/Certification'
 import Factoryreset from './DeepOptions/Factoryreset'
 
 const DEEP_OPTIONS = {
   AboutHorizonOS,
   Factoryreset,
-  Certification
 }
 
 const AboutUs = ({ Section, theme }) => {
@@ -23,9 +21,9 @@ const AboutUs = ({ Section, theme }) => {
 
 
   return (
-    <div className={`px-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-5 `}>
+    <div className={`p-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-2 `}>
 
-      <div className='shrink-0 w-full h-[35%] flex flex-col items-center justify-center gap-2'>
+      <div className={`shrink-0 w-full ${Device !== 'Desktop' ? 'h-[40%]' : 'h-[45%]'} flex flex-col items-center justify-center gap-2 rounded-2xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
 
         <span className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
         </span>

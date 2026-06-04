@@ -3,11 +3,11 @@
 
 
 What i did for this commit:
-feat : Styled Deep Option of About : About OS
+refactor(settings) : redefined style and look of About and Display Section
 
-- Added background colors,improve structure and look 
-- fix : postioning of Section Name of Apps Section
-- Changes Colors of Some texts
+- Added background to seprate sections of Displayand About US sections
+- Added borders,hover bgs changes and added duration and easing for smooth animation look
+- REMAINING : redefining style of Apps ,Feedback,Additional Sections
 
 
 FIXES And ADDITION TO CALC:

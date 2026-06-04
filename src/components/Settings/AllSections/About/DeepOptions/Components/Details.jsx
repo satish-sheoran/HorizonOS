@@ -4,7 +4,7 @@ import { CodeXml, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-react
 
 const Details = ({Device,theme,fullScreen}) => {
     return (
-        <div className={` about flex flex-col gap-4 p-[2.5%]  rounded-xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
+        <div className={` about flex flex-col gap-4 p-[2.5%]  rounded-2xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
 
             <div className={`flex gap-2 font-bold text-lg 
             ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}

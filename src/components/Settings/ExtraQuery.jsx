@@ -5,14 +5,12 @@ import { SETTINGS_SECTIONS } from '../../constants/Settings'
 
 const ExtraQuery = ({ theme, Device, fullScreen, Section }) => {
     return (
-        <div className={`flex  pt-3 pb-5 ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
+        <div className={` flex  ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'p-[2.5%] w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
 
             <div className={`${!fullScreen ? 'w-full' : 'w-fit'} h-fit flex flex-col gap-4`}>
 
                 <div className={`duration-500 ease-out flex flex-col gap-2 rounded-xl 
-                    ${!fullScreen ?
-                        `py-4 px-5 ${theme !== 'dark' ? 'bg-(--third-light-clr)' : 'bg-(--third-dark-clr)'}`
-                        : ''}
+                    py-4 px-5 ${theme !== 'dark' ? 'bg-(--third-light-clr)' : 'bg-(--third-dark-clr)'}
                     `}>
 
                     <p className={`duration-500 ease-out w-fit ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} font-bold select-none`}>Need other settings?</p>

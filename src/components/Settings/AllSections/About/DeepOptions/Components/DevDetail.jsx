@@ -4,14 +4,14 @@ import { CodeXml, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-react
 
 const DevDetail = ({ Device, theme }) => {
     return (
-        <div className={`developer flex flex-col gap-4 p-[2.5%] rounded-xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
+        <div className={`developer flex flex-col gap-4 p-[2.5%] rounded-2xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
             <div className={`flex gap-2 font-bold text-lg ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
                 <User  className={`text-(--color-accent)`} strokeWidth={2.5} />
                 <span>Developer</span>
             </div>
 
             <div className={`gap-3 details flex ${Device !== 'Desktop' ? 'flex-col' : 'justify-between'}`}>
-                <div className={`rounded-xl left ${Device !== 'Desktop' ? 'w-full h-[20vh]' : 'w-1/4'}  bg-green-100`}></div>
+                <div className={`rounded-2xl left ${Device !== 'Desktop' ? 'w-full h-[20vh]' : 'w-1/4'}  bg-green-100`}></div>
 
                 <div className={`${Device !== 'Desktop' ? 'w-full' : ''} gap-2 right w-3/4 flex flex-col`}>
                     <span className='flex flex-col'>

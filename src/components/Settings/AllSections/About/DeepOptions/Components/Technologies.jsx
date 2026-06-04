@@ -4,7 +4,7 @@ import { CodeXml, Dot, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-
 
 const Technologies = ({ Device, theme, Section }) => {
     return (
-        <div className={`technologies flex flex-col gap-4 p-[2.5%] rounded-xl ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+        <div className={`technologies flex flex-col gap-4 p-[2.5%] rounded-2xl ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
 
 
             <div className={`flex gap-2 font-bold text-lg ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>

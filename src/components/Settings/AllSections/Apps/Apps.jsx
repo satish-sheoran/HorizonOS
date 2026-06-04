@@ -24,7 +24,7 @@ const Apps = ({ Section, theme }) => {
 const activePanel = useSelector((store)=>store.Settings.activePanel);
 
     return (
-        <div className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+        <div className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
             <AppsOptions Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
 

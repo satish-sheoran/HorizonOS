@@ -36,6 +36,7 @@ const DeviceSection = ({ theme, Device, fullScreen, options, sectionName }) => {
                 theme={theme}
                 action={value}
                 performAction={TimeFormat}
+                Device={Device}
                 isActionActive={is12HRFormat}
               />
             }

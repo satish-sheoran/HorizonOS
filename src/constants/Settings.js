@@ -31,16 +31,10 @@ export const SETTINGS_SECTIONS = [
                 Name: 'Factory reset',
                 value: ''
             },
-            {
-                Name: 'Certification',
-                value: ''
-            }
 
         ],
         DeepOptions : [{
             Name : 'About HorizonOS'
-        },{
-            Name : 'Certification'
         },{
             Name : 'Factory reset'
         }],

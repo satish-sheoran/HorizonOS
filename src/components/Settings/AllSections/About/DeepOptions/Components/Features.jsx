@@ -3,7 +3,7 @@ import {  ClockFading,Expand, Layers, Star,MonitorSmartphone,LineSquiggle, Mouse
 
 const Features = ({ Device, theme, fullScreen }) => {
   return (
-    <div className={`features flex flex-col gap-4 p-[2.5%] rounded-xl ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+    <div className={`features flex flex-col gap-4 p-[2.5%] rounded-2xl ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
       <div className={`flex gap-2 font-bold text-lg ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
         <Star className={`text-(--color-accent)`} strokeWidth={2.5} />
         <span>Features</span>
@@ -13,7 +13,7 @@ const Features = ({ Device, theme, fullScreen }) => {
       <div className={`grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} gap-3`}>
 
         {/* 1 */}
-        <div className={`border text-sm rounded-lg flex gap-3 justify-center items-center 
+        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
         ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
               ${Device !== 'Desktop' ? `py-2`
             :
@@ -30,7 +30,7 @@ const Features = ({ Device, theme, fullScreen }) => {
         </div>
 
         {/* 2 */}
-        <div className={`border text-sm rounded-lg flex gap-3 justify-center items-center 
+        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
         ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
               ${Device !== 'Desktop' ? `py-2`
             :
@@ -49,7 +49,7 @@ const Features = ({ Device, theme, fullScreen }) => {
         </div>
 
         {/* 3 */}
-        <div className={`border text-sm rounded-lg flex gap-3 justify-center items-center 
+        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
         ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
               ${Device !== 'Desktop' ? `py-2`
             :
@@ -68,7 +68,7 @@ const Features = ({ Device, theme, fullScreen }) => {
         </div>
 
         {/* 4 */}
-        <div className={`border text-sm rounded-lg flex gap-3 justify-center items-center 
+        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
         ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
               ${Device !== 'Desktop' ? `py-2`
             :
@@ -87,7 +87,7 @@ const Features = ({ Device, theme, fullScreen }) => {
         </div>
 
         {/* 5 */}
-         <div className={`border text-sm rounded-lg flex gap-3 justify-center items-center 
+         <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
         ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
               ${Device !== 'Desktop' ? `py-2`
             :
@@ -107,7 +107,7 @@ const Features = ({ Device, theme, fullScreen }) => {
        
       
         {/* 6 */}
-         <div className={`border text-sm rounded-lg flex gap-3 justify-center items-center 
+         <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
         ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
               ${Device !== 'Desktop' ? `py-2`
             :

@@ -13,7 +13,7 @@ const Screen = ({ options, sectionName, theme, fullScreen, Device }) => {
 
             <span className='text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
 
-            <div className='w-full flex flex-col'>
+            <div className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
                 {/* DISPLAYING OPTIONS UNDER Screen SECTION :  Colour Scheme,Refresh Rate */}
                 {
                     options?.map(({ option, value }, idx) => {

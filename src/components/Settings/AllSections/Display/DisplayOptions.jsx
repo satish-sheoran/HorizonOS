@@ -18,7 +18,7 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
     );
 
     return (
-        <section className={`display-overflow-area  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5 px-[2.5%]'}`}>
+        <section className={`display-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  p-[2.5%]'}`}>
 
 
             {/* ALL SECTIONS OF DISPLAY RENDRING HERE*/}
@@ -26,18 +26,20 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
                 const Component = DISPLAY_SECTIONS[Name];
                 if (!Component) return null;
 
-                return <div className='flex flex-col gap-2.5' key={idx}>
+                return <div className={`flex flex-col gap-2`} key={idx}>
+                   
                     <Component
                     options={options}
                     sectionName={secName}
-                        theme={theme}
-                        fullScreen={fullScreen}
-                        Device={Device}
+                    theme={theme}
+                    fullScreen={fullScreen}
+                    Device={Device}
                     />
+
                     {/* HR */}
                     {idx < currentSection.options.length - 1 && (
-                        <div className='mb-2.5'>
-                            <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
+                        <div className='mt-2  mx-auto w-9/10'>
+                            <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--bg-dark-header)' : 'border-(--primary-light-clr)'}`} />
                         </div>
                     )}
                 </div>
