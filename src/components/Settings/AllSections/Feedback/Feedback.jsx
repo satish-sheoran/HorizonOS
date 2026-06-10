@@ -10,7 +10,7 @@ const Feedback = ({ Section,theme }) => {
 
 
   return (
-    <div className={`feedback-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+    <div className={`feedback-overflow-area w-full h-full grow flex ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
       <FeedbackOptions theme={theme} fullScreen={fullScreen} Device={Device} />
 

@@ -16,14 +16,14 @@ const AdditionalOptions = ({ Section, theme, Device, fullScreen }) => {
         sec => sec.title === Section
     );
     return (
-        <section className={`additional-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5 px-[2.5%]'}`}>
+        <section className={`additional-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
 
             {
                 currentSection?.options?.map(({ options, Name, secName, }, idx) => {
                     const Component = ADDITIONAL_SECTIONS[Name];
                     if (!Component) return null;
 
-                    return <div className='w-full flex flex-col gap-2.5' key={idx}>
+                    return <div className='w-full flex flex-col gap-2' key={idx}>
                         <Component
                             theme={theme}
                             Device={Device}
@@ -33,9 +33,11 @@ const AdditionalOptions = ({ Section, theme, Device, fullScreen }) => {
                         />
 
                         {/* HR */}
-                        {idx < currentSection.options.length - 1 && <div className='mb-2.5'>
-                            <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--sec-dark-clr)' : 'border-(--sec-light-clr)'}`} />
-                        </div>}
+                       {idx < currentSection.options.length - 1 && (
+                        <div className='mt-2  mx-auto w-9/10'>
+                            <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--bg-dark-header)' : 'border-(--primary-light-clr)'}`} />
+                        </div>
+                    )}
                     </div>
                 })
             }

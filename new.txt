@@ -3,11 +3,11 @@
 
 
 What i did for this commit:
-refactor(settings) : redefined style and look of About and Display Section
+refactor(settings) : redefined style and look of Apps and Additional Section 
 
-- Added background to seprate sections of Displayand About US sections
+- Added background to seprate sections of Apps and Additional sections
 - Added borders,hover bgs changes and added duration and easing for smooth animation look
-- REMAINING : redefining style of Apps ,Feedback,Additional Sections
+- REMAINING : No Sections are remaining now
 
 
 FIXES And ADDITION TO CALC:

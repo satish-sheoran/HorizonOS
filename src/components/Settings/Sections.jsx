@@ -21,7 +21,8 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
                     }}
                 >
 
-                    <div className={`${currDevice === 'Desktop' && activeSection === title ?
+              
+                    <div className={`duration-500 ease-out ${currDevice === 'Desktop' && activeSection === title ?
                     'bg-(--color-light-accent) text-(--primary-light-clr) hover:bg-(--color-accent) active:bg-(--color-accent)'
                         :
                        theme !== 'dark' ?

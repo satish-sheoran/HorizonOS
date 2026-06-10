@@ -9,12 +9,12 @@ const ADDITINAL_OPTIONS = {
 
 const AdditionalSection = ({ theme,Device,fullScreen,options,sectionName}) => {
   return (
-    <div className={`flex flex-col w-full pt-2.5 gap-2`}>
+    <div className={`flex flex-col w-full  gap-2`}>
 
       <span className='text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
 
       {/* DISPLAYING ALL OPTIONS OF ADDITIONAL SECTIONS*/}
-      <div className='w-full flex flex-col'>
+      <div className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
       {
         options?.map(({ option, value }, idx) => {
           const Component = ADDITINAL_OPTIONS[option];
