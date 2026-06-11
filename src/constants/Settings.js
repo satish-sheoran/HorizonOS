@@ -33,12 +33,12 @@ export const SETTINGS_SECTIONS = [
             },
 
         ],
-        DeepOptions : [{
-            Name : 'About HorizonOS'
-        },{
-            Name : 'Factory reset'
+        DeepOptions: [{
+            Name: 'About HorizonOS'
+        }, {
+            Name: 'Factory reset'
         }],
-         extraQuery: [
+        extraQuery: [
             {
                 query: 'Change wallpaper'
             },
@@ -140,8 +140,8 @@ export const SETTINGS_SECTIONS = [
             Name: 'Manage apps Deep'
         }, {
             Name: 'System apps Deep'
-        },{
-            Name : 'Uninstall apps Deep'
+        }, {
+            Name: 'Uninstall apps Deep'
         }]
     },
     {
@@ -183,7 +183,7 @@ export const SETTINGS_SECTIONS = [
                 query: 'About Developer and Horizon OS'
             }
         ],
-         DeepOptions: [{
+        DeepOptions: [{
             Name: 'Change wallpaper Deep'
         }, {
             Name: 'Developer options Deep'
@@ -204,5 +204,104 @@ export const SETTINGS_SECTIONS = [
             }
         ]
 
+    }
+]
+
+
+
+
+// about section
+
+export const DEV_DETAILS = {
+    Name: 'Satish Kumar',
+
+    Role: 'Frontend Developer & UI Engineer',
+
+    'Description': 'Hi, I’m Satish — a frontend developer focused on modern UI systems, responsive apps,smooth and dynamic user experiences. HorizonOS is a personal project built to explore advanced frontend engineering concepts.',
+
+    Disclaimer: 'HorizonOS is a original independent project created for portfolio purposes. Unauthorized redistribution without credit is discouraged.',
+
+    ImgURL: '/src/assets/images/me3.jpeg'
+}
+
+export const PROJECT_DETAILS = {
+    Mobile: [
+        'HorizonOS is a browser-based interactive OS experience inspired by modern desktop environments.',
+
+        'Built entirely with frontend technologies, it features responsive layouts, draggable windows, smooth animations, and multi-app interaction across desktop, tablet, and mobile devices.',
+
+        'It includes apps like Notes, Calculator, Settings, Clock, and Games Arena, focused on clean UI, smooth usability, and responsive design.',
+
+        'HorizonOS was created to explore advanced frontend engineering concepts such as state management, UI systems, animations, reusable architecture, and responsive application design.'
+    ],
+    Desktop: [
+        'HorizonOS is a browser-based interactive operating system experience designed to stimulate the feel of a modern desktop environment.',
+
+        'Built entirely using frontend technologies, HorizonOS combines responsive layouts, draggable windows, smooth animations, and multi-app interaction to create sin immersive and realistic user interface experience across desktop, tablet, and mobile devices.',
+
+        'The operating system includes interactive applications such as Notes, Calculator, Settings, Clock, and Games Arena - all designed with a focus on smooth usability, clean UI architecture, and responsive behaviour.',
+
+        'HorizonOS was created as a frontend engineering project to explore advanced concepts inculding state management, UI systems, animations, reusable architecture, and responsive application design.'
+    ]
+}
+
+const BASE_TECH_URL = '/assets/icons/Tech/';
+
+export const SETTINGS_FEATURES = [
+    {
+        Feat_Title: 'Draggable Windows',
+        Feat_Desc: 'Move and organize elements seamlessly.',
+        icon: 'Expand'
+    },
+    {
+        Feat_Title: 'Multi-App Environment',
+        Feat_Desc: 'Run multiple apps in one environment.',
+        icon: 'Layers'
+    },
+    {
+        Feat_Title: 'Responsive Design',
+        Feat_Desc: 'Adapts to different screen sizes and orientations.',
+        icon: 'MonitorSmartphone'
+    },
+    {
+        Feat_Title: 'Interactive Applications',
+        Feat_Desc: 'Engaging and dynamic user interactions.',
+        icon: 'MousePointer2'
+    },
+    {
+        Feat_Title: 'Smooth Animations',
+        Feat_Desc: 'Fluid transitions and micro-interactions.',
+        icon: 'LineSquiggle'
+    },
+    {
+        Feat_Title: 'Real-Time Utilities',
+        Feat_Desc: 'Live data , quick actions , real results.',
+        icon: 'ClockFading'
+    },
+]
+export const SETTINGS_TECHNOLOGIES = [
+    {
+        Tech_Name: 'ReactJS',
+        icon: `${BASE_TECH_URL}ReactJS.svg`
+    },
+    {
+        Tech_Name: 'Redux Toolkit',
+        icon: `${BASE_TECH_URL}Redux.svg`
+    },
+    {
+        Tech_Name: 'GSAP',
+        icon: `${BASE_TECH_URL}GSAP.svg`
+    },
+    {
+        Tech_Name: 'Tailwind CSS',
+        icon: `${BASE_TECH_URL}TailwindCSS.svg`
+    },
+    {
+        Tech_Name: 'Vite',
+        icon: `${BASE_TECH_URL}Vite.svg`
+    },
+    {
+        Tech_Name: 'JavaScript (ES6+)',
+        icon: `${BASE_TECH_URL}JavaScript.svg`
     }
 ]

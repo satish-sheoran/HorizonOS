@@ -1,5 +1,7 @@
 import React from 'react'
-import {  ClockFading,Expand, Layers, Star,MonitorSmartphone,LineSquiggle, MousePointer2 } from 'lucide-react'
+import * as Icons from "lucide-react";
+import { ClockFading, Expand, Layers, Star, MonitorSmartphone, LineSquiggle, MousePointer2 } from 'lucide-react'
+import { SETTINGS_FEATURES } from '../../../../../../constants/Settings'
 
 const Features = ({ Device, theme, fullScreen }) => {
   return (
@@ -12,122 +14,40 @@ const Features = ({ Device, theme, fullScreen }) => {
 
       <div className={`grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} gap-3`}>
 
-        {/* 1 */}
-        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
+
+        {/* All features  */}
+        {SETTINGS_FEATURES.map(({ Feat_Title, Feat_Desc, icon }, index) => {
+          const Icon = Icons[icon]
+
+          return <div key={index} className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm rounded-2xl flex gap-3 justify-center items-center 
+        ${theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` 
+          :
+           'border-(--bg-dark-app-body) text-(--sec-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}
               ${Device !== 'Desktop' ? `py-2`
-            :
-            `py-1.5 font-semibold`}
+              :
+              `py-1.5 font-semibold`}
               `}>
-          <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
-            <Expand strokeWidth={2} />
-          </div>
-          <div className='w-[60%]  flex flex-col items-start '>
-            <span className='font-bold'>Draggable <br /> Windows</span>
-            <span className={`text-[0.545rem] ${theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--grayish-light-clr)'}`}> Move and organize elements seamlessly </span>
+            <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
+              {Icon && <Icon strokeWidth={2} className='shrink-0' />}
 
-          </div>
-        </div>
+            </div>
+            <div className='w-[60%]  flex flex-col items-start '>
+              <span className='font-bold'>{Feat_Title.split(' ').map((word) => {
+                return <>
+                  <span>{word}</span>
+                  <br />
+                </>
+              })}</span>
+              <span className={`text-[0.545rem] ${theme !== 'dark' ? 'text-(--grayish-dark-clr)' : 'text-(--grayish-light-clr)'}`}> {Feat_Desc} </span>
 
-        {/* 2 */}
-        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
-              ${Device !== 'Desktop' ? `py-2`
-            :
-            `py-1.5 font-semibold`}
-              `}>
-          <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
-          <Layers strokeWidth={2} />
+            </div>
           </div>
-          <div className='w-[60%]  flex flex-col items-start '>
-            <span className='font-bold'>
-              Multi-App <br /> Environment
-            </span>
-            <span className={`text-[0.545rem] ${theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--grayish-light-clr)'}`}> Run multiple apps in one environment. </span>
 
-          </div>
-        </div>
-
-        {/* 3 */}
-        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
-              ${Device !== 'Desktop' ? `py-2`
-            :
-            `py-1.5 font-semibold`}
-              `}>
-          <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
-            <MonitorSmartphone strokeWidth={2} />
-          </div>
-          <div className='w-[60%]  flex flex-col items-start '>
-            <span className='font-bold'>
-              Responsive <br /> Design
-            </span>
-            <span className={`text-[0.545rem] ${theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--grayish-light-clr)'}`}>  Looks great across all devices and screens.   </span>
-
-          </div>
-        </div>
-
-        {/* 4 */}
-        <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
-              ${Device !== 'Desktop' ? `py-2`
-            :
-            `py-1.5 font-semibold`}
-              `}>
-         <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
-           <MousePointer2 strokeWidth={2} />
-          </div>
-          <div className='w-[60%]  flex flex-col items-start '>
-            <span className='font-bold'>
-              Interactive <br /> Applications
-            </span>
-            <span className={`text-[0.545rem] ${theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--grayish-light-clr)'}`}> Engaging and dynamic user interactions. </span>
-
-          </div>
-        </div>
-
-        {/* 5 */}
-         <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
-              ${Device !== 'Desktop' ? `py-2`
-            :
-            `py-1.5 font-semibold`}
-              `}>
-          <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
-             <LineSquiggle strokeWidth={2} />
-          </div>
-          <div className='w-[60%]  flex flex-col items-start '>
-            <span className='font-bold'>
-            Smooth <br /> Animations
-            </span>
-            <span className={`text-[0.545rem] ${theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--grayish-light-clr)'}`}> Fluid transitions and micro-interactions. </span>
-
-          </div>
-        </div>
-       
-      
-        {/* 6 */}
-         <div className={`border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--sec-light-clr)'}
-              ${Device !== 'Desktop' ? `py-2`
-            :
-            `py-1.5 font-semibold`}
-              `}>
-          <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
-            <ClockFading strokeWidth={2} />
-          </div>
-          <div className='w-[60%]  flex flex-col items-start '>
-            <span className='font-bold'>
-            Real-Time <br /> Utilities
-            </span>
-            <span className={`text-[0.545rem] ${theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--grayish-light-clr)'}`}> Live data , quick actions , real results. </span>
-
-          </div>
-        </div>
+        })}
 
       </div>
     </div>
-    )
+  )
 }
 
 export default Features

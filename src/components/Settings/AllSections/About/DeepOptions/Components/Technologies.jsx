@@ -1,5 +1,6 @@
 import React from 'react'
 import { CodeXml, Dot, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-react'
+import { SETTINGS_TECHNOLOGIES } from '../../../../../../constants/Settings'
 
 
 const Technologies = ({ Device, theme, Section }) => {
@@ -14,78 +15,27 @@ const Technologies = ({ Device, theme, Section }) => {
 
             <div className={`flex justify-center flex-wrap gap-3 ${Device === 'Desktop' ? 'gap-3' : 'gap-2'}`}>
 
-                {/* 1 */}
-                <div
-                    className={`overflow-hidden border text-sm ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--primary-light-clr)'} px-3 py-1.5 font-semibold rounded-2xl  flex gap-3 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1.5' : 'px-4 py-2'}`}>
-                    <span className={` ${Device !=='Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}    >
-                        •
-                    </span>
-                    <span>
-                        React.js
-                    </span>
-                </div>
+                {SETTINGS_TECHNOLOGIES.map(({ Tech_Name, icon }) => {
+                    return <div
+                        className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm 
+                        ${theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` 
+                            : 
+                        'border-(--bg-dark-app-body) text-(--primary-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'} 
+                        px-3 py-1.5 font-semibold rounded-2xl  flex gap-2 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1' : 'px-4 py-2'}`}>
 
-                {/* 2 */}
-                <div 
-                className={`overflow-hidden border text-sm ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--primary-light-clr)'} px-3 py-1.5 font-semibold rounded-2xl  flex gap-3 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1.5' : 'px-4 py-2'}`}>
-                    <span className={` ${Device !=='Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>
-                        •
-                    </span>
-                    <span>
-                        Redux Toolkit
-                    </span>
-                </div>
-
-                {/* 3 */}
-                <div
-                    className={`overflow-hidden border text-sm ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--primary-light-clr)'} px-3 py-1.5 font-semibold rounded-2xl  flex gap-3 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1.5' : 'px-4 py-2'}`}>
-                    <span className={` ${Device !=='Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>
-                        •
-                    </span>
-                    <span>
-                        GSAP
-                    </span>
-                </div>
-
-                {/* 4 */}
-                <div
-                    className={`overflow-hidden border text-sm ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--primary-light-clr)'} px-3 py-1.5 font-semibold rounded-2xl  flex gap-3 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1.5' : 'px-4 py-2'}`}>
-                    <span className={` ${Device !=='Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>
-                        •
-                    </span>
-                    <span>
-                        Tailwind CSS
-                    </span>
-                </div>
-
-                {/* 5 */}
-                <div
-                    className={`overflow-hidden border text-sm ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body)   text-(--primary-light-clr)'} px-3 py-1.5 font-semibold rounded-2xl  flex gap-3 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1.5' : 'px-4 py-2'}`}>
-                    <span className={` ${Device !=='Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>
-                        •
-                    </span>
-                    <span>
-                        Vite
-                    </span>
-                </div>
-
-                {/* 6 */}
-                <div 
-                className={`overflow-hidden border text-sm ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) text-(--primary-dark-clr)' : 'border-(--bg-dark-app-body) text-(--primary-light-clr)'} px-3 py-1.5 font-semibold rounded-2xl  flex gap-3 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1.5' : 'px-4 py-2'}`}>
-                    <span className={` ${Device !=='Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>
-                        •
-                    </span>
-                    <span>
-                        JavaScript (ES6+)
-                    </span>
-                </div>
-
+                        {icon ?
+                            <img className={`p-0.5 rounded object-cover object-center ${Device !== 'Desktop' ? 'w-5' : 'w-5.5'}`} src={icon} alt={Tech_Name} />
+                            :
+                            <span className={` ${Device !== 'Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>•</span>
+                        }
+                        <span>
+                            {Tech_Name}
+                        </span>
+                    </div>
+                })}
             </div>
-
-
-
         </div>
     )
 }
 
-export default Technologies
+export default Technologies  

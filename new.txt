@@ -3,11 +3,13 @@
 
 
 What i did for this commit:
-refactor(settings) : redefined style and look of Apps and Additional Section 
+feat(settings) : Styled complete deep About HorizonOS option
 
-- Added background to seprate sections of Apps and Additional sections
-- Added borders,hover bgs changes and added duration and easing for smooth animation look
-- REMAINING : No Sections are remaining now
+- Added hover,active smooth animations to features, tech stack area and all Options of Settings 
+- added images for tech stacks 
+- added Developer info's images
+- Define Features,Tech stack in Settings constant and dynamic rendring of them 
+- FIX some paddings 
 
 
 FIXES And ADDITION TO CALC:

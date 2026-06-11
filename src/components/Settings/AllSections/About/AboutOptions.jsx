@@ -16,9 +16,9 @@ const AboutOptions = ({ Section, theme, Device, fullScreen }) => {
                 {OPTIONS?.map(({ Name, value }, idx) => {
                     return idx < 2 ?
                         (
-                            <div key={idx} className={`border rounded-2xl duration-500 ease-out flex items-center justify-between 
+                            <div key={idx} className={`active:scale-97 border rounded-2xl duration-500 ease-out flex items-center justify-between 
                                 ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
-             ${theme !== 'dark' ? 'border-(--color-lightDarkish-white) hover:bg-(--third-light-clr)  active:bg-(--primary-light-clr)' : 'border-(--bg-dark-app-body) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}`}>
+             ${theme !== 'dark' ? `border-(--color-lightDarkish-white) hover:bg-(--third-light-clr)  ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` : 'border-(--bg-dark-app-body) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}`}>
 
                                 <span className={`duration-500 ease-out select-none cursor-default font-bold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{Name}</span>
                                 <span className='select-none cursor-pointer text-(--grayish-dark-clr) font-semibold'>{value}</span>
@@ -45,9 +45,9 @@ const AboutOptions = ({ Section, theme, Device, fullScreen }) => {
                                     dispatch(setActivePanel({ panel: option }))
                                 }
                                 }
-                                className={`border rounded-2xl duration-500 ease-out select-none font-semibold flex items-center justify-between 
+                                className={`active:scale-97 border rounded-2xl duration-500 ease-out select-none font-semibold flex items-center justify-between 
                                 ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
-                                    ${theme !== 'dark' ? 'text-(--primary-dark-clr) border-(--color-lightDarkish-white) hover:bg-(--third-light-clr)  active:bg-(--primary-light-clr)' : 'text-(--primary-light-clr) border-(--bg-dark-app-body) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}
+                                    ${theme !== 'dark' ? `text-(--primary-dark-clr) border-(--color-lightDarkish-white) hover:bg-(--third-light-clr) ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` : 'text-(--primary-light-clr) border-(--bg-dark-app-body) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}
                                 `}>
 
                                 <span>{Name}</span>

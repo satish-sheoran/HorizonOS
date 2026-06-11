@@ -23,7 +23,7 @@ const AboutUs = ({ Section, theme }) => {
   return (
     <div className={`p-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-2 `}>
 
-      <div className={`shrink-0 w-full ${Device !== 'Desktop' ? 'h-[40%]' : 'h-[45%]'} flex flex-col items-center justify-center gap-2 rounded-2xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
+      <div className={`active:scale-97 ease-out duration-500 shrink-0 w-full ${Device !== 'Desktop' ? 'h-[40%]' : 'h-[45%]'} flex flex-col items-center justify-center gap-2 rounded-2xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
 
         <span className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
         </span>
