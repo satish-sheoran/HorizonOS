@@ -6,9 +6,8 @@ import Details from './Components/Details'
 import Features from './Components/Features'
 import DevDetail from './Components/DevDetail'
 
-const AboutHorizonOS = ({ Section, Device, fullScreen }) => {
+const AboutHorizonOS = ({ Section, Device, fullScreen,theme }) => {
 
-  const theme = useSelector((store) => store.wallpaper.theme)
 
   return (
     <div className={`deep-about-us py-[2.5%]  select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>

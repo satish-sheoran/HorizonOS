@@ -42,7 +42,7 @@ const AboutUs = ({ Section, theme }) => {
 
           if (!Component || activePanel !== compName) return null;
 
-          return <Component Section={Section} fullScreen={fullScreen} Device={Device} />
+          return <Component Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
         })}
       </AnimationWrapper>
 

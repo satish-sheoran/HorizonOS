@@ -24,7 +24,7 @@ const FolderCategory = () => {
 
 
     return (
-        <div className={`overflow-y-auto rounded-xl folder-category-list
+        <div className={`overflow-y-auto rounded-2xl folder-category-list
         ${folderContentWidth >= 768 ?
                 `${folderContentWidth >= 1200 ? 'grid-cols-3' : 'grid-cols-2'}`
                 :
@@ -48,7 +48,7 @@ return;
                             dispatch(setActiveCategory({ category }));
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
-                        className={`duration-500 ease-out 
+                        className={` duration-500 ease-out 
                             ${theme !== 'dark' ?`
                                 ${activeCategory === category ?
                                     'bg-(--color-light-accent)  text-(--primary-light-clr) font-bold' : 'bg-(--third-light-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr) text-(--sec-dark-clr) font-semibold'

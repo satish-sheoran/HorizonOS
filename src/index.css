@@ -20,6 +20,9 @@ body {
 :root {
     /* NEUTRAL */
     --color-accent: rgb(38, 121, 243);
+    --color-danger : #EF4444;
+    --color-dark-red-light : rgba(239,68,68,0.10);
+    --color-dark-red : rgba(239,68,68,0.45);
     --color-light-accent: #3f84f9;
     --color-ultra-light-accent: #b5cbf8e0;
     --color-light-gray: #e8e8eed5;

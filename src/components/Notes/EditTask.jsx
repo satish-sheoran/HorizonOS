@@ -207,7 +207,7 @@ const EditTask = () => {
                     value={currTaskDesc}
                     onChange={(e) => setCurrTaskDesc(e.target.value)}
                     name="newTask-desc"
-                    className={`duration-500 ease-out newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-xl font-bold placeholder:text-xl outline-none 
+                    className={`duration-500 ease-out newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-[0.85rem] font-bold placeholder:text-xl outline-none 
                          ${theme !== 'dark' ? 'text-(--primary-dark-clr) placeholder:text-(--btn-light-hover)' : 'text-(--primary-light-clr) placeholder:text-(--sec-light-clr)'}
                         `}
                     placeholder='Start typing'

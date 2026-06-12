@@ -2,15 +2,12 @@
 2. how to remove web page not secure 
 
 
-What i did for this commit:
-feat(settings) : Styled complete deep About HorizonOS option
+What i did for this  commit :
+fix : prevent default images interactions (draggable,prevent default on dragStart and contextMenu)
 
-- Added hover,active smooth animations to features, tech stack area and all Options of Settings 
-- added images for tech stacks 
-- added Developer info's images
-- Define Features,Tech stack in Settings constant and dynamic rendring of them 
-- FIX some paddings 
-
+- feat(settings : Facotry Reset) : Styled Deep Facotry Reset 
+- Added Warning , Reset items ,Reset buttons etc. inside it
+- REMAINING : Functionality of Reset Button and Pop-Up which should be appear on Clicking it
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

@@ -91,7 +91,7 @@
 
 
                 button {
-                    @apply w-full h-fit outline-none rounded-lg flex items-center justify-between px-2 active:scale-97 transition-all ease-in-out duration-100 py-2.5;
+                    @apply w-full h-fit outline-none rounded-2xl flex items-center justify-between p-2.5 active:scale-97   ;
                     touch-action : pan-y; /* Allow vertical scrolling on touch devices */   
                 }
             }

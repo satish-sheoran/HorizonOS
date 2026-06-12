@@ -46,6 +46,7 @@ const Calculator = () => {
                     <CalcButtons
                         theme={theme}
                         calcBtnClck={calcBtnClck}
+                        Device={currDevice}
                     />
                 </div>
             </div>

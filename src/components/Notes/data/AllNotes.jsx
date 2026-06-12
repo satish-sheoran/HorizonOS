@@ -93,7 +93,7 @@ const AllNotes = () => {
                                 // on click works as want but not opening edit mode on mobile only
 
                                 key={id}
-                                className={`duration-500 ease-out relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-lg p-3 text-left cursor-pointer active:scale-95 
+                                className={`duration-500 ease-out relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95 
                     ${theme !== 'dark'
                                         ? 'bg-(--primary-light-clr)'
                                         :
@@ -113,7 +113,7 @@ const AllNotes = () => {
 
                                 <p
                                     className={`duration-500 ease-out break-all
- select-none text-[0.82rem] line-clamp-5 font-[650]
+ select-none text-[0.75rem] line-clamp-4 font-[650]
                             ${theme !== 'dark' ?
                                             'text-(--grayish-dark-clr)'
                                             :
@@ -125,7 +125,7 @@ const AllNotes = () => {
                                 <div className='flex items-center justify-between gap-1 overflow-hidden'>
                                     <span
                                         className={`duration-500 ease-out block whitespace-nowrap text-ellipsis select-none 
-                                            text-[0.68rem] 
+                                            text-[0.6rem] 
                                             font-semibold 
                                             ${theme !== 'dark' ?
                                                 'text-(--color-gray)'

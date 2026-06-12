@@ -18,13 +18,17 @@ const Technologies = ({ Device, theme, Section }) => {
                 {SETTINGS_TECHNOLOGIES.map(({ Tech_Name, icon }) => {
                     return <div
                         className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm 
-                        ${theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` 
-                            : 
-                        'border-(--bg-dark-app-body) text-(--primary-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'} 
+                        ${theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !== 'Desktop' ? 'active:bg-(--third-light-clr)' : 'active:bg-(--primary-light-clr)'}`
+                                :
+                                'border-(--bg-dark-app-body) text-(--primary-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'} 
                         px-3 py-1.5 font-semibold rounded-2xl  flex gap-2 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1' : 'px-4 py-2'}`}>
 
                         {icon ?
-                            <img className={`p-0.5 rounded object-cover object-center ${Device !== 'Desktop' ? 'w-5' : 'w-5.5'}`} src={icon} alt={Tech_Name} />
+                            <img
+                                onContextMenu={(e) => e.preventDefault()}
+                                draggable="false"
+                                onDragStart={(e) => e.preventDefault()}
+                                className={`p-0.5 rounded object-cover object-center ${Device !== 'Desktop' ? 'w-5' : 'w-5.5'}`} src={icon} alt={Tech_Name} />
                             :
                             <span className={` ${Device !== 'Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>•</span>
                         }

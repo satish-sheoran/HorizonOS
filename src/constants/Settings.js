@@ -305,3 +305,22 @@ export const SETTINGS_TECHNOLOGIES = [
         icon: `${BASE_TECH_URL}JavaScript.svg`
     }
 ]
+
+
+export const SETTINGS_FACTORY_RESET_OPTIONS = [
+    {
+        icon: 'Palette',
+        option: 'Personalization',
+        description: 'Wallpaper, themes,colors'
+    },
+     {
+        icon: 'Folder',
+        option: 'Notes & Categories',
+        description: 'All notes and categories will be deleted'
+    },
+     {
+        icon: 'Settings',
+        option: 'System Settings',
+        description: 'All settings will be restored to default'
+    },
+]
