@@ -1,9 +1,8 @@
 import React from 'react'
 import { getFontClass } from '../../utils/CalculatorFns';
 
-const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, theme }) => {
+const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, AccentColors }) => {
 
-    const resultSplit = result.split('');
 
     return (
         <textarea
@@ -33,7 +32,9 @@ const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, theme }) => {
                 });
             }} // to prevent a bug which cause its input point to start
             readOnly={currDevice === 'Desktop'} //user can not edit if he is not on phone
-            className={`transition-colors duration-500 ease-out ${getFontClass(result.length)} calc-result ${currDevice === 'Desktop' ? 'no-cursor' : ''} ${theme !=='dark'?'text-(--primary-dark-clr)':'text-(--primary-light-clr)'}`}>
+            className={`transition-colors duration-500 ease-out ${getFontClass(result.length)} calc-result ${currDevice === 'Desktop' ? 'no-cursor' : ''}`}
+            style={{color : ThemeColors.primaryText}}
+            >
         </textarea >
     )
 }

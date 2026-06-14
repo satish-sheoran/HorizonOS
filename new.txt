@@ -2,12 +2,13 @@
 2. how to remove web page not secure 
 
 
-What i did for this  commit :
-fix : prevent default images interactions (draggable,prevent default on dragStart and contextMenu)
+What i did for this commit :
+feat(theme) : Implement centralized theme and accent color management system
 
-- feat(settings : Facotry Reset) : Styled Deep Facotry Reset 
-- Added Warning , Reset items ,Reset buttons etc. inside it
-- REMAINING : Functionality of Reset Button and Pop-Up which should be appear on Clicking it
+- Added global style constants for accent,light,dark, and common color palettes
+- Introduced Redux state for current theme colors and selected accent color
+- Refactored apps to cosume colors from the centralized theme system
+- Applied dynamic theme and accent rendering across all apps (excluding Settings)
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

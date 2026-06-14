@@ -6,10 +6,15 @@ import { useState } from "react";
 import ConfirmDeletePopUp from './Folder/ConfirmDeletePopUp'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { COMMON_COLORS, DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "../../constants/style";
 
 const Footer = () => {
     const dispatch = useDispatch();
     const theme = useSelector((store) => store.wallpaper.theme)
+    const Device = useSelector((store) => store.Device.currDevice);
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletedNotes = useSelector(store => store.Notes.deletedNotes);
@@ -27,10 +32,10 @@ const Footer = () => {
             }, {
                 scale: 1,
                 duration: 0.4,
-                ease : 'power1.out'
+                ease: 'power1.out'
             })
         }
-        
+
 
     }, [isDeleteNoteOpen])
 
@@ -45,27 +50,22 @@ const Footer = () => {
                                     dispatch(setActiveTab({ tab: 'Notes' }))
                                 }}
                             >
-                                <TextAlignStart size={22} strokeWidth={2} className={`transition-colors duration-500 ease-out 
-                           ${theme !== 'dark'
-                                        ? activeTab === 'Notes'
-                                            ? 'bg-(--sec-dark-clr)'
-                                            : 'bg-(--grayish-dark-clr)'
-                                        : activeTab === 'Notes'
-                                            ? 'bg-(--sec-light-clr)'
-                                            : 'bg-(--grayish-light-clr)'
-                                    } 
+                                <TextAlignStart size={22} strokeWidth={2}
+                                    style={{
+                                        backgroundColor:  activeTab ==='Notes'?ThemeColors.primaryText:ThemeColors.grayish,
+                                        '--stroke': ThemeColors.primaryText
+                                    }}
+                                    className={`transition-colors duration-500 ease-out  
                         rounded px-[1.2px] 
-                        ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
+                        ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--primary-dark-clr)'}`} />
 
-                                <span className={`duration-500 ease-out
-                    ${theme !== 'dark' ?
-                                        activeTab === 'Notes'
-                                            ? 'text-(--sec-dark-clr)'
-                                            : 'text-(--grayish-dark-clr)'
-                                        : activeTab === 'Notes'
-                                            ? 'text-(--sec-light-clr)'
-                                            : 'text-(--grayish-light-clr)'
-                                    }
+                                <span 
+                                style={{
+                                    color : activeTab ==='Notes'?ThemeColors.primaryText
+                                    :
+                                    ThemeColors.grayish
+                                }}
+                                className={`duration-500 ease-out
                          `}>Notes</span>
                             </button>
 
@@ -74,25 +74,17 @@ const Footer = () => {
                                     dispatch(setActiveTab({ tab: 'Tasks' }))
                                 }}
                             >
-                                <Check size={22} strokeWidth={2} className={`
-                       ${theme !== 'dark'
-                                        ? activeTab === 'Tasks'
-                                            ? 'bg-(--sec-dark-clr)'
-                                            : 'bg-(--grayish-dark-clr)'
-                                        : activeTab === 'Tasks'
-                                            ? 'bg-(--sec-light-clr)'
-                                            : 'bg-(--grayish-light-clr)'
-                                    }
+                                <Check size={22} strokeWidth={2} style={{
+                                        backgroundColor:  activeTab !=='Notes'?ThemeColors.primaryText:ThemeColors.grayish,
+                                        '--strokeClr': ThemeColors.primaryText
+                                    }} className={`
                         rounded duration-500 ease-out ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
-                                <span className={`duration-500 ease-out 
-                       ${theme !== 'dark' ?
-                                        activeTab === 'Tasks'
-                                            ? 'text-(--sec-dark-clr)'
-                                            : 'text-(--grayish-dark-clr)'
-                                        : activeTab === 'Tasks'
-                                            ? 'text-(--sec-light-clr)'
-                                            : 'text-(--grayish-light-clr)'
-                                    }                        
+                                <span style={{
+                                    color : activeTab !=='Notes'?ThemeColors.primaryText
+                                    :
+                                    ThemeColors.grayish
+                                }} className={`duration-500 ease-out 
+                                               
                         `}>Tasks</span>
                             </button>
                         </>
@@ -111,11 +103,7 @@ const Footer = () => {
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span className={`duration-500 ease-out 
-                    ${theme !== 'dark' ?
-                                        'text-(--primary-dark-clr)'
-                                        : 'text-(--primary-light-clr)'
-                                    }
+                                <span style={{color : ThemeColors.primaryText}} className={`duration-500 ease-out 
                          `}>Close</span>
 
                             </button>
@@ -134,11 +122,8 @@ ${theme != 'dark' ?
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span className={`transition-all duration-500 ease-out
-                                     ${theme !== 'dark' ?
-                                        'text-(--primary-dark-clr)'
-                                        : 'text-(--primary-light-clr)'
-                                    }
+                                <span style={{color : ThemeColors.primaryText}} className={`transition-all duration-500 ease-out
+                                     
                          `}>Unpin</span>
 
                             </button>
@@ -157,11 +142,7 @@ ${theme != 'dark' ?
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span className={`transition-all duration-500 ease-out 
- ${theme !== 'dark' ?
-                                        'text-(--primary-dark-clr)'
-                                        : 'text-(--primary-light-clr)'
-                                    }                                    
+                                <span style={{color : ThemeColors.primaryText}} className={`transition-all duration-500 ease-out                                   
                          `}>Move to</span>
 
                             </button>
@@ -184,11 +165,8 @@ ${theme != 'dark' ?
                                         :
                                         'stroke-(--primary-light-clr)'}                        `} />
 
-                                <span className={`transition-all duration-500 ease-out 
-                                    ${theme !== 'dark' ?
-                                        'text-(--primary-dark-clr)'
-                                        : 'text-(--primary-light-clr)'
-                                    }
+                                <span style={{color : ThemeColors.primaryText}} className={`transition-all duration-500 ease-out 
+                                    
                                 `}>Delete</span>
 
                             </button>

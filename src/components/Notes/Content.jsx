@@ -5,7 +5,7 @@ const Content = () => {
 
     return (
         <div className="content">
-            <NotesArea />
+            <NotesArea /> 
             <AllTasks />
         </div>
     )

@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { manageDeletedCategories, setActiveCategory, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
 import { Check } from 'lucide-react';
 import useLongPress from '../../../hooks/Use-long-press';
+import { COMMON_COLORS } from '../../../constants/style';
 
 // count show remaining
 
 const FolderCategory = () => {
     const dispatch = useDispatch();
     const theme = useSelector((store) => store.wallpaper.theme)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+
     const categories = useSelector(store => store.Notes.allCategories) // all categories for notes app
     const activeCategory = useSelector((store) => store.Notes.activeCategory)
     const folderContentWidth = useSelector((store) => store.Notes.folderContentWidth); //the width based on which sets if categories should so in one column or more 
@@ -41,25 +45,26 @@ const FolderCategory = () => {
 
                                 if (!startDeletingCat) dispatch(setStartDeletingCat({ start: true })); // if user has not started deleting category then start delete mode on long press
 
-                                if(category !== 'All' && category !== 'Uncategorized') dispatch(manageDeletedCategories({ category }));
-return;
+                                if (category !== 'All' && category !== 'Uncategorized') dispatch(manageDeletedCategories({ category }));
+                                return;
                             }
-                            
+
                             dispatch(setActiveCategory({ category }));
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
+                        style={{
+                            backgroundColor: activeCategory === category ? AccentColors.CODE : ThemeColors.third,
+                            color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
+                            '--hover': ThemeColors.header,
+                            '--active': ThemeColors.header,
+                        }}
                         className={` duration-500 ease-out 
-                            ${theme !== 'dark' ?`
-                                ${activeCategory === category ?
-                                    'bg-(--color-light-accent)  text-(--primary-light-clr) font-bold' : 'bg-(--third-light-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr) text-(--sec-dark-clr) font-semibold'
-                                }`
-                                :
-                                ` ${activeCategory === category ?
-                                    'bg-(--color-light-accent) text-(--primary-light-clr) font-bold' : 'bg-(--third-dark-clr)  hover:bg-(--grayish-dark-clr) active:bg-(--grayish-dark-clr) text-(--sec-light-clr) font-semibold'
-                                }`
-                            }
+                            ${activeCategory === category ? 'font-bold' : 'font-semibold HOVER_CLASS'}
+                            
                             `}>
-                        <Check strokeWidth={2.5} className={`duration-500 ease-out select-none ${activeCategory === category ? 'text-(--bg-minimize)' : 'text-transparent'}`} /> {/* on hidden,it do not reserve space so used text-transparent */}
+                        <Check strokeWidth={2.5}
+                            style={{ color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent' }}
+                            className={`duration-500 ease-out select-none `} /> {/* on hidden,it do not reserve space so used text-transparent */}
 
                         <span className="select-none">{category.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
 
@@ -67,17 +72,11 @@ return;
                         {/* count and selection area to delete cateogries */}
                         {
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
-                                <span className={`duration-500 ease-out rounded-full w-5.5 h-5.5 flex items-center justify-center
-
-                                ${deletedCategories?.includes(category) ? 'bg-(--color-orange)'
-                                        :
-                                        theme !== 'dark' ?
-                                            'bg-(--btn-light-hover)'
-                                            :
-                                            'bg-(--grayish-dark-clr)'
-
-                                    }`}>
-                                    {deletedCategories?.includes(category) && <Check className='rounded-full text-(--primary-light-clr)' strokeWidth={3} size={17} />}
+                                <span 
+                                style={{backgroundColor : deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg}}
+                                className={`duration-500 ease-out rounded-full w-5.5 h-5.5 flex items-center justify-center
+                                `}>
+                                    {deletedCategories?.includes(category) && <Check style={{color : COMMON_COLORS.White}} className='rounded-full' strokeWidth={3} size={17} />}
                                 </span>
                                 :
                                 <span className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note => note.category === category).length}</span>

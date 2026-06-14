@@ -7,6 +7,8 @@ import FolderContent from './FolderContent';
 
 const Folders = () => {
   const theme = useSelector((store) => store.wallpaper.theme)
+  const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+  const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
   const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
   const elem = useRef(null);
 
@@ -21,7 +23,9 @@ const Folders = () => {
   }, [isOpen])
 
   return (
-    <div ref={elem} className={`transition-colors duration-500 ease-out absolute gap-4 all-folders transform-x-full ${theme !== 'dark' ? 'bg-(--sec-light-clr)' : 'bg-(--bg-dark-app-body)'}`}>
+    <div ref={elem}
+      style={{ backgroundColor: ThemeColors.bg }}
+      className={`transition-colors duration-500 ease-out absolute gap-4 all-folders transform-x-full `}>
 
       <FolderNav />
       <FolderContent />

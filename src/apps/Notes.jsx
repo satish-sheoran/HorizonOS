@@ -15,14 +15,15 @@ import { setCreateTaskOpen, setOpenManageFolder, setStartDeletingCat, setStartDe
 import EditTask from "../components/Notes/EditTask";
 
 
- /* flex-1 means grow , shrink (if needed) and min-h-0 all together*/
+/* flex-1 means grow , shrink (if needed) and min-h-0 all together*/
 
 const Notes = () => {
     const notesBody = useRef(null);
     const dispatch = useDispatch()
 
     const currDevice = useSelector((store) => store.Device.currDevice);
-    const theme = useSelector((store) => store.wallpaper.theme)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
 
@@ -42,7 +43,7 @@ const Notes = () => {
         return;
     }, [isNotesOpen, dispatch])
 
-// Animation for opening and closing folder manager
+    // Animation for opening and closing folder manager
     useGSAP(() => {
         if (!notesBody.current) return;
 
@@ -54,9 +55,9 @@ const Notes = () => {
     }, [isOpen])
 
     return (
-        <div className={`w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
-                    'bg-(--sec-light-clr)'
-                    : 'bg-(--bg-dark-app-body)'}`}>
+        <div
+            style={{ backgroundColor: ThemeColors.bg }}
+            className={`w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
 
             {currDevice === 'Desktop' ?
                 <WindowControls id='notes' />
@@ -64,22 +65,22 @@ const Notes = () => {
 
 
             {/* BODY */}
-                <main className={` relative  flex-1 w-full`}>
+            <main className={` relative  flex-1 w-full`}>
 
 
-                    {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}
-                    <Folders />
+                {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}
+                <Folders /> 
 
-                    <div ref={notesBody} className="notes-body translate-x-0">
-                        <Navbar />
-                        <Content />
-                        <Footer />
-                    </div>
+                <div ref={notesBody} className="notes-body translate-x-0">
+                    <Navbar />
+                    <Content />
+                    <Footer />
+                </div>
 
-                    {/*  pop up which opens create task   */}
-                    <CreateTask />
-                    <EditTask />
-                </main>
+                {/*  pop up which opens create task   */}
+                <CreateTask /> 
+                <EditTask /> 
+            </main>
         </div >
     )
 }

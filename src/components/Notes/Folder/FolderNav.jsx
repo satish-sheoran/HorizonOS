@@ -11,7 +11,9 @@ const FolderNav = () => {
     const dispatch = useDispatch();
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false);
 
-    const theme = useSelector((store) => store.wallpaper.theme);
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
@@ -30,7 +32,7 @@ const FolderNav = () => {
 
 
     return (
-        <div className={`duration-500 ease-out folder-nav ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+        <div style={{ color: ThemeColors.primaryText }} className={`duration-500 ease-out folder-nav `}>
 
             {/* if start editing then show cancel button to exit editing mode else just show button to go back to tasks area */}
             {
@@ -38,7 +40,11 @@ const FolderNav = () => {
                     <button onClick={() => {
                         dispatch(setStartDeletingCat({ start: false }));
                         dispatch(manageDeletedCategories({ category: 'Empty Trash' })) // empty the deletedCategories in notes storage when user exit from deleting mode to remove the select icons from categories
-                    }} className='text-(--color-light-accent) hover:text-(--color-accent) active:scale-95'>
+                    }}
+                        style={{
+                            color: AccentColors.CODE,
+                        }}
+                        className={`active:scale-95`}>
                         <span>Cancel</span>
                     </button>
                     :
@@ -62,11 +68,18 @@ const FolderNav = () => {
                         setOpenDeletePopUp(true);
                     }
                 }}
+                    style={{
+                        color: AccentColors.CODE,
+                    }}
                     className='active:scale-95'>
                     <Trash2 strokeWidth={2} />
                 </button>
                 :
-                <button onClick={() => dispatch(setStartDeletingCat({ start: true }))} className='text-(--color-light-accent) hover:text-(--color-accent) active:scale-95'>
+                <button onClick={() => dispatch(setStartDeletingCat({ start: true }))}
+                    style={{
+                        color: AccentColors.CODE,
+                    }}
+                    className='active:scale-95'>
                     <span>Edit</span>
                 </button>
             }

@@ -1,7 +1,8 @@
 import React from "react";
 import { CALC_BTNS } from "../../constants";
+import { COMMON_COLORS } from "../../constants/style";
 
-const CalcButtons = ({ theme, calcBtnClck,Device }) => {
+const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device }) => {
     return (
         <>
             {
@@ -10,22 +11,14 @@ const CalcButtons = ({ theme, calcBtnClck,Device }) => {
                     const isSymb = ['/', '*', '-', '+'].includes(symbol);
 
                     return <button key={id}
-                        className={`transition-colors duration-500 ease-out
-                             ${theme != 'dark' ?
-                                isChange || isSymb ? 'text-(--color-green)' :
-                                    'text-(--primary-dark-clr)'
-                                :
-                                isChange || isSymb ? 'text-(--color-lime)' :
-                                    'text-(--primary-light-clr)'}  
-
+                        style={{
+                            color: isChange || isSymb ? AccentColors.CODE : symbol === '=' ? COMMON_COLORS.White : ThemeColors.primaryText,
+                            backgroundColor: symbol === '=' ? AccentColors.CODE : ThemeColors.header,
+                            '--hover':  symbol === '=' ? AccentColors.Hover_Clr: ThemeColors.third,
+                            '--active':  symbol === '=' ? AccentColors.Hover_Clr: ThemeColors.third,
+                        }}
+                        className={`${AccentColors.HOVER} transition-colors duration-500 ease-out  
                                rounded-4xl md:rounded-2xl py-1 sm:rounded-xl font-bold  active:scale-95  
-
-
-                            ${theme != 'dark' ?
-                                `${symbol === '=' ? 'text-(--primary-light-clr) bg-(--color-green) active:bg-(--color-lime)' : 'bg-(--primary-light-clr) hover:bg-(--third-light-clr)'} ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}`
-                                :
-                                `${symbol === '=' ? 'text-(--primary-light-clr) bg-(--color-green) active:bg-(--color-lime)' : 'bg-(--bg-dark-header) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}`}
-
 `}
                         onClick={() => calcBtnClck(symbol)}
                     >{symbol}

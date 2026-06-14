@@ -23,7 +23,7 @@
 }
 
 .window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg  select-none text-sm text-(--color-dark-gray);
+    @apply flex items-center justify-between px-4 py-3 rounded-t-2xl  select-none text-sm text-(--color-dark-gray);
 }
 
 .mobile-header {

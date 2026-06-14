@@ -8,7 +8,8 @@ import CalcDisplay from "../components/Calculator/CalcDisplay";
 import UseCalculator from "../hooks/useCalculator";
 
 const Calculator = () => {
-    const theme = useSelector((store) => store.wallpaper.theme)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const currDevice = useSelector((store) => store.Device.currDevice);
     const data = useSelector((store) => store.windowApps.apps['calculator'].data);
     const [result, setResult] = useState(data ?? '0') //setting initally value from data of calculator app from its store
@@ -23,9 +24,9 @@ const Calculator = () => {
 
 
     return (
-        <div className={`w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
-                    'bg-(--sec-light-clr)'
-                    : 'bg-(--bg-dark-app-body)'}`}>
+        <div 
+        style={{backgroundColor : ThemeColors.bg}}
+        className={`w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
             {/* header */}
             {currDevice === 'Desktop' ?
                 <WindowControls id='calculator' />
@@ -40,11 +41,13 @@ const Calculator = () => {
                     result={result}
                     calcBtnClck={calcBtnClck}
                     currDevice={currDevice}
-                    theme={theme}
+                    ThemeColors={ThemeColors}
+                    AccentColors={AccentColors}
                 />
                 <div className={`calc-btns grow select-none`}>
                     <CalcButtons
-                        theme={theme}
+                        ThemeColors={ThemeColors}
+                        AccentColors={AccentColors}
                         calcBtnClck={calcBtnClck}
                         Device={currDevice}
                     />

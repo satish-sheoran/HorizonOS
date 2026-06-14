@@ -17,32 +17,46 @@ body {
     /* overflow:hidden */
 }
 
+/* HOVER AND ACTIVE CLASSES */
+.HOVER_CLASS:hover {
+    background-color: var(--hover) !important;
+}
+
+.HOVER_CLASS:active {
+    background-color: var(--active) !important;
+}
+
+.Placeholder::placeholder {
+    color: var(--placeholder);
+}
+
 :root {
     /* NEUTRAL */
-    --color-accent: rgb(38, 121, 243);
-    --color-danger : #EF4444;
-    --color-dark-red-light : rgba(239,68,68,0.10);
-    --color-dark-red : rgba(239,68,68,0.45);
-    --color-light-accent: #3f84f9;
+    --color-accent: #3B82F6;
+    --color-danger: #EF4444;
+    --color-green: rgb(38, 165, 22);
+    --color-lime: rgb(133, 242, 144);
+    --color-light-accent: #6096f3;
+    --bg-close: #ff6157;
+    --bg-minimize: #FACC15;
+
+    --color-dark-red-light: rgba(239, 68, 68, 0.10);
+    --color-dark-red: rgba(239, 68, 68, 0.45);
     --color-ultra-light-accent: #b5cbf8e0;
     --color-light-gray: #e8e8eed5;
     --color-orange: rgb(237, 129, 20);
     --color-gray: rgb(132, 132, 132);
-    --color-green: rgb(38, 165, 22);
-    --color-lime: rgb(133, 242, 144);
 
-    --bg-close: #ff6157;
-    --bg-minimize: #ffc030;
     --bg-zoom: #2acb42;
 
 
     /* LIGHT THEME
       */
-      --color-lightDarkish-white: #EEF2F7;
+    --color-lightDarkish-white: #EEF2F7;
     --primary-light-clr: #FFFFFF;
     --sec-light-clr: #F3F4F6;
     --third-light-clr: rgb(233, 233, 235);
-    --grayish-light-clr : rgb(128, 128, 128);
+    --grayish-light-clr: rgb(128, 128, 128);
     --btn-light-hover: rgba(209, 205, 205, 0.938);
 
 

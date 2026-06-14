@@ -6,6 +6,9 @@ import { toast } from "react-toastify"
 
 
 const AllTasks = () => {
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+        const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+        
     const theme = useSelector((store) => store.wallpaper.theme)
     const taskAnimRef = useRef(null);
     const isFirstRun = useRef(true);
@@ -33,8 +36,9 @@ const AllTasks = () => {
     return (
         <button ref={taskAnimRef}
             onClick={() => toast.info("This will be available shortly")}
+            style={{color : ThemeColors.grayish}}
             className={`transition-colors duration-500 ease-out absolute inset-0 select-none  font-bold text-center flex items-center justify-center outline-none
-                         ${theme !== 'dark' ? 'text-(--grayish-dark-clr)' : 'text-(--btn-light-hover)'} 
+                          
                          `}> This functionality will be < br /> available soon 😴 !
         </button >
     )

@@ -3,10 +3,11 @@ import SettingNFolder from "./settingNFolder";
 
 
 const Navbar = () => {
-    const theme = useSelector((store) => store.wallpaper.theme)
-
+const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+    
     return (
-        <nav className={`pt-1 transition-colors duration-500 ease-out ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} `}>
+        <nav style={{ color: ThemeColors.primaryText }} className={`pt-1 transition-colors duration-500 ease-out  `}>
             <SettingNFolder />
         </nav>
     )

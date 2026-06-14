@@ -2,10 +2,14 @@ import { Plus } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import CreateFolderPopUp from './CreateFolderPopUp';
 import { useEffect, useState } from 'react';
+import { COMMON_COLORS } from '../../../constants/style';
 
 const CreateFolder = () => {
     const dispatch = useDispatch()
     const theme = useSelector((store) => store.wallpaper.theme);
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+
     const [opencreateFolderPopUp, setOpencreateFolderPopUp] = useState(false)
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
 
@@ -24,12 +28,14 @@ const CreateFolder = () => {
         <>
             <button
                 onClick={() => setOpencreateFolderPopUp(true)}
-                className={`duration-500 ease-out create-folder
-                ${theme !== 'dark' ?
-                        'bg-(--third-light-clr) text-(--primary-dark-clr) hover:bg-(--primary-light-clr) active:bg-(--primary-light-clr)'
-                        : 'bg-(--third-dark-clr) text-(--primary-light-clr) hover:bg-(--grayish-dark-clr) active:bg-(--sec-dark-clr)'
-                    }
-                `}>
+                style={{
+                    color: ThemeColors.primaryText,
+                    background: ThemeColors.third,
+                    '--hover':theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish,
+                    '--active':theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish
+
+                }}
+                className={`HOVER_CLASS duration-500 ease-out create-folder`}>
                 <p className='plus-icon-div'>
                     <Plus strokeWidth={3.5} size={14} />
                 </p>

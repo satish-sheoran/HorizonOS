@@ -7,7 +7,7 @@ import { setWidthOfFolderContent } from '../../../redux/features/NotesStrorage'
 
 const FolderContent = () => {
     const dispatch = useDispatch();
-    const theme = useSelector((store) => store.wallpaper.theme)
+
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isFolderManagerOpen = useSelector((store) => store.Notes.openManageFolder)
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat) //it keeps track if user started edit mode to delete category or not ,if true then do not show create folder btn
