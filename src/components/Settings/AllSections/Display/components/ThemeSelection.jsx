@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { changeTheme } from '../../../../../redux/features/wallpaper'
 import { THEMES } from '../../../../../constants'
 
-const ThemeSelection = ({ theme, fullScreen, Device }) => {
+const ThemeSelection = ({ Theme: theme, fullScreen, Device,ThemeColors,AccentColors }) => {
 
     const dispatch = useDispatch()
 
@@ -19,9 +19,9 @@ const ThemeSelection = ({ theme, fullScreen, Device }) => {
                         key={idx} className={`${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} flex flex-col p-2 gap-2.5 md:py-3 md:pl-3`}>
 
                         <img
-                        onContextMenu={(e) => e.preventDefault()}
-                        draggable="false"
-                        onDragStart={(e)=>e.preventDefault()}
+                            onContextMenu={(e) => e.preventDefault()}
+                            draggable="false"
+                            onDragStart={(e) => e.preventDefault()}
                             onClick={() => dispatch(changeTheme({ theme: Theme }))}
                             src={`/assets/theme-imgs/${Theme}-theme.webp`} draggable="false" className={`select-none object-cover object-center rounded-xl ${theme === Theme ? 'outline-(--color-accent) outline-4' : ''} 
                             aspect-square  ${fullScreen ? 'md:max-w-45 max-h-45' : 'md:max-w-40 md:max-h-40'}

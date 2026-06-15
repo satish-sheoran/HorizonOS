@@ -8,7 +8,7 @@ const WindowControls = ({ id }) => {
 
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    const theme = useSelector((store) => store.wallpaper.theme)
+    const Theme = useSelector((store) => store.wallpaper.theme)
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const { closeApp, toggleFullscreen } = UsewindowControlFns();
 

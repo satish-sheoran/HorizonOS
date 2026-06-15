@@ -6,15 +6,12 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { COMMON_COLORS } from '../../../constants/style';
 
-const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) => {
+const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp ,Theme,AccentColors,ThemeColors}) => {
     const createFldrInputRef = useRef(null)
     const popUpElem = useRef(null);
     const dispatch = useDispatch();
 
     const Device = useSelector((store) => store.Device.currDevice);
-    const theme = useSelector((store) => store.wallpaper.theme);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
 
     const device = useSelector((store) => store.Device.currDevice);
     const defaultNumForDefaultFolder = useSelector((store) => store.Notes.baseNumberForDefaultFolder);
@@ -51,7 +48,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) 
 
             {/* actual  */}
             <div ref={popUpElem} style={{
-                backgroundColor: theme !== 'dark' ? ThemeColors.primary : ThemeColors.sec
+                backgroundColor: Theme !== 'dark' ? ThemeColors.primary : ThemeColors.sec
             }}
                 className={`transition-colors duration-500 ease-out ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
             
@@ -65,9 +62,9 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp }) 
                         onClick={() => setOpencreateFolderPopUp(false)}
                         style={{
                             color: COMMON_COLORS.White,
-                            backgroundColor: theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
-                            '--hover' : theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite,
-                            '--active' : theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite
+                            backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
+                            '--hover' : Theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite,
+                            '--active' : Theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite
                         }}
                         className={`HOVER_CLASS transition-colors duration-500 ease-out w-[calc(50%-2px)] ${Device !=='Desktop'?'py-3.5':'py-2.5'}  text-sm font-bold select-none  active:scale-96 rounded-xl`}>Cancel</button>
 

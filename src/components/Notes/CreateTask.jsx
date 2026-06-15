@@ -10,12 +10,10 @@ import { formatDate, formatTime } from '../../utils/formatTime';
 import { CustomEase } from 'gsap/all';
 import { COMMON_COLORS } from '../../constants/style';
 
-const CreateTask = () => {
+const CreateTask = ({Theme,ThemeColors,AccentColors}) => {
     const dispatch = useDispatch();
     const newTaskContainer = useRef(null)
-    const theme = useSelector((store) => store.wallpaper.theme);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+    
     const Device = useSelector((store) => store.Device.currDevice);
 
     const isNewTaskOpen = useSelector((store) => store.Notes.CreateTaskOpen)

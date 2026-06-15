@@ -9,13 +9,10 @@ import { addNote, manageEditTask } from '../../redux/features/NotesStrorage';
 import { formatDate, formatTime } from '../../utils/formatTime';
 import { COMMON_COLORS } from '../../constants/style';
 
-const EditTask = () => {
+const EditTask = ({Theme,ThemeColors,AccentColors}) => {
     const dispatch = useDispatch();
     const EditTaskContainer = useRef(null)
 
-    const theme = useSelector((store) => store.wallpaper.theme);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const Device = useSelector((store) => store.Device.currDevice);
 
     const { open, TaskId } = useSelector((store) => store.Notes.EditTaskOpen)

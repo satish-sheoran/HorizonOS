@@ -7,13 +7,13 @@ const ScreenComponent = {
     RefreshRate
 }
 
-const Screen = ({ options, sectionName, theme, fullScreen, Device }) => {
+const Screen = ({ options, sectionName, Theme, fullScreen, Device,ThemeColors,AccentColors }) => {
     return (
         <section className={`w-full flex flex-col gap-2`}>
 
             <span className='text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
 
-            <div className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+            <div className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
                 {/* DISPLAYING OPTIONS UNDER Screen SECTION :  Colour Scheme,Refresh Rate */}
                 {
                     options?.map(({ option, value }, idx) => {
@@ -23,10 +23,11 @@ const Screen = ({ options, sectionName, theme, fullScreen, Device }) => {
 
                         return <Component
                             key={idx}
-                            theme={theme}
+                            Theme={Theme}
                             value={value}
                             fullScreen={fullScreen}
                             Device={Device}
+                            ThemeColors={ThemeColors} AccentColors={AccentColors}
                         />
                     })
                 }

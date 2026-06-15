@@ -9,12 +9,14 @@ import { useState } from "react";
 
 const Settings = () => {
     const currDevice = useSelector((store) => store.Device.currDevice);
-    const theme = useSelector((store) => store.wallpaper.theme)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const Theme = useSelector((store) => store.wallpaper.theme)
+    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const activeSection = useSelector((store) => store.Settings.Section)
     const [showContent, setshowContent] = useState(false) //used to open the content section on mobile when a section is selected
 
     return (
-        <div className={` w-full h-full flex flex-col transition-colors duration-500 ease-out ${theme != 'dark' ?
+        <div className={` w-full h-full flex flex-col transition-colors duration-500 ease-out ${Theme != 'dark' ?
                     'bg-(--sec-light-clr)'
                     : 'bg-(--bg-dark-app-body)'}`}>
 
@@ -31,16 +33,16 @@ const Settings = () => {
                     {/* FOR DESKTOPS */}
                     {currDevice === 'Desktop' && (
                         <>
-                            <Sections currDevice={currDevice} theme={theme} activeSection={activeSection} setShowContent={setshowContent} />
-                            <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} />
+                            <Sections currDevice={currDevice} Theme={Theme} activeSection={activeSection} setShowContent={setshowContent} ThemeColors={ThemeColors} AccentColors={AccentColors}/>
+                            <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors}/>
                         </>
                     )}
                     {/* FOR MOBILES */}
                     {currDevice !== 'Desktop' && (
                         !showContent ?
-                            <Sections currDevice={currDevice} theme={theme} activeSection={activeSection} setShowContent={setshowContent} />
+                            <Sections currDevice={currDevice} Theme={Theme} activeSection={activeSection} setShowContent={setshowContent} ThemeColors={ThemeColors} AccentColors={AccentColors}/>
                             :
-                            <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} />
+                            <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors}/>
                     )}
                 </section>
             </main>

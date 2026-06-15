@@ -8,11 +8,8 @@ import { manageDeletedNotes, manageEditTask, setNotesContainerWidth, setStartDel
 import useLongPress from '../../../hooks/Use-long-press';
 
 
-const AllNotes = () => {
+const AllNotes = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
-    const theme = useSelector((store) => store.wallpaper.theme)
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
 
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
@@ -96,9 +93,9 @@ const AllNotes = () => {
                                 // on click works as want but not opening edit mode on mobile only
 
                                 key={id}
-                                style={{ backgroundColor: theme !== 'dark' ? ThemeColors.header : ThemeColors.header ,
+                                style={{ backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header ,
                                     '--hover' : ThemeColors.third,
-                                    '--active' : theme !=='dark'?COMMON_COLORS.White:COMMON_COLORS.Gray
+                                    '--active' : Theme !=='dark'?COMMON_COLORS.White:COMMON_COLORS.Gray
                                 }}
                                 className={`HOVER_CLASS duration-500 ease-out relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
                         `}>

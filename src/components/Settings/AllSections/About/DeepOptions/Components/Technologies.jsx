@@ -3,12 +3,12 @@ import { CodeXml, Dot, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-
 import { SETTINGS_TECHNOLOGIES } from '../../../../../../constants/Settings'
 
 
-const Technologies = ({ Device, theme, Section }) => {
+const Technologies = ({ Device, Theme, Section ,ThemeColors,AccentColors}) => {
     return (
-        <div className={`technologies flex flex-col gap-4 p-[2.5%] rounded-2xl ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+        <div className={`technologies flex flex-col gap-4 p-[2.5%] rounded-2xl ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
 
 
-            <div className={`flex gap-2 font-bold text-lg ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+            <div className={`flex gap-2 font-bold text-lg ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
                 <CodeXml className={`text-(--color-accent)`} strokeWidth={2.5} />
                 <span>Built Using</span>
             </div>
@@ -18,7 +18,7 @@ const Technologies = ({ Device, theme, Section }) => {
                 {SETTINGS_TECHNOLOGIES.map(({ Tech_Name, icon }) => {
                     return <div
                         className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm 
-                        ${theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !== 'Desktop' ? 'active:bg-(--third-light-clr)' : 'active:bg-(--primary-light-clr)'}`
+                        ${Theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !== 'Desktop' ? 'active:bg-(--third-light-clr)' : 'active:bg-(--primary-light-clr)'}`
                                 :
                                 'border-(--bg-dark-app-body) text-(--primary-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'} 
                         px-3 py-1.5 font-semibold rounded-2xl  flex gap-2 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1' : 'px-4 py-2'}`}>

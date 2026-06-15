@@ -7,11 +7,8 @@ import { COMMON_COLORS } from '../../../constants/style';
 
 // count show remaining
 
-const FolderCategory = () => {
+const FolderCategory = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
-    const theme = useSelector((store) => store.wallpaper.theme)
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
 
     const categories = useSelector(store => store.Notes.allCategories) // all categories for notes app
     const activeCategory = useSelector((store) => store.Notes.activeCategory)

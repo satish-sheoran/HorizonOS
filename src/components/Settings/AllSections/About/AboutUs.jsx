@@ -12,7 +12,7 @@ const DEEP_OPTIONS = {
   Factoryreset,
 }
 
-const AboutUs = ({ Section, theme }) => {
+const AboutUs = ({ Section, Theme ,ThemeColors,AccentColors}) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
   const Device = useSelector((store) => store.Device.currDevice)
@@ -23,26 +23,26 @@ const AboutUs = ({ Section, theme }) => {
   return (
     <div className={`p-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-2 `}>
 
-      <div className={`active:scale-97 ease-out duration-500 shrink-0 w-full ${Device !== 'Desktop' ? 'h-[40%]' : 'h-[45%]'} flex flex-col items-center justify-center gap-2 rounded-2xl ${theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
+      <div className={`active:scale-97 ease-out duration-500 shrink-0 w-full ${Device !== 'Desktop' ? 'h-[40%]' : 'h-[45%]'} flex flex-col items-center justify-center gap-2 rounded-2xl ${Theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
 
-        <span className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
+        <span className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
         </span>
 
         <span className='select-none cursor-default text-(--grayish-light-clr)'>{OS_VERSION} </span>
       </div>
 
 
-      <AboutOptions Section={Section} theme={theme} OS_NAME={OS_NAME} Device={Device} fullScreen={fullScreen} />
+      <AboutOptions Section={Section} Theme={Theme} OS_NAME={OS_NAME} Device={Device} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} />
 
 
-      <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} theme={theme} fullScreen={fullScreen}>
+      <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} >
         {OPTIONS?.map(({ Name }) => {
           const compName = Name.replaceAll(' ', '');
           const Component = DEEP_OPTIONS[compName];
 
           if (!Component || activePanel !== compName) return null;
 
-          return <Component Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
+          return <Component Section={Section} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
         })}
       </AnimationWrapper>
 

@@ -8,13 +8,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { COMMON_COLORS, DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "../../constants/style";
 
-const Footer = () => {
+const Footer = ({Theme,ThemeColors,AccentColors}) => {
     const dispatch = useDispatch();
-    const theme = useSelector((store) => store.wallpaper.theme)
     const Device = useSelector((store) => store.Device.currDevice);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-
+    
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletedNotes = useSelector(store => store.Notes.deletedNotes);
@@ -57,7 +54,7 @@ const Footer = () => {
                                     }}
                                     className={`transition-colors duration-500 ease-out  
                         rounded px-[1.2px] 
-                        ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--primary-dark-clr)'}`} />
+                        ${Theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--primary-dark-clr)'}`} />
 
                                 <span 
                                 style={{
@@ -78,7 +75,7 @@ const Footer = () => {
                                         backgroundColor:  activeTab !=='Notes'?ThemeColors.primaryText:ThemeColors.grayish,
                                         '--strokeClr': ThemeColors.primaryText
                                     }} className={`
-                        rounded duration-500 ease-out ${theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
+                        rounded duration-500 ease-out ${Theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
                                 <span style={{
                                     color : activeTab !=='Notes'?ThemeColors.primaryText
                                     :
@@ -97,7 +94,7 @@ const Footer = () => {
                             >
                                 <X size={22} strokeWidth={2} className={`
                         rounded px-[1.2px] duration-500 ease-out  
-                        ${theme != 'dark' ?
+                        ${Theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}
@@ -116,7 +113,7 @@ const Footer = () => {
                                 <PinOff size={22} strokeWidth={2} className={`
                                     
                         rounded px-[1.2px] transition-all duration-500 ease-out 
-${theme != 'dark' ?
+${Theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}
@@ -136,7 +133,7 @@ ${theme != 'dark' ?
                                 <FolderInput size={22} strokeWidth={2} className={`
                                      
                         rounded px-[1.2px] transition-all duration-500 ease-out 
-${theme != 'dark' ?
+${Theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}
@@ -160,7 +157,7 @@ ${theme != 'dark' ?
                             >
                                 <Trash size={22} strokeWidth={2} className={`
                         rounded px-[1.2px] transition-all duration-500 ease-out  
-${theme != 'dark' ?
+${Theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}                        `} />
@@ -174,7 +171,7 @@ ${theme != 'dark' ?
                 }
             </div>
 
-            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn='Notes' />}
+            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn='Notes' Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
 
         </footer>
     )

@@ -18,9 +18,8 @@ const SETTINGS_COMPONENTS = {
     Feedback,
 };
 
-const Content = ({ currDevice, activeSection, setShowContent }) => {
+const Content = ({ currDevice, activeSection, setShowContent,Theme,ThemeColors,AccentColors }) => {
     const dispatch = useDispatch()
-    const theme = useSelector((store) => store.wallpaper.theme)
     const activePanel = useSelector((store) => store.Settings.activePanel)
 
     const setShowContentFalse = () => setShowContent(false)
@@ -30,7 +29,7 @@ const Content = ({ currDevice, activeSection, setShowContent }) => {
         <section className={`relative h-full  flex flex-col ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
 
             {/* toolbar for back and save options */}
-            {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} theme={theme} />}
+            {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors}/>}
 
             {
                 SETTINGS_SECTIONS.map(({ title }) => {
@@ -44,7 +43,9 @@ const Content = ({ currDevice, activeSection, setShowContent }) => {
                         <div className='absolute inset-0'>
                             <Component
                                 Section={title}
-                                theme={theme} />
+                                Theme={Theme} 
+                                ThemeColors={ThemeColors} AccentColors={AccentColors}
+                                />
                         </div>
                     </div>
 

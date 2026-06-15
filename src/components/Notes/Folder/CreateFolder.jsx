@@ -4,11 +4,8 @@ import CreateFolderPopUp from './CreateFolderPopUp';
 import { useEffect, useState } from 'react';
 import { COMMON_COLORS } from '../../../constants/style';
 
-const CreateFolder = () => {
+const CreateFolder = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch()
-    const theme = useSelector((store) => store.wallpaper.theme);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
 
     const [opencreateFolderPopUp, setOpencreateFolderPopUp] = useState(false)
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
@@ -31,8 +28,8 @@ const CreateFolder = () => {
                 style={{
                     color: ThemeColors.primaryText,
                     background: ThemeColors.third,
-                    '--hover':theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish,
-                    '--active':theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish
+                    '--hover':Theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish,
+                    '--active':Theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish
 
                 }}
                 className={`HOVER_CLASS duration-500 ease-out create-folder`}>
@@ -42,7 +39,7 @@ const CreateFolder = () => {
                 <span className='select-none font-semibold text-sm'>New Folder</span>
             </button>
 
-            {opencreateFolderPopUp === true && <CreateFolderPopUp opencreateFolderPopUp={opencreateFolderPopUp} setOpencreateFolderPopUp={setOpencreateFolderPopUp} />}
+            {opencreateFolderPopUp === true && <CreateFolderPopUp opencreateFolderPopUp={opencreateFolderPopUp} setOpencreateFolderPopUp={setOpencreateFolderPopUp} Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />}
         </>
     )
 }

@@ -7,12 +7,10 @@ import { manageDeletedCategories, setOpenManageFolder, setStartDeletingCat } fro
 import ConfirmDeletePopUp from './ConfirmDeletePopUp'
 
 
-const FolderNav = () => {
+const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false);
 
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
 
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
@@ -85,7 +83,7 @@ const FolderNav = () => {
             }
 
             {/* delete pop up  */}
-            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn='Categories' />}
+            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn='Categories' Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />}
 
         </div>)
 }

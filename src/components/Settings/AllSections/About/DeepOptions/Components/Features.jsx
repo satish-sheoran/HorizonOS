@@ -3,10 +3,10 @@ import * as Icons from "lucide-react";
 import { ClockFading, Expand, Layers, Star, MonitorSmartphone, LineSquiggle, MousePointer2 } from 'lucide-react'
 import { SETTINGS_FEATURES } from '../../../../../../constants/Settings'
 
-const Features = ({ Device, theme, fullScreen }) => {
+const Features = ({ Device, Theme, fullScreen,ThemeColors,AccentColors }) => {
   return (
-    <div className={`features flex flex-col gap-4 p-[2.5%] rounded-2xl ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
-      <div className={`flex gap-2 font-bold text-lg ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+    <div className={`features flex flex-col gap-4 p-[2.5%] rounded-2xl ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+      <div className={`flex gap-2 font-bold text-lg ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
         <Star className={`text-(--color-accent)`} strokeWidth={2.5} />
         <span>Features</span>
       </div>
@@ -20,7 +20,7 @@ const Features = ({ Device, theme, fullScreen }) => {
           const Icon = Icons[icon]
 
           return <div key={index} className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` 
+        ${Theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` 
           :
            'border-(--bg-dark-app-body) text-(--sec-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}
               ${Device !== 'Desktop' ? `py-2`
@@ -38,7 +38,7 @@ const Features = ({ Device, theme, fullScreen }) => {
                   <br />
                 </>
               })}</span>
-              <span className={`text-[0.545rem] ${theme !== 'dark' ? 'text-(--grayish-dark-clr)' : 'text-(--grayish-light-clr)'}`}> {Feat_Desc} </span>
+              <span className={`text-[0.545rem] ${Theme !== 'dark' ? 'text-(--grayish-dark-clr)' : 'text-(--grayish-light-clr)'}`}> {Feat_Desc} </span>
 
             </div>
           </div>

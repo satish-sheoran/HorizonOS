@@ -5,7 +5,7 @@ import FolderCategory from './FolderCategory'
 import { setWidthOfFolderContent } from '../../../redux/features/NotesStrorage'
 
 
-const FolderContent = () => {
+const FolderContent = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
 
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
@@ -52,10 +52,10 @@ const FolderContent = () => {
         <div className={`duration-500 ease-out folder-content`}>
 
             {/* categories */}
-            <FolderCategory />
+            <FolderCategory Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} />
 
             {/* create folder btn */}
-            {startDeletingCat === false && < CreateFolder />}
+            {startDeletingCat === false && < CreateFolder Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />}
         </div>
     )
 }

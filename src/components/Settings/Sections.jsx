@@ -4,12 +4,12 @@ import { ChevronRight, Info } from "lucide-react";
 import { setSection } from "../../redux/features/SettingsSlice";
 import { useDispatch } from "react-redux";
 
-const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
+const Sections = ({ currDevice, Theme, activeSection, setShowContent,ThemeColors,AccentColors }) => {
 
     const dispatch = useDispatch()
 
     return (
-        <section className={`py-1 transition-colors duration-500 ease-out overflow-y-auto ${currDevice === 'Desktop' ? 'w-1/4 border-r' : 'w-full'} h-full  flex flex-col items-center ${theme !== 'dark' ? 'border-(--primary-light-clr)' : 'border-(--sec-dark-clr)'}`}>
+        <section className={`py-1 transition-colors duration-500 ease-out overflow-y-auto ${currDevice === 'Desktop' ? 'w-1/4 border-r' : 'w-full'} h-full  flex flex-col items-center ${Theme !== 'dark' ? 'border-(--primary-light-clr)' : 'border-(--sec-dark-clr)'}`}>
 
             {SETTINGS_SECTIONS?.map(({ title, icon }, idx) => {
                 const Icon = Icons[icon]
@@ -25,7 +25,7 @@ const Sections = ({ currDevice, theme, activeSection, setShowContent }) => {
                     <div className={`duration-500 ease-out ${currDevice === 'Desktop' && activeSection === title ?
                     'bg-(--color-light-accent) text-(--primary-light-clr) hover:bg-(--color-accent) active:bg-(--color-accent)'
                         :
-                       theme !== 'dark' ?
+                       Theme !== 'dark' ?
                             ' hover:bg-(--third-light-clr) active:bg-(--third-light-clr) text-(--primary-dark-clr)'
                             :
                             ' hover:bg-(--color-gray) active:bg-(--color-gray) text-(--primary-light-clr)'

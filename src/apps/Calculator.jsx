@@ -9,6 +9,7 @@ import UseCalculator from "../hooks/useCalculator";
 
 const Calculator = () => {
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const Theme = useSelector((store) => store.wallpaper.theme)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const currDevice = useSelector((store) => store.Device.currDevice);
     const data = useSelector((store) => store.windowApps.apps['calculator'].data);
@@ -43,6 +44,7 @@ const Calculator = () => {
                     currDevice={currDevice}
                     ThemeColors={ThemeColors}
                     AccentColors={AccentColors}
+                    Theme={Theme}
                 />
                 <div className={`calc-btns grow select-none`}>
                     <CalcButtons
@@ -50,6 +52,7 @@ const Calculator = () => {
                         AccentColors={AccentColors}
                         calcBtnClck={calcBtnClck}
                         Device={currDevice}
+                        Theme={Theme}
                     />
                 </div>
             </div>

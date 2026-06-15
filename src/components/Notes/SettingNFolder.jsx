@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setOpenManageFolder } from "../../redux/features/NotesStrorage";
 
 
-const SettingNFolder = () => {
+const SettingNFolder = ({Theme,ThemeColors,AccentColors}) => {
     const dispatch = useDispatch();
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used because when switching/opening folders window,the icon shows still,so to fix it,it is used here

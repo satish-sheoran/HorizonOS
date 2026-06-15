@@ -3,12 +3,13 @@
 
 
 What i did for this commit :
-feat(theme) : Implement centralized theme and accent color management system
+refactor(theme) : centralized app theme props and prepare for pre-app customization 
 
-- Added global style constants for accent,light,dark, and common color palettes
-- Introduced Redux state for current theme colors and selected accent color
-- Refactored apps to cosume colors from the centralized theme system
-- Applied dynamic theme and accent rendering across all apps (excluding Settings)
+- Pass theme-related props through components hierarchy
+- Reduce deep Redux dependencies
+_ Simplify future support for app-specific themes and accent colors
+- Improve maintainability of the theming system
+- (REMAINING) :To Applied dynamic theme and accent rendering across Settings
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

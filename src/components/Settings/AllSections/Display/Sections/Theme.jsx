@@ -11,7 +11,7 @@ const ThemeComponent = {
     AutomaticTheme: ToggleButton
 }
 
-const Theme = ({ options, sectionName, theme, fullScreen, Device }) => {
+const Theme = ({ options, sectionName, Theme, fullScreen, Device,ThemeColors,AccentColors }) => {
 
     const dispatch = useDispatch()
     const performAction = () => dispatch(setAutoTheme())
@@ -25,7 +25,7 @@ const Theme = ({ options, sectionName, theme, fullScreen, Device }) => {
             
             {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
 
-            <div className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 ${theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+            <div className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
             {
                 options?.map(({ option, value }, idx) => {
                     const Component = ThemeComponent[option];
@@ -34,20 +34,22 @@ const Theme = ({ options, sectionName, theme, fullScreen, Device }) => {
                     if (option === 'AutomaticTheme') {
                         return <ToggleButton
                             key={idx}
-                            theme={theme}
+                            Theme={Theme}
                             action={value}
                             Device={Device}
                             performAction={performAction}
                             isActionActive={isAutoTheme}
+                            ThemeColors={ThemeColors} AccentColors={AccentColors}
                         />
                     }
 
                     return <Component
                         key={idx}
-                        theme={theme}
+                        Theme={Theme}
                         value={value}
                         fullScreen={fullScreen}
                         Device={Device}
+                        ThemeColors={ThemeColors} AccentColors={AccentColors}
                     />
                 })
             }

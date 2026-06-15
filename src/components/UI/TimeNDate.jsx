@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { formatDate, formatTime } from '../../utils/formatTime';
 import { useSelector } from 'react-redux';
 
-const TimeNDate = () => {
+const TimeNDate = ({Theme,ThemeColors,AccentColors}) => {
 const is12HrFormat = useSelector((store)=> store.Device.isTime12HourFormat)
     const [Time, setTime] = useState(new Date());
 

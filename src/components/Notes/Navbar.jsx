@@ -2,13 +2,11 @@ import { useSelector } from "react-redux";
 import SettingNFolder from "./settingNFolder";
 
 
-const Navbar = () => {
-const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    
+const Navbar = ({Theme,ThemeColors,AccentColors}) => {
+ 
     return (
         <nav style={{ color: ThemeColors.primaryText }} className={`pt-1 transition-colors duration-500 ease-out  `}>
-            <SettingNFolder />
+            <SettingNFolder Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />
         </nav>
     )
 }

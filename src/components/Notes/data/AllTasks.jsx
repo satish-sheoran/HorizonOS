@@ -5,11 +5,8 @@ import { useSelector } from 'react-redux'
 import { toast } from "react-toastify"
 
 
-const AllTasks = () => {
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-        const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
+const AllTasks = ({Theme,AccentColors,ThemeColors}) => {
         
-    const theme = useSelector((store) => store.wallpaper.theme)
     const taskAnimRef = useRef(null);
     const isFirstRun = useRef(true);
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app

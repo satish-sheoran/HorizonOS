@@ -1,12 +1,11 @@
 import { CodeXml, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import Technologies from './Components/Technologies'
 import Details from './Components/Details'
 import Features from './Components/Features'
 import DevDetail from './Components/DevDetail'
 
-const AboutHorizonOS = ({ Section, Device, fullScreen,theme }) => {
+const AboutHorizonOS = ({ Section, Device, fullScreen,Theme ,ThemeColors,AccentColors}) => {
 
 
   return (
@@ -15,16 +14,16 @@ const AboutHorizonOS = ({ Section, Device, fullScreen,theme }) => {
       <div className={` flex flex-col gap-2 `}>
 
         {/* Details */}
-        <Details Device={Device} theme={theme} fullScreen={fullScreen} />
+        <Details Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} />
 
         {/* Features */}
-        <Features theme={theme} Device={Device} fullScreen={fullScreen} />
+        <Features Theme={Theme} Device={Device} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} />
 
         {/* Technologies */}
-        <Technologies Device={Device} theme={theme} Section={Section} fullScreen={fullScreen} />
+        <Technologies Device={Device} Theme={Theme} Section={Section} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} />
 
         {/* developer */}
-        <DevDetail theme={theme} Device={Device} fullScreen={fullScreen} />
+        <DevDetail Theme={Theme} Device={Device} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} />
 
       </div>
 

@@ -1,7 +1,7 @@
 import { TriangleAlert } from 'lucide-react'
 import React from 'react'
 
-const Warning = ({ Device, theme, fullScreen }) => {
+const Warning = ({ Device, Theme, fullScreen ,ThemeColors,AccentColors}) => {
     return (
         <div
             style={{ backdropFilter: 'blur(16px)'}}
@@ -14,7 +14,7 @@ const Warning = ({ Device, theme, fullScreen }) => {
 
             <div className={`warning-msg flex flex-col gap-1`}>
                 <span className={`font-bold text-lg text-(--color-danger)`}>Factory Reset</span>
-                <span className={` text-[0.5rem] lg:text-[0.7rem] ${theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--primary-light-clr)'}`}>This will restore HorizonOS to its original state. All your personal data,apps,settings, and customizations will be permanently deleted.</span>
+                <span className={` text-[0.5rem] lg:text-[0.7rem] ${Theme !=='dark'?'text-(--grayish-dark-clr)':'text-(--primary-light-clr)'}`}>This will restore HorizonOS to its original state. All your personal data,apps,settings, and customizations will be permanently deleted.</span>
             </div>
         </div>
     )

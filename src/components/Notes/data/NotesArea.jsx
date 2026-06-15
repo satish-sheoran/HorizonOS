@@ -8,12 +8,10 @@ import { setCreateTaskOpen } from '../../../redux/features/NotesStrorage';
 import AllNotes from './AllNotes';
 import { COMMON_COLORS } from '../../../constants/style'
 
-const NotesArea = () => {
+const NotesArea = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
     const notesAnimRef = useRef(null);
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
 
     // animation for notes when switching with task area
     useGSAP(() => {
@@ -30,9 +28,9 @@ const NotesArea = () => {
 
     return (
         <div ref={notesAnimRef} className='NotesArea relative'>
-            <Categories />
+            <Categories Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
 
-            <AllNotes />
+            <AllNotes Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} /> 
             {/* Add new task rounded btn */}
             <button
                 style={{

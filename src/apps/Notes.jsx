@@ -23,6 +23,7 @@ const Notes = () => {
 
     const currDevice = useSelector((store) => store.Device.currDevice);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
+    const Theme = useSelector((store) => store.wallpaper.theme)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
@@ -69,17 +70,17 @@ const Notes = () => {
 
 
                 {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}
-                <Folders /> 
+                <Folders Theme={Theme} AccentColors={AccentColors}  ThemeColors={ThemeColors} /> 
 
                 <div ref={notesBody} className="notes-body translate-x-0">
-                    <Navbar />
-                    <Content />
-                    <Footer />
+                    <Navbar Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} /> 
+                    <Content Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} /> 
+                    <Footer Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} /> 
                 </div>
 
                 {/*  pop up which opens create task   */}
-                <CreateTask /> 
-                <EditTask /> 
+                <CreateTask Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} />  
+                <EditTask Theme={Theme} AccentColors={AccentColors}  ThemeColors={ThemeColors} />  
             </main>
         </div >
     )

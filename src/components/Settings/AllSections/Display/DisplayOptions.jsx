@@ -11,7 +11,7 @@ const DISPLAY_SECTIONS = {
 }
 
 // SECTION MEANS TITLE : APPS/DISPLAY ETC.
-const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
+const DisplayOptions = ({ Section, Device, Theme, fullScreen ,ThemeColors,AccentColors}) => {
 
     const currentSection = SETTINGS_SECTIONS.find(
         sec => sec.title === Section
@@ -31,15 +31,16 @@ const DisplayOptions = ({ Section, Device, theme, fullScreen }) => {
                     <Component
                     options={options}
                     sectionName={secName}
-                    theme={theme}
+                    Theme={Theme}
                     fullScreen={fullScreen}
                     Device={Device}
+                    ThemeColors={ThemeColors} AccentColors={AccentColors}
                     />
 
                     {/* HR */}
                     {idx < currentSection.options.length - 1 && (
                         <div className='mt-2  mx-auto w-9/10'>
-                            <hr className={`transition-colors duration-500 ease-out w-full ${theme !== 'dark' ? 'border-(--bg-dark-header)' : 'border-(--primary-light-clr)'}`} />
+                            <hr className={`transition-colors duration-500 ease-out w-full ${Theme !== 'dark' ? 'border-(--bg-dark-header)' : 'border-(--primary-light-clr)'}`} />
                         </div>
                     )}
                 </div>

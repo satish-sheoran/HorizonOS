@@ -8,14 +8,11 @@ import { toast } from 'react-toastify';
 import { COMMON_COLORS } from '../../../constants/style';
 
 
-const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn }) => {
+const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn ,Theme,AccentColors,ThemeColors}) => {
     const DeletPopElem = useRef(null);
     const dispatch = useDispatch();
 
-    const theme = useSelector((store) => store.wallpaper.theme);
     const device = useSelector((store) => store.Device.currDevice);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
     const deletedNotes = useSelector((store) => store.Notes.deletedNotes); //notes which are selected to delete
@@ -58,9 +55,9 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn }) 
                         onClick={() => setOpenDeletePopUp(false)}
                         style={{
                             color: COMMON_COLORS.White,
-                                                        backgroundColor: theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
-                                                        '--hover' : theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite,
-                                                        '--active' : theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite
+                                                        backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
+                                                        '--hover' : Theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite,
+                                                        '--active' : Theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite
                         }}
                         className={`${device !=='Desktop'?'py-3.5':'py-2.5'} HOVER_CLASS transition-colors duration-500 ease-out w-[calc(50%-2px)]  text-sm font-bold select-none  active:scale-96 rounded-lg 
                          `}>Cancel</button>

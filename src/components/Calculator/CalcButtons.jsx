@@ -2,7 +2,7 @@ import React from "react";
 import { CALC_BTNS } from "../../constants";
 import { COMMON_COLORS } from "../../constants/style";
 
-const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device }) => {
+const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device,Theme }) => {
     return (
         <>
             {

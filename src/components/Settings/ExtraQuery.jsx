@@ -3,17 +3,17 @@ import { toast } from 'react-toastify'
 import { MessageCircleQuestionMark, UserRoundPen } from 'lucide-react'
 import { SETTINGS_SECTIONS } from '../../constants/Settings'
 
-const ExtraQuery = ({ theme, Device, fullScreen, Section }) => {
+const ExtraQuery = ({ Theme, Device, fullScreen, Section,ThemeColors,AccentColors }) => {
     return (
         <div className={` flex  ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'p-[2.5%] w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
 
             <div className={`${!fullScreen ? 'w-full' : 'w-fit'} h-fit flex flex-col gap-4`}>
 
                 <div className={`duration-500 ease-out flex flex-col gap-2 rounded-xl 
-                    py-4 px-5 ${theme !== 'dark' ? 'bg-(--third-light-clr)' : 'bg-(--third-dark-clr)'}
+                    py-4 px-5 ${Theme !== 'dark' ? 'bg-(--third-light-clr)' : 'bg-(--third-dark-clr)'}
                     `}>
 
-                    <p className={`duration-500 ease-out w-fit ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} font-bold select-none`}>Need other settings?</p>
+                    <p className={`duration-500 ease-out w-fit ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'} font-bold select-none`}>Need other settings?</p>
 
                     <div className={`w-fit flex flex-col gap-1 text-(--color-accent) text-sm select-none`}>
 
@@ -26,7 +26,7 @@ const ExtraQuery = ({ theme, Device, fullScreen, Section }) => {
                     </div>
                 </div>
 
-                {fullScreen && Device === 'Desktop' && <div className={`w-fit flex flex-col gap-2.5 ${theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
+                {fullScreen && Device === 'Desktop' && <div className={`w-fit flex flex-col gap-2.5 ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
                     <div
                         onClick={() => toast.info('Feature Coming Soon...')}
                         className='hover:opacity-80 flex gap-2 items-center text-sm font-semibold select-none'>

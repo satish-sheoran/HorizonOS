@@ -16,7 +16,7 @@ const DEEP_OPTIONS = {
     ColourSchemeDeep
 }
 
-const Display = ({ Section, theme }) => {
+const Display = ({ Section, Theme ,ThemeColors,AccentColors}) => {
 
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)
@@ -26,20 +26,20 @@ const Display = ({ Section, theme }) => {
     return (
         <div className={`display-overflow-area w-full h-full grow flex ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
-            <DisplayOptions Section={Section} theme={theme} fullScreen={fullScreen} Device={Device} />
+            <DisplayOptions Section={Section} Theme={Theme} fullScreen={fullScreen} Device={Device}  ThemeColors={ThemeColors} AccentColors={AccentColors} />
 
-            <ExtraQuery theme={theme} Device={Device} fullScreen={fullScreen} Section={Section} />
+            <ExtraQuery Theme={Theme} Device={Device} fullScreen={fullScreen} Section={Section}  ThemeColors={ThemeColors} AccentColors={AccentColors} />
 
 
             {/* DEEP OPTIONS */}
-            <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} theme={theme} fullScreen={fullScreen}>
+            <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} >
                 {OPTIONS?.map(({ Name }) => {
                     const compName = Name.replaceAll(' ', '');
                     const Component = DEEP_OPTIONS[compName];
 
                     if (!Component || activePanel !== compName) return null;
 
-                    return <Component Section={Section} Device={Device} fullScreen={fullScreen} />
+                    return <Component Section={Section} Device={Device} fullScreen={fullScreen} Theme={Theme}  ThemeColors={ThemeColors} AccentColors={AccentColors} />
                 })}
             </AnimationWrapper>
 

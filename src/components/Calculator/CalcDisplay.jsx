@@ -1,7 +1,7 @@
 import React from 'react'
 import { getFontClass } from '../../utils/CalculatorFns';
 
-const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, AccentColors }) => {
+const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, AccentColors ,Theme}) => {
 
 
     return (
