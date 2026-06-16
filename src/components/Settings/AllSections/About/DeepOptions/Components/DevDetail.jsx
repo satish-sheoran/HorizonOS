@@ -1,13 +1,18 @@
 import React from 'react'
 import { CodeXml, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-react'
 import { DEV_DETAILS } from '../../../../../../constants/Settings'
+import { ACCENT_COLORS, COMMON_COLORS } from '../../../../../../constants/style'
 
 
-const DevDetail = ({ Device, Theme,ThemeColors,AccentColors }) => {
+const DevDetail = ({ Device, Theme, ThemeColors, AccentColors }) => {
     return (
-        <div className={`developer flex flex-col gap-4 p-[2.5%] rounded-2xl ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
-            <div className={`flex gap-2 font-bold text-lg ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
-                <User className={`text-(--color-accent)`} strokeWidth={2.5} />
+        <div
+            style={{ backgroundColor: ThemeColors.header }}
+            className={`developer flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
+            <div
+                style={{ color: ThemeColors.primaryText }}
+                className={`flex gap-2 font-bold text-lg `}>
+                <User style={{ color: AccentColors.CODE }} strokeWidth={2.5} />
                 <span>Developer</span>
             </div>
 
@@ -21,20 +26,20 @@ const DevDetail = ({ Device, Theme,ThemeColors,AccentColors }) => {
 
                 <div className={` ${Device !== 'Desktop' ? 'w-full' : 'justify-center'} gap-2 right w-3/4 flex flex-col`}>
                     <span className='flex flex-col'>
-                        <span className={`text-lg font-bold name ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{DEV_DETAILS.Name}</span>
-                        <span className={`role font-medium  text-[0.85rem] ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{DEV_DETAILS.Role}</span>
+                        <span style={{color : ThemeColors.primaryText}} className={`text-lg font-bold name `}>{DEV_DETAILS.Name}</span>
+                        <span style={{color : ThemeColors.primaryText}} className={`role font-medium  text-[0.85rem]`}>{DEV_DETAILS.Role}</span>
                     </span>
 
-                    <p className={`desc-about-dev font-[450] text-[0.8rem]  ${Theme !== 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--sec-light-clr)'}`}>
+                    <p style={{color : ThemeColors.secText}} className={`desc-about-dev font-[450] text-[0.8rem]`}>
                         {DEV_DETAILS.Description}
 
                     </p>
                 </div>
             </div>
 
-            <div className={`extra flex gap-1 items-end ${Device !== 'Desktop' ? 'text-[0.55rem]' : 'text-[0.65rem]'} ${Theme !== 'dark' ? 'text-(--sec-dark-clr)' : 'text-(--sec-light-clr)'}`}>
-                <span className='text-(--color-accent)'><ShieldHalf size={Device !== 'Desktop' ? 25 : 20} /></span>
-                <span className='text-(--color-light-accent)'>
+            <div style={{color : ThemeColors.secText}} className={`extra flex gap-1 items-end ${Device !== 'Desktop' ? 'text-[0.55rem]' : 'text-[0.65rem]'} `}>
+                <span style={{color : COMMON_COLORS.Blue}} ><ShieldHalf size={Device !== 'Desktop' ? 25 : 20} /></span>
+                <span style={{color : COMMON_COLORS.Blue}} >
                     {DEV_DETAILS.Disclaimer}
                 </span>
             </div>

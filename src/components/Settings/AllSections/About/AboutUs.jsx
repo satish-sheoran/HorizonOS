@@ -23,12 +23,12 @@ const AboutUs = ({ Section, Theme ,ThemeColors,AccentColors}) => {
   return (
     <div className={`p-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-2 `}>
 
-      <div className={`active:scale-97 ease-out duration-500 shrink-0 w-full ${Device !== 'Desktop' ? 'h-[40%]' : 'h-[45%]'} flex flex-col items-center justify-center gap-2 rounded-2xl ${Theme !=='dark'?'bg-(--primary-light-clr)':'bg-(--bg-dark-header)'}`}>
+      <div style={{backgroundColor : ThemeColors.header }} className={`active:scale-97 ease-out duration-500 shrink-0 w-full ${Device !== 'Desktop' ? 'h-[40%]' : 'h-[45%]'} flex flex-col items-center justify-center gap-2 rounded-2xl`}>
 
-        <span className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>{OS_NAME}
+        <span style={{color : ThemeColors.primaryText}} className={`duration-500 ease-out select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold `}>{OS_NAME}
         </span>
 
-        <span className='select-none cursor-default text-(--grayish-light-clr)'>{OS_VERSION} </span>
+        <span style={{color : ThemeColors.grayish}} className='select-none cursor-default '>{OS_VERSION} </span>
       </div>
 
 

@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Draggable } from "gsap/Draggable";
+import { COMMON_COLORS } from '../constants/style'
 
 const WindowWrapper = (Component, windowKey) => {
 
@@ -32,7 +33,7 @@ const WindowWrapper = (Component, windowKey) => {
             // Draggable.create() returns an array of draggable instances.
             // Since we are creating only one draggable element, we extract the first instance.
 
-            
+
             const [instance] = Draggable.create(el, {
                 type: "x,y", //direction in which element can be dragged
                 bounds: '.appsArea', // prevents window from leaving this container
@@ -71,7 +72,7 @@ const WindowWrapper = (Component, windowKey) => {
         }, [isOpen])
 
 
-        return <section ref={ref} className={`${fullScreen ? `${windowKey}-full` : windowKey} ${Device === 'Desktop' ?`border-[1.5px] ${fullScreen?'':'rounded-xl'}  border-(--bg-light-border) `:''}  ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out overflow-hidden `} style={{ zIndex }}>
+        return <section ref={ref} style={{ borderColor: COMMON_COLORS.LightWhite}} className={`${fullScreen ? `${windowKey}-full` : windowKey} ${Device === 'Desktop' ? `border-[1.5px] ${fullScreen ? '' : 'rounded-2xl'} ` : ''}  ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out overflow-hidden `} style={{ zIndex }}>
             <Component />
         </section>
     }

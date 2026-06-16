@@ -11,7 +11,7 @@
 }
 
 .dock {
-    @apply fixed left-1/2 -translate-x-1/2 bottom-[1vh] z-(--z-dock) rounded-(--border-radius-xl) p-(--padding-dock) w-[90vw] h-22 md:w-fit md:h-19 select-none md:gap-(--gap-md)
+    @apply fixed left-1/2 -translate-x-1/2 bottom-[1vh] z-(--z-dock)  p-(--padding-dock) w-[90vw] h-22 md:w-fit md:h-19 select-none md:gap-(--gap-md)
 }
 
 .status-bar {
@@ -23,11 +23,11 @@
 }
 
 .window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-2xl  select-none text-sm text-(--color-dark-gray);
+    @apply flex items-center justify-between px-4 py-3 rounded-t-2xl  select-none text-sm ;
 }
 
 .mobile-header {
-    @apply flex items-center justify-between  select-none text-sm text-(--color-dark-gray);
+    @apply flex items-center justify-between  select-none text-sm ;
 }
 
 

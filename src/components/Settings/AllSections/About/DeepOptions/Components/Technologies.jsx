@@ -1,15 +1,16 @@
 import React from 'react'
 import { CodeXml, Dot, Monitor, ShieldHalf, Star, StarIcon, User } from 'lucide-react'
 import { SETTINGS_TECHNOLOGIES } from '../../../../../../constants/Settings'
+import { COMMON_COLORS } from '../../../../../../constants/style'
 
 
-const Technologies = ({ Device, Theme, Section ,ThemeColors,AccentColors}) => {
+const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => {
     return (
-        <div className={`technologies flex flex-col gap-4 p-[2.5%] rounded-2xl ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+        <div style={{ backgroundColor: ThemeColors.header }} className={`technologies flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
 
 
-            <div className={`flex gap-2 font-bold text-lg ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
-                <CodeXml className={`text-(--color-accent)`} strokeWidth={2.5} />
+            <div style={{ color: ThemeColors.primaryText }} className={`flex gap-2 font-bold text-lg`}>
+                <CodeXml style={{ color: AccentColors.CODE }} strokeWidth={2.5} />
                 <span>Built Using</span>
             </div>
 
@@ -17,10 +18,17 @@ const Technologies = ({ Device, Theme, Section ,ThemeColors,AccentColors}) => {
 
                 {SETTINGS_TECHNOLOGIES.map(({ Tech_Name, icon }) => {
                     return <div
-                        className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm 
-                        ${Theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !== 'Desktop' ? 'active:bg-(--third-light-clr)' : 'active:bg-(--primary-light-clr)'}`
+                        style={{
+                            borderColor: ThemeColors.bg,
+                            color: Theme !== 'dark' ? ThemeColors.primaryText : ThemeColors.secText,
+                            '--hover': ThemeColors.third,
+                            '--active': Theme !== 'dark' ?
+                                Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                                 :
-                                'border-(--bg-dark-app-body) text-(--primary-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'} 
+                                COMMON_COLORS.Gray
+
+                        }}
+                        className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm  
                         px-3 py-1.5 font-semibold rounded-2xl  flex gap-2 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1' : 'px-4 py-2'}`}>
 
                         {icon ?
@@ -30,7 +38,7 @@ const Technologies = ({ Device, Theme, Section ,ThemeColors,AccentColors}) => {
                                 onDragStart={(e) => e.preventDefault()}
                                 className={`p-0.5 rounded object-cover object-center ${Device !== 'Desktop' ? 'w-5' : 'w-5.5'}`} src={icon} alt={Tech_Name} />
                             :
-                            <span className={` ${Device !== 'Desktop' ? 'scale-150' : 'scale-200'} text-(--color-accent)`}>•</span>
+                            <span style={{ color: AccentColors.CODE }} className={` ${Device !== 'Desktop' ? 'scale-150' : 'scale-200'}`}>•</span>
                         }
                         <span>
                             {Tech_Name}

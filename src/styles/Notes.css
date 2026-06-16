@@ -81,7 +81,7 @@
                 @apply w-full font-semibold rounded-xl flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97 transition-all ease-in-out duration-100 mt-1;
 
                 .plus-icon-div {
-                    @apply bg-(--bg-minimize) rounded-full p-1 flex items-center justify-center text-(--primary-light-clr);
+                    @apply bg-(--bg-minimize) rounded-full p-1 flex items-center justify-center ;
                 }
             }
 

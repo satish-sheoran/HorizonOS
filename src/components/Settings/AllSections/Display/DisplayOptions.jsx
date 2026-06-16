@@ -40,7 +40,9 @@ const DisplayOptions = ({ Section, Device, Theme, fullScreen ,ThemeColors,Accent
                     {/* HR */}
                     {idx < currentSection.options.length - 1 && (
                         <div className='mt-2  mx-auto w-9/10'>
-                            <hr className={`transition-colors duration-500 ease-out w-full ${Theme !== 'dark' ? 'border-(--bg-dark-header)' : 'border-(--primary-light-clr)'}`} />
+                            <hr 
+                            style={{borderColor : ThemeColors.grayish}}
+                            className={`transition-colors duration-500 ease-out w-full`} />
                         </div>
                     )}
                 </div>

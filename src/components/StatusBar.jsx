@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import { Wifi, BatteryMedium } from 'lucide-react';
 import { OS_NAME } from '../constants/Settings';
+import { COMMON_COLORS } from '../constants/style';
 
 const StatusBar = () => {
 
@@ -11,7 +12,7 @@ const StatusBar = () => {
         const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     
     return (
-        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{ color: `var(--primary-light-clr)` }}>
+        <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{ color: COMMON_COLORS.White }}>
 
             <div className='flex h-full items-center gap-(--gap-xs) cursor-pointer' >
 

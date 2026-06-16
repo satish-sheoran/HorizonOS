@@ -17,9 +17,9 @@ const AppsArea = ({ options, sectionName, Theme, fullScreen, Device,ThemeColors,
   return (
     <div className={`flex flex-col w-full  gap-2`}>
 
-      <span className='text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
+      <span style={{color : ThemeColors.grayish}} className='text-sm font-bold select-none'>{sectionName}</span>
 
-      <div className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+      <div style={{backgroundColor : ThemeColors.header}} className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
       {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
       {
         options?.map(({ option, value }, idx) => {

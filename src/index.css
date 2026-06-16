@@ -22,9 +22,16 @@ body {
     background-color: var(--hover) !important;
 }
 
-.HOVER_CLASS:active {
+/* .HOVER_CLASS:active {
     background-color: var(--active) !important;
+} */
+
+.HOVER_CLR_CLASS:hover{
+    color: var(--hover) !important;
 }
+/* .HOVER_CLR_CLASS:active{
+    color : var(--active) !important;
+} */
 
 .Placeholder::placeholder {
     color: var(--placeholder);

@@ -21,11 +21,11 @@ const Theme = ({ options, sectionName, Theme, fullScreen, Device,ThemeColors,Acc
     return (
         <div className={`flex flex-col w-full gap-2`}>
 
-            <span className='text-(--grayish-dark-clr) text-sm font-bold select-none'>{sectionName}</span>
+            <span style={{color : ThemeColors.grayish}} className='text-sm font-bold select-none'>{sectionName}</span>
             
             {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
 
-            <div className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
+            <div style={{backgroundColor : ThemeColors.header}} className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
             {
                 options?.map(({ option, value }, idx) => {
                     const Component = ThemeComponent[option];

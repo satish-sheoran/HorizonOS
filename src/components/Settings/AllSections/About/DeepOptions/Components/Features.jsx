@@ -2,12 +2,13 @@ import React from 'react'
 import * as Icons from "lucide-react";
 import { ClockFading, Expand, Layers, Star, MonitorSmartphone, LineSquiggle, MousePointer2 } from 'lucide-react'
 import { SETTINGS_FEATURES } from '../../../../../../constants/Settings'
+import { COMMON_COLORS } from '../../../../../../constants/style';
 
-const Features = ({ Device, Theme, fullScreen,ThemeColors,AccentColors }) => {
+const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
   return (
-    <div className={`features flex flex-col gap-4 p-[2.5%] rounded-2xl ${Theme !== 'dark' ? 'bg-(--primary-light-clr)' : 'bg-(--bg-dark-header)'}`}>
-      <div className={`flex gap-2 font-bold text-lg ${Theme !== 'dark' ? 'text-(--primary-dark-clr)' : 'text-(--primary-light-clr)'}`}>
-        <Star className={`text-(--color-accent)`} strokeWidth={2.5} />
+    <div style={{ backgroundColor: ThemeColors.header }} className={`features flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
+      <div style={{ color: ThemeColors.primaryText }} className={`flex gap-2 font-bold text-lg`}>
+        <Star style={{ color: AccentColors.CODE }} strokeWidth={2.5} />
         <span>Features</span>
       </div>
 
@@ -19,15 +20,21 @@ const Features = ({ Device, Theme, fullScreen,ThemeColors,AccentColors }) => {
         {SETTINGS_FEATURES.map(({ Feat_Title, Feat_Desc, icon }, index) => {
           const Icon = Icons[icon]
 
-          return <div key={index} className={`ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm rounded-2xl flex gap-3 justify-center items-center 
-        ${Theme !== 'dark' ? `border-(--color-lightDarkish-white) text-(--primary-dark-clr) hover:bg-(--third-light-clr)  ${Device !=='Desktop'?'active:bg-(--third-light-clr)':'active:bg-(--primary-light-clr)'}` 
-          :
-           'border-(--bg-dark-app-body) text-(--sec-light-clr) hover:bg-(--third-dark-clr) active:bg-(--color-gray)'}
-              ${Device !== 'Desktop' ? `py-2`
-              :
-              `py-1.5 font-semibold`}
+          return <div key={index}
+            style={{
+              borderColor: ThemeColors.bg,
+              color: Theme !== 'dark' ? ThemeColors.primaryText : ThemeColors.secText,
+              '--hover': ThemeColors.third,
+              '--active': Theme !== 'dark' ?
+                Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
+                :
+                COMMON_COLORS.Gray
+
+            }}
+            className={`HOVER_CLASS ease-out duration-500 hover:scale-105 active:scale-105 overflow-hidden border text-sm rounded-2xl flex gap-3 justify-center items-center 
+            ${Device !== 'Desktop' ? `py-2` : `py-1.5 font-semibold`}
               `}>
-            <div className={`rounded-full p-2 bg-(--color-ultra-light-accent) text-(--color-accent)`}>
+            <div style={{ backgroundColor: AccentColors.Bg_Clr , color : AccentColors.CODE }} className={`rounded-full p-2`}>
               {Icon && <Icon strokeWidth={2} className='shrink-0' />}
 
             </div>
@@ -38,7 +45,7 @@ const Features = ({ Device, Theme, fullScreen,ThemeColors,AccentColors }) => {
                   <br />
                 </>
               })}</span>
-              <span className={`text-[0.545rem] ${Theme !== 'dark' ? 'text-(--grayish-dark-clr)' : 'text-(--grayish-light-clr)'}`}> {Feat_Desc} </span>
+              <span style={{ color : ThemeColors.grayish}} className={`text-[0.545rem]`}> {Feat_Desc} </span>
 
             </div>
           </div>

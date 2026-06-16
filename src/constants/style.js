@@ -3,6 +3,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Blue',
         CODE: '#3B82F6',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#ACC5F6',
         Hover_Clr: '#6096f3',
         Active_Clr: '#6096f3'
 
@@ -11,6 +12,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Red',
         CODE: '#EF4444',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#FF9E99',
         Hover_Clr: '#ff6157',
         Active_Clr: '#ff6157'
     },
@@ -18,6 +20,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Purple',
         CODE: '#7C3AED',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#AB86F3',
         Hover_Clr: '#9867EF',
         Active_Clr: '#9867EF'
     },
@@ -25,6 +28,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Magenta',
         CODE: '#D52DEB',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#EFA7F6',
         Hover_Clr: '#DC50EC',
         Active_Clr: '#D84AED'
     },
@@ -32,6 +36,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Yellow',
         CODE: '#FACC15',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#FAECB7',
         Hover_Clr: '#FAD74c',
         Active_Clr: '#FAD74C'
     },
@@ -39,6 +44,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Lime',
         CODE: '#84CC16',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#CFF59E',
         Hover_Clr: '#A9ED45',
         Active_Clr: '#A9ED45'
     },
@@ -46,6 +52,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Green',
         CODE: 'rgb(38, 165, 22)',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#8EF386',
         Hover_Clr: '#31D322',
         Active_Clr: '#31D322'
     },
@@ -53,6 +60,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Cyan',
         CODE: '#22D3EE',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#A3EEF5',
         Hover_Clr: '#58DEEE',
         Active_Clr: '#58DEEE'
     },
@@ -60,6 +68,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Slate_Gray',
         CODE: '#94A3B8',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#D4DEE2',
         Hover_Clr: '#B8C3D0',
         Active_Clr: '#B8C3D0'
     },
@@ -67,6 +76,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Orange',
         CODE: 'rgb(237,129,20)',
         HOVER: 'HOVER_CLASS',
+        Bg_Clr: '#F1B97E',
         Hover_Clr: '#ED9840',
         Active_Clr: '#ED9840'
     }
@@ -80,13 +90,13 @@ export const LIGHT_THEME_COLORS = {
     primary: '#FFFFFF',
     sec: '#F3F4F6',
     third: 'rgb(233,233,235)',
-    
+
     primaryText: 'rgb(1,1,1)',
-    secText : '#666666',
-    thirdText : '#8F8F8F',
+    secText: '#666666',
+    thirdText: '#8F8F8F',
 
     grayish: 'rgb(128,128,128)',
-    blackBg : '#252525',
+    blackBg: '#252525',
 }
 
 export const DARK_THEME_COLORS = {
@@ -99,11 +109,11 @@ export const DARK_THEME_COLORS = {
     third: 'rgb(45,45,47)',
 
     primaryText: '#FFFFFF',
-    secText : '#E6E6E6',
-    thirdText : '#BFBFBF',
+    secText: '#E6E6E6',
+    thirdText: '#BFBFBF',
 
     grayish: 'rgb(145,145,145)',
-    whiteBg : '#FFFFFF',
+    whiteBg: '#FFFFFF',
 }
 
 export const COMMON_COLORS = {
@@ -121,7 +131,7 @@ export const COMMON_COLORS = {
     LightDarkishWhite: '#EEF2F7',
     LightWhite: 'rgb(209,205,205,0.938)',
     grayishDark: 'rgb(145,145,145)',
-     grayishWhite: 'rgb(128,128,128)',
-    Yellow : '#FACC15'
+    grayishWhite: 'rgb(128,128,128)',
+    Yellow: '#FACC15'
 
 }

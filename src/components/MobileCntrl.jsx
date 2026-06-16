@@ -16,7 +16,7 @@ const MobileCntrls = ({ id }) => {
     return (
         <div style={{
             backgroundColor: ThemeColors.header,
-            borderColor: ThemeColors.sec
+            borderColor: ThemeColors.thirdText
         }}
             className={`transition-colors duration-500 ease-out mobile-header border-b  `}>
 

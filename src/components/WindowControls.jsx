@@ -19,7 +19,7 @@ const WindowControls = ({ id }) => {
             }}
             style={{
                 backgroundColor: ThemeColors.header,
-                borderColor: ThemeColors.sec
+                borderColor: ThemeColors.thirdText
             }}
             className={`window-header border-b duration-500 ease-out`}>
 

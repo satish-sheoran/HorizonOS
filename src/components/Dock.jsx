@@ -1,6 +1,6 @@
 import { dockApps } from '../constants'
 import { useWindowManager } from '../hooks/windowManager'
-
+import { COMMON_COLORS } from '../constants/style';
 const Dock = () => {
     const { toggleApp } = useWindowManager();
 
@@ -8,8 +8,8 @@ const Dock = () => {
         <nav className='dock glass flex justify-between   items-center' style={{ marginBottom: 'var(--padding-sm)' }}>
 
             {dockApps.map(({ id, name, icon, canOpen }) => {
-                return <button
-                    key={id} className={`app-icon active:scale-90 ${canOpen ? 'opacity-100' : 'opacity-70'} bg-(--primary-light-clr) overflow-hidden`}
+                return <button style={{ backgroundColor: COMMON_COLORS.White }}
+                    key={id} className={`app-icon active:scale-90 ${canOpen ? 'opacity-100' : 'opacity-70'} overflow-hidden`}
                     onClick={() => toggleApp({ id, canOpen })} >
 
 

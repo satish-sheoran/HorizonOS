@@ -17,9 +17,9 @@ const AnimationWrapper = ({ children, activePanel, Section, fullScreen, Device, 
 
 
     return (
-        <div className={`${activePanel !== '' ? '' : 'hidden'} overflow-hidden absolute flex inset-0 transition-colors duration-500 ease-out ${Theme != 'dark' ?
-            'bg-(--sec-light-clr)'
-            : 'bg-(--bg-dark-app-body)'}`} ref={Animref}>
+        <div 
+        style={{backgroundColor : ThemeColors.bg}}
+        className={`${activePanel !== '' ? '' : 'hidden'} overflow-hidden absolute flex inset-0 transition-colors duration-500 ease-out `} ref={Animref}>
 
             <div className={`settings-deepCommon-overflow-UI w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 

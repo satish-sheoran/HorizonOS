@@ -2,14 +2,8 @@
 2. how to remove web page not secure 
 
 
-What i did for this commit :
-refactor(theme) : centralized app theme props and prepare for pre-app customization 
-
-- Pass theme-related props through components hierarchy
-- Reduce deep Redux dependencies
-_ Simplify future support for app-specific themes and accent colors
-- Improve maintainability of the theming system
-- (REMAINING) :To Applied dynamic theme and accent rendering across Settings
+What i did for last commit :
+refactor : Applied dynamic theme and accent rendering across Settings
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
