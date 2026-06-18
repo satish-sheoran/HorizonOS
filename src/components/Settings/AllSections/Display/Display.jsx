@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import DisplayOptions from './DisplayOptions'
-import ExtraQuery from '../../ExtraQuery'
+import DisplaySections from './DisplaySections'
+import SettingQueries from '../../SettingQueries'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
 import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
 import DarkmodeoptionsDeep from './DeepOptions/DarkmodeoptionsDeep'
@@ -16,7 +16,7 @@ const DEEP_OPTIONS = {
     ColourSchemeDeep
 }
 
-const Display = ({ Section, Theme ,ThemeColors,AccentColors}) => {
+const Display = ({Section , Theme, ThemeColors, AccentColors, Queries, SubSections}) => {
 
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)
@@ -26,9 +26,9 @@ const Display = ({ Section, Theme ,ThemeColors,AccentColors}) => {
     return (
         <div className={`display-overflow-area w-full h-full grow flex ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
-            <DisplayOptions Section={Section} Theme={Theme} fullScreen={fullScreen} Device={Device}  ThemeColors={ThemeColors} AccentColors={AccentColors} />
+            <DisplaySections Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} ParentSection={Section} Section={SubSections} />
 
-            <ExtraQuery Theme={Theme} Device={Device} fullScreen={fullScreen} Section={Section}  ThemeColors={ThemeColors} AccentColors={AccentColors} />
+            <SettingQueries Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} Section={Section} Queries={Queries} />
 
 
             {/* DEEP OPTIONS */}

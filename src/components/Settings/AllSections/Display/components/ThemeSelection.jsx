@@ -5,7 +5,7 @@ import { changeTheme } from '../../../../../redux/features/wallpaper'
 import { THEMES } from '../../../../../constants'
 import { COMMON_COLORS } from '../../../../../constants/style'
 
-const ThemeSelection = ({ Theme: theme, fullScreen, Device,ThemeColors,AccentColors }) => {
+const ThemeSelection = ({ Option,fullScreen,Device,Theme : theme,ThemeColors,AccentColors}) => {
 
     const dispatch = useDispatch()
 

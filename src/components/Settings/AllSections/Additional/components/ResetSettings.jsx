@@ -6,7 +6,7 @@ import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
 import { COMMON_COLORS } from '../../../../../constants/style'
 
 
-const ResetSettings = ({ Theme, value, fullScreen, Device,ThemeColors,AccentColors }) => {
+const ResetSettings = ({ Theme, Option, fullScreen, Device,ThemeColors,AccentColors }) => {
   const dispatch = useDispatch();
   return (
       <div 
@@ -25,7 +25,7 @@ const ResetSettings = ({ Theme, value, fullScreen, Device,ThemeColors,AccentColo
       }}
       className={`HOVER_CLASS active:scale-97 duration-500 ease-out border select-none  font-semibold rounded-2xl  flex items-center justify-between $
             ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
-        <span>{value}</span>
+        <span>{Option}</span>
         <ChevronRight />
       </div>
   )

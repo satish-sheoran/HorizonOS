@@ -7,7 +7,7 @@ import Display from './AllSections/Display/Display'
 import Apps from './AllSections/Apps/Apps'
 import AdditionalSettings from './AllSections/Additional/AdditionalSettings'
 import Feedback from './AllSections/Feedback/Feedback'
-import { SETTINGS_SECTIONS } from '../../constants/Settings'
+import { SECTIONS } from '../../constants/Settings'
 import { setActivePanel } from '../../redux/features/SettingsSlice'
 
 const SETTINGS_COMPONENTS = {
@@ -32,19 +32,21 @@ const Content = ({ currDevice, activeSection, setShowContent,Theme,ThemeColors,A
             {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors}/>}
 
             {
-                SETTINGS_SECTIONS.map(({ title }) => {
-                    const compName = title.replaceAll(' ', '');
-                    const Component = SETTINGS_COMPONENTS[compName];
+                SECTIONS.map(({ Section,FileName,Queries,SubSections }) => {
+                    const Component = SETTINGS_COMPONENTS[FileName];
 
-                    if (!Component || activeSection !== title) return null;
+                    if (!Component || activeSection !== Section) return null;
 
-                    return <div key={title}
+                    return <div key={Section}
                         className='relative grow'>
                         <div className='absolute inset-0'>
                             <Component
-                                Section={title}
+                                Section={Section}
+                                Queries={Queries}
+                                SubSections={SubSections}
                                 Theme={Theme} 
-                                ThemeColors={ThemeColors} AccentColors={AccentColors}
+                                ThemeColors={ThemeColors} 
+                                AccentColors={AccentColors}
                                 />
                         </div>
                     </div>

@@ -2,8 +2,18 @@
 2. how to remove web page not secure 
 
 
-What i did for last commit :
-refactor : Applied dynamic theme and accent rendering across Settings
+What i did for this commit :
+refactor(settings) : reorganize settings architecture and improve panel navigation
+
+- Renamed SETTINGS_OPTIONS to OPTIONS for cleaner structure
+- AboutOptions,AppsOption etc. files of showcasing Options are now renamed to AboutSections ...
+- Renamed ExtraQuery to Queries 
+- Simplified query handling by passing section Queries directly to  query component
+- Renamed options to subSections for clearer hierarchy representation
+- Improved settings data organization and maintainability
+- Improve panel opening ,navigation , and rendering flow 
+- (REMAINING) :  To Fix Animation behaviour for nested/deep setting options and opening them 
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
+

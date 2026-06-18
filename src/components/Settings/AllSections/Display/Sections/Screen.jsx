@@ -1,34 +1,48 @@
 import React from 'react'
 import ColourScheme from '../components/ColourScheme'
 import RefreshRate from '../components/RefreshRate'
+import ToggleButton from '../../../../UI/ToggleButton'
 
 const ScreenComponent = {
     ColourScheme,
     RefreshRate
 }
 
-const Screen = ({ options, sectionName, Theme, fullScreen, Device,ThemeColors,AccentColors }) => {
+const Screen = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors  }) => {
     return (
         <section className={`w-full flex flex-col gap-2`}>
 
-            <span style={{color : ThemeColors.grayish}} className='text-sm font-bold select-none'>{sectionName}</span>
+            <span style={{color : ThemeColors.grayish}} className='text-sm font-bold select-none'>{Section}</span>
 
             <div style={{backgroundColor : ThemeColors.header}} className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
                 {/* DISPLAYING OPTIONS UNDER Screen SECTION :  Colour Scheme,Refresh Rate */}
                 {
-                    options?.map(({ option, value }, idx) => {
-                        const Component = ScreenComponent[option];
+                    Options?.map(({ Option,FileName,Toggleable, action }, idx) => {
+                        const Component = ScreenComponent[FileName];
 
                         if (!Component) return null;
 
-                        return <Component
-                            key={idx}
-                            Theme={Theme}
-                            value={value}
-                            fullScreen={fullScreen}
-                            Device={Device}
-                            ThemeColors={ThemeColors} AccentColors={AccentColors}
-                        />
+                         if (Toggleable) {
+                                      return <ToggleButton
+                                        key={idx}
+                                        Theme={Theme}
+                                        action={Option}
+                                        performAction={action}
+                                        Device={Device}
+                                        isActionActive={''}
+                                        ThemeColors={ThemeColors} 
+                                        AccentColors={AccentColors}
+                                      />
+                                    }
+                                    return <Component
+                                      key={idx}
+                                      Theme={Theme}
+                                      Option={Option}
+                                      fullScreen={fullScreen}
+                                      Device={Device}
+                                      ThemeColors={ThemeColors}
+                                       AccentColors={AccentColors}
+                                    />
                     })
                 }
 

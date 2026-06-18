@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import ExtraQuery from '../../ExtraQuery'
-import AppsOptions from './AppsOptions'
+
+import SettingQueries from '../../SettingQueries'
+import AppsSections from './AppsSections'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
 import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
 import ApplockDeep from './DeepOptions/ApplockDeep'
@@ -16,7 +17,7 @@ const DEEP_OPTIONS = {
    UninstallappsDeep 
 }
 
-const Apps = ({ Section, Theme ,ThemeColors,AccentColors}) => {
+const Apps = ({ Section, Theme ,ThemeColors,AccentColors,Queries, SubSections}) => {
 
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)
@@ -26,9 +27,9 @@ const activePanel = useSelector((store)=>store.Settings.activePanel);
     return (
         <div className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
-            <AppsOptions Section={Section} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+            <AppsSections Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} ParentSection={Section} Section={SubSections} />
 
-            <ExtraQuery Theme={Theme} Device={Device} fullScreen={fullScreen} Section='Apps' ThemeColors={ThemeColors} AccentColors={AccentColors} />
+            <SettingQueries Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} Section={Section} Queries={Queries} />
 
             <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} >
                 {OPTIONS?.map(({ Name }) => {

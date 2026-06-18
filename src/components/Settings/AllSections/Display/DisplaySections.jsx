@@ -11,34 +11,34 @@ const DISPLAY_SECTIONS = {
 }
 
 // SECTION MEANS TITLE : APPS/DISPLAY ETC.
-const DisplayOptions = ({ Section, Device, Theme, fullScreen ,ThemeColors,AccentColors}) => {
+const DisplaySections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, ParentSection, Section: CurrSection}) => {
 
-    const currentSection = SETTINGS_SECTIONS.find(
-        sec => sec.title === Section
-    );
+    
 
     return (
         <section className={`display-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  p-[2.5%]'}`}>
 
 
             {/* ALL SECTIONS OF DISPLAY RENDRING HERE*/}
-            {currentSection?.options?.map(({ Name, options,secName}, idx) => {
-                const Component = DISPLAY_SECTIONS[Name];
+            {CurrSection?.map(({ Section,FileName,Options}, idx) => {
+                const Component = DISPLAY_SECTIONS[FileName];
                 if (!Component) return null;
 
                 return <div className={`flex flex-col gap-2`} key={idx}>
                    
                     <Component
-                    options={options}
-                    sectionName={secName}
                     Theme={Theme}
-                    fullScreen={fullScreen}
-                    Device={Device}
-                    ThemeColors={ThemeColors} AccentColors={AccentColors}
+                            Device={Device}
+                            fullScreen={fullScreen}
+                            GrandParentSection = {ParentSection} // Display Settings Behave as Grand Parent for that Option of Sub Section (Font,Colour Scheme etc.)
+                            Options={Options}
+                            Section={Section} // Section : Font , Colour Scheme (basically SubSection Name)
+                            ThemeColors={ThemeColors}
+                            AccentColors={AccentColors}
                     />
 
                     {/* HR */}
-                    {idx < currentSection.options.length - 1 && (
+                    {idx < CurrSection.length - 1 && (
                         <div className='mt-2  mx-auto w-9/10'>
                             <hr 
                             style={{borderColor : ThemeColors.grayish}}
@@ -54,4 +54,4 @@ const DisplayOptions = ({ Section, Device, Theme, fullScreen ,ThemeColors,Accent
     )
 }
 
-export default DisplayOptions
+export default DisplaySections

@@ -11,7 +11,7 @@ const ThemeComponent = {
     AutomaticTheme: ToggleButton
 }
 
-const Theme = ({ options, sectionName, Theme, fullScreen, Device,ThemeColors,AccentColors }) => {
+const Theme = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
 
     const dispatch = useDispatch()
     const performAction = () => dispatch(setAutoTheme())
@@ -21,39 +21,40 @@ const Theme = ({ options, sectionName, Theme, fullScreen, Device,ThemeColors,Acc
     return (
         <div className={`flex flex-col w-full gap-2`}>
 
-            <span style={{color : ThemeColors.grayish}} className='text-sm font-bold select-none'>{sectionName}</span>
-            
+            <span style={{ color: ThemeColors.grayish }} className='text-sm font-bold select-none'>{Section}</span>
+
             {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
 
-            <div style={{backgroundColor : ThemeColors.header}} className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
-            {
-                options?.map(({ option, value }, idx) => {
-                    const Component = ThemeComponent[option];
+            <div style={{ backgroundColor: ThemeColors.header }} className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
+                {
+                    Options?.map(({ Option, FileName, Toggleable, action }, idx) => {
+                        const Component = ThemeComponent[FileName];
 
-                    if (!Component) return null;
-                    if (option === 'AutomaticTheme') {
-                        return <ToggleButton
+                        if (!Component) return null;
+                        if (Toggleable) {
+                            return <ToggleButton
+                                key={idx}
+                                Theme={Theme}
+                                action={Option}
+                                performAction={action ==='AutomaticTheme'? performAction:''}
+                                Device={Device}
+                                isActionActive={isAutoTheme}
+                                ThemeColors={ThemeColors}
+                                AccentColors={AccentColors}
+                            />
+                        }
+                        return <Component
                             key={idx}
                             Theme={Theme}
-                            action={value}
+                            Option={Option}
+                            fullScreen={fullScreen}
                             Device={Device}
-                            performAction={performAction}
-                            isActionActive={isAutoTheme}
-                            ThemeColors={ThemeColors} AccentColors={AccentColors}
+                            ThemeColors={ThemeColors}
+                            AccentColors={AccentColors}
                         />
-                    }
-
-                    return <Component
-                        key={idx}
-                        Theme={Theme}
-                        value={value}
-                        fullScreen={fullScreen}
-                        Device={Device}
-                        ThemeColors={ThemeColors} AccentColors={AccentColors}
-                    />
-                })
-            }
-                        </div>
+                    })
+                }
+            </div>
 
 
         </div>

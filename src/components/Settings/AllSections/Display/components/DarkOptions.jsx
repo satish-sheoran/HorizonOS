@@ -5,7 +5,7 @@ import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
 import { toast } from 'react-toastify';
 import { COMMON_COLORS } from '../../../../../constants/style';
 
-const DarkOptions = ({ value, fullScreen, Device, Theme, ThemeColors, AccentColors }) => {
+const DarkOptions = ({ Option,fullScreen,Device,Theme,ThemeColors,AccentColors }) => {
     const dispatch = useDispatch();
 
     return (
@@ -27,7 +27,7 @@ const DarkOptions = ({ value, fullScreen, Device, Theme, ThemeColors, AccentColo
             className={`HOVER_CLASS active:scale-97 duration-500 ease-out border select-none  font-semibold rounded-2xl  flex items-center justify-between 
             ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
             `}>
-            <span>{value}</span>
+            <span>{Option}</span>
             <ChevronRight />
         </div>
     )

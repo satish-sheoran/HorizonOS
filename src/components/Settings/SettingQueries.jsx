@@ -1,12 +1,11 @@
 import React from 'react'
 import { toast } from 'react-toastify'
 import { MessageCircleQuestionMark, UserRoundPen } from 'lucide-react'
-import { SETTINGS_SECTIONS } from '../../constants/Settings'
 import { COMMON_COLORS } from '../../constants/style'
 
-const ExtraQuery = ({ Theme, Device, fullScreen, Section,ThemeColors,AccentColors }) => {
+const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors,AccentColors , Section,Queries }) => {
     return (
-        <div className={` flex  ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'p-[2.5%] w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
+       Queries ? <div className={` flex  ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'p-[2.5%] w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
 
             <div className={`${!fullScreen ? 'w-full' : 'w-fit'} h-fit flex flex-col gap-4`}>
 
@@ -17,9 +16,9 @@ const ExtraQuery = ({ Theme, Device, fullScreen, Section,ThemeColors,AccentColor
 
                     <div style={{color : COMMON_COLORS.Blue}} className={`w-fit flex flex-col gap-1 text-sm select-none`}>
 
-                        {SETTINGS_SECTIONS.find(({ title }) => title === Section)?.extraQuery?.map(({ query }, idx) => {
+                        {Queries?.map(({ query }, idx) => {
                             return <span key={idx}
-                                onClick={() => toast.info('Feature Coming Soon...')}
+                                onClick={() => toast.info('Querying Still Under Development')}
                                 className='active:opacity-75 hover:opacity-75'>{query}</span>
                         })
                         }
@@ -43,7 +42,9 @@ const ExtraQuery = ({ Theme, Device, fullScreen, Section,ThemeColors,AccentColor
             </div>
 
         </div >
+        :
+        <></>
     )
 }
 
-export default ExtraQuery
+export default SettingQueries

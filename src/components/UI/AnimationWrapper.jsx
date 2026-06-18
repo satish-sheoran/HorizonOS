@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import React, { useRef } from 'react'
-import ExtraQuery from '../Settings/ExtraQuery';
+import SettingQueries from '../Settings/SettingQueries';
 
 const AnimationWrapper = ({ children, activePanel, Section, fullScreen, Device, Theme ,ThemeColors,AccentColors}) => {
     const Animref = useRef(null)
@@ -26,7 +26,7 @@ const AnimationWrapper = ({ children, activePanel, Section, fullScreen, Device, 
                 {children}
                 {/* QUERIES */}
                 {fullScreen && Device === 'Desktop' && (
-                    <ExtraQuery Theme={Theme} Device={Device} fullScreen={fullScreen} Section={Section} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+                    <SettingQueries Theme={Theme} Device={Device} fullScreen={fullScreen} Section={Section} ThemeColors={ThemeColors} AccentColors={AccentColors} />
                 )}
 
 

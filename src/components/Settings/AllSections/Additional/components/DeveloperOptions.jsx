@@ -6,7 +6,7 @@ import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
 import { COMMON_COLORS } from '../../../../../constants/style'
 
 
-const DeveloperOptions = ({ Theme, value, fullScreen, Device, ThemeColors, AccentColors }) => {
+const DeveloperOptions = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors }) => {
   const dispatch = useDispatch();
 
   return (
@@ -27,7 +27,7 @@ const DeveloperOptions = ({ Theme, value, fullScreen, Device, ThemeColors, Accen
       }}
       className={`HOVER_CLASS active:scale-97 duration-500 ease-out border select-none  font-semibold rounded-2xl  flex items-center justify-between $
             ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
-      <span>{value}</span>
+      <span>{Option}</span>
       <ChevronRight />
     </div>
   )

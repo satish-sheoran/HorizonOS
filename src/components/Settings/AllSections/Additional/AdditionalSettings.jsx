@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import AdditionalOptions from './AdditionalOptions'
-import ExtraQuery from '../../ExtraQuery'
+
+import AdditionalSections from './AdditionalSections'
+import SettingQueries from '../../SettingQueries'
 import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
 import ChangewallpaperDeep from './DeepOptions/ChangewallpaperDeep'
 import DeveloperoptionsDeep from './DeepOptions/DeveloperoptionsDeep'
@@ -9,12 +10,12 @@ import ResetsettingsDeep from './DeepOptions/ResetsettingsDeep'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
 
 const DEEP_OPTIONS = {
-   ChangewallpaperDeep,
-   DeveloperoptionsDeep,
-   ResetsettingsDeep,
+  ChangewallpaperDeep,
+  DeveloperoptionsDeep,
+  ResetsettingsDeep,
 }
 
-const AdditionalSettings = ({ Section, Theme,ThemeColors,AccentColors }) => {
+const AdditionalSettings = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSections }) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
   const Device = useSelector((store) => store.Device.currDevice)
@@ -26,9 +27,9 @@ const AdditionalSettings = ({ Section, Theme,ThemeColors,AccentColors }) => {
   return (
     <div className={`additional-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto  p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
-      <AdditionalOptions Theme={Theme} fullScreen={fullScreen} Device={Device} Section={Section} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+      <AdditionalSections Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} ParentSection={Section} Section={SubSections} />
 
-      <ExtraQuery Theme={Theme} Device={Device} fullScreen={fullScreen} Section={Section} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+      <SettingQueries Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} Section={Section} Queries={Queries} />
 
       {/* DEEP OPTIONS */}
 

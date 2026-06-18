@@ -1,5 +1,5 @@
-import * as Icons from "lucide-react";
-import { SETTINGS_SECTIONS } from '../../constants/Settings';
+import * as AllIcons from "lucide-react";
+import { SECTIONS } from '../../constants/Settings';
 import { ChevronRight, Info } from "lucide-react";
 import { setSection } from "../../redux/features/SettingsSlice";
 import { useDispatch } from "react-redux";
@@ -14,26 +14,25 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
             borderColor: ThemeColors.third
         }} className={`py-1 transition-colors duration-500 ease-out overflow-y-auto ${currDevice === 'Desktop' ? 'w-1/4 border-r' : 'w-full'} h-full  flex flex-col items-center`}>
 
-            {SETTINGS_SECTIONS?.map(({ title, icon }, idx) => {
-                const Icon = Icons[icon]
+            {SECTIONS?.map(({ Section, Icon }, idx) => {
+                const SectionIcon = AllIcons[Icon]
                 return <div className={`relative cursor-default select-none py-1 w-full text-lg font-bold px-2 
                         `} key={idx}
                     onClick={() => {
-                        dispatch(setSection({ section: title }));
+                        dispatch(setSection({ section: Section }));
                         setShowContent(true);
                     }}
                 >
 
-
                     <div
                         style={{
-                            backgroundColor: currDevice === 'Desktop' && activeSection === title ?
+                            backgroundColor: currDevice === 'Desktop' && activeSection === Section ?
                                 AccentColors.CODE : '',
-                            color: currDevice === 'Desktop' && activeSection === title ? COMMON_COLORS.White :
+                            color: currDevice === 'Desktop' && activeSection === Section ? COMMON_COLORS.White :
                                 ThemeColors.primaryText,
-                            '--hover': currDevice === 'Desktop' && activeSection === title ?
+                            '--hover': currDevice === 'Desktop' && activeSection === Section ?
                                 AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
-                            '--active': currDevice === 'Desktop' && activeSection === title ?
+                            '--active': currDevice === 'Desktop' && activeSection === Section ?
                                 AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
 
                         }}
@@ -43,8 +42,8 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
 
                         <div className="flex w-full items-center justify-between">
                             <div className='md:text-md flex gap-1.5 items-center '>
-                                {Icon && <Icon className='shrink-0' />}
-                                {title}
+                                {SectionIcon && <SectionIcon className='shrink-0' />}
+                                {Section}
                             </div>
                             {currDevice !== 'Desktop' && <div>
                                 <ChevronRight />

@@ -1,6 +1,244 @@
 export const OS_NAME = 'Horizon OS';
 export const OS_VERSION = '1.0.10.0 HRZNNV';
 
+export const SECTIONS = [
+    // About Us
+    {
+        Section: 'About Us',
+        FileName: 'AboutUs',
+        Icon: 'Info',
+        Queries: null,
+        SubSections: [
+            {
+                Section: 'Horizon OS',
+                FileName: 'HorizonOS',
+                Options: null
+            },
+            {
+                Section: 'Name and Storage',
+                FileName: 'NameNStorage',
+                Options: [
+                    {
+                        Option: 'OS name',
+                        FileName: 'OSName',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Storage',
+                        FileName: 'Storage',
+                        Toggleable: false,
+                        action: null
+                    },
+                ]
+            },
+            {
+                Section: 'OS Details',
+                FileName: 'OsDetails',
+                Options: [
+                    {
+                        Option: 'OS version',
+                        FileName: 'OSVersion',
+                        Toggleable: false, 
+                        action: null
+                    },
+                    {
+                        Option: 'Developer',
+                        FileName: 'Developer',
+                        Toggleable: false, 
+                        action: null,
+                    },
+                    {
+                        Option: 'About HorizonOS',
+                        FileName: 'AboutHorizonOS',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Factory reset',
+                        FileName: 'FactoryReset',
+                        Toggleable: false,
+                        action: null
+                    },
+                ]
+            },
+        ]
+    },
+
+    // Display
+    {
+        Section: 'Display',
+        FileName: 'Display',
+        Icon: 'Monitor',
+        Queries: [
+            { query: 'Change Wallpaper' },
+            { query: 'Change Time Format' }
+        ],
+        SubSections: [
+            {
+                Section: 'Colour Scheme',
+                FileName: 'Theme',
+                Options: [
+                    {
+                        Option: 'Switch theme',
+                        FileName: 'ThemeSelection',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Dark mode options',
+                        FileName: 'DarkOptions',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Automatic theme',
+                        FileName: 'AutomaticTheme',
+                        Toggleable: true,
+                        action: 'AutomaticTheme'
+                    },
+                ]
+            },
+            {
+                Section: 'Screen',
+                FileName: 'Screen',
+                Options: [
+                    {
+                        Option: 'Colour Scheme',
+                        FileName: 'ColourScheme',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Refresh rate',
+                        FileName: 'RefreshRate',
+                        Toggleable: false,
+                        action: null
+                    },
+                ]
+            },
+            {
+                Section: 'Font',
+                FileName: 'Font',
+                Options: [
+                    {
+                        Option: 'Font',
+                        FileName: 'FontName',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Font settings',
+                        FileName: 'FontSetting',
+                        Toggleable: false,
+                        action: null
+                    },
+                ]
+            },
+        ]
+    },
+
+    // Apps
+    {
+        Section: 'Apps',
+        FileName: 'Apps',
+        Icon: 'LayoutGrid',
+        Queries: [
+            { query: 'Reset Settings' },
+            { query: 'Different Theme For Apps' }
+        ],
+        SubSections: [
+            {
+                Section: 'Apps Related',
+                FileName: 'AppsArea',
+                Options: [
+                    {
+                        Option: 'App lock',
+                        FileName: 'AppLock',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Manage apps ',
+                        FileName: 'ManageApps',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'System apps',
+                        FileName: 'SystemApps',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Uninstall apps ',
+                        FileName: 'UninstallApps',
+                        Toggleable: false,
+                        action: null
+                    }
+                ]
+            },
+        ]
+    },
+
+    //Additional Settings
+    {
+        Section: 'Additional Settings',
+        FileName: 'AdditionalSettings',
+        Icon: 'HousePlus',
+        Queries: [
+            { query: 'Factory Reset' },
+        ],
+        SubSections: [
+            {
+                Section: 'Additional',
+                FileName: 'AdditionalSection',
+                Options: [
+                    {
+                        Option: 'Reset setings',
+                        FileName: 'ResetSettings',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: 'Developer options',
+                        FileName: 'DeveloperOptions',
+                        Toggleable: false,
+                        action: null
+                    }
+                ]
+            },
+            {
+                Section: 'Device',
+                FileName: 'DeviceSection',
+                Options: [
+                    {
+                        Option: 'Change wallpaper',
+                        FileName: 'WallpaperBehaviour',
+                        Toggleable: false,
+                        action: null
+                    },
+                    {
+                        Option: '12hr format',
+                        FileName: 'DateNTime',
+                        Toggleable: true,
+                        action: 'TimeFormat'
+
+                    }
+                ]
+            }
+        ]
+    },
+
+    // Feedback
+    {
+        Section: 'Feedback',
+        FileName: 'Feedback',
+        Icon: 'MessageCircleQuestionMark',
+        Queries: null,
+        SubSections: null
+    }
+]
 
 export const SETTINGS_SECTIONS = [
     {
@@ -313,12 +551,12 @@ export const SETTINGS_FACTORY_RESET_OPTIONS = [
         option: 'Personalization',
         description: 'Wallpaper, themes,colors'
     },
-     {
+    {
         icon: 'Folder',
         option: 'Notes & Categories',
         description: 'All notes and categories will be deleted'
     },
-     {
+    {
         icon: 'Settings',
         option: 'System Settings',
         description: 'All settings will be restored to default'
