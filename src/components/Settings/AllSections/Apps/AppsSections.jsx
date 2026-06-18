@@ -1,7 +1,6 @@
 import React from 'react'
 import AppLock from './components/AppLock'
 import AppsArea from './Sections/AppsArea'
-import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
 
 
 const APPS_SECTIONS = {

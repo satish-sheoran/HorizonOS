@@ -10,7 +10,7 @@ const WallpaperBehaviour = ({ Option, fullScreen, Device, Theme, ThemeColors, Ac
     return (
         <div
             onClick={() => {
-                // dispatch(setActivePanel({ panel: 'ChangewallpaperDeep' }))
+                // dispatch(setActivePanel({ panel: Option }))
                 toast.info('Coming Soon !')
             }
             }

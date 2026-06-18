@@ -3,16 +3,10 @@
 
 
 What i did for this commit :
-refactor(settings) : reorganize settings architecture and improve panel navigation
+refactor(settings) : To Fix Animation behaviour for nested/deep setting options and opening them 
 
-- Renamed SETTINGS_OPTIONS to OPTIONS for cleaner structure
-- AboutOptions,AppsOption etc. files of showcasing Options are now renamed to AboutSections ...
-- Renamed ExtraQuery to Queries 
-- Simplified query handling by passing section Queries directly to  query component
-- Renamed options to subSections for clearer hierarchy representation
-- Improved settings data organization and maintainability
-- Improve panel opening ,navigation , and rendering flow 
-- (REMAINING) :  To Fix Animation behaviour for nested/deep setting options and opening them 
+- SETTINGS now contain DeepSections which are Deep_Options 
+- If an DeepSections have options there will be Options key with result else null
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

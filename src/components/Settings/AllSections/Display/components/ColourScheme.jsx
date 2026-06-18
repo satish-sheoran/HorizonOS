@@ -11,7 +11,7 @@ const ColourScheme = ({Option,fullScreen,Device,Theme,ThemeColors,AccentColors})
     return (
             <div 
              onClick={() => {
-                // dispatch(setActivePanel({panel : 'ColourSchemeDeep'}))
+                // dispatch(setActivePanel({panel : Option}))
                 toast.info('This feature is currently under development. Stay tuned for updates!')
             }
             }

@@ -11,7 +11,7 @@ const DarkOptions = ({ Option,fullScreen,Device,Theme,ThemeColors,AccentColors }
     return (
         <div
             onClick={() => {
-                // dispatch(setActivePanel({panel : 'DarkmodeoptionsDeep'}))
+                // dispatch(setActivePanel({panel : Option}))
                 toast.info('This feature is currently under development. Stay tuned for updates!')
 
             }}

@@ -5,7 +5,7 @@ import Details from './Components/Details'
 import Features from './Components/Features'
 import DevDetail from './Components/DevDetail'
 
-const AboutHorizonOS = ({ Section, Device, fullScreen,Theme ,ThemeColors,AccentColors}) => {
+const AboutHorizonOS = ({ Name,Section, Device, fullScreen,Theme ,ThemeColors,AccentColors}) => {
 
 
   return (

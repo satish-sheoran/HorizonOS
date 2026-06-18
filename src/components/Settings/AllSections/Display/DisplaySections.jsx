@@ -2,7 +2,6 @@ import React from 'react'
 import Theme from './Sections/Theme'
 import Screen from './Sections/Screen'
 import Font from './Sections/Font'
-import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
 
 const DISPLAY_SECTIONS = {
     Theme,

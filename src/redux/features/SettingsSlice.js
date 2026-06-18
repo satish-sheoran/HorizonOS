@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SETTINGS_SECTIONS } from "../../constants/Settings";
 
 const SettingsSlice = createSlice({
     name: 'Settings',

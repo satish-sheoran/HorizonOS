@@ -32,7 +32,7 @@ const Content = ({ currDevice, activeSection, setShowContent,Theme,ThemeColors,A
             {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors}/>}
 
             {
-                SECTIONS.map(({ Section,FileName,Queries,SubSections }) => {
+                SECTIONS.map(({ Section,FileName,Queries,SubSections,DeepSection }) => {
                     const Component = SETTINGS_COMPONENTS[FileName];
 
                     if (!Component || activeSection !== Section) return null;
@@ -47,6 +47,7 @@ const Content = ({ currDevice, activeSection, setShowContent,Theme,ThemeColors,A
                                 Theme={Theme} 
                                 ThemeColors={ThemeColors} 
                                 AccentColors={AccentColors}
+                                DeepSection={DeepSection}
                                 />
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { OS_NAME, OS_VERSION, SETTINGS_SECTIONS } from '../../../../constants/Settings'
+import { OS_NAME, OS_VERSION } from '../../../../constants/Settings'
 import AboutSections from './AboutSections'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
 import AboutHorizonOS from './DeepOptions/AboutHorizonOS'
@@ -13,12 +13,11 @@ const DEEP_OPTIONS = {
   Factoryreset,
 }
 
-const AboutUs = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSections }) => {
+const AboutUs = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSections,DeepSection }) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
   const Device = useSelector((store) => store.Device.currDevice)
   const activePanel = useSelector((store) => store.Settings.activePanel)
-  const OPTIONS = SETTINGS_SECTIONS.find(sec => sec.title === Section).DeepOptions;
 
 
   return (
@@ -32,13 +31,13 @@ const AboutUs = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSectio
 
 
       <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} >
-        {OPTIONS?.map(({ Name }) => {
-          const compName = Name.replaceAll(' ', '');
-          const Component = DEEP_OPTIONS[compName];
 
-          if (!Component || activePanel !== compName) return null;
+        {DeepSection?.map(({  Section : Deep, FileName,Options}) => {
+          const Component = DEEP_OPTIONS[FileName];
 
-          return <Component Section={Section} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+          if (!Component || activePanel !== Deep) return null;
+ // Section prop here represent Grandparent section (Display,About,Additional Settings etc.)
+          return <Component Name={Deep} Section={Section} Options={Options} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
         })}
       </AnimationWrapper>
 

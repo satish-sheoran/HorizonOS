@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import SettingQueries from '../../SettingQueries'
 import AppsSections from './AppsSections'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
-import { SETTINGS_SECTIONS } from '../../../../constants/Settings'
 import ApplockDeep from './DeepOptions/ApplockDeep'
 import ManageappsDeep from './DeepOptions/ManageappsDeep'
 import SystemappsDeep from './DeepOptions/SystemappsDeep'
@@ -17,11 +16,10 @@ const DEEP_OPTIONS = {
    UninstallappsDeep 
 }
 
-const Apps = ({ Section, Theme ,ThemeColors,AccentColors,Queries, SubSections}) => {
+const Apps = ({ Section, Theme ,ThemeColors,AccentColors,Queries, SubSections,DeepSection}) => {
 
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)
-    const OPTIONS = SETTINGS_SECTIONS.find(sec => sec.title === Section).DeepOptions;
 const activePanel = useSelector((store)=>store.Settings.activePanel);
 
     return (
@@ -31,16 +29,15 @@ const activePanel = useSelector((store)=>store.Settings.activePanel);
 
             <SettingQueries Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} Section={Section} Queries={Queries} />
 
-            <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} >
-                {OPTIONS?.map(({ Name }) => {
-                    const compName = Name.replaceAll(' ', '');
-                    const Component = DEEP_OPTIONS[compName];
-
-                    if (!Component || activePanel !== compName) return null;
-
-                    return <Component Section={Section} Device={Device} fullScreen={fullScreen} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />
-                })}
-            </AnimationWrapper>
+             <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} >
+                    {DeepSection?.map(({  Section : Deep, FileName,Options}) => {
+                      const Component = DEEP_OPTIONS[FileName];
+            
+                      if (!Component || activePanel !== Deep) return null;
+             // Section prop here represent Grandparent section (Display,About,Additional Settings etc.)
+                      return <Component Name={Deep} Section={Section} Options={Options} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+                    })}
+                  </AnimationWrapper>
 
 
 

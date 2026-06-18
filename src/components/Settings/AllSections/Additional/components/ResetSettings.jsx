@@ -11,7 +11,7 @@ const ResetSettings = ({ Theme, Option, fullScreen, Device,ThemeColors,AccentCol
   return (
       <div 
        onClick={() => {
-        // dispatch(setActivePanel({ panel: 'ResetsettingsDeep' }))
+        // dispatch(setActivePanel({ panel: Option }))
         toast.info('Coming Soon !')
       }}
       style={{

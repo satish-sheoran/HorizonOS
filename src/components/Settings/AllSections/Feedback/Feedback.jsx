@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import SettingQueries from '../../SettingQueries'
 import FeedbackSections from './FeedbackSections'
 
-const Feedback = ({ Section , Theme, ThemeColors, AccentColors, Queries, SubSections }) => {
+const Feedback = ({ Section , Theme, ThemeColors, AccentColors, Queries, SubSections,DeepSection }) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
   const Device = useSelector((store) => store.Device.currDevice)

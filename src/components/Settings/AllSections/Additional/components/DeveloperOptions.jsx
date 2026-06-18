@@ -12,7 +12,7 @@ const DeveloperOptions = ({ Theme, Option, fullScreen, Device, ThemeColors, Acce
   return (
     <div
       onClick={() => {
-        // dispatch(setActivePanel({ panel: 'DeveloperoptionsDeep' }))
+        // dispatch(setActivePanel({ panel: Option }))
         toast.info('Coming Soon !')
       }
       }

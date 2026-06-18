@@ -39,13 +39,13 @@ export const SECTIONS = [
                     {
                         Option: 'OS version',
                         FileName: 'OSVersion',
-                        Toggleable: false, 
+                        Toggleable: false,
                         action: null
                     },
                     {
                         Option: 'Developer',
                         FileName: 'Developer',
-                        Toggleable: false, 
+                        Toggleable: false,
                         action: null,
                     },
                     {
@@ -62,7 +62,16 @@ export const SECTIONS = [
                     },
                 ]
             },
-        ]
+        ],
+        DeepSection: [{
+            Section: 'About HorizonOS',
+            FileName: 'AboutHorizonOS',
+            Options: null
+        }, {
+            Section: 'Factory reset',
+            FileName: 'Factoryreset',
+            Options: null
+        }]
     },
 
     // Display
@@ -135,6 +144,22 @@ export const SECTIONS = [
                     },
                 ]
             },
+        ],
+        DeepSection: [
+            {
+                Section: 'Dark mode options',
+                FileName: 'DarkmodeoptionsDeep',
+                Options: null
+            }, {
+                Section: 'Colour Scheme',
+                FileName: 'ColourSchemeDeep',
+                Options: null
+            }, {
+                Section: 'Font settings',
+                FileName: 'FontsettingsDeep',
+                Options: null
+            }
+
         ]
     },
 
@@ -171,13 +196,33 @@ export const SECTIONS = [
                         action: null
                     },
                     {
-                        Option: 'Uninstall apps ',
+                        Option: 'Uninstall apps',
                         FileName: 'UninstallApps',
                         Toggleable: false,
                         action: null
                     }
                 ]
             },
+        ],
+
+        DeepSection: [
+            {
+                Section: 'App lock',
+                FileName: 'ApplockDeep',
+                Options: null
+            }, {
+                Section: 'Manage apps ',
+                FileName: 'ManageappsDeep',
+                Options: null
+            }, {
+                Section: 'System apps',
+                FileName: 'SystemappsDeep',
+                Options: null
+            }, {
+                Section: 'Uninstall apps',
+                FileName: 'UninstallappsDeep',
+                Options: null
+            }
         ]
     },
 
@@ -195,7 +240,7 @@ export const SECTIONS = [
                 FileName: 'AdditionalSection',
                 Options: [
                     {
-                        Option: 'Reset setings',
+                        Option: 'Reset settings',
                         FileName: 'ResetSettings',
                         Toggleable: false,
                         action: null
@@ -227,6 +272,22 @@ export const SECTIONS = [
                     }
                 ]
             }
+        ],
+        DeepSection: [
+            {
+                Section: 'Change wallpaper',
+                FileName: 'ChangewallpaperDeep',
+                Options: null
+            }, {
+                Section: 'Developer options',
+                FileName: 'DeveloperoptionsDeep',
+                Options: null
+            }, {
+                Section: 'Reset settings',
+                FileName: 'ResetsettingsDeep',
+                Options: []
+            }
+
         ]
     },
 
@@ -236,214 +297,12 @@ export const SECTIONS = [
         FileName: 'Feedback',
         Icon: 'MessageCircleQuestionMark',
         Queries: null,
-        SubSections: null
+        SubSections: null,
+        DeepOptions : null
     }
 ]
 
-export const SETTINGS_SECTIONS = [
-    {
-        title: 'About Us',
-        icon: 'Info',
-        options: [
-            {
-                Name: 'OS name',
-                value: OS_NAME
-            },
-            {
-                Name: 'Storage',
-                value: '20.3 GB/64 GB'
-            },
-            {
-                Name: 'OS version',
-                value: OS_VERSION
-            },
-            {
-                Name: 'Developer',
-                value: 'Satish Sheoran'
-            },
-            {
-                Name: 'About HorizonOS',
-                value: ''
-            },
-            {
-                Name: 'Factory reset',
-                value: ''
-            },
 
-        ],
-        DeepOptions: [{
-            Name: 'About HorizonOS'
-        }, {
-            Name: 'Factory reset'
-        }],
-        extraQuery: [
-            {
-                query: 'Change wallpaper'
-            },
-            {
-                query: 'About Developer and Horizon OS'
-            }
-        ]
-    },
-    {
-        title: 'Display',
-        icon: 'Monitor',
-        options: [
-            {
-                Name: 'Theme',
-                secName: 'Colour scheme',
-                options: [{
-                    option: 'ThemeSelection',
-                    value: '',
-                }, {
-                    option: 'DarkOptions',
-                    value: 'Dark mode options',
-                }, {
-                    option: 'AutomaticTheme',
-                    value: 'Automatic theme'
-                }]
-
-            },
-            {
-                Name: 'Screen',
-                secName: 'Screen',
-                options: [{
-                    option: 'ColourScheme',
-                    value: 'Colour Scheme',
-                }, {
-                    option: 'RefreshRate',
-                    value: 'Refresh rate'
-                }
-                ]
-            },
-            {
-                Name: 'Font',
-                secName: 'Font',
-                options: [{
-                    option: 'FontName',
-                    value: 'Font',
-                }, {
-                    option: 'FontSetting',
-                    value: 'Font settings'
-                }]
-            }
-        ],
-        DeepOptions: [{
-            Name: 'Dark mode options Deep'
-        }, {
-            Name: 'Colour Scheme Deep'
-        }, {
-            Name: 'Font settings Deep'
-        }],
-        extraQuery: [
-            {
-                query: 'Change wallpaper'
-            },
-            {
-                query: 'About Developer and Horizon OS'
-            }
-        ]
-    },
-    {
-        title: 'Apps',
-        icon: 'LayoutGrid',
-        options: [{
-            Name: 'AppsArea',
-            secName: 'App Management',
-            options: [{
-                option: 'SystemApps',
-                value: 'System apps',
-            }, {
-                option: 'ManageApps',
-                value: 'Manage apps'
-            }, {
-                option: 'UninstallApps',
-                value: 'Uninstall apps'
-            }, {
-                option: 'AppLock',
-                value: 'App lock',
-            },]
-        }],
-        extraQuery: [
-            {
-                query: 'Change wallpaper'
-            },
-            {
-                query: 'About Developer and Horizon OS'
-            }
-        ],
-        DeepOptions: [{
-            Name: 'App lock Deep'
-        }, {
-            Name: 'Manage apps Deep'
-        }, {
-            Name: 'System apps Deep'
-        }, {
-            Name: 'Uninstall apps Deep'
-        }]
-    },
-    {
-        title: 'Additional Settings',
-        icon: 'HousePlus',
-        options: [
-            {
-                Name: 'DeviceSection',
-                secName: 'Device',
-                options: [
-                    {
-                        option: 'WallpaperBehaviour',
-                        value: 'Change wallpaper'
-                    },
-                    {
-                        option: 'DateNTime',
-                        value: '12hr format',
-                    },
-                ]
-            }, {
-                Name: 'AdditionalSection',
-                secName: 'Additional',
-                options: [{
-                    option: 'ResetSettings',
-                    value: 'Reset settings'
-                }, {
-                    option: 'DeveloperOptions',
-                    value: 'Developer options'
-                }
-                ]
-            }
-
-        ],
-        extraQuery: [
-            {
-                query: 'Change wallpaper'
-            },
-            {
-                query: 'About Developer and Horizon OS'
-            }
-        ],
-        DeepOptions: [{
-            Name: 'Change wallpaper Deep'
-        }, {
-            Name: 'Developer options Deep'
-        }, {
-            Name: 'Reset settings Deep'
-        }]
-
-    },
-    {
-        title: 'Feedback',
-        icon: 'MessageCircleQuestionMark',
-        extraQuery: [
-            {
-                query: 'Change wallpaper'
-            },
-            {
-                query: 'About Developer and Horizon OS'
-            }
-        ]
-
-    }
-]
 
 
 
