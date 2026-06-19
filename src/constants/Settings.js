@@ -153,17 +153,6 @@ export const SECTIONS = [
                 FileName: 'DarkmodeoptionsDeep',
                 SubSections: [
                     {
-                        Section: 'Dark mode enabler',
-                        FileName: 'DarkModeEnabler',
-                        Options: [ //this
-                            {
-                                Option: 'Dark mode',
-                                FileName: '',
-                                Toggleable: true,
-                                action: 'seprateDarkMode'
-                            }
-                        ]
-                    }, {
                         Section: 'Dark mode for apps',
                         FileName: 'SepDarkModeForApps',
                         Options: [
@@ -189,6 +178,10 @@ export const SECTIONS = [
                                 action: 'seprateDarkMode'
                             }
                         ]
+                    }, {
+                        Section: 'Dark mode enabler',
+                        FileName: 'DarkModeEnabler',
+                        Options: null
                     }
                 ],
                 Options: null

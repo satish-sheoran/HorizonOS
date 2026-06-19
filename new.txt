@@ -3,19 +3,9 @@
 
 
 What i did for this commit :
-feat(settings) : Add dark mode customization UI and prepare per-app specific theme system
+feat(settings):  Implement dark mode toggling functionaltiy for individual apps in dark mode options option
 
-- Complete Dark Mode settings screen desgin 
-- Refactor Settings sections configuration in constants 
-- Adding of Sections inside SubSection of DeepSection of Display Sections
-- Add ALL_APPS registry for app-specific settings management in constant folder
-- Create AdvancedDarkMode state (true/false for now) for future per-app theme support
-- It will be used to check to unable dark mode for specific selected app
-
-TODO : 
-- Implement dark mode toggling functionaltiy for individual apps in dark mode options option
 - Connect AdvancedDarkMode state with app theme rendering to Implement dark mode across specific selected app
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
-

@@ -1,9 +1,15 @@
 import React from 'react'
 import { ACCENT_COLORS, COMMON_COLORS } from '../../constants/style'
+import { useSelector } from 'react-redux'
 
-const DetailedToggleButton = ({ id, Device, ThemeColors, AccentColors, Logo, Title, Detail, Theme }) => {
+// Title refers to App name
+const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColors, AccentColors, Logo, Title, Detail, Theme }) => {
+
+    
+
     return (
-        <div key={id}
+        <div
+            onClick={performAction}
             style={{
                 borderColor: ThemeColors.bg,
 
@@ -16,23 +22,23 @@ const DetailedToggleButton = ({ id, Device, ThemeColors, AccentColors, Logo, Tit
             className={`HOVER_CLASS flex justify-between items-center border ease-out duration-500 active:scale-97 rounded-2xl ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
             <div className={`flex items-end gap-2`}>
-                <div style={{ backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White }} className={`w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl`}>
-                    <img className={`object-cover object-center  ${id == 'settings' || id == 'clock' ? 'w-7 h-7' : 'w-9 h-9'}`} src={Logo} alt={id} />
+                <div style={{ backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White }} className={`ease-out duration-500 w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl`}>
+                    <img className={`ease-out duration-500 object-cover object-center  ${Title == 'Settings' || Title == 'Clock' ? 'w-7 h-7' : 'w-9 h-9'}`} src={Logo} alt={Title} />
                 </div>
                 <p className={`flex flex-col `}>
-                    <span style={{ color: ThemeColors.primaryText }} className={`font-bold text-[0.8rem]`}>{Title}</span>
-                    <span style={{ color: ThemeColors.thirdText }} className={`text-[0.55rem]`}>{Detail}</span>
+                    <span style={{ color: ThemeColors.primaryText }} className={`ease-out duration-500 font-bold text-[0.8rem]`}>{Title}</span>
+                    <span style={{ color: ThemeColors.thirdText }} className={`ease-out duration-500 text-[0.55rem]`}>{Detail}</span>
                 </p>
             </div>
 
             <button
                 style={{
-                    backgroundColor: ThemeColors.bg
+                    backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg
                 }}
                 className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full transition-all duration-500 ease-out`}>
 
                 <div style={{ backgroundColor: COMMON_COLORS.White }} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full transition-all duration-300 ease-out
-                        translate-x-0
+                ${isActionActive? 'translate-x-6' : 'translate-x-0'}
                     `}></div>
 
             </button>
@@ -41,7 +47,3 @@ const DetailedToggleButton = ({ id, Device, ThemeColors, AccentColors, Logo, Tit
 }
 
 export default DetailedToggleButton
-
-// BUTTON BG : backgroundColor: 'Ram' ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg
-
-//  ${'Ram'? 'translate-x-6' : 'translate-x-0'  }

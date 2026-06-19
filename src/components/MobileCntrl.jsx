@@ -4,11 +4,10 @@ import { X } from "lucide-react";
 import { COMMON_COLORS } from "../constants/style";
 
 // group named class is only written inside this file nor in any other file to write its css, it is just use so that before hovering button, the text remain hidden
-const MobileCntrls = ({ id }) => {
+const MobileCntrls = ({ id,Theme,ThemeColors }) => {
 
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    const Theme = useSelector((store) => store.wallpaper.theme)
+    
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
 
     const { closeApp } = UsewindowControlFns();

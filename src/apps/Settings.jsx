@@ -9,8 +9,8 @@ import { useState } from "react";
 
 const Settings = () => {
     const currDevice = useSelector((store) => store.Device.currDevice);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const Theme = useSelector((store) => store.wallpaper.theme)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Settings)
+    const Theme = useSelector((store) => store.wallpaper.theme.Settings)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const activeSection = useSelector((store) => store.Settings.Section)
     const [showContent, setshowContent] = useState(false) //used to open the content section on mobile when a section is selected
@@ -21,8 +21,8 @@ const Settings = () => {
             className={` w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
 
             {currDevice === 'Desktop' ?
-                <WindowControls id='settings' />
-                : <MobileCntrls id='settings' />
+                <WindowControls id='settings' Theme={Theme} ThemeColors={ThemeColors} />
+                : <MobileCntrls id='settings' Theme={Theme} ThemeColors={ThemeColors} />
             }
 
             <main className={`setting-body w-full relative flex-1 `}>

@@ -8,8 +8,8 @@ import CalcDisplay from "../components/Calculator/CalcDisplay";
 import UseCalculator from "../hooks/useCalculator";
 
 const Calculator = () => {
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const Theme = useSelector((store) => store.wallpaper.theme)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Calculator)
+    const Theme = useSelector((store) => store.wallpaper.theme.Calculator)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const currDevice = useSelector((store) => store.Device.currDevice);
     const data = useSelector((store) => store.windowApps.apps['calculator'].data);
@@ -30,8 +30,8 @@ const Calculator = () => {
         className={`w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
             {/* header */}
             {currDevice === 'Desktop' ?
-                <WindowControls id='calculator' />
-                : <MobileCntrls id='calculator' result={result} />}
+                <WindowControls id='calculator' Theme={Theme} ThemeColors={ThemeColors} />
+                : <MobileCntrls id='calculator' Theme={Theme} ThemeColors={ThemeColors} result={result} />}
 
 
             {/* body  */}

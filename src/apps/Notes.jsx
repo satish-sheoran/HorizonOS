@@ -22,8 +22,8 @@ const Notes = () => {
     const dispatch = useDispatch()
 
     const currDevice = useSelector((store) => store.Device.currDevice);
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors)
-    const Theme = useSelector((store) => store.wallpaper.theme)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Notes)
+    const Theme = useSelector((store) => store.wallpaper.theme.Notes)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
@@ -61,8 +61,8 @@ const Notes = () => {
             className={`w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
 
             {currDevice === 'Desktop' ?
-                <WindowControls id='notes' />
-                : <MobileCntrls id='notes' />}
+                <WindowControls id='notes' Theme={Theme} ThemeColors={ThemeColors} />
+                : <MobileCntrls id='notes' Theme={Theme} ThemeColors={ThemeColors} />}
 
 
             {/* BODY */}
