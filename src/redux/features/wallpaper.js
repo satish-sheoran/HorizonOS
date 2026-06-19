@@ -8,10 +8,12 @@ const initialState = {
         Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile'])?.url
         :
         Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop'])?.url,
+        
     theme: 'dark',  // 'light' | 'dark' | 'auto'
-    ThemeColors :DARK_THEME_COLORS,   // user will get colors as per theme and then they will be set easily bcz name are same just need to use object name before which is already in this object 
-    AccentColors : ACCENT_COLORS.find(({COLOR})=> COLOR === 'Orange') , //color which will be used for buttons,background of some divs  
-    isAutoTheme: false   //  checks if user allow set auto theme based on time
+    ThemeColors: DARK_THEME_COLORS,   // user will get colors as per theme and then they will be set easily bcz name are same just need to use object name before which is already in this object 
+    AccentColors: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange'), //color which will be used for buttons,background of some divs  
+    isAutoTheme: false,  //  checks if user allow set auto theme based on time
+    AdvanceDarkMode: false
 };
 
 
@@ -30,9 +32,12 @@ const wallpaperSlice = createSlice({
         },
         setAutoTheme(state) {
             state.isAutoTheme = state.isAutoTheme ? false : true
+        },
+        setAdvanceDarkMode(state) {
+            state.AdvanceDarkMode = state.AdvanceDarkMode ? false : true
         }
     }
 })
 
-export const { setWallpaper, changeTheme, setAutoTheme } = wallpaperSlice.actions;
+export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode } = wallpaperSlice.actions;
 export default wallpaperSlice.reducer;

@@ -66,10 +66,12 @@ export const SECTIONS = [
         DeepSection: [{
             Section: 'About HorizonOS',
             FileName: 'AboutHorizonOS',
+            SubSections: null,
             Options: null
         }, {
             Section: 'Factory reset',
             FileName: 'Factoryreset',
+            SubSections: null,
             Options: null
         }]
     },
@@ -149,14 +151,56 @@ export const SECTIONS = [
             {
                 Section: 'Dark mode options',
                 FileName: 'DarkmodeoptionsDeep',
+                SubSections: [
+                    {
+                        Section: 'Dark mode enabler',
+                        FileName: 'DarkModeEnabler',
+                        Options: [ //this
+                            {
+                                Option: 'Dark mode',
+                                FileName: '',
+                                Toggleable: true,
+                                action: 'seprateDarkMode'
+                            }
+                        ]
+                    }, {
+                        Section: 'Dark mode for apps',
+                        FileName: 'SepDarkModeForApps',
+                        Options: [
+                            {
+                                Option: '',
+                                FileName: '',
+                                Toggleable: true,
+                                action: 'seprateDarkMode'
+                            }, {
+                                Option: '',
+                                FileName: '',
+                                Toggleable: true,
+                                action: 'seprateDarkMode'
+                            }, {
+                                Option: '',
+                                FileName: '',
+                                Toggleable: true,
+                                action: 'seprateDarkMode'
+                            }, {
+                                Option: '',
+                                FileName: '',
+                                Toggleable: true,
+                                action: 'seprateDarkMode'
+                            }
+                        ]
+                    }
+                ],
                 Options: null
             }, {
                 Section: 'Colour Scheme',
                 FileName: 'ColourSchemeDeep',
+                SubSections: null,
                 Options: null
             }, {
                 Section: 'Font settings',
                 FileName: 'FontsettingsDeep',
+                SubSections: null,
                 Options: null
             }
 
@@ -209,18 +253,22 @@ export const SECTIONS = [
             {
                 Section: 'App lock',
                 FileName: 'ApplockDeep',
+                SubSections: null,
                 Options: null
             }, {
                 Section: 'Manage apps ',
                 FileName: 'ManageappsDeep',
+                SubSections: null,
                 Options: null
             }, {
                 Section: 'System apps',
                 FileName: 'SystemappsDeep',
+                SubSections: null,
                 Options: null
             }, {
                 Section: 'Uninstall apps',
                 FileName: 'UninstallappsDeep',
+                SubSections: null,
                 Options: null
             }
         ]
@@ -277,14 +325,17 @@ export const SECTIONS = [
             {
                 Section: 'Change wallpaper',
                 FileName: 'ChangewallpaperDeep',
+                SubSections: null,
                 Options: null
             }, {
                 Section: 'Developer options',
                 FileName: 'DeveloperoptionsDeep',
+                SubSections: null,
                 Options: null
             }, {
                 Section: 'Reset settings',
                 FileName: 'ResetsettingsDeep',
+                SubSections: null,
                 Options: []
             }
 
@@ -298,7 +349,7 @@ export const SECTIONS = [
         Icon: 'MessageCircleQuestionMark',
         Queries: null,
         SubSections: null,
-        DeepOptions : null
+        DeepOptions: null
     }
 ]
 
@@ -421,3 +472,20 @@ export const SETTINGS_FACTORY_RESET_OPTIONS = [
         description: 'All settings will be restored to default'
     },
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

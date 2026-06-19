@@ -15,7 +15,9 @@ const DisplaySections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors,
     
 
     return (
-        <section className={`display-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  p-[2.5%]'}`}>
+        <section style={{
+            borderColor: ThemeColors.third
+        }} className={`display-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  p-[2.5%]'}`}>
 
 
             {/* ALL SECTIONS OF DISPLAY RENDRING HERE*/}

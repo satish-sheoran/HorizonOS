@@ -18,7 +18,7 @@ const SETTINGS_COMPONENTS = {
     Feedback,
 };
 
-const Content = ({ currDevice, activeSection, setShowContent,Theme,ThemeColors,AccentColors }) => {
+const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors, AccentColors, showContent }) => {
     const dispatch = useDispatch()
     const activePanel = useSelector((store) => store.Settings.activePanel)
 
@@ -28,11 +28,12 @@ const Content = ({ currDevice, activeSection, setShowContent,Theme,ThemeColors,A
     return (
         <section className={`relative h-full  flex flex-col ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
 
+            {/* here activePanel is used to check if any option is opened in deep OR not */}
             {/* toolbar for back and save options */}
-            {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors}/>}
+            {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
 
             {
-                SECTIONS.map(({ Section,FileName,Queries,SubSections,DeepSection }) => {
+                SECTIONS.map(({ Section, FileName, Queries, SubSections, DeepSection }) => {
                     const Component = SETTINGS_COMPONENTS[FileName];
 
                     if (!Component || activeSection !== Section) return null;
@@ -44,11 +45,11 @@ const Content = ({ currDevice, activeSection, setShowContent,Theme,ThemeColors,A
                                 Section={Section}
                                 Queries={Queries}
                                 SubSections={SubSections}
-                                Theme={Theme} 
-                                ThemeColors={ThemeColors} 
+                                Theme={Theme}
+                                ThemeColors={ThemeColors}
                                 AccentColors={AccentColors}
                                 DeepSection={DeepSection}
-                                />
+                            />
                         </div>
                     </div>
 

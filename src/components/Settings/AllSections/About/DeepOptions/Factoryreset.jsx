@@ -6,7 +6,9 @@ import ResetComp from './Components/ResetComp'
 
 const Factoryreset = ({ Name,Section, Theme, Device, fullScreen,ThemeColors,AccentColors }) => {
   return (
-    <div className={`deep-factory-reset py-[2.5%]  select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
+    <div style={{
+            borderColor: ThemeColors.third
+        }} className={`deep-factory-reset py-[2.5%]  select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
 
       <div className={` flex flex-col gap-2`}>
         {/* Warning message */}

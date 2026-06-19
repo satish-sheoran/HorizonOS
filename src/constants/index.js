@@ -117,6 +117,7 @@ const dockApps = [
 
 ]
 
+
 export { DEFAULT_WALLPAPER, Wallpapers, dockApps }
 
 const INITIAL_Z_INDEX = 1000;
@@ -221,3 +222,37 @@ export const THEMES = [
     }, {
         Theme: 'dark'
     }]
+
+
+export const ALL_APPS = [
+    {
+        id: "calculator",
+        name: "Calculator",
+        icon: '/assets/icons/calculator.webp',
+        desc : 'System preferences and configuraions',
+        canOpen: true,
+    },
+    {
+        id: "notes",
+        name: "Notes",
+        icon: '/assets/icons/notes.webp',
+        desc : 'Create and manage your notes',
+        canOpen: true,
+    },
+    {
+        id: "settings",
+        name: "Settings",
+        icon: '/assets/icons/settings.webp',
+        desc : 'Perform calculations quickly',
+        canOpen: true,
+    },
+    {
+        id: "clock",
+        name: "Clock",
+        icon: '/assets/icons/clock.webp',
+        desc : 'View time and alarms',
+        canOpen: true,
+    }
+
+
+]

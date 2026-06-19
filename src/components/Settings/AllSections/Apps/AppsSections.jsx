@@ -13,7 +13,9 @@ const AppsOptions = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, Par
     
 
     return (
-        <section className={`app-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
+        <section style={{
+            borderColor: ThemeColors.third
+        }} className={`app-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
 
             {/* ALL SECTIONS OF APPS RENDRING HERE*/}
 
