@@ -26,7 +26,7 @@ const ThemeSelection = ({ Option,fullScreen,Device,Theme : theme,ThemeColors,Acc
                             draggable="false"
                             onDragStart={(e) => e.preventDefault()}
                             onClick={() => dispatch(changeTheme({ theme: Theme }))}
-                            src={`/assets/theme-imgs/${Theme}-theme.webp`} draggable="false" 
+                            src={`/assets/theme-imgs/${Theme}-theme.webp`} 
                             style={{outlineColor : COMMON_COLORS.Blue}}
                             className={`select-none object-cover object-center rounded-xl ${theme === Theme ? 'outline-4' : ''} 
                             aspect-square  ${fullScreen ? 'md:max-w-45 max-h-45' : 'md:max-w-40 md:max-h-40'}

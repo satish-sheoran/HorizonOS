@@ -26,15 +26,36 @@ body {
     background-color: var(--active) !important;
 } */
 
-.HOVER_CLR_CLASS:hover{
+.HOVER_CLR_CLASS:hover {
     color: var(--hover) !important;
 }
+
 /* .HOVER_CLR_CLASS:active{
     color : var(--active) !important;
 } */
 
 .Placeholder::placeholder {
     color: var(--placeholder);
+}
+
+@keyframes shrink-grow {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+.animation-shrink-grow{
+    animation: shrink-grow 1s ease-out infinite;
+}
+.animation-shrink-grow:hover{
+    animation-play-state : paused;
 }
 
 :root {

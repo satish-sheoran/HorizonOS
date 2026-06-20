@@ -3,9 +3,18 @@
 
 
 What i did for this commit :
-feat(settings):  Implement dark mode toggling functionaltiy for individual apps in dark mode options option
+feat (settings) : add accent color customization and interactive color scheme previews
 
-- Connect AdvancedDarkMode state with app theme rendering to Implement dark mode across specific selected app
+- Added accent color reducer and state management
+- Implement accent color switching functionality
+- Designed color scheme settings section
+- Added live interactive preview for accent color and dark theme options preview
+- Refactor Window prevew' body as per use (Normal preview, accent preview)
+- In Normal preview the normal data is shown while in accent preview shows the buttons and icons with color respective to Active accent color
+- Enhanced settings customization experience
+- Updated SECTIONS constant file as per change
+- Limited the Options, DeepSection's Subsection's Option will remain null from now due to creating confusion
+- Mutliple nesting become hard to manage ,so it is Limited now
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

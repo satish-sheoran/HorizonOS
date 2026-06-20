@@ -5,7 +5,7 @@ import DetailedToggleButton from '../../../../../UI/DetailedToggleButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode } from '../../../../../../redux/features/wallpaper'
 
-const SepDarkModeForApps = ({ Name, Options, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
+const SepDarkModeForApps = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
   const dispatch = useDispatch()
   const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
 

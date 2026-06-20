@@ -155,29 +155,7 @@ export const SECTIONS = [
                     {
                         Section: 'Dark mode for apps',
                         FileName: 'SepDarkModeForApps',
-                        Options: [
-                            {
-                                Option: '',
-                                FileName: '',
-                                Toggleable: true,
-                                action: 'seprateDarkMode'
-                            }, {
-                                Option: '',
-                                FileName: '',
-                                Toggleable: true,
-                                action: 'seprateDarkMode'
-                            }, {
-                                Option: '',
-                                FileName: '',
-                                Toggleable: true,
-                                action: 'seprateDarkMode'
-                            }, {
-                                Option: '',
-                                FileName: '',
-                                Toggleable: true,
-                                action: 'seprateDarkMode'
-                            }
-                        ]
+                        Options: null
                     }, {
                         Section: 'Dark mode enabler',
                         FileName: 'DarkModeEnabler',
@@ -185,12 +163,25 @@ export const SECTIONS = [
                     }
                 ],
                 Options: null
-            }, {
+            },
+            {
                 Section: 'Colour Scheme',
                 FileName: 'ColourSchemeDeep',
-                SubSections: null,
+                SubSections: [
+                    {
+                        Section: 'Accent Colour',
+                        FileName: 'PickAccentColor',
+                        Options: null
+                    },
+                    {
+                        Section: 'Preview',
+                        FileName: 'AccentColorPreview',
+                        Options: null
+                    }
+                ],
                 Options: null
-            }, {
+            },
+            {
                 Section: 'Font settings',
                 FileName: 'FontsettingsDeep',
                 SubSections: null,

@@ -64,9 +64,12 @@ const wallpaperSlice = createSlice({
             state.AdvanceDarkMode = state.AdvanceDarkMode.filter(app => app !== App);
             state.theme[App] = 'light'
             state.ThemeColors[App] = LIGHT_THEME_COLORS;
+        }, setAccentColor(state, action) {
+            const Color = action.payload.Color;
+            state.AccentColors =  ACCENT_COLORS.find(({ COLOR }) => COLOR === Color) || ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue')
         }
     }
 })
 
-export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode } = wallpaperSlice.actions;
+export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode,setAccentColor } = wallpaperSlice.actions;
 export default wallpaperSlice.reducer;

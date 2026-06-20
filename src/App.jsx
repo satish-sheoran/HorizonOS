@@ -12,7 +12,8 @@ gsap.registerPlugin(Draggable, useGSAP)
 const App = () => {
 
   const isMdUp = window.matchMedia("(min-width: 768px)").matches;
-  const theme = useSelector(store => store.wallpaper.theme)
+  const theme = useSelector(store => store.wallpaper.theme.Settings)
+  const ThemeColors = useSelector(store => store.wallpaper.ThemeColors.Settings)
   return (
     <>
       <OSLayout />
@@ -22,7 +23,8 @@ const App = () => {
         toastStyle={{
           width: isMdUp ? "340px" : "80vw",
           margin: "0 auto",
-          top : '10px'
+          top : '10px',
+          backgroundColor : ThemeColors.bg
         }}
         position="top-center"
         autoClose={2500}
