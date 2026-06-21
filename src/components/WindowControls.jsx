@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UsewindowControlFns } from "../utils/windowCntrlFns"
 import { toast } from "react-toastify";
 import { COMMON_COLORS, ACCENT_COLORS } from "../constants/style";
+import { focusWindow } from "../redux/features/windowApps";
 
 // group named class is only written inside this file nor in any other file to write its css, it is just use so that before hovering button, the text remain hidden
 const WindowControls = ({ id ,Theme,ThemeColors}) => {
 
+    const dispatch = useDispatch()
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const { closeApp, toggleFullscreen } = UsewindowControlFns();
@@ -15,6 +17,7 @@ const WindowControls = ({ id ,Theme,ThemeColors}) => {
             onDoubleClick={() => {
                 toggleFullscreen(id)
             }}
+            onClick={()=>dispatch(focusWindow({windowKey : id}))}
             style={{
                 backgroundColor: ThemeColors.header,
                 borderColor: ThemeColors.thirdText

@@ -26,7 +26,7 @@ const PickColor = ({Theme,Device,fullScreen,ThemeColors,AccentColors}) => {
                     :
                     COMMON_COLORS.Gray
             }} className={`HOVER_CLASS p-2 cursor-pointer rounded-xl border-2 ease-out duration-500`}>
-                <Pen strokeWidth={2} />
+                <Pen size={22} strokeWidth={2} />
             </div>
         </div>
     )

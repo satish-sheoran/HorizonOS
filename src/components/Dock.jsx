@@ -5,7 +5,7 @@ const Dock = () => {
     const { toggleApp } = useWindowManager();
 
     return (
-        <nav className='dock glass flex justify-between   items-center' style={{ marginBottom: 'var(--padding-sm)' }}>
+        <nav className='dock glass flex justify-between  rounded-3xl items-center' style={{ marginBottom: 'var(--padding-sm)' }}>
 
             {dockApps.map(({ id, name, icon, canOpen }) => {
                 return <button style={{ backgroundColor: COMMON_COLORS.White }}

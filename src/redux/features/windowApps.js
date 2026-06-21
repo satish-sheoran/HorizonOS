@@ -34,8 +34,9 @@ const windowAppSlice = createSlice({
             const { windowKey } = action.payload;
 
             const window = state.apps[windowKey];
-            if (!window) return;
-            window.zIndex = state.nextZIndex++;
+            if (!window || !window.isOpen) return;
+            window.zIndex = state.nextZIndex;
+            state.nextZIndex++;
         },
         changeWindowScreenSize(state, action) {
             const { windowKey } = action.payload;

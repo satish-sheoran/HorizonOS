@@ -7,12 +7,14 @@ import AnimationWrapper from '../../../UI/AnimationWrapper'
 import DarkmodeoptionsDeep from './DeepOptions/DarkmodeoptionsDeep'
 import FontsettingsDeep from './DeepOptions/FontsettingsDeep'
 import ColourSchemeDeep from './DeepOptions/ColourSchemeDeep'
+import ControlAnimationsDeep from './DeepOptions/ControlAnimationsDeep'
 
 
 const DEEP_OPTIONS = {
     DarkmodeoptionsDeep,
     FontsettingsDeep,
-    ColourSchemeDeep
+    ColourSchemeDeep,
+    ControlAnimationsDeep
 }
 
 const Display = ({Section , Theme, ThemeColors, AccentColors, Queries, SubSections,DeepSection}) => {

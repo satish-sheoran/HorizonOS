@@ -1,11 +1,13 @@
 import React from 'react'
 import ColourScheme from '../components/ColourScheme'
 import RefreshRate from '../components/RefreshRate'
+import Animation from '../components/Animation'
 import ToggleButton from '../../../../UI/ToggleButton'
 
 const ScreenComponent = {
     ColourScheme,
-    RefreshRate
+    RefreshRate,
+    Animation
 }
 
 const Screen = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors  }) => {

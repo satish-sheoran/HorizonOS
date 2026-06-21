@@ -125,7 +125,12 @@ export const SECTIONS = [
                         FileName: 'RefreshRate',
                         Toggleable: false,
                         action: null
-                    },
+                    }, {
+                        Option: "Control Animations",
+                        FileName: 'Animation',
+                        Toggleable: false,
+                        action: null
+                    }
                 ]
             },
             {
@@ -176,6 +181,28 @@ export const SECTIONS = [
                     {
                         Section: 'Preview',
                         FileName: 'AccentColorPreview',
+                        Options: null
+                    }
+                ],
+                Options: null
+            },
+            {
+                Section: 'Control Animations',
+                FileName: 'ControlAnimationsDeep',
+                SubSections: [
+                    {
+                        Section: 'Animations Speed',
+                        FileName: 'ChooseAnimation',
+                        Options: null
+                    },
+                    {
+                        Section: 'Animation Style',
+                        FileName: 'AnimationName',
+                        Options: null
+                    },
+                    {
+                        Section: 'Preview',
+                        FileName: 'AnimationPreview',
                         Options: null
                     }
                 ],
@@ -456,7 +483,67 @@ export const SETTINGS_FACTORY_RESET_OPTIONS = [
         description: 'All settings will be restored to default'
     },
 ]
+// About section : DONE
 
+
+export const AnimationSpeedAndType = [
+    {
+        Name: 'Normal',
+        Speed: '700ms',
+        icon: 'CctvIcon',
+        Description: 'Smooth and fluid for the best experience.'
+    },
+    {
+        Name: 'Faster',
+        Speed: '300ms',
+        icon: 'CctvIcon',
+        Description: 'Fast animation for better experinece.'
+    },
+    {
+        Name: 'Disabled',
+        Speed: '0s',
+        icon: 'CctvIcon',
+        Description: 'Disable all animations for maximum performace.'
+    }
+]
+export const AnimationsName = [
+    {
+        Name: 'Linear',
+        Animation: 'none',
+        icon: 'CctvIcon',
+        description: 'Moves at the same speed throught.'
+    },
+    {
+        Name: 'Smooth',
+        Animation: 'sine.inOut',
+        icon: 'CctvIcon',
+        description: 'Gentle acceleration and deceleration for natural motion.'
+    },
+    {
+        Name: 'Expo Out',
+        Animation: 'expo.out',
+        icon: 'CctvIcon',
+        description: 'Very fast start with a smooth finish.'
+    },
+    {
+        Name: 'Back Out',
+        Animation: 'back.out(1.7)',
+        icon: 'CctvIcon',
+        description: 'Slightly overshoots before setting into place.'
+    },
+    {
+        Name: 'Ease ',
+        Animation: 'power2.out',
+        icon: 'CctvIcon',
+        description: 'Starts quickly and slows before stopping.'
+    },
+    {
+        Name: 'Elastic Out',
+        Animation: 'elastic.out(1,0.3)',
+        icon: 'CctvIcon',
+        description: 'Springs past the target.'
+    }
+]
 
 
 

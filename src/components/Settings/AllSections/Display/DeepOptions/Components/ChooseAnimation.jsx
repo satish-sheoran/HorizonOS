@@ -1,0 +1,58 @@
+import React, { useState } from 'react'
+import * as Icons from 'lucide-react'
+import { COMMON_COLORS } from '../../../../../../constants/style'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAnimationTypeNSpeed } from '../../../../../../redux/features/wallpaper'
+import { AnimationSpeedAndType } from '../../../../../../constants/Settings'
+
+
+
+const ChooseAnimation = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
+
+    const dispatch = useDispatch();
+    const { Name: AnimationName, Speed } = useSelector((store) => store.wallpaper.AnimationTypeNSpeed)
+
+    return (
+        <div className={`flex flex-col gap-2 `}>
+            <div className='flex flex-col gap-0.5'>
+                <span style={{ color: ThemeColors.primaryText }} className={`ease-out duration-500 text-[0.8rem] font-bold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+                <span style={{ color: ThemeColors.thirdText }} className={`ease-out duration-500 text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose the level of animations and transitions.</span>
+            </div>
+
+            <div style={{ backgroundColor: ThemeColors.header }} className={`flex flex-col gap-2 rounded-2xl duration-500 ease-out select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`} >
+
+                {AnimationSpeedAndType.map(({ Name, icon, Description }, idx) => {
+                    const Icon = Icons[icon]
+                    return <button key={idx}
+                        onClick={() => dispatch(setAnimationTypeNSpeed({ Animation: Name }))}
+                        style={{
+                            borderColor: AnimationName === Name ? AccentColors.CODE : ThemeColors.bg,
+                            color: ThemeColors.primaryText,
+                            '--hover': ThemeColors.third,
+                            '--active': Theme !== 'dark' ?
+                                Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
+                                :
+                                COMMON_COLORS.Gray
+                        }}
+                        className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl duration-500 ease-out select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
+                    >
+                        <div className={`flex items-center gap-3`}>
+                            {Icon && <Icon style={{color : AnimationName===Name ? AccentColors.CODE : ThemeColors.primaryText}} strokeWidth={2} />}
+                            <div className={`flex flex-col gap-0.5 text-left`}>
+                                <span className={`font-bold text-[0.8rem] duration-500 ease-out`}>{Name}</span>
+                                <span style={{ color: ThemeColors.grayish }} className={`font-semibold text-[0.55rem] duration-500 ease-out`}>{Description}</span>
+                            </div>
+                        </div>
+                        <div style={{ borderColor: ThemeColors.bg, backgroundColor: AnimationName === Name ? AccentColors.CODE : '' }} className={`${AnimationName === Name ? '' : 'border'} w-6 h-6 rounded-full duration-500 ease-out flex justify-center items-center`}>
+                            {AnimationName === Name && <Icons.Check strokeWidth={3} size={Device !== 'Desktop' ? 15 : 20} />}
+                        </div>
+                    </button>
+                })}
+            </div>
+
+
+        </div>
+    )
+}
+
+export default ChooseAnimation

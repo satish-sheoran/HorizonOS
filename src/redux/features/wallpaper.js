@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ALL_APPS, DEFAULT_WALLPAPER, Wallpapers } from "../../constants";
 import { LIGHT_THEME_COLORS, DARK_THEME_COLORS, COMMON_COLORS, ACCENT_COLORS } from "../../constants/style";
+import { AnimationsName, AnimationSpeedAndType } from "../../constants/Settings";
 
 
 const initialState = {
@@ -20,7 +21,10 @@ const initialState = {
     }, {}),   // user will get colors as per theme and then they will be set easily bcz name are same just need to use object name before which is already in this object 
     AccentColors: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange'), //color which will be used for buttons,background of some divs  
     isAutoTheme: false,  //  checks if user allow set auto theme based on time
-    AdvanceDarkMode: []
+    AdvanceDarkMode: [],
+
+    AnimationTypeNSpeed: AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
+    AnimationName: AnimationsName.find(({ Name }) => Name === 'Linear')
 };
 
 
@@ -48,6 +52,7 @@ const wallpaperSlice = createSlice({
                 Object.fromEntries(Object.keys(state.theme).map(key => {
                     return state.AdvanceDarkMode.includes(key) ? [key, DARK_THEME_COLORS] : [key, LIGHT_THEME_COLORS]
                 }));
+
         },
         setAutoTheme(state) {
             state.isAutoTheme = state.isAutoTheme ? false : true
@@ -66,10 +71,16 @@ const wallpaperSlice = createSlice({
             state.ThemeColors[App] = LIGHT_THEME_COLORS;
         }, setAccentColor(state, action) {
             const Color = action.payload.Color;
-            state.AccentColors =  ACCENT_COLORS.find(({ COLOR }) => COLOR === Color) || ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue')
+            state.AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === Color) || ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue')
+        }, setAnimationTypeNSpeed(state, action) {
+            const Animation = action.payload.Animation;
+            state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === Animation) || AnimationSpeedAndType.find(({ Name }) => Name === 'Normal');
+        }, setAnimationName(state, action) {
+            const Animation = action.payload.Animation
+            state.AnimationName =  AnimationsName.find(({Name})=> Name === Animation) || AnimationsName.find(({Name})=> Name === 'Linear')
         }
     }
 })
 
-export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode,setAccentColor } = wallpaperSlice.actions;
+export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed,setAnimationName } = wallpaperSlice.actions;
 export default wallpaperSlice.reducer;

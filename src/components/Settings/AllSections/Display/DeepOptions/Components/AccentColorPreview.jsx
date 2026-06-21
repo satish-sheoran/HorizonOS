@@ -9,7 +9,7 @@ const AccentColorPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fu
 
         <WindowPreview Theme={Theme} ThemeColors={ThemeColors} Device={Device} AccentColors={AccentColors} Preview='AccentPreview' />
         
-        <div className='max-w-1/2 flex flex-col gap-2'>
+        <div className={`${Device !=='Desktop'?'max-w-1/2':'max-w-[40%]'} flex flex-col gap-2`}>
           <span style={{ color: ThemeColors.primaryText }} className={`font-bold text-[1.05rem] text-center `}>Personalize Your Experience</span>
           <span style={{ color: ThemeColors.thirdText }} className={`text-center text-[0.65rem]`}>Choose a color that reflects your style and preview changes here.</span>
         </div>
