@@ -1,9 +1,12 @@
 import React from 'react'
 import { getFontClass } from '../../utils/CalculatorFns';
+import { useSelector } from 'react-redux';
+import { CSS_EASING} from '../../constants/Settings'
 
 const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, AccentColors ,Theme}) => {
 
-
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     return (
         <textarea
             ref={inputRef}
@@ -32,8 +35,10 @@ const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, A
                 });
             }} // to prevent a bug which cause its input point to start
             readOnly={currDevice === 'Desktop'} //user can not edit if he is not on phone
-            className={`transition-colors duration-500 ease-out ${getFontClass(result.length)} calc-result ${currDevice === 'Desktop' ? 'no-cursor' : ''}`}
-            style={{color : ThemeColors.primaryText}}
+            className={` ${getFontClass(result.length)} calc-result ${currDevice === 'Desktop' ? 'no-cursor' : ''}`}
+            style={{color : ThemeColors.primaryText , transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
             >
         </textarea >
     )

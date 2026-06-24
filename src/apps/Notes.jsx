@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-
+import {CSS_EASING} from '../constants/Settings'
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper"
@@ -21,6 +21,8 @@ const Notes = () => {
     const notesBody = useRef(null);
     const dispatch = useDispatch()
 
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const currDevice = useSelector((store) => store.Device.currDevice);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Notes)
     const Theme = useSelector((store) => store.wallpaper.theme.Notes)
@@ -51,14 +53,17 @@ const Notes = () => {
         gsap.to(notesBody.current, {
             x: isOpen ? '-100%' : '0%', //isOpen refers to if the folder is open or not,
             duration: 0.5,
-            ease: 'expo.out'
+            ease: Animation ?? 'expo.out'
         })
     }, [isOpen])
 
     return (
         <div
-            style={{ backgroundColor: ThemeColors.bg }}
-            className={`w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
+            style={{ backgroundColor: ThemeColors.bg , transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+ }}
+            className={`w-full h-full flex flex-col `}>
 
             {currDevice === 'Desktop' ?
                 <WindowControls id='notes' Theme={Theme} ThemeColors={ThemeColors} />
@@ -70,17 +75,17 @@ const Notes = () => {
 
 
                 {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}
-                <Folders Theme={Theme} AccentColors={AccentColors}  ThemeColors={ThemeColors} /> 
+                <Folders Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
 
                 <div ref={notesBody} className="notes-body translate-x-0">
-                    <Navbar Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} /> 
-                    <Content Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} /> 
-                    <Footer Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} /> 
+                    <Navbar Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                    <Content Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                    <Footer Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
                 </div>
 
                 {/*  pop up which opens create task   */}
-                <CreateTask Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} />  
-                <EditTask Theme={Theme} AccentColors={AccentColors}  ThemeColors={ThemeColors} />  
+                <CreateTask Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                <EditTask Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
             </main>
         </div >
     )

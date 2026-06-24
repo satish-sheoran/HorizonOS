@@ -24,7 +24,7 @@ const initialState = {
     AdvanceDarkMode: [],
 
     AnimationTypeNSpeed: AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
-    AnimationName: AnimationsName.find(({ Name }) => Name === 'Linear')
+    AnimationName: AnimationsName.find(({ Name }) => Name === 'Expo Out')
 };
 
 

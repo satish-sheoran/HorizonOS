@@ -489,13 +489,13 @@ export const SETTINGS_FACTORY_RESET_OPTIONS = [
 export const AnimationSpeedAndType = [
     {
         Name: 'Normal',
-        Speed: '700ms',
+        Speed: '300ms',
         icon: 'CctvIcon',
         Description: 'Smooth and fluid for the best experience.'
     },
     {
         Name: 'Faster',
-        Speed: '300ms',
+        Speed: '150ms',
         icon: 'CctvIcon',
         Description: 'Fast animation for better experinece.'
     },
@@ -509,7 +509,7 @@ export const AnimationSpeedAndType = [
 export const AnimationsName = [
     {
         Name: 'Linear',
-        Animation: 'none',
+        Animation: 'linear',
         icon: 'CctvIcon',
         description: 'Moves at the same speed throught.'
     },
@@ -537,15 +537,21 @@ export const AnimationsName = [
         icon: 'CctvIcon',
         description: 'Starts quickly and slows before stopping.'
     },
-    {
-        Name: 'Elastic Out',
-        Animation: 'elastic.out(1,0.3)',
-        icon: 'CctvIcon',
-        description: 'Springs past the target.'
-    }
+    // {
+    //     Name: 'Elastic Out',
+    //     Animation: 'elastic.out(1,0.3)',
+    //     icon: 'CctvIcon',
+    //     description: 'Springs past the target.'
+    // }
 ]
 
-
+export const CSS_EASING = {
+    'linear' : 'linear',
+    'sine.inOut' : 'cubic-bezier(0.455, 0.05, 0.55, 0.95)',
+    "expo.out" : 'cubic-bezier(0.19, 1, 0.22, 1)',
+    "back.out(1.7)" : 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+    'power2.out' : 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+}
 
 
 

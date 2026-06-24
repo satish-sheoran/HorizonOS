@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { OS_NAME, OS_VERSION } from '../../../../constants/Settings'
+import { OS_NAME, OS_VERSION ,CSS_EASING} from '../../../../constants/Settings'
 import AboutSections from './AboutSections'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
 import AboutHorizonOS from './DeepOptions/AboutHorizonOS'
@@ -18,10 +18,14 @@ const AboutUs = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSectio
   const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
   const Device = useSelector((store) => store.Device.currDevice)
   const activePanel = useSelector((store) => store.Settings.activePanel)
-
+const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   return (
-    <div className={`p-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-2 `}>
+    <div style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+    }} className={`p-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-2 `}>
 
 
 

@@ -37,11 +37,11 @@
 }
 
 .mobile-controls {
-    @apply flex h-full transition-all ease-in-out duration-(--transition-medium) hover:bg-red-400 active:bg-red-400
+    @apply flex h-full  hover:bg-red-400 active:bg-red-400
 }
 
 .window-control-btns {
-    @apply rounded-full size-3.5 hover:scale-[1.15] active:scale-[1.05] transition-all ease-in-out duration-(--transition-medium)
+    @apply rounded-full size-3.5 hover:scale-[1.15] active:scale-[1.05] 
 }
 
 .mobile-control-btns {

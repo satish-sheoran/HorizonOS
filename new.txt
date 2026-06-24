@@ -3,15 +3,11 @@
 
 
 What i did for this commit :
-feat(settings -> Display) : Implement animation  preferences architecture
+feat : Global animation speed and easing intergration
 
-- Added Control Animations Option in Screen Section of Display
-- Added animation style and speed constants in constants file
-- Created Redux states for animation style and speed
-- Added reducers and functionality for updating animation preferences
-- Prepared foundation for customizable system Animations
+TODO : Preview Area of Animation control still pending. 
 
-TODO : Global animation speed and easing intergration and Preview Area of Animation control still pending.
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
+

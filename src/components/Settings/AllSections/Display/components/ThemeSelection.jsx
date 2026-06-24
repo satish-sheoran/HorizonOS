@@ -1,5 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch ,useSelector} from 'react-redux'
+import {CSS_EASING} from '../../../../../constants/settings'
 
 import { changeTheme } from '../../../../../redux/features/wallpaper'
 import { THEMES } from '../../../../../constants'
@@ -8,17 +9,23 @@ import { COMMON_COLORS } from '../../../../../constants/style'
 const ThemeSelection = ({ Option,fullScreen,Device,Theme : theme,ThemeColors,AccentColors}) => {
 
     const dispatch = useDispatch()
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div className='w-full  mb-1.5'>
 
-            <div className={`setting-theme-div grid grid-cols-2 md:flex  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'max-w-100' : 'max-w-125'}`}>
+            <div style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={`setting-theme-div grid grid-cols-2 md:flex  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'max-w-100' : 'max-w-125'}`}>
 
                 {THEMES.map(({ Theme }, idx) => {
 
                     return <div
                         key={idx}
-                        style={{color : ThemeColors.primaryText}}
+                        style={{color : ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
                         className={`flex flex-col p-2 gap-2.5 md:py-3 md:pl-3`}>
 
                         <img
@@ -27,7 +34,9 @@ const ThemeSelection = ({ Option,fullScreen,Device,Theme : theme,ThemeColors,Acc
                             onDragStart={(e) => e.preventDefault()}
                             onClick={() => dispatch(changeTheme({ theme: Theme }))}
                             src={`/assets/theme-imgs/${Theme}-theme.webp`} 
-                            style={{outlineColor : COMMON_COLORS.Blue}}
+                            style={{outlineColor : COMMON_COLORS.Blue,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
                             className={`select-none object-cover object-center rounded-xl ${theme === Theme ? 'outline-4' : ''} 
                             aspect-square  ${fullScreen ? 'md:max-w-45 max-h-45' : 'md:max-w-40 md:max-h-40'}
                             `} alt={`${Theme} theme`} />

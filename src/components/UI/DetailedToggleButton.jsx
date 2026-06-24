@@ -1,10 +1,12 @@
 import React from 'react'
 import { ACCENT_COLORS, COMMON_COLORS } from '../../constants/style'
 import { useSelector } from 'react-redux'
-
+import {CSS_EASING} from '../../constants/Settings'
 // Title refers to App name
 const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColors, AccentColors, Logo, Title, Detail, Theme }) => {
 
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     
 
     return (
@@ -17,27 +19,42 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray
+                    COMMON_COLORS.Gray,
+                    transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
             }}
-            className={`HOVER_CLASS flex justify-between items-center border ease-out duration-500 active:scale-97 rounded-2xl ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+            className={`HOVER_CLASS flex justify-between items-center border  active:scale-97 rounded-2xl ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
             <div className={`flex items-end gap-2`}>
-                <div style={{ backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White }} className={`ease-out duration-500 w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl`}>
-                    <img className={`ease-out duration-500 object-cover object-center  ${Title == 'Settings' || Title == 'Clock' ? 'w-7 h-7' : 'w-9 h-9'}`} src={Logo} alt={Title} />
+                <div style={{ backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={` w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl`}>
+                    <img style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={` object-cover object-center  ${Title == 'Settings' || Title == 'Clock' ? 'w-7 h-7' : 'w-9 h-9'}`} src={Logo} alt={Title} />
                 </div>
                 <p className={`flex flex-col `}>
-                    <span style={{ color: ThemeColors.primaryText }} className={`ease-out duration-500 font-bold text-[0.8rem]`}>{Title}</span>
-                    <span style={{ color: ThemeColors.thirdText }} className={`ease-out duration-500 text-[0.55rem]`}>{Detail}</span>
+                    <span style={{ color: ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation] }} className={` font-bold text-[0.8rem]`}>{Title}</span>
+                    <span style={{ color: ThemeColors.thirdText,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation] }} className={` text-[0.55rem]`}>{Detail}</span>
                 </p>
             </div>
 
             <button
                 style={{
-                    backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg
+                    backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                 }}
-                className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full transition-all duration-500 ease-out`}>
+                className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full `}>
 
-                <div style={{ backgroundColor: COMMON_COLORS.White }} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full transition-all duration-300 ease-out
+                <div style={{ backgroundColor: COMMON_COLORS.White ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full 
                 ${isActionActive? 'translate-x-6' : 'translate-x-0'}
                     `}></div>
 

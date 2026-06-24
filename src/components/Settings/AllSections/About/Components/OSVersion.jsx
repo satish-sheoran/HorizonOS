@@ -1,9 +1,11 @@
 import React from 'react'
-
+import {useSelector} from 'react-redux'
 import { COMMON_COLORS } from '../../../../../constants/style';
-import { OS_VERSION } from '../../../../../constants/Settings';
+import { OS_VERSION ,CSS_EASING} from '../../../../../constants/Settings';
 
 const OSVersion = ({Theme, Option, fullScreen, Device, ThemeColors, AccentColors}) => {
+    const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     return (
         <div
             style={{
@@ -13,9 +15,11 @@ const OSVersion = ({Theme, Option, fullScreen, Device, ThemeColors, AccentColors
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray
+                    COMMON_COLORS.Gray, transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
             }}
-            className={`HOVER_CLASS active:scale-97 border rounded-2xl duration-500 ease-out select-none font-semibold flex items-center justify-between 
+            className={`HOVER_CLASS active:scale-97 border rounded-2xl select-none font-semibold flex items-center justify-between 
                                            ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                                            `}>
 

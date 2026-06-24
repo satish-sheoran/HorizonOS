@@ -3,6 +3,7 @@ import { Check, NotebookPen } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
 import { COMMON_COLORS } from '../../../constants/style'
+import { CSS_EASING} from '../../../constants/Settings'
 import { formatDateTime } from '../../../utils/formatTime'
 import { manageDeletedNotes, manageEditTask, setNotesContainerWidth, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
 import useLongPress from '../../../hooks/Use-long-press';
@@ -10,7 +11,8 @@ import useLongPress from '../../../hooks/Use-long-press';
 
 const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch();
-
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletingNotes = useSelector(store => store.Notes.deletedNotes)
@@ -63,7 +65,10 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
 
     return (
-        <div className={` flex-1  AllNotes-container duration-500 ease-out  overflow-y-auto    
+        <div style={{ transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+}} className={` flex-1  AllNotes-container  overflow-y-auto    
         `}
         >
             {
@@ -96,30 +101,43 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                 style={{
                                     backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header,
                                     '--hover': ThemeColors.third,
-                                    '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray
+                                    '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
+                                     transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+
                                 }}
-                                className={`HOVER_CLASS duration-500 ease-out relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
+                                className={`HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
                         `}>
                                 <h3
-                                    style={{ color: ThemeColors.primaryText }}
+                                    style={{ color: ThemeColors.primaryText , transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+}}
 
-                                    className={`duration-500 ease-out break-all
+                                    className={`break-all
  select-none line-clamp-1 text-[1.3rem] font-bold `}>
                                     {title ? title : desc}
 
                                 </h3>
 
                                 <p
-                                    style={{ color: ThemeColors.secText }}
-                                    className={`duration-500 ease-out break-all
+                                    style={{ color: ThemeColors.secText, transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+ }}
+                                    className={`break-all
  select-none text-[0.75rem] line-clamp-4 font-[650]
                             `}>
                                     {title && desc ? desc : 'No Text'} {/* if title and desc exist, display desc; otherwise, display 'No Text' */}
                                 </p>
 
                                 <div className='flex items-center justify-between gap-1 overflow-hidden'>
-                                    <span style={{ color: ThemeColors.thirdText }}
-                                        className={`duration-500 ease-out block whitespace-nowrap text-ellipsis select-none 
+                                    <span style={{ color: ThemeColors.thirdText , transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+}}
+                                        className={`block whitespace-nowrap text-ellipsis select-none 
                                             text-[0.6rem] 
                                             font-semibold 
                                             `}>
@@ -130,8 +148,11 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     {
                                         isDeleteNoteOpen === true &&
                                         <span
-                                            style={{ backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg }}
-                                            className={`duration-500 ease-out rounded-full w-4.5 h-4.5 flex items-center justify-center
+                                            style={{ backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg , transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+}}
+                                            className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
                                 `}>
                                             {deletingNotes?.includes(id) && <Check className='rounded-full ' style={{ color: COMMON_COLORS.White }} strokeWidth={3} size={17} />}
                                         </span>
@@ -145,7 +166,10 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                     </Masonry>
                     :
                     (
-                        <div style={{ color: ThemeColors.grayish }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
+                        <div style={{ color: ThemeColors.grayish, transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+ }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
                             <NotebookPen size={30} />
                             <span>No notes here yet</span>
                         </div>

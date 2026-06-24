@@ -1,24 +1,36 @@
 import { TriangleAlert } from 'lucide-react'
 import React from 'react'
 import { COMMON_COLORS } from '../../../../../../constants/style'
+import { CSS_EASING } from '../../../../../../constants/Settings'
+import { useSelector} from 'react-redux'
 
 const Warning = ({ Device, Theme, fullScreen ,ThemeColors,AccentColors}) => {
+    const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+        const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     return (
         <div
             style={{ backdropFilter: 'blur(16px)',
                 borderColor : COMMON_COLORS.DarkRed ,
-                backgroundColor : COMMON_COLORS.LightDarkRed
+                backgroundColor : COMMON_COLORS.LightDarkRed,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
             }}
             className={`Warning border  flex items-center gap-4 px-[2.5%] py-[1%] rounded-2xl backdrop-blur-lg
         `}
         >
-            <div style={{ color : COMMON_COLORS.Red}} className={` h-full `}>
+            <div style={{ color : COMMON_COLORS.Red,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={` h-full `}>
                 <TriangleAlert size={40} strokeWidth={2} />
             </div>
 
             <div className={`warning-msg flex flex-col gap-1`}>
-                <span style={{ color : COMMON_COLORS.Red}} className={`font-bold text-lg `}>Factory Reset</span>
-                <span style={{ color : ThemeColors.secText }} className={` text-[0.5rem] lg:text-[0.7rem] `}>This will restore HorizonOS to its original state. All your personal data,apps,settings, and customizations will be permanently deleted.</span>
+                <span style={{ color : COMMON_COLORS.Red,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={`font-bold text-lg `}>Factory Reset</span>
+                <span style={{ color : ThemeColors.secText,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation] }} className={` text-[0.5rem] lg:text-[0.7rem] `}>This will restore HorizonOS to its original state. All your personal data,apps,settings, and customizations will be permanently deleted.</span>
             </div>
         </div>
     )

@@ -1,7 +1,8 @@
 import React from 'react'
 import AppLock from './components/AppLock'
 import AppsArea from './Sections/AppsArea'
-
+import { useSelector } from 'react-redux'
+import {CSS_EASING} from '../../../../constants/Settings'
 
 const APPS_SECTIONS = {
     AppsArea
@@ -10,11 +11,14 @@ const APPS_SECTIONS = {
 // SECTION MEANS TITLE : APPS/DISPLAY ETC.
 const AppsOptions = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, ParentSection, Section: CurrSection  }) => {
 
-    
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <section style={{
-            borderColor: ThemeColors.third
+            borderColor: ThemeColors.third,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
         }} className={`app-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
 
             {/* ALL SECTIONS OF APPS RENDRING HERE*/}
@@ -39,8 +43,10 @@ const AppsOptions = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, Par
                         {idx < CurrSection.length - 1 && (
                             <div className='mt-2  mx-auto w-9/10'>
                                 <hr
-                                    style={{ borderColor: ThemeColors.grayish }}
-                                    className={`transition-colors duration-500 ease-out w-full `} />
+                                    style={{ borderColor: ThemeColors.grayish ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
+                                    className={`w-full `} />
                             </div>
                         )}
                     </div>

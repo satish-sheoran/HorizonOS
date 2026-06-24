@@ -3,7 +3,7 @@ import { UsewindowControlFns } from "../utils/windowCntrlFns"
 import { toast } from "react-toastify";
 import { COMMON_COLORS, ACCENT_COLORS } from "../constants/style";
 import { focusWindow } from "../redux/features/windowApps";
-
+import {CSS_EASING} from '../constants/Settings'
 // group named class is only written inside this file nor in any other file to write its css, it is just use so that before hovering button, the text remain hidden
 const WindowControls = ({ id ,Theme,ThemeColors}) => {
 
@@ -11,6 +11,8 @@ const WindowControls = ({ id ,Theme,ThemeColors}) => {
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const { closeApp, toggleFullscreen } = UsewindowControlFns();
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div
@@ -20,35 +22,52 @@ const WindowControls = ({ id ,Theme,ThemeColors}) => {
             onClick={()=>dispatch(focusWindow({windowKey : id}))}
             style={{
                 backgroundColor: ThemeColors.header,
-                borderColor: ThemeColors.thirdText
+                borderColor: ThemeColors.thirdText,
+                transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
             }}
-            className={`window-header border-b duration-500 ease-out`}>
+            className={`window-header border-b `}>
 
-            <div style={{ color: COMMON_COLORS.Black }} className="window-controls">
+            <div style={{ color: COMMON_COLORS.Black,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation] }} className="window-controls">
 
                 <button
                     onClick={() => closeApp(id)}
-                    style={{ backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').CODE }}
+                    style={{ backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').CODE ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
                     className='group window-control-btns flex-col-center'>
-                    <span className="opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-(--transition-medium)">
+                    <span style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className="opacity-0 group-hover:opacity-100">
                         <img className="scale-70" src="/assets/icons/close.png" alt="X" />
                     </span>
                 </button>
 
                 <button
                     onClick={() => toast.info('This functionality will be available soon.')}
-                    style={{ backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Lime').CODE }}
+                    style={{ backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Lime').CODE ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
                     className='group window-control-btns flex-col-center'>
-                    <span className="opacity-0 transition-all group-hover:opacity-100 ease-in-out duration-(--transition-medium)">
+                    <span style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className="opacity-0 group-hover:opacity-100 ">
                         <img className="scale-70" src="/assets/icons/minimize.png" alt="-" />
                     </span>
                 </button>
 
                 <button
                     onClick={() => toggleFullscreen(id)}
-                    style={{ backgroundColor: COMMON_COLORS.Blue }}
+                    style={{ backgroundColor: COMMON_COLORS.Blue ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
                     className='group window-control-btns flex-col-center'>
-                    <span className="zoom opacity-0 transition-all group-hover:opacity-100 ease-in-out duration-(--transition-medium)">
+                    <span style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className="zoom opacity-0  group-hover:opacity-100 ">
 
                         <svg width="14" height="14" viewBox="0 0 20 20" fill="black" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 5 L15 5 L15 11 Z" />
@@ -60,8 +79,10 @@ const WindowControls = ({ id ,Theme,ThemeColors}) => {
             </div>
 
             <p
-                style={{ color: ThemeColors.secText }}
-                className={`text-2xl font-bold capitalize md:text-xl select-none transition-all duration-150 ease-in-out`}>{id === 'notes' ? activeTab : id}</p>
+                style={{ color: ThemeColors.secText,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation] }}
+                className={`text-2xl font-bold capitalize md:text-xl select-none `}>{id === 'notes' ? activeTab : id}</p>
         </div>
 
     )

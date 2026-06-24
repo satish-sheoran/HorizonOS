@@ -3,10 +3,12 @@ import gsap from 'gsap';
 import { useRef } from 'react';
 import { useSelector } from 'react-redux'
 import { toast } from "react-toastify"
-
+import {CSS_EASING} from '../../../constants/Settings'
 
 const AllTasks = ({Theme,AccentColors,ThemeColors}) => {
         
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+        const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const taskAnimRef = useRef(null);
     const isFirstRun = useRef(true);
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
@@ -23,7 +25,7 @@ const AllTasks = ({Theme,AccentColors,ThemeColors}) => {
             gsap.to(taskAnimRef.current, {
                 y: activeTab === 'Tasks' ? '0%' : '120%',
                 duration: 0.5,
-                ease: 'expo.out'
+                ease: Animation ?? 'expo.out'
             });
         }
 
@@ -33,8 +35,10 @@ const AllTasks = ({Theme,AccentColors,ThemeColors}) => {
     return (
         <button ref={taskAnimRef}
             onClick={() => toast.info("This will be available shortly")}
-            style={{color : ThemeColors.grayish}}
-            className={`transition-colors duration-500 ease-out absolute inset-0 select-none  font-bold text-center flex items-center justify-center outline-none
+            style={{color : ThemeColors.grayish,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
+            className={` absolute inset-0 select-none  font-bold text-center flex items-center justify-center outline-none
                           
                          `}> This functionality will be < br /> available soon 😴 !
         </button >
@@ -42,3 +46,4 @@ const AllTasks = ({Theme,AccentColors,ThemeColors}) => {
 }
 
 export default AllTasks
+

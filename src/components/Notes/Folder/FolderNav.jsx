@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { ArrowLeft, Trash2 } from 'lucide-react'
 import { useEffect, useState } from "react";
-
+import {CSS_EASING} from '../../../constants/Settings'
 import { manageDeletedCategories, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
 import ConfirmDeletePopUp from './ConfirmDeletePopUp'
 
@@ -11,7 +11,8 @@ const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false);
 
-
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
@@ -30,7 +31,9 @@ const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
 
 
     return (
-        <div style={{ color: ThemeColors.primaryText }} className={`duration-500 ease-out folder-nav `}>
+        <div style={{ color: ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation] }} className={`folder-nav `}>
 
             {/* if start editing then show cancel button to exit editing mode else just show button to go back to tasks area */}
             {
@@ -41,6 +44,9 @@ const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
                     }}
                         style={{
                             color: AccentColors.CODE,
+                            transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                         }}
                         className={`active:scale-95`}>
                         <span>Cancel</span>
@@ -48,7 +54,9 @@ const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
                     :
                     <button onClick={() => {
                         dispatch(setOpenManageFolder({ open: false }));
-                    }} className='pr-9.5 pb-1  active:scale-95'>
+                    }} style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className='pr-9.5 pb-1  active:scale-95'>
                         <ArrowLeft strokeWidth={2} />
                     </button>
             }
@@ -68,6 +76,9 @@ const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
                 }}
                     style={{
                         color: AccentColors.CODE,
+                        transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                     }}
                     className='active:scale-95'>
                     <Trash2 strokeWidth={2} />
@@ -76,6 +87,9 @@ const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
                 <button onClick={() => dispatch(setStartDeletingCat({ start: true }))}
                     style={{
                         color: AccentColors.CODE,
+                        transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                     }}
                     className='active:scale-95'>
                     <span>Edit</span>

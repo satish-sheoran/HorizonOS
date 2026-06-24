@@ -4,13 +4,18 @@ import Technologies from './Components/Technologies'
 import Details from './Components/Details'
 import Features from './Components/Features'
 import DevDetail from './Components/DevDetail'
+import {CSS_EASING} from '../../../../../constants/Settings'
+import { useSelector} from 'react-redux'
 
 const AboutHorizonOS = ({ Name,Section, Device, fullScreen,Theme ,ThemeColors,AccentColors}) => {
-
+const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   return (
     <div style={{
-            borderColor: ThemeColors.third
+            borderColor: ThemeColors.third,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
         }} className={`deep-about-us py-[2.5%]  select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  px-[2.5%]'}`}>
 
       <div className={` flex flex-col gap-2 `}>

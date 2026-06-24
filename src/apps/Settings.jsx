@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-
+import { CSS_EASING} from '../constants/Settings'
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper";
@@ -8,6 +8,8 @@ import Content from "../components/Settings/Content";
 import { useState } from "react";
 
 const Settings = () => {
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+        const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const currDevice = useSelector((store) => store.Device.currDevice);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Settings)
     const Theme = useSelector((store) => store.wallpaper.theme.Settings)
@@ -17,8 +19,11 @@ const Settings = () => {
 
     return (
         <div
-            style={{ backgroundColor: ThemeColors.bg }}
-            className={` w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
+            style={{ backgroundColor: ThemeColors.bg , transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+}}
+            className={` w-full h-full flex flex-col `}>
 
             {currDevice === 'Desktop' ?
                 <WindowControls id='settings' Theme={Theme} ThemeColors={ThemeColors} />

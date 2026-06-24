@@ -5,7 +5,7 @@ import { COMMON_COLORS } from "../../../../constants/style";
 import HorizonOS from './Sections/HorizonOS'
 import NameNStorage from './Sections/NameNStorage'
 import OsDetails from './Sections/OsDetails'
-
+ import { useSelector} from 'react-redux'
 
 const ABOUT_SECTIONS = {
     HorizonOS,
@@ -17,7 +17,8 @@ const AboutSections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, P
 
 
     const dispatch = useDispatch()
-
+const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     return (
         <section className={`flex-1 w-full gap-2 flex flex-col`}>
             {CurrSection?.map(({ Section, FileName, Options }, idx) => {

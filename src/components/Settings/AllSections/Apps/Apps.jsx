@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import SettingQueries from '../../SettingQueries'
 import AppsSections from './AppsSections'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
+import {CSS_EASING} from '../../../../constants/Settings'
 import ApplockDeep from './DeepOptions/ApplockDeep'
 import ManageappsDeep from './DeepOptions/ManageappsDeep'
 import SystemappsDeep from './DeepOptions/SystemappsDeep'
@@ -21,9 +22,13 @@ const Apps = ({ Section, Theme ,ThemeColors,AccentColors,Queries, SubSections,De
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)
 const activePanel = useSelector((store)=>store.Settings.activePanel);
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <div className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+        <div style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={`app-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
             <AppsSections Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} ParentSection={Section} Section={SubSections} />
 

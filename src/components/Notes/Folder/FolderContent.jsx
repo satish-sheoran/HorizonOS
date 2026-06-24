@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import CreateFolder from './CreateFolder'
 import FolderCategory from './FolderCategory'
 import { setWidthOfFolderContent } from '../../../redux/features/NotesStrorage'
-
+import {CSS_EASING} from '../../../constants/Settings'
 
 const FolderContent = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
-
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isFolderManagerOpen = useSelector((store) => store.Notes.openManageFolder)
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat) //it keeps track if user started edit mode to delete category or not ,if true then do not show create folder btn
@@ -49,7 +50,7 @@ const FolderContent = ({Theme,AccentColors,ThemeColors}) => {
 
 
     return (
-        <div className={`duration-500 ease-out folder-content`}>
+        <div className={`folder-content`}>
 
             {/* categories */}
             <FolderCategory Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} />

@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Draggable } from "gsap/Draggable";
 import { COMMON_COLORS } from '../constants/style'
+import { CSS_EASING } from '../constants/Settings';
 
 const WindowWrapper = (Component, windowKey) => {
 
@@ -13,6 +14,8 @@ const WindowWrapper = (Component, windowKey) => {
         const { isOpen, zIndex, windowRatio, fullScreen } = apps[windowKey]; //windowRatio is key present in all app which has height and width of app is written inside and when user click the fullScreen button then its width and height changes by a reducer fn of store 
         const ref = useRef(null);
         const draggableref = useRef(null);
+    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+        const {Speed} = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
 
         /*  animation */
         useGSAP(() => {
@@ -21,7 +24,7 @@ const WindowWrapper = (Component, windowKey) => {
 
             gsap.fromTo(el,
                 { scale: 0.8, opacity: 0, y: 40 },
-                { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }
+                { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: Animation ?? 'power3.out' }
             )
         }, [isOpen])
 
@@ -72,7 +75,9 @@ const WindowWrapper = (Component, windowKey) => {
         }, [isOpen])
 
 
-        return <section ref={ref} style={{ borderColor: COMMON_COLORS.LightWhite , zIndex }} className={`${fullScreen ? `${windowKey}-full` : windowKey} ${Device === 'Desktop' ? `border-[1.5px] ${fullScreen ? '' : 'rounded-2xl'} ` : ''}  ${windowRatio.width} ${windowRatio.height} transition-all duration-(--transition-fast) ease-out overflow-hidden `} >
+        return <section ref={ref} style={{ borderColor: COMMON_COLORS.LightWhite , zIndex ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={`${fullScreen ? `${windowKey}-full` : windowKey} ${Device === 'Desktop' ? `border-[1.5px] ${fullScreen ? '' : 'rounded-2xl'} ` : ''}  ${windowRatio.width} ${windowRatio.height} overflow-hidden `} >
             <Component />
         </section>
     }

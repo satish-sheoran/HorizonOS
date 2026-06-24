@@ -2,6 +2,8 @@ import React from 'react'
 import FontName from '../components/FontName'
 import FontSetting from '../components/FontSetting'
 import ToggleButton from '../../../../UI/ToggleButton'
+import {CSS_EASING} from '../../../../../constants/settings'
+import { useSelector } from 'react-redux'
 
 const FontComponent = {
     FontName,
@@ -9,12 +11,21 @@ const FontComponent = {
 }
 
 const Font = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    
     return (
         <section className={`w-full flex flex-col gap-2`}>
 
-            <span style={{ color: ThemeColors.grayish }} className='text-sm font-bold select-none'>{Section}</span>
+            <span style={{ color: ThemeColors.grayish,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+             }} className='text-sm font-bold select-none'>{Section}</span>
 
-            <div style={{ backgroundColor: ThemeColors.header }} className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
+            <div style={{ backgroundColor: ThemeColors.header,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+ }} className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
 
                 {/* DISPLAYING OPTIONS UNDER FONT SECTION :  FONT,FONT SETTINGS */}
                 {

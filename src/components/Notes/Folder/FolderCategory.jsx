@@ -4,12 +4,13 @@ import { manageDeletedCategories, setActiveCategory, setOpenManageFolder, setSta
 import { Check } from 'lucide-react';
 import useLongPress from '../../../hooks/Use-long-press';
 import { COMMON_COLORS } from '../../../constants/style';
-
+import {CSS_EASING} from '../../../constants/Settings'
 // count show remaining
 
 const FolderCategory = ({Theme,AccentColors,ThemeColors}) => {
     const dispatch = useDispatch();
-
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const categories = useSelector(store => store.Notes.allCategories) // all categories for notes app
     const activeCategory = useSelector((store) => store.Notes.activeCategory)
     const folderContentWidth = useSelector((store) => store.Notes.folderContentWidth); //the width based on which sets if categories should so in one column or more 
@@ -25,7 +26,9 @@ const FolderCategory = ({Theme,AccentColors,ThemeColors}) => {
 
 
     return (
-        <div className={`overflow-y-auto rounded-2xl folder-category-list
+        <div style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={`overflow-y-auto rounded-2xl folder-category-list
         ${folderContentWidth >= 768 ?
                 `${folderContentWidth >= 1200 ? 'grid-cols-3' : 'grid-cols-2'}`
                 :
@@ -54,14 +57,19 @@ const FolderCategory = ({Theme,AccentColors,ThemeColors}) => {
                             color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
                             '--hover': ThemeColors.header,
                             '--active': ThemeColors.header,
+                            transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                         }}
-                        className={` duration-500 ease-out 
+                        className={`
                             ${activeCategory === category ? 'font-bold' : 'font-semibold HOVER_CLASS'}
                             
                             `}>
                         <Check strokeWidth={2.5}
-                            style={{ color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent' }}
-                            className={`duration-500 ease-out select-none `} /> {/* on hidden,it do not reserve space so used text-transparent */}
+                            style={{ color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent',transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation] }}
+                            className={`select-none `} /> {/* on hidden,it do not reserve space so used text-transparent */}
 
                         <span className="select-none">{category.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
 
@@ -70,8 +78,10 @@ const FolderCategory = ({Theme,AccentColors,ThemeColors}) => {
                         {
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
                                 <span 
-                                style={{backgroundColor : deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg}}
-                                className={`duration-500 ease-out rounded-full w-5.5 h-5.5 flex items-center justify-center
+                                style={{backgroundColor : deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
+                                className={` rounded-full w-5.5 h-5.5 flex items-center justify-center
                                 `}>
                                     {deletedCategories?.includes(category) && <Check style={{color : COMMON_COLORS.White}} className='rounded-full' strokeWidth={3} size={17} />}
                                 </span>

@@ -6,6 +6,7 @@ import MobileCntrls from "../components/MobileCntrl";
 import CalcButtons from "../components/Calculator/CalcButtons";
 import CalcDisplay from "../components/Calculator/CalcDisplay";
 import UseCalculator from "../hooks/useCalculator";
+import { CSS_EASING } from "../constants/Settings";
 
 const Calculator = () => {
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Calculator)
@@ -13,6 +14,8 @@ const Calculator = () => {
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const currDevice = useSelector((store) => store.Device.currDevice);
     const data = useSelector((store) => store.windowApps.apps['calculator'].data);
+    const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const [result, setResult] = useState(data ?? '0') //setting initally value from data of calculator app from its store
 
 
@@ -26,8 +29,10 @@ const Calculator = () => {
 
     return (
         <div 
-        style={{backgroundColor : ThemeColors.bg}}
-        className={`w-full h-full flex flex-col transition-colors duration-500 ease-out`}>
+        style={{backgroundColor : ThemeColors.bg , transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
+        className={`w-full h-full flex flex-col`}>
             {/* header */}
             {currDevice === 'Desktop' ?
                 <WindowControls id='calculator' Theme={Theme} ThemeColors={ThemeColors} />

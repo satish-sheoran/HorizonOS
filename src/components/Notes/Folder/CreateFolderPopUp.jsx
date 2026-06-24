@@ -5,14 +5,16 @@ import { addCategory } from '../../../redux/features/NotesStrorage';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { COMMON_COLORS } from '../../../constants/style';
+import { CSS_EASING } from '../../../constants/Settings'
 
-const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp ,Theme,AccentColors,ThemeColors}) => {
+const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Theme, AccentColors, ThemeColors }) => {
     const createFldrInputRef = useRef(null)
     const popUpElem = useRef(null);
     const dispatch = useDispatch();
 
     const Device = useSelector((store) => store.Device.currDevice);
-
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const device = useSelector((store) => store.Device.currDevice);
     const defaultNumForDefaultFolder = useSelector((store) => store.Notes.baseNumberForDefaultFolder);
     const defaultValOfInput = 'Unnamed folder' + (defaultNumForDefaultFolder > 0 ? defaultNumForDefaultFolder : ''); // it will be the default value for input field when user create a new folder with default name, if user has already created folder with default name then it will add number at the end of default name otherwise it will be just Unnamed folder
@@ -33,7 +35,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp ,Th
             scale: opencreateFolderPopUp ? 1 : 0,
             duration: 0.65,
             force3D: true, //to make animation a bit smooth as it deals with scales (forcw3D)
-            ease: 'expo.out'
+            ease: Animation ?? 'expo.out'
         })
 
     }, [opencreateFolderPopUp])
@@ -48,14 +50,18 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp ,Th
 
             {/* actual  */}
             <div ref={popUpElem} style={{
-                backgroundColor: Theme !== 'dark' ? ThemeColors.primary : ThemeColors.sec
+                backgroundColor: Theme !== 'dark' ? ThemeColors.primary : ThemeColors.sec, transition: `all ${Speed} ${CSS_EASING[Animation]}`
             }}
-                className={`transition-colors duration-500 ease-out ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
+                className={`${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
             
             `}>
-                <span style={{ color: ThemeColors.primaryText }} className={`transition-colors duration-500 ease-out select-none font-bold `}>New Folder</span>
+                <span style={{ color: ThemeColors.primaryText ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} className={`select-none font-bold `}>New Folder</span>
 
-                <input style={{ color: ThemeColors.primaryText, borderColor: COMMON_COLORS.Blue }} spellCheck={false} ref={createFldrInputRef} maxLength={80} autoFocus className={`transition-colors duration-500 ease-out create-flder-input w-full border-2 outline-none font-semibold rounded-2xl px-2.5 py-2 `} type="text" placeholder='Enter Text' defaultValue={defaultValOfInput} />
+                <input style={{ color: ThemeColors.primaryText, borderColor: COMMON_COLORS.Blue ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}} spellCheck={false} ref={createFldrInputRef} maxLength={80} autoFocus className={`create-flder-input w-full border-2 outline-none font-semibold rounded-2xl px-2.5 py-2 `} type="text" placeholder='Enter Text' defaultValue={defaultValOfInput} />
 
                 <div className='w-full folder-creation-btns flex items-center justify-between gap-2'>
                     <button
@@ -63,10 +69,13 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp ,Th
                         style={{
                             color: COMMON_COLORS.White,
                             backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
-                            '--hover' : Theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite,
-                            '--active' : Theme !=='dark'?COMMON_COLORS.grayishDark:COMMON_COLORS.LightWhite
+                            '--hover': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
+                            '--active': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
+                            transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                         }}
-                        className={`HOVER_CLASS transition-colors duration-500 ease-out w-[calc(50%-2px)] ${Device !=='Desktop'?'py-3.5':'py-2.5'}  text-sm font-bold select-none  active:scale-96 rounded-xl`}>Cancel</button>
+                        className={`HOVER_CLASS  w-[calc(50%-2px)] ${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}  text-sm font-bold select-none  active:scale-96 rounded-xl`}>Cancel</button>
 
                     <button
                         onClick={() => {
@@ -80,13 +89,15 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp ,Th
                             setOpencreateFolderPopUp(false);
                         }}
                         style={{
-                            backgroundColor : COMMON_COLORS.Blue,
-                            color : COMMON_COLORS.White,
-                            '--hover' : COMMON_COLORS.LightBlue,
-                            '--active' : COMMON_COLORS.LightBlue
-
+                            backgroundColor: COMMON_COLORS.Blue,
+                            color: COMMON_COLORS.White,
+                            '--hover': COMMON_COLORS.LightBlue,
+                            '--active': COMMON_COLORS.LightBlue,
+transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                         }}
-                        className={`HOVER_CLASS grow  ${Device !=='Desktop'?'py-3.5':'py-2.5'} text-sm font-bold rounded-xl select-none   active:scale-96 `}>OK</button>
+                        className={`HOVER_CLASS grow  ${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'} text-sm font-bold rounded-xl select-none   active:scale-96 `}>OK</button>
 
                 </div>
             </div>

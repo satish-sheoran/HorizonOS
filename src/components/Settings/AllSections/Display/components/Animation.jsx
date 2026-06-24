@@ -1,11 +1,15 @@
 import React from 'react'
 import { ChevronRight } from 'lucide-react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
 import { COMMON_COLORS } from '../../../../../constants/style'
+import {CSS_EASING} from '../../../../../constants/settings'
 
 const Animation = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColors }) => {
     const dispatch = useDispatch();
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    
     return (
         <div
             onClick={() => {
@@ -19,9 +23,11 @@ const Animation = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColor
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray
+                    COMMON_COLORS.Gray,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
             }}
-            className={`HOVER_CLASS active:scale-97 duration-500 ease-out border select-none  font-semibold rounded-2xl  flex items-center justify-between 
+            className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between 
              ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
  `}>
             <span>{Option}</span>

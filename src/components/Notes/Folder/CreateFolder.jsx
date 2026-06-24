@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import CreateFolderPopUp from './CreateFolderPopUp';
 import { useEffect, useState } from 'react';
 import { COMMON_COLORS } from '../../../constants/style';
+import {CSS_EASING} from '../../../constants/Settings'
 
-const CreateFolder = ({Theme,AccentColors,ThemeColors}) => {
+const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch()
-
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const [opencreateFolderPopUp, setOpencreateFolderPopUp] = useState(false)
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
 
@@ -28,11 +30,13 @@ const CreateFolder = ({Theme,AccentColors,ThemeColors}) => {
                 style={{
                     color: ThemeColors.primaryText,
                     background: ThemeColors.third,
-                    '--hover':Theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish,
-                    '--active':Theme !=='dark'?COMMON_COLORS.White:ThemeColors.grayish
-
+                    '--hover': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
+                    '--active': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
+                    transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
                 }}
-                className={`HOVER_CLASS duration-500 ease-out create-folder`}>
+                className={`HOVER_CLASS create-folder`}>
                 <p className='plus-icon-div'>
                     <Plus strokeWidth={3.5} size={14} />
                 </p>

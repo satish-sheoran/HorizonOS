@@ -4,9 +4,12 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import FolderNav from './FolderNav';
 import FolderContent from './FolderContent';
+import {CSS_EASING} from '../../../constants/Settings'
 
 const Folders = ({Theme,AccentColors,ThemeColors}) => {
   const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
+  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+      const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
   const elem = useRef(null);
 
   useGSAP(() => {
@@ -15,14 +18,16 @@ const Folders = ({Theme,AccentColors,ThemeColors}) => {
     gsap.to(elem.current, {
       x: isOpen ? '0%' : '100%',
       duration: 0.5,
-      ease: 'expo.out'
+      ease: Animation ?? 'expo.out'
     })
   }, [isOpen])
 
   return (
     <div ref={elem}
-      style={{ backgroundColor: ThemeColors.bg }}
-      className={`transition-colors duration-500 ease-out absolute gap-4 all-folders transform-x-full `}>
+      style={{ backgroundColor: ThemeColors.bg ,transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]}}
+      className={`absolute gap-4 all-folders transform-x-full `}>
 
       <FolderNav Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors}/>
       <FolderContent Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors}/>

@@ -8,7 +8,7 @@ import DarkmodeoptionsDeep from './DeepOptions/DarkmodeoptionsDeep'
 import FontsettingsDeep from './DeepOptions/FontsettingsDeep'
 import ColourSchemeDeep from './DeepOptions/ColourSchemeDeep'
 import ControlAnimationsDeep from './DeepOptions/ControlAnimationsDeep'
-
+import {CSS_EASING} from '../../../../constants/Settings'
 
 const DEEP_OPTIONS = {
     DarkmodeoptionsDeep,
@@ -22,9 +22,14 @@ const Display = ({Section , Theme, ThemeColors, AccentColors, Queries, SubSectio
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const Device = useSelector((store) => store.Device.currDevice)
     const activePanel = useSelector((store) => store.Settings.activePanel)
+const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <div className={`display-overflow-area w-full h-full grow flex ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+        <div style={{transitionProperty : 'color, background-color, border-color',
+transitionDuration : Speed,
+transitionTimingFunction : CSS_EASING[Animation]
+        }} className={`display-overflow-area w-full h-full grow flex ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
             <DisplaySections Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} ParentSection={Section} Section={SubSections} />
 
