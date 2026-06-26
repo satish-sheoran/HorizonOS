@@ -211,8 +211,13 @@ export const SECTIONS = [
             {
                 Section: 'Font settings',
                 FileName: 'FontsettingsDeep',
-                SubSections: null,
-                Options: null
+                SubSections: [
+                    {
+                        Section: 'Font Family',
+                        FileName: 'FontFamily',
+                        Options: null
+                    },
+                ], Options: null
             }
 
         ]
@@ -507,7 +512,7 @@ export const AnimationSpeedAndType = [
     }
 ]
 export const AnimationsName = [
-   
+
     {
         Name: 'Smooth',
         Animation: 'sine.inOut',
@@ -541,11 +546,45 @@ export const AnimationsName = [
 ]
 
 export const CSS_EASING = {
-    'sine.inOut' : 'cubic-bezier(0.455, 0.05, 0.55, 0.95)',
-    "expo.out" : 'cubic-bezier(0.19, 1, 0.22, 1)',
-    "back.out(1.7)" : 'cubic-bezier(0.34, 1.56, 0.64, 1)',
-    'power2.out' : 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+    'sine.inOut': 'cubic-bezier(0.455, 0.05, 0.55, 0.95)',
+    "expo.out": 'cubic-bezier(0.19, 1, 0.22, 1)',
+    "back.out(1.7)": 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+    'power2.out': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 }
+
+export const FONT_FAMILY = [
+    {
+        Name: 'System Default',
+        Description: "Matches your device's native font.",
+        Weights: {
+            Regular: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+            SemiBold: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+            Bold: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+            ExtraBold: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+        }
+    },
+    {
+        Name: 'Plus Jakarta Sans',
+        Description: 'A sleek, modern typeface and easy to read. ',
+        Weights: {
+            Regular: 'PlusSansRegular',
+            SemiBold: 'PlusSansSemiBold',
+            Bold: 'PlusSansBold',
+            ExtraBold: 'PlusSansExtraBold'
+        }
+    },
+    {
+        Name: 'Poppins',
+        Description: 'A rounded, geometric font with a friendly readability.',
+        Weights: {
+            Regular: 'PoppinsRegular',
+            SemiBold: 'PoppinsSemiBold',
+            Bold: 'PoppinsBold',
+            ExtraBold: 'PoppinsExtraBold'
+        }
+    }
+]
+
 
 
 

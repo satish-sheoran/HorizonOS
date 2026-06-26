@@ -1,5 +1,40 @@
 @import "tailwindcss";
 
+/* PLUS SANS */
+@font-face {
+    font-family: PlusSansRegular;
+    src: url('./assets/fonts/PlusJakartaSans-Regular.ttf');
+}
+@font-face {
+    font-family: PlusSansSemiBold;
+    src: url('./assets/fonts/PlusJakartaSans-SemiBold.ttf');
+}
+@font-face {
+    font-family: PlusSansBold;
+    src: url('./assets/fonts/PlusJakartaSans-Bold.ttf');
+}
+@font-face {
+    font-family: PlusSansExtraBold;
+    src: url('./assets/fonts/PlusJakartaSans-ExtraBold.ttf');
+}
+
+/* POPPINS  */
+@font-face {
+    font-family: PoppinsRegular ;
+    src: url('./assets/fonts/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: PoppinsSemiBold ;
+    src: url('./assets/fonts/Poppins-SemiBold.ttf');
+}
+@font-face {
+    font-family: PoppinsBold ;
+    src: url('./assets/fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: PoppinsExtraBold ;
+    src: url('./assets/fonts/PlusJakartaSans-ExtraBold.ttf');
+}
 * {
     box-sizing: border-box;
 }

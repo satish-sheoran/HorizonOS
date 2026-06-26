@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ALL_APPS, DEFAULT_WALLPAPER, Wallpapers } from "../../constants";
 import { LIGHT_THEME_COLORS, DARK_THEME_COLORS, COMMON_COLORS, ACCENT_COLORS } from "../../constants/style";
-import { AnimationsName, AnimationSpeedAndType } from "../../constants/Settings";
+import { AnimationsName, AnimationSpeedAndType, FONT_FAMILY } from "../../constants/Settings";
 
 
 const initialState = {
@@ -24,7 +24,10 @@ const initialState = {
     AdvanceDarkMode: [],
 
     AnimationTypeNSpeed: AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
-    AnimationName: AnimationsName.find(({ Name }) => Name === 'Expo Out')
+    AnimationName: AnimationsName.find(({ Name }) => Name === 'Expo Out'),
+
+    //font family
+    Font: FONT_FAMILY.find(font => font.Name === 'System Default')
 };
 
 
@@ -77,10 +80,14 @@ const wallpaperSlice = createSlice({
             state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === Animation) || AnimationSpeedAndType.find(({ Name }) => Name === 'Normal');
         }, setAnimationName(state, action) {
             const Animation = action.payload.Animation
-            state.AnimationName =  AnimationsName.find(({Name})=> Name === Animation) || AnimationsName.find(({Name})=> Name === 'Linear')
+            state.AnimationName = AnimationsName.find(({ Name }) => Name === Animation) || AnimationsName.find(({ Name }) => Name === 'Linear')
+        }, setFontFamily(state, action) {
+            const Family = FONT_FAMILY.find(font => font.Name === action.payload.FontFamily);
+            if (!Family) return;
+            state.Font = Family;
         }
     }
 })
 
-export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed,setAnimationName } = wallpaperSlice.actions;
+export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed, setAnimationName, setFontFamily } = wallpaperSlice.actions;
 export default wallpaperSlice.reducer;

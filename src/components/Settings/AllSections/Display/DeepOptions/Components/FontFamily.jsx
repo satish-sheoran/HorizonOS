@@ -1,87 +1,86 @@
 import React from 'react'
-import * as Icons from 'lucide-react'
-import { AnimationsName, OS_NAME, CSS_EASING } from '../../../../../../constants/Settings'
-import { COMMON_COLORS } from '../../../../../../constants/style'
 import { useDispatch, useSelector } from 'react-redux'
-import { setAnimationName } from '../../../../../../redux/features/wallpaper'
+import { CSS_EASING, FONT_FAMILY } from '../../../../../../constants/settings'
+import { ACCENT_COLORS, COMMON_COLORS } from '../../../../../../constants/style'
+import { Check } from 'lucide-react'
+import { setFontFamily } from '../../../../../../redux/features/wallpaper'
 
-const AnimationName = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
+const FontFamily = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
 
     const dispatch = useDispatch()
-    const { Name: DisplayAnimName, Animation } = useSelector(store => store.wallpaper.AnimationName)
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <div className={`mt-2 flex flex-col gap-2 `}>
+        <div className={`flex flex-col gap-2`}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
+                    fontFamily: Weights.Bold,
                     color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` text-[0.8rem] font-bold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
+                    fontFamily: Weights.Regular,
                     color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose how animations move and feel throughout {OS_NAME}.</span>
+                }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose your preferred font style.</span>
             </div>
 
             <div style={{
                 backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`flex flex-col gap-2 rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`} >
+            }} className={`flex flex-col gap-4 rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
+                {FONT_FAMILY.map(({ Name: Font, Description }, idx) => {
 
-                {AnimationsName.map(({ Name, Animation, icon, description }, idx) => {
-                    const Icon = Icons[icon]
                     return <button key={idx}
-                        onClick={() => dispatch(setAnimationName({ Animation: Name }))}
+                        onClick={() => dispatch(setFontFamily({ FontFamily: Font }))}
                         style={{
-                            borderColor: DisplayAnimName === Name ? AccentColors.CODE : ThemeColors.bg,
+                            borderColor: FontName === Font ? AccentColors.CODE : ThemeColors.bg,
                             color: ThemeColors.primaryText,
                             '--hover': ThemeColors.third,
                             '--active': Theme !== 'dark' ?
                                 Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                                 :
-                                COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                                COMMON_COLORS.Gray,
+                            transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
                     >
-                        <div className={`flex items-center gap-3`}>
-                            {Icon && <Icon style={{
-                                color: DisplayAnimName === Name ? AccentColors.CODE : ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                        <div className={`flex flex-col gap-0.5 text-left`}>
+                            <span style={{ fontFamily: Weights.Bold }} className={`font-bold text-[0.8rem] `}>{Font}</span>
+                            <span style={{
+                                fontFamily: Weights.SemiBold,
+                                color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
-                            }} strokeWidth={2} />}
-                            <div className={`flex flex-col gap-0.5 text-left`}>
-                                <span className={`font-bold text-[0.8rem] `}>{Name}</span>
-                                <span style={{
-                                    color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
-                                }} className={`font-semibold text-[0.55rem] `}>{description}</span>
-                            </div>
+                            }} className={`font-semibold text-[0.55rem] `}>{Description}</span>
                         </div>
+
                         <div style={{
-                            borderColor: ThemeColors.bg, backgroundColor: DisplayAnimName === Name ? AccentColors.CODE : '', transitionProperty: 'color, background-color, border-color',
+                            fontFamily: Weights.Bold,
+                            borderColor: ThemeColors.bg, backgroundColor: FontName === Font ? AccentColors.CODE : ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
-                        }} className={`${DisplayAnimName === Name ? '' : 'border'}  w-6 h-6 rounded-full  flex justify-center items-center`}>
-                            {DisplayAnimName === Name && <Icons.Check style={{
+                        }} className={`border  w-6 h-6 rounded-full  flex justify-center items-center`}>
+                            {Font === FontName && <Check style={{
                                 transitionProperty: 'color, background-color, border-color',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }} strokeWidth={3} size={Device !== 'Desktop' ? 15 : 20} />}
                         </div>
+
                     </button>
                 })}
+
             </div>
-
-
         </div>
     )
 }
 
-export default AnimationName
+export default FontFamily

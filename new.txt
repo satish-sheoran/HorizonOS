@@ -3,10 +3,14 @@
 
 
 What i did for this commit :
-feat : Added Preview Area of Animation control. 
+feat : Add Font family constants , Redux state and update reducer
 
-- fix window controls buttons size in window preview file
+- Font Family constants contain all fonts used
+- Added intial state and reducers to update font family
+- Changing font family from settings also implemented
+- its Integrtion is done in font family file
 
+TODO : Global Font family integration is pending
 
 
 FIXES And ADDITION TO CALC:
