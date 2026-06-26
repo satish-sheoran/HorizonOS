@@ -6,9 +6,11 @@ import { Draggable } from "gsap/Draggable";
 import { Slide, ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useAutoTheme } from "./utils/AutoSetTheme";
-
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 gsap.registerPlugin(Draggable, useGSAP)
+gsap.registerPlugin(MotionPathPlugin)
+
 const App = () => {
 
   const isMdUp = window.matchMedia("(min-width: 768px)").matches;

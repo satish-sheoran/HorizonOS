@@ -507,12 +507,7 @@ export const AnimationSpeedAndType = [
     }
 ]
 export const AnimationsName = [
-    {
-        Name: 'Linear',
-        Animation: 'linear',
-        icon: 'CctvIcon',
-        description: 'Moves at the same speed throught.'
-    },
+   
     {
         Name: 'Smooth',
         Animation: 'sine.inOut',
@@ -546,7 +541,6 @@ export const AnimationsName = [
 ]
 
 export const CSS_EASING = {
-    'linear' : 'linear',
     'sine.inOut' : 'cubic-bezier(0.455, 0.05, 0.55, 0.95)',
     "expo.out" : 'cubic-bezier(0.19, 1, 0.22, 1)',
     "back.out(1.7)" : 'cubic-bezier(0.34, 1.56, 0.64, 1)',

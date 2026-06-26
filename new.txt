@@ -3,9 +3,10 @@
 
 
 What i did for this commit :
-feat : Global animation speed and easing intergration
+feat : Added Preview Area of Animation control. 
 
-TODO : Preview Area of Animation control still pending. 
+- fix window controls buttons size in window preview file
+
 
 
 FIXES And ADDITION TO CALC:
