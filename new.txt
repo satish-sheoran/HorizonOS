@@ -2,10 +2,10 @@
 2. how to remove web page not secure 
 
 
-What i did for last commit :
-feat : Global Font family integration 
+What i did for this commit :
+Fix : Fixed positioning of Add folder/Category Pop Up
 
-- Fix : Fixed sixing of Delete Notes/Category Pop Up
+- Due to some bug it was overflowing to the right side
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

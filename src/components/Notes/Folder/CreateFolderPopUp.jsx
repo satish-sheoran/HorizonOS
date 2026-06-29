@@ -47,13 +47,13 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
             {/* overlay */}
             <div
                 onClick={() => setOpencreateFolderPopUp(false)}
-                className='overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'></div>
+                className='pb-5 overlay grow flex items-end justify-center backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'>
 
             {/* actual  */}
             <div ref={popUpElem} style={{
                 borderColor : COMMON_COLORS.Red, backgroundColor: Theme !== 'dark' ? ThemeColors.primary : ThemeColors.sec, transition: `all ${Speed} ${CSS_EASING[Animation]}`
             }}
-                className={`border ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'} absolute rounded-2xl py-3.5  px-2.5 gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center
+                className={`border ${device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-75'}  rounded-2xl py-3.5  px-2.5 gap-2.5  flex flex-col items-center
             
             `}>
                 <span style={{
@@ -106,7 +106,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
 
                 </div>
             </div>
-
+</div>
         </div >
 
     )
