@@ -3,15 +3,18 @@ import { Check, NotebookPen } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
 import { COMMON_COLORS } from '../../../constants/style'
-import { CSS_EASING} from '../../../constants/Settings'
+import { CSS_EASING } from '../../../constants/Settings'
 import { formatDateTime } from '../../../utils/formatTime'
 import { manageDeletedNotes, manageEditTask, setNotesContainerWidth, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
 import useLongPress from '../../../hooks/Use-long-press';
 
 
 const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
+
+
     const dispatch = useDispatch();
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
@@ -65,10 +68,11 @@ const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //an
 
 
     return (
-        <div style={{ transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-}} className={` flex-1  AllNotes-container  overflow-y-auto    
+        <div style={{
+            transitionProperty: 'color, background-color, border-color',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+        }} className={` flex-1  AllNotes-container  overflow-y-auto    
         `}
         >
             {
@@ -102,18 +106,20 @@ transitionTimingFunction : CSS_EASING[Animation]
                                     backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header,
                                     '--hover': ThemeColors.third,
                                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                                     transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
 
                                 }}
                                 className={`HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
                         `}>
                                 <h3
-                                    style={{ color: ThemeColors.primaryText , transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-}}
+                                    style={{
+                                        fontFamily: Weights.SemiBold,
+                                        color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                        transitionDuration: Speed,
+                                        transitionTimingFunction: CSS_EASING[Animation]
+                                    }}
 
                                     className={`break-all
  select-none line-clamp-1 text-[1.3rem] font-bold `}>
@@ -122,10 +128,12 @@ transitionTimingFunction : CSS_EASING[Animation]
                                 </h3>
 
                                 <p
-                                    style={{ color: ThemeColors.secText, transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
- }}
+                                    style={{
+                                        fontFamily: Weights.Regular,
+                                        color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                                        transitionDuration: Speed,
+                                        transitionTimingFunction: CSS_EASING[Animation]
+                                    }}
                                     className={`break-all
  select-none text-[0.75rem] line-clamp-4 font-[650]
                             `}>
@@ -133,10 +141,12 @@ transitionTimingFunction : CSS_EASING[Animation]
                                 </p>
 
                                 <div className='flex items-center justify-between gap-1 overflow-hidden'>
-                                    <span style={{ color: ThemeColors.thirdText , transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-}}
+                                    <span style={{
+                                        fontFamily : Weights.Regular,
+                                        color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                                        transitionDuration: Speed,
+                                        transitionTimingFunction: CSS_EASING[Animation]
+                                    }}
                                         className={`block whitespace-nowrap text-ellipsis select-none 
                                             text-[0.6rem] 
                                             font-semibold 
@@ -148,10 +158,11 @@ transitionTimingFunction : CSS_EASING[Animation]
                                     {
                                         isDeleteNoteOpen === true &&
                                         <span
-                                            style={{ backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg , transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-}}
+                                            style={{
+                                                backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                                                transitionDuration: Speed,
+                                                transitionTimingFunction: CSS_EASING[Animation]
+                                            }}
                                             className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
                                 `}>
                                             {deletingNotes?.includes(id) && <Check className='rounded-full ' style={{ color: COMMON_COLORS.White }} strokeWidth={3} size={17} />}
@@ -166,10 +177,12 @@ transitionTimingFunction : CSS_EASING[Animation]
                     </Masonry>
                     :
                     (
-                        <div style={{ color: ThemeColors.grayish, transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
- }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
+                        <div style={{
+                            fontFamily : Weights.SemiBold,
+                            color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
                             <NotebookPen size={30} />
                             <span>No notes here yet</span>
                         </div>

@@ -16,11 +16,11 @@ const FontFamily = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
         <div className={`flex flex-col gap-2`}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                    fontFamily: Weights.Bold,
+                    fontFamily: Weights.SemiBold,
                     color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` text-[0.8rem] font-bold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+                }} className={` text-[0.8rem] font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
                     fontFamily: Weights.Regular,
                     color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',

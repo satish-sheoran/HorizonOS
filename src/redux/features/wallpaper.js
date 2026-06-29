@@ -27,7 +27,7 @@ const initialState = {
     AnimationName: AnimationsName.find(({ Name }) => Name === 'Expo Out'),
 
     //font family
-    Font: FONT_FAMILY.find(font => font.Name === 'System Default')
+    Font: FONT_FAMILY.find(font => font.Name === 'Poppins')
 };
 
 

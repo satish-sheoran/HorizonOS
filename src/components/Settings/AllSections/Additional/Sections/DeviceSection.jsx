@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ToggleButton from '../../../../UI/ToggleButton'
 import WallpaperBehaviour from '../components/WallpaperBehaviour'
-import {CSS_EASING} from '../../../../../constants/Settings'
+import { CSS_EASING } from '../../../../../constants/Settings'
 import { setTimeFormat } from '../../../../../redux/features/DeviceSet'
 
 const DEVICE_OPTIONS = {
@@ -17,25 +17,30 @@ const DEVICE_OPTIONS = {
 const DeviceSection = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
 
   const dispatch = useDispatch();
+  const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const is12HRFormat = useSelector((store) => store.Device.isTime12HourFormat)
   const TimeFormat = () => dispatch(setTimeFormat())
-const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+  const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
 
   return (
     <div className={`flex flex-col w-full  gap-2`}>
 
-      <span style={{ color: ThemeColors.grayish,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation] }} className=' text-sm font-bold select-none'>{Section}</span>
+      <span style={{
+        fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+        transitionDuration: Speed,
+        transitionTimingFunction: CSS_EASING[Animation]
+      }} className=' text-sm  select-none'>{Section}</span>
 
       {/* DISPLAYING ALL OPTIONS  OF ADDITIONAL SECTIONS */}
-      <div style={{ backgroundColor: ThemeColors.header ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
+      <div style={{
+        backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+        transitionDuration: Speed,
+        transitionTimingFunction: CSS_EASING[Animation]
+      }} className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
         {
-          Options?.map(({ Option, FileName,Toggleable,action }, idx) => {
+          Options?.map(({ Option, FileName, Toggleable, action }, idx) => {
             const Component = DEVICE_OPTIONS[FileName];
 
             if (!Component) return null;
@@ -44,10 +49,10 @@ transitionTimingFunction : CSS_EASING[Animation]}} className={`w-full p-[2.5%] f
                 key={idx}
                 Theme={Theme}
                 action={Option}
-                performAction={action==='TimeFormat'? TimeFormat : ''}
+                performAction={action === 'TimeFormat' ? TimeFormat : ''}
                 Device={Device}
                 isActionActive={is12HRFormat}
-                ThemeColors={ThemeColors} 
+                ThemeColors={ThemeColors}
                 AccentColors={AccentColors}
               />
             }
@@ -58,7 +63,7 @@ transitionTimingFunction : CSS_EASING[Animation]}} className={`w-full p-[2.5%] f
               fullScreen={fullScreen}
               Device={Device}
               ThemeColors={ThemeColors}
-               AccentColors={AccentColors}
+              AccentColors={AccentColors}
             />
           })
         }

@@ -4,7 +4,7 @@ import { setAutoTheme } from '../../../../../redux/features/wallpaper'
 import ThemeSelection from '../components/ThemeSelection'
 import DarkOptions from '../components/DarkOptions'
 import ToggleButton from '../../../../UI/ToggleButton'
-import {CSS_EASING} from '../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../constants/settings'
 
 const ThemeComponent = {
     ThemeSelection,
@@ -16,6 +16,7 @@ const Theme = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section
 
     const dispatch = useDispatch()
     const performAction = () => dispatch(setAutoTheme())
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const isAutoTheme = useSelector((store) => store.wallpaper.isAutoTheme)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -23,17 +24,19 @@ const Theme = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section
     return (
         <div className={`flex flex-col w-full gap-2`}>
 
-            <span style={{ color: ThemeColors.grayish,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-             }} className='text-sm font-bold select-none'>{Section}</span>
+            <span style={{
+                fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className='text-sm  select-none'>{Section}</span>
 
             {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
 
-            <div style={{ backgroundColor: ThemeColors.header,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
- }} className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
+            <div style={{
+                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className={`p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
                 {
                     Options?.map(({ Option, FileName, Toggleable, action }, idx) => {
                         const Component = ThemeComponent[FileName];
@@ -44,7 +47,7 @@ transitionTimingFunction : CSS_EASING[Animation]
                                 key={idx}
                                 Theme={Theme}
                                 action={Option}
-                                performAction={action ==='AutomaticTheme'? performAction:''}
+                                performAction={action === 'AutomaticTheme' ? performAction : ''}
                                 Device={Device}
                                 isActionActive={isAutoTheme}
                                 ThemeColors={ThemeColors}

@@ -6,7 +6,9 @@ import { COMMON_COLORS } from '../../../../../constants/style';
 import {CSS_EASING} from '../../../../../constants/settings'
 
 const ColourScheme = ({Option,fullScreen,Device,Theme,ThemeColors,AccentColors}) => {
+    
         const dispatch = useDispatch();
+        const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
 const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
 const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
@@ -17,7 +19,7 @@ const { Animation } = useSelector(store => store.wallpaper.AnimationName) //anim
             }
             }
             style={{
-        color : ThemeColors.primaryText,
+        fontFamily : Weights.SemiBold ,color : ThemeColors.primaryText,
         borderColor: ThemeColors.bg,
               '--hover': ThemeColors.third,
               '--active': Theme !== 'dark' ?

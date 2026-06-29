@@ -2,17 +2,10 @@
 2. how to remove web page not secure 
 
 
-What i did for this commit :
-feat : Add Font family constants , Redux state and update reducer
+What i did for last commit :
+feat : Global Font family integration 
 
-- Font Family constants contain all fonts used
-- Added intial state and reducers to update font family
-- Changing font family from settings also implemented
-- its Integrtion is done in font family file
-
-TODO : Global Font family integration is pending
-
+- Fix : Fixed sixing of Delete Notes/Category Pop Up
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
-

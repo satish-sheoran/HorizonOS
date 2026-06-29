@@ -7,6 +7,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
 const AnimPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
+
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -34,13 +36,13 @@ const AnimPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
 
                 return <div key={index} className={` w-full min-h-[20%] relative  ${Device !== 'Desktop' ? 'text-[0.32rem]' : 'text-[0.5rem]'}`}>
                     <button style={{
-                        color: COMMON_COLORS.White,
+                       fontFamily : Weights.SemiBold, color: COMMON_COLORS.White,
                         backgroundColor: AccentColors.CODE,
                         transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation],
-                        animationTimingFunction : CSS_EASING[Anim],
-                        '--btn-width' : `${BtnsWidth[index]}px`
+                        animationTimingFunction: CSS_EASING[Anim],
+                        '--btn-width': `${BtnsWidth[index]}px`
                     }} className={`AnimBtn absolute top-0 left-1 rounded-xl py-0.5 px-1 font-semibold`}>
                         {Name}
                     </button>

@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import CreateFolder from './CreateFolder'
 import FolderCategory from './FolderCategory'
 import { setWidthOfFolderContent } from '../../../redux/features/NotesStrorage'
-import {CSS_EASING} from '../../../constants/Settings'
+import { CSS_EASING } from '../../../constants/Settings'
 
-const FolderContent = ({Theme,AccentColors,ThemeColors}) => {
+const FolderContent = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch();
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isFolderManagerOpen = useSelector((store) => store.Notes.openManageFolder)
@@ -53,7 +53,7 @@ const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //an
         <div className={`folder-content`}>
 
             {/* categories */}
-            <FolderCategory Theme={Theme}  AccentColors={AccentColors} ThemeColors={ThemeColors} />
+            <FolderCategory Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
 
             {/* create folder btn */}
             {startDeletingCat === false && < CreateFolder Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />}

@@ -6,7 +6,7 @@ import AnimPreviewBody from './AnimPreviewBody'
 import AccentPreviewBody from './AccentPreviewBody'
 import { useSelector } from 'react-redux'
 
-const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview}) => {
+const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) => {
 
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -16,7 +16,7 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview}) => 
             borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`h-fit ${Device !== 'Desktop' ? `w-[45%]`: `w-[45%]`} shrink-0 overflow-hidden rounded-2xl flex flex-col border`}>
+        }} className={`h-fit ${Device !== 'Desktop' ? `w-[45%]` : `w-[45%]`} shrink-0 overflow-hidden rounded-2xl flex flex-col border`}>
             <div
                 style={{
                     backgroundColor: ThemeColors.bg,

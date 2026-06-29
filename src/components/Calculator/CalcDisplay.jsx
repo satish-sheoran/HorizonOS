@@ -1,12 +1,14 @@
 import React from 'react'
 import { getFontClass } from '../../utils/CalculatorFns';
 import { useSelector } from 'react-redux';
-import { CSS_EASING} from '../../constants/Settings'
+import { CSS_EASING } from '../../constants/Settings'
 
-const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, AccentColors ,Theme}) => {
-
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, AccentColors, Theme }) => {
+    
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+   
     return (
         <textarea
             ref={inputRef}
@@ -36,10 +38,13 @@ const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //an
             }} // to prevent a bug which cause its input point to start
             readOnly={currDevice === 'Desktop'} //user can not edit if he is not on phone
             className={` ${getFontClass(result.length)} calc-result ${currDevice === 'Desktop' ? 'no-cursor' : ''}`}
-            style={{color : ThemeColors.primaryText , transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
-            >
+            style={{
+                fontFamily : Weights.SemiBold,
+                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }}
+        >
         </textarea >
     )
 }

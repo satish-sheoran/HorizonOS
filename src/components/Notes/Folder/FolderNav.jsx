@@ -2,16 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { ArrowLeft, Trash2 } from 'lucide-react'
 import { useEffect, useState } from "react";
-import {CSS_EASING} from '../../../constants/Settings'
+import { CSS_EASING } from '../../../constants/Settings'
 import { manageDeletedCategories, setOpenManageFolder, setStartDeletingCat } from "../../../redux/features/NotesStrorage";
 import ConfirmDeletePopUp from './ConfirmDeletePopUp'
 
 
-const FolderNav = ({Theme,AccentColors,ThemeColors}) => {
+const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch();
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false);
-
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
@@ -31,9 +31,11 @@ const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //an
 
 
     return (
-        <div style={{ color: ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation] }} className={`folder-nav `}>
+        <div style={{
+            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+        }} className={`folder-nav `}>
 
             {/* if start editing then show cancel button to exit editing mode else just show button to go back to tasks area */}
             {
@@ -43,10 +45,11 @@ transitionTimingFunction : CSS_EASING[Animation] }} className={`folder-nav `}>
                         dispatch(manageDeletedCategories({ category: 'Empty Trash' })) // empty the deletedCategories in notes storage when user exit from deleting mode to remove the select icons from categories
                     }}
                         style={{
+                            fontFamily : Weights.Regular,
                             color: AccentColors.CODE,
-                            transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                            transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`active:scale-95`}>
                         <span>Cancel</span>
@@ -54,9 +57,11 @@ transitionTimingFunction : CSS_EASING[Animation]
                     :
                     <button onClick={() => {
                         dispatch(setOpenManageFolder({ open: false }));
-                    }} style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='pr-9.5 pb-1  active:scale-95'>
+                    }} style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='pr-9.5 pb-1  active:scale-95'>
                         <ArrowLeft strokeWidth={2} />
                     </button>
             }
@@ -76,9 +81,9 @@ transitionTimingFunction : CSS_EASING[Animation]}} className='pr-9.5 pb-1  activ
                 }}
                     style={{
                         color: AccentColors.CODE,
-                        transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
                     }}
                     className='active:scale-95'>
                     <Trash2 strokeWidth={2} />
@@ -86,10 +91,11 @@ transitionTimingFunction : CSS_EASING[Animation]
                 :
                 <button onClick={() => dispatch(setStartDeletingCat({ start: true }))}
                     style={{
+                        fontFamily : Weights.Regular,
                         color: AccentColors.CODE,
-                        transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
                     }}
                     className='active:scale-95'>
                     <span>Edit</span>

@@ -4,12 +4,15 @@ import { manageDeletedCategories, setActiveCategory, setOpenManageFolder, setSta
 import { Check } from 'lucide-react';
 import useLongPress from '../../../hooks/Use-long-press';
 import { COMMON_COLORS } from '../../../constants/style';
-import {CSS_EASING} from '../../../constants/Settings'
+import { CSS_EASING } from '../../../constants/Settings'
 // count show remaining
 
-const FolderCategory = ({Theme,AccentColors,ThemeColors}) => {
+const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
+
+
     const dispatch = useDispatch();
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const categories = useSelector(store => store.Notes.allCategories) // all categories for notes app
     const activeCategory = useSelector((store) => store.Notes.activeCategory)
@@ -26,9 +29,11 @@ const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //an
 
 
     return (
-        <div style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`overflow-y-auto rounded-2xl folder-category-list
+        <div style={{
+            transitionProperty: 'color, background-color, border-color',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+        }} className={`overflow-y-auto rounded-2xl folder-category-list
         ${folderContentWidth >= 768 ?
                 `${folderContentWidth >= 1200 ? 'grid-cols-3' : 'grid-cols-2'}`
                 :
@@ -53,22 +58,25 @@ transitionTimingFunction : CSS_EASING[Animation]}} className={`overflow-y-auto r
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
                         style={{
+                            fontFamily: activeCategory === category ? Weights.Bold : Weights.SemiBold,
                             backgroundColor: activeCategory === category ? AccentColors.CODE : ThemeColors.third,
                             color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
                             '--hover': ThemeColors.header,
                             '--active': ThemeColors.header,
-                            transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                            transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`
                             ${activeCategory === category ? 'font-bold' : 'font-semibold HOVER_CLASS'}
                             
                             `}>
                         <Check strokeWidth={2.5}
-                            style={{ color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent',transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation] }}
+                            style={{
+                                color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent', transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }}
                             className={`select-none `} /> {/* on hidden,it do not reserve space so used text-transparent */}
 
                         <span className="select-none">{category.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
@@ -77,13 +85,15 @@ transitionTimingFunction : CSS_EASING[Animation] }}
                         {/* count and selection area to delete cateogries */}
                         {
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
-                                <span 
-                                style={{backgroundColor : deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
-                                className={` rounded-full w-5.5 h-5.5 flex items-center justify-center
+                                <span
+                                    style={{
+                                        backgroundColor: deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                                        transitionDuration: Speed,
+                                        transitionTimingFunction: CSS_EASING[Animation]
+                                    }}
+                                    className={` rounded-full w-5.5 h-5.5 flex items-center justify-center
                                 `}>
-                                    {deletedCategories?.includes(category) && <Check style={{color : COMMON_COLORS.White}} className='rounded-full' strokeWidth={3} size={17} />}
+                                    {deletedCategories?.includes(category) && <Check style={{ color: COMMON_COLORS.White }} className='rounded-full' strokeWidth={3} size={17} />}
                                 </span>
                                 :
                                 <span className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note => note.category === category).length}</span>

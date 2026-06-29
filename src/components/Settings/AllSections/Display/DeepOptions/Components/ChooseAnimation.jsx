@@ -4,30 +4,37 @@ import { COMMON_COLORS } from '../../../../../../constants/style'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAnimationTypeNSpeed } from '../../../../../../redux/features/wallpaper'
 import { AnimationSpeedAndType } from '../../../../../../constants/Settings'
-import {CSS_EASING} from '../../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../../constants/settings'
 
 
 
 const ChooseAnimation = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
 
     const dispatch = useDispatch();
-const {Name : AnimationName, Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const { Name: AnimationName, Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div className={`flex flex-col gap-2 `}>
             <div className='flex flex-col gap-0.5'>
-                <span style={{ color: ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation] }} className={` text-[0.8rem] font-bold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
-                <span style={{ color: ThemeColors.thirdText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation] }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose the level of animations and transitions.</span>
+                <span style={{
+                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={` text-[0.8rem] font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+                <span style={{
+                    fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose the level of animations and transitions.</span>
             </div>
 
-            <div style={{ backgroundColor: ThemeColors.header ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`flex flex-col gap-2 rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`} >
+            <div style={{
+                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className={`flex flex-col gap-2 rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`} >
 
                 {AnimationSpeedAndType.map(({ Name, icon, Description }, idx) => {
                     const Icon = Icons[icon]
@@ -40,29 +47,37 @@ transitionTimingFunction : CSS_EASING[Animation]}} className={`flex flex-col gap
                             '--active': Theme !== 'dark' ?
                                 Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                                 :
-                                COMMON_COLORS.Gray,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                                COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
                     >
                         <div className={`flex items-center gap-3`}>
-                            {Icon && <Icon style={{color : AnimationName===Name ? AccentColors.CODE : ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} strokeWidth={2} />}
+                            {Icon && <Icon style={{
+                                color: AnimationName === Name ? AccentColors.CODE : ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }} strokeWidth={2} />}
                             <div className={`flex flex-col gap-0.5 text-left`}>
-                                <span className={`font-bold text-[0.8rem] `}>{Name}</span>
-                                <span style={{ color: ThemeColors.grayish ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`font-semibold text-[0.55rem] `}>{Description}</span>
+                                <span style={{fontFamily : Weights.SemiBold}} classname={`font-semibold   text-[0.8rem]`}>{Name}</span>
+                                <span style={{
+                                    fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} className={`text-[0.55rem] `}>{Description}</span>
                             </div>
                         </div>
-                        <div style={{ borderColor: ThemeColors.bg, backgroundColor: AnimationName === Name ? AccentColors.CODE : '' ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`${AnimationName === Name ? '' : 'border'} w-6 h-6 rounded-full  flex justify-center items-center`}>
-                            {AnimationName === Name && <Icons.Check style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} strokeWidth={3} size={Device !== 'Desktop' ? 15 : 20} />}
+                        <div style={{
+                            borderColor: ThemeColors.bg, backgroundColor: AnimationName === Name ? AccentColors.CODE : '', transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }} className={`${AnimationName === Name ? '' : 'border'} w-6 h-6 rounded-full  flex justify-center items-center`}>
+                            {AnimationName === Name && <Icons.Check style={{
+                                transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }} strokeWidth={3} size={Device !== 'Desktop' ? 15 : 20} />}
                         </div>
                     </button>
                 })}

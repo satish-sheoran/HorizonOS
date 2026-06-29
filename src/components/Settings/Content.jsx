@@ -7,7 +7,7 @@ import Display from './AllSections/Display/Display'
 import Apps from './AllSections/Apps/Apps'
 import AdditionalSettings from './AllSections/Additional/AdditionalSettings'
 import Feedback from './AllSections/Feedback/Feedback'
-import { SECTIONS ,CSS_EASING} from '../../constants/Settings'
+import { SECTIONS, CSS_EASING } from '../../constants/Settings'
 import { setActivePanel } from '../../redux/features/SettingsSlice'
 
 const SETTINGS_COMPONENTS = {
@@ -21,16 +21,18 @@ const SETTINGS_COMPONENTS = {
 const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors, AccentColors, showContent }) => {
     const dispatch = useDispatch()
     const activePanel = useSelector((store) => store.Settings.activePanel)
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     const setShowContentFalse = () => setShowContent(false)
     const setActivePanelEmpty = () => dispatch(setActivePanel({ panel: '' }))
 
     return (
-        <section style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`relative h-full  flex flex-col ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
+        <section style={{
+            transitionProperty: 'color, background-color, border-color',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+        }} className={`relative h-full  flex flex-col ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
 
             {/* here activePanel is used to check if any option is opened in deep OR not */}
             {/* toolbar for back and save options */}

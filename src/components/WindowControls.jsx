@@ -8,6 +8,7 @@ import { CSS_EASING } from '../constants/Settings'
 const WindowControls = ({ id, Theme, ThemeColors }) => {
 
     const dispatch = useDispatch()
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const { closeApp, toggleFullscreen } = UsewindowControlFns();
@@ -94,11 +95,11 @@ const WindowControls = ({ id, Theme, ThemeColors }) => {
 
             <p
                 style={{
-                    color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                    fontFamily: Weights.SemiBold, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
-                className={`text-2xl font-bold capitalize md:text-xl select-none `}>{id === 'notes' ? activeTab : id}</p>
+                className={`text-2xl font-semibold capitalize md:text-xl select-none `}>{id === 'notes' ? activeTab : id}</p>
         </div>
 
     )

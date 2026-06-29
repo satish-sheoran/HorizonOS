@@ -24,9 +24,11 @@ const AdditionalSettings = ({ Section, Theme, ThemeColors, AccentColors, Queries
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   return (
-    <div style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`additional-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto  p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+    <div style={{
+      transitionProperty: 'color, background-color, border-color',
+      transitionDuration: Speed,
+      transitionTimingFunction: CSS_EASING[Animation]
+    }} className={`additional-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto  p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
 
       <AdditionalSections Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} ParentSection={Section} Section={SubSections} />
 

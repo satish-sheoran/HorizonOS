@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import CreateFolderPopUp from './CreateFolderPopUp';
 import { useEffect, useState } from 'react';
 import { COMMON_COLORS } from '../../../constants/style';
-import {CSS_EASING} from '../../../constants/Settings'
+import { CSS_EASING } from '../../../constants/Settings'
 
 const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
+
     const dispatch = useDispatch()
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const [opencreateFolderPopUp, setOpencreateFolderPopUp] = useState(false)
@@ -32,15 +34,15 @@ const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
                     background: ThemeColors.third,
                     '--hover': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
-                    transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                    transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`HOVER_CLASS create-folder`}>
                 <p className='plus-icon-div'>
                     <Plus strokeWidth={3.5} size={14} />
                 </p>
-                <span className='select-none font-semibold text-sm'>New Folder</span>
+                <span style={{fontFamily : Weights.SemibBold}} className='select-none font-semibold text-sm'>New Folder</span>
             </button>
 
             {opencreateFolderPopUp === true && <CreateFolderPopUp opencreateFolderPopUp={opencreateFolderPopUp} setOpencreateFolderPopUp={setOpencreateFolderPopUp} Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />}

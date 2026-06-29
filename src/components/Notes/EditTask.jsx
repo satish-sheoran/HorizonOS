@@ -4,17 +4,19 @@ import { toast } from 'react-toastify';
 import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import {CSS_EASING} from '../../constants/Settings'
+import { CSS_EASING } from '../../constants/Settings'
 import { addNote, manageEditTask } from '../../redux/features/NotesStrorage';
 import { formatDate, formatTime } from '../../utils/formatTime';
 import { COMMON_COLORS } from '../../constants/style';
 
-const EditTask = ({Theme,ThemeColors,AccentColors}) => {
+const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
+
     const dispatch = useDispatch();
     const EditTaskContainer = useRef(null)
 
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { open, TaskId } = useSelector((store) => store.Notes.EditTaskOpen)
     const Notes = useSelector(store => store.Notes.Notes);
@@ -99,20 +101,26 @@ const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //an
 
 
     return (
-        <div ref={EditTaskContainer} style={{ backgroundColor: ThemeColors.bg ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden `}>
+        <div ref={EditTaskContainer} style={{
+            backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+        }} className={`edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden `}>
 
             {/* nav icons */}
-            <div style={{ color: ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation] }} className={`edit-tasks-controls flex items-center justify-between ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
+            <div style={{
+                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className={`edit-tasks-controls flex items-center justify-between ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 {/* arrow icon and cateogry */}
                 <div className={`flex gap-4 items-center`}>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93' onPointerUp={() => {
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93' onPointerUp={() => {
                         setCatOpen(false)
                         dispatch(manageEditTask({ open: false }))
                         dispatch(addNote({ TaskId, title: currTaskTitle, desc: currTaskDesc, category: currCategory }))
@@ -127,17 +135,21 @@ transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93' o
                         onPointerUp={() => {
                             if (!isSetCatOpen) setCatOpen(true);
                         }}
-                        style={{ backgroundColor: ThemeColors.third ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
+                        style={{
+                            backgroundColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }}
                         className={`cursor-pointer select-none relative px-3.5 py-1  rounded-xl flex items-center gap-2  
                         `}>
                         <FolderClosed size={20} />
                         <div
-                            style={{ color: ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation] }}
-                            className={`select-none flex gap-2 font-bold `}>{currCategory}</div>
+                            style={{
+                                fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }}
+                            className={`select-none flex gap-2 font-semibold `}>{currCategory}</div>
 
                         {/* all categories layer which comes only when we hovrer or click the menu btn  */}
                         <div className={` menu absolute z-50 select-none cursor-pointer top-0 left-0 right-0 flex flex-col rounded-xl overflow-hidden w-full `}>{
@@ -150,11 +162,12 @@ transitionTimingFunction : CSS_EASING[Animation] }}
                                         setcurrCategory(category)
                                     }}
                                     style={{
+                                        fontFamily: Weights.SemiBold,
                                         color: currCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
-                                        backgroundColor: currCategory === category ?AccentColors.CODE : ThemeColors.header,
-                                      transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]  
+                                        backgroundColor: currCategory === category ? AccentColors.CODE : ThemeColors.header,
+                                        transitionProperty: 'color, background-color, border-color',
+                                        transitionDuration: Speed,
+                                        transitionTimingFunction: CSS_EASING[Animation]
                                     }}
                                     className={`font-semibold  flex justify-between items-center  px-4 py-1.5  `}>
                                     {category} <Check size={20} className={`${category === currCategory ? '' : 'hidden'}`} />
@@ -166,22 +179,30 @@ transitionTimingFunction : CSS_EASING[Animation]
                 </div>
 
                 {/* other its nav icons */}
-                <div style={{ color: ThemeColors.primaryText ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={` flex items-center gap-3 `}>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
+                <div style={{
+                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={` flex items-center gap-3 `}>
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Undo2 size={27} />
                     </button>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Redo2 size={27} />
                     </button>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' onPointerUp={() => {
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93 ' onPointerUp={() => {
                         setCatOpen(false)
                         dispatch(manageEditTask({ open: false }))
                         dispatch(addNote({ TaskId, title: currTaskTitle || '', desc: currTaskDesc || "", category: currCategory }))
@@ -196,31 +217,35 @@ transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' 
 
 
             {/* textarea inputs */}
-            <div style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`edit-task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto  ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
+            <div style={{
+                transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className={`edit-task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto  ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 <textarea spellCheck={false}
                     value={currTaskTitle}
                     onChange={(e) => setCurrTaskTitle(e.target.value)}
                     name="newTask-title"
                     style={{
-                        color: ThemeColors.primaryText,
-                        '--placeholder':  ThemeColors.thirdText,
-                        transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                        fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+                        '--placeholder': ThemeColors.thirdText,
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                    className={` newTask-title rounded-lg shrink-0 p-1 font-bold text-xl placeholder:text-xl h-fit resize-none  outline-none  
+                    className={` newTask-title rounded-lg shrink-0 p-1 font-semibold text-xl placeholder:text-xl h-fit resize-none  outline-none  
                     `}
                     placeholder='Title'
                     rows={1}
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>
 
-                <div style={{color : ThemeColors.thirdText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className="font-bold shrink-0 date-charCount flex gap-3 ">
+                <div style={{
+                   fontFamily : Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className=" shrink-0 date-charCount flex gap-3 ">
                     <span>{formattedDate} {formattedTime}</span>
                     |
                     <span>{currTaskDesc.replace(/\s/g, "").length} characters</span>
@@ -231,13 +256,14 @@ transitionTimingFunction : CSS_EASING[Animation]}} className="font-bold shrink-0
                     value={currTaskDesc}
                     onChange={(e) => setCurrTaskDesc(e.target.value)}
                     name="newTask-desc"
-                    style={{color : ThemeColors.secText,
-                                            '--placeholder' :ThemeColors.thirdText,
-                                            transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-                                        }}
-                    className={` newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-[0.95rem] font-bold placeholder:text-[0.95rem] outline-none `}
+                    style={{
+                       fontFamily : Weights.Regular, color: ThemeColors.secText,
+                        '--placeholder': ThemeColors.thirdText,
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }}
+                    className={` newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-[0.95rem] placeholder:text-[0.95rem] outline-none `}
                     placeholder='Start typing'
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>

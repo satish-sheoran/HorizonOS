@@ -4,18 +4,21 @@ import { toast } from 'react-toastify';
 import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import {CSS_EASING} from '../../constants/Settings'
+import { CSS_EASING } from '../../constants/Settings'
 import { addNote, setCreateTaskOpen } from '../../redux/features/NotesStrorage';
 import { formatDate, formatTime } from '../../utils/formatTime';
 import { CustomEase } from 'gsap/all';
 import { COMMON_COLORS } from '../../constants/style';
 
-const CreateTask = ({Theme,ThemeColors,AccentColors}) => {
+const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
+
+
     const dispatch = useDispatch();
     const newTaskContainer = useRef(null)
-    
+
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
-const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const isNewTaskOpen = useSelector((store) => store.Notes.CreateTaskOpen)
     const [newTaskTitle, setNewTaskTitle] = useState('');
@@ -58,21 +61,27 @@ const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //an
 
     return (
         <div ref={newTaskContainer}
-            style={{ backgroundColor: ThemeColors.bg ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
+            style={{
+                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }}
             className={`new-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden `}>
 
             {/* nav icons */}
-            <div style={{color : ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`create-tasks-controls flex items-center justify-between ${Device !=='Desktop'?'px-(--padding-lg)':'px-(--padding-xl)'}`}>
+            <div style={{
+                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className={`create-tasks-controls flex items-center justify-between ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 {/* arrow icon */}
                 <div>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93' onClick={() => {
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93' onClick={() => {
                         dispatch(setCreateTaskOpen({ open: false }))
                         if (!newTaskTitle && !newTaskDesc) return; // if both title and desc is empty then do not add note and just close create task page
                         dispatch(addNote({ title: newTaskTitle || '', desc: newTaskDesc || '' }))
@@ -85,19 +94,25 @@ transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93' o
 
                 {/* other its nav icons */}
                 <div className={`flex items-center gap-3 `}>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' onClick={() => toast.info('Functionality will be added soon')}>
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93 ' onClick={() => toast.info('Functionality will be added soon')}>
                         <Undo2 size={27} />
                     </button>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' onClick={() => toast.info('Functionality will be added soon')}>
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93 ' onClick={() => toast.info('Functionality will be added soon')}>
                         <Redo2 size={27} />
                     </button>
-                    <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' onClick={() => {
+                    <button style={{
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className='active:scale-93 ' onClick={() => {
                         dispatch(setCreateTaskOpen({ open: false }))
                         if (!newTaskTitle && !newTaskDesc) return; // if both title and desc is empty then do not add note and just close create task page
 
@@ -113,30 +128,35 @@ transitionTimingFunction : CSS_EASING[Animation]}} className='active:scale-93 ' 
 
 
             {/* textarea inputs */}
-            <div style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto ${Device !=='Desktop'?'px-(--padding-lg)':'px-(--padding-xl)'}`}>
+            <div style={{
+                transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className={`task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 <textarea spellCheck={false}
                     value={newTaskTitle}
                     onChange={(e) => setNewTaskTitle(e.target.value)}
                     name="newTask-title"
-                    style={{color : ThemeColors.primaryText,
-                        '--placeholder' : ThemeColors.thirdText,
-                        transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                    style={{
+                        fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+                        '--placeholder': ThemeColors.thirdText,
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                    className={`Placeholder newTask-title rounded-lg shrink-0 p-1 font-bold text-xl placeholder:text-xl h-fit resize-none  outline-none  
+                    className={`Placeholder newTask-title rounded-lg shrink-0 p-1 font-semibold text-xl placeholder:text-xl h-fit resize-none  outline-none  
                     `}
                     placeholder='Title'
                     rows={1}
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>
 
-                <div style={{color : ThemeColors.thirdText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`font-bold shrink-0 date-charCount flex gap-3 `}>
+                <div style={{
+                    fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={` shrink-0 date-charCount flex gap-3 `}>
                     <span>{formattedDate} {formattedTime}</span>
                     |
                     <span>{newTaskDesc.replace(/\s/g, "").length} characters</span>
@@ -147,13 +167,15 @@ transitionTimingFunction : CSS_EASING[Animation]}} className={`font-bold shrink-
                     value={newTaskDesc}
                     onChange={(e) => setNewTaskDesc(e.target.value)}
                     name="newTask-desc"
-                    style={{color : ThemeColors.secText,
-                        '--placeholder' : ThemeColors.thirdText,
-                        transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                    style={{
+                        fontFamily: Weights.Regular,
+                        color: ThemeColors.secText,
+                        '--placeholder': ThemeColors.thirdText,
+                        transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                    className={`Placeholder newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-[0.95rem] font-bold placeholder:text-[0.95rem] outline-none`}
+                    className={`Placeholder newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-[0.95rem]  placeholder:text-[0.95rem] outline-none`}
                     placeholder='Start typing'
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>

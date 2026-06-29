@@ -7,12 +7,17 @@ import ConfirmDeletePopUp from './Folder/ConfirmDeletePopUp'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { COMMON_COLORS, DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "../../constants/style";
-import {CSS_EASING} from '../../constants/Settings'
-const Footer = ({Theme,ThemeColors,AccentColors}) => {
+import { CSS_EASING } from '../../constants/Settings'
+
+
+const Footer = ({ Theme, ThemeColors, AccentColors }) => {
+
     const dispatch = useDispatch();
+
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-        const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletedNotes = useSelector(store => store.Notes.deletedNotes);
@@ -38,9 +43,11 @@ const Footer = ({Theme,ThemeColors,AccentColors}) => {
     }, [isDeleteNoteOpen])
 
     return (
-        <footer style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 `}>
+        <footer style={{
+            transitionProperty: 'color, background-color, border-color',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+        }} className={`${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 `}>
             <div className='pb-1'>
                 {
                     isDeleteNoteOpen === false ?
@@ -52,26 +59,27 @@ transitionTimingFunction : CSS_EASING[Animation]}} className={`${!isDeleteNoteOp
                             >
                                 <TextAlignStart size={22} strokeWidth={2}
                                     style={{
-                                        backgroundColor:  activeTab ==='Notes'?ThemeColors.primaryText:ThemeColors.grayish,
+                                        backgroundColor: activeTab === 'Notes' ? ThemeColors.primaryText : ThemeColors.grayish,
                                         '--stroke': ThemeColors.primaryText,
-                                        transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                                        transitionProperty: 'color, background-color, border-color',
+                                        transitionDuration: Speed,
+                                        transitionTimingFunction: CSS_EASING[Animation]
                                     }}
                                     className={`  
                         rounded px-[1.2px] 
                         ${Theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--primary-dark-clr)'}`} />
 
-                                <span 
-                                style={{
-                                    color : activeTab ==='Notes'?ThemeColors.primaryText
-                                    :
-                                    ThemeColors.grayish,
-                                    transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-                                }}
-                         >Notes</span>
+                                <span
+                                    style={{
+                                        fontFamily: Weights.SemiBold,
+                                        color: activeTab === 'Notes' ? ThemeColors.primaryText
+                                            :
+                                            ThemeColors.grayish,
+                                        transitionProperty: 'color, background-color, border-color',
+                                        transitionDuration: Speed,
+                                        transitionTimingFunction: CSS_EASING[Animation]
+                                    }}
+                                >Notes</span>
                             </button>
 
                             <button
@@ -80,20 +88,21 @@ transitionTimingFunction : CSS_EASING[Animation]
                                 }}
                             >
                                 <Check size={22} strokeWidth={2} style={{
-                                        backgroundColor:  activeTab !=='Notes'?ThemeColors.primaryText:ThemeColors.grayish,
-                                        '--strokeClr': ThemeColors.primaryText,
-                                        transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-                                    }} className={`
+                                    backgroundColor: activeTab !== 'Notes' ? ThemeColors.primaryText : ThemeColors.grayish,
+                                    '--strokeClr': ThemeColors.primaryText,
+                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} className={`
                         rounded ${Theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
                                 <span style={{
-                                    color : activeTab !=='Notes'?ThemeColors.primaryText
-                                    :
-                                    ThemeColors.grayish,
-                                    transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
+                                    fontFamily: Weights.SemiBold,
+                                    color: activeTab !== 'Notes' ? ThemeColors.primaryText
+                                        :
+                                        ThemeColors.grayish,
+                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
                                 }} className={`
                                                
                         `}>Tasks</span>
@@ -101,16 +110,20 @@ transitionTimingFunction : CSS_EASING[Animation]
                         </>
                         :
                         <>
-                            <button styl={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
+                            <button styl={{
+                                transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => dispatch(setStartDeletingNotes({ start: false }))}
 
                             >
-                                <X style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} size={22} strokeWidth={2} className={`
+                                <X style={{
+                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} size={22} strokeWidth={2} className={`
                         rounded px-[1.2px]   
                         ${Theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
@@ -118,23 +131,30 @@ transitionTimingFunction : CSS_EASING[Animation]}} size={22} strokeWidth={2} cla
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span style={{color : ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={` 
+                                <span style={{
+                                    fontFamily: Weights.SemiBold,
+                                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} className={` 
                          `}>Close</span>
 
                             </button>
 
-                            <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
+                            <button style={{
+                                transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => toast.info('Feature Coming Soon')}
 
                             >
-                                <PinOff style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} size={22} strokeWidth={2} className={`
+                                <PinOff style={{
+                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} size={22} strokeWidth={2} className={`
                                     
                         rounded px-[1.2px]  
 ${Theme != 'dark' ?
@@ -143,22 +163,28 @@ ${Theme != 'dark' ?
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span style={{color : ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} >Unpin</span>
+                                <span style={{
+                                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} >Unpin</span>
 
                             </button>
 
-                            <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
+                            <button style={{
+                                transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => toast.info('Feature Coming Soon')}
 
                             >
-                                <FolderInput style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} size={22} strokeWidth={2} className={`
+                                <FolderInput style={{
+                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} size={22} strokeWidth={2} className={`
                                      
                         rounded px-[1.2px] 
 ${Theme != 'dark' ?
@@ -167,15 +193,19 @@ ${Theme != 'dark' ?
                                         'stroke-(--primary-light-clr)'}
                         `} />
 
-                                <span style={{color : ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} >Move to</span>
+                                <span style={{
+                                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} >Move to</span>
 
                             </button>
 
-                            <button style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
+                            <button style={{
+                                transitionProperty: 'color, background-color, border-color',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => {
                                     if (deletedNotes.length === 0) {
@@ -186,18 +216,22 @@ transitionTimingFunction : CSS_EASING[Animation]}}
                                     }
                                 }}
                             >
-                                <Trash style={{transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} size={22} strokeWidth={2} className={`
+                                <Trash style={{
+                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} size={22} strokeWidth={2} className={`
                         rounded px-[1.2px]   
 ${Theme != 'dark' ?
                                         'stroke-(--primary-dark-clr)'
                                         :
                                         'stroke-(--primary-light-clr)'}                        `} />
 
-                                <span style={{color : ThemeColors.primaryText,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} >Delete</span>
+                                <span style={{
+                                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                    transitionDuration: Speed,
+                                    transitionTimingFunction: CSS_EASING[Animation]
+                                }} >Delete</span>
 
                             </button>
                         </>

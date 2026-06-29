@@ -3,17 +3,23 @@ import Warning from './Components/Warning'
 import WhatToReset from './Components/WhatToReset'
 import LearnToBackup from './Components/LearnToBackup'
 import ResetComp from './Components/ResetComp'
-import { useSelector} from 'react-redux'
-import {CSS_EASING} from '../../../../../constants/Settings'
-const Factoryreset = ({ Name,Section, Theme, Device, fullScreen,ThemeColors,AccentColors }) => {
-  const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-      const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+import { useSelector } from 'react-redux'
+import { CSS_EASING } from '../../../../../constants/Settings'
+
+
+const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, AccentColors }) => {
+
+
+  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+  const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+
+
   return (
     <div style={{
-            borderColor: ThemeColors.third,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-        }} className={`deep-factory-reset py-[2.5%]  select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
+      borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+      transitionDuration: Speed,
+      transitionTimingFunction: CSS_EASING[Animation]
+    }} className={`deep-factory-reset py-[2.5%]  select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
 
       <div className={` flex flex-col gap-2`}>
         {/* Warning message */}

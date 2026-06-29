@@ -12,6 +12,7 @@ import { CSS_EASING } from '../../../../../../constants/settings'
 const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
 }) => {
     const dispatch = useDispatch()
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const [SwitchPreviewer, setSwitchPreviewer] = useState(false)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -21,37 +22,34 @@ const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
 
     return (
         <div className={`mt-2 flex flex-col gap-2`}>
-            <span style={{
-                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
-            }} className={` font-bold text-[0.8rem] ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>Preview </span>
+            <div className='flex flex-col gap-0.5'>
+                <span style={{
+                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={` font-semibold text-[0.8rem] ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>Preview </span>
+                <span style={{
+                    fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={`text-[0.6rem] ${Device !=='Desktop'?'px-3':'px-2.5'}`}>
+                    Enable dark mode for the system.
+                </span>
+            </div>
 
             <div style={{
                 backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`flex flex-col gap-2 rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
-                <div style={{
-                    transitionProperty: 'color, background-color, border-color',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`flex flex-col gap-0.5 rounded-2xl ${Device !== 'Desktop' ? `px-3 py-1` : `px-2.5 py-1`} `}>
+               
                     <span style={{
-                        color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                        fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={` text-[0.6rem]`}>
-                        Enable dark mode for the system.
-                    </span>
-                    <span style={{
-                        color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={` text-[0.6rem]`}>
+                    }} className={`text-[0.6rem]`}>
                         You  can also customize it for individual apps.
                     </span>
-                </div>
                 <div className={`flex justify-between gap-1 items-center overflow-hidden`}>
                     <WindowPreview Theme={Theme} ThemeColors={!SwitchPreviewer ? LIGHT_THEME_COLORS : DARK_THEME_COLORS} AccentColors={AccentColors} Device={Device} Preview='ThemePreview' />
 
