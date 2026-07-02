@@ -3,6 +3,7 @@ import DarkModeEnabler from './Components/DarkModeEnabler'
 import SepDarkModeForApps from './Components/SepDarkModeForApps'
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../../../../constants/Settings'
+
 const DEEP_OPTIONS = {
   DarkModeEnabler,
   SepDarkModeForApps

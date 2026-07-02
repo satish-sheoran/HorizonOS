@@ -3,7 +3,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Blue',
         CODE: '#3B82F6',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#ACC5F6',
+        Bg_Clr: 'rgba(59, 130, 246, 0.2)',
         Hover_Clr: '#6096f3',
         Active_Clr: '#6096f3'
 
@@ -12,7 +12,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Red',
         CODE: '#EF4444',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#FF9E99',
+        Bg_Clr: 'rgba(239, 68, 68, 0.2)',
         Hover_Clr: '#ff6157',
         Active_Clr: '#ff6157'
     },
@@ -20,7 +20,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Purple',
         CODE: '#7C3AED',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#AB86F3',
+        Bg_Clr: 'rgba(124, 58, 237, 0.2)',
         Hover_Clr: '#9867EF',
         Active_Clr: '#9867EF'
     },
@@ -28,7 +28,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Magenta',
         CODE: '#D52DEB',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#EFA7F6',
+        Bg_Clr: 'rgba(213, 45, 235, 0.2)',
         Hover_Clr: '#DC50EC',
         Active_Clr: '#D84AED'
     },
@@ -36,7 +36,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Yellow',
         CODE: '#FACC15',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#FAECB7',
+        Bg_Clr: 'rgba(250, 204, 21, 0.2)',
         Hover_Clr: '#FAD74c',
         Active_Clr: '#FAD74C'
     },
@@ -44,7 +44,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Lime',
         CODE: '#84CC16',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#CFF59E',
+        Bg_Clr: 'rgba(132, 204, 22, 0.2)',
         Hover_Clr: '#A9ED45',
         Active_Clr: '#A9ED45'
     },
@@ -52,7 +52,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Green',
         CODE: 'rgb(38, 165, 22)',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#8EF386',
+        Bg_Clr: 'rgba(38, 165, 22, 0.2)',
         Hover_Clr: '#31D322',
         Active_Clr: '#31D322'
     },
@@ -60,7 +60,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Cyan',
         CODE: '#22D3EE',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#A3EEF5',
+        Bg_Clr: 'rgba(34, 211, 238, 0.2)',
         Hover_Clr: '#58DEEE',
         Active_Clr: '#58DEEE'
     },
@@ -68,7 +68,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Slate_Gray',
         CODE: '#94A3B8',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#D4DEE2',
+        Bg_Clr: 'rgba(148, 163, 184, 0.2)',
         Hover_Clr: '#B8C3D0',
         Active_Clr: '#B8C3D0'
     },
@@ -76,7 +76,7 @@ export const ACCENT_COLORS = [
         COLOR: 'Orange',
         CODE: 'rgb(237,129,20)',
         HOVER: 'HOVER_CLASS',
-        Bg_Clr: '#F1B97E',
+        Bg_Clr: 'rgba(237,129,20,0.2)',
         Hover_Clr: '#ED9840',
         Active_Clr: '#ED9840'
     }

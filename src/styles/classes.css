@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+.light-glassMorphism{
+    @apply bg-white/75 shadow-[0_10px_30px_rgba(0,0,0,0.45),0_2px_8px_rgba(0,0,0,0.05)]
+}
+
+.dark-glassMorphism{
+    @apply bg-zinc-900/65  shadow-[0_10px_30px_rgba(0,0,0,0.45),0_2px_8px_rgba(0,0,0,0.30)]
+}
 
 .no-cursor {
     @apply caret-transparent;
@@ -11,7 +18,7 @@
 }
 
 .dock {
-    @apply fixed left-1/2 -translate-x-1/2 bottom-[1vh] z-(--z-dock)  p-(--padding-dock) w-[90vw] h-22 md:w-fit md:h-19 select-none md:gap-(--gap-md)
+    @apply fixed left-1/2 -translate-x-1/2 z-(--z-dock) 
 }
 
 .status-bar {

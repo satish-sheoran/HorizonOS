@@ -1,21 +1,45 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../../../../constants/Settings'
+import wallpaperChange from './components/wallpaperChange'
+import WallpaperPreview from './components/WallpaperPreview'
 
-const ChangewallpaperDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors, AccentColors }) => {
+const DEEP_OPTIONS = {
+    wallpaperChange,
+    WallpaperPreview
+}
+
+const ChangewallpaperDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors, AccentColors, DeepSubSection }) => {
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <div style={{
-           fontFamily : Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+        <section style={{
+            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`font-semibold flex flex-col border border-blue-400 gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto pb-5 px-[2.5%]'}`}>
-            {Name}
-        </div>
+        }} className={`deep-changeWallpaper-option flex flex-col py-[2.5%] gap-2 select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
+
+            {
+                DeepSubSection?.map(({ Section: DeepSubName, FileName }) => {
+                    const Component = DEEP_OPTIONS[FileName];
+
+                    if (!Component) return null;
+
+                    return <Component
+                        key={DeepSubName}
+                        Name={DeepSubName}
+                        Theme={Theme}
+                        ThemeColors={ThemeColors}
+                        AccentColors={AccentColors}
+                        Device={Device}
+                        fullScreen={fullScreen}
+                    />
+                })
+            }
+        </section>
     )
 }
 

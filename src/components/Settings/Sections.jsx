@@ -9,6 +9,7 @@ import { CSS_EASING } from '../../constants/Settings'
 const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColors, AccentColors }) => {
 
     const dispatch = useDispatch()
+    const Device = useSelector(store => store.Device.currDevice)
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -54,7 +55,7 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
                                 fontFamily : Weights.SemiBold ,transitionProperty: 'color, background-color, border-color',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
-                            }} className='md:text-md flex gap-1.5 items-center '>
+                            }} className={`${Device !=='Desktop'?'text-[1.13rem]':'text-[1rem]'}  flex gap-1.5 items-center `}>
                                 {SectionIcon && <SectionIcon className='shrink-0' />}
                                 {Section}
                             </div>

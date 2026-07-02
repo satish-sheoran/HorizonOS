@@ -1,7 +1,6 @@
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toast } from 'react-toastify'
 import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
 import { COMMON_COLORS } from '../../../../../constants/style'
 import { useSelector } from 'react-redux'
@@ -17,8 +16,7 @@ const WallpaperBehaviour = ({ Option, fullScreen, Device, Theme, ThemeColors, Ac
     return (
         <div
             onClick={() => {
-                // dispatch(setActivePanel({ panel: Option }))
-                toast.info('Coming Soon !')
+                dispatch(setActivePanel({ panel: Option }))
             }
             }
             style={{

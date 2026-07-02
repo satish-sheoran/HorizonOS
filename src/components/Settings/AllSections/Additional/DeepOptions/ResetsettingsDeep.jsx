@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector} from 'react-redux'
 import {CSS_EASING} from '../../../../../constants/Settings'
 
-const ResetsettingsDeep = ({ Name,Section, Device, fullScreen ,Theme,ThemeColors,AccentColors}) => {
+const ResetsettingsDeep = ({ Name,Section, Device, fullScreen ,Theme,ThemeColors,AccentColors,DeepSubSection}) => {
   
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const {Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed

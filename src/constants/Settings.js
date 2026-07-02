@@ -341,8 +341,18 @@ export const SECTIONS = [
             {
                 Section: 'Change wallpaper',
                 FileName: 'ChangewallpaperDeep',
-                SubSections: null,
-                Options: null
+                SubSections: [
+                    {
+                        Section: 'Change Wallpaper',
+                        FileName: 'wallpaperChange',
+                        Options: null
+                    },
+                    {
+                        Section: 'Preview',
+                        FileName: 'WallpaperPreview',
+                        Options: null
+                    }
+                ], Options: null
             }, {
                 Section: 'Developer options',
                 FileName: 'DeveloperoptionsDeep',
@@ -496,17 +506,20 @@ export const AnimationSpeedAndType = [
         Name: 'Normal',
         Speed: '300ms',
         icon: 'CctvIcon',
+        RefreshRate: '60 Hz',
         Description: 'Smooth and fluid for the best experience.'
     },
     {
         Name: 'Faster',
         Speed: '150ms',
         icon: 'CctvIcon',
+        RefreshRate: '90 Hz',
         Description: 'Fast animation for better experinece.'
     },
     {
         Name: 'Disabled',
         Speed: '0s',
+        RefreshRate: 'Default',
         icon: 'CctvIcon',
         Description: 'Disable all animations for maximum performace.'
     }

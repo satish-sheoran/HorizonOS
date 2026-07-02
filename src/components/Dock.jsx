@@ -3,13 +3,21 @@ import { useWindowManager } from '../hooks/windowManager'
 import { COMMON_COLORS } from '../constants/style';
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../constants/Settings'
-const Dock = () => {
+
+const Dock = ({ RecievedWidth }) => {
+
     const { toggleApp } = useWindowManager();
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <nav className='dock glass flex justify-between  rounded-3xl items-center' style={{ marginBottom: 'var(--padding-sm)' }}>
+        <nav className={`dock glass flex justify-between  rounded-3xl items-center 
+        ${RecievedWidth ?
+                ''
+                :
+                'bottom-[1vh]  p-(--padding-dock) w-[90vw] h-22 md:w-fit md:h-19 select-none md:gap-(--gap-md)'
+            }`}
+            style={{ marginBottom: 'var(--padding-sm)' }}>
 
             {dockApps.map(({ id, name, icon, canOpen }) => {
                 return <button style={{

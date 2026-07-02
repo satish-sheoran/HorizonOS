@@ -3,9 +3,14 @@
 
 
 What i did for this commit :
-Fix : Fixed positioning of Add folder/Category Pop Up
+feat(settings) : Create initial Change Wallpaper interface
 
-- Due to some bug it was overflowing to the right side
+- Added Wallpaper gallery and preview design
+- Prepared UI for future Wallpaper customization
+- Defined walllpaper display layout and structure
+- Implement showcasing Refresh rate as per animation speed(normal,fast,disabled)
+
+TODO : Wallpaper fit and display options to be Implemented , And Changing wallpaper
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

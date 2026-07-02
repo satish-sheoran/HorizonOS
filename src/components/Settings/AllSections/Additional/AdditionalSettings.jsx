@@ -37,12 +37,12 @@ const AdditionalSettings = ({ Section, Theme, ThemeColors, AccentColors, Queries
       {/* DEEP OPTIONS */}
 
       <AnimationWrapper activePanel={activePanel} Section={Section} Device={Device} Theme={Theme} fullScreen={fullScreen} ThemeColors={ThemeColors} AccentColors={AccentColors} >
-        {DeepSection?.map(({ Section: Deep, FileName, Options }) => {
+        {DeepSection?.map(({ Section: Deep, FileName, Options ,SubSections}) => {
           const Component = DEEP_OPTIONS[FileName];
 
           if (!Component || activePanel !== Deep) return null;
           // Section prop here represent Grandparent section (Display,About,Additional Settings etc.)
-          return <Component Name={Deep} Section={Section} Options={Options} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+          return <Component Name={Deep} Section={Section} DeepSubSection={SubSections} Options={Options} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
         })}
       </AnimationWrapper>
 

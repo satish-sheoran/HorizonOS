@@ -13,36 +13,42 @@ const Wallpapers = {
     'mobile': [
         {
             name: 'Gradient Abstract',
+            description: 'Smooth gradients and flowing shapes for a minimal look.',
             id: 'gradient-abstract',
             theme: 'dark',
             url: `${BASE_MOBILE_WALLPAPER_URL}gradient-abstract.webp`
         },
         {
             name: 'Space',
+            description: 'Stunning views of space and the universe beyond our planet.',
             id: 'space',
             theme: 'dark',
             url: `${BASE_MOBILE_WALLPAPER_URL}space.webp`
         },
         {
-            name: 'Digital-art',
+            name: 'Digital Art',
+            description: 'Creative digital artwork with unique colors and vibes.',
             id: 'digital-art',
             theme: 'dark',
             url: `${BASE_MOBILE_WALLPAPER_URL}digital-art.webp`
         },
         {
-            name: 'Galaxy-nature',
+            name: 'Galaxy Nature',
+            description: 'The beauty of galaxies and comsmic wonders in vivid detail.',
             id: 'galaxy-nature',
             theme: 'dark',
             url: `${BASE_MOBILE_WALLPAPER_URL}galaxy-nature.webp`
         },
         {
             name: 'Morskie',
+            description: 'Peaceful landscapes with lakes, mountains an greenery.',
             id: 'morskie',
             theme: 'light',
             url: `${BASE_MOBILE_WALLPAPER_URL}morskie.webp`
         },
         {
-            name: 'Modern-gradient',
+            name: 'Modern Gradient',
+            description: 'Clean and modern gradients for a sleek and stylish feel.',
             id: 'modern-gradient',
             theme: 'light',
             url: `${BASE_MOBILE_WALLPAPER_URL}modern-gradient.webp`
@@ -51,36 +57,42 @@ const Wallpapers = {
     'desktop': [
         {
             name: 'Gradient Abstract',
+            description: 'Smooth gradients and flowing shapes for a minimal look.',
             id: 'gradient-abstract',
             theme: 'light',
             url: `${BASE_DESKTOP_WALLPAPER_URL}gradient-abstract.webp`
         },
         {
             name: 'Space',
+            description: 'Stunning views of space and the universe beyond our planet.',
             id: 'space',
             theme: 'dark',
             url: `${BASE_DESKTOP_WALLPAPER_URL}space.webp`
         },
         {
-            name: 'Digital-art',
+            name: 'Digital Art',
+            description: 'Creative digital artwork with unique colors and vibes.',
             id: 'digital-art',
             theme: 'dark',
             url: `${BASE_DESKTOP_WALLPAPER_URL}digital-art.webp`
         },
         {
-            name: 'Galaxy-nature',
+            name: 'Galaxy Nature',
+            description: 'The beauty of galaxies and comsmic wonders in vivid detail.',
             id: 'galaxy-nature',
             theme: 'dark',
             url: `${BASE_DESKTOP_WALLPAPER_URL}galaxy-nature.webp`
         },
         {
             name: 'Morskie',
+            description: 'Peaceful landscapes with lakes, mountains an greenery.',
             id: 'morskie',
             theme: 'dark',
             url: `${BASE_DESKTOP_WALLPAPER_URL}morskie.webp`
         },
         {
-            name: 'Modern-gradient',
+            name: 'Modern Gradient',
+            description: 'Clean and modern gradients for a sleek and stylish feel.',
             id: 'modern-gradient',
             theme: 'light',
             url: `${BASE_DESKTOP_WALLPAPER_URL}modern-gradient.webp`

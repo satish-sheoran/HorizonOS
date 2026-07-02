@@ -1,0 +1,138 @@
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { CSS_EASING } from '../../../../../../constants/Settings';
+import { ACCENT_COLORS, COMMON_COLORS, LIGHT_THEME_COLORS } from '../../../../../../constants/style';
+import { Check } from 'lucide-react';
+import TimeNDate from '../../../../../UI/TimeNDate';
+import { formatTime, formatDate } from '../../../../../../utils/formatTime';
+
+const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
+
+    const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
+    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const [Time, setTime] = useState(new Date())
+
+    useEffect(() => {
+        const intrvl = setInterval(() => {
+            setTime(new Date());
+        }, 1000)
+
+        return () => clearInterval(intrvl)
+    }, [])
+
+    const formattedTime = formatTime(Time, false);
+    const formattedDate = formatDate(Time);
+
+    return (
+        <div className={`mt-2 flex flex-col gap-2 `}>
+            <div className='flex flex-col gap-0.5'>
+                <span style={{
+                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={` text-[0.8rem] font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+                <span style={{
+                    fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Personalize your {Device !== 'Desktop' ? 'device' : 'desktop'} with your favourite image.</span>
+            </div>
+
+            <div style={{
+                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }} className={`flex justify-between items-center gap-3 rounded-2xl  select-none overflow-hidden 
+                ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
+                ${Device !== 'Desktop' ? 'min-h-50' : 'min-h-40'}
+            `} >
+
+                {/* Image preview */}
+                <div
+                    style={{
+                        borderColor: ThemeColors.bg, backgroundImage: `url(${'/public/assets/wallpaper/desktop/morskie.webp'})`, transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }}
+                    className={`shrink-0 rounded-2xl ${Device !== 'Desktop' ? 'min-w-1/3' : 'min-w-[40%]'} h-full bg-center bg-cover border active:scale-97`}
+                >
+                    {/* icons */}
+                    <div className={`flex items-center justify-end rounded-2xl gap-1 px-2 py-1`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={COMMON_COLORS.White} className="size-4">
+                            <path fillRule="evenodd" d="M1.371 8.143c5.858-5.857 15.356-5.857 21.213 0a.75.75 0 0 1 0 1.061l-.53.53a.75.75 0 0 1-1.06 0c-4.98-4.979-13.053-4.979-18.032 0a.75.75 0 0 1-1.06 0l-.53-.53a.75.75 0 0 1 0-1.06Zm3.182 3.182c4.1-4.1 10.749-4.1 14.85 0a.75.75 0 0 1 0 1.061l-.53.53a.75.75 0 0 1-1.062 0 8.25 8.25 0 0 0-11.667 0 .75.75 0 0 1-1.06 0l-.53-.53a.75.75 0 0 1 0-1.06Zm3.204 3.182a6 6 0 0 1 8.486 0 .75.75 0 0 1 0 1.061l-.53.53a.75.75 0 0 1-1.061 0 3.75 3.75 0 0 0-5.304 0 .75.75 0 0 1-1.06 0l-.53-.53a.75.75 0 0 1 0-1.06Zm3.182 3.182a1.5 1.5 0 0 1 2.122 0 .75.75 0 0 1 0 1.061l-.53.53a.75.75 0 0 1-1.061 0l-.53-.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={COMMON_COLORS.White} className="size-4">
+                            <path fillRule="evenodd" d="M3.75 6.75a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-.037c.856-.174 1.5-.93 1.5-1.838v-2.25c0-.907-.644-1.664-1.5-1.837V9.75a3 3 0 0 0-3-3h-15Zm15 1.5a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5h-15a1.5 1.5 0 0 1-1.5-1.5v-6a1.5 1.5 0 0 1 1.5-1.5h15ZM4.5 9.75a.75.75 0 0 0-.75.75V15c0 .414.336.75.75.75H18a.75.75 0 0 0 .75-.75v-4.5a.75.75 0 0 0-.75-.75H4.5Z" clipRule="evenodd" />
+                        </svg>
+                    </div>
+                    {/* time and  date*/}
+                    <div style={{
+                        color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className={`relative mt-1 flex flex-col items-center justify-center`}>
+                        <span style={{ fontFamily: Weights.Bold }} className={`font-bold text-[2.2rem]`}>  {formattedTime}</span>
+                        <p style={{ fontFamily: Weights.SemiBold }} className={`absolute -bottom-1 font-semibold text-[0.5rem]`}>{formattedDate}  </p>
+                    </div>
+                </div>
+
+                {/* details and set option */}
+                <div className={`w-fit flex flex-col gap-2`}>
+                    <p
+                        style={{
+                            fontFamily: Weights.SemiBold,
+                            color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
+                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr,
+                            transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }}
+                        className={`w-fit cursor-pointer font-semibold rounded-2xl py-1 px-2.5 text-[0.8rem] hover:scale-105`}>Preview</p>
+                    <p
+                        style={{
+                            fontFamily: Weights.SemiBold,
+                            color: ThemeColors.primaryText,
+                            transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }}
+                        className={`cursor-text font-semibold text-[1rem]`}
+                    >Morskie</p>
+                    <p
+                        style={{
+                            fontFamily: Weights.Regular,
+                            color: ThemeColors.thirdText,
+                            transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }}
+                        className={`cursor-text text-[0.8rem] ${Device !== 'Desktop' ? '' : 'w-[70%]'}`}
+                    >Calm moutains, crystal clear lakes and fresh greenery to bring peace and focus to your screen.
+                    </p>
+
+                    <button
+                        style={{
+                            fontFamily: Weights.SemiBold,
+                            color: COMMON_COLORS.White,
+                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
+                            transitionProperty: 'color, background-color, border-color',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }}
+                        className={`flex items-center justify-start gap-2 w-fit font-semibold rounded-2xl py-2 pl-2.5 pr-5 text-[0.8rem]
+                            active:scale-95 active:opacity-90 cursor-pointer`}
+                    >
+                        <div style={{ borderColor: COMMON_COLORS.White }} className={`border-2 rounded-full w-fit h-fit p-0.5 flex items-center justify-center`}><Check strokeWidth={3} size={10} /> </div>
+                        <span className={`text-[0.7rem]`}>Set as Wallpaper</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default WallpaperPreview

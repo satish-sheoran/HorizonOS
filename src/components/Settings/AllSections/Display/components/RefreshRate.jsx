@@ -7,7 +7,7 @@ import { CSS_EASING } from '../../../../../constants/settings'
 const RefreshRate = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColors }) => {
 
 const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    const { Speed ,RefreshRate : Refreshrate} = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
@@ -31,7 +31,7 @@ const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}>
-                60 Hz
+                {Refreshrate}
             </span>
         </div>
 
