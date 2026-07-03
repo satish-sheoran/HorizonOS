@@ -1,7 +1,7 @@
 import React from 'react'
 import { COMMON_COLORS } from '../../../../../constants/style'
 import { useSelector } from 'react-redux'
-import { CSS_EASING } from '../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../constants/Settings'
 
 const FontName = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColors }) => {
 

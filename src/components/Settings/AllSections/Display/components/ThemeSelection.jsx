@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { CSS_EASING } from '../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../constants/Settings'
 
 import { changeTheme } from '../../../../../redux/features/wallpaper'
 import { THEMES } from '../../../../../constants'

@@ -4,7 +4,7 @@ import RefreshRate from '../components/RefreshRate'
 import Animation from '../components/Animation'
 import ToggleButton from '../../../../UI/ToggleButton'
 import { useSelector } from 'react-redux'
-import {CSS_EASING} from '../../../../../constants/settings'
+import {CSS_EASING} from '../../../../../constants/Settings'
 
 const ScreenComponent = {
     ColourScheme,

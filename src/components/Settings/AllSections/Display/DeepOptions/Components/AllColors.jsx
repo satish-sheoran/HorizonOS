@@ -1,6 +1,6 @@
 import React from 'react'
 import { ACCENT_COLORS } from '../../../../../../constants/style'
-import { CSS_EASING } from '../../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../../constants/Settings'
 
 import { Check } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'

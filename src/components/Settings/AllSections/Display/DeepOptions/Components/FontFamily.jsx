@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { CSS_EASING, FONT_FAMILY } from '../../../../../../constants/settings'
+import { CSS_EASING, FONT_FAMILY } from '../../../../../../constants/Settings'
 import { ACCENT_COLORS, COMMON_COLORS } from '../../../../../../constants/style'
 import { Check } from 'lucide-react'
 import { setFontFamily } from '../../../../../../redux/features/wallpaper'

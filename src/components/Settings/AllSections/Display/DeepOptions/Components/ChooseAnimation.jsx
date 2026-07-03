@@ -4,7 +4,7 @@ import { COMMON_COLORS } from '../../../../../../constants/style'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAnimationTypeNSpeed } from '../../../../../../redux/features/wallpaper'
 import { AnimationSpeedAndType } from '../../../../../../constants/Settings'
-import { CSS_EASING } from '../../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../../constants/Settings'
 
 
 

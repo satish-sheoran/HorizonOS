@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
 import { COMMON_COLORS } from '../../../../../constants/style'
-import { CSS_EASING } from '../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../constants/Settings'
 
 const Animation = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColors }) => {
 

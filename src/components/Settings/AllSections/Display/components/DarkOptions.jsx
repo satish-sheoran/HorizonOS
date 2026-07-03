@@ -2,7 +2,7 @@ import { ChevronRight } from 'lucide-react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
-import { CSS_EASING } from '../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../constants/Settings'
 import { COMMON_COLORS } from '../../../../../constants/style';
 
 const DarkOptions = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColors }) => {

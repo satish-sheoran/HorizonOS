@@ -3,7 +3,7 @@ import { COMMON_COLORS } from '../../../../../../constants/style'
 import { Check, Palette, Pen } from 'lucide-react'
 import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
-import { CSS_EASING } from '../../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../../constants/Settings'
 
 
 const PickColor = ({ Theme, Device, fullScreen, ThemeColors, AccentColors }) => {

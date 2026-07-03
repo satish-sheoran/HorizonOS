@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { CSS_EASING } from '../../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../../constants/Settings'
 import { ACCENT_COLORS, COMMON_COLORS } from '../../../../../../constants/style'
 import PickColor from './PickColor'
 import AllColors from './AllColors'

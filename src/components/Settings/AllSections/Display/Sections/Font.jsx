@@ -2,7 +2,7 @@ import React from 'react'
 import FontName from '../components/FontName'
 import FontSetting from '../components/FontSetting'
 import ToggleButton from '../../../../UI/ToggleButton'
-import { CSS_EASING } from '../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../constants/Settings'
 import { useSelector } from 'react-redux'
 
 const FontComponent = {

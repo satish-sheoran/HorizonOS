@@ -6,7 +6,7 @@ import ToggleButton from '../../../../../UI/ToggleButton'
 import WindowPreview from '../../../../../UI/WindowPreview'
 import { setAdvanceDarkMode } from '../../../../../../redux/features/wallpaper'
 import WindowControls from '../../../../../WindowControls'
-import { CSS_EASING } from '../../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../../constants/Settings'
 
 
 const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
