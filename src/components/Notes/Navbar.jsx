@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import SettingNFolder from "./settingNFolder";
+import SettingNFolder from "./SettingNFolder";
 import { CSS_EASING } from '../../constants/Settings'
 
 const Navbar = ({ Theme, ThemeColors, AccentColors }) => {
