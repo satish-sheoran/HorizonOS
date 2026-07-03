@@ -1,5 +1,5 @@
 import React from 'react'
-import { CSS_EASING } from '../../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../../constants/Settings'
 import { useSelector } from 'react-redux'
 import WindowPreview from '../../../../../UI/WindowPreview'
 
