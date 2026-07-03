@@ -1,10 +1,8 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { COMMON_COLORS } from '../../constants/style'
 import { Info, LayoutGrid, Monitor } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import { AnimationsName, CSS_EASING } from '../../constants/Settings'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
 
 const AnimPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
 

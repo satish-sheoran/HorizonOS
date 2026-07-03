@@ -4,7 +4,7 @@ import { setAutoTheme } from '../../../../../redux/features/wallpaper'
 import ThemeSelection from '../components/ThemeSelection'
 import DarkOptions from '../components/DarkOptions'
 import ToggleButton from '../../../../UI/ToggleButton'
-import { CSS_EASING } from '../../../../../constants/settings'
+import { CSS_EASING } from '../../../../../constants/Settings'
 
 const ThemeComponent = {
     ThemeSelection,
