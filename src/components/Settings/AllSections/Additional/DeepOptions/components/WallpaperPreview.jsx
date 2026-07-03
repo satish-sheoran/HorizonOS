@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { CSS_EASING } from '../../../../../../constants/Settings';
+import { Wallpapers } from '../../../../../../constants/index';
 import { ACCENT_COLORS, COMMON_COLORS, LIGHT_THEME_COLORS } from '../../../../../../constants/style';
 import { Check } from 'lucide-react';
 import TimeNDate from '../../../../../UI/TimeNDate';
 import { formatTime, formatDate } from '../../../../../../utils/formatTime';
+import { setWallpaper } from '../../../../../../redux/features/wallpaper';
 
-const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
+const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen, activeWallpaper, currentPreview, setNewPreview }) => {
+
+    const dispatch = useDispatch();
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
@@ -44,7 +48,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                 backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`flex justify-between items-center gap-3 rounded-2xl  select-none overflow-hidden 
+            }} className={`flex justify-between items-center  rounded-2xl  select-none overflow-hidden 
                 ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                 ${Device !== 'Desktop' ? 'min-h-50' : 'min-h-40'}
             `} >
@@ -52,7 +56,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                 {/* Image preview */}
                 <div
                     style={{
-                        borderColor: ThemeColors.bg, backgroundImage: `url(${'/public/assets/wallpaper/desktop/morskie.webp'})`, transitionProperty: 'color, background-color, border-color',
+                        borderColor: ThemeColors.bg, backgroundImage: `url(${currentPreview || activeWallpaper})`, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
@@ -80,7 +84,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                 </div>
 
                 {/* details and set option */}
-                <div className={`w-fit flex flex-col gap-2`}>
+                <div className={`grow ${Device !=='Desktop'?'pl-4':'pl-10'}  flex flex-col gap-2`}>
                     <p
                         style={{
                             fontFamily: Weights.SemiBold,
@@ -100,7 +104,13 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`cursor-text font-semibold text-[1rem]`}
-                    >Morskie</p>
+                    >
+                        {Device !== 'Desktop' ?
+                        Wallpapers['mobile'].find(({ url }) => url === currentPreview)?.name || Wallpapers['mobile'].find(({ url }) => url === activeWallpaper)?.name || ''
+                        :
+                        Wallpapers['desktop'].find(({ url }) => url === currentPreview)?.name || Wallpapers['desktop'].find(({ url }) => url === activeWallpaper)?.name || ''
+                        }
+                        </p>
                     <p
                         style={{
                             fontFamily: Weights.Regular,
@@ -110,23 +120,34 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`cursor-text text-[0.8rem] ${Device !== 'Desktop' ? '' : 'w-[70%]'}`}
-                    >Calm moutains, crystal clear lakes and fresh greenery to bring peace and focus to your screen.
+                    >
+                        {Device !== 'Desktop' ?
+                        Wallpapers['mobile'].find(({ url }) => url === currentPreview)?.description || Wallpapers['mobile'].find(({ url }) => url === activeWallpaper)?.description || ''
+                        :
+                        Wallpapers['desktop'].find(({ url }) => url === currentPreview)?.description || Wallpapers['desktop'].find(({ url }) => url === activeWallpaper)?.description || ''
+                        }
                     </p>
 
                     <button
+                        onClick={() => {
+                            if (currentPreview === activeWallpaper) return;
+                            dispatch(setWallpaper({ url: currentPreview }))
+                        }}
                         style={{
                             fontFamily: Weights.SemiBold,
-                            color: COMMON_COLORS.White,
-                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
+                            color: currentPreview === activeWallpaper ? ThemeColors.thirdText : COMMON_COLORS.White,
+                            backgroundColor: currentPreview === activeWallpaper ? '' : ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
                             transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`flex items-center justify-start gap-2 w-fit font-semibold rounded-2xl py-2 pl-2.5 pr-5 text-[0.8rem]
-                            active:scale-95 active:opacity-90 cursor-pointer`}
+                        className={`${currentPreview === activeWallpaper ? '' : ''} flex items-center justify-start gap-2 w-fit font-semibold rounded-2xl py-2 pl-2.5 pr-5 text-[0.8rem]
+                            ${currentPreview === activeWallpaper ? '' : 'active:scale-95 active:opacity-90'}  cursor-pointer`}
                     >
-                        <div style={{ borderColor: COMMON_COLORS.White }} className={`border-2 rounded-full w-fit h-fit p-0.5 flex items-center justify-center`}><Check strokeWidth={3} size={10} /> </div>
-                        <span className={`text-[0.7rem]`}>Set as Wallpaper</span>
+                        <div style={{ borderColor: currentPreview === activeWallpaper ? ThemeColors.bg : COMMON_COLORS.White }} className={`border-2 rounded-full w-fit h-fit p-0.5 flex items-center justify-center`}>
+                            <Check strokeWidth={3} size={10} />
+                        </div>
+                        <span className={`text-[0.7rem]`}>{currentPreview === activeWallpaper ? 'CURRENT WALLPAPER' : 'Set as Wallpaper'} </span>
                     </button>
 
                 </div>

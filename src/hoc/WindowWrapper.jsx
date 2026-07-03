@@ -49,7 +49,7 @@ const WindowWrapper = (Component, windowKey) => {
             // Cleanup draggable instance when component unmounts
             // This removes event listeners and prevents memory leaks
             return () => instance.kill();
-        }, [])
+        }, [Device])
 
         /* Settings app Postion based on Fullscreen OR device and enable/disable dragging */
         useEffect(() => {

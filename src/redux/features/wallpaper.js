@@ -36,8 +36,8 @@ const wallpaperSlice = createSlice({
     initialState,
     reducers: {
         setWallpaper(state, action) {
-            state.src = action.payload.src;
-            state.theme = action.payload.theme;
+            const { url } = action.payload;
+            state.src = url;
         },
         changeTheme(state, action) {
             if (!action.payload.AutoTheme && action.payload.theme !== state.theme) state.isAutoTheme = false;

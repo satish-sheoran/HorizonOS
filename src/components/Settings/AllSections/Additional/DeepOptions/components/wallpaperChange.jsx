@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
 import { CSS_EASING } from '../../../../../../constants/Settings';
 import { Wallpapers } from '../../../../../../constants/index'
-import Dock from '../../../../../Dock';
+import { ACCENT_COLORS } from '../../../../../../constants/style';
 
-const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
+const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen, activeWallpaper, currentPreview, setNewPreview }) => {
 
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
@@ -42,9 +42,10 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
                         map(({ name: WallpaperName, id, url, description: WallpaperDesc }, index) => {
 
                             return <div
+                                onClick={() => setNewPreview(url)}
                                 key={index}
                                 style={{
-                                    borderColor: ThemeColors.bg,backgroundImage: `url(${url})` , transitionProperty: 'color, background-color, border-color',
+                                    borderColor: currentPreview === url ? ACCENT_COLORS.find(({COLOR})=> COLOR === 'Purple').CODE : ThemeColors.bg, backgroundImage: `url(${url})`, transitionProperty: 'color, background-color, border-color',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}

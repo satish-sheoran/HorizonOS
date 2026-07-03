@@ -9,8 +9,9 @@ const DeviceSlice = createSlice({
 
     },
     reducers: {
-        setDevice(state) {
-            state.currDevice = state.currDevice === 'Desktop' ? 'Mobile' : 'Desktop';
+        setDevice(state,action) {
+            const width = action.payload.width;
+            state.currDevice =  width >= 768 ? 'Desktop' : 'Mobile';
         }, setTimeFormat(state) {
             state.isTime12HourFormat = state.isTime12HourFormat ? false : true;
         }

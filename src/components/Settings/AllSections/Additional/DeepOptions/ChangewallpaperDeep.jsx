@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../../../../constants/Settings'
 import wallpaperChange from './components/wallpaperChange'
@@ -11,9 +11,20 @@ const DEEP_OPTIONS = {
 
 const ChangewallpaperDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors, AccentColors, DeepSubSection }) => {
 
+    const [currentPreview, setNewPreview] = useState('')
+
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const activeWallpaper = useSelector(store => store.wallpaper.src)
+
+    useEffect(() => {
+        const setDefaultPreview = () => {
+            setNewPreview(activeWallpaper)
+        }
+
+        setDefaultPreview();
+    }, [])
 
     return (
         <section style={{
@@ -36,6 +47,9 @@ const ChangewallpaperDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeCo
                         AccentColors={AccentColors}
                         Device={Device}
                         fullScreen={fullScreen}
+                        activeWallpaper={activeWallpaper}
+                        currentPreview={currentPreview}
+                        setNewPreview={setNewPreview}
                     />
                 })
             }
