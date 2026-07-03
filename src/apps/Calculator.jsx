@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import MobileCntrls from "../components/MobileCntrl";
 import CalcButtons from "../components/Calculator/CalcButtons";
 import CalcDisplay from "../components/Calculator/CalcDisplay";
-import UseCalculator from "../hooks/useCalculator";
+import UseCalculator from "../hooks/UseCalculator";
 import { CSS_EASING } from "../constants/Settings";
 
 const Calculator = () => {
