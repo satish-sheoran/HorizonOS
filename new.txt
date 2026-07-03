@@ -3,12 +3,7 @@
 
 
 What i did for this commit :
-feat : Wallpaper fit and display options to be Implemented , And Changing wallpaper
-
-- Dynamic content (details about wallpaper) rendring on changing preview walllpaper
-- Defined change wallpaper reducer properly
-- Added Event Listener for Resize so that on resize it calculates the Device
-- Improvise dragging of Window as per Device Change
+feat :  Added animation to wallpaper change
 
 
 FIXES And ADDITION TO CALC:
