@@ -1,19 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DEFAULT_WALLPAPER, Wallpapers } from "../../constants";
 
+const getTimeFormat = () => {
+    const storedSettings = JSON.parse(localStorage.getItem('storedSettings'));
+    return { is12HourFormat: storedSettings?.is12HourFormat ?? true }
+}
+
 const DeviceSlice = createSlice({
     name: 'Device',
     initialState: {
         currDevice: window.innerWidth >= 768 ? 'Desktop' : 'Mobile',
-        isTime12HourFormat: true,
+        isTime12HourFormat: getTimeFormat()?.is12HourFormat ?? true,
 
     },
     reducers: {
-        setDevice(state,action) {
+        setDevice(state, action) {
             const width = action.payload.width;
-            state.currDevice =  width >= 768 ? 'Desktop' : 'Mobile';
+            state.currDevice = width >= 768 ? 'Desktop' : 'Mobile';
         }, setTimeFormat(state) {
             state.isTime12HourFormat = state.isTime12HourFormat ? false : true;
+            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+            const updatedSettings = { ...storedSettings, is12HourFormat: state.isTime12HourFormat };
+            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
         }
     }
 })

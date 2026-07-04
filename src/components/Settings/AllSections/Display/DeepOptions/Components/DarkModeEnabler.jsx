@@ -1,24 +1,21 @@
 import React, { useState } from 'react'
 import { ACCENT_COLORS, COMMON_COLORS, DARK_THEME_COLORS, LIGHT_THEME_COLORS } from '../../../../../../constants/style'
 import { ArrowRightLeft, ChevronRight } from 'lucide-react'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import ToggleButton from '../../../../../UI/ToggleButton'
 import WindowPreview from '../../../../../UI/WindowPreview'
-import { setAdvanceDarkMode } from '../../../../../../redux/features/wallpaper'
 import WindowControls from '../../../../../WindowControls'
 import { CSS_EASING } from '../../../../../../constants/Settings'
 
 
 const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
 }) => {
-    const dispatch = useDispatch()
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const [SwitchPreviewer, setSwitchPreviewer] = useState(false)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
-    const UpdateAdvanceDarkMode = () => dispatch(setAdvanceDarkMode());
 
     return (
         <div className={`mt-2 flex flex-col gap-2`}>
