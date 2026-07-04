@@ -50,6 +50,8 @@ export const calculate = (value) => {
 export const manageEntries = (symbol, Field, start, end) => {
     let arr = [...Field];
 
+    if (symbol === '0' && start <= 0) return { value: Field, cursor: start }
+
     if (['Not Defined', 'Infinity', '-Infinity', 'Error'].includes(Field)) {
         arr = ['0'];
         Field = '0';
@@ -189,7 +191,7 @@ export const ManageDotEntry = (start, end, isOperator, res) => {
 export const ManageOperatorEntry = (res, symbol, isOperator, start, Field) => {
 
     // if trying to add symbol at start
-    if (start < 1) return {value : res,cursor : start};
+    if (start < 1) return { value: res, cursor: start };
 
     //Checking if there is already symbol just before OR after the cursor 
     if (isOperator(res[start]) || isOperator(res[start - 1])) {

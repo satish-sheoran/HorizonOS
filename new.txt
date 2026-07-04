@@ -3,11 +3,10 @@
 
 
 What i did for this commit :
-feat(CORE): add settings persistence and debounced calculator updates
+fix (calculator) : Fix accepting 0 even at starting 
 
-- Added debounced calculator state saving
-- Persists settings to LocalStorage
-- Added Default Values for app settings_ save wallpaper,theme,theme colors,accent colors,animation and other preferences
+- Ex : number is 45
+- if enterying 0,  before 4 it will now not accept,as it is starting of inputField
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
