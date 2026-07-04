@@ -189,7 +189,7 @@ export const ManageDotEntry = (start, end, isOperator, res) => {
 export const ManageOperatorEntry = (res, symbol, isOperator, start, Field) => {
 
     // if trying to add symbol at start
-    if (start <=1) return {value : res,cursor : start};
+    if (start < 1) return {value : res,cursor : start};
 
     //Checking if there is already symbol just before OR after the cursor 
     if (isOperator(res[start]) || isOperator(res[start - 1])) {
