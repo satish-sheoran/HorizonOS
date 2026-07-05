@@ -1,13 +1,15 @@
 import React from 'react'
 import { COMMON_COLORS } from '../../../../../constants/style';
 import { CSS_EASING } from '../../../../../constants/Settings';
+import { OS_Storage } from '../../../../../constants/index';
 import { useSelector } from 'react-redux'
+
 const Storage = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors }) => {
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-
+    const { TotalStorage : UsedStorage} = useSelector(store => store.Settings)
 
     return (
         <div
@@ -27,13 +29,13 @@ const Storage = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors 
                                                    ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                                                    `}>
 
-            <span style={{fontFamily : Weights.SemiBold}} className={`font-semibold`}>{Option}</span>
+            <span style={{ fontFamily: Weights.SemiBold }} className={`font-semibold`}>{Option}</span>
             <span style={{
-               fontFamily : Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}>
-                {'20.3 GB/64 GB'}
+                {UsedStorage>=1024?`${UsedStorage} GB`:`${UsedStorage} MB`} / {OS_Storage}
             </span>
 
         </div>

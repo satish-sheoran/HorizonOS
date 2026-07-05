@@ -7,13 +7,11 @@ import AnimationWrapper from '../../../UI/AnimationWrapper'
 import { CSS_EASING } from '../../../../constants/Settings'
 import ApplockDeep from './DeepOptions/ApplockDeep'
 import ManageappsDeep from './DeepOptions/ManageappsDeep'
-import SystemappsDeep from './DeepOptions/SystemappsDeep'
 import UninstallappsDeep from './DeepOptions/UninstallappsDeep'
 
 const DEEP_OPTIONS = {
     ApplockDeep,
     ManageappsDeep,
-    SystemappsDeep,
     UninstallappsDeep
 }
 

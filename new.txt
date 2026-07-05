@@ -3,10 +3,14 @@
 
 
 What i did for this commit :
-fix (calculator) : Fix accepting 0 even at starting 
+feat(manage-apps) : Add Manage apps UI and search feature of it
 
-- Ex : number is 45
-- if enterying 0,  before 4 it will now not accept,as it is starting of inputField
+- Designed the Manage Apps interface
+- Implemented app search
+- Remaining management features will be added later
+
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
+
+TODO : create Device for tablets also and fix layour breaking on tablets

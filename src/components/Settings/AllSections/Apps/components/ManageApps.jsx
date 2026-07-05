@@ -16,9 +16,7 @@ const ManageApps = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColo
     return (
         <div
             onClick={() => {
-                // dispatch(setActivePanel({panel : Option}))
-
-                toast.info('This feature is currently under development. Stay tuned for updates!')
+                dispatch(setActivePanel({panel : Option}))
             }
             }
             style={{

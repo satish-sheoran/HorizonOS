@@ -137,13 +137,13 @@ const INITIAL_Z_INDEX = 1000;
 
 // fullscreen value changes when user uses window controls to make the app full screen or default one 
 const WINDOW_CONFIG = {
-    calculator: { isOpen: false, zIndex: INITIAL_Z_INDEX,  fullScreen: false, windowRatio: { width: 'w-full sm:w-[50%] md:min-w-[35%]', height: 'h-full sm:h-[50%] md:h-[65%]' }, default: { width: 'w-full sm:w-[50%] md:min-w-[35%]', height: 'h-full sm:h-[50%] md:h-[65%]' } },
+    calculator: { isOpen: false, zIndex: INITIAL_Z_INDEX, fullScreen: false, windowRatio: { width: 'w-full sm:w-[50%] md:min-w-[35%]', height: 'h-full sm:h-[50%] md:h-[65%]' }, default: { width: 'w-full sm:w-[50%] md:min-w-[35%]', height: 'h-full sm:h-[50%] md:h-[65%]' } },
 
-    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX,  fullScreen: false, windowRatio: { width: 'w-full md:max-w-[75%]', height: 'h-full sm:h-[90%] md:h-[75%]' }, default: { width: 'w-full md:max-w-[75%]', height: 'h-full sm:h-[90%] md:h-[75%]' } },
+    notes: { isOpen: false, zIndex: INITIAL_Z_INDEX, fullScreen: false, windowRatio: { width: 'w-full md:max-w-[75%]', height: 'h-full sm:h-[90%] md:h-[75%]' }, default: { width: 'w-full md:max-w-[75%]', height: 'h-full sm:h-[90%] md:h-[75%]' } },
 
-    settings: { isOpen: false, zIndex: INITIAL_Z_INDEX,  fullScreen: false, windowRatio: { width: 'w-full md:max-w-[70%]', height: 'h-full sm:h-[90%] md:h-[75%]' }, default: { width: 'w-full md:max-w-[70%]', height: 'h-full sm:h-[90%] md:h-[75%]' } },
+    settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, fullScreen: false, windowRatio: { width: 'w-full md:max-w-[70%]', height: 'h-full sm:h-[90%] md:h-[75%]' }, default: { width: 'w-full md:max-w-[70%]', height: 'h-full sm:h-[90%] md:h-[75%]' } },
 
-    clock: { isOpen: false, zIndex: INITIAL_Z_INDEX,  fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
+    clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
@@ -241,6 +241,9 @@ export const ALL_APPS = [
         id: "calculator",
         name: "Calculator",
         icon: '/assets/icons/calculator.webp',
+        size: '24 MB',
+        dataSize: '0 MB',
+        version: 'v1.0.0',
         desc: 'System preferences and configuraions',
         theme: 'light',
         canOpen: true,
@@ -249,6 +252,9 @@ export const ALL_APPS = [
         id: "notes",
         name: "Notes",
         icon: '/assets/icons/notes.webp',
+        size: '54 MB',
+        dataSize: '0 MB',
+        version: 'v1.0.0',
         desc: 'Create and manage your notes',
         theme: 'light',
         canOpen: true,
@@ -257,6 +263,9 @@ export const ALL_APPS = [
         id: "settings",
         name: "Settings",
         icon: '/assets/icons/settings.webp',
+        size: '5 MB',
+        dataSize: '0 MB',
+        version: 'v1.0.0',
         desc: 'Perform calculations quickly',
         theme: 'light',
         canOpen: true,
@@ -265,10 +274,13 @@ export const ALL_APPS = [
         id: "clock",
         name: "Clock",
         icon: '/assets/icons/clock.webp',
+        size: '78 MB',
+        dataSize: '0 MB',
+        version: 'v1.0.0',
         desc: 'View time and alarms',
         theme: 'light',
         canOpen: true,
     }
-
-
 ]
+
+export const OS_Storage = '8.0 GB'

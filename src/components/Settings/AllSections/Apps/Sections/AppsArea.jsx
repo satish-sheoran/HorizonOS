@@ -1,7 +1,6 @@
 import React from 'react'
 import AppLock from '../components/AppLock'
 import ManageApps from '../components/ManageApps'
-import SystemApps from '../components/SystemApps'
 import UninstallApps from '../components/UninstallApps'
 import ToggleButton from '../../../../UI/ToggleButton'
 import { useSelector } from 'react-redux'
@@ -9,7 +8,6 @@ import {CSS_EASING} from '../../../../../constants/Settings'
 const ThemeComponent = {
   AppLock,
   ManageApps,
-  SystemApps,
   UninstallApps
 }
 

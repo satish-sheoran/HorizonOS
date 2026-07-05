@@ -250,12 +250,6 @@ export const SECTIONS = [
                         action: null
                     },
                     {
-                        Option: 'System apps',
-                        FileName: 'SystemApps',
-                        Toggleable: false,
-                        action: null
-                    },
-                    {
                         Option: 'Uninstall apps',
                         FileName: 'UninstallApps',
                         Toggleable: false,
@@ -274,11 +268,6 @@ export const SECTIONS = [
             }, {
                 Section: 'Manage apps ',
                 FileName: 'ManageappsDeep',
-                SubSections: null,
-                Options: null
-            }, {
-                Section: 'System apps',
-                FileName: 'SystemappsDeep',
                 SubSections: null,
                 Options: null
             }, {

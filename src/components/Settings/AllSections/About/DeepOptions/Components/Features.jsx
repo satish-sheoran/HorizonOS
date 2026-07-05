@@ -45,7 +45,7 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
             }}
             className={`HOVER_CLASS  hover:scale-105 active:scale-105 overflow-hidden border text-sm rounded-2xl flex gap-3 justify-center items-center 
-            ${Device !== 'Desktop' ? `py-2` : `py-1.5 font-semibold`}
+            ${Device !== 'Desktop' ? `py-2` : `py-1.5 `}
               `}>
             <div style={{
               backgroundColor: AccentColors.Bg_Clr, color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color',
