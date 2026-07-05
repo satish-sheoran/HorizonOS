@@ -2,9 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../../../../constants/Settings'
 import FontFamily from './Components/FontFamily'
+import FontSizes from './Components/FontSizes'
 
 const DEEP_OPTIONS = {
-  FontFamily
+  FontFamily,
+  FontSizes
 }
 
 const FontsettingsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors, AccentColors, DeepSubSection }) => {

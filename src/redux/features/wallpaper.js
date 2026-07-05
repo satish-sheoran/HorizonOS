@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ALL_APPS, DEFAULT_WALLPAPER, Wallpapers } from "../../constants";
 import { LIGHT_THEME_COLORS, DARK_THEME_COLORS, COMMON_COLORS, ACCENT_COLORS } from "../../constants/style";
-import { AnimationsName, AnimationSpeedAndType, FONT_FAMILY } from "../../constants/Settings";
+import { AnimationsName, AnimationSpeedAndType, FONT_FAMILY, FONT_SIZES } from "../../constants/Settings";
 
 const DefaultSettings = {
     src: window.innerWidth <= 768 ?
@@ -26,7 +26,8 @@ const DefaultSettings = {
     AnimationName: AnimationsName.find(({ Name }) => Name === 'Expo Out'),
 
     //font family
-    Font: FONT_FAMILY.find(font => font.Name === 'Poppins')
+    Font: FONT_FAMILY.find(font => font.Name === 'Poppins'),
+    FontSize: FONT_SIZES.find(({ SizeType }) => SizeType === 'Default')
 }
 
 
@@ -49,7 +50,7 @@ const getStoredSettings = () => {
             const ThemeColors = ALL_APPS.reduce((acc, { name }) => {
                 acc[name] = storedSettings?.theme?.[name] === 'dark' ? DARK_THEME_COLORS : LIGHT_THEME_COLORS
                 return acc;
-            }, {}) ;
+            }, {});
 
             const AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === storedSettings?.AccentColors?.COLOR) || undefined
 
@@ -97,7 +98,8 @@ const initialState = {
     AnimationTypeNSpeed: getStoredSettings()?.AnimationTypeNSpeed || DefaultSettings.AnimationTypeNSpeed,
     AnimationName: getStoredSettings()?.AnimationName || DefaultSettings.AnimationName,
     //font family
-    Font: getStoredSettings()?.Font || DefaultSettings.Font
+    Font: getStoredSettings()?.Font || DefaultSettings.Font,
+    FontSize: getStoredSettings()?.FontSize || DefaultSettings.FontSize
 };
 
 
@@ -201,9 +203,19 @@ const wallpaperSlice = createSlice({
             const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
             const updatedSettings = { ...storedSettings, Font: state.Font };
             localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+        },
+
+        setFontSize(state, action) {
+            const Size = FONT_SIZES.find(size => size.SizeType === action.payload.Size);
+            if (!Size) return;
+            state.FontSize = Size;
+
+            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+            const updatedSettings = { ...storedSettings, FontSize: state.FontSize };
+            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
         }
     }
 })
 
-export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed, setAnimationName, setFontFamily } = wallpaperSlice.actions;
+export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed, setAnimationName, setFontFamily ,setFontSize} = wallpaperSlice.actions;
 export default wallpaperSlice.reducer;

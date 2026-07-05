@@ -3,14 +3,16 @@
 
 
 What i did for this commit :
-feat(manage-apps) : Add Manage apps UI and search feature of it
+feat(settings) : Add font size preferences  and state management
 
-- Designed the Manage Apps interface
-- Implemented app search
-- Remaining management features will be added later
+- Added font size presets and typogaphy constants
+-  Created Redux state and reducer for font size
+- Added font size setting section 
+- Implemented font size switching functionality
+
+TODO : Apply font size throughout HorizonOS and Create Device for tablets to fix layout breaking on tablets
 
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
 
-TODO : create Device for tablets also and fix layour breaking on tablets

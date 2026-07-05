@@ -216,7 +216,11 @@ export const SECTIONS = [
                         Section: 'Font Family',
                         FileName: 'FontFamily',
                         Options: null
-                    },
+                    }, {
+                        Section: 'Font Sizes',
+                        FileName: 'FontSizes',
+                        Options: null
+                    }
                 ], Options: null
             }
 
@@ -583,6 +587,42 @@ export const FONT_FAMILY = [
             SemiBold: 'PoppinsSemiBold',
             Bold: 'PoppinsBold',
             ExtraBold: 'PoppinsExtraBold'
+        }
+    }
+]
+
+export const FONT_SIZES = [
+    {
+        SizeType: 'Large',
+        Details: 'Larger font size than usual',
+        Sizes: {
+            ExtraLarge: '1.61rem',
+            Large: '1.36rem',
+            Regular: '1.11rem',
+            Small: '0.86rem',
+            ExtraSmall: '0.61rem'
+        }
+    },
+    {
+        SizeType: 'Default',
+        Details: 'Usual font size',
+        Sizes: {
+            ExtraLarge: '1.5rem',
+            Large: '1.25rem',
+            Regular: '1rem',
+            Small: '0.75rem',
+            ExtraSmall: '0.5rem'
+        }
+    },
+    {
+        SizeType: 'Small',
+        Details: 'Smaller font size than usual',
+        Sizes: {
+            ExtraLarge: '1.39rem',
+            Large: '1.14rem',
+            Regular: '0.89rem',
+            Small: '0.64rem',
+            ExtraSmall: '0.39rem'
         }
     }
 ]
