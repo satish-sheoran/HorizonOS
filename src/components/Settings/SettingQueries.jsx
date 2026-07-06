@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors, AccentColors, Section, Queries }) => {
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
@@ -16,7 +17,7 @@ const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors, AccentColors, 
             transitionProperty: 'color, background-color, border-color',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={` flex  ${Device !== 'Desktop' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'p-[2.5%] w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
+        }} className={` flex  ${Device === 'Mobile' ? 'w-full h-fit' : !fullScreen ? 'w-full h-fit' : 'p-[2.5%] w-3/10 h-full pt-10 justify-center sticky left-0 top-0'}`}>
 
             <div style={{
                 transitionProperty: 'color, background-color, border-color',
@@ -32,7 +33,7 @@ const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors, AccentColors, 
                     py-4 px-5 `}>
 
                     <p style={{
-                        fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                      fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={` w-fit font-semibold select-none`}>Need other settings?</p>
@@ -42,7 +43,7 @@ const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors, AccentColors, 
                         {Queries?.map(({ query }, idx) => {
                             return <span key={idx}
                                 style={{
-                                    fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color',
+                                  fontSize : Sizes.Small,  fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}
@@ -53,7 +54,7 @@ const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors, AccentColors, 
                     </div>
                 </div>
 
-                {fullScreen && Device === 'Desktop' && <div style={{
+                {fullScreen && Device !== 'Mobile' && <div style={{
                     color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
@@ -67,7 +68,7 @@ const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors, AccentColors, 
                         }}
                         className='hover:opacity-80 flex gap-2 items-center text-sm  select-none'>
                         <span><MessageCircleQuestionMark size={20} strokeWidth={2} /></span>
-                        <span style={{fontFamily : Weights.Regular}}>Get help</span>
+                        <span style={{fontSize : Sizes.Small ,fontFamily : Weights.Regular}}>Get help</span>
                     </div>
                     <div
                         onClick={() => toast.info('Feature Coming Soon...')}
@@ -78,7 +79,7 @@ const SettingQueries = ({ Theme, fullScreen, Device, ThemeColors, AccentColors, 
                         }}
                         className='hover:opacity-80 flex gap-2 items-center text-sm  select-none'>
                         <span><UserRoundPen size={20} strokeWidth={2} /></span>
-                        <span style={{fontFamily : Weights.Regular}}>Give feedback</span>
+                        <span style={{fontSize : Sizes.Small ,fontFamily : Weights.Regular}}>Give feedback</span>
                     </div>
                 </div>}
             </div>

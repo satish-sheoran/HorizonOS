@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { CSS_EASING} from '../constants/Settings'
+import { CSS_EASING } from '../constants/Settings'
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper";
@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Settings = () => {
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-        const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const currDevice = useSelector((store) => store.Device.currDevice);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Settings)
     const Theme = useSelector((store) => store.wallpaper.theme.Settings)
@@ -19,13 +19,14 @@ const Settings = () => {
 
     return (
         <div
-            style={{ backgroundColor: ThemeColors.bg , transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
-}}
+            style={{
+                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }}
             className={` w-full h-full flex flex-col `}>
 
-            {currDevice === 'Desktop' ?
+            {currDevice === 'Desktop' || currDevice === 'Tablet' ?
                 <WindowControls id='settings' Theme={Theme} ThemeColors={ThemeColors} />
                 : <MobileCntrls id='settings' Theme={Theme} ThemeColors={ThemeColors} />
             }
@@ -36,14 +37,14 @@ transitionTimingFunction : CSS_EASING[Animation]
                 <section className="absolute inset-0 overflow-hidden flex">
 
                     {/* FOR DESKTOPS */}
-                    {currDevice === 'Desktop' && (
+                    {(currDevice === 'Desktop' || currDevice === 'Tablet' ) && (
                         <>
                             <Sections currDevice={currDevice} Theme={Theme} activeSection={activeSection} setShowContent={setshowContent} ThemeColors={ThemeColors} AccentColors={AccentColors} />
                             <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />
                         </>
                     )}
                     {/* FOR MOBILES */}
-                    {currDevice !== 'Desktop' && (
+                    {currDevice === 'Mobile' && (
                         !showContent ?
                             <Sections currDevice={currDevice} Theme={Theme} activeSection={activeSection} setShowContent={setshowContent} ThemeColors={ThemeColors} AccentColors={AccentColors} />
                             :

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 const HorizonOS = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
 
+  const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -14,17 +15,17 @@ const HorizonOS = ({ Theme, Device, fullScreen, GrandParentSection, Options, Sec
       backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
       transitionDuration: Speed,
       transitionTimingFunction: CSS_EASING[Animation]
-    }} className={`active:scale-97  shrink-0 w-full ${Device !== 'Desktop' ? 'h-60' : 'h-60'} flex flex-col items-center justify-center gap-2 rounded-2xl`}>
+    }} className={`active:scale-97  shrink-0 w-full h-60 flex flex-col items-center justify-center  rounded-2xl`}>
 
-      <span style={{
-       fontFamily : Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+      <p style={{
+        fontSize: `${(Sizes.ExtraLarge.slice(0,-3))*1.7}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
-      }} className={` select-none cursor-default text-4xl md:text-4xl lg:text-5xl font-semibold `}>{OS_NAME}
-      </span>
+      }} className={` select-none cursor-default  font-semibold `}>{OS_NAME}
+      </p>
 
       <span style={{
-      fontFamily : Weights.Regular , color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+        fontSize: Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
       }} className='select-none cursor-default '>{OS_VERSION} </span>

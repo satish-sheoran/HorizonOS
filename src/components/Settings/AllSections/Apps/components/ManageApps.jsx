@@ -9,6 +9,7 @@ import { CSS_EASING } from '../../../../../constants/Settings'
 const ManageApps = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColors }) => {
 
     const dispatch = useDispatch();
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -20,7 +21,7 @@ const ManageApps = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColo
             }
             }
             style={{
-                fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+               fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                 borderColor: ThemeColors.bg,
                 '--hover': ThemeColors.third,
                 '--active': Theme !== 'dark' ?

@@ -15,7 +15,7 @@ const { Animation } = useSelector(store => store.wallpaper.AnimationName) //anim
   return (
     <div style={{transitionProperty : 'color, background-color, border-color',
 transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`feedback-overflow-area w-full h-full grow flex ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+transitionTimingFunction : CSS_EASING[Animation]}} className={`feedback-overflow-area w-full h-full grow flex ${fullScreen ? '' : 'overflow-y-auto p-[2.5%] gap-2'} ${(Device === 'Mobile' || !fullScreen) ? 'flex-col' : ''}`}>
 
       <FeedbackSections Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} ParentSection={Section} Section={SubSections}/>
 

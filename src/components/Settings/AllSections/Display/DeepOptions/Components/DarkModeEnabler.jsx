@@ -10,6 +10,8 @@ import { CSS_EASING } from '../../../../../../constants/Settings'
 
 const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
 }) => {
+
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const [SwitchPreviewer, setSwitchPreviewer] = useState(false)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -21,15 +23,15 @@ const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
         <div className={`mt-2 flex flex-col gap-2`}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` font-semibold text-[0.8rem] ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>Preview </span>
+                }} className={` font-semibold  ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>Preview </span>
                 <span style={{
-                    fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    fontSize : Sizes.ExtraSmall ,fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`text-[0.6rem] ${Device !=='Desktop'?'px-3':'px-2.5'}`}>
+                }} className={` ${Device !=='Desktop'?'px-3':'px-2.5'}`}>
                     Enable dark mode for the system.
                 </span>
             </div>
@@ -41,10 +43,10 @@ const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
             }} className={`flex flex-col gap-2 rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
                
                     <span style={{
-                        fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Sizes.ExtraSmall, fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`text-[0.6rem]`}>
+                    }} >
                         You  can also customize it for individual apps.
                     </span>
                 <div className={`flex justify-between gap-1 items-center overflow-hidden`}>

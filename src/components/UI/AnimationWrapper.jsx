@@ -30,14 +30,12 @@ transitionDuration : Speed,
 transitionTimingFunction : CSS_EASING[Animation]}}
             className={`${activePanel !== '' ? '' : 'hidden'} overflow-hidden absolute flex inset-0 `} ref={Animref}>
 
-            <div className={`settings-deepCommon-overflow-UI w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device !== 'Desktop' || !fullScreen) ? 'flex-col' : ''}`}>
+            <div className={`settings-deepCommon-overflow-UI w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto px-[2.5%]'} ${(Device === 'Mobile' || !fullScreen) ? 'flex-col' : ''}`}>
                 {children}
                 {/* QUERIES */}
-                {fullScreen && Device === 'Desktop' && (
+                {fullScreen && Device !== 'Mobile' && (
                     <SettingQueries Theme={Theme} Device={Device} fullScreen={fullScreen} Section={Section} ThemeColors={ThemeColors} AccentColors={AccentColors} Queries={Queries} />
                 )}
-
-
 
             </div>
         </div>

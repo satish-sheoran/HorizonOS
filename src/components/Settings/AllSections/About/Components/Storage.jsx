@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 const Storage = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -29,9 +30,9 @@ const Storage = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors 
                                                    ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                                                    `}>
 
-            <span style={{ fontFamily: Weights.SemiBold }} className={`font-semibold`}>{Option}</span>
+            <span style={{fontSize : Sizes.Small, fontFamily: Weights.SemiBold }} className={`font-semibold`}>{Option}</span>
             <span style={{
-                fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+               fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}>

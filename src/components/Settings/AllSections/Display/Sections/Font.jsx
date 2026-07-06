@@ -12,6 +12,7 @@ const FontComponent = {
 
 const Font = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -20,10 +21,10 @@ const Font = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section,
         <section className={`w-full flex flex-col gap-2`}>
 
             <span style={{
-                fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+              fontSize : Sizes.Small,  fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className='text-sm  select-none'>{Section}</span>
+            }} className='  select-none'>{Section}</span>
 
             <div style={{
                 backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',

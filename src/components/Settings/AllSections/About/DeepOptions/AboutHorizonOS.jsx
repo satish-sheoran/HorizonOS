@@ -18,7 +18,7 @@ const AboutHorizonOS = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
       borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
       transitionDuration: Speed,
       transitionTimingFunction: CSS_EASING[Animation]
-    }} className={`deep-about-us py-[2.5%]  select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  px-[2.5%]'}`}>
+    }} className={`deep-about-us py-[2.5%]  select-none ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-full h-full overflow-y-auto  px-[2.5%]'}`}>
 
       <div className={` flex flex-col gap-2 `}>
 

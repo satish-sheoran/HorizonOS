@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 const DevDetail = ({ Device, Theme, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -27,13 +28,13 @@ const DevDetail = ({ Device, Theme, ThemeColors, AccentColors }) => {
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
-                className={`flex gap-2 text-lg `}>
+                className={`flex gap-2`}>
                 <User style={{
                     color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} strokeWidth={2.5} />
-                <span style={{ fontFamily: Weights.SemiBold }} className='font-semibold'>Developer</span>
+                <span style={{fontSize : Sizes.Regular, fontFamily: Weights.SemiBold }} className='font-semibold'>Developer</span>
             </div>
 
             <div style={{
@@ -63,22 +64,22 @@ const DevDetail = ({ Device, Theme, ThemeColors, AccentColors }) => {
                 }} className={` ${Device !== 'Desktop' ? 'w-full' : 'justify-center'} gap-2 right w-3/4 flex flex-col`}>
                     <span className='flex flex-col'>
                         <span style={{
-                            fontFamily : Weights.Bold,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                           fontSize : Sizes.Regular, fontFamily : Weights.Bold,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
-                        }} className={`text-lg font-bold name `}>{DEV_DETAILS.Name}</span>
+                        }} className={`font-bold name `}>{DEV_DETAILS.Name}</span>
                         <span style={{
-                         fontFamily : Weights.SemiBold,   color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Sizes.Small,  fontFamily : Weights.SemiBold,   color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
-                        }} className={`role font-semibold  text-[0.85rem]`}>{DEV_DETAILS.Role}</span>
+                        }} className={`role font-semibold `}>{DEV_DETAILS.Role}</span>
                     </span>
 
                     <p style={{
-                        fontFamily : Weights.Regular ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                       fontSize : `${(Sizes.Small.slice(0,-3))*0.9}rem`, fontFamily : Weights.Regular ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`desc-about-dev  text-[0.8rem]`}>
+                    }} className={`desc-about-dev `}>
                         {DEV_DETAILS.Description}
 
                     </p>
@@ -89,14 +90,14 @@ const DevDetail = ({ Device, Theme, ThemeColors, AccentColors }) => {
                 color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`extra flex gap-1 items-end ${Device !== 'Desktop' ? 'text-[0.55rem]' : 'text-[0.65rem]'} `}>
+            }} className={`extra flex gap-1 items-end`}>
                 <span style={{
                     color: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} ><ShieldHalf size={Device !== 'Desktop' ? 25 : 20} /></span>
                 <span style={{
-                    fontFamily : Weights.Regular ,color: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.ExtraSmall , fontFamily : Weights.Regular ,color: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} >

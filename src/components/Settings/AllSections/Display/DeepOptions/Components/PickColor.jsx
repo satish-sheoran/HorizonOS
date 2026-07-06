@@ -8,6 +8,7 @@ import { CSS_EASING } from '../../../../../../constants/Settings'
 
 const PickColor = ({ Theme, Device, fullScreen, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -28,15 +29,15 @@ const PickColor = ({ Theme, Device, fullScreen, ThemeColors, AccentColors }) => 
                 }} strokeWidth={2.5} />
                 <p className='flex flex-col gap-0.5 max-w-[70%]'>
                     <span style={{
-                        fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`font-semibold text-[0.8rem]`}>Custom Colour</span>
+                    }} className={`font-semibold `}>Custom Colour</span>
                     <span style={{
-                        fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                      fontSize : Sizes.ExtraSmall,  fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`text-[0.6rem]`}>Pick a custom colour that reflects your style.</span>
+                    }} >Pick a custom colour that reflects your style.</span>
                 </p>
             </div>
             <div onClick={() => toast.info('Feature Coming Soon...')} style={{

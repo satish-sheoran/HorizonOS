@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -30,7 +31,7 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} strokeWidth={2.5} />
-                <span style={{ fontFamily: Weights.SemiBold }} className='font-semibold'>Built Using</span>
+                <span style={{fontSize : Sizes.Regular, fontFamily: Weights.SemiBold }} className='font-semibold'>Built Using</span>
             </div>
 
             <div style={{
@@ -74,7 +75,7 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }} className={` ${Device !== 'Desktop' ? 'scale-150' : 'scale-200'}`}>•</span>
                         }
-                        <span style={{fontFamily : Weights.Regular}}>
+                        <span style={{fontSize : Sizes.Small ,fontFamily : Weights.Regular}}>
                             {Tech_Name}
                         </span>
                     </div>

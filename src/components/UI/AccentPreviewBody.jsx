@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../constants/Settings'
 const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const [ActiveSec, setActiveSec] = useState('About')
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -41,10 +42,11 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} size={Device !== 'Desktop' ? 8 : 12} />
                     <span style={{
-                        fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`, 
+                       fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`font-semibold ${Device !== 'Desktop' ? 'text-[0.4rem]' : 'text-[0.7rem]'}`}>About</span>
+                    }} className={`font-semibold `}>About</span>
                 </div>
 
                 <div onClick={() => setActiveSec('Display')}
@@ -64,10 +66,11 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} size={Device !== 'Desktop' ? 8 : 12} />
                     <span style={{
-                        fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`,
+                       fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`font-semibold ${Device !== 'Desktop' ? 'text-[0.4rem]' : 'text-[0.7rem]'}`}>Display</span>
+                    }} className={`font-semibold `}>Display</span>
                 </div>
 
                 <div onClick={() => setActiveSec('Apps')}
@@ -86,10 +89,11 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} size={Device !== 'Desktop' ? 8 : 12} />
                     <span style={{
-                        fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`
+                       ,fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`font-semibold ${Device !== 'Desktop' ? 'text-[0.4rem]' : 'text-[0.7rem]'}`}>Apps</span>
+                    }} className={`font-semibold `}>Apps</span>
                 </div>
             </div>
 
@@ -104,24 +108,25 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
 
                     <button
                         style={{
-                           fontFamily : Weights.SemiBold, color: COMMON_COLORS.White,
+                          fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`
+                            , fontFamily : Weights.SemiBold, color: COMMON_COLORS.White,
                             backgroundColor: AccentColors.CODE,
                             '--hover': AccentColors.Hover_Clr, transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`HOVER_CLASS flex items-center justify-center font-semibold cursor-pointer ${Device !== 'Desktop' ? 'px-1 py-0.5 text-[0.4rem]' : 'px-1.5 py-0.5 text-[0.7rem] '}    rounded `}>
+                        className={`HOVER_CLASS flex items-center justify-center font-semibold cursor-pointer ${Device !== 'Desktop' ? 'px-1 py-0.5 ' : 'px-1.5 py-0.5 '}  rounded `}>
                         Primary</button>
 
                     <button
                         style={{
-                           fontFamily : Weights.SemiBold, color: ThemeColors.primaryText,
+                         fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`,  fontFamily : Weights.SemiBold, color: ThemeColors.primaryText,
                             borderColor: ThemeColors.thirdText,
                             '--hover': ThemeColors.third, transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`HOVER_CLASS border flex items-center justify-center font-semibold cursor-pointer ${Device !== 'Desktop' ? 'px-1 py-0.5 text-[0.4rem]' : 'px-1.5 py-0.5 text-[0.7rem] '}    rounded `}>
+                        className={`HOVER_CLASS border flex items-center justify-center font-semibold cursor-pointer ${Device !== 'Desktop' ? 'px-1 py-0.5 ' : 'px-1.5 py-0.5  '}    rounded `}>
                         Second</button>
                 </div>
                 <Monitor size={Device !== 'Desktop' ? 14 : 22} style={{

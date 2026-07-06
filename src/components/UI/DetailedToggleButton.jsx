@@ -5,6 +5,7 @@ import { CSS_EASING } from '../../constants/Settings'
 // Title refers to App name
 const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColors, AccentColors, Logo, Title, Detail, Theme }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -15,7 +16,6 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
             onClick={performAction}
             style={{
                 borderColor: ThemeColors.bg,
-
                 '--hover': ThemeColors.third,
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
@@ -41,15 +41,15 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
                 </div>
                 <p className={`flex flex-col `}>
                     <span style={{
-                        fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                        fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={` font-semibold text-[0.8rem]`}>{Title}</span>
+                    }} className={` font-semibold`}>{Title}</span>
                     <span style={{
-                        fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                        fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={` text-[0.55rem]`}>{Detail}</span>
+                    }} >{Detail}</span>
                 </p>
             </div>
 
@@ -64,10 +64,10 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
                 <div style={{
                     backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full 
-                ${isActionActive ? 'translate-x-6' : 'translate-x-0'}
-                    `}></div>
+                    transitionTimingFunction: CSS_EASING[Animation],
+                    transition: `transform ${Speed} ${CSS_EASING[Animation]}`,
+                    transform: `${isActionActive ? 'translateX(1.5rem)' : 'translateX(0)'}`
+                }} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full `}></div>
 
             </button>
         </div>

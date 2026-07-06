@@ -6,6 +6,7 @@ import { CSS_EASING } from '../../../../../constants/Settings';
 const Developer = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors }) => {
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
@@ -28,8 +29,8 @@ const Developer = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColor
                                            ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                                            `}>
 
-            <span style={{ fontFamily: Weights.SemiBold }} className='font-semibold'>{Option}</span>
-            <span style={{ fontFamily: Weights.Regular, color: COMMON_COLORS.Blue }}>
+            <span style={{ fontSize: Sizes.Small, fontFamily: Weights.SemiBold }} className='font-semibold'>{Option}</span>
+            <span style={{ fontSize: Sizes.Small, fontFamily: Weights.Regular, color: COMMON_COLORS.Blue }}>
                 Satish Sheoran
             </span>
 

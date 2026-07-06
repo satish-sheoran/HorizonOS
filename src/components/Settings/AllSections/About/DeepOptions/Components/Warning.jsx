@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 const Warning = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -31,15 +32,15 @@ const Warning = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
             <div className={`warning-msg flex flex-col gap-1`}>
                 <span style={{
-                    fontFamily: Weights.SemiBold, color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`font-semibold text-lg `}>Factory Reset</span>
+                }} className={`font-semibold `}>Factory Reset</span>
                 <span style={{
-                    fontFamily : Weights.Regular ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.ExtraSmall ,  fontFamily : Weights.Regular ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` text-[0.5rem] lg:text-[0.7rem] `}>This will restore HorizonOS to its original state. All your personal data,apps,settings, and customizations will be permanently deleted.</span>
+                }} >This will restore HorizonOS to its original state. All your personal data,apps,settings, and customizations will be permanently deleted.</span>
             </div>
         </div>
     )

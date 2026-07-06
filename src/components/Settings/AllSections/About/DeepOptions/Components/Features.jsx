@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
+  const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -16,7 +17,7 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
     <div style={{ backgroundColor: ThemeColors.header }} className={`features flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
       <div style={{ color: ThemeColors.primaryText }} className={`flex gap-2  text-lg`}>
         <Star style={{ color: AccentColors.CODE }} strokeWidth={2.5} />
-        <span style={{ fontFamily: Weights.SemiBold }} className='font-semibold'>Features</span>
+        <span style={{fontSize : Sizes.Regular, fontFamily: Weights.SemiBold }} className='font-semibold'>Features</span>
       </div>
 
 
@@ -56,17 +57,17 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
             </div>
             <div className='w-[60%]  flex flex-col gap-0.5 items-start '>
-              <span style={{fontFamily : Weights.SemiBold}} className='font-semibold'>{Feat_Title.split(' ').map((word) => {
+              <span style={{fontSize : Sizes.Small ,fontFamily : Weights.SemiBold}} className='font-semibold'>{Feat_Title.split(' ').map((word) => {
                 return <>
                   <span>{word}</span>
                   <br />
                 </>
               })}</span>
               <span style={{
-                fontFamily : Weights.Regular ,color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                fontSize : Sizes.ExtraSmall ,fontFamily : Weights.Regular ,color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-              }} className={`text-[0.545rem]`}> {Feat_Desc} </span>
+              }} > {Feat_Desc} </span>
 
             </div>
           </div>

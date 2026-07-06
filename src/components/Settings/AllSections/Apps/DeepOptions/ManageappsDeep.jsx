@@ -11,6 +11,7 @@ import { useDebounce } from '../../../../../utils/UseDebounce';
 const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors, AccentColors }) => {
 
   // redux variables
+  const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -34,15 +35,15 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
 
       <div className=' mb-2 flex flex-col gap-0.5'>
         <span style={{
-          fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+          fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
-        }} className={` text-[0.8rem] font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+        }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
         <span style={{
-          fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+          fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
-        }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>View, Organize, and manage installed applications.</span>
+        }} className={`${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>View, Organize, and manage installed applications.</span>
       </div>
 
       {/* searchArea */}
@@ -54,7 +55,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation],
         }}
-        className={`mb-2 border flex gap-2 py-1.5 rounded-2xl ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
+        className={`mb-2 border flex gap-2 py-2 rounded-2xl ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
 
         <Search />
         <input
@@ -66,18 +67,19 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
           onFocus={() => setisFocused(true)}
           onBlur={() => setisFocused(false)}
           style={{
-            color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            fontSize: Device !== 'Desktop' ? `${(Sizes.Small.slice(0, -3)) * 1.2}rem` : `${(Sizes.Small.slice(0, -3))*1.1}rem`
+            , color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+        transitionDuration: Speed,
+        transitionTimingFunction: CSS_EASING[Animation]
           }}
-          className={`w-full  font-semibold outline-none focus:ring-0 focus:border-0 focus:outline-none ${Device !== 'Desktop' ? 'text-[1rem]' : 'text-[0.85rem]'}`}
+        className={`w-full  font-semibold outline-none focus:ring-0 focus:border-0 focus:outline-none`}
         />
       </div>
 
 
       {
         filteredApps.length > 0 ?
-          <div className={`mb-2 min-h-[10vh] grid gap-3 ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'}`}>
+          <div className={`mb-2 min-h-[10vh] grid gap-3 ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-4'}`}>
             {
               filteredApps.map(({ name: App, icon, size, version }) => {
                 return <div key={App}
@@ -86,34 +88,35 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                   }}
-                  className={`border w-full rounded-2xl px-2 py-3 flex justify-between gap-1 items-center overflow-hidden`}>
+                  className={`border w-full rounded-2xl px-2 ${Device !=='Desktop'?'py-3':'py-2'} flex justify-between gap-0.5 items-center overflow-hidden`}>
 
                   <img
                     style={{
                       borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                       transitionDuration: Speed,
-                      transitionTimingFunction: CSS_EASING[Animation]
+                      transitionTimingFunction: CSS_EASING[Animation],
+                      transition : `width ${Speed} ${CSS_EASING[Animation]} , height ${Speed} ${CSS_EASING[Animation]}`
                     }}
-                    className={`${(App !== 'Settings' && App !== 'Clock') ? 'border' : ''} rounded-2xl w-12 h-12 object-cover object-center `} src={icon}
+                    className={`${(App !== 'Settings' && App !== 'Clock') ? 'border' : ''} rounded-2xl ${fullScreen?'w-10 h-10':'w-11.5 h-11.5'} object-cover object-center `} src={icon}
                     alt={App}
                   />
 
                   <div className={`flex flex-col gap-0.5`}>
                     <span style={{
-                      color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                     fontSize :!fullScreen? Sizes.Small : `${(Sizes.Small.slice(0,-3))*0.8}rem`, color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`text-[0.82rem] font-semibold`}>{App}</span>
+                    }} className={` font-semibold`}>{App}</span>
                     <span style={{
-                      color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                     fontSize : !fullScreen ?Sizes.ExtraSmall :`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`, color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`text-[0.55rem] `}>{size}</span>
+                    }} >{size}</span>
                     <span style={{
-                      color: ThemeColors.thirdText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                     fontSize :!fullScreen? Sizes.ExtraSmall:`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem` , color: ThemeColors.thirdText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`text-[0.55rem] `}>{version}</span>
+                    }} >{version}</span>
                   </div>
 
                   <button
@@ -134,7 +137,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
           :
           <div
             style={{
-              color: ThemeColors.secText,
+             fontSize : Sizes.Small, color: ThemeColors.secText,
               fontFamily: Weights.SemiBold,
               transitionProperty: 'color, background-color, border-color',
               transitionDuration: Speed,
@@ -159,11 +162,11 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
           <div className={`flex gap-3`}>
             <img className={`w-12 h-12 object-cover object-center`} src='/public/HorizonOS-Photoroom.png' alt="" />
             <div className={`flex flex-col gap-1`}>
-              <span style={{ color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={`text-[0.65rem] font-semibold`}>Total Apps</span>
+              <span style={{fontSize :!fullScreen? `${(Sizes.Small.slice(0,-3))*0.85}rem` : `${(Sizes.Small.slice(0,-3))*0.7}rem`, color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={` font-semibold`}>Total Apps</span>
               <div className={`flex gap-1 items-baseline h-fit`}>
 
-                <span style={{ color: ThemeColors.primaryText, fontFamily: Weights.SemiBold }} className={`text-[1.5rem] font-semibold`}>{ALL_APPS.length}</span>
-                <span style={{ color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={`text-[0.65rem] font-semibold`}>apps</span>
+                <span style={{fontSize : `${(Sizes.Large.slice(0,-3))*1.2}rem`, color: ThemeColors.primaryText, fontFamily: Weights.SemiBold }} className={` font-semibold`}>{ALL_APPS.length}</span>
+                <span style={{ fontSize : !fullScreen ?Sizes.ExtraSmall :`${(Sizes.ExtraSmall.slice(0,-3))*0.95}rem` ,color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={` font-semibold`}>apps</span>
 
               </div>
             </div>
@@ -173,17 +176,19 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
 
           <div className={`flex gap-5`}>
             <div className={`flex flex-col`}>
-              <span style={{ color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={`text-[0.65rem] font-semibold`}>Storage Used</span>
+              <span style={{fontSize :!fullScreen? `${(Sizes.Small.slice(0,-3))*0.85}rem` : `${(Sizes.Small.slice(0,-3))*0.7}rem`, color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={`font-semibold`}>Storage Used</span>
 
               <div style={{ color: ThemeColors.primaryText, fontFamily: Weights.SemiBold }} className={`flex gap-1 items-baseline`}>
-                <span className={`text-[1.5rem] font-semibold`}>{TotalStorage}</span><span className={`text-[0.65rem] font-semibold`}>
+                <span style={{fontSize : Sizes.Large}} className={`font-semibold`}>{TotalStorage}</span>
+                <span style={{fontSize : !fullScreen ?Sizes.ExtraSmall :`${(Sizes.ExtraSmall.slice(0,-3))*0.95}rem` }} className={`font-semibold`}>
                   {TotalStorage >= 1024 ? 'GB' : 'MB'}
                 </span>
               </div>
-              <span style={{ color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={`text-[0.65rem] font-semibold`}>of 8.00 GB</span>
+              <span style={{fontSize :!fullScreen? `${(Sizes.Small.slice(0,-3))*0.85}rem` : `${(Sizes.Small.slice(0,-3))*0.7}rem`, color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={`font-semibold`}>of 8.00 GB</span>
 
             </div>
-            <div style={{borderColor : ThemeColors.third}} className={`relative  border rounded-full aspect-square flex items-center justify-center`}>
+
+            <div style={{ borderColor: ThemeColors.third }} className={`relative  border rounded-full aspect-square flex items-center justify-center`}>
               <div
                 style={{
                   background: `conic-gradient(
@@ -192,9 +197,9 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
                 }}
                 className={`absolute inset-0 rounded-full`}></div>
 
-              <div style={{ backgroundColor: ThemeColors.header ,borderColor : ThemeColors.third}} className={`border absolute inset-2 rounded-full `}></div>
+              <div style={{ backgroundColor: ThemeColors.header, borderColor: ThemeColors.third }} className={`border absolute inset-2 rounded-full `}></div>
 
-              <div className=' absolute inset-0 flex items-center justify-center text-[0.8rem] font-semibold'>{Math.floor(TotalStorage / Number(OS_Storage.slice(0, -2)))}%</div>
+              <div style={{fontSize : Sizes.Small}} className=' absolute inset-0 flex items-center justify-center font-semibold'>{Math.floor(TotalStorage / Number(OS_Storage.slice(0, -2)))}%</div>
 
             </div>
           </div>

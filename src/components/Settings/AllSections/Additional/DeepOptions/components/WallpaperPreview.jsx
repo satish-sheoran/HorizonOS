@@ -11,7 +11,7 @@ import { setWallpaper } from '../../../../../../redux/features/wallpaper';
 const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen, activeWallpaper, currentPreview, setNewPreview }) => {
 
     const dispatch = useDispatch();
-
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -33,15 +33,15 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
         <div className={`mt-2 flex flex-col gap-2 `}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` text-[0.8rem] font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+                }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
-                    fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Personalize your {Device !== 'Desktop' ? 'device' : 'desktop'} with your favourite image.</span>
+                }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Personalize your {Device !== 'Desktop' ? 'device' : 'desktop'} with your favourite image.</span>
             </div>
 
             <div style={{
@@ -77,54 +77,54 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                         color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`relative mt-1 flex flex-col items-center justify-center`}>
-                        <span style={{ fontFamily: Weights.Bold }} className={`font-bold text-[2.2rem]`}>  {formattedTime}</span>
-                        <p style={{ fontFamily: Weights.SemiBold }} className={`absolute -bottom-1 font-semibold text-[0.5rem]`}>{formattedDate}  </p>
+                    }} className={`relative mt-1 flex flex-col  items-center justify-center`}>
+                        <span style={{ fontSize: `${((Sizes.ExtraLarge).slice(0, -3))*1.3}rem`, fontFamily: Weights.Bold }} className={`font-bold `}>  {formattedTime}</span>
+                        <p style={{ fontSize: Sizes.ExtraSmall, fontFamily: Weights.SemiBold }} className={`absolute -bottom-1 font-semibold `}>{formattedDate}  </p>
                     </div>
                 </div>
 
                 {/* details and set option */}
-                <div className={`grow ${Device !=='Desktop'?'pl-4':'pl-10'}  flex flex-col gap-2`}>
+                <div className={`grow ${Device !== 'Desktop' ? 'pl-4' : 'pl-10'}  flex flex-col gap-2`}>
                     <p
                         style={{
-                            fontFamily: Weights.SemiBold,
+                           fontSize : Sizes.Small, fontFamily: Weights.SemiBold,
                             color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
                             backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr,
                             transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`w-fit cursor-pointer font-semibold rounded-2xl py-1 px-2.5 text-[0.8rem] hover:scale-105`}>Preview</p>
+                        className={`w-fit cursor-pointer font-semibold rounded-2xl py-1 px-2.5  hover:scale-105`}>Preview</p>
                     <p
                         style={{
-                            fontFamily: Weights.SemiBold,
+                          fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold,
                             color: ThemeColors.primaryText,
                             transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`cursor-text font-semibold text-[1rem]`}
+                        className={`cursor-text font-semibold `}
                     >
                         {Device !== 'Desktop' ?
-                        Wallpapers['mobile'].find(({ url }) => url === currentPreview)?.name || Wallpapers['mobile'].find(({ url }) => url === activeWallpaper)?.name || ''
-                        :
-                        Wallpapers['desktop'].find(({ url }) => url === currentPreview)?.name || Wallpapers['desktop'].find(({ url }) => url === activeWallpaper)?.name || ''
+                            Wallpapers['mobile'].find(({ url }) => url === currentPreview)?.name || Wallpapers['mobile'].find(({ url }) => url === activeWallpaper)?.name || ''
+                            :
+                            Wallpapers['desktop'].find(({ url }) => url === currentPreview)?.name || Wallpapers['desktop'].find(({ url }) => url === activeWallpaper)?.name || ''
                         }
-                        </p>
+                    </p>
                     <p
                         style={{
-                            fontFamily: Weights.Regular,
+                           fontSize : Sizes.Small, fontFamily: Weights.Regular,
                             color: ThemeColors.thirdText,
                             transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`cursor-text text-[0.8rem] ${Device !== 'Desktop' ? '' : 'w-[70%]'}`}
+                        className={`cursor-text  ${Device !== 'Desktop' ? '' : 'w-[70%]'}`}
                     >
                         {Device !== 'Desktop' ?
-                        Wallpapers['mobile'].find(({ url }) => url === currentPreview)?.description || Wallpapers['mobile'].find(({ url }) => url === activeWallpaper)?.description || ''
-                        :
-                        Wallpapers['desktop'].find(({ url }) => url === currentPreview)?.description || Wallpapers['desktop'].find(({ url }) => url === activeWallpaper)?.description || ''
+                            Wallpapers['mobile'].find(({ url }) => url === currentPreview)?.description || Wallpapers['mobile'].find(({ url }) => url === activeWallpaper)?.description || ''
+                            :
+                            Wallpapers['desktop'].find(({ url }) => url === currentPreview)?.description || Wallpapers['desktop'].find(({ url }) => url === activeWallpaper)?.description || ''
                         }
                     </p>
 
@@ -141,13 +141,13 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`${currentPreview === activeWallpaper ? '' : ''} flex items-center justify-start gap-2 w-fit font-semibold rounded-2xl py-2 pl-2.5 pr-5 text-[0.8rem]
+                        className={`${currentPreview === activeWallpaper ? '' : ''} flex items-center justify-start gap-2 w-fit font-semibold rounded-2xl py-2 pl-2.5 pr-5
                             ${currentPreview === activeWallpaper ? '' : 'active:scale-95 active:opacity-90'}  cursor-pointer`}
                     >
                         <div style={{ borderColor: currentPreview === activeWallpaper ? ThemeColors.bg : COMMON_COLORS.White }} className={`border-2 rounded-full w-fit h-fit p-0.5 flex items-center justify-center`}>
                             <Check strokeWidth={3} size={10} />
                         </div>
-                        <span className={`text-[0.7rem]`}>{currentPreview === activeWallpaper ? 'CURRENT WALLPAPER' : 'Set as Wallpaper'} </span>
+                        <span style={{fontSize : Sizes.Small}} >{currentPreview === activeWallpaper ? 'CURRENT WALLPAPER' : 'Set as Wallpaper'} </span>
                     </button>
 
                 </div>

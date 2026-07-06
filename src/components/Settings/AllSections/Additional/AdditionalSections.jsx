@@ -20,7 +20,7 @@ const AdditionalSections = ({ Theme, Device, fullScreen, ThemeColors, AccentColo
             borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`additional-overflow-area flex flex-col gap-2 ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
+        }} className={`additional-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
 
             {
                 CurrSection?.map(({ Section, FileName, Options }, idx) => {

@@ -129,15 +129,6 @@ export const removeElem = (result, start, end, textarea) => {
 }
 
 
-// FN which returns font size as per no. of chars in our input field
-export const getFontClass = (len,Sizes) => {
-    if (len <= 10) return Sizes.ExtraLarge*5;
-    if (len <= 20) return  Sizes.Large;
-    return Sizes.Regular;
-};
-
-
-
 // EVERYTHING IS FINE JUST WRITE THE CODE PROPERLY , so in future if i read it then it do not give headache
 export const ManageDotEntry = (start, end, isOperator, res) => {
     let allNums = res.split('');  // returns [1,2,+,2,.,3,-,2] for  "12+2.3-2"

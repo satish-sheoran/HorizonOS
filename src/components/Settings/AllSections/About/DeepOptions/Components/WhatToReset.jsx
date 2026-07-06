@@ -8,6 +8,7 @@ import { COMMON_COLORS } from '../../../../../../constants/style';
 
 const WhatToReset = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -25,17 +26,17 @@ const WhatToReset = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) =
             {/* Title : What will be reset */}
             <div
                 style={{
-                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`flex flex-col font-semibold`}>
                 <p>What will be reset?</p>
                 <p style={{
-                    fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`text-[0.6rem] `}>All personal data and customizations will be deleted, including :</p>
+                }}>All personal data and customizations will be deleted, including :</p>
             </div>
 
             {/* Options ,OR select what to delete */}
@@ -73,17 +74,17 @@ const WhatToReset = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) =
 
                             <span
                                 style={{
-                                    fontFamily : Weights.SemiBold ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                                   fontSize : Sizes.Small, fontFamily : Weights.SemiBold ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}
-                                className={`${Device !== 'Desktop' ? 'text-[0.95rem]' : 'text-[0.85rem'} font-semibold `}>{option}</span>
+                                className={`font-semibold `}>{option}</span>
 
                             <span style={{
-                                fontFamily :Weights.Regular ,color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                               fontSize : Sizes.ExtraSmall, fontFamily :Weights.Regular ,color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
-                            }} className={`text-[0.6rem]`}>{description}</span>
+                            }}>{description}</span>
 
                         </div>
                     </div>

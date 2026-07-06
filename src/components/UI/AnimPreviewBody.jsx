@@ -6,6 +6,7 @@ import { AnimationsName, CSS_EASING } from '../../constants/Settings'
 
 const AnimPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { fullScreen } = useSelector((store) => store.windowApps.apps['settings'])
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -32,9 +33,14 @@ const AnimPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
 
             {AnimationsName.map(({ Name, Animation: Anim }, index) => {
 
-                return <div key={index} className={` w-full min-h-[20%] relative  ${Device !== 'Desktop' ? 'text-[0.32rem]' : 'text-[0.5rem]'}`}>
+                return <div
+                    key={index}
+                    style={{
+                        fontSize: Device !== 'Desktop' ? `${(Sizes.ExtraSmall.slice(0, -3)) * 0.8}rem` : `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`,
+                    }}
+                    className={` w-full min-h-[20%] relative`}>
                     <button style={{
-                       fontFamily : Weights.SemiBold, color: COMMON_COLORS.White,
+                        fontFamily: Weights.SemiBold, color: COMMON_COLORS.White,
                         backgroundColor: AccentColors.CODE,
                         transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,

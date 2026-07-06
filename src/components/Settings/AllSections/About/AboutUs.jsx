@@ -26,7 +26,7 @@ const AboutUs = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSectio
       transitionProperty: 'color, background-color, border-color',
       transitionDuration: Speed,
       transitionTimingFunction: CSS_EASING[Animation]
-    }} className={`p-[2.5%] about-us-overflow-area overflow-y-auto w-full h-full grow flex  flex-col gap-2 `}>
+    }} className={`about-us-overflow-area  w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto  p-[2.5%] gap-2'} ${(Device === 'Mobile' || !fullScreen) ? 'flex-col' : ''}`}>
 
 
 

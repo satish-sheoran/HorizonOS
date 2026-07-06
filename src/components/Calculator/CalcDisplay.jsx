@@ -1,5 +1,4 @@
 import React from 'react'
-import { getFontClass } from '../../utils/CalculatorFns';
 import { useSelector } from 'react-redux';
 import { CSS_EASING } from '../../constants/Settings'
 

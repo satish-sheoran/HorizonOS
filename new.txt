@@ -2,17 +2,15 @@
 2. how to remove web page not secure 
 
 
-What i did for last commit :
-feat(settings) : Add font size preferences  and state management
+What i did for this commit :
+feat : Applied Font Size Across Remaining files
 
-- Added font size presets and typogaphy constants
--  Created Redux state and reducer for font size
-- Added font size setting section 
-- Implemented font size switching functionality
+- Added Font Size Across Setting App and UI Folder
+- Implemented Device (Tablet) cases also across these files
+- Remove unused GetFontClass functionality
+- Remove other unused items
 
-TODO : Apply font size throughout HorizonOS and Create Device for tablets to fix layout breaking on tablets
 
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
-

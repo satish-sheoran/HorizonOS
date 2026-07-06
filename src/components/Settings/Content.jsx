@@ -19,6 +19,7 @@ const SETTINGS_COMPONENTS = {
 };
 
 const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors, AccentColors, showContent }) => {
+
     const dispatch = useDispatch()
     const activePanel = useSelector((store) => store.Settings.activePanel)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -32,11 +33,11 @@ const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors
             transitionProperty: 'color, background-color, border-color',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`relative h-full  flex flex-col ${currDevice === 'Desktop' ? 'w-3/4' : 'w-full'}`}>
+        }} className={`relative h-full  flex flex-col ${(currDevice === 'Desktop' || currDevice === 'Tablet') ? 'grow' : 'w-full'}`}>
 
             {/* here activePanel is used to check if any option is opened in deep OR not */}
             {/* toolbar for back and save options */}
-            {currDevice !== 'Desktop' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
+            {currDevice !== 'Desktop' && currDevice !== 'Tablet' && <Toolbar performAction={activePanel !== '' ? setActivePanelEmpty : setShowContentFalse} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
 
             {
                 SECTIONS.map(({ Section, FileName, Queries, SubSections, DeepSection }) => {

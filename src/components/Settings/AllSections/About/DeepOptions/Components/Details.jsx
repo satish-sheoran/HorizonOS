@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 const Details = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -31,7 +32,7 @@ const Details = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} strokeWidth={2.5} />
-                <span style={{fontFamily : Weights.SemiBold}} className='font-semibold'>About HorizonOS</span>
+                <span style={{fontSize : Sizes.Regular ,fontFamily : Weights.SemiBold}} className='font-semibold'>About HorizonOS</span>
             </div>
             <div style={{
                 color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
@@ -40,7 +41,7 @@ const Details = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
             }} className={`font-[450] text-sm flex flex-col gap-4`}>
                 <>
                     {PROJECT_DETAILS?.[Device]?.map((para, index) => {
-                        return <span key={index} style={{fontFamily : Weights.Regular}}>{para}</span>
+                        return <span key={index} style={{fontSize : Sizes.Small ,fontFamily : Weights.Regular}}>{para}</span>
                     })}
                 </>
             </div>

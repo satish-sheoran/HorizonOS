@@ -4,6 +4,7 @@ import { CSS_EASING } from '../../constants/Settings'
 
 const NormalPreviewBody = ({ ThemeColors, Device }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 

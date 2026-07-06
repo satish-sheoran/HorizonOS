@@ -9,6 +9,7 @@ import { COMMON_COLORS } from '../../../../../constants/style'
 const ThemeSelection = ({ Option, fullScreen, Device, Theme: theme, ThemeColors, AccentColors }) => {
 
     const dispatch = useDispatch()
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -31,7 +32,7 @@ const ThemeSelection = ({ Option, fullScreen, Device, Theme: theme, ThemeColors,
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`flex flex-col p-2 gap-2.5 md:py-3 md:pl-3`}>
+                        className={`overflow-hidden flex flex-col p-2 gap-2.5 md:py-3 md:pl-3`}>
 
                         <img
                             onContextMenu={(e) => e.preventDefault()}
@@ -45,10 +46,10 @@ const ThemeSelection = ({ Option, fullScreen, Device, Theme: theme, ThemeColors,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}
                             className={`select-none object-cover object-center rounded-xl ${theme === Theme ? 'outline-4' : ''} 
-                            aspect-square  ${fullScreen ? 'md:max-w-45 max-h-45' : 'md:max-w-40 md:max-h-40'}
+                            aspect-square  ${fullScreen ? 'md:max-w-40 max-h-40' : 'md:max-w-40 md:max-h-40'}
                             `} alt={`${Theme} theme`} />
 
-                        <span style={{fontFamily : Weights.Regular}} className={`mx-auto  first-letter:uppercase select-none`}>{Theme} mode</span>
+                        <span style={{fontSize : Sizes.Small, fontFamily: Weights.Regular }} className={`mx-auto  first-letter:uppercase select-none`}>{Theme} mode</span>
 
                     </div>
                 })}

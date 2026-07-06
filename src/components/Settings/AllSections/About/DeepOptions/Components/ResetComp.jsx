@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -35,23 +36,23 @@ const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => 
 
                 <div className={`flex flex-col `}>
                     <span style={{
-                       fonFamily : Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                      fontSize : Sizes.Regular , fonFamily : Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`${Device != 'Desktop' ? 'text-[1rem]' : 'text-[1.2rem]'} font-semibold`}>Reset HorizonOS</span>
+                    }} className={`font-semibold`}>Reset HorizonOS</span>
                     <span style={{
-                       fontFamily : Weights.Regular , color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                      fontSize : Sizes.ExtraSmall , fontFamily : Weights.Regular , color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`${Device != 'Desktop' ? 'text-[0.55rem]' : 'text-[0.6rem]'}`}>Restore your device to its factory default state.</span>
+                    }} >Restore your device to its factory default state.</span>
                 </div>
             </div>
 
             <button style={{
-                fontFamily : Weights.SemiBold ,backgroundColor: COMMON_COLORS.Red, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+               fontSize : Sizes.Small , fontFamily : Weights.SemiBold ,backgroundColor: COMMON_COLORS.Red, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`${Device !=='Desktop'?'text=[0.57rem':'text-[0.9rem]'} active:scale-97  cursor-pointer rounded-xl font-semibold px-2 py-1.5`}>Reset Now</button>
+            }} className={`active:scale-97  cursor-pointer rounded-xl font-semibold px-2 py-1.5`}>Reset Now</button>
 
         </div>
     )

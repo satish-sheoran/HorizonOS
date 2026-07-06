@@ -17,17 +17,17 @@ const FontSizes = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen 
         <div className={`mt-2 flex flex-col gap-2`}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                    fontFamily: Weights.SemiBold,
+                   fontSize : Sizes.Small, fontFamily: Weights.SemiBold,
                     color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` text-[0.8rem] font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+                }} className={`  font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
-                    fontFamily: Weights.Regular,
+                   fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular,
                     color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={` text-[0.6rem]  ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose your preferred font size.</span>
+                }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose your preferred font size.</span>
             </div>
 
             <div style={{
@@ -54,13 +54,13 @@ const FontSizes = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen 
                         className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
                     >
                         <div className={`flex flex-col gap-0.5 text-left`}>
-                            <span style={{ fontFamily: Weights.Bold }} className={`font-bold text-[0.8rem] `}>{SizeType}</span>
+                            <span style={{fontSize : Sizes.Small, fontFamily: Weights.Bold }} className={`font-bold `}>{SizeType}</span>
                             <span style={{
-                                fontFamily: Weights.SemiBold,
+                               fontSize : Sizes.ExtraSmall, fontFamily: Weights.SemiBold,
                                 color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
-                            }} className={`font-semibold text-[0.55rem] `}>{Details}</span>
+                            }} className={`font-semibold`}>{Details}</span>
                         </div>
 
                         <div style={{

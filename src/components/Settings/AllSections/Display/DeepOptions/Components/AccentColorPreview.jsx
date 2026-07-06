@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 
 const AccentColorPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen }) => {
 
+  const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -13,10 +14,10 @@ const AccentColorPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fu
   return (
     <div className={`mt-2 flex flex-col gap-2`}>
       <span style={{
-        fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+       fontSize : Sizes.Small, fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
-      }} className={` text-[0.8rem] font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
+      }} className={`font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
 
       <div style={{
         backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
@@ -32,15 +33,15 @@ const AccentColorPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fu
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={`${Device !== 'Desktop' ? 'max-w-1/2' : 'max-w-[40%]'} flex flex-col gap-2`}>
           <span style={{
-            fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+           fontSize:Sizes.Regular, fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-          }} className={`font-semibold text-[1.05rem] text-center `}>Personalize Your Experience</span>
+          }} className={`font-semibold  text-center `}>Personalize Your Experience</span>
           <span style={{
-            fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+           fontSize : Sizes.ExtraSmall, fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-          }} className={`text-center text-[0.65rem]`}>Choose a color that reflects your style and preview changes here.</span>
+          }} className={`text-center `}>Choose a color that reflects your style and preview changes here.</span>
         </div>
 
       </div>
