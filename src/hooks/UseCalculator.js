@@ -9,13 +9,13 @@ function UseCalculator(currDevice,result,setResult) {
         if (!textarea) return;
 
         const start =
-            currDevice === 'Desktop'
+            currDevice === 'Desktop' || currDevice === 'Tablet'
                 ? result.length
                 : textarea.selectionStart ?? result.length;
         // starting point of selected text of input ex: seelcting no. from 456 in '12345689' also ?? result.length is writtne bcz sometime on desktop the cursor position misbehaved as cause issues
 
         const end =
-            currDevice === 'Desktop'
+            currDevice === 'Desktop' || currDevice === 'Tablet'
                 ? result.length
                 : textarea.selectionEnd ?? result.length;
         //ending point of selected text of input 

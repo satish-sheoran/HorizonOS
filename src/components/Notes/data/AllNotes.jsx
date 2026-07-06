@@ -13,6 +13,8 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
 
     const dispatch = useDispatch();
+
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -115,6 +117,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                         `}>
                                 <h3
                                     style={{
+                                        fontSize: Sizes.Regular,
                                         fontFamily: Weights.SemiBold,
                                         color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                                         transitionDuration: Speed,
@@ -122,33 +125,35 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     }}
 
                                     className={`break-all
- select-none line-clamp-1 text-[1.3rem] font-bold `}>
+ select-none line-clamp-1  font-bold `}>
                                     {title ? title : desc}
 
                                 </h3>
 
                                 <p
                                     style={{
+                                        fontSize: Sizes.Small,
                                         fontFamily: Weights.Regular,
                                         color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}
                                     className={`break-all
- select-none text-[0.75rem] line-clamp-4 font-[650]
+ select-none  line-clamp-4 font-[650]
                             `}>
                                     {title && desc ? desc : 'No Text'} {/* if title and desc exist, display desc; otherwise, display 'No Text' */}
                                 </p>
 
                                 <div className='flex items-center justify-between gap-1 overflow-hidden'>
                                     <span style={{
-                                        fontFamily : Weights.Regular,
+                                        fontSize: Sizes.ExtraSmall,
+                                        fontFamily: Weights.Regular,
                                         color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}
                                         className={`block whitespace-nowrap text-ellipsis select-none 
-                                            text-[0.6rem] 
+                                             
                                             font-semibold 
                                             `}>
                                         {formatDateTime(timeStamp)}
@@ -178,13 +183,13 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                     :
                     (
                         <div style={{
-                            fontFamily : Weights.SemiBold,
+                            fontFamily: Weights.SemiBold,
                             color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
                             <NotebookPen size={30} />
-                            <span>No notes here yet</span>
+                            <span style={{fontSize : Sizes.Small}}>No notes here yet</span>
                         </div>
                     )
             }

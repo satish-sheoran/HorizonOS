@@ -12,6 +12,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
     const popUpElem = useRef(null);
     const dispatch = useDispatch();
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -57,12 +58,13 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
             
             `}>
                 <span style={{
-                    fontFamily : Weights.Bold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.Regular, fontFamily : Weights.Bold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={`select-none font-bold `}>New Folder</span>
 
                 <input style={{
+                    fontSize : Sizes.Small,
                      fontFamily: Weights.Regular ,color: ThemeColors.primaryText, borderColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
@@ -72,7 +74,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
                     <button
                         onClick={() => setOpencreateFolderPopUp(false)}
                         style={{
-                           fontFamily : Weights.Bold , color: COMMON_COLORS.White,
+                          fontSize : Sizes.Small , fontFamily : Weights.Bold , color: COMMON_COLORS.White,
                             backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
                             '--hover': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
                             '--active': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
@@ -80,7 +82,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`HOVER_CLASS  w-[calc(50%-2px)] ${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}  text-sm font-bold select-none  active:scale-96 rounded-xl`}>Cancel</button>
+                        className={`HOVER_CLASS  w-[calc(50%-2px)] ${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}   font-bold select-none  active:scale-96 rounded-xl`}>Cancel</button>
 
                     <button
                         onClick={() => {
@@ -94,7 +96,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
                             setOpencreateFolderPopUp(false);
                         }}
                         style={{
-                           fontFamily : Weights.Bold , backgroundColor: COMMON_COLORS.Blue,
+                         fontSize : Sizes.Small,  fontFamily : Weights.Bold , backgroundColor: COMMON_COLORS.Blue,
                             color: COMMON_COLORS.White,
                             '--hover': COMMON_COLORS.LightBlue,
                             '--active': COMMON_COLORS.LightBlue,
@@ -102,7 +104,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`HOVER_CLASS grow  ${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'} text-sm font-bold rounded-xl select-none   active:scale-96 `}>OK</button>
+                        className={`HOVER_CLASS grow  ${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}  font-bold rounded-xl select-none   active:scale-96 `}>OK</button>
 
                 </div>
             </div>

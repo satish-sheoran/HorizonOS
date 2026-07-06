@@ -14,6 +14,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
     const dispatch = useDispatch();
     const EditTaskContainer = useRef(null)
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -145,7 +146,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                         <FolderClosed size={20} />
                         <div
                             style={{
-                                fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                               fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}
@@ -162,7 +163,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                                         setcurrCategory(category)
                                     }}
                                     style={{
-                                        fontFamily: Weights.SemiBold,
+                                     fontSize : Sizes.Small ,   fontFamily: Weights.SemiBold,
                                         color: currCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
                                         backgroundColor: currCategory === category ? AccentColors.CODE : ThemeColors.header,
                                         transitionProperty: 'color, background-color, border-color',
@@ -228,13 +229,13 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                     onChange={(e) => setCurrTaskTitle(e.target.value)}
                     name="newTask-title"
                     style={{
-                        fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+                      fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                         '--placeholder': ThemeColors.thirdText,
                         transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                    className={` newTask-title rounded-lg shrink-0 p-1 font-semibold text-xl placeholder:text-xl h-fit resize-none  outline-none  
+                    className={` newTask-title rounded-lg shrink-0 p-1 font-semibold  h-fit resize-none  outline-none  
                     `}
                     placeholder='Title'
                     rows={1}
@@ -242,7 +243,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                 ></textarea>
 
                 <div style={{
-                   fontFamily : Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className=" shrink-0 date-charCount flex gap-3 ">
@@ -257,13 +258,13 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                     onChange={(e) => setCurrTaskDesc(e.target.value)}
                     name="newTask-desc"
                     style={{
-                       fontFamily : Weights.Regular, color: ThemeColors.secText,
+                       fontSize : Sizes.Regular, fontFamily: Weights.Regular, color: ThemeColors.secText,
                         '--placeholder': ThemeColors.thirdText,
                         transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                    className={` newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-[0.95rem] placeholder:text-[0.95rem] outline-none `}
+                    className={` newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none outline-none `}
                     placeholder='Start typing'
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>

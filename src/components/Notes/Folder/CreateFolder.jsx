@@ -8,6 +8,7 @@ import { CSS_EASING } from '../../../constants/Settings'
 const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
 
     const dispatch = useDispatch()
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -42,7 +43,7 @@ const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
                 <p className='plus-icon-div'>
                     <Plus strokeWidth={3.5} size={14} />
                 </p>
-                <span style={{fontFamily : Weights.SemibBold}} className='select-none font-semibold text-sm'>New Folder</span>
+                <span style={{fontFamily : Weights.SemibBold,fontSize : Sizes.Small}} className='select-none font-semibold '>New Folder</span>
             </button>
 
             {opencreateFolderPopUp === true && <CreateFolderPopUp opencreateFolderPopUp={opencreateFolderPopUp} setOpencreateFolderPopUp={setOpencreateFolderPopUp} Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />}

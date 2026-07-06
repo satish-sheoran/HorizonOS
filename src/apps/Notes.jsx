@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {CSS_EASING} from '../constants/Settings'
+import { CSS_EASING } from '../constants/Settings'
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper"
@@ -21,6 +21,7 @@ const Notes = () => {
     const notesBody = useRef(null);
     const dispatch = useDispatch()
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const currDevice = useSelector((store) => store.Device.currDevice);
@@ -59,13 +60,14 @@ const Notes = () => {
 
     return (
         <div
-            style={{ backgroundColor: ThemeColors.bg , transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]
- }}
+            style={{
+                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }}
             className={`w-full h-full flex flex-col `}>
 
-            {currDevice === 'Desktop' ?
+            {currDevice === 'Desktop' || currDevice === 'Tablet'?
                 <WindowControls id='notes' Theme={Theme} ThemeColors={ThemeColors} />
                 : <MobileCntrls id='notes' Theme={Theme} ThemeColors={ThemeColors} />}
 

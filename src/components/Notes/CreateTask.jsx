@@ -16,6 +16,7 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
     const dispatch = useDispatch();
     const newTaskContainer = useRef(null)
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -139,13 +140,14 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
                     onChange={(e) => setNewTaskTitle(e.target.value)}
                     name="newTask-title"
                     style={{
+                        fontSize: Sizes.Regular,
                         fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                         '--placeholder': ThemeColors.thirdText,
                         transitionProperty: 'color, background-color, border-color',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                    className={`Placeholder newTask-title rounded-lg shrink-0 p-1 font-semibold text-xl placeholder:text-xl h-fit resize-none  outline-none  
+                    className={`Placeholder newTask-title rounded-lg shrink-0 p-1 font-semibold  h-fit resize-none  outline-none  
                     `}
                     placeholder='Title'
                     rows={1}
@@ -153,7 +155,7 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
                 ></textarea>
 
                 <div style={{
-                    fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    fontSize: Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` shrink-0 date-charCount flex gap-3 `}>
@@ -168,6 +170,7 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
                     onChange={(e) => setNewTaskDesc(e.target.value)}
                     name="newTask-desc"
                     style={{
+                        fontSize: Sizes.Regular,
                         fontFamily: Weights.Regular,
                         color: ThemeColors.secText,
                         '--placeholder': ThemeColors.thirdText,
@@ -175,7 +178,7 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                    className={`Placeholder newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none text-[0.95rem]  placeholder:text-[0.95rem] outline-none`}
+                    className={`Placeholder newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none  outline-none`}
                     placeholder='Start typing'
                     onInput={(e) => handleSize(e.target)}
                 ></textarea>

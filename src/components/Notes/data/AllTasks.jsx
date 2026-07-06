@@ -7,6 +7,7 @@ import { CSS_EASING } from '../../../constants/Settings'
 
 const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -37,7 +38,8 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
         <button ref={taskAnimRef}
             onClick={() => toast.info("This will be available shortly")}
             style={{
-                fontFamily : Weights.SemiBold,
+                fontSize: Sizes.Small,
+                fontFamily: Weights.SemiBold,
                 color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]

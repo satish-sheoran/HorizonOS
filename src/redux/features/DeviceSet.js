@@ -9,14 +9,14 @@ const getTimeFormat = () => {
 const DeviceSlice = createSlice({
     name: 'Device',
     initialState: {
-        currDevice: window.innerWidth >= 768 ? 'Desktop' : 'Mobile',
+        currDevice: window.innerWidth < 768 ? 'Mobile' : window.innerWidth <=1023  ? 'Tablet': 'Desktop',
         isTime12HourFormat: getTimeFormat()?.is12HourFormat ?? true,
 
     },
     reducers: {
         setDevice(state, action) {
             const width = action.payload.width;
-            state.currDevice = width >= 768 ? 'Desktop' : 'Mobile';
+            state.currDevice = width < 768 ? 'Mobile' : width <=1023?'Tablet':'Desktop';
         }, setTimeFormat(state) {
             state.isTime12HourFormat = state.isTime12HourFormat ? false : true;
             const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};

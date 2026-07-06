@@ -14,6 +14,7 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
 
     const dispatch = useDispatch();
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -71,7 +72,7 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
 
                                 <span
                                     style={{
-                                        fontFamily: Weights.SemiBold,
+                                        fontSize : Sizes.Small ,fontFamily: Weights.SemiBold,
                                         color: activeTab === 'Notes' ? ThemeColors.primaryText
                                             :
                                             ThemeColors.grayish,
@@ -96,7 +97,7 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
                                 }} className={`
                         rounded ${Theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
                                 <span style={{
-                                    fontFamily: Weights.SemiBold,
+                                  fontSize : Sizes.Small ,  fontFamily: Weights.SemiBold,
                                     color: activeTab !== 'Notes' ? ThemeColors.primaryText
                                         :
                                         ThemeColors.grayish,
@@ -110,7 +111,7 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
                         </>
                         :
                         <>
-                            <button styl={{
+                            <button style={{
                                 transitionProperty: 'color, background-color, border-color',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
@@ -132,7 +133,7 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
                         `} />
 
                                 <span style={{
-                                    fontFamily: Weights.SemiBold,
+                                  fontSize : Sizes.Small ,  fontFamily: Weights.SemiBold,
                                     color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
@@ -164,7 +165,7 @@ ${Theme != 'dark' ?
                         `} />
 
                                 <span style={{
-                                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                  fontSize : Sizes.Small , fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }} >Unpin</span>
@@ -194,7 +195,7 @@ ${Theme != 'dark' ?
                         `} />
 
                                 <span style={{
-                                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                   fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }} >Move to</span>
@@ -228,7 +229,7 @@ ${Theme != 'dark' ?
                                         'stroke-(--primary-light-clr)'}                        `} />
 
                                 <span style={{
-                                    fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                  fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }} >Delete</span>

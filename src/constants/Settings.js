@@ -596,11 +596,11 @@ export const FONT_SIZES = [
         SizeType: 'Large',
         Details: 'Larger font size than usual',
         Sizes: {
-            ExtraLarge: '1.61rem',
-            Large: '1.36rem',
-            Regular: '1.11rem',
-            Small: '0.86rem',
-            ExtraSmall: '0.61rem'
+            ExtraLarge: '1.6rem',
+            Large: '1.45rem',
+            Regular: '1.3rem',
+            Small: '0.9rem',
+            ExtraSmall: '0.65rem'
         }
     },
     {
@@ -608,21 +608,21 @@ export const FONT_SIZES = [
         Details: 'Usual font size',
         Sizes: {
             ExtraLarge: '1.5rem',
-            Large: '1.25rem',
-            Regular: '1rem',
-            Small: '0.75rem',
-            ExtraSmall: '0.5rem'
+            Large: '1.35rem',
+            Regular: '1.2rem',
+            Small: '0.8rem',
+            ExtraSmall: '0.55rem'
         }
     },
     {
         SizeType: 'Small',
         Details: 'Smaller font size than usual',
         Sizes: {
-            ExtraLarge: '1.39rem',
-            Large: '1.14rem',
-            Regular: '0.89rem',
-            Small: '0.64rem',
-            ExtraSmall: '0.39rem'
+            ExtraLarge: '1.4rem',
+            Large: '1.2rem',
+            Regular: '1.05rem',
+            Small: '0.7rem',
+            ExtraSmall: '0.45rem'
         }
     }
 ]

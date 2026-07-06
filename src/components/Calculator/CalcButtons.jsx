@@ -5,6 +5,8 @@ import { CSS_EASING } from "../../constants/Settings";
 import { useSelector } from "react-redux";
 
 const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) => {
+
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -18,6 +20,7 @@ const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) 
                     return <button key={id}
                         style={{
                             fontFamily: Weights.Bold,
+                            fontSize: Sizes.Large,
                             color: isChange || isSymb ? AccentColors.CODE : symbol === '=' ? COMMON_COLORS.White : ThemeColors.primaryText,
                             backgroundColor: symbol === '=' ? AccentColors.CODE : ThemeColors.header,
                             '--hover': symbol === '=' ? AccentColors.Hover_Clr : ThemeColors.third,
@@ -27,7 +30,7 @@ const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) 
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`${AccentColors.HOVER}  
-                               rounded-4xl md:rounded-2xl py-1 sm:rounded-xl font-bold  active:scale-95  
+                              ${Device === 'Mobile' ? 'sm:rounded-xl rounded-4xl' : Device === 'Tablet' ? 'rounded-3xl' : 'rounded-2xl'}  py-1  font-bold  active:scale-95  
 `}
                         onClick={() => calcBtnClck(symbol)}
                     >{symbol}

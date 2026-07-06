@@ -9,6 +9,8 @@ import ConfirmDeletePopUp from './ConfirmDeletePopUp'
 
 const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch();
+
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false);
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -52,7 +54,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`active:scale-95`}>
-                        <span>Cancel</span>
+                        <span style={{fontSize : Sizes.Regular}}>Cancel</span>
                     </button>
                     :
                     <button onClick={() => {
@@ -67,7 +69,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
             }
 
 
-            <span className="select-none">Folders</span>
+            <span style={{fontSize : Sizes.Large}} className="select-none">Folders</span>
 
             {/* if start editing then show delete button,else show edit button  */}
             {startDeletingCat === true ?
@@ -98,7 +100,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
                     className='active:scale-95'>
-                    <span>Edit</span>
+                    <span style={{fontSize : Sizes.Regular}}>Edit</span>
                 </button>
             }
 

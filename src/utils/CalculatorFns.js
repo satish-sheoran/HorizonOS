@@ -130,10 +130,10 @@ export const removeElem = (result, start, end, textarea) => {
 
 
 // FN which returns font size as per no. of chars in our input field
-export const getFontClass = (len) => {
-    if (len <= 10) return 'text-4xl md:text-4xl';
-    if (len <= 20) return 'text-3xl md:text-3xl';
-    return 'text-3xl md:text-2xl';
+export const getFontClass = (len,Sizes) => {
+    if (len <= 10) return Sizes.ExtraLarge*5;
+    if (len <= 20) return  Sizes.Large;
+    return Sizes.Regular;
 };
 
 

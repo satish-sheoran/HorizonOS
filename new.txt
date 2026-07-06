@@ -2,7 +2,7 @@
 2. how to remove web page not secure 
 
 
-What i did for this commit :
+What i did for last commit :
 feat(settings) : Add font size preferences  and state management
 
 - Added font size presets and typogaphy constants

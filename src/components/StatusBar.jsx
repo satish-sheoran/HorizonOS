@@ -8,6 +8,7 @@ import { CSS_EASING } from '../constants/Settings'
 
 const StatusBar = () => {
 
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
@@ -25,12 +26,12 @@ const StatusBar = () => {
             <div className='flex h-full items-center gap-(--gap-xs) cursor-pointer' >
 
                 <img src="/HorizonOS-Photoroom.png" className='h-full' alt="Logo" />
-                <h5 style={{
-                    fontFamily: Weights.SemiBold,
+                <h1 style={{
+                  fontSize : Sizes.Small,  fontFamily: Weights.SemiBold,
                     transitionProperty: 'color, background-color, border-color',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className='font-semibold text-[14px] md:text-[16px]'>{OS_NAME}</h5>
+                }} className='font-semibold '>{OS_NAME}</h1>
             </div >
 
             <div className='flex items-center h-full gap-(--gap-xs)'>

@@ -14,8 +14,8 @@ const WindowWrapper = (Component, windowKey) => {
         const { isOpen, zIndex, windowRatio, fullScreen } = apps[windowKey]; //windowRatio is key present in all app which has height and width of app is written inside and when user click the fullScreen button then its width and height changes by a reducer fn of store 
         const ref = useRef(null);
         const draggableref = useRef(null);
-    const {Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-        const {Speed} = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+        const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+        const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
 
         /*  animation */
         useGSAP(() => {
@@ -75,9 +75,15 @@ const WindowWrapper = (Component, windowKey) => {
         }, [isOpen])
 
 
-        return <section ref={ref} style={{ borderColor: COMMON_COLORS.LightWhite , zIndex ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}} className={`${fullScreen ? `${windowKey}-full` : windowKey} ${Device === 'Desktop' ? `border-[1.5px] ${fullScreen ? '' : 'rounded-2xl'} ` : ''}  ${windowRatio.width} ${windowRatio.height} overflow-hidden `} >
+        return <section ref={ref}
+            style={{
+                borderColor: COMMON_COLORS.LightWhite, zIndex, transitionProperty: 'color, background-color, border-color',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+            }}
+            className={`${fullScreen ? `${windowKey}-full` : windowKey} 
+ ${(Device === 'Desktop' || Device === 'Tablet') ? `border-[1.5px] ${fullScreen ? '' : 'rounded-3xl'} ` : ''}  
+${windowRatio.width} ${windowRatio.height} overflow-hidden `} >
             <Component />
         </section>
     }

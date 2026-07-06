@@ -11,6 +11,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
 
 
     const dispatch = useDispatch();
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -67,7 +68,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`
+                        className={`px-4 
                             ${activeCategory === category ? 'font-bold' : 'font-semibold HOVER_CLASS'}
                             
                             `}>
@@ -79,7 +80,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             }}
                             className={`select-none `} /> {/* on hidden,it do not reserve space so used text-transparent */}
 
-                        <span className="select-none">{category.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
+                        <span style={{fontSize : Sizes.Small}} className="select-none">{category.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
 
 
                         {/* count and selection area to delete cateogries */}
@@ -96,7 +97,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                                     {deletedCategories?.includes(category) && <Check style={{ color: COMMON_COLORS.White }} className='rounded-full' strokeWidth={3} size={17} />}
                                 </span>
                                 :
-                                <span className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note => note.category === category).length}</span>
+                                <span style={{fontSize : Sizes.Small}} className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note => note.category === category).length}</span>
                         }
 
 

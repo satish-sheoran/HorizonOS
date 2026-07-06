@@ -14,16 +14,19 @@ const Calculator = () => {
 
     const dispatch = useDispatch()
 
+    //redux values
+    const currDevice = useSelector((store) => store.Device.currDevice);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Calculator)
     const Theme = useSelector((store) => store.wallpaper.theme.Calculator)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    const currDevice = useSelector((store) => store.Device.currDevice);
+    const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const Calculation = useSelector(store => store.Calculator.Calculation) //getting data from calculator app from its store
+    
+
     const [result, setResult] = useState('0') //setting initally value from data of calculator app from its store
     const debouncedResult = useDebounce(result, 500) //debouncing result to avoid too many updates to store
-
     const { inputRef, calcBtnClck } = UseCalculator(currDevice, result, setResult)
 
     useEffect(() => {
@@ -35,7 +38,7 @@ const Calculator = () => {
         if (debouncedResult !== undefined && debouncedResult !== null) {
             dispatch(updateCalculation({ result: debouncedResult })) //updating store when debounced result changes
         }
-    }, [debouncedResult,dispatch]) //updating store when debounced result changes
+    }, [debouncedResult, dispatch]) //updating store when debounced result changes
 
     return (
         <div
@@ -46,7 +49,7 @@ const Calculator = () => {
             }}
             className={`w-full h-full flex flex-col`}>
             {/* header */}
-            {currDevice === 'Desktop' ?
+            {currDevice === 'Desktop' || currDevice === 'Tablet' ?
                 <WindowControls id='calculator' Theme={Theme} ThemeColors={ThemeColors} />
                 : <MobileCntrls id='calculator' Theme={Theme} ThemeColors={ThemeColors} result={result} />}
 
