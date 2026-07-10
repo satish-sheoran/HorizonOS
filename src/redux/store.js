@@ -5,6 +5,7 @@ import DeviceReducer from './features/DeviceSet'
 import NotesReducer from './features/NotesStrorage'
 import SettingsReducer from './features/SettingsSlice'
 import CalculatorReducer from './features/Calculator'
+import ClockReducer from './features/Clock'
 
 export const store = configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
         Device: DeviceReducer,
         Notes : NotesReducer,
         Settings : SettingsReducer,
+        Clock : ClockReducer
     }
 })

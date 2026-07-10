@@ -34,7 +34,7 @@
 }
 
 .mobile-header {
-    @apply flex items-center justify-between  select-none text-sm ;
+    @apply flex items-center justify-between  select-none  ;
 }
 
 

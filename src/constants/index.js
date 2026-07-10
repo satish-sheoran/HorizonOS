@@ -143,7 +143,7 @@ const WINDOW_CONFIG = {
 
     settings: { isOpen: false, zIndex: INITIAL_Z_INDEX, fullScreen: false, windowRatio: { width: 'w-full md:max-w-[75%]', height: 'h-full sm:h-[90%] md:h-[75%]' }, default: { width: 'w-full md:max-w-[75%]', height: 'h-full sm:h-[90%] md:h-[75%]' } },
 
-    clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, fullScreen: false, windowRatio: { width: 'fit', height: 'fit' }, default: { width: 'w-[70%] md:w-[35%]', height: 'fit' } },
+    clock: { isOpen: false, zIndex: INITIAL_Z_INDEX, fullScreen: false, windowRatio: { width: 'w-full sm:w-[50%] md:min-w-[35%]', height: 'h-full sm:h-[50%] md:h-[65%]' }, default: { width: 'w-full sm:w-[50%] md:min-w-[35%]', height: 'h-full sm:h-[50%] md:h-[65%]' } },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

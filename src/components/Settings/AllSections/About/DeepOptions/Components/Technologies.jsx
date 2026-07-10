@@ -55,7 +55,7 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
 
                         }}
                         className={` hover:scale-105 active:scale-105 overflow-hidden border text-sm  
-                        px-3 py-1.5 font-semibold rounded-2xl  flex gap-2 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1' : 'px-4 py-2'}`}>
+                         font-semibold rounded-2xl  flex gap-2 justify-center items-center ${Device === 'Desktop' ? 'px-3 py-1' : 'px-4 py-2'}`}>
 
                         {icon ?
                             <img

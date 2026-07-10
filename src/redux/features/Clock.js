@@ -1,0 +1,20 @@
+import { createSlice } from "@reduxjs/toolkit";
+import { Clock_Options } from "../../constants/Clock";
+
+
+const ClockSlice = createSlice({
+    name: 'Clock',
+    initialState: {
+        ActiveTab: Clock_Options.find(({ option }) => option === 'Clock')
+    },
+    reducers: {
+        setActiveTab(state, action) {
+            const { option } = action.payload
+            state.ActiveTab = Clock_Options.find(({ option: OPTION }) => OPTION === option) ?? Clock_Options.find(({ option }) => option === 'Clock')
+        }
+    }
+})
+
+
+export const { setActiveTab } = ClockSlice.actions;
+export default ClockSlice.reducer;

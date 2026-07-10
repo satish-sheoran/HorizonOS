@@ -188,7 +188,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
 
             </div>
 
-            <div style={{ borderColor: ThemeColors.third }} className={`relative  border rounded-full aspect-square flex items-center justify-center`}>
+            {/* <div style={{ borderColor: ThemeColors.third }} className={`relative  border rounded-full aspect-square flex items-center justify-center`}>
               <div
                 style={{
                   background: `conic-gradient(
@@ -201,7 +201,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
 
               <div style={{fontSize : Sizes.Small}} className=' absolute inset-0 flex items-center justify-center font-semibold'>{Math.floor(TotalStorage / Number(OS_Storage.slice(0, -2)))}%</div>
 
-            </div>
+            </div> */}
           </div>
 
         </div>

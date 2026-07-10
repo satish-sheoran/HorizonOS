@@ -3,12 +3,15 @@
 
 
 What i did for this commit :
-feat : Applied Font Size Across Remaining files
+feat(Clock) : Implement tab-based navigation and responsive clock app layout
 
-- Added Font Size Across Setting App and UI Folder
-- Implemented Device (Tablet) cases also across these files
-- Remove unused GetFontClass functionality
-- Remove other unused items
+- add clock slice with active tab state 
+- Implement reducer to switch active Tablet
+- Basic structured the other tabs also 
+- add responsive layout for mobile and desktops as per fullScreen
+- support fullScreen mode
+- Improve clock app UI and navigation 
+- fix minor UI and functionality bugs
 
 
 
