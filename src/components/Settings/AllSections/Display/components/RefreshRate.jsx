@@ -20,7 +20,7 @@ const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -28,7 +28,7 @@ const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
             `}>
             <span> {Option}</span>
             <span style={{
-              fontSize : Sizes.Small, fontFamily : Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+              fontSize : Sizes.Small, fontFamily : Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}>

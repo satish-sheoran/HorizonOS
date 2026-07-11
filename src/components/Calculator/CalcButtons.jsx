@@ -19,13 +19,14 @@ const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) 
 
                     return <button key={id}
                         style={{
+                            borderColor: ThemeColors.third,
                             fontFamily: Weights.Bold,
                             fontSize: Sizes.Large,
                             color: isChange || isSymb ? AccentColors.CODE : symbol === '=' ? COMMON_COLORS.White : ThemeColors.primaryText,
                             backgroundColor: symbol === '=' ? AccentColors.CODE : ThemeColors.header,
                             '--hover': symbol === '=' ? AccentColors.Hover_Clr : ThemeColors.third,
                             '--active': symbol === '=' ? AccentColors.Hover_Clr : ThemeColors.third,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}

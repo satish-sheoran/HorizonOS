@@ -33,22 +33,22 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
         <div className={`mt-2 flex flex-col gap-2 `}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
-                    fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Personalize your {Device !== 'Desktop' ? 'device' : 'desktop'} with your favourite image.</span>
             </div>
 
             <div style={{
-                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`flex justify-between items-center  rounded-2xl  select-none overflow-hidden 
+            }} className={`border flex justify-between items-center  rounded-2xl  select-none overflow-hidden 
                 ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                 ${Device !== 'Desktop' ? 'min-h-50' : 'min-h-40'}
             `} >
@@ -56,7 +56,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                 {/* Image preview */}
                 <div
                     style={{
-                        borderColor: ThemeColors.bg, backgroundImage: `url(${currentPreview || activeWallpaper})`, transitionProperty: 'color, background-color, border-color',
+                        borderColor: ThemeColors.bg, backgroundImage: `url(${currentPreview || activeWallpaper})`, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
@@ -74,7 +74,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                     </div>
                     {/* time and  date*/}
                     <div style={{
-                        color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+                        color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={`relative mt-1 flex flex-col  items-center justify-center`}>
@@ -90,7 +90,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                            fontSize : Sizes.Small, fontFamily: Weights.SemiBold,
                             color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
                             backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -99,7 +99,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                         style={{
                           fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold,
                             color: ThemeColors.primaryText,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -115,7 +115,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                         style={{
                            fontSize : Sizes.Small, fontFamily: Weights.Regular,
                             color: ThemeColors.thirdText,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -137,7 +137,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                             fontFamily: Weights.SemiBold,
                             color: currentPreview === activeWallpaper ? ThemeColors.thirdText : COMMON_COLORS.White,
                             backgroundColor: currentPreview === activeWallpaper ? '' : ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}

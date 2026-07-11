@@ -14,28 +14,28 @@ const Details = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
-            className={` about flex flex-col gap-4 p-[2.5%]  rounded-2xl `}>
+            className={`border about flex flex-col gap-4 p-[2.5%]  rounded-2xl `}>
 
             <div
                 style={{
-                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`flex gap-2  text-lg `}>
                 <Monitor style={{
-                    color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color',
+                    color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} strokeWidth={2.5} />
                 <span style={{fontSize : Sizes.Regular ,fontFamily : Weights.SemiBold}} className='font-semibold'>About HorizonOS</span>
             </div>
             <div style={{
-                color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`font-[450] text-sm flex flex-col gap-4`}>

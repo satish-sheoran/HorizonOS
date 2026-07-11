@@ -20,7 +20,7 @@ const MobileCntrls = ({ id, Theme, ThemeColors }) => {
         <div style={{
             backgroundColor: ThemeColors.header,
             borderColor: ThemeColors.thirdText,
-            transitionProperty: 'color, background-color, border-color',
+            transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }}
@@ -28,13 +28,13 @@ const MobileCntrls = ({ id, Theme, ThemeColors }) => {
 
             <p
                 style={{
-                   fontSize : Sizes.Regular , fontFamily: Weights.SemiBold, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.Regular , fontFamily: Weights.SemiBold, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`px-4 py-1.5   font-semibold capitalize  select-none `}>{id === 'notes' ? activeTab : id}</p>
             <div style={{
-                color: COMMON_COLORS.Black, transitionProperty: 'color, background-color, border-color',
+                color: COMMON_COLORS.Black, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className="mobile-controls " >
@@ -47,7 +47,7 @@ const MobileCntrls = ({ id, Theme, ThemeColors }) => {
                         strokeWidth={3}
                         size={24}
                         style={{
-                            color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                            color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}

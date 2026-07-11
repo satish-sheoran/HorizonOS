@@ -15,19 +15,19 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
 
     return (
         <div style={{
-            backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+            borderColor: ThemeColors.third,backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`technologies flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
+        }} className={`border technologies flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
 
 
             <div style={{
-                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`flex gap-2  text-lg`}>
                 <CodeXml style={{
-                    color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color',
+                    color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} strokeWidth={2.5} />
@@ -35,7 +35,7 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
             </div>
 
             <div style={{
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`flex justify-center flex-wrap gap-3 ${Device === 'Desktop' ? 'gap-3' : 'gap-2'}`}>
@@ -49,7 +49,7 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
                             '--active': Theme !== 'dark' ?
                                 Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                                 :
-                                COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                                COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
 
@@ -63,14 +63,14 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
                                 draggable="false"
                                 onDragStart={(e) => e.preventDefault()}
                                 style={{
-                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionProperty: 'color, background-color, border-color, font-size',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}
                                 className={`p-0.5 rounded object-cover object-center ${Device !== 'Desktop' ? 'w-5' : 'w-5.5'}`} src={icon} alt={Tech_Name} />
                             :
                             <span style={{
-                                color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color',
+                                color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }} className={` ${Device !== 'Desktop' ? 'scale-150' : 'scale-200'}`}>•</span>

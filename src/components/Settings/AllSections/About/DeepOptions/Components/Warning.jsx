@@ -15,7 +15,7 @@ const Warning = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
             style={{
                 backdropFilter: 'blur(16px)',
                 borderColor: COMMON_COLORS.DarkRed,
-                backgroundColor: COMMON_COLORS.LightDarkRed, transitionProperty: 'color, background-color, border-color',
+                backgroundColor: COMMON_COLORS.LightDarkRed, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -23,7 +23,7 @@ const Warning = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
         `}
         >
             <div style={{
-                color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color',
+                color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={` h-full `}>
@@ -32,12 +32,12 @@ const Warning = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
             <div className={`warning-msg flex flex-col gap-1`}>
                 <span style={{
-                  fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={`font-semibold `}>Factory Reset</span>
                 <span style={{
-                  fontSize : Sizes.ExtraSmall ,  fontFamily : Weights.Regular ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.ExtraSmall ,  fontFamily : Weights.Regular ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} >This will restore HorizonOS to its original state. All your personal data,apps,settings, and customizations will be permanently deleted.</span>

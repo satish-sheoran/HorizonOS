@@ -30,7 +30,7 @@ const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors
 
     return (
         <section style={{
-            transitionProperty: 'color, background-color, border-color',
+            transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`relative h-full  flex flex-col ${(currDevice === 'Desktop' || currDevice === 'Tablet') ? 'grow' : 'w-full'}`}>

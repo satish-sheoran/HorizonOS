@@ -21,7 +21,7 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray,
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -29,24 +29,24 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
 
             <div className={`flex items-end gap-2`}>
                 <div style={{
-                    backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+                    backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl`}>
                     <img style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={` object-cover object-center  ${Title == 'Settings' || Title == 'Clock' ? 'w-7 h-7' : 'w-9 h-9'}`} src={Logo} alt={Title} />
                 </div>
                 <p className={`flex flex-col `}>
                     <span style={{
-                        fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                        fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={` font-semibold`}>{Title}</span>
                     <span style={{
-                        fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                        fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} >{Detail}</span>
@@ -55,14 +55,14 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
 
             <button
                 style={{
-                    backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                    backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full `}>
 
                 <div style={{
-                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation],
                     transition: `transform ${Speed} ${CSS_EASING[Animation]}`,

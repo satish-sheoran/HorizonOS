@@ -23,12 +23,12 @@ const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
         <div className={`mt-2 flex flex-col gap-2`}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                   fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` font-semibold  ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>Preview </span>
                 <span style={{
-                    fontSize : Sizes.ExtraSmall ,fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    fontSize : Sizes.ExtraSmall ,fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` ${Device !=='Desktop'?'px-3':'px-2.5'}`}>
@@ -37,13 +37,13 @@ const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
             </div>
 
             <div style={{
-                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+              borderColor: ThemeColors.third,  backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`flex flex-col gap-2 rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+            }} className={`border flex flex-col gap-2 rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
                
                     <span style={{
-                       fontSize : Sizes.ExtraSmall, fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Sizes.ExtraSmall, fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} >
@@ -55,12 +55,12 @@ const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
                     <div onClick={() => setSwitchPreviewer(old => !old)}
                         strokeWidth={2}
                         style={{
-                            color: COMMON_COLORS.White, backgroundColor: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                            color: COMMON_COLORS.White, backgroundColor: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className={`Display-theme-preview  animation-shrink-grow   p-1 rounded-2xl ${SwitchPreviewer ? 'rotate-0' : 'rotate-180'}`}>
                         <ArrowRightLeft style={{
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} size={Device != 'Desktop' ? 15 : 24} />

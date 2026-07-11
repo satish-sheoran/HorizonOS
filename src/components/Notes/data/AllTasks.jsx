@@ -40,7 +40,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
             style={{
                 fontSize: Sizes.Small,
                 fontFamily: Weights.SemiBold,
-                color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}

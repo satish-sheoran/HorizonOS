@@ -12,7 +12,7 @@ const FeedbackSections = ({ Theme, fullScreen, Device, ThemeColors, AccentColors
 
     return (
         <section style={{
-           fontSize : Sizes.Small ,fontFamily : Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+           fontSize : Sizes.Small ,fontFamily : Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`font-semibold feedback-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  p-[2.5%]'}`}>

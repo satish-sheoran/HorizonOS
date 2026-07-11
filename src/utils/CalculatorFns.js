@@ -71,6 +71,7 @@ export const manageEntries = (symbol, Field, start, end) => {
     // If User has SELECTED then remove the selected part || When Start!=End
     if (start !== end) { // 123+456-89 
         res = Field.slice(0, start) + Field.slice(end);
+        Field  = res;
         end = start;
     }
 
@@ -113,11 +114,21 @@ export const removeElem = (result, start, end, textarea) => {
         return result;
     }
 
-    let res = result.slice(0, start - 1) + result.slice(end); //removing the item which is just before the cursor 
+    let res;
+    let newCursor 
+    if (start !== end) {
+        // Delete only selected text
+        res = result.slice(0, start) + result.slice(end);
+        newCursor = start;
+    } else {
+        // Normal Backspace
+        res = result.slice(0, start - 1) + result.slice(end);
+        newCursor = start - 1;
+    }
+
     if (res === '') res = '0';
 
-    // clamp cursor so that it never go below 0 or greater than its length
-    let newCursor = Math.max(0, Math.min(start - 1, res.length));
+    
 
     // restore cursor AFTER render
     requestAnimationFrame(() => {

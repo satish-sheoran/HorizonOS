@@ -103,14 +103,14 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
 
     return (
         <div ref={EditTaskContainer} style={{
-            backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+            backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden `}>
 
             {/* nav icons */}
             <div style={{
-                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`edit-tasks-controls flex items-center justify-between ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
@@ -118,7 +118,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                 {/* arrow icon and cateogry */}
                 <div className={`flex gap-4 items-center`}>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93' onPointerUp={() => {
@@ -137,7 +137,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                             if (!isSetCatOpen) setCatOpen(true);
                         }}
                         style={{
-                            backgroundColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+                            backgroundColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -146,7 +146,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                         <FolderClosed size={20} />
                         <div
                             style={{
-                               fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                               fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}
@@ -166,7 +166,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                                      fontSize : Sizes.Small ,   fontFamily: Weights.SemiBold,
                                         color: currCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
                                         backgroundColor: currCategory === category ? AccentColors.CODE : ThemeColors.header,
-                                        transitionProperty: 'color, background-color, border-color',
+                                        transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}
@@ -181,26 +181,26 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
 
                 {/* other its nav icons */}
                 <div style={{
-                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` flex items-center gap-3 `}>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Undo2 size={27} />
                     </button>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Redo2 size={27} />
                     </button>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93 ' onPointerUp={() => {
@@ -219,7 +219,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
 
             {/* textarea inputs */}
             <div style={{
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`edit-task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto  ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
@@ -231,7 +231,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                     style={{
                       fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                         '--placeholder': ThemeColors.thirdText,
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
@@ -243,7 +243,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                 ></textarea>
 
                 <div style={{
-                   fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className=" shrink-0 date-charCount flex gap-3 ">
@@ -260,7 +260,7 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                     style={{
                        fontSize : Sizes.Regular, fontFamily: Weights.Regular, color: ThemeColors.secText,
                         '--placeholder': ThemeColors.thirdText,
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}

@@ -41,7 +41,7 @@ const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, A
             style={{
                 fontSize: result.length <= 25 ? Sizes.ExtraLarge : Sizes.Large,
                 fontFamily: Weights.SemiBold,
-                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}

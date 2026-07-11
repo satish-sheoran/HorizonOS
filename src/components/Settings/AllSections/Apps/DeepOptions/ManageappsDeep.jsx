@@ -28,19 +28,19 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
 
   return (
     <section style={{
-      fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+      fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
       transitionDuration: Speed,
       transitionTimingFunction: CSS_EASING[Animation]
     }} className={`flex flex-col py-[2.5%] gap-2 select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
 
       <div className=' mb-2 flex flex-col gap-0.5'>
         <span style={{
-          fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+          fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
         <span style={{
-          fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+          fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={`${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>View, Organize, and manage installed applications.</span>
@@ -51,7 +51,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
         style={{
           backgroundColor: ThemeColors.header, color: ThemeColors.primaryText,
           borderColor: isFocused ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE : ThemeColors.third,
-          transitionProperty: 'color, background-color, border-color',
+          transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation],
         }}
@@ -68,7 +68,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
           onBlur={() => setisFocused(false)}
           style={{
             fontSize: Device !== 'Desktop' ? `${(Sizes.Small.slice(0, -3)) * 1.2}rem` : `${(Sizes.Small.slice(0, -3))*1.1}rem`
-            , color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+            , color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
           }}
@@ -84,7 +84,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
               filteredApps.map(({ name: App, icon, size, version }) => {
                 return <div key={App}
                   style={{
-                    backgroundColor: ThemeColors.header, borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+                    backgroundColor: ThemeColors.header, borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                   }}
@@ -92,7 +92,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
 
                   <img
                     style={{
-                      borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                      borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation],
                       transition : `width ${Speed} ${CSS_EASING[Animation]} , height ${Speed} ${CSS_EASING[Animation]}`
@@ -103,17 +103,17 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
 
                   <div className={`flex flex-col gap-0.5`}>
                     <span style={{
-                     fontSize :!fullScreen? Sizes.Small : `${(Sizes.Small.slice(0,-3))*0.8}rem`, color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                     fontSize :!fullScreen? Sizes.Small : `${(Sizes.Small.slice(0,-3))*0.8}rem`, color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
                     }} className={` font-semibold`}>{App}</span>
                     <span style={{
-                     fontSize : !fullScreen ?Sizes.ExtraSmall :`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`, color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                     fontSize : !fullScreen ?Sizes.ExtraSmall :`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`, color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
                     }} >{size}</span>
                     <span style={{
-                     fontSize :!fullScreen? Sizes.ExtraSmall:`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem` , color: ThemeColors.thirdText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                     fontSize :!fullScreen? Sizes.ExtraSmall:`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem` , color: ThemeColors.thirdText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
                     }} >{version}</span>
@@ -122,7 +122,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
                   <button
                     onClick={() => toast.info('Coming Soon...')}
                     style={{
-                      color: ThemeColors.secText, backgroundColor: ThemeColors.header, borderColor: ThemeColors.third, boxShadow: '0 1px 8px rgba(0,0,0,0.15)', transitionProperty: 'color, background-color, border-color',
+                      color: ThemeColors.secText, backgroundColor: ThemeColors.header, borderColor: ThemeColors.third, boxShadow: '0 1px 8px rgba(0,0,0,0.15)', transitionProperty: 'color, background-color, border-color, font-size',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
                     }}
@@ -139,7 +139,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
             style={{
              fontSize : Sizes.Small, color: ThemeColors.secText,
               fontFamily: Weights.SemiBold,
-              transitionProperty: 'color, background-color, border-color',
+              transitionProperty: 'color, background-color, border-color, font-size',
               transitionDuration: Speed,
               transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -151,7 +151,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
       <div style={{
         backgroundColor: ThemeColors.header, color: ThemeColors.primaryText,
         borderColor: isFocused ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE : ThemeColors.third,
-        transitionProperty: 'color, background-color, border-color',
+        transitionProperty: 'color, background-color, border-color, font-size',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation],
       }}

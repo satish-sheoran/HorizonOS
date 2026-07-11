@@ -3,6 +3,8 @@ import OSLayout from "./layout/OSLayout"
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Draggable } from "gsap/Draggable";
+import { Flip } from 'gsap/Flip'
+
 import { Slide, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useAutoTheme } from "./utils/AutoSetTheme";
@@ -11,6 +13,7 @@ import { useEffect, useState } from "react";
 import {setDevice} from './redux/features/DeviceSet'
 gsap.registerPlugin(Draggable, useGSAP)
 gsap.registerPlugin(MotionPathPlugin)
+gsap.registerPlugin(Flip)
 
 const App = () => {
 

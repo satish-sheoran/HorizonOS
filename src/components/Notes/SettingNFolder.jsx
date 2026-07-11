@@ -19,7 +19,7 @@ const SettingNFolder = ({ Theme, ThemeColors, AccentColors }) => {
                 dispatch(setOpenManageFolder({ open: true }));
             }}>
                 <FolderClosed style={{
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={`note-icons   ${isOpen === true ? "opacity-0 pointer-events-none" : 'opacity-100'}`} />

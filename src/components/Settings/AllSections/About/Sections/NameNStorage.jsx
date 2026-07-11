@@ -20,10 +20,11 @@ const NameNStorage = ({ Theme, Device, fullScreen, GrandParentSection, Options, 
     
     return (
         <div style={{
-            backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+            borderColor: ThemeColors.third,
+            backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`p-[2.5%] w-full rounded-2xl flex flex-col  gap-2 overflow-hidden`}>
+        }} className={`border p-[2.5%] w-full rounded-2xl flex flex-col  gap-2 overflow-hidden`}>
             {Options?.map(({ Option, FileName, Toggleable, action }, idx) => {
                 const Component = NameNStorage_OPTIONS[FileName];
 

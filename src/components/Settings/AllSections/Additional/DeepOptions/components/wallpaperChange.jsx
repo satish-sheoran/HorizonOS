@@ -18,12 +18,12 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
         <div className={`flex flex-col gap-2 `}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                  fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={`font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
-                   fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                   fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={`${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Refresh your device with beautiful wallpapers.</span>
@@ -31,11 +31,11 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
 
             <div
                 style={{
-                    backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+                  borderColor: ThemeColors.third,  backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
-                className={`w-full grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} rounded-2xl gap-2 select-none overflow-x-auto 
+                className={`border w-full grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} rounded-2xl gap-2 select-none overflow-x-auto 
                            ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                        `} >
                 {
@@ -46,7 +46,7 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
                                 onClick={() => setNewPreview(url)}
                                 key={index}
                                 style={{
-                                    borderColor: currentPreview === url ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE : ThemeColors.bg, backgroundImage: `url(${url})`, transitionProperty: 'color, background-color, border-color',
+                                    borderColor: currentPreview === url ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE : ThemeColors.bg, backgroundImage: `url(${url})`, transitionProperty: 'color, background-color, border-color, font-size',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}
@@ -54,21 +54,21 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
                                        bg-cover bg-center bg-no-repeat 
                                    ${Device !== 'Desktop' ? 'h-45' : 'h-35'}`}>
                                 <div style={{
-                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionProperty: 'color, background-color, border-color, font-size',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}
                                     className={`${Theme !== 'dark' ? 'light-glassMorphism' : 'dark-glassMorphism'} h-[35%] flex flex-col justify-center gap-0.5 p-2 `}>
 
                                     <p style={{
-                                       fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                       fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }} className={`font-semibold`}>
                                         {WallpaperName}
                                     </p>
                                     <p style={{
-                                       fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                                       fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}

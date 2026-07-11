@@ -21,7 +21,7 @@ const Dock = ({ RecievedWidth }) => {
 
             {dockApps.map(({ id, name, icon, canOpen }) => {
                 return <button style={{
-                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
@@ -30,14 +30,14 @@ const Dock = ({ RecievedWidth }) => {
 
 
                     <img style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={`w-full h-full object-cover object-center rounded-(--border-radius-md) ${id == 'settings' || id == 'clock' ? 'scale-80' : 'scale-100'}`} src={icon} alt={name} />
 
                     {/* it is just to show blackish feel when app is clicked to opened */}
                     <div style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='absolute bg-black w-full h-full rounded-(--border-radius-md) top-0 left-0 opacity-0 active:opacity-40'></div>

@@ -17,7 +17,7 @@ const AboutSections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, P
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <section className={`about-us-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-full h-full overflow-y-auto  p-[2.5%]'} `}>
+        <section className={`about-us-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full py-[2.5%]' : !fullScreen ? 'w-full' : 'border-r w-full h-full overflow-y-auto  p-[2.5%]'} `}>
 
             {CurrSection?.map(({ Section, FileName, Options }, idx) => {
                 const Component = ABOUT_SECTIONS[FileName];

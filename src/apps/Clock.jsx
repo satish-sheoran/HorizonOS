@@ -9,12 +9,16 @@ import { Clock_Options } from "../constants/Clock";
 import { setActiveTab } from '../redux/features/Clock'
 import ClockTab from '../components/Clock/ClockTab'
 import Alarms from '../components/Clock/Alarms'
-import Stopwatch from '../components/Clock/Stopwatch'
 import WorldClock from '../components/Clock/WorldClock'
-import Timer from '../components/Clock/Timer'
+import TimeTools from '../components/Clock/TimeTools'
 import { useEffect, useLayoutEffect, useState } from "react";
 
-
+const AllTabs = {
+    ClockTab,
+    Alarms,
+    WorldClock,
+    TimeTools
+}
 
 const Clock = () => {
 
@@ -49,7 +53,7 @@ const Clock = () => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -61,41 +65,50 @@ const Clock = () => {
 
                 <section className={`h-full flex flex-col  overflow-hidden`}>
                     <div style={{
-                        paddingLeft: !fullScreen ? '' : `${Math.floor(ClockAllTabsWidth)}px`, transitionProperty: 'color, background-color, border-color',
+                        paddingLeft: !fullScreen ? '' : `${Math.floor(ClockAllTabsWidth)}px`, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={`absolute inset-0  overflow-hidden`}>
 
-                        {ClockSec.option === 'Clock' && <ClockTab ClockAllTabsWidth={ClockAllTabsWidth} ClockAllTabsHeight={ClockAllTabsHeight} />}
-                        {ClockSec.option === 'Alarms' && <Alarms ClockAllTabsWidth={ClockAllTabsWidth} ClockAllTabsHeight={ClockAllTabsHeight} />}
-                        {ClockSec.option === 'Stopwatch' && <Stopwatch ClockAllTabsWidth={ClockAllTabsWidth} ClockAllTabsHeight={ClockAllTabsHeight} />}
-                        {ClockSec.option === 'World Clock' && <WorldClock ClockAllTabsWidth={ClockAllTabsWidth} ClockAllTabsHeight={ClockAllTabsHeight} />}
-                        {ClockSec.option === 'Timer' && <Timer ClockAllTabsWidth={ClockAllTabsWidth} ClockAllTabsHeight={ClockAllTabsHeight} />}
+                        {Clock_Options.map(({ option, desc, fileName }, idx) => {
+                            const Component = AllTabs[fileName];
+
+                            if (!Component || ClockSec.option !== option) return null;
+                            return <Component
+                                key={idx}
+                                ClockAllTabsWidth={ClockAllTabsWidth}
+                                ClockAllTabsHeight={ClockAllTabsHeight}
+                                Name={option}
+                                Description={desc}
+                            />
+                        })}
+
                     </div>
                 </section>
 
                 {/* options */}
                 <footer id='ClockAllTabs'
                     style={{
-                        backgroundColor: !fullScreen ? '' : ThemeColors.header,
-                         transitionProperty: 'color, background-color, border-color',
+                        
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
 
                     }}
-                    className={`absolute ${!fullScreen ? 'w-full h-fit bottom-0 left-0 px-[2.5%] pb-[2.5%] items-center' : 'w-fit h-full left-0 top-0'} flex  justify-center bg-transparent`}
+                    className={`absolute ${!fullScreen ? 'w-full h-fit bottom-0 left-0 px-[2.5%] pb-[2.5%] items-center' : 'border-r w-fit h-full left-0 top-0'} flex  justify-center bg-transparent`}
                 >
                     <div style={{
-                        backgroundColor: !fullScreen ? ThemeColors.header : '', boxShadow: !fullScreen ? '0 1px 8px rgba(0,0,0,0.15)' : '', transitionProperty: 'color, background-color, border-color',
+                       borderColor: ThemeColors.third, backgroundColor: !fullScreen ? ThemeColors.header : '', boxShadow: !fullScreen ? '0 1px 8px rgba(0,0,0,0.15)' : '', transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
-                        className={`${Device !== 'Mobile' ? 'w-fit' : 'w-full'} ${fullScreen ? 'gap-2 h-fit flex-col' : ''} px-1.5 rounded-2xl flex justify-between items-center py-3`}>
+                        className={`${Device !== 'Mobile' ? 'w-fit' : 'w-full border'} ${fullScreen ? 'h-fit flex-col' : ''} p-2.5 rounded-2xl flex justify-between items-center  gap-2`}>
 
                         {
-                            Clock_Options.map(({ option, icon }) => {
+                            Clock_Options.map(({ option, icon }, idx) => {
                                 const ICON = Icons[icon]
                                 return <button
+                                    key={idx}
                                     onClick={() => dispatch(setActiveTab({ option }))}
                                     style={{
                                         fontSize: !fullScreen ? `${(Sizes.Small.slice(0, -3)) * 0.7}rem` : Sizes.Small,
@@ -104,14 +117,14 @@ const Clock = () => {
                                         backgroundColor: ClockSec.option === option ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr : '',
                                         '--hover': ClockSec.option === option ?
                                             ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
-                                        transitionProperty: 'color, background-color, border-color',
+                                        transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}
                                     className={`HOVER_CLASS px-3 py-2.5 font-semibold rounded-xl flex ${!fullScreen ? 'flex-col justify-center items-center' : 'w-full justify-start items-center'} gap-1  `}>
 
                                     {ICON && <ICON strokeWidth={2.5} size={17} />}
-                                    <span>{option}</span>
+                                    <span className="select-none">{option}</span>
                                 </button>
                             })
                         }

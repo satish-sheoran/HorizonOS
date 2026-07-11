@@ -3,15 +3,12 @@
 
 
 What i did for this commit :
-feat(Clock) : Implement tab-based navigation and responsive clock app layout
+feat : add world clock UI ,smooth font size transition, fix calculator input selection issues
 
-- add clock slice with active tab state 
-- Implement reducer to switch active Tablet
-- Basic structured the other tabs also 
-- add responsive layout for mobile and desktops as per fullScreen
-- support fullScreen mode
-- Improve clock app UI and navigation 
-- fix minor UI and functionality bugs
+- functionality of world Clock is remaining
+- Smooth transition to font size change
+- fix calculator bugs occuring during selection of some input 
+- Overall impoves UI design
 
 
 

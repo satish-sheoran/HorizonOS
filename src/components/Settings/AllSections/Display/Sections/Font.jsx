@@ -21,16 +21,16 @@ const Font = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section,
         <section className={`w-full flex flex-col gap-2`}>
 
             <span style={{
-              fontSize : Sizes.Small,  fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+              fontSize : Sizes.Small,  fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className='  select-none'>{Section}</span>
 
             <div style={{
-                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+              borderColor: ThemeColors.third,  backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
+            }} className={`border w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
 
                 {/* DISPLAYING OPTIONS UNDER FONT SECTION :  FONT,FONT SETTINGS */}
                 {

@@ -27,7 +27,7 @@ const FactoryReset = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentCo
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -37,7 +37,7 @@ const FactoryReset = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentCo
 
             <span style={{ fontSize : Sizes.Small ,fontFamily: Weights.SemiBold }} className='font-semibold'>{Option}</span>
             <span style={{
-                fontSize : Sizes.Small ,fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                fontSize : Sizes.Small ,fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}>

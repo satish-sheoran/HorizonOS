@@ -18,7 +18,7 @@ const ThemeSelection = ({ Option, fullScreen, Device, Theme: theme, ThemeColors,
         <div className='w-full  mb-1.5'>
 
             <div style={{
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`setting-theme-div grid grid-cols-2 md:flex  ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'max-w-100' : 'max-w-125'}`}>
@@ -28,7 +28,7 @@ const ThemeSelection = ({ Option, fullScreen, Device, Theme: theme, ThemeColors,
                     return <div
                         key={idx}
                         style={{
-                            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -41,7 +41,7 @@ const ThemeSelection = ({ Option, fullScreen, Device, Theme: theme, ThemeColors,
                             onClick={() => dispatch(changeTheme({ theme: Theme }))}
                             src={`/assets/theme-imgs/${Theme}-theme.webp`}
                             style={{
-                                outlineColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
+                                outlineColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}

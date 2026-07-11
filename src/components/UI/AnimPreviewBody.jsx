@@ -26,7 +26,7 @@ const AnimPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
         <div
 
             style={{
-                backgroundColor: ThemeColors.header, borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                backgroundColor: ThemeColors.header, borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`relative overflow-x-auto overflow-y-hidden px-1 py-1  flex  flex-col justify-between ${Device !== 'Desktop' ? `h-20` : `h-30`}`}>
@@ -42,7 +42,7 @@ const AnimPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                     <button style={{
                         fontFamily: Weights.SemiBold, color: COMMON_COLORS.White,
                         backgroundColor: AccentColors.CODE,
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation],
                         animationTimingFunction: CSS_EASING[Anim],

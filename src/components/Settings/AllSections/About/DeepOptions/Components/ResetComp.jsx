@@ -15,19 +15,19 @@ const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => 
 
     return (
         <div style={{
-            backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+           borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`Warning flex justify-between items-center  rounded-2xl p-[2.5%]`}>
+        }} className={`border Warning flex justify-between items-center  rounded-2xl p-[2.5%]`}>
 
             <div style={{
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`flex ${Device !== 'Desktop' ? 'gap-2' : 'gap-5'} items-center`}>
 
                 <span style={{
-                    color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color',
+                    color: COMMON_COLORS.Red, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}>
@@ -36,12 +36,12 @@ const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => 
 
                 <div className={`flex flex-col `}>
                     <span style={{
-                      fontSize : Sizes.Regular , fonFamily : Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                      fontSize : Sizes.Regular , fonFamily : Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={`font-semibold`}>Reset HorizonOS</span>
                     <span style={{
-                      fontSize : Sizes.ExtraSmall , fontFamily : Weights.Regular , color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                      fontSize : Sizes.ExtraSmall , fontFamily : Weights.Regular , color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} >Restore your device to its factory default state.</span>
@@ -49,7 +49,7 @@ const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => 
             </div>
 
             <button style={{
-               fontSize : Sizes.Small , fontFamily : Weights.SemiBold ,backgroundColor: COMMON_COLORS.Red, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+               fontSize : Sizes.Small , fontFamily : Weights.SemiBold ,backgroundColor: COMMON_COLORS.Red, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`active:scale-97  cursor-pointer rounded-xl font-semibold px-2 py-1.5`}>Reset Now</button>

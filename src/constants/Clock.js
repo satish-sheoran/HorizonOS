@@ -1,30 +1,28 @@
 export const Clock_Options = [
     {
         option: 'Clock',
+        fileName : 'ClockTab',
         desc: 'Manage your time effectively.',
         icon: 'Clock',
     },
     {
         option: 'Alarms',
-        desc: 'Manage your alarms.',
+        fileName : 'Alarms',
+        desc: 'Manage your alarms with ease.',
         icon: 'Bell',
 
     },
     {
-        option: 'Stopwatch',
-        desc: 'Quickly set a timer.',
-        icon: 'Timer',
-
-    },
-    {
         option: 'World Clock',
-        desc: 'View time in different cities around the world.',
+        fileName : 'WorldClock',
+        desc: 'View time in different Cities around the World.',
         icon: 'Globe',
 
     },
     {
-        option: 'Timer',
-        desc: 'Quickly set a timer.',
+        option: 'Time Tools',
+        fileName : 'TimeTools',
+        desc: 'Manage Timer and Stopwatch in one place.',
         icon: 'ClockFading',
     }
 ]

@@ -11,7 +11,7 @@ const Navbar = ({ Theme, ThemeColors, AccentColors }) => {
 
     return (
         <nav style={{
-            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`pt-1  `}>

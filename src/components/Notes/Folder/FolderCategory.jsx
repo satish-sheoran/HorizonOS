@@ -31,7 +31,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
 
     return (
         <div style={{
-            transitionProperty: 'color, background-color, border-color',
+            transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`overflow-y-auto rounded-2xl folder-category-list
@@ -59,22 +59,23 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             dispatch(setOpenManageFolder({ open: false })) // close manage folder when category is selected
                         }}
                         style={{
+                            borderColor: activeCategory ===category ?AccentColors.CODE:ThemeColors.third,
                             fontFamily: activeCategory === category ? Weights.Bold : Weights.SemiBold,
-                            backgroundColor: activeCategory === category ? AccentColors.CODE : ThemeColors.third,
+                            backgroundColor: activeCategory === category ? AccentColors.CODE : ThemeColors.header,
                             color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
                             '--hover': ThemeColors.header,
                             '--active': ThemeColors.header,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
-                        className={`px-4 
+                        className={`border px-4 
                             ${activeCategory === category ? 'font-bold' : 'font-semibold HOVER_CLASS'}
                             
                             `}>
                         <Check strokeWidth={2.5}
                             style={{
-                                color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent', transitionProperty: 'color, background-color, border-color',
+                                color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent', transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}
@@ -88,7 +89,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
                                 <span
                                     style={{
-                                        backgroundColor: deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                                        backgroundColor: deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}

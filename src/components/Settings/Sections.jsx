@@ -18,7 +18,7 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
 
     return (
         <section style={{
-            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`py-1 overflow-y-auto ${(currDevice === 'Desktop' || currDevice === 'Tablet') ? 'min-w-1/4 border-r' : 'w-full'} h-full  flex flex-col items-center`}>
@@ -42,7 +42,7 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
                                 AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
                             '--active': (currDevice === 'Desktop' || currDevice === 'Tablet') && activeSection === Section ?
                                 AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -53,7 +53,7 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
                         <div className="flex w-full items-center justify-between">
                             <div style={{
                                 fontSize: currDevice ==='Mobile'?Sizes.Regular:Sizes.Small,
-                                fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color',
+                                fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }} className={`font-semibold flex gap-1.5 items-center `}>

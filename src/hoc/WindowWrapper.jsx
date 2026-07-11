@@ -77,7 +77,7 @@ const WindowWrapper = (Component, windowKey) => {
 
         return <section ref={ref}
             style={{
-                borderColor: COMMON_COLORS.LightWhite, zIndex, transitionProperty: 'color, background-color, border-color',
+                borderColor: COMMON_COLORS.LightWhite, zIndex, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}

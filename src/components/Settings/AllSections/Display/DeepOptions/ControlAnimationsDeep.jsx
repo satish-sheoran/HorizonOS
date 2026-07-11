@@ -16,7 +16,7 @@ const ControlAnimationsDeep = ({ Name, Section, Device, fullScreen, Theme, Theme
 
     return (
         <section style={{
-            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`deep-controlAnimation-option flex flex-col py-[2.5%] gap-2 select-none ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>

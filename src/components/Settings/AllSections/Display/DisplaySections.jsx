@@ -19,7 +19,7 @@ const DisplaySections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors,
 
     return (
         <section style={{
-            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
 
@@ -49,7 +49,7 @@ const DisplaySections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors,
                         <div className='mt-2  mx-auto w-9/10'>
                             <hr
                                 style={{
-                                    borderColor: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                                    borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}

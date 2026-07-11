@@ -21,12 +21,12 @@ const AllColors = ({ Theme, fullScreen, Device, ThemeColors, AccentColors }) => 
           onClick={() => dispatch(setAccentColor({ Color: COLOR }))}
 
           style={{
-            backgroundColor: CODE, outlineColor: CODE, borderColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+            backgroundColor: CODE, outlineColor: CODE, borderColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
           }} className={` flex items-center justify-center ${Device !== 'Desktop' ? 'size-13' : 'size-13'}  rounded-full ${AccentColors.COLOR === COLOR ? 'border-2 outline-3' : ''}`}>
           {AccentColors.COLOR === COLOR && <div style={{
-            color: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+            color: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
           }}

@@ -14,15 +14,31 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
 
   return (
-    <div style={{ backgroundColor: ThemeColors.header }} className={`features flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
-      <div style={{ color: ThemeColors.primaryText }} className={`flex gap-2  text-lg`}>
-        <Star style={{ color: AccentColors.CODE }} strokeWidth={2.5} />
-        <span style={{fontSize : Sizes.Regular, fontFamily: Weights.SemiBold }} className='font-semibold'>Features</span>
+    <div style={{
+      borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
+      transitionDuration: Speed,
+      transitionTimingFunction: CSS_EASING[Animation]
+    }} className={`border features flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
+      <div style={{
+        color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
+        transitionDuration: Speed,
+        transitionTimingFunction: CSS_EASING[Animation]
+      }} className={`flex gap-2  text-lg`}>
+        <Star style={{
+          color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
+          transitionDuration: Speed,
+          transitionTimingFunction: CSS_EASING[Animation]
+        }} strokeWidth={2.5} />
+        <span style={{
+          fontSize: Sizes.Regular, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
+          transitionDuration: Speed,
+          transitionTimingFunction: CSS_EASING[Animation]
+        }} className='font-semibold'>Features</span>
       </div>
 
 
       <div style={{
-        transitionProperty: 'color, background-color, border-color',
+        transitionProperty: 'color, background-color, border-color, font-size',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
       }} className={`grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} gap-3`}>
@@ -40,7 +56,7 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
               '--active': Theme !== 'dark' ?
                 Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                 :
-                COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
               transitionDuration: Speed,
               transitionTimingFunction: CSS_EASING[Animation]
 
@@ -49,7 +65,7 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
             ${Device !== 'Desktop' ? `py-2` : `py-1.5 `}
               `}>
             <div style={{
-              backgroundColor: AccentColors.Bg_Clr, color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color',
+              backgroundColor: AccentColors.Bg_Clr, color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
               transitionDuration: Speed,
               transitionTimingFunction: CSS_EASING[Animation]
             }} className={`rounded-full p-2`}>
@@ -57,14 +73,14 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
             </div>
             <div className='w-[60%]  flex flex-col gap-0.5 items-start '>
-              <span style={{fontSize : Sizes.Small ,fontFamily : Weights.SemiBold}} className='font-semibold'>{Feat_Title.split(' ').map((word) => {
+              <span style={{ fontSize: Sizes.Small, fontFamily: Weights.SemiBold }} className='font-semibold'>{Feat_Title.split(' ').map((word) => {
                 return <>
                   <span>{word}</span>
                   <br />
                 </>
               })}</span>
               <span style={{
-                fontSize : Sizes.ExtraSmall ,fontFamily : Weights.Regular ,color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
               }} > {Feat_Desc} </span>

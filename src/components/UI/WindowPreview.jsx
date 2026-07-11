@@ -14,7 +14,7 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
 
     return (
         <div style={{
-            borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+            borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`h-fit w-[45%] shrink-0 overflow-hidden rounded-2xl flex flex-col border`}>
@@ -22,27 +22,27 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
                 style={{
                     backgroundColor: ThemeColors.bg,
                     borderColor: ThemeColors.bg,
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`shrink-0 w-full flex items-center justify-between   ${Device !== 'Desktop' ? `px-3 py-2` : `px-2.5 py-2.5`}`}>
 
                 <div style={{
-                    color: COMMON_COLORS.Black, transitionProperty: 'color, background-color, border-color',
+                    color: COMMON_COLORS.Black, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className="flex gap-1">
 
                     <button
                         style={{
-                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').CODE, transitionProperty: 'color, background-color, border-color',
+                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').CODE, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`group window-control-btns rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05] flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className="opacity-0 group-hover:opacity-100 ">
@@ -53,13 +53,13 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
                     <button
 
                         style={{
-                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Lime').CODE, transitionProperty: 'color, background-color, border-color',
+                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Lime').CODE, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`group window-control-btns rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className="opacity-0  group-hover:opacity-100 ">
@@ -69,13 +69,13 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
 
                     <button
                         style={{
-                            backgroundColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
+                            backgroundColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`group window-control-btns rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className="zoom opacity-0  group-hover:opacity-100 ">
@@ -94,13 +94,13 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
                     <button
 
                         style={{
-                            backgroundColor: DARK_THEME_COLORS.grayish, transitionProperty: 'color, background-color, border-color',
+                            backgroundColor: DARK_THEME_COLORS.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className="opacity-0 group-hover:opacity-100 ">
@@ -109,13 +109,13 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
                     <button
 
                         style={{
-                            backgroundColor: DARK_THEME_COLORS.grayish, transitionProperty: 'color, background-color, border-color',
+                            backgroundColor: DARK_THEME_COLORS.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
                         className={`rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className="opacity-0  group-hover:opacity-100 ">

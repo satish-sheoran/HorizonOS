@@ -388,7 +388,7 @@ export const DEV_DETAILS = {
 
     Disclaimer: 'HorizonOS is a original independent project created for portfolio purposes. Unauthorized redistribution without credit is discouraged.',
 
-    ImgURL: '/src/assets/images/me3.jpeg'
+    ImgURL: '/me3.jpeg'
 }
 
 export const PROJECT_DETAILS = {
@@ -502,19 +502,18 @@ export const SETTINGS_FACTORY_RESET_OPTIONS = [
 ]
 // About section : DONE
 
-
 export const AnimationSpeedAndType = [
     {
         Name: 'Normal',
         Speed: '300ms',
-        icon: 'CctvIcon',
+        icon: 'Gauge',
         RefreshRate: '60 Hz',
         Description: 'Smooth and fluid for the best experience.'
     },
     {
         Name: 'Faster',
         Speed: '150ms',
-        icon: 'CctvIcon',
+        icon: 'Rabbit',
         RefreshRate: '90 Hz',
         Description: 'Fast animation for better experinece.'
     },
@@ -522,7 +521,7 @@ export const AnimationSpeedAndType = [
         Name: 'Disabled',
         Speed: '0s',
         RefreshRate: 'Default',
-        icon: 'CctvIcon',
+        icon: 'CircleOff',
         Description: 'Disable all animations for maximum performace.'
     }
 ]
@@ -531,25 +530,25 @@ export const AnimationsName = [
     {
         Name: 'Smooth',
         Animation: 'sine.inOut',
-        icon: 'CctvIcon',
+        icon: 'LineSquiggle',
         description: 'Gentle acceleration and deceleration for natural motion.'
     },
     {
         Name: 'Expo Out',
         Animation: 'expo.out',
-        icon: 'CctvIcon',
+        icon: 'TrendingUp',
         description: 'Very fast start with a smooth finish.'
     },
     {
         Name: 'Back Out',
         Animation: 'back.out(1.7)',
-        icon: 'CctvIcon',
+        icon: 'Redo',
         description: 'Slightly overshoots before setting into place.'
     },
     {
         Name: 'Ease ',
         Animation: 'power2.out',
-        icon: 'CctvIcon',
+        icon: 'MoveRight',
         description: 'Starts quickly and slows before stopping.'
     },
     // {

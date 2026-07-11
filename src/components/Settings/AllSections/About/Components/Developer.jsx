@@ -21,7 +21,7 @@ const Developer = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColor
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}

@@ -17,12 +17,12 @@ const PickAccentColor = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
       <div className='flex flex-col gap-0.5'>
 
         <span style={{
-          fontSize : Sizes.Small ,fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+          fontSize : Sizes.Small ,fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
         <span style={{
-        fontSize : Sizes.ExtraSmall , fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+        fontSize : Sizes.ExtraSmall , fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose an accent colour for button,highlights,and active elements.</span>
@@ -31,10 +31,10 @@ const PickAccentColor = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
 
 
       <div style={{
-        backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+       borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
-      }} className={`flex flex-col gap-4 rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
+      }} className={`border flex flex-col gap-4 rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
 
         {/* COLORS LOOP */}
         <AllColors

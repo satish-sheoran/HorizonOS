@@ -28,7 +28,7 @@ const ManageApps = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColo
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray,
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}

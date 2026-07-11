@@ -28,7 +28,7 @@ const AboutHorizonOS = ({ Theme, Option, fullScreen, Device, ThemeColors, Accent
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray,
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -39,7 +39,7 @@ const AboutHorizonOS = ({ Theme, Option, fullScreen, Device, ThemeColors, Accent
             <span style={{ fontSize: Sizes.Small, fontFamily: Weights.SemiBold }} className={`font-semibold`}>{Option}</span>
             <span style={{
                 fontSize: Sizes.Small, fontFamily: Weights.Regular,
-                color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}>

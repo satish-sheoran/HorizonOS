@@ -15,36 +15,36 @@ const AnimationPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
         <div className={`mt-2 flex flex-col gap-2 `}>
             <div className='flex flex-col gap-0.5'>
                 <span style={{
-                  fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
-                   fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Experience your chosen animation style and speed (2.5s is used here).</span>
             </div>
 
             <div style={{
-                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+              borderColor: ThemeColors.third,  backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`flex items-center justify-between rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
+            }} className={`border flex items-center justify-between rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
                 <WindowPreview Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} Device={Device} Preview='Animation' />
 
                 <div style={{
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={`${Device !== 'Desktop' ? 'max-w-1/2' : 'max-w-[40%]'} flex flex-col gap-2`}>
                     <span style={{
-                      fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                      fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={`font-semibold  text-center `}>Experience Motion Your Way</span>
                     <span style={{
-                       fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                       fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className={`text-center `}>Preview how animations feel across HorizonOS.</span>

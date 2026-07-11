@@ -47,7 +47,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
 
             <div ref={DeletPopElem}
                 style={{
-                    backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                    backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                     borderColor : COMMON_COLORS.Red,
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
@@ -56,7 +56,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
 
                 <span style={{
                     fontSize : Sizes.Regular ,
-                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     fontFamily : Weights.SemiBold,
                     transitionTimingFunction: CSS_EASING[Animation]
@@ -64,7 +64,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
 
                 <span style={{
                     fontSize : Sizes.Small,
-                    color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                     fontFamily : Weights.Regular,
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
@@ -80,7 +80,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
                             backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
                             '--hover': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
                             '--active': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -113,7 +113,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
                             color: COMMON_COLORS.White,
                             '--hover': COMMON_COLORS.LightRed,
                             '--active': COMMON_COLORS.LightRed
-                            , transitionProperty: 'color, background-color, border-color',
+                            , transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}

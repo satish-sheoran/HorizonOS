@@ -22,11 +22,11 @@ const OsDetails = ({ Theme, Device, fullScreen, GrandParentSection, Options, Sec
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
-            className={`p-[2.5%] w-full flex flex-col rounded-2xl gap-2 overflow-hidden`}>
+            className={`border p-[2.5%] w-full flex flex-col rounded-2xl gap-2 overflow-hidden`}>
             {Options?.map(({ Option, FileName, Toggleable, action }, idx) => {
                 const Component = OSDetails_OPTIONS[FileName];
 

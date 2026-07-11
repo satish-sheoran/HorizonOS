@@ -25,7 +25,7 @@ const AdditionalSettings = ({ Section, Theme, ThemeColors, AccentColors, Queries
 
   return (
     <div style={{
-      transitionProperty: 'color, background-color, border-color',
+      transitionProperty: 'color, background-color, border-color, font-size',
       transitionDuration: Speed,
       transitionTimingFunction: CSS_EASING[Animation]
     }} className={`additional-overflow-area w-full h-full grow flex  ${fullScreen ? '' : 'overflow-y-auto  p-[2.5%] gap-2'} ${(Device === 'Mobile' || !fullScreen) ? 'flex-col' : ''}`}>

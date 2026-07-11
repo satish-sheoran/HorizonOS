@@ -23,7 +23,7 @@ const ToggleButton = ({ Device, Theme, action, performAction, isActionActive, Th
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray
-                , transitionProperty: 'color, background-color, border-color',
+                , transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
@@ -37,14 +37,14 @@ const ToggleButton = ({ Device, Theme, action, performAction, isActionActive, Th
                     backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue
                         :
                         ThemeColors.bg,
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full `}>
 
                 <div style={{
-                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation],
                     transition : `transform ${Speed} ${CSS_EASING[Animation]}`,

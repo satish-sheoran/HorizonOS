@@ -8,7 +8,7 @@ import * as Icons from 'lucide-react'
 import { Wallpapers } from '../../constants';
 import { useState } from 'react';
 
-const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
+const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps?.apps['clock'])
 
@@ -28,21 +28,21 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
   function RotateHands() {
     let date = new Date();
 
-    let hourHand = document.querySelector('.hourHand')
-    let minHand = document.querySelector('.minHand')
-    let secHand = document.querySelector('.secHand')
-
     let hr = date.getHours();
     let min = date.getMinutes();
     let sec = date.getSeconds();
 
-    hourHand.style.transform = `rotate(${30 * hr + min / 2}deg)`
-    minHand.style.transform = `rotate(${6 * min}deg)`
-    secHand.style.transform = `rotate(${6 * sec}deg)`
+    document.querySelector('.hourHand').style.transform = `rotate(${30 * hr + min / 2}deg)`
+    document.querySelector('.minHand').style.transform = `rotate(${6 * min}deg)`
+    document.querySelector('.secHand').style.transform = `rotate(${6 * sec}deg)`
 
   }
 
-  setInterval(RotateHands, 1000)
+  useEffect(() => {
+    let ClockInt = setInterval(RotateHands, 1000)
+
+    return () => clearInterval(ClockInt)
+  }, [])
 
   useLayoutEffect(() => {
     const theme = Wallpapers[Device === 'Tablet' ? 'desktop' : Device.toLowerCase()]?.find(({ url }) => url === Wallpaper)?.theme
@@ -53,25 +53,42 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
 
   return (
     <section style={{
-      paddingBottom: `${Math.floor(ClockAllTabsHeight)}px`, transitionProperty: 'color, background-color, border-color',
+      paddingBottom: `${Math.floor(ClockAllTabsHeight) * 1.1}px`,
+      transitionProperty: 'color, background-color, border-color, font-size',
       transitionDuration: Speed,
       transitionTimingFunction: CSS_EASING[Animation]
     }}
-      className={`overflow-cloclTab w-full h-full grow px-[2.5%] pt-[2.5%] overflow-y-auto overflow-x-hidden flex flex-col gap-2`}>
+      className={`overflow-cloclTab w-full h-full grow px-[2.5%] ${Device === 'Mobile' ? 'pt-[4%]' : 'pt-[1.5%]'} overflow-y-auto  overflow-x-hidden flex flex-col gap-2`}>
 
 
-      <div className={`mt-2 flex flex-col gap-2`}>
+      <div className={`flex flex-col gap-2`}>
+        {/* Title and desc */}
+        <div className='flex flex-col gap-0.5'>
+          <span style={{
+            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+          }} className={` font-semibold  ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>Clock </span>
+          <span style={{
+            fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
+            transitionDuration: Speed,
+            transitionTimingFunction: CSS_EASING[Animation]
+          }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
+            Manage your time effectively.
+          </span>
+        </div>
+
 
         {/* body */}
         <div style={{
-          transitionProperty: 'color, background-color, border-color',
+          transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={` ${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? 'flex flex-col' : 'grid grid-cols-2 '} gap-5 rounded-2xl items-center select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
           {/* clock */}
           <div style={{
-            backgroundColor: ThemeColors.header, borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec, transitionProperty: 'color, background-color, border-color',
+            backgroundColor: ThemeColors.header, borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
           }} className={`${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? '' : 'h-full'} border flex items-center justify-center py-5 rounded-2xl w-full `}>
@@ -83,18 +100,19 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
                 backgroundRepeat: 'no-repeat',
                 borderColor: ThemeColors.sec,
                 boxShadow: DeviceTheme !== 'dark' ? '0 1px 12px rgba(0,0,0,0.15), 0 0 5px rgba(0,0,0,0.5)' : '0 1px 12px rgba(255,255,255,0.15) , 0 0 5px rgba(255,255,255,0.5)',
-                transitionProperty: 'color, background-color, border-color',
+                transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
 
               }}
               className={`shrink-0 relative border-2 ${Device !== 'Desktop' ? 'w-55 h-55' : 'w-40 h-40'} rounded-full flex items-center justify-center`}>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((val, idx) => {
-                return <p id={idx}
+                return <p
+                  key={idx}
                   style={{
                     transform: `rotate(${30 * val}deg)`,
                     textAlign: 'center',
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                   }}
@@ -105,7 +123,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
                     fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.9}rem`,
                     display: 'inline-block',
                     transform: `rotate(${-30 * val}deg)`,
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                   }} className={``}>{val}</span>
@@ -113,13 +131,13 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
               })}
 
               <p style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
               }} className={`absolute ${Device !== 'Desktop' ? 'p-2' : 'p-1.5'} rounded-full z-2`}></p>
               <div className='hourHand absolute flex justify-center items-end'>
                 <p style={{
-                  borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                  borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                   transitionDuration: Speed,
                   transitionTimingFunction: CSS_EASING[Animation]
                 }}
@@ -128,7 +146,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
 
               <div className='minHand absolute flex justify-center items-end'>
                 <p style={{
-                  borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                  borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                   transitionDuration: Speed,
                   transitionTimingFunction: CSS_EASING[Animation]
                 }}
@@ -159,12 +177,11 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
                   style={{
                     backgroundColor: ThemeColors.header,
                     borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec,
-                    color: ThemeColors.primaryText,
                     '--hover': ThemeColors.third,
                     '--active': Theme !== 'dark' ?
                       Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                       :
-                      COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color',
+                      COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                   }}
@@ -173,7 +190,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
 
                   <div className={`w-full ${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? '' : 'flex-col items-center'} flex gap-3`}>
                     <div style={{
-                      backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).Bg_Clr, color: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).COLOR, transitionProperty: 'color, background-color, border-color',
+                      backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).Bg_Clr, color: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).COLOR, transitionProperty: 'color, background-color, border-color, font-size',
                       transitionDuration: Speed,
                       transitionTimingFunction: CSS_EASING[Animation]
                     }} className={`p-2 w-fit rounded-full  flex items-center justify-center`}>
@@ -181,12 +198,12 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
                     </div>
                     <div className={`flex flex-col gap-0.5 text-left`}>
                       <span style={{
-                        fontSize: `${(Sizes.Small.slice(0, -3)) * 1.1}rem`, fontFamily: Weights.Bold, transitionProperty: 'color, background-color, border-color',
+                        color: ThemeColors.primaryText,fontSize: `${(Sizes.Small.slice(0, -3)) * 1.1}rem`, fontFamily: Weights.Bold, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                       }}>{name}</span>
                       <span style={{
-                        fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color',
+                        color: ThemeColors.thirdText,fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                       }}>{active} {extra}</span>
@@ -194,7 +211,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight }) => {
                   </div>
 
                   {!fullScreen && Device !== 'Desktop' && <div style={{
-                    color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                    color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                   }}>

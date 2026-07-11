@@ -26,7 +26,7 @@ const Categories = ({ Theme, ThemeColors, AccentColors }) => {
                             color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.thirdText,
                             '--hover': ThemeColors.third,
                             '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}

@@ -17,23 +17,23 @@ const WhatToReset = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) =
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+              borderColor: ThemeColors.third,  backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
-            className={`Warning flex flex-col justify-center gap-3 rounded-2xl p-[2.5%]`}
+            className={`border Warning flex flex-col justify-center gap-3 rounded-2xl p-[2.5%]`}
         >
             {/* Title : What will be reset */}
             <div
                 style={{
-                  fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                  fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}
                 className={`flex flex-col font-semibold`}>
                 <p>What will be reset?</p>
                 <p style={{
-                   fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}>All personal data and customizations will be deleted, including :</p>
@@ -47,7 +47,7 @@ const WhatToReset = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) =
                     return <div
                         style={{
                             borderColor: ThemeColors.bg,
-                            '--hover': ThemeColors.third, transitionProperty: 'color, background-color, border-color',
+                            '--hover': ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -60,7 +60,7 @@ const WhatToReset = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) =
                                 backdropFilter: 'blur(16px)',
                                 color: COMMON_COLORS.Red,
                                 backgroundColor: COMMON_COLORS.LightDarkRed,
-                                borderColor: COMMON_COLORS.DarkRed, transitionProperty: 'color, background-color, border-color',
+                                borderColor: COMMON_COLORS.DarkRed, transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}
@@ -74,14 +74,14 @@ const WhatToReset = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) =
 
                             <span
                                 style={{
-                                   fontSize : Sizes.Small, fontFamily : Weights.SemiBold ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                                   fontSize : Sizes.Small, fontFamily : Weights.SemiBold ,color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
                                 }}
                                 className={`font-semibold `}>{option}</span>
 
                             <span style={{
-                               fontSize : Sizes.ExtraSmall, fontFamily :Weights.Regular ,color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                               fontSize : Sizes.ExtraSmall, fontFamily :Weights.Regular ,color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}>{description}</span>

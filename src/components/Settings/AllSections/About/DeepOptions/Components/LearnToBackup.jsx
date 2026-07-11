@@ -15,13 +15,13 @@ const LearnToBackup = ({ Device, Theme, fullScreen, ThemeColors, AccentColors })
 
     return (
         <div style={{
-            backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+           borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`flex  items-center gap-3 rounded-2xl p-[2.5%]`}>
+        }} className={`border flex  items-center gap-3 rounded-2xl p-[2.5%]`}>
 
             <div style={{
-                color: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
+                color: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}>
@@ -30,14 +30,14 @@ const LearnToBackup = ({ Device, Theme, fullScreen, ThemeColors, AccentColors })
             <div className={`flex flex-col`}>
                 <span
                     style={{
-                     fontSize : Sizes.Small ,  fontFamily : Weights.SemiBold , color: Theme !== 'dark' ? ThemeColors.primaryText : ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                     fontSize : Sizes.Small ,  fontFamily : Weights.SemiBold , color: Theme !== 'dark' ? ThemeColors.primaryText : ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
                     className={`font-semibold`}>It's recommended to back up important files before proceeding.</span>
 
                 <div style={{
-                    color: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
+                    color: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className='active:scale-97 cursor-pointer  flex gap-1 items-center'>
@@ -46,7 +46,7 @@ const LearnToBackup = ({ Device, Theme, fullScreen, ThemeColors, AccentColors })
                         style={{
                           fontSize : Sizes.ExtraSmall,  fontFamily : Weights.Regular ,color: COMMON_COLORS.Blue,
                             '--hover': ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').Hover_Clr,
-                            '--active': ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').Hover_Clr, transitionProperty: 'color, background-color, border-color',
+                            '--active': ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').Hover_Clr, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}

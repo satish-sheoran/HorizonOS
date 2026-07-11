@@ -14,31 +14,31 @@ const AccentColorPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, fu
   return (
     <div className={`mt-2 flex flex-col gap-2`}>
       <span style={{
-       fontSize : Sizes.Small, fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+       fontSize : Sizes.Small, fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
       }} className={`font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
 
       <div style={{
-        backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color',
+       borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
         transitionDuration: Speed,
         transitionTimingFunction: CSS_EASING[Animation]
-      }} className={`flex items-center justify-between rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
+      }} className={`border flex items-center justify-between rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
 
         <WindowPreview Theme={Theme} ThemeColors={ThemeColors} Device={Device} AccentColors={AccentColors} Preview='AccentPreview' />
 
         <div style={{
-          transitionProperty: 'color, background-color, border-color',
+          transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={`${Device !== 'Desktop' ? 'max-w-1/2' : 'max-w-[40%]'} flex flex-col gap-2`}>
           <span style={{
-           fontSize:Sizes.Regular, fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+           fontSize:Sizes.Regular, fontFamily : Weights.SemiBold ,color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
           }} className={`font-semibold  text-center `}>Personalize Your Experience</span>
           <span style={{
-           fontSize : Sizes.ExtraSmall, fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+           fontSize : Sizes.ExtraSmall, fontFamily : Weights.Regular ,color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
           }} className={`text-center `}>Choose a color that reflects your style and preview changes here.</span>

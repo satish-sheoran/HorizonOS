@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../constants/Settings'
 
-const Alarms = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) => {
+const TimeTools = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) => {
 
   const { fullScreen } = useSelector((store) => store.windowApps?.apps['clock'])
 
@@ -57,4 +57,4 @@ const Alarms = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) =>
   )
 }
 
-export default Alarms
+export default TimeTools

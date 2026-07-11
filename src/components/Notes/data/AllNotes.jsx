@@ -71,7 +71,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
     return (
         <div style={{
-            transitionProperty: 'color, background-color, border-color',
+            transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={` flex-1  AllNotes-container  overflow-y-auto    
@@ -105,21 +105,22 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
                                 key={id}
                                 style={{
+                                    borderColor: ThemeColors.third,
                                     backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header,
                                     '--hover': ThemeColors.third,
                                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                                    transitionProperty: 'color, background-color, border-color',
+                                    transitionProperty: 'color, background-color, border-color, font-size',
                                     transitionDuration: Speed,
                                     transitionTimingFunction: CSS_EASING[Animation]
 
                                 }}
-                                className={`HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
+                                className={`border HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
                         `}>
                                 <h3
                                     style={{
                                         fontSize: Sizes.Regular,
                                         fontFamily: Weights.SemiBold,
-                                        color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                                        color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}
@@ -134,7 +135,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     style={{
                                         fontSize: Sizes.Small,
                                         fontFamily: Weights.Regular,
-                                        color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color',
+                                        color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}
@@ -148,7 +149,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     <span style={{
                                         fontSize: Sizes.ExtraSmall,
                                         fontFamily: Weights.Regular,
-                                        color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color',
+                                        color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}
@@ -164,7 +165,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                         isDeleteNoteOpen === true &&
                                         <span
                                             style={{
-                                                backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                                                backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                                                 transitionDuration: Speed,
                                                 transitionTimingFunction: CSS_EASING[Animation]
                                             }}
@@ -184,7 +185,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                     (
                         <div style={{
                             fontFamily: Weights.SemiBold,
-                            color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color',
+                            color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>

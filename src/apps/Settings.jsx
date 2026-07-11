@@ -20,7 +20,7 @@ const Settings = () => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
+                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}

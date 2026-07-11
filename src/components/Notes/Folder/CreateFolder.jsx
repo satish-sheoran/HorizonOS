@@ -35,7 +35,7 @@ const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
                     background: ThemeColors.third,
                     '--hover': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }}

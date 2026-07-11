@@ -58,14 +58,14 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
             
             `}>
                 <span style={{
-                   fontSize : Sizes.Regular, fontFamily : Weights.Bold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                   fontSize : Sizes.Regular, fontFamily : Weights.Bold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className={`select-none font-bold `}>New Folder</span>
 
                 <input style={{
                     fontSize : Sizes.Small,
-                     fontFamily: Weights.Regular ,color: ThemeColors.primaryText, borderColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color',
+                     fontFamily: Weights.Regular ,color: ThemeColors.primaryText, borderColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} spellCheck={false} ref={createFldrInputRef} maxLength={80} autoFocus className={`create-flder-input w-full border-2 outline-none font-semibold rounded-2xl px-2.5 py-2 `} type="text" placeholder='Enter Text' defaultValue={defaultValOfInput} />
@@ -78,7 +78,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
                             backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
                             '--hover': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
                             '--active': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -100,7 +100,7 @@ const CreateFolderPopUp = ({ opencreateFolderPopUp, setOpencreateFolderPopUp, Th
                             color: COMMON_COLORS.White,
                             '--hover': COMMON_COLORS.LightBlue,
                             '--active': COMMON_COLORS.LightBlue,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}

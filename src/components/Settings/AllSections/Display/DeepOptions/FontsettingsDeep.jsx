@@ -15,7 +15,7 @@ const FontsettingsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColor
 
   return (
     <div style={{
-      transitionProperty: 'color, background-color, border-color',
+      transitionProperty: 'color, background-color, border-color, font-size',
       transitionDuration: Speed,
       transitionTimingFunction: CSS_EASING[Animation]
     }} className={`flex flex-col py-[2.5%] gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto px-[2.5%]'}`}>

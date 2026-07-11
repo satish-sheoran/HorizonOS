@@ -34,7 +34,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
 
     return (
         <div style={{
-            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`folder-nav `}>
@@ -49,7 +49,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                         style={{
                             fontFamily : Weights.Regular,
                             color: AccentColors.CODE,
-                            transitionProperty: 'color, background-color, border-color',
+                            transitionProperty: 'color, background-color, border-color, font-size',
                             transitionDuration: Speed,
                             transitionTimingFunction: CSS_EASING[Animation]
                         }}
@@ -60,7 +60,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                     <button onClick={() => {
                         dispatch(setOpenManageFolder({ open: false }));
                     }} style={{
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='pr-9.5 pb-1  active:scale-95'>
@@ -83,7 +83,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                 }}
                     style={{
                         color: AccentColors.CODE,
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}
@@ -95,7 +95,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                     style={{
                         fontFamily : Weights.Regular,
                         color: AccentColors.CODE,
-                        transitionProperty: 'color, background-color, border-color',
+                        transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }}

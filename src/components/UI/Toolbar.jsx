@@ -10,13 +10,13 @@ const Toolbar = ({ performAction, Theme, ThemeColors, AccentColors }) => {
 
     return (
         <section style={{
-            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={` w-full px-[2.5%] py-(--padding-sm) flex items-center justify-between `}>
 
             <span style={{
-                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color',
+                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`active:scale-97`} onClick={performAction}>

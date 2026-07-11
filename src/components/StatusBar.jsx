@@ -18,7 +18,7 @@ const StatusBar = () => {
 
     return (
         <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{
-            color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color',
+            color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }}>
@@ -28,7 +28,7 @@ const StatusBar = () => {
                 <img src="/HorizonOS-Photoroom.png" className='h-full' alt="Logo" />
                 <h1 style={{
                   fontSize : Sizes.Small,  fontFamily: Weights.SemiBold,
-                    transitionProperty: 'color, background-color, border-color',
+                    transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                 }} className='font-semibold '>{OS_NAME}</h1>
