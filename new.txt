@@ -3,13 +3,7 @@
 
 
 What i did for this commit :
-feat : add world clock UI ,smooth font size transition, fix calculator input selection issues
-
-- functionality of world Clock is remaining
-- Smooth transition to font size change
-- fix calculator bugs occuring during selection of some input 
-- Overall impoves UI design
-
+feat(World-Clock) : Add animated city search input with GSAP Flip
 
 
 FIXES And ADDITION TO CALC:

@@ -4,6 +4,9 @@ import { CSS_EASING } from '../../constants/Settings'
 import { ACCENT_COLORS } from '../../constants/style'
 import { Plus, Search } from 'lucide-react'
 import CityCard from './Components/CityCard'
+import WorldClockTitleAndDesc from './Components/WorldClockTitleAndDesc'
+import gsap from 'gsap'
+import { Flip } from 'gsap/Flip'
 
 const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) => {
 
@@ -24,7 +27,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
   const [DetailElWidth, setDetailElWidth] = useState(0) //to calculate width of selected element
   const [inputVal, setInputVal] = useState('') //to get input val
   const [isFocused, setisFocused] = useState(false) //to check if input is focused
-
+  const [show, setShow] = useState(false)
   //refs
   const InputRef = useRef(null)
 
@@ -37,6 +40,31 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
 
   }, [fullScreen])
 
+  //animation
+  useLayoutEffect(() => {
+    const el = document.querySelector('.ParentCl')
+
+    Device === 'Mobile' ?
+      gsap.fromTo(el, {
+        scaleY: 0,
+        transformOrigin: 'top center'
+      }, {
+        scaleY: 1,
+        transformOrigin: 'top center',
+        duration: 0.3,
+        ease: 'ease.out',
+      })
+      :
+      gsap.fromTo(el, {
+        scaleX: 0,
+        transformOrigin: 'left center'
+      }, {
+        scaleX: 1,
+        transformOrigin: 'left center',
+        duration: 0.3,
+        ease: 'ease.out',
+      })
+  }, [show, Device])
 
   return (
     <section style={{
@@ -51,39 +79,13 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
 
       <div className={`mt-2 flex flex-col gap-2`}>
         {/* Title and desc */}
-        <div className={`flex justify-between items-center`}>
-          <div id='DetailElement' className='flex flex-col gap-0.5'>
-            <span style={{
-              fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-              transitionDuration: Speed,
-              transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`select-none font-semibold  ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>{Name} </span>
-            <span style={{
-              fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-              transitionDuration: Speed,
-              transitionTimingFunction: CSS_EASING[Animation]
-            }} className={`select-none ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
-              {Description}
-            </span>
-          </div>
-          <button
-            style={{
-              fontFamily: Weights.SemiBold,
-              color: AccentColors.CODE,
-              transitionProperty: 'color, background-color, border-color, font-size',
-              transitionDuration: Speed,
-              transitionTimingFunction: CSS_EASING[Animation]
-            }}
-            className='select-none font-semibold active:scale-95'>
-            <span style={{ fontSize: Sizes.Regular }}>Edit</span>
-          </button>
-        </div>
+        <WorldClockTitleAndDesc Name={Name} Description={Description} />
 
         <div style={{ width: !fullScreen ? '100%' : `${DetailElWidth * 1.5}px` }}
-          className={`${Device === 'Mobile' ? 'flex flex-col' : `grid ${fullScreen ? 'grid-cols-[6fr_4fr]' : 'grid-cols-[7fr_3fr]'}`}  gap-2`}
+          className={`${Device === 'Mobile' ? 'flex flex-col' : `grid ${fullScreen ? show ? 'grid-cols-[6fr_4fr]' : 'grid-cols-1' : show ? 'grid-cols-[7fr_3fr]' : 'grid-cols-1'}`}  gap-2`}
         >
           {/* searchArea */}
-          <div
+          {show && <div
             style={{
               backgroundColor: ThemeColors.header, color: ThemeColors.primaryText,
               borderColor: isFocused ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE : ThemeColors.third,
@@ -91,7 +93,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
               transitionDuration: Speed,
               transitionTimingFunction: CSS_EASING[Animation],
             }}
-            className={`border flex gap-2 py-2 rounded-2xl ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}  grow`}>
+            className={`ParentCl border flex gap-2 py-2 rounded-2xl ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}  grow`}>
 
             <Search strokeWidth={2} />
             <input
@@ -111,22 +113,44 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
               }}
               className={`w-full  font-semibold outline-none focus:ring-0 focus:border-0 focus:outline-none`}
             />
-          </div>
+          </div>}
+
           {/* Add city button */}
           <button
             onClick={() => {
-              if (!InputRef.current.matches(':focus')) InputRef.current.focus() //checks if input is focused or not ,if not then focus it
+              const AllElems = []
+              const AddBtn = document.querySelector('.AddBtn')
+              const CitiesDiv = document.querySelector('.Cities-Div')
+              AllElems.push(Flip.getState(AddBtn))  //finidng their postion before shift
+              AllElems.push(Flip.getState(CitiesDiv)) //finidng their postion before shift
+
+
+              // shifting postion with a smooth animation
+              {
+                !show && requestAnimationFrame(() => {
+                  AllElems.map((state) => {
+                    Flip.from(state, {
+                      ease: 'ease.out',
+                      duration: 0.3,
+                    })
+                  })
+                })
+              }
+              setShow(true)
+
+              if (!InputRef.current.matches(':focus') && inputVal === '') InputRef.current.focus();  //checks if input is focused or not ,if not then focus it
+
             }}
             style={{
               borderColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
-              fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.SemiBold,
+              fontSize: Device !== 'Desktop' ? `${(Sizes.Small.slice(0, -3))}rem` : `${(Sizes.Small.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.SemiBold,
               color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
               backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr,
               transitionProperty: 'color, background-color, border-color, font-size',
               transitionDuration: Speed,
               transitionTimingFunction: CSS_EASING[Animation]
             }}
-            className={`border select-none w-full flex gap-1 items-center justify-center cursor-pointer font-semibold rounded-2xl active:scale-98 ${Device === 'Mobile' ? 'p-3' : 'p-2'}  `}>
+            className={`AddBtn border select-none w-full flex gap-1 items-center justify-center cursor-pointer font-semibold rounded-2xl active:scale-98 ${Device === 'Mobile' ? 'p-3' : 'p-2'}  `}>
             <Plus strokeWidth={2} />
             <span>Add City</span>
           </button>
@@ -136,13 +160,16 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
         {/* cities */}
         <div style={{
           borderColor: ThemeColors.third,
-          width: !fullScreen ? '100%' : `${DetailElWidth * 1.5}px`,
+          // Avoiding using 100% bcz it causes GSAP Flip to 
+          // Briefly stretch the elem on mobilr before animating
+          width: !fullScreen ? '' : `${DetailElWidth * 1.5}px`,
           backgroundColor: ThemeColors.header,
           transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`border rounded-2xl overflow-hidden select-none`}>
+        }} className={`Cities-Div border rounded-2xl overflow-hidden select-none`}>
           {
+            // just temporary data for showcase only
             [1, 2].map((val, idx) => {
               return <>
                 <CityCard key={idx} />
@@ -152,7 +179,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
                   }}
-                  className={` w-8/10 mx-auto`} />
+                  className={`w-8/10 mx-auto`} />
               </>
             })}
 
