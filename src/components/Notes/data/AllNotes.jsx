@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Check, NotebookPen } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
 import { COMMON_COLORS } from '../../../constants/style'
 import { CSS_EASING } from '../../../constants/Settings'
 import { formatDateTime } from '../../../utils/formatTime'
-import { manageDeletedNotes, manageEditTask, setNotesContainerWidth, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
+import { manageDeletedNotes, manageEditTask, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
 import useLongPress from '../../../hooks/Use-long-press';
 
 
@@ -26,51 +26,46 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
     const Notes = useSelector(store => activeCategory === 'All' ? store.Notes.Notes : store.Notes.Notes.filter(note => note.category === activeCategory)) //notes based on active category
 
 
-    const NotesContainerWidth = useSelector(store => store.Notes.NotesContainerWidth);
+    const ContainerRef = useRef(null)
+    const [cols, setCols] = useState(1)
+
 
     const { Handlers, isLongPress } = useLongPress(() => {
         if (!isDeleteNoteOpen) dispatch(setStartDeletingNotes({ start: true }));
     }) //custom hook to trigger if user did long press
 
+
+    //resize observer observes and callback run when that elem size changes
     useEffect(() => {
-        // getting width of notes area 
-        const getNotesContainerWidth = (el) => {
-            if (!el || !isOpen) return;
+        if (!ContainerRef.current) return
 
-            const width = Math.round(el.getBoundingClientRect().width);
-            if (!Number.isFinite(width) || width <= 0) return;
+        const observer = new ResizeObserver((entries) => {
+            const width = entries[0].contentRect.width;
+            console.log(width)
+            let cols;
 
-            dispatch(setNotesContainerWidth({ width }));
+            if (width <= 320) cols = 1;
+            else if (width <= 640) cols = 2
+            else if (width <= 768) cols = 3
+            else if (width <= 1024) cols = 4
+            else {
+                cols = 5
+            }
 
-        }
+            setCols(cols)
+        })
 
-        const el = document.querySelector('.AllNotes-container');
-        if (!el || !isOpen) return;
+        observer.observe(ContainerRef.current)
 
-        const measure = () => getNotesContainerWidth(el);
-
-        // 1) requestAnimationFrame: schedule run in next paint cycle after DOM updates.
-        //    Important because fullScreen toggle may change CSS/size but that may not be final
-        //    until next frame.
-        // 2) setTimeout(..., 250): a second measure after 250ms to catch any transitions/animations
-        //    that change layout after the count is rendered. This prevents stale width in store.
-        requestAnimationFrame(() => {
-            measure();
-            setTimeout(measure, 250);
-        });
-
-    }, [isOpen, fullScreen, dispatch]);
-
-
-
-    const cols = NotesContainerWidth <= 320 ? 1 :
-        NotesContainerWidth <= 640 ? 2 :
-            NotesContainerWidth <= 768 ? 3 :
-                NotesContainerWidth <= 1024 ? 4 : 5; //manages no. of columns
+        return () => {
+    observer.unobserve(ContainerRef.current);
+    observer.disconnect();
+};
+    }, [])
 
 
     return (
-        <div style={{
+        <div ref={ContainerRef} style={{
             transitionProperty: 'color, background-color, border-color, font-size',
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
@@ -190,7 +185,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                             transitionTimingFunction: CSS_EASING[Animation]
                         }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
                             <NotebookPen size={30} />
-                            <span style={{fontSize : Sizes.Small}}>No notes here yet</span>
+                            <span style={{ fontSize: Sizes.Small }}>No notes here yet</span>
                         </div>
                     )
             }

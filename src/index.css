@@ -253,3 +253,13 @@ body,
 html {
     scrollbar-width: none;
 }
+
+
+.loader{
+    animation: loaderAnim 1.5s linear infinite;
+}
+
+@keyframes loaderAnim {
+    from{transform  : rotate(0deg);}
+    to{transform : rotate(360deg)}
+}

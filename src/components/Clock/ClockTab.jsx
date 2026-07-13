@@ -202,11 +202,14 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                       }}>{name}</span>
-                      <span style={{
-                        color: ThemeColors.thirdText,fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
+                      <p style={{
+                        fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                      }}>{active} {extra}</span>
+                      }} className='flex gap-1 items-center'>
+                        <span style={{color: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).CODE }}>{active}</span>
+                        <span style={{color: ThemeColors.thirdText }}>{extra}</span>
+                        </p>
                     </div>
                   </div>
 

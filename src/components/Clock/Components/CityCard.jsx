@@ -19,51 +19,60 @@ const CityCard = () => {
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <div
-            style={{
-                backgroundColor: ThemeColors.header,
-                borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec,
-                '--hover': ThemeColors.third,
-                '--active': Theme !== 'dark' ?
-                    Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
-                    :
-                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
-            }}
-            className={`HOVER_CLASS flex justify-between items-center w-full ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
-            {/* img and location */}
-            <div className={`flex items-center gap-3`}>
-                <img className={`rounded-full w-10 h-10  object-cover object-center`} src="/HorizonOS.svg" alt="" />
-                <div className={`flex flex-col gap-0.5`}>
-                    <span style={{
+        <>
+            <div
+                style={{
+                    backgroundColor: ThemeColors.header,
+                    borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec,
+                    '--hover': ThemeColors.third,
+                    '--active': Theme !== 'dark' ?
+                        Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
+                        :
+                        COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                }}
+                className={`HOVER_CLASS flex justify-between items-center w-full ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+                {/* img and location */}
+                <div className={`flex items-center gap-3`}>
+                    <img className={`rounded-full w-10 h-10  object-cover object-center`} src="/HorizonOS.svg" alt="" />
+                    <div className={`flex flex-col gap-0.5`}>
+                        <span style={{
+                            color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }}
+                            className={`select-none`}
+                        >New York</span>
+                        <span style={{
+                            color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
+                        }} className={`select-none`}>USA</span>
+                    </div>
+                </div>
+                {/* Time */}
+                <div className='flex flex-col gap-0.5'>
+                    <p style={{
                         color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }}
-                        className={`select-none`}
-                    >New York</span>
-                    <span style={{
+                    }} className={`select-none`}>10:30 AM</p>
+                    <p style={{
                         color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
-                    }} className={`select-none`}>USA</span>
+                    }} className={`select-none`}>Today , - 4:30</p>
                 </div>
             </div>
-            {/* Time */}
-            <div className='flex flex-col gap-0.5'>
-                <p style={{
-                    color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
+            <hr
+                style={{
+                    borderColor: ThemeColors.sec, transitionProperty: 'color, background-color, border-color, font-size',
                     transitionDuration: Speed,
                     transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`select-none`}>10:30 AM</p>
-                <p style={{
-                    color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`select-none`}>Today , - 4:30</p>
-            </div>
-        </div>
+                }}
+                className={`w-8/10 mx-auto`} />
+        </>
     )
 }
 

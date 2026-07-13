@@ -3,7 +3,9 @@
 
 
 What i did for this commit :
-feat(World-Clock) : Add animated city search input with GSAP Flip
+feat(World-Clock) : Added Search Result UI
+
+- Replace Notes Cols checker with ResizeObserver
 
 
 FIXES And ADDITION TO CALC:

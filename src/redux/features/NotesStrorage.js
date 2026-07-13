@@ -52,7 +52,6 @@ const NotesSlice = createSlice({
         deletedNotes: [], // tracks notes selected to delete
         CreateTaskOpen: false, // it is used to track if create task pop up is open or not
         Notes: getNotes(),// all notes 
-        NotesContainerWidth: 0, //used to set colums in notes area and then as per that,set width of 1 note 
         EditTaskOpen: { open: false, TaskId: '' }
     },
     reducers: {
@@ -156,11 +155,6 @@ const NotesSlice = createSlice({
             if (!Number.isFinite(width) || !width || width <= 0) return; //isFinite check if the value is a number and not infinity and also check if it is greater than 0
             state.folderContentWidth = width;
         },
-        setNotesContainerWidth(state, action) {
-            const width = Number(action.payload.width);
-            if (!Number.isFinite(width) || !width || width <= 0) return;
-            state.NotesContainerWidth = width;
-        },
         setStartDeletingCat(state, action) {
             const { start } = action.payload;
             if (typeof start !== "boolean") return;
@@ -251,7 +245,6 @@ export const {
     setStartDeletingNotes,
     manageDeletedCategories,
     setCreateTaskOpen,
-    setNotesContainerWidth,
     manageEditTask,
     manageDeletedNotes,
     removeNotes

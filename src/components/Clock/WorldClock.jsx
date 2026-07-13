@@ -1,12 +1,15 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../constants/Settings'
-import { ACCENT_COLORS } from '../../constants/style'
+import { ACCENT_COLORS, COMMON_COLORS } from '../../constants/style'
 import { Plus, Search } from 'lucide-react'
 import CityCard from './Components/CityCard'
 import WorldClockTitleAndDesc from './Components/WorldClockTitleAndDesc'
+import { useDebounce } from '../../utils/UseDebounce'
+import { GetCities } from '../../API/GetCities'
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
+import Loader from '../Loader'
 
 const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) => {
 
@@ -28,6 +31,9 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
   const [inputVal, setInputVal] = useState('') //to get input val
   const [isFocused, setisFocused] = useState(false) //to check if input is focused
   const [show, setShow] = useState(false)
+  const [ApiData, setApiData] = useState('');
+  const [isLoading, setisLoading] = useState(false)
+  const debounceInput = useDebounce(inputVal, 400)
   //refs
   const InputRef = useRef(null)
 
@@ -40,10 +46,16 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
 
   }, [fullScreen])
 
-  //animation
-  useLayoutEffect(() => {
-    const el = document.querySelector('.ParentCl')
+  useEffect(() => {
+    if (!show) return;
 
+    if (!InputRef.current.matches(':focus') && inputVal === '') InputRef.current.focus();  //checks if input is focused or not ,if not then focus it
+  }, [show])
+
+  //animation
+  useEffect(() => {
+    const el = document.querySelector('.ParentCl')
+    if (!el) return;
     Device === 'Mobile' ?
       gsap.fromTo(el, {
         scaleY: 0,
@@ -66,6 +78,8 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
       })
   }, [show, Device])
 
+  useEffect(() => { GetCities(debounceInput,setisLoading) }, [debounceInput])
+
   return (
     <section style={{
       paddingBottom: `${Math.floor(ClockAllTabsHeight) * 1.1}px`,
@@ -81,7 +95,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
         {/* Title and desc */}
         <WorldClockTitleAndDesc Name={Name} Description={Description} />
 
-        <div style={{ width: !fullScreen ? '100%' : `${DetailElWidth * 1.5}px` }}
+        <div style={{ width: !fullScreen ? '100%' : `${DetailElWidth * 2}px` }}
           className={`${Device === 'Mobile' ? 'flex flex-col' : `grid ${fullScreen ? show ? 'grid-cols-[6fr_4fr]' : 'grid-cols-1' : show ? 'grid-cols-[7fr_3fr]' : 'grid-cols-1'}`}  gap-2`}
         >
           {/* searchArea */}
@@ -102,7 +116,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
               onChange={(e) => setInputVal(e.target.value)}
               type="text"
               spellCheck={false}
-              placeholder="Search apps..."
+              placeholder="Search City..."
               onFocus={() => setisFocused(true)}
               onBlur={() => setisFocused(false)}
               style={{
@@ -128,7 +142,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
               // shifting postion with a smooth animation
               {
                 !show && requestAnimationFrame(() => {
-                  AllElems.map((state) => {
+                  AllElems.forEach((state) => {
                     Flip.from(state, {
                       ease: 'ease.out',
                       duration: 0.3,
@@ -137,9 +151,6 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
                 })
               }
               setShow(true)
-
-              if (!InputRef.current.matches(':focus') && inputVal === '') InputRef.current.focus();  //checks if input is focused or not ,if not then focus it
-
             }}
             style={{
               borderColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
@@ -152,35 +163,105 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
             }}
             className={`AddBtn border select-none w-full flex gap-1 items-center justify-center cursor-pointer font-semibold rounded-2xl active:scale-98 ${Device === 'Mobile' ? 'p-3' : 'p-2'}  `}>
             <Plus strokeWidth={2} />
-            <span>Add City</span>
+            <span>{!show?'Add City':'Add Random City'}</span>
           </button>
         </div>
 
+        {/* Result serch cities */}
+        <div style={{
+          borderColor: ThemeColors.third,
+          // Avoiding using 100% bcz it causes GSAP Flip to 
+          // Briefly stretch the elem on mobilr before animating
+          width: !fullScreen ? '' : `${DetailElWidth * 2}px`,
+          backgroundColor: ThemeColors.header,
+          transitionProperty: 'color, background-color, border-color, font-size',
+          transitionDuration: Speed,
+          transitionTimingFunction: CSS_EASING[Animation]
+        }} className={`Cities-Div border rounded-2xl overflow-hidden select-none`}>
+
+          {isLoading ? <div
+            className='w-full flex items-center justify-center min-h-25'
+          >
+            <Loader />
+          </div>
+            :
+            <div
+              style={{
+                backgroundColor: ThemeColors.header,
+                borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec,
+                '--hover': ThemeColors.third,
+                '--active': Theme !== 'dark' ?
+                  Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
+                  :
+                  COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
+                transitionDuration: Speed,
+                transitionTimingFunction: CSS_EASING[Animation]
+              }}
+              className={`HOVER_CLASS flex justify-between items-center w-full ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+              {/* img and location */}
+              <div className={`flex items-center gap-3`}>
+                <img className={`rounded-full w-10 h-10  object-cover object-center`} src="/HorizonOS.svg" alt="" />
+                <div className={`flex flex-col gap-0.5`}>
+                  <span style={{
+                    color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                  }}
+                    className={`select-none`}
+                  >New York</span>
+                  <p style={{
+                    color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.75}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                  }} className={`select-none flex gap-1`}>
+                    <span>United Kingdom</span>
+                    {Device != 'Mobile' && !fullScreen &&
+                      <>• <span>Europe</span> </>}
+                  </p>
+                </div>
+              </div>
+              {/* Time */}
+              <div className={`flex ${!fullScreen?'gap-3':'gap-5'}`}>
+                <div className='flex flex-col gap-0.5'>
+                  <p style={{
+                    color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.85}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                  }} className={`select-none`}>10:30 AM</p>
+                  <p style={{
+                    color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.85}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
+                    transitionDuration: Speed,
+                    transitionTimingFunction: CSS_EASING[Animation]
+                  }} className={`select-none`}>GMT +1</p>
+                </div>
+                <button style={{
+                  fontSize: Sizes.Small,
+                  fontFamily: Weights.SemiBold,
+                  borderColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE,
+                  color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE
+                }}
+                  className={`border h-fit  select-none w-fit py-2 px-4 cursor-pointer font-semibold rounded-xl active:scale-98`}>Add</button>
+              </div>
+            </div>
+          }
+        </div>
 
         {/* cities */}
         <div style={{
           borderColor: ThemeColors.third,
           // Avoiding using 100% bcz it causes GSAP Flip to 
           // Briefly stretch the elem on mobilr before animating
-          width: !fullScreen ? '' : `${DetailElWidth * 1.5}px`,
+          width: !fullScreen ? '' : `${DetailElWidth * 2}px`,
           backgroundColor: ThemeColors.header,
           transitionProperty: 'color, background-color, border-color, font-size',
           transitionDuration: Speed,
           transitionTimingFunction: CSS_EASING[Animation]
         }} className={`Cities-Div border rounded-2xl overflow-hidden select-none`}>
+
           {
             // just temporary data for showcase only
             [1, 2].map((val, idx) => {
-              return <>
-                <CityCard key={idx} />
-                <hr
-                  style={{
-                    borderColor: ThemeColors.sec, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
-                  }}
-                  className={`w-8/10 mx-auto`} />
-              </>
+              return <CityCard key={idx} />
             })}
 
 
