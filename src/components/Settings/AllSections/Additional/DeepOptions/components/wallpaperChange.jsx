@@ -68,7 +68,7 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
                                         {WallpaperName}
                                     </p>
                                     <p style={{
-                                       fontSize : Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
+                                       fontSize : `${(Sizes.ExtraSmall.slice(0,-3))*0.85}rem`, fontFamily: Weights.Regular, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
                                         transitionDuration: Speed,
                                         transitionTimingFunction: CSS_EASING[Animation]
                                     }}

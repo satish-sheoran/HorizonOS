@@ -40,7 +40,7 @@ const Apps = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSections,
 
                     if (!Component || activePanel !== Deep) return null;
                     // Section prop here represent Grandparent section (Display,About,Additional Settings etc.)
-                    return <Component Name={Deep} Section={Section} Options={Options} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
+                    return <Component key={Deep} Name={Deep} Section={Section} Options={Options} Theme={Theme} fullScreen={fullScreen} Device={Device} ThemeColors={ThemeColors} AccentColors={AccentColors} />
                 })}
             </AnimationWrapper>
 

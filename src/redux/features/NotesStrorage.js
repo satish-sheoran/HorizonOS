@@ -50,22 +50,22 @@ const NotesSlice = createSlice({
         startDeletingNotes: false, //it track if user has started deleting notes or not, if yes then show select icons on notes `
         deletedCategories: [], // tracks categories selected to delete
         deletedNotes: [], // tracks notes selected to delete
-        CreateTaskOpen: false, // it is used to track if create task pop up is open or not
+        CreateNoteOpen: false, // it is used to track if create task pop up is open or not
         Notes: getNotes(),// all notes 
-        EditTaskOpen: { open: false, TaskId: '' }
+        EditNoteOpen: { open: false, NoteId: '' },
     },
     reducers: {
         addNote(state, action) {
             // Task being edited area
-            if (action.payload.TaskId) {
-                const { title, desc, TaskId, category } = action.payload
+            if (action.payload.NoteId) {
+                const { title, desc, NoteId, category } = action.payload
 
-                const itemIdx = state.Notes.findIndex(item => item.id === TaskId);
+                const itemIdx = state.Notes.findIndex(item => item.id === NoteId);
                 state.Notes[itemIdx] = { ...state.Notes[itemIdx], title, desc, category };
 
                 localStorage.setItem('Notes', JSON.stringify(state.Notes));
 
-                state.EditTaskOpen = { open: false, TaskId: '' };
+                state.EditNoteOpen = { open: false, NoteId: '' };
                 return;
             }
 
@@ -183,23 +183,23 @@ const NotesSlice = createSlice({
             state.deletedCategories.push(category);
 
         },
-        setCreateTaskOpen(state, action) {
+        setCreateNoteOpen(state, action) {
             const { open } = action.payload;
             if (typeof open !== "boolean") return;
-            state.CreateTaskOpen = open;
+            state.CreateNoteOpen = open;
 
         },
-        manageEditTask(state, action) {
+        manageEditNote(state, action) {
             if (action.payload.open === false) { //close it
-                state.EditTaskOpen.open = false;
-                state.EditTaskOpen.TaskId = '';
+                state.EditNoteOpen.open = false;
+                state.EditNoteOpen.NoteId = '';
                 return;
             }
 
-            const { TaskId } = action.payload;
-            if (!TaskId) return;
-            state.EditTaskOpen.open = true
-            state.EditTaskOpen.TaskId = TaskId
+            const { NoteId } = action.payload;
+            if (!NoteId) return;
+            state.EditNoteOpen.open = true
+            state.EditNoteOpen.NoteId = NoteId
 
         },
         manageDeletedNotes(state, action) {
@@ -215,7 +215,8 @@ const NotesSlice = createSlice({
             }
             state.deletedNotes.push(noteId);
 
-        }, removeNotes(state, action) {
+        },
+        removeNotes(state, action) {
             const { NotesIds } = action.payload;
             if (!NotesIds) return;
 
@@ -229,6 +230,21 @@ const NotesSlice = createSlice({
 
             localStorage.setItem('Notes', JSON.stringify(state.Notes))
 
+        },
+        ResetNotesApp(state) {
+            state.activeTab = 'Notes',
+                state.activeCategory = 'All',
+                state.openManageFolder = false,
+
+                state.allCategories = getCategories(),
+                state.baseNumberForDefaultFolder = 0,
+                state.startDeletingCat = false,
+                state.startDeletingNotes = false,
+                state.deletedCategories = [],
+                state.deletedNotes = [],
+                state.CreateNoteOpen = false,
+                state.Notes = getNotes(),
+                state.EditNoteOpen = { open: false, NoteId: '' }
         }
     }
 })
@@ -244,9 +260,10 @@ export const {
     setStartDeletingCat,
     setStartDeletingNotes,
     manageDeletedCategories,
-    setCreateTaskOpen,
-    manageEditTask,
+    setCreateNoteOpen,
+    manageEditNote,
     manageDeletedNotes,
-    removeNotes
+    removeNotes,
+    ResetNotesApp
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

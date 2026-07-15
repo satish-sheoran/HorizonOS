@@ -29,10 +29,13 @@ const CalcSlice = createSlice({
                 state.Calculation = result;
                 localStorage.setItem('Calculation', typeof result === 'string' ? result : result.toString());
             }
+        },
+        ResetCalculation(state) {
+            state.Calculation = '0'
         }
     }
 })
 
-export const { updateCalculation } = CalcSlice.actions;
+export const { updateCalculation ,ResetCalculation} = CalcSlice.actions;
 
 export default CalcSlice.reducer;

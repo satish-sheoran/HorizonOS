@@ -5,14 +5,17 @@
     font-family: PlusSansRegular;
     src: url('./assets/fonts/PlusJakartaSans-Regular.ttf');
 }
+
 @font-face {
     font-family: PlusSansSemiBold;
     src: url('./assets/fonts/PlusJakartaSans-SemiBold.ttf');
 }
+
 @font-face {
     font-family: PlusSansBold;
     src: url('./assets/fonts/PlusJakartaSans-Bold.ttf');
 }
+
 @font-face {
     font-family: PlusSansExtraBold;
     src: url('./assets/fonts/PlusJakartaSans-ExtraBold.ttf');
@@ -20,21 +23,25 @@
 
 /* POPPINS  */
 @font-face {
-    font-family: PoppinsRegular ;
+    font-family: PoppinsRegular;
     src: url('./assets/fonts/Poppins-Regular.ttf');
 }
+
 @font-face {
-    font-family: PoppinsSemiBold ;
+    font-family: PoppinsSemiBold;
     src: url('./assets/fonts/Poppins-SemiBold.ttf');
 }
+
 @font-face {
-    font-family: PoppinsBold ;
+    font-family: PoppinsBold;
     src: url('./assets/fonts/Poppins-Bold.ttf');
 }
+
 @font-face {
-    font-family: PoppinsExtraBold ;
+    font-family: PoppinsExtraBold;
     src: url('./assets/fonts/PlusJakartaSans-ExtraBold.ttf');
 }
+
 * {
     box-sizing: border-box;
 }
@@ -99,7 +106,7 @@ body {
 /* ANIMATION FOR ANIMATION PREVIEW BTNS */
 .AnimBtn {
     animation: move0;
-    animation-duration : 3s;
+    animation-duration: 3s;
     animation-delay: 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -255,11 +262,90 @@ html {
 }
 
 
-.loader{
+.loader {
     animation: loaderAnim 1.5s linear infinite;
 }
 
 @keyframes loaderAnim {
-    from{transform  : rotate(0deg);}
-    to{transform : rotate(360deg)}
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
 }
+
+.Updater::before {
+    content: '';
+    position: absolute;
+    transform: scaleX(0);
+    left: 0;
+    top: 0;
+    background-color: white;
+    width: 120px;
+    height: 12px;
+    border-radius: 8px;
+    transform-origin: left;
+    animation: update 10s linear forwards;
+}
+
+@keyframes update {
+    0% {
+        transform: scaleX(0)
+    }
+
+    10% {
+        transform: scaleX(0.05)
+    }
+
+    20% {
+        transform: scaleX(0.25)
+    }
+
+    30% {
+        transform: scaleX(0.25)
+    }
+
+    40% {
+        transform: scaleX(0.35)
+    }
+
+    50% {
+        transform: scaleX(0.6)
+    }
+
+    60% {
+        transform: scaleX(0.67)
+    }
+
+    70% {
+        transform: scaleX(0.75)
+    }
+
+    80% {
+        transform: scaleX(0.85)
+    }
+
+    90% {
+        transform: scaleX(0.91)
+    }
+
+    95% {
+        transform: scaleX(0.95)
+    }
+
+    100% {
+        transform: scaleX(1)
+    }
+}
+
+
+.dotLoader {
+  width: 10px;
+  aspect-ratio: 4;
+  
+  clip-path: inset(0 100% 0 0);
+  animation: l1 1s steps(4) infinite;
+}
+@keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}

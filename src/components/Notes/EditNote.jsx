@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { CSS_EASING } from '../../constants/Settings'
-import { addNote, manageEditTask } from '../../redux/features/NotesStrorage';
+import { addNote, manageEditNote } from '../../redux/features/NotesStrorage';
 import { formatDate, formatTime } from '../../utils/formatTime';
 import { COMMON_COLORS } from '../../constants/style';
 
-const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
+const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
 
     const dispatch = useDispatch();
     const EditTaskContainer = useRef(null)
@@ -19,13 +19,13 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
     const Device = useSelector((store) => store.Device.currDevice);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-    const { open, TaskId } = useSelector((store) => store.Notes.EditTaskOpen)
+    const { open, NoteId } = useSelector((store) => store.Notes.EditNoteOpen)
     const Notes = useSelector(store => store.Notes.Notes);
     const Categories = useSelector(store => store.Notes.allCategories)
 
 
-    const [currTaskTitle, setCurrTaskTitle] = useState('');
-    const [currTaskDesc, setCurrTaskDesc] = useState('');
+    const [currNoteTitle, setCurrNoteTitle] = useState('');
+    const [currNoteDesc, setCurrNoteDesc] = useState('');
     const [currCategory, setcurrCategory] = useState('');
     const [CurrTime, setCurrTime] = useState(new Date());
     const [isSetCatOpen, setCatOpen] = useState(false) //to open/close category select options to change cateogry of edititng note 
@@ -55,18 +55,18 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
 
     // useEffect for updating title and desc at initial load
     useEffect(() => {
-        if (!TaskId || !Notes.find(n => n.id === TaskId)) return;
+        if (!NoteId || !Notes.find(n => n.id === NoteId)) return;
 
-        const currNote = Notes.find(n => n.id === TaskId);
+        const currNote = Notes.find(n => n.id === NoteId);
         const update = () => {
 
-            setCurrTaskTitle(currNote.title || '');
-            setCurrTaskDesc(currNote.desc || '');
+            setCurrNoteTitle(currNote.title || '');
+            setCurrNoteDesc(currNote.desc || '');
             setcurrCategory(currNote.category || 'All')
         }
         update()
 
-    }, [TaskId, Notes]);
+    }, [NoteId, Notes]);
 
 
     // to display current time and date exactly 
@@ -123,10 +123,10 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93' onPointerUp={() => {
                         setCatOpen(false)
-                        dispatch(manageEditTask({ open: false }))
-                        dispatch(addNote({ TaskId, title: currTaskTitle, desc: currTaskDesc, category: currCategory }))
-                        setCurrTaskTitle('')
-                        setCurrTaskDesc('')
+                        dispatch(manageEditNote({ open: false }))
+                        dispatch(addNote({ NoteId, title: currNoteTitle, desc: currNoteDesc, category: currCategory }))
+                        setCurrNoteTitle('')
+                        setCurrNoteDesc('')
                     }}>
                         <ArrowLeftIcon size={27} strokeWidth={2} />
                     </button>
@@ -205,10 +205,10 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93 ' onPointerUp={() => {
                         setCatOpen(false)
-                        dispatch(manageEditTask({ open: false }))
-                        dispatch(addNote({ TaskId, title: currTaskTitle || '', desc: currTaskDesc || "", category: currCategory }))
-                        setCurrTaskTitle('')
-                        setCurrTaskDesc('')
+                        dispatch(manageEditNote({ open: false }))
+                        dispatch(addNote({ NoteId, title: currNoteTitle || '', desc: currNoteDesc || "", category: currCategory }))
+                        setCurrNoteTitle('')
+                        setCurrNoteDesc('')
                     }}>
                         <Check size={32} />
                     </button>
@@ -225,8 +225,8 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
             }} className={`edit-task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto  ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 <textarea spellCheck={false}
-                    value={currTaskTitle}
-                    onChange={(e) => setCurrTaskTitle(e.target.value)}
+                    value={currNoteTitle}
+                    onChange={(e) => setCurrNoteTitle(e.target.value)}
                     name="newTask-title"
                     style={{
                       fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
@@ -249,13 +249,13 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
                 }} className=" shrink-0 date-charCount flex gap-3 ">
                     <span>{formattedDate} {formattedTime}</span>
                     |
-                    <span>{currTaskDesc.replace(/\s/g, "").length} characters</span>
+                    <span>{currNoteDesc.replace(/\s/g, "").length} characters</span>
                     {/* /\s/g is space and next line which is replaces with '' means removed and then show length */}
                 </div>
                 <textarea
                     spellCheck={false}
-                    value={currTaskDesc}
-                    onChange={(e) => setCurrTaskDesc(e.target.value)}
+                    value={currNoteDesc}
+                    onChange={(e) => setCurrNoteDesc(e.target.value)}
                     name="newTask-desc"
                     style={{
                        fontSize : Sizes.Regular, fontFamily: Weights.Regular, color: ThemeColors.secText,
@@ -274,4 +274,4 @@ const EditTask = ({ Theme, ThemeColors, AccentColors }) => {
     )
 }
 
-export default EditTask
+export default EditNote

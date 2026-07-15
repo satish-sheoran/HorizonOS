@@ -361,15 +361,6 @@ export const SECTIONS = [
         ]
     },
 
-    // Feedback
-    {
-        Section: 'Feedback',
-        FileName: 'Feedback',
-        Icon: 'MessageCircleQuestionMark',
-        Queries: null,
-        SubSections: null,
-        DeepOptions: null
-    }
 ]
 
 

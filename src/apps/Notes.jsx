@@ -10,9 +10,9 @@ import Folders from "../components/Notes/Folder/Folders";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import CreateTask from "../components/Notes/CreateTask";
-import { setCreateTaskOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditTask } from "../redux/features/NotesStrorage";
-import EditTask from "../components/Notes/EditTask";
+import CreateNote from "../components/Notes/CreateNote";
+import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote } from "../redux/features/NotesStrorage";
+import EditNote from "../components/Notes/EditNote";
 
 
 /* flex-1 means grow , shrink (if needed) and min-h-0 all together*/
@@ -31,16 +31,15 @@ const Notes = () => {
     const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
 
-
     // if apps closes => CLOSE  create task , edit task,folder manager,deleting notes OR deleting category
     useEffect(() => {
         if (!isNotesOpen) {
             const closeAll = () => {
-                dispatch(setCreateTaskOpen({ open: false }))
+                dispatch(setCreateNoteOpen({ open: false }))
                 dispatch(setOpenManageFolder({ open: false }))
                 dispatch(setStartDeletingCat({ start: false }))
                 dispatch(setStartDeletingNotes({ start: false }))
-                dispatch(manageEditTask({ open: false }))
+                dispatch(manageEditNote({ open: false }))
             }
             closeAll();
         }
@@ -67,7 +66,7 @@ const Notes = () => {
             }}
             className={`w-full h-full flex flex-col `}>
 
-            {currDevice === 'Desktop' || currDevice === 'Tablet'?
+            {currDevice === 'Desktop' || currDevice === 'Tablet' ?
                 <WindowControls id='notes' Theme={Theme} ThemeColors={ThemeColors} />
                 : <MobileCntrls id='notes' Theme={Theme} ThemeColors={ThemeColors} />}
 
@@ -86,8 +85,9 @@ const Notes = () => {
                 </div>
 
                 {/*  pop up which opens create task   */}
-                <CreateTask Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
-                <EditTask Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                <CreateNote Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                <EditNote Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                
             </main>
         </div >
     )

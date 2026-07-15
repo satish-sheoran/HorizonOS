@@ -73,11 +73,11 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
             </div>
             <div className='w-[60%]  flex flex-col gap-0.5 items-start '>
-              <span style={{ fontSize: Sizes.Small, fontFamily: Weights.SemiBold }} className='font-semibold'>{Feat_Title.split(' ').map((word) => {
-                return <>
+              <span style={{ fontSize: Sizes.Small, fontFamily: Weights.SemiBold }} className='font-semibold'>{Feat_Title.split(' ').map((word,idx) => {
+                return <div key={idx}>
                   <span>{word}</span>
                   <br />
-                </>
+                </div>
               })}</span>
               <span style={{
                 fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',

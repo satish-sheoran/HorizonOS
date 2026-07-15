@@ -11,10 +11,13 @@ const ClockSlice = createSlice({
         setActiveTab(state, action) {
             const { option } = action.payload
             state.ActiveTab = Clock_Options.find(({ option: OPTION }) => OPTION === option) ?? Clock_Options.find(({ option }) => option === 'Clock')
+        },
+        ResetClock(state) {
+            state.ActiveTab = Clock_Options.find(({ option }) => option === 'Clock')
         }
     }
 })
 
 
-export const { setActiveTab } = ClockSlice.actions;
+export const { setActiveTab ,ResetClock} = ClockSlice.actions;
 export default ClockSlice.reducer;

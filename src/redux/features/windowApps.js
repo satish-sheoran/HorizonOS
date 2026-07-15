@@ -52,9 +52,18 @@ const windowAppSlice = createSlice({
                 window.windowRatio.width = window.default.width;
                 window.windowRatio.height = window.default.height;
             }
+        },
+        CloseAllApp(state) {
+            const apps = ['calculator', 'notes', 'settings', 'clock']
+            apps.forEach((app) => {
+               state.apps[app].isOpen = false
+                state.apps[app].zIndex = INITIAL_Z_INDEX
+                state.apps[app].windowRatio.width = WINDOW_CONFIG[app].default.width
+                state.apps[app].windowRatio.height = WINDOW_CONFIG[app].default.height
+            })
         }
     }
 });
 
-export const { openWindow, closeWindow, focusWindow, changeWindowScreenSize } = windowAppSlice.actions;
+export const { openWindow, closeWindow, focusWindow, changeWindowScreenSize ,CloseAllApp} = windowAppSlice.actions;
 export default windowAppSlice.reducer;

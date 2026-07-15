@@ -5,7 +5,7 @@ import Masonry from "react-masonry-css";
 import { COMMON_COLORS } from '../../../constants/style'
 import { CSS_EASING } from '../../../constants/Settings'
 import { formatDateTime } from '../../../utils/formatTime'
-import { manageDeletedNotes, manageEditTask, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
+import { manageDeletedNotes, manageEditNote, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
 import useLongPress from '../../../hooks/Use-long-press';
 
 
@@ -14,6 +14,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
     const dispatch = useDispatch();
 
+    const isFactoryResetting = useSelector(store => store.Device.startFactoryReset) //used to check Factory resethas Started
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
@@ -37,11 +38,11 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
     //resize observer observes and callback run when that elem size changes
     useEffect(() => {
-        if (!ContainerRef.current) return
+        const elements = ContainerRef.current
+        if (!elements) return
 
         const observer = new ResizeObserver((entries) => {
             const width = entries[0].contentRect.width;
-            console.log(width)
             let cols;
 
             if (width <= 320) cols = 1;
@@ -55,13 +56,17 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
             setCols(cols)
         })
 
-        observer.observe(ContainerRef.current)
+        if (!isFactoryResetting) {
+            observer.observe(elements)
+        } else {
+            observer.disconnect();
+        }
 
         return () => {
-    observer.unobserve(ContainerRef.current);
-    observer.disconnect();
-};
-    }, [])
+            observer.unobserve(elements);
+            observer.disconnect();
+        };
+    }, [isFactoryResetting])
 
 
     return (
@@ -94,7 +99,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                         return; // 🚨 STOP here
                                     }
 
-                                    dispatch(manageEditTask({ open: true, TaskId: id }));
+                                    dispatch(manageEditNote({ open: true, NoteId: id }));
                                 }}
                                 // on click works as want but not opening edit mode on mobile only
 

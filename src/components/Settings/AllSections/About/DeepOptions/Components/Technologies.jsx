@@ -40,8 +40,8 @@ const Technologies = ({ Device, Theme, Section, ThemeColors, AccentColors }) => 
                 transitionTimingFunction: CSS_EASING[Animation]
             }} className={`flex justify-center flex-wrap gap-3 ${Device === 'Desktop' ? 'gap-3' : 'gap-2'}`}>
 
-                {SETTINGS_TECHNOLOGIES.map(({ Tech_Name, icon }) => {
-                    return <div
+                {SETTINGS_TECHNOLOGIES.map(({ Tech_Name, icon },idx) => {
+                    return <div key={idx}
                         style={{
                             borderColor: ThemeColors.bg,
                             color: Theme !== 'dark' ? ThemeColors.primaryText : ThemeColors.secText,

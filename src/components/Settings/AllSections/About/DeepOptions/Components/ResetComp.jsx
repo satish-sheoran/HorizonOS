@@ -5,7 +5,7 @@ import { CSS_EASING } from '../../../../../../constants/Settings'
 import { useSelector } from 'react-redux'
 
 
-const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
+const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors ,setopenResetOverlay}) => {
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
@@ -48,7 +48,9 @@ const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => 
                 </div>
             </div>
 
-            <button style={{
+            <button
+            onClick={()=>setopenResetOverlay(true)}
+            style={{
                fontSize : Sizes.Small , fontFamily : Weights.SemiBold ,backgroundColor: COMMON_COLORS.Red, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]

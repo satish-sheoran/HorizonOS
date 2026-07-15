@@ -3,10 +3,11 @@
 
 
 What i did for this commit :
-feat(World-Clock) : Added Search Result UI
+feat : Implemented Factory Reset functionality with animated reset sequence
 
-- Replace Notes Cols checker with ResizeObserver
-
+- Factory Reset is Now Possible
+- During Facotry Reset, just like Real Device,shows a blank screen with some animations
+- Fixed Some Bugs
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

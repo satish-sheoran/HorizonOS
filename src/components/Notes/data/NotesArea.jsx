@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Plus } from 'lucide-react';
-import { setCreateTaskOpen } from '../../../redux/features/NotesStrorage';
+import { setCreateNoteOpen } from '../../../redux/features/NotesStrorage';
 import AllNotes from './AllNotes';
 import { COMMON_COLORS } from '../../../constants/style'
 import { CSS_EASING } from '../../../constants/Settings'
@@ -44,7 +44,7 @@ const NotesArea = ({ Theme, AccentColors, ThemeColors }) => {
                     transition: `all ${Speed} ${CSS_EASING[Animation]}`
                 }}
 
-                onClick={() => dispatch(setCreateTaskOpen({ open: true }))}
+                onClick={() => dispatch(setCreateNoteOpen({ open: true }))}
                 className={`${AccentColors.HOVER} fixed z-100 rounded-full p-3.5 md:p-2 right-6 bottom-7  active:scale-96 `}>
                 <Plus strokeWidth={2.5} />
             </button>

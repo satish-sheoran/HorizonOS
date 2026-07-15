@@ -34,7 +34,7 @@
         }
 
         .content {
-            @apply   relative flex-1 min-h-0 overflow-hidden ;
+            @apply  relative flex-1 min-h-0 overflow-hidden ;
 
             .NotesArea {
                 @apply relative min-h-0 h-full flex flex-col gap-1.5;

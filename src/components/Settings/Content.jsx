@@ -6,7 +6,6 @@ import AboutUs from './AllSections/About/AboutUs'
 import Display from './AllSections/Display/Display'
 import Apps from './AllSections/Apps/Apps'
 import AdditionalSettings from './AllSections/Additional/AdditionalSettings'
-import Feedback from './AllSections/Feedback/Feedback'
 import { SECTIONS, CSS_EASING } from '../../constants/Settings'
 import { setActivePanel } from '../../redux/features/SettingsSlice'
 
@@ -15,7 +14,6 @@ const SETTINGS_COMPONENTS = {
     Display,
     Apps,
     AdditionalSettings,
-    Feedback,
 };
 
 const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors, AccentColors, showContent }) => {
@@ -34,6 +32,7 @@ const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors
             transitionDuration: Speed,
             transitionTimingFunction: CSS_EASING[Animation]
         }} className={`relative h-full  flex flex-col ${(currDevice === 'Desktop' || currDevice === 'Tablet') ? 'grow' : 'w-full'}`}>
+
 
             {/* here activePanel is used to check if any option is opened in deep OR not */}
             {/* toolbar for back and save options */}

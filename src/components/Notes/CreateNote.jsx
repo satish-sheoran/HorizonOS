@@ -5,12 +5,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { CSS_EASING } from '../../constants/Settings'
-import { addNote, setCreateTaskOpen } from '../../redux/features/NotesStrorage';
+import { addNote, setCreateNoteOpen } from '../../redux/features/NotesStrorage';
 import { formatDate, formatTime } from '../../utils/formatTime';
 import { CustomEase } from 'gsap/all';
 import { COMMON_COLORS } from '../../constants/style';
 
-const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
+const CreateNote = ({ Theme, ThemeColors, AccentColors }) => {
 
 
     const dispatch = useDispatch();
@@ -21,9 +21,9 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
     const Device = useSelector((store) => store.Device.currDevice);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-    const isNewTaskOpen = useSelector((store) => store.Notes.CreateTaskOpen)
-    const [newTaskTitle, setNewTaskTitle] = useState('');
-    const [newTaskDesc, setNewTaskDesc] = useState('');
+    const isNewNoteOpen = useSelector((store) => store.Notes.CreateNoteOpen)
+    const [newNoteTitle, setnewNoteTitle] = useState('');
+    const [newNoteDesc, setnewNoteDesc] = useState('');
     const [CurrTime, setCurrTime] = useState(new Date());
 
     // to display current time and date exactly 
@@ -50,15 +50,15 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
         if (!newTaskContainer.current) return;
 
         gsap.to(newTaskContainer.current, {
-            x: isNewTaskOpen ? '0%' : "100%",
-            y: isNewTaskOpen ? '0%' : "100%",
-            scale: isNewTaskOpen ? 1 : 0.8,
-            opacity: isNewTaskOpen ? 1 : 0,
+            x: isNewNoteOpen ? '0%' : "100%",
+            y: isNewNoteOpen ? '0%' : "100%",
+            scale: isNewNoteOpen ? 1 : 0.8,
+            opacity: isNewNoteOpen ? 1 : 0,
             duration: 0.3,
             ease: Animation ?? 'sine.inOut'
         })
 
-    }, [isNewTaskOpen])
+    }, [isNewNoteOpen])
 
     return (
         <div ref={newTaskContainer}
@@ -83,11 +83,11 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93' onClick={() => {
-                        dispatch(setCreateTaskOpen({ open: false }))
-                        if (!newTaskTitle && !newTaskDesc) return; // if both title and desc is empty then do not add note and just close create task page
-                        dispatch(addNote({ title: newTaskTitle || '', desc: newTaskDesc || '' }))
-                        setNewTaskTitle('')
-                        setNewTaskDesc('')
+                        dispatch(setCreateNoteOpen({ open: false }))
+                        if (!newNoteTitle && !newNoteDesc) return; // if both title and desc is empty then do not add note and just close create task page
+                        dispatch(addNote({ title: newNoteTitle || '', desc: newNoteDesc || '' }))
+                        setnewNoteTitle('')
+                        setnewNoteDesc('')
                     }}>
                         <ArrowLeftIcon size={27} strokeWidth={2} />
                     </button>
@@ -114,12 +114,12 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
                         transitionDuration: Speed,
                         transitionTimingFunction: CSS_EASING[Animation]
                     }} className='active:scale-93 ' onClick={() => {
-                        dispatch(setCreateTaskOpen({ open: false }))
-                        if (!newTaskTitle && !newTaskDesc) return; // if both title and desc is empty then do not add note and just close create task page
+                        dispatch(setCreateNoteOpen({ open: false }))
+                        if (!newNoteTitle && !newNoteDesc) return; // if both title and desc is empty then do not add note and just close create task page
 
-                        dispatch(addNote({ title: newTaskTitle || '', desc: newTaskDesc || '' }))
-                        setNewTaskTitle('')
-                        setNewTaskDesc('')
+                        dispatch(addNote({ title: newNoteTitle || '', desc: newNoteDesc || '' }))
+                        setnewNoteTitle('')
+                        setnewNoteDesc('')
                     }}>
                         <Check size={32} />
                     </button>
@@ -136,8 +136,8 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
             }} className={`task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 <textarea spellCheck={false}
-                    value={newTaskTitle}
-                    onChange={(e) => setNewTaskTitle(e.target.value)}
+                    value={newNoteTitle}
+                    onChange={(e) => setnewNoteTitle(e.target.value)}
                     name="newTask-title"
                     style={{
                         fontSize: Sizes.Regular,
@@ -161,13 +161,13 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
                 }} className={` shrink-0 date-charCount flex gap-3 `}>
                     <span>{formattedDate} {formattedTime}</span>
                     |
-                    <span>{newTaskDesc.replace(/\s/g, "").length} characters</span>
+                    <span>{newNoteDesc.replace(/\s/g, "").length} characters</span>
                     {/* /\s/g is space and next line which is replaces with '' means removed and then show length */}
                 </div>
                 <textarea
                     spellCheck={false}
-                    value={newTaskDesc}
-                    onChange={(e) => setNewTaskDesc(e.target.value)}
+                    value={newNoteDesc}
+                    onChange={(e) => setnewNoteDesc(e.target.value)}
                     name="newTask-desc"
                     style={{
                         fontSize: Sizes.Regular,
@@ -188,4 +188,4 @@ const CreateTask = ({ Theme, ThemeColors, AccentColors }) => {
     )
 }
 
-export default CreateTask
+export default CreateNote

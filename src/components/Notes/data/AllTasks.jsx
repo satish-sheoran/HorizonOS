@@ -1,11 +1,14 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from 'react';
-import { useSelector } from 'react-redux'
-import { toast } from "react-toastify"
+import { useDispatch, useSelector } from 'react-redux'
 import { CSS_EASING } from '../../../constants/Settings'
+import { COMMON_COLORS } from '../../../constants/style';
+import { Plus } from 'lucide-react';
 
 const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
+
+    const dispatch = useDispatch()
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
@@ -14,6 +17,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
     const taskAnimRef = useRef(null);
     const isFirstRun = useRef(true);
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
+
 
     useGSAP(() => {
         if (!taskAnimRef.current) return;
@@ -35,8 +39,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
 
     {/* it is absloute, on switching it will just come above the returnig div  */ }
     return (
-        <button ref={taskAnimRef}
-            onClick={() => toast.info("This will be available shortly")}
+        <section ref={taskAnimRef}
             style={{
                 fontSize: Sizes.Small,
                 fontFamily: Weights.SemiBold,
@@ -44,10 +47,26 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                 transitionDuration: Speed,
                 transitionTimingFunction: CSS_EASING[Animation]
             }}
-            className={` absolute inset-0 select-none  font-bold text-center flex items-center justify-center outline-none
+            className={`absolute inset-0 select-none flex
                           
-                         `}> This functionality will be < br /> available soon 😴 !
-        </button >
+                         `}>
+
+            <div className={`w-full h-full grow border overflow-y-auto overflow-x-hidden`}>
+                <button
+                    style={{
+                        color: COMMON_COLORS.White,
+                        backgroundColor: AccentColors.CODE,
+                        '--hover': AccentColors.Hover_Clr,
+                        '--active': AccentColors.Active_Clr,
+                        transition: `all ${Speed} ${CSS_EASING[Animation]}`
+                    }}
+
+                    className={`${AccentColors.HOVER} fixed z-100 rounded-full p-3.5 md:p-2 right-6 bottom-7  active:scale-96 `}>
+                    <Plus strokeWidth={2.5} />
+                </button>
+            </div>
+
+        </section >
     )
 }
 

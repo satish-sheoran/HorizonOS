@@ -18,12 +18,12 @@ const DefaultSettings = {
         acc[name] = theme === 'dark' ? DARK_THEME_COLORS : LIGHT_THEME_COLORS;
         return acc;
     }, {}),
-    AccentColors: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange'), //color which will be used for buttons,background of some divs  
+    AccentColors: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue'), //color which will be used for buttons,background of some divs  
     isAutoTheme: false,  //  checks if user allow set auto theme based on time
     AdvanceDarkMode: [],
 
     AnimationTypeNSpeed: AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
-    AnimationName: AnimationsName.find(({ Name }) => Name === 'Expo Out'),
+    AnimationName: AnimationsName.find(({ Name }) => Name === 'Back Out'),
 
     //font family
     Font: FONT_FAMILY.find(font => font.Name === 'Poppins'),
@@ -213,9 +213,35 @@ const wallpaperSlice = createSlice({
             const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
             const updatedSettings = { ...storedSettings, FontSize: state.FontSize };
             localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+        },
+        ResetAllStyle(state) {
+            state.src = window.innerWidth <= 768 ?
+                Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile'])?.url
+                :
+                Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop'])?.url,
+
+                state.theme = ALL_APPS.reduce((acc, { name, theme }) => {
+                    acc[name] = theme;
+                    return acc;
+                }, {}),
+
+                state.ThemeColors = ALL_APPS.reduce((acc, { name, theme }) => {
+                    acc[name] = theme === 'dark' ? DARK_THEME_COLORS : LIGHT_THEME_COLORS;
+                    return acc;
+                }, {}),
+                state.AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue'),   
+                state.isAutoTheme = false,  
+                state.AdvanceDarkMode = [],
+
+                state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
+                state.AnimationName = AnimationsName.find(({ Name }) => Name === 'Back Out'),
+
+                
+                state.Font = FONT_FAMILY.find(font => font.Name === 'Poppins'),
+                state.FontSize = FONT_SIZES.find(({ SizeType }) => SizeType === 'Default')
         }
     }
 })
 
-export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed, setAnimationName, setFontFamily ,setFontSize} = wallpaperSlice.actions;
+export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed, setAnimationName, setFontFamily, setFontSize, ResetAllStyle } = wallpaperSlice.actions;
 export default wallpaperSlice.reducer;
