@@ -25,7 +25,7 @@ const Calculator = () => {
     const Calculation = useSelector(store => store.Calculator.Calculation) //getting data from calculator app from its store
     
 
-    const [result, setResult] = useState('0') //setting initally value from data of calculator app from its store
+    const [result, setResult] = useState(Calculation??'0') //setting initally value from data of calculator app from its store
     const debouncedResult = useDebounce(result, 500) //debouncing result to avoid too many updates to store
     const { inputRef, calcBtnClck } = UseCalculator(currDevice, result, setResult)
 

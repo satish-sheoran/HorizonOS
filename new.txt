@@ -3,11 +3,10 @@
 
 
 What i did for this commit :
-feat : Implemented Factory Reset functionality with animated reset sequence
+feat : Implemented Task Creator UI with  ope/close state management
 
-- Factory Reset is Now Possible
-- During Facotry Reset, just like Real Device,shows a blank screen with some animations
-- Fixed Some Bugs
+- UI of Task Creation and its functionality to open/close
+FIX : Fixed Issue of Not Setting Default Value Even on Factory Reset
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { CSS_EASING } from '../../../constants/Settings'
 import { COMMON_COLORS } from '../../../constants/style';
+import { setopenTaskManager } from '../../../redux/features/NotesStrorage'
 import { Plus } from 'lucide-react';
 
 const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
@@ -51,8 +52,9 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                           
                          `}>
 
-            <div className={`w-full h-full grow border overflow-y-auto overflow-x-hidden`}>
+            <div className={`w-full h-full grow overflow-y-auto overflow-x-hidden`}>
                 <button
+                    onClick={() => dispatch(setopenTaskManager({ shouldOpen: true }))}
                     style={{
                         color: COMMON_COLORS.White,
                         backgroundColor: AccentColors.CODE,

@@ -13,6 +13,7 @@ import { useGSAP } from "@gsap/react";
 import CreateNote from "../components/Notes/CreateNote";
 import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote } from "../redux/features/NotesStrorage";
 import EditNote from "../components/Notes/EditNote";
+import ManageTask from "../components/Notes/TaskComponents/ManageTask";
 
 
 /* flex-1 means grow , shrink (if needed) and min-h-0 all together*/
@@ -84,10 +85,14 @@ const Notes = () => {
                     <Footer Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
                 </div>
 
-                {/*  pop up which opens create task   */}
+                {/*  pop up which opens create And Edit Note   */}
                 <CreateNote Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
                 <EditNote Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+
+                {/* Tasks Add */}
+                <ManageTask Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
                 
+
             </main>
         </div >
     )

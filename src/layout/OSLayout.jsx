@@ -53,8 +53,8 @@ const OSLayout = () => {
             UpdateRef.current.style.display = 'flex'
         }
 
-        const timeInt = setTimeout(Change, 15000)
-        const SecInt = setTimeout(showAnimation, 2000)
+        const timeInt = setTimeout(Change, 9000)
+        const SecInt = setTimeout(showAnimation, 1000)
 
         return () => {
             clearTimeout(timeInt)

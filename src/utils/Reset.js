@@ -12,7 +12,7 @@ import { CloseAllApp } from '../redux/features/windowApps'
 
 
 export const FactoryReset = () => {
-    localStorage.removeItem('Calculation')
+    localStorage.setItem('Calculation')
     localStorage.removeItem('Notes')
     localStorage.removeItem('Categories')
     localStorage.removeItem('storedSettings')

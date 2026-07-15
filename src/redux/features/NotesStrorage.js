@@ -53,6 +53,7 @@ const NotesSlice = createSlice({
         CreateNoteOpen: false, // it is used to track if create task pop up is open or not
         Notes: getNotes(),// all notes 
         EditNoteOpen: { open: false, NoteId: '' },
+        openTaskManager: false
     },
     reducers: {
         addNote(state, action) {
@@ -245,6 +246,11 @@ const NotesSlice = createSlice({
                 state.CreateNoteOpen = false,
                 state.Notes = getNotes(),
                 state.EditNoteOpen = { open: false, NoteId: '' }
+        },
+        setopenTaskManager(state, action) {
+            const { shouldOpen } = action.payload
+            if (typeof shouldOpen !== 'boolean') return
+            state.openTaskManager = shouldOpen
         }
     }
 })
@@ -264,6 +270,7 @@ export const {
     manageEditNote,
     manageDeletedNotes,
     removeNotes,
-    ResetNotesApp
+    ResetNotesApp,
+    setopenTaskManager
 } = NotesSlice.actions;
 export default NotesSlice.reducer;
