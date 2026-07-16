@@ -113,7 +113,7 @@ const OSLayout = () => {
                             <div className='w-full h-full rounded-full flex items-center justify-center  bg-black'>
 
                                 <div className='relative z-10 flex flex-col gap-0.5 p-2 items-center justify-center w-25 h-25 rounded-full bg-black'>
-                                    <img src="/public/HorizonOS-Photoroom.png" alt="logo" className='w-7/10 rounded-full h-7/10' />
+                                    <img src="/HorizonOS-Photoroom.png" alt="logo" className='w-7/10 rounded-full h-7/10' />
                                     <span style={{
                                         background: 'linear-gradient(0deg, #4F8BFF 0%, #7B6DFF 55%, #A16EFF 100%)',
                                         WebkitBackgroundClip: 'text',
