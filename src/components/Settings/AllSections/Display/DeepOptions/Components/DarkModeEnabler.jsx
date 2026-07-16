@@ -17,7 +17,6 @@ const DarkModeEnabler = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
-    const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
 
     return (
         <div className={`mt-2 flex flex-col gap-2`}>

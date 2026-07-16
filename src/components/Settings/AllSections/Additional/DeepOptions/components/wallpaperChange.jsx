@@ -9,7 +9,6 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 

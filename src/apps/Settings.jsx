@@ -1,13 +1,17 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CSS_EASING } from '../constants/Settings'
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper";
 import Sections from "../components/Settings/Sections";
 import Content from "../components/Settings/Content";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { setActivePanel } from "../redux/features/SettingsSlice";
 
 const Settings = () => {
+
+    const dispatch = useDispatch()
+
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const currDevice = useSelector((store) => store.Device.currDevice);
@@ -16,6 +20,22 @@ const Settings = () => {
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const activeSection = useSelector((store) => store.Settings.Section)
     const [showContent, setshowContent] = useState(false) //used to open the content section on mobile when a section is selected
+    const isSettingsOpen = useSelector((store) => store.windowApps.apps['settings'].isOpen);
+    const isFactoryResetting = useSelector((store) => store.Device.startFactoryReset);
+
+    useEffect(() => {
+        if (isSettingsOpen) return;
+        const closeAll = () => {
+            dispatch(setActivePanel({ panel: '' }))
+            setshowContent(false)
+        }
+        closeAll()
+
+    }, [isSettingsOpen])
+
+    useEffect(() => {
+        if (isFactoryResetting) setshowContent(false)
+    }, [isFactoryResetting])
 
     return (
         <div
@@ -37,7 +57,7 @@ const Settings = () => {
                 <section className="absolute inset-0 overflow-hidden flex">
 
                     {/* FOR DESKTOPS */}
-                    {(currDevice === 'Desktop' || currDevice === 'Tablet' ) && (
+                    {(currDevice === 'Desktop' || currDevice === 'Tablet') && (
                         <>
                             <Sections currDevice={currDevice} Theme={Theme} activeSection={activeSection} setShowContent={setshowContent} ThemeColors={ThemeColors} AccentColors={AccentColors} />
                             <Content activeSection={activeSection} currDevice={currDevice} showContent={showContent} setShowContent={setshowContent} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />

@@ -8,7 +8,6 @@ import { CSS_EASING } from '../../../../../constants/Settings'
 import { COMMON_COLORS } from '../../../../../constants/style'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { FactoryReset } from '../../../../../utils/Reset'
 import { startingFactoryReset } from '../../../../../redux/features/DeviceSet'
 
 const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, AccentColors }) => {
@@ -116,7 +115,6 @@ const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, A
             <button
               onClick={() => {
                 dispatch(startingFactoryReset({ Start: true }))
-                FactoryReset()
                 setopenResetOverlay(false)
               }}
               style={{

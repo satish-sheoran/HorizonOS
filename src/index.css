@@ -59,6 +59,15 @@ body {
     /* overflow:hidden */
 }
 
+/* TO disable image dragging */
+img {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+}
+
 /* HOVER AND ACTIVE CLASSES */
 .HOVER_CLASS:hover {
     background-color: var(--hover) !important;
@@ -277,17 +286,18 @@ html {
 }
 
 .Updater::before {
+    --w: var(--width);
     content: '';
     position: absolute;
     transform: scaleX(0);
     left: 0;
     top: 0;
     background-color: white;
-    width: 120px;
+    width: var(--w);
     height: 12px;
     border-radius: 8px;
     transform-origin: left;
-    animation: update 7s linear forwards;
+    animation: update 5.5s linear forwards;
 }
 
 @keyframes update {
@@ -299,40 +309,20 @@ html {
         transform: scaleX(0.05)
     }
 
-    20% {
-        transform: scaleX(0.25)
-    }
-
     30% {
         transform: scaleX(0.25)
-    }
-
-    40% {
-        transform: scaleX(0.35)
     }
 
     50% {
         transform: scaleX(0.6)
     }
 
-    60% {
-        transform: scaleX(0.67)
-    }
-
     70% {
         transform: scaleX(0.75)
     }
 
-    80% {
-        transform: scaleX(0.85)
-    }
-
     90% {
         transform: scaleX(0.91)
-    }
-
-    95% {
-        transform: scaleX(0.95)
     }
 
     100% {
@@ -340,12 +330,151 @@ html {
     }
 }
 
+.RotateAnimation::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.2),
+        0 0 20px rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(255, 255, 255, 0.1);
+    background: conic-gradient(from var(--angle),
+            transparent 0deg 220deg,
+            rgba(255, 255, 255, .1) 260deg,
+            white 330deg,
+            transparent 360deg);
 
-.dotLoader {
-  width: 10px;
-  aspect-ratio: 4;
-  
-  clip-path: inset(0 100% 0 0);
-  animation: l1 1s steps(4) infinite;
+    border-radius: inherit;
+
+    animation: RotateAnim 4s linear infinite;
 }
-@keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}
+
+.WobbleEffect {
+    border-radius: 9999px;
+    animation: softWobble 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes softWobble {
+
+    0%,
+    100% {
+        transform: scale(1) skewX(0deg);
+    }
+
+    25% {
+        transform: scaleY(0.96) scaleX(1.02) skewX(-1.5deg);
+    }
+
+    50% {
+        transform: scaleY(1.015) scaleX(0.98) skewX(1.5deg);
+    }
+
+    75% {
+        transform: scaleY(0.98) scaleX(1.01) skewX(-0.8deg);
+    }
+}
+
+@property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes RotateAnim {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+
+/* WObbletext ANim */
+.WobbleText {
+    display: inline-block;
+    animation: textWobble 5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes textWobble {
+
+    0%,
+    100% {
+        transform: scale(1) skewX(0deg) rotate(0deg);
+    }
+
+    25% {
+        transform: scaleX(1.01) scaleY(0.99) skewX(-2deg) rotate(-0.5deg);
+    }
+
+    50% {
+        transform: scaleX(0.99) scaleY(1.01) skewX(2deg) rotate(0deg);
+    }
+
+    75% {
+        transform: scaleX(1.01) scaleY(0.99) skewX(-1deg) rotate(-0.5deg);
+    }
+}
+
+
+
+
+/* SHining Text */
+.ShinyText {
+    background: conic-gradient(from var(--angle),
+            transparent,
+            white,
+            transparent);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: RotateAnim 4s linear infinite;
+
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+
+
+/* LOADER ... */
+/* HTML: <div class="DotLoader"></div> */
+.DotLoader {
+    width: 5px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l5 3s infinite linear alternate;
+}
+
+@keyframes l5 {
+    0% {
+        box-shadow:
+            10px 0 rgb(23, 23, 25),
+            -10px 0 rgb(45, 45, 47);
+        background: rgb(23, 23, 25);
+    }
+
+    33% {
+        box-shadow:
+            10px 0 rgb(23, 23, 25),
+            -10px 0 rgb(45, 45, 47);
+        background: rgb(45, 45, 47);
+    }
+
+    66% {
+        box-shadow:
+            10px 0 rgb(45, 45, 47),
+            -10px 0 rgb(23, 23, 25);
+        background: rgb(45, 45, 47);
+    }
+
+    100% {
+        box-shadow:
+            10px 0 rgb(45, 45, 47),
+            -10px 0 rgb(23, 23, 25);
+        background: rgb(23, 23, 25);
+    }
+}

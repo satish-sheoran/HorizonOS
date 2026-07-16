@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import { CSS_EASING } from '../../../constants/Settings'
 import { ACCENT_COLORS } from '../../../constants/style'
 import { useDispatch, useSelector } from 'react-redux'
-import { BadgeCheck, Blocks, Check, Search, Ticket, Tickets, Triangle, X } from 'lucide-react'
+import { BadgeCheck, Blocks, Check, Fullscreen, Search, Ticket, Tickets, Triangle, X } from 'lucide-react'
 import { setopenTaskManager } from '../../../redux/features/NotesStrorage'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -12,6 +12,7 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch()
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
+    const { fullScreen } = useSelector((store) => store.windowApps?.apps['notes'])
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -62,7 +63,7 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
     }, [isopenTaskManager])
 
     return (
-        <div className={`${isopenTaskManager ? 'block' : 'hidden'} absolute top-0 left-0 inset-0  `}>
+        <div className={`${isopenTaskManager ? 'block' : 'hidden'}  absolute top-0 left-0 inset-0  `}>
 
             <div
                 onClick={() => dispatch(setopenTaskManager({ shouldOpen: false }))}
@@ -71,14 +72,22 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
 
                 <div
                     ref={TaskRef}
-                    onClick={(e) => e.stopPropagation()} style={{ backgroundColor: ThemeColors.header }} className={`absolute ${Device === 'Mobile' ? 'w-[calc(100%-30px)]' : 'w-[(100%-60px)]'} flex flex-col gap-2 items-center py-2 px-2 overflow-hidden max-h-3/4 rounded-2xl  bottom-3.5 left-1/2 -translate-x-1/2`}>
+                    onClick={(e) => e.stopPropagation()} style={{
+                        backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
+                        transitionDuration: Speed,
+                        transitionTimingFunction: CSS_EASING[Animation]
+                    }} className={`absolute  flex flex-col gap-2 items-center w-[calc(100%-60px)]
+        max-w-225 py-2 px-2 overflow-hidden max-h-3/4 rounded-2xl  bottom-3.5 left-1/2 -translate-x-1/2`}>
 
                     <header className={`py-2 flex w-full justify-between items-center rounded-2xl ${Device !== 'Desktop' ? 'px-[4%]' : 'px-[4.5%]'}`}>
                         <h3
                             onClick={() => dispatch(setopenTaskManager({ shouldOpen: false }))}
                             style={{
                                 color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE,
-                                '--hover': ThemeColors.bg
+                                '--hover': ThemeColors.bg,
+                                transitionProperty: 'color, background-color, border-color, font-size',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
                             }}
                             className={`HOVER_CLASS border rounded-full p-0.5 ${Device === 'Mobile' ? 'active:scale-105' : 'hover:scale-105'}`}>
                             <X />
@@ -88,7 +97,10 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                             style={{
                                 color: ThemeColors.primaryText,
                                 fontFamily: Weights.SemiBold,
-                                fontSize: Sizes.Regular
+                                fontSize: Sizes.Regular,
+                                transitionProperty: 'color, background-color, border-color, font-size',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
                             }}
                             className={`HOVER_CLASS flex items-center gap-1.5 ${Device === 'Mobile' ? 'active:scale-105' : 'hover:scale-105'}`}>
                             <BadgeCheck strokeWidth={2} />
@@ -112,7 +124,10 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                         <p style={{
                             color: ThemeColors.primaryText,
                             fontFamily: Weights.SemiBold,
-                            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`
+                            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`,
+                            transitionProperty: 'color, background-color, border-color, font-size',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
                         }}
 
                             className={`flex items-center gap-1.5 w-1/2`}>
@@ -122,12 +137,19 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                         <p style={{
                             color: ThemeColors.primaryText,
                             fontFamily: Weights.SemiBold,
-                            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`
+                            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`,
+                            transitionProperty: 'color, background-color, border-color, font-size',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
                         }}
 
                             className={`flex items-center gap-2 w-1/2`}>
                             <span>Personal</span>
-                            <Triangle style={{ color: ThemeColors.secText }} className='rotate-180 ' size={12} fill={ThemeColors.secText} />
+                            <Triangle style={{
+                                color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
+                                transitionDuration: Speed,
+                                transitionTimingFunction: CSS_EASING[Animation]
+                            }} className='rotate-180 ' size={12} fill={ThemeColors.secText} />
                         </p>
                     </section>
 
@@ -141,22 +163,23 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                         className={`w-9/10 mx-auto`} />
 
                     {/* Task */}
-                    <div className='max-h-1/2 overflow-y-auto overflow-x-hidden'>
+                    <div className='w-full max-h-1/2 overflow-y-auto overflow-x-hidden'>
                         <textarea spellCheck={false}
                             value={Task}
                             onChange={(e) => setTask(e.target.value)}
                             name="newTask-title"
                             style={{
+                                borderColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE,
                                 backgroundColor: ThemeColors.header,
-                                fontSize: Sizes.Regular, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+                                fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.76}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                                 '--placeholder': ThemeColors.thirdText,
                                 transitionProperty: 'color, background-color, border-color, font-size',
                                 transitionDuration: Speed,
                                 transitionTimingFunction: CSS_EASING[Animation]
                             }}
-                            className={`rounded-2xl shrink-0 px-3 py-2 font-semibold w-full h-fit  resize-none  outline-none 
+                            className={`rounded-2xl shrink-0 focus:border p-2 font-semibold w-full h-fit  resize-none  outline-none 
                     `}
-                            placeholder='Title'
+                            placeholder='Start writing your task...'
                             rows={2}
                             onInput={(e) => handleSize(e.target)}
                         ></textarea>
@@ -175,12 +198,18 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                         <p style={{
                             color: ThemeColors.primaryText,
                             fontFamily: Weights.SemiBold,
-                            fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`
+                            fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`,
+                            transitionProperty: 'color, background-color, border-color, font-size',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
                         }}>Created : Today , 4:01 PM</p>
                         <p style={{
                             color: ThemeColors.primaryText,
                             fontFamily: Weights.SemiBold,
-                            fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`
+                            fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`,
+                            transitionProperty: 'color, background-color, border-color, font-size',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]
                         }}>Updated : Just Now</p>
                     </div>
                 </div>

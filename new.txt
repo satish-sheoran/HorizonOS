@@ -3,10 +3,7 @@
 
 
 What i did for this commit :
-feat : Implemented Task Creator UI with  ope/close state management
-
-- UI of Task Creation and its functionality to open/close
-FIX : Fixed Issue of Not Setting Default Value Even on Factory Reset
+feat : Redesign Factory reset screen and fix some bugs
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

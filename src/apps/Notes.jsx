@@ -11,7 +11,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CreateNote from "../components/Notes/CreateNote";
-import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote } from "../redux/features/NotesStrorage";
+import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote, setopenTaskManager } from "../redux/features/NotesStrorage";
 import EditNote from "../components/Notes/EditNote";
 import ManageTask from "../components/Notes/TaskComponents/ManageTask";
 
@@ -41,6 +41,7 @@ const Notes = () => {
                 dispatch(setStartDeletingCat({ start: false }))
                 dispatch(setStartDeletingNotes({ start: false }))
                 dispatch(manageEditNote({ open: false }))
+                dispatch(setopenTaskManager({ shouldOpen: false }))
             }
             closeAll();
         }
@@ -91,7 +92,7 @@ const Notes = () => {
 
                 {/* Tasks Add */}
                 <ManageTask Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
-                
+
 
             </main>
         </div >

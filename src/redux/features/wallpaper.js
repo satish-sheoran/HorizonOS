@@ -51,7 +51,7 @@ const getStoredSettings = () => {
                 acc[name] = storedSettings?.theme?.[name] === 'dark' ? DARK_THEME_COLORS : LIGHT_THEME_COLORS
                 return acc;
             }, {});
-
+            const AdvanceDarkMode = storedSettings?.AdvanceDarkMode ?? [];
             const AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === storedSettings?.AccentColors?.COLOR) || undefined
 
             const AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === storedSettings?.AnimationTypeNSpeed?.Name) || undefined;
@@ -69,12 +69,10 @@ const getStoredSettings = () => {
                 isAutoTheme: typeof storedSettings.isAutoTheme === "boolean"
                     ? storedSettings.isAutoTheme
                     : undefined,
-                AdvanceDarkMode: typeof storedSettings.AdvanceDarkMode === "boolean"
-                    ? storedSettings.AdvanceDarkMode
-                    : undefined,
+                AdvanceDarkMode,
                 AnimationTypeNSpeed: AnimationTypeNSpeed,
                 AnimationName: AnimationName,
-                Font: Font
+                Font: Font,
             }
         }
     } catch {
@@ -154,7 +152,7 @@ const wallpaperSlice = createSlice({
             state.ThemeColors[App] = DARK_THEME_COLORS;
 
             const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
-            const updatedSettings = { ...storedSettings, AdvanceDarkMode: state.AdvanceDarkMode };
+            const updatedSettings = { ...storedSettings, AdvanceDarkMode: state.AdvanceDarkMode, ThemeColors: state.ThemeColors, theme: state.theme };
             localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
         },
 
@@ -165,7 +163,7 @@ const wallpaperSlice = createSlice({
             state.ThemeColors[App] = LIGHT_THEME_COLORS;
 
             const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
-            const updatedSettings = { ...storedSettings, AdvanceDarkMode: state.AdvanceDarkMode };
+            const updatedSettings = { ...storedSettings, AdvanceDarkMode: state.AdvanceDarkMode, ThemeColors: state.ThemeColors, theme: state.theme };
             localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
         },
 
@@ -229,14 +227,14 @@ const wallpaperSlice = createSlice({
                     acc[name] = theme === 'dark' ? DARK_THEME_COLORS : LIGHT_THEME_COLORS;
                     return acc;
                 }, {}),
-                state.AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue'),   
-                state.isAutoTheme = false,  
+                state.AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue'),
+                state.isAutoTheme = false,
                 state.AdvanceDarkMode = [],
 
                 state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
                 state.AnimationName = AnimationsName.find(({ Name }) => Name === 'Back Out'),
 
-                
+
                 state.Font = FONT_FAMILY.find(font => font.Name === 'Poppins'),
                 state.FontSize = FONT_SIZES.find(({ SizeType }) => SizeType === 'Default')
         }

@@ -13,7 +13,6 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
     const dispatch = useDispatch();
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const AdvanceDarkMode = useSelector((store) => store.wallpaper.AdvanceDarkMode)
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const [Time, setTime] = useState(new Date())

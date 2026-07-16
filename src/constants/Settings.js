@@ -595,11 +595,11 @@ export const FONT_SIZES = [
         SizeType: 'Large',
         Details: 'Larger font size than usual',
         Sizes: {
-            ExtraLarge: '1.6rem',
-            Large: '1.45rem',
-            Regular: '1.3rem',
-            Small: '0.9rem',
-            ExtraSmall: '0.65rem'
+            ExtraLarge: '1.57rem',
+            Large: '1.42rem',
+            Regular: '1.27rem',
+            Small: '0.87rem',
+            ExtraSmall: '0.62rem'
         }
     },
     {

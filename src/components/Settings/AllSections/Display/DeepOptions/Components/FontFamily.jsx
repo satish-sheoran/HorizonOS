@@ -54,7 +54,9 @@ const FontFamily = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
                         className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
                     >
                         <div className={`flex flex-col gap-0.5 text-left`}>
-                            <span style={{fontSize : Sizes.Small, fontFamily: Weights.Bold }} className={`font-bold `}>{Font}</span>
+                            <span style={{fontSize : Sizes.Small, fontFamily: Weights.Bold ,transitionProperty: 'color, background-color, border-color, font-size',
+                            transitionDuration: Speed,
+                            transitionTimingFunction: CSS_EASING[Animation]}} className={`font-bold `}>{Font}</span>
                             <span style={{
                                fontSize : Sizes.ExtraSmall, fontFamily: Weights.SemiBold,
                                 color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
