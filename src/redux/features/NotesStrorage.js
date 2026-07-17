@@ -38,10 +38,11 @@ const getNotes = () => {
 const getTasks = () => {
     try {
         const stored = JSON.parse(localStorage.getItem('Tasks'));
-        return Array.isArray(stored) ? stored.filter(({ Task }) => Task.trim()) : [
+        return Array.isArray(stored) ? stored.filter(({ Task }) => (Task??'').trim()) : [
             {
                 id: "@#$RSP",
                 Category: 'Personal',
+                Task : 'Welcome To Tasks. This is a default Task.',
                 Time: '12 : 26 AM',
                 Date: 'Sat Jul 18 2026',
                 TimeStamp: 1784314786118
@@ -52,6 +53,7 @@ const getTasks = () => {
             {
                 id: "@#$RSP",
                 Category: 'Personal',
+                Task : 'Welcome To Tasks. This is a default Task.',
                 Time: '12 : 26 AM',
                 Date: 'Sat Jul 18 2026',
                 TimeStamp: 1784314786118
@@ -297,7 +299,7 @@ const NotesSlice = createSlice({
                 return;
             }
             const { Task, Time, Date, TimeStamp, Category } = action.payload
-            if (!Task.trim()) return
+            if (!(Task??'').trim()) return
             const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
             let id;
 

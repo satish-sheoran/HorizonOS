@@ -89,7 +89,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                     </div>
                     <div className={`overflow-hidden flex flex-col gap-2`}>
                         {Tasks.map(({ id, Category, Task, Time, Date, TimeStamp }) => {
-                            return Task.trim() && Category === 'Personal' &&
+                            return (Task??'').trim() && Category === 'Personal' &&
                                 <button
                                     {...(!startDeletingTasks ? Handlers : {})} //adding long press handler only if delete mode is off
                                     onClick={(e) => {
@@ -158,7 +158,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
 
                     <div ref={CompletedRef} className={`overflow-hidden flex flex-col gap-1`}>
                         {Tasks.map(({ id, Category, Task, Time, Date, TimeStamp }) => {
-                            return Task.trim() && Category === 'Completed' &&
+                            return (Task??'').trim() && Category === 'Completed' &&
                                 <button
                                     {...(!startDeletingTasks ? Handlers : {})} //adding long press handler only if delete mode is off
                                     onClick={(e) => {

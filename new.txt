@@ -3,10 +3,7 @@
 
 
 What i did for this commit :
-feat : Add complete Task App and migrate transitions to global CSS variables
-
-- Tasks can be created,deleted,edited,category change 
-- Also fixed some bugs
+fix : Fixed undefined error comes due to no Key named Task in default Task
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

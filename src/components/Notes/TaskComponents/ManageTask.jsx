@@ -101,7 +101,7 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
 
             <div
                 onClick={() => {
-                    if (Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()) dispatch(removeTask({ Taskid: CurrentEditingTask.id }))
+                    if (Object.keys(CurrentEditingTask).length !== 0 && !(Task??'').trim()) dispatch(removeTask({ Taskid: CurrentEditingTask.id }))
                     UsedispatchTask()
                     dispatch(setopenTaskManager({ shouldOpen: false }))
                     setTask('')
@@ -118,16 +118,16 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
 
                     <header className={`py-2 flex w-full justify-between items-center rounded-2xl ${Device !== 'Desktop' ? 'px-[4%]' : 'px-[4.5%]'}`}>
                         <button
-                            disabled={Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()}
+                            disabled={Object.keys(CurrentEditingTask).length !== 0 && !(Task??'').trim()}
                             onClick={() => {
                                 dispatch(setopenTaskManager({ shouldOpen: false }))
-                                if (!Task.trim()) return;
+                                if (!(Task??"").trim()) return;
 
                                 UsedispatchTask()
                                 setTask('')
                             }}
                             style={{
-                                color: (Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()) ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').Hover_Clr : ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE,
+                                color: (Object.keys(CurrentEditingTask).length !== 0 && !(Task??'').trim()) ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').Hover_Clr : ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE,
                                 '--hover': ThemeColors.bg,
 
                             }}
@@ -135,15 +135,15 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                             <X />
                         </button>
                         <button
-                            disabled={Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()}
+                            disabled={Object.keys(CurrentEditingTask).length !== 0 && !(Task??'').trim()}
                             onClick={() => {
                                 dispatch(setopenTaskManager({ shouldOpen: false }))
-                                if (!Task.trim()) return
+                                if (!(Task??'').trim()) return
                                 UsedispatchTask()
                                 setTask('')
                             }}
                             style={{
-                                color: (Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()) ? ThemeColors.secText : ThemeColors.primaryText,
+                                color: (Object.keys(CurrentEditingTask).length !== 0 && !(Task??'').trim()) ? ThemeColors.secText : ThemeColors.primaryText,
                                 fontFamily: Weights.SemiBold,
                                 fontSize: Sizes.Regular,
 
