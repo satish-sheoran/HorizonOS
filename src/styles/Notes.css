@@ -17,7 +17,7 @@
 
 @layer base {
     .notes-body {
-        @apply absolute inset-0 overflow-hidden flex flex-col  px-(--padding-lg) md:px-(--padding-xl);
+        @apply absolute inset-0 overflow-hidden flex flex-col px-(--padding-lg) md:px-(--padding-xl);
 
         nav {
             @apply flex flex-col mb-2 gap-(--gap-xs);
@@ -26,7 +26,7 @@
                 @apply h-full relative z-20 flex items-center justify-end gap-(--gap-md) pt-(--padding-sm);
 
                 .note-icons {
-                    @apply cursor-pointer hover:scale-[1.15]  active:scale-100;
+                    @apply cursor-pointer hover:scale-[1.15] active:scale-100;
                 }
 
             }
@@ -34,7 +34,7 @@
         }
 
         .content {
-            @apply  relative flex-1 min-h-0 overflow-hidden ;
+            @apply relative flex-1 min-h-0 overflow-hidden;
 
             .NotesArea {
                 @apply relative min-h-0 h-full flex flex-col gap-1.5;
@@ -46,7 +46,7 @@
         }
 
         footer {
-            @apply w-full  pt-3.5;
+            @apply w-full pt-3.5;
 
             div {
                 @apply w-full h-full flex items-center justify-between;
@@ -78,21 +78,22 @@
             @apply flex-1 flex flex-col gap-2 px-(--padding-lg) md:px-(--padding-xl) min-h-0;
 
             .create-folder {
-                @apply w-full font-semibold rounded-xl flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97  mt-1;
+                @apply w-full font-semibold rounded-xl flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97 mt-1;
 
                 .plus-icon-div {
-                    @apply bg-(--bg-minimize) rounded-full p-1 flex items-center justify-center ;
+                    @apply bg-(--bg-minimize) rounded-full p-1 flex items-center justify-center;
                 }
             }
 
             .folder-category-list {
-                @apply   flex-1   grid gap-3 overflow-y-auto;
+                @apply flex-1 grid gap-3 overflow-y-auto;
                 align-content: start;
 
 
                 button {
-                    @apply w-full h-fit outline-none rounded-2xl flex items-center justify-between p-2.5 active:scale-97   ;
-                    touch-action : pan-y; /* Allow vertical scrolling on touch devices */   
+                    @apply w-full h-fit outline-none rounded-2xl flex items-center justify-between p-2.5 active:scale-97;
+                    touch-action: pan-y;
+                    /* Allow vertical scrolling on touch devices */
                 }
             }
 

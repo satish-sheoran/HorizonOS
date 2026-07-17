@@ -10,14 +10,11 @@ import { useSelector } from 'react-redux'
 const AboutHorizonOS = ({ Name, Section, Device, fullScreen, Theme, ThemeColors, AccentColors }) => {
 
 
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   return (
     <div style={{
-      borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-      transitionDuration: Speed,
-      transitionTimingFunction: CSS_EASING[Animation]
+      borderColor: ThemeColors.third, 
     }} className={`deep-about-us py-[2.5%]  select-none ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-full h-full overflow-y-auto  px-[2.5%]'}`}>
 
       <div className={` flex flex-col gap-2 `}>

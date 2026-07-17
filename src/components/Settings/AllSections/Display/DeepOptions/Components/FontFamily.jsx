@@ -10,7 +10,6 @@ const FontFamily = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
     const dispatch = useDispatch()
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
@@ -18,22 +17,16 @@ const FontFamily = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
             <div className='flex flex-col gap-0.5'>
                 <span style={{
                     fontSize: Sizes.Small, fontFamily: Weights.SemiBold,
-                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.primaryText, 
                 }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
                 <span style={{
                     fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular,
-                    color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.thirdText, 
                 }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose your preferred font style.</span>
             </div>
 
             <div style={{
-               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
             }} className={`border flex flex-col gap-4 rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
                 {FONT_FAMILY.map(({ Name: Font, Description }, idx) => {
 
@@ -47,34 +40,24 @@ const FontFamily = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
                                 Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                                 :
                                 COMMON_COLORS.Gray,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }}
                         className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
                     >
                         <div className={`flex flex-col gap-0.5 text-left`}>
-                            <span style={{fontSize : Sizes.Small, fontFamily: Weights.Bold ,transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]}} className={`font-bold `}>{Font}</span>
+                            <span style={{fontSize : Sizes.Small, fontFamily: Weights.Bold ,}} className={`font-bold `}>{Font}</span>
                             <span style={{
                                fontSize : Sizes.ExtraSmall, fontFamily: Weights.SemiBold,
-                                color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+                                color: ThemeColors.grayish, 
                             }} className={`font-semibold  `}>{Description}</span>
                         </div>
 
                         <div style={{
                             fontFamily: Weights.Bold,
-                            borderColor: ThemeColors.bg, backgroundColor: FontName === Font ? AccentColors.CODE : ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            borderColor: ThemeColors.bg, backgroundColor: FontName === Font ? AccentColors.CODE : ThemeColors.bg, 
                         }} className={`border  w-6 h-6 rounded-full  flex justify-center items-center`}>
                             {Font === FontName && <Check style={{
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+                                
                             }} strokeWidth={3} size={Device !== 'Desktop' ? 15 : 20} />}
                         </div>
 

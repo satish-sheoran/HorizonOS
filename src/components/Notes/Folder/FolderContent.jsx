@@ -7,7 +7,7 @@ import { CSS_EASING } from '../../../constants/Settings'
 
 const FolderContent = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch();
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+    
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isFolderManagerOpen = useSelector((store) => store.Notes.openManageFolder)

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Check, NotebookPen } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
@@ -17,7 +17,6 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
     const isFactoryResetting = useSelector(store => store.Device.startFactoryReset) //used to check Factory resethas Started
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
@@ -37,7 +36,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
 
     //resize observer observes and callback run when that elem size changes
-    useEffect(() => {
+    useLayoutEffect(() => {
         const elements = ContainerRef.current
         if (!elements) return
 
@@ -71,9 +70,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
     return (
         <div ref={ContainerRef} style={{
-            transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            
         }} className={` flex-1  AllNotes-container  overflow-y-auto    
         `}
         >
@@ -109,9 +106,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header,
                                     '--hover': ThemeColors.third,
                                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                                    transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
+                                    
 
                                 }}
                                 className={`border HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
@@ -120,9 +115,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     style={{
                                         fontSize: Sizes.Regular,
                                         fontFamily: Weights.SemiBold,
-                                        color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+                                        color: ThemeColors.primaryText, 
                                     }}
 
                                     className={`break-all
@@ -135,9 +128,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     style={{
                                         fontSize: Sizes.Small,
                                         fontFamily: Weights.Regular,
-                                        color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+                                        color: ThemeColors.secText, 
                                     }}
                                     className={`break-all
  select-none  line-clamp-4 font-[650]
@@ -149,9 +140,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     <span style={{
                                         fontSize: Sizes.ExtraSmall,
                                         fontFamily: Weights.Regular,
-                                        color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+                                        color: ThemeColors.thirdText, 
                                     }}
                                         className={`block whitespace-nowrap text-ellipsis select-none 
                                              
@@ -165,9 +154,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                         isDeleteNoteOpen === true &&
                                         <span
                                             style={{
-                                                backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                                                transitionDuration: Speed,
-                                                transitionTimingFunction: CSS_EASING[Animation]
+                                                backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, 
                                             }}
                                             className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
                                 `}>
@@ -185,9 +172,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                     (
                         <div style={{
                             fontFamily: Weights.SemiBold,
-                            color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            color: ThemeColors.grayish, 
                         }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
                             <NotebookPen size={30} />
                             <span style={{ fontSize: Sizes.Small }}>No notes here yet</span>

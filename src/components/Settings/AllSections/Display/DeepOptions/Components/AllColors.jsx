@@ -8,7 +8,6 @@ import { setAccentColor } from '../../../../../../redux/features/wallpaper'
 
 const AllColors = ({ Theme, fullScreen, Device, ThemeColors, AccentColors }) => {
   const dispatch = useDispatch()
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
 
@@ -21,14 +20,10 @@ const AllColors = ({ Theme, fullScreen, Device, ThemeColors, AccentColors }) => 
           onClick={() => dispatch(setAccentColor({ Color: COLOR }))}
 
           style={{
-            backgroundColor: CODE, outlineColor: CODE, borderColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            backgroundColor: CODE, outlineColor: CODE, borderColor: ThemeColors.header, 
           }} className={` flex items-center justify-center ${Device !== 'Desktop' ? 'size-13' : 'size-13'}  rounded-full ${AccentColors.COLOR === COLOR ? 'border-2 outline-3' : ''}`}>
           {AccentColors.COLOR === COLOR && <div style={{
-            color: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            color: ThemeColors.header, 
           }}
             className={` rounded-full items-center justify-center`}>
             <Check strokeWidth={2.5} />

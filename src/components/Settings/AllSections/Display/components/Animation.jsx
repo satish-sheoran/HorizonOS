@@ -11,7 +11,6 @@ const Animation = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColor
     const dispatch = useDispatch();
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
@@ -27,9 +26,7 @@ const Animation = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColor
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                    COMMON_COLORS.Gray, 
             }}
             className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between 
              ${Device !== 'Desktop' ? `p-3` : `p-2.5`}

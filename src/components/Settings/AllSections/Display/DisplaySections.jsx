@@ -14,14 +14,11 @@ const DISPLAY_SECTIONS = {
 // SECTION MEANS TITLE : APPS/DISPLAY ETC.
 const DisplaySections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, ParentSection, Section: CurrSection }) => {
 
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <section style={{
-            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            borderColor: ThemeColors.third, 
 
         }} className={`display-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  p-[2.5%]'}`}>
 
@@ -49,9 +46,7 @@ const DisplaySections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors,
                         <div className='mt-2  mx-auto w-9/10'>
                             <hr
                                 style={{
-                                    borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
+                                    borderColor: ThemeColors.third, 
                                 }}
                                 className={` w-full`} />
                         </div>

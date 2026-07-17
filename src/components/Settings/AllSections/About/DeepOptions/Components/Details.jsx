@@ -8,36 +8,27 @@ const Details = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div
             style={{
-               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
             }}
             className={`border about flex flex-col gap-4 p-[2.5%]  rounded-2xl `}>
 
             <div
                 style={{
-                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.primaryText, 
                 }}
                 className={`flex gap-2  text-lg `}>
                 <Monitor style={{
-                    color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: AccentColors.CODE, 
                 }} strokeWidth={2.5} />
                 <span style={{fontSize : Sizes.Regular ,fontFamily : Weights.SemiBold}} className='font-semibold'>About HorizonOS</span>
             </div>
             <div style={{
-                color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                color: ThemeColors.secText, 
             }} className={`font-[450] text-sm flex flex-col gap-4`}>
                 <>
                     {PROJECT_DETAILS?.[Device]?.map((para, index) => {

@@ -9,7 +9,6 @@ const PickAccentColor = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
 
   const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   return (
@@ -17,23 +16,17 @@ const PickAccentColor = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
       <div className='flex flex-col gap-0.5'>
 
         <span style={{
-          fontSize : Sizes.Small ,fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+          fontSize : Sizes.Small ,fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 
         }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
         <span style={{
-        fontSize : Sizes.ExtraSmall , fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+        fontSize : Sizes.ExtraSmall , fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
         }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose an accent colour for button,highlights,and active elements.</span>
 
       </div>
 
 
       <div style={{
-       borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-        transitionDuration: Speed,
-        transitionTimingFunction: CSS_EASING[Animation]
+       borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
       }} className={`border flex flex-col gap-4 rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
 
         {/* COLORS LOOP */}

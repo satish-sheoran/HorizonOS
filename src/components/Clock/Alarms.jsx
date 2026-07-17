@@ -14,15 +14,12 @@ const Alarms = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) =>
   const Theme = useSelector((store) => store.wallpaper.theme.Clock);
   const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Clock)
   const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   return (
     <section style={{
       paddingBottom: `${Math.floor(ClockAllTabsHeight) * 1.1}px`,
-      transitionProperty: 'color, background-color, border-color, font-size',
-      transitionDuration: Speed,
-      transitionTimingFunction: CSS_EASING[Animation]
+      
     }}
       className={`overflow-cloclTab w-full h-full grow px-[2.5%] pt-[1.5%] overflow-y-auto overflow-x-hidden flex flex-col gap-2`}>
 
@@ -31,14 +28,10 @@ const Alarms = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) =>
         {/* Title and desc */}
         <div className='flex flex-col gap-0.5'>
           <span style={{
-            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 
           }} className={` font-semibold  ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>{Name} </span>
           <span style={{
-            fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
           }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
             {Description}
           </span>
@@ -46,9 +39,7 @@ const Alarms = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) =>
 
         {/* body */}
         <div style={{
-          transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+          
         }} className={` ${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? 'flex flex-col' : 'grid grid-cols-2 '} gap-5 rounded-2xl items-center select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
         </div>
 

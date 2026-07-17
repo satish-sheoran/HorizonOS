@@ -9,7 +9,6 @@ const MobileCntrls = ({ id, Theme, ThemeColors }) => {
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
@@ -20,23 +19,17 @@ const MobileCntrls = ({ id, Theme, ThemeColors }) => {
         <div style={{
             backgroundColor: ThemeColors.header,
             borderColor: ThemeColors.thirdText,
-            transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            
         }}
             className={`mobile-header border-b  `}>
 
             <p
                 style={{
-                   fontSize : Sizes.Regular , fontFamily: Weights.SemiBold, color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                   fontSize : Sizes.Regular , fontFamily: Weights.SemiBold, color: ThemeColors.secText, 
                 }}
                 className={`px-4 py-1.5   font-semibold capitalize  select-none `}>{id === 'notes' ? activeTab : id}</p>
             <div style={{
-                color: COMMON_COLORS.Black, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                color: COMMON_COLORS.Black, 
             }} className="mobile-controls " >
 
                 <button
@@ -47,9 +40,7 @@ const MobileCntrls = ({ id, Theme, ThemeColors }) => {
                         strokeWidth={3}
                         size={24}
                         style={{
-                            color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            color: ThemeColors.secText, 
                         }}
                     />
                 </button>

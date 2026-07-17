@@ -9,38 +9,27 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
 
   const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
 
   return (
     <div style={{
-      borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-      transitionDuration: Speed,
-      transitionTimingFunction: CSS_EASING[Animation]
+      borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
     }} className={`border features flex flex-col gap-4 p-[2.5%] rounded-2xl`}>
       <div style={{
-        color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-        transitionDuration: Speed,
-        transitionTimingFunction: CSS_EASING[Animation]
+        color: ThemeColors.primaryText, 
       }} className={`flex gap-2  text-lg`}>
         <Star style={{
-          color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+          color: AccentColors.CODE, 
         }} strokeWidth={2.5} />
         <span style={{
-          fontSize: Sizes.Regular, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+          fontSize: Sizes.Regular, fontFamily: Weights.SemiBold, 
         }} className='font-semibold'>Features</span>
       </div>
 
 
       <div style={{
-        transitionProperty: 'color, background-color, border-color, font-size',
-        transitionDuration: Speed,
-        transitionTimingFunction: CSS_EASING[Animation]
+        
       }} className={`grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} gap-3`}>
 
 
@@ -56,18 +45,14 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
               '--active': Theme !== 'dark' ?
                 Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                 :
-                COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-              transitionDuration: Speed,
-              transitionTimingFunction: CSS_EASING[Animation]
+                COMMON_COLORS.Gray,
 
             }}
             className={`HOVER_CLASS  hover:scale-105 active:scale-105 overflow-hidden border text-sm rounded-2xl flex gap-3 justify-center items-center 
             ${Device !== 'Desktop' ? `py-2` : `py-1.5 `}
               `}>
             <div style={{
-              backgroundColor: AccentColors.Bg_Clr, color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
-              transitionDuration: Speed,
-              transitionTimingFunction: CSS_EASING[Animation]
+              backgroundColor: AccentColors.Bg_Clr, color: AccentColors.CODE,
             }} className={`rounded-full p-2`}>
               {Icon && <Icon strokeWidth={2} className='shrink-0' />}
 
@@ -80,9 +65,7 @@ const Features = ({ Device, Theme, fullScreen, ThemeColors, AccentColors }) => {
                 </div>
               })}</span>
               <span style={{
-                fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.grayish, 
               }} > {Feat_Desc} </span>
 
             </div>

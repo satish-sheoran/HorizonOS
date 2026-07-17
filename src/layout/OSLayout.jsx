@@ -26,7 +26,6 @@ const OSLayout = () => {
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const Device = useSelector((store) => store.Device.currDevice);
 
     const ResetAllFn = useDispatchResetAll()
@@ -140,7 +139,7 @@ const OSLayout = () => {
                             <p style={{ color: DARK_THEME_COLORS.secText, fontFamily: Weights.Bold, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.85}rem` }} className='select-none '>
                                 Getting things ready
                             </p>
-                            <div class="DotLoader mb-1"></div> */
+                            <div className="DotLoader mb-1"></div> */
                         </div>
 
                     </div>
@@ -155,9 +154,7 @@ const OSLayout = () => {
                             borderColor: ThemeColors.third,
                             '--hover': DARK_THEME_COLORS.bg,
                             '--active': DARK_THEME_COLORS.bg,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }}
                         className={`mt-10 HOVER_CLASS active:scale-97 border rounded-xl  select-none font-semibold flex items-center justify-between 
                              gap-2  ${Device !== 'Desktop' ? `px-3 py-1.5` : `px-3 py-2`}

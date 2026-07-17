@@ -10,6 +10,7 @@ import { GetCities } from '../../API/GetCities'
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
 import Loader from '../Loader'
+import { useGSAP } from '@gsap/react'
 
 const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }) => {
 
@@ -23,7 +24,6 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
   const Theme = useSelector((store) => store.wallpaper.theme.Clock);
   const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Clock)
   const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   //useStates
@@ -53,7 +53,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
   }, [show])
 
   //animation
-  useEffect(() => {
+  useGSAP(() => {
     const el = document.querySelector('.ParentCl')
     if (!el) return;
     Device === 'Mobile' ?
@@ -84,9 +84,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
     <section style={{
       paddingBottom: `${Math.floor(ClockAllTabsHeight) * 1.1}px`,
       backgroundImage: `url(${'/public/world.svg'})`,
-      transitionProperty: 'color, background-color, border-color, font-size',
-      transitionDuration: Speed,
-      transitionTimingFunction: CSS_EASING[Animation]
+      
     }}
       className={`bg-cover bg-center overflow-cloclTab w-full h-full grow px-[2.5%] pt-[1.5%] overflow-y-auto overflow-x-hidden flex flex-col gap-2`}>
 
@@ -103,9 +101,6 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
             style={{
               backgroundColor: ThemeColors.header, color: ThemeColors.primaryText,
               borderColor: isFocused ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE : ThemeColors.third,
-              transitionProperty: 'color, background-color, border-color, font-size',
-              transitionDuration: Speed,
-              transitionTimingFunction: CSS_EASING[Animation],
             }}
             className={`ParentCl border flex gap-2 py-2 rounded-2xl ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}  grow`}>
 
@@ -121,9 +116,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
               onBlur={() => setisFocused(false)}
               style={{
                 fontSize: Device !== 'Desktop' ? `${(Sizes.Small.slice(0, -3)) * 1.2}rem` : `${(Sizes.Small.slice(0, -3)) * 1.1}rem`
-                , color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                , color: ThemeColors.primaryText, fontFamily: Weights.SemiBold, 
               }}
               className={`w-full  font-semibold outline-none focus:ring-0 focus:border-0 focus:outline-none`}
             />
@@ -157,9 +150,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
               fontSize: Device !== 'Desktop' ? `${(Sizes.Small.slice(0, -3))}rem` : `${(Sizes.Small.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.SemiBold,
               color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
               backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr,
-              transitionProperty: 'color, background-color, border-color, font-size',
-              transitionDuration: Speed,
-              transitionTimingFunction: CSS_EASING[Animation]
+             
             }}
             className={`AddBtn border select-none w-full flex gap-1 items-center justify-center cursor-pointer font-semibold rounded-2xl active:scale-98 ${Device === 'Mobile' ? 'p-3' : 'p-2'}  `}>
             <Plus strokeWidth={2} />
@@ -174,9 +165,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
           // Briefly stretch the elem on mobilr before animating
           width: !fullScreen ? '' : `${DetailElWidth * 2}px`,
           backgroundColor: ThemeColors.header,
-          transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+          
         }} className={`Cities-Div border rounded-2xl overflow-hidden select-none`}>
 
           {isLoading ? <div
@@ -193,9 +182,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
                 '--active': Theme !== 'dark' ?
                   Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                   :
-                  COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                  COMMON_COLORS.Gray, 
               }}
               className={`HOVER_CLASS flex justify-between items-center w-full ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
               {/* img and location */}
@@ -203,16 +190,12 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
                 <img className={`rounded-full w-10 h-10  object-cover object-center`} src="/HorizonOS.svg" alt="" />
                 <div className={`flex flex-col gap-0.5`}>
                   <span style={{
-                    color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, 
                   }}
                     className={`select-none`}
                   >New York</span>
                   <p style={{
-                    color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.75}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.75}rem`, fontFamily: Weights.Regular, 
                   }} className={`select-none flex gap-1`}>
                     <span>United Kingdom</span>
                     {Device != 'Mobile' && !fullScreen &&
@@ -224,14 +207,10 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
               <div className={`flex ${!fullScreen?'gap-3':'gap-5'}`}>
                 <div className='flex flex-col gap-0.5'>
                   <p style={{
-                    color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.85}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.85}rem`, fontFamily: Weights.SemiBold, 
                   }} className={`select-none`}>10:30 AM</p>
                   <p style={{
-                    color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.85}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.85}rem`, fontFamily: Weights.Regular, 
                   }} className={`select-none`}>GMT +1</p>
                 </div>
                 <button style={{
@@ -253,9 +232,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
           // Briefly stretch the elem on mobilr before animating
           width: !fullScreen ? '' : `${DetailElWidth * 2}px`,
           backgroundColor: ThemeColors.header,
-          transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+          
         }} className={`Cities-Div border rounded-2xl overflow-hidden select-none`}>
 
           {

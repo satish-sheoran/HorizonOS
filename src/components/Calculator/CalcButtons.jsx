@@ -8,7 +8,6 @@ const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) 
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     return (
         <>
@@ -26,9 +25,7 @@ const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) 
                             backgroundColor: symbol === '=' ? AccentColors.CODE : ThemeColors.header,
                             '--hover': symbol === '=' ? AccentColors.Hover_Clr : ThemeColors.third,
                             '--active': symbol === '=' ? AccentColors.Hover_Clr : ThemeColors.third,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }}
                         className={`${AccentColors.HOVER}  
                               ${Device === 'Mobile' ? 'sm:rounded-xl rounded-4xl' : Device === 'Tablet' ? 'rounded-3xl' : 'rounded-2xl'}  py-1  font-bold  active:scale-95  

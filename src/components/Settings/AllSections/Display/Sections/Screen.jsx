@@ -16,22 +16,17 @@ const Screen = ({ Theme, Device, fullScreen, GrandParentSection, Options, Sectio
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <section className={`w-full flex flex-col gap-2`}>
 
             <span style={{
-                fontSize: Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                fontSize: Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, 
             }} className='select-none'>{Section}</span>
 
             <div style={{
-            borderColor: ThemeColors.third ,   backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+            borderColor: ThemeColors.third ,   backgroundColor: ThemeColors.header, 
             }} className={`border w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
                 {/* DISPLAYING OPTIONS UNDER Screen SECTION :  Colour Scheme,Refresh Rate */}
                 {

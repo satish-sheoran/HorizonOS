@@ -9,42 +9,31 @@ import { useSelector } from 'react-redux'
 const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) => {
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div style={{
-            borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            borderColor: ThemeColors.thirdText, 
         }} className={`h-fit w-[45%] shrink-0 overflow-hidden rounded-2xl flex flex-col border`}>
             <div
                 style={{
                     backgroundColor: ThemeColors.bg,
                     borderColor: ThemeColors.bg,
-                    transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    
                 }}
                 className={`shrink-0 w-full flex items-center justify-between   ${Device !== 'Desktop' ? `px-3 py-2` : `px-2.5 py-2.5`}`}>
 
                 <div style={{
-                    color: COMMON_COLORS.Black, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: COMMON_COLORS.Black, 
                 }} className="flex gap-1">
 
                     <button
                         style={{
-                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').CODE, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').CODE, 
                         }}
                         className={`group window-control-btns rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05] flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }} className="opacity-0 group-hover:opacity-100 ">
                             <img className="scale-70" src="/assets/icons/close.png" alt="X" />
                         </span>
@@ -53,15 +42,11 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
                     <button
 
                         style={{
-                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Lime').CODE, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Lime').CODE, 
                         }}
                         className={`group window-control-btns rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }} className="opacity-0  group-hover:opacity-100 ">
                             <img className="scale-70" src="/assets/icons/minimize.png" alt="-" />
                         </span>
@@ -69,15 +54,11 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
 
                     <button
                         style={{
-                            backgroundColor: COMMON_COLORS.Blue, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            backgroundColor: COMMON_COLORS.Blue, 
                         }}
                         className={`group window-control-btns rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }} className="zoom opacity-0  group-hover:opacity-100 ">
 
                             <svg width="14" height="14" viewBox="0 0 20 20" fill="black" xmlns="http://www.w3.org/2000/svg">
@@ -94,30 +75,22 @@ const WindowPreview = ({ Theme, ThemeColors, AccentColors, Device, Preview }) =>
                     <button
 
                         style={{
-                            backgroundColor: DARK_THEME_COLORS.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            backgroundColor: DARK_THEME_COLORS.grayish, 
                         }}
                         className={`rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }} className="opacity-0 group-hover:opacity-100 ">
                         </span>
                     </button>
                     <button
 
                         style={{
-                            backgroundColor: DARK_THEME_COLORS.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            backgroundColor: DARK_THEME_COLORS.grayish, 
                         }}
                         className={`rounded-full ${Device !== 'Desktop' ? 'size-2.5' : 'size-3.5'}  hover:scale-[1.15] active:scale-[1.05]  flex-col-center`}>
                         <span style={{
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }} className="opacity-0  group-hover:opacity-100 ">
                         </span>
                     </button>

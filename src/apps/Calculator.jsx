@@ -6,7 +6,6 @@ import MobileCntrls from "../components/MobileCntrl";
 import CalcButtons from "../components/Calculator/CalcButtons";
 import CalcDisplay from "../components/Calculator/CalcDisplay";
 import UseCalculator from "../hooks/UseCalculator";
-import { CSS_EASING } from "../constants/Settings";
 import { useDebounce } from "../utils/UseDebounce";
 import { updateCalculation } from "../redux/features/Calculator";
 
@@ -20,8 +19,6 @@ const Calculator = () => {
     const Theme = useSelector((store) => store.wallpaper.theme.Calculator)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const Calculation = useSelector(store => store.Calculator.Calculation) //getting data from calculator app from its store
     
 
@@ -43,9 +40,7 @@ const Calculator = () => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                backgroundColor: ThemeColors.bg, 
             }}
             className={`w-full h-full flex flex-col`}>
             {/* header */}

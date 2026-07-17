@@ -3,24 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-import { removeCategory, removeNotes, setStartDeletingCat, setStartDeletingNotes } from '../../../redux/features/NotesStrorage';
+import { deleteTasks, removeCategory, removeNotes, setStartDeletingCat, setStartDeletingNotes, setstartDeletingTasks } from '../../../redux/features/NotesStrorage';
 import { toast } from 'react-toastify';
-import {  COMMON_COLORS } from '../../../constants/style';
+import { COMMON_COLORS } from '../../../constants/style';
 import { CSS_EASING } from '../../../constants/Settings'
 
 const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Theme, AccentColors, ThemeColors }) => {
-    
+
+    const dispatch = useDispatch();
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const DeletPopElem = useRef(null);
-    const dispatch = useDispatch();
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const device = useSelector((store) => store.Device.currDevice);
 
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
     const deletedNotes = useSelector((store) => store.Notes.deletedNotes); //notes which are selected to delete
-
+    const deletedTasks = useSelector(store => store.Notes.deletedTasks) // used to delete Tasks
 
     useGSAP(() => {
         if (!DeletPopElem.current) return;
@@ -42,85 +41,91 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
             {/* overlay */}
             <div
                 onClick={() => setOpenDeletePopUp(false)}
-                className='overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)]'></div>
+                className='relative overlay grow backdrop-blur-[0.5px] bg-[rgba(0,0,0,0.35)] flex justify-center items-end pb-5'>
 
 
-            <div ref={DeletPopElem}
-                style={{
-                    backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                    borderColor : COMMON_COLORS.Red,
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
-                }}
-                className={`border ${device === 'Mobile' ? 'w-[calc(100%-30px)] px-4' : 'w-75 px-3'} h-auto absolute rounded-2xl py-3.5  gap-2.5 bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center`}>
+                <div ref={DeletPopElem}
+                onClick={(e)=>e.stopPropagation()}
+                    style={{
+                        backgroundColor: ThemeColors.bg,
+                    }}
+                    className={`border ${device === 'Mobile' ? 'w-[calc(100%-30px)] px-4' : 'w-75 px-3'} h-auto  rounded-2xl py-3.5  gap-2.5  flex flex-col items-center`}>
 
-                <span style={{
-                    fontSize : Sizes.Regular ,
-                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    fontFamily : Weights.SemiBold,
-                    transitionTimingFunction: CSS_EASING[Animation]
-                }} className={`font-semibold `}>Delete folder</span>
+                    <span style={{
+                        fontSize: Sizes.Regular,
+                        color: ThemeColors.primaryText,
+                        fontFamily: Weights.SemiBold,
+                    }} className={`font-semibold `}>Delete {WorkingOn === 'Notes' ? 'Notes' : WorkingOn === 'Tasks' ? 'Tasks' : 'folder'}</span>
 
-                <span style={{
-                    fontSize : Sizes.Small,
-                    color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                    fontFamily : Weights.Regular,
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
-                }}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : deletedCategories.length} items ?</span>
+                    <span style={{
+                        fontSize: Sizes.Small,
+                        color: ThemeColors.thirdText
+                    }}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : WorkingOn === 'Tasks' ? deletedTasks.length : deletedCategories.length} items ?</span>
 
-                <div className={`w-full flex items-center gap-2`}>
+                    <div className={`w-full flex items-center gap-2`}>
 
-                    <button
-                        onClick={() => setOpenDeletePopUp(false)}
-                        style={{
-                            color: COMMON_COLORS.White,fontSize : Sizes.Small,
-                            fontFamily : Weights.Bold,
-                            backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
-                            '--hover': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
-                            '--active': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
-                        }}
-                        className={`${device !== 'Desktop' ? 'py-3.5' : 'py-2.5'} HOVER_CLASS w-[calc(50%-2px)]   font-bold select-none  active:scale-96 rounded-lg 
+                        <button
+                            onClick={() => {
+                                setOpenDeletePopUp(false)
+                                if (WorkingOn === 'Notes') dispatch(setStartDeletingNotes({ start: false }))
+                                if (WorkingOn === 'Tasks') dispatch(setstartDeletingTasks({ start: false }))
+                                else {
+                                    dispatch(setStartDeletingCat({ start: false }))
+                                }
+                            }}
+                            style={{
+                                color: COMMON_COLORS.White, fontSize: Sizes.Small,
+                                fontFamily: Weights.Bold,
+                                backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
+                                '--hover': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
+                                '--active': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
+
+                            }}
+                            className={`${device !== 'Desktop' ? 'py-3.5' : 'py-2.5'} HOVER_CLASS w-[calc(50%-2px)]   font-bold select-none  active:scale-96 rounded-lg 
                          `}>Cancel</button>
 
-                    <button
-                        onClick={() => {
-                            if (WorkingOn === 'Notes') {
-                                // Handle note deletion logic here
-                                dispatch(removeNotes({ NotesIds: deletedNotes }))
-                                dispatch(setStartDeletingNotes({ start: false }))
+                        <button
+                            onClick={() => {
+                                if (WorkingOn === 'Notes') {
+                                    // Handle note deletion logic here
+                                    dispatch(removeNotes({ NotesIds: deletedNotes }))
+                                    dispatch(setStartDeletingNotes({ start: false }))
+                                    setOpenDeletePopUp(false); //after delete close the pop up
+
+                                    toast.info('Notes Deleted Successfully')
+
+                                    return;
+                                }
+                                if (WorkingOn === 'Tasks') {
+                                    // Handle note deletion logic here
+                                    dispatch(deleteTasks({ Id: deletedTasks }))
+                                    dispatch(setstartDeletingTasks({ start: false }))
+                                    setOpenDeletePopUp(false); //after delete close the pop up
+
+                                    toast.info('Notes Deleted Successfully')
+                                    return;
+                                }
+
+                                dispatch(removeCategory({ category: deletedCategories }));
+                                dispatch(setStartDeletingCat({ start: false })); // exit delete mode after deleting category/categories
+                                toast.info('Categories Deleted Successfully')
+
                                 setOpenDeletePopUp(false); //after delete close the pop up
+                            }}
+                            style={{
+                                fontFamily: Weights.Bold,
+                                fontSize: Sizes.Small,
+                                backgroundColor: COMMON_COLORS.Red,
+                                color: COMMON_COLORS.White,
+                                '--hover': COMMON_COLORS.LightRed,
+                                '--active': COMMON_COLORS.LightRed
+                                ,
+                            }}
+                            className={`HOVER_CLASS grow ${device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}   font-bold rounded-lg select-none   active:scale-96`}>DELETE</button>
+                    </div>
 
-                                toast.info('Notes Deleted Successfully')
 
-                                return;
-                            }
-
-                            dispatch(removeCategory({ category: deletedCategories }));
-                            dispatch(setStartDeletingCat({ start: false })); // exit delete mode after deleting category/categories
-                            toast.info('Categories Deleted Successfully')
-
-                            setOpenDeletePopUp(false); //after delete close the pop up
-                        }}
-                        style={{
-                            fontFamily : Weights.Bold,
-                            fontSize : Sizes.Small,
-                            backgroundColor: COMMON_COLORS.Red,
-                            color: COMMON_COLORS.White,
-                            '--hover': COMMON_COLORS.LightRed,
-                            '--active': COMMON_COLORS.LightRed
-                            , transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
-                        }}
-                        className={`HOVER_CLASS grow ${device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}   font-bold rounded-lg select-none   active:scale-96`}>DELETE</button>
                 </div>
-
-
             </div>
         </div >
 

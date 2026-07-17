@@ -16,15 +16,12 @@ const OSDetails_OPTIONS = {
 }
 
 const OsDetails = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     
     return (
         <div
             style={{
-               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
             }}
             className={`border p-[2.5%] w-full flex flex-col rounded-2xl gap-2 overflow-hidden`}>
             {Options?.map(({ Option, FileName, Toggleable, action }, idx) => {

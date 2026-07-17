@@ -12,14 +12,11 @@ const ADDITIONAL_SECTIONS = {
 
 const AdditionalSections = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, ParentSection, Section: CurrSection }) => {
 
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <section style={{
-            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            borderColor: ThemeColors.third, 
         }} className={`additional-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
 
             {
@@ -44,9 +41,7 @@ const AdditionalSections = ({ Theme, Device, fullScreen, ThemeColors, AccentColo
                             <div className='mt-2  mx-auto w-9/10'>
                                 <hr
                                     style={{
-                                        borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+                                        borderColor: ThemeColors.third, 
                                     }}
                                     className={`w-full `} />
                             </div>

@@ -12,7 +12,6 @@ const Settings = () => {
 
     const dispatch = useDispatch()
 
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const currDevice = useSelector((store) => store.Device.currDevice);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Settings)
@@ -40,9 +39,7 @@ const Settings = () => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                backgroundColor: ThemeColors.bg, 
             }}
             className={` w-full h-full flex flex-col `}>
 

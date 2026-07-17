@@ -9,7 +9,6 @@ import { CSS_EASING } from '../constants/Settings'
 const StatusBar = () => {
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Theme = useSelector((store) => store.wallpaper.theme)
@@ -18,9 +17,7 @@ const StatusBar = () => {
 
     return (
         <section className='status-bar px-(--padding-lgvw) py-(--padding-xs) md:px-(--padding-smvw) select-none' style={{
-            color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            color: COMMON_COLORS.White, 
         }}>
 
             <div className='flex h-full items-center gap-(--gap-xs) cursor-pointer' >
@@ -28,9 +25,7 @@ const StatusBar = () => {
                 <img src="/HorizonOS-Photoroom.png" className='h-full' alt="Logo" />
                 <h1 style={{
                   fontSize : Sizes.Small,  fontFamily: Weights.SemiBold,
-                    transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    
                 }} className='font-semibold '>{OS_NAME}</h1>
             </div >
 

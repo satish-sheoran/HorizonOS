@@ -1,6 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { CSS_EASING } from '../../../../../constants/Settings'
 import FontFamily from './Components/FontFamily'
 import FontSizes from './Components/FontSizes'
 
@@ -10,14 +8,10 @@ const DEEP_OPTIONS = {
 }
 
 const FontsettingsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors, AccentColors, DeepSubSection }) => {
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-  const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   return (
     <div style={{
-      transitionProperty: 'color, background-color, border-color, font-size',
-      transitionDuration: Speed,
-      transitionTimingFunction: CSS_EASING[Animation]
+      
     }} className={`flex flex-col py-[2.5%] gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'w-7/10 h-full overflow-y-auto px-[2.5%]'}`}>
 
       {

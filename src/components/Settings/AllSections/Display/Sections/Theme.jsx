@@ -19,24 +19,19 @@ const Theme = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const isAutoTheme = useSelector((store) => store.wallpaper.isAutoTheme)
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div className={`flex flex-col w-full gap-2`}>
 
             <span style={{
-               fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+               fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, 
             }} className='select-none'>{Section}</span>
 
             {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
 
             <div style={{
-               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
             }} className={`border p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
                 {
                     Options?.map(({ Option, FileName, Toggleable, action }, idx) => {

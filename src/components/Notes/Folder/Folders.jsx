@@ -8,7 +8,6 @@ import {CSS_EASING} from '../../../constants/Settings'
 
 const Folders = ({Theme,AccentColors,ThemeColors}) => {
   const isOpen = useSelector(store => store.Notes.openManageFolder) //it is used apply animation on this returning div
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
       const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
   const elem = useRef(null);
 
@@ -24,9 +23,7 @@ const Folders = ({Theme,AccentColors,ThemeColors}) => {
 
   return (
     <div ref={elem}
-      style={{ backgroundColor: ThemeColors.bg ,transitionProperty : 'color, background-color, border-color',
-transitionDuration : Speed,
-transitionTimingFunction : CSS_EASING[Animation]}}
+      style={{ backgroundColor: ThemeColors.bg }}
       className={`absolute gap-4 all-folders transform-x-full `}>
 
       <FolderNav Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors}/>

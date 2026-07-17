@@ -3,7 +3,10 @@
 
 
 What i did for this commit :
-feat : Redesign Factory reset screen and fix some bugs
+feat : Add complete Task App and migrate transitions to global CSS variables
+
+- Tasks can be created,deleted,edited,category change 
+- Also fixed some bugs
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length

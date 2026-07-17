@@ -8,21 +8,16 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const [ActiveSec, setActiveSec] = useState('About')
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div style={{
-            backgroundColor: ThemeColors.header, borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            backgroundColor: ThemeColors.header, borderColor: ThemeColors.bg, 
         }} className={`w-full flex ${Device !== 'Desktop' ? 'h-20' : 'h-30'}  `}>
 
             {/* Section */}
             <div style={{
-                backgroundColor: ThemeColors.bg, borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                backgroundColor: ThemeColors.bg, borderColor: ThemeColors.thirdText, 
             }} className={`overflow-hidden  w-4/10 h-full flex flex-col  gap-1 items-center justify-center border-t-[0.5px]`}>
 
                 <div onClick={() => setActiveSec('About')}
@@ -30,22 +25,16 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                         color: ActiveSec === 'About' ? COMMON_COLORS.White : ThemeColors.primaryText,
                         backgroundColor: ActiveSec === 'About' ? AccentColors.CODE : '',
                         '--hover': ActiveSec === 'About' ? AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }}
 
                     className={`HOVER_CLASS w-[80%] pl-1.5 rounded-lg py-0.5 flex gap-1 items-center justify-start cursor-pointer`}>
                     <Info style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} size={Device !== 'Desktop' ? 8 : 12} />
                     <span style={{
                        fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`, 
-                       fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                       fontFamily: Weights.SemiBold, 
                     }} className={`font-semibold `}>About</span>
                 </div>
 
@@ -54,22 +43,16 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                         color: ActiveSec === 'Display' ? COMMON_COLORS.White : ThemeColors.primaryText,
                         backgroundColor: ActiveSec === 'Display' ? AccentColors.CODE : '',
                         '--hover': ActiveSec === 'Display' ? AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }}
 
                     className={`HOVER_CLASS w-[80%] pl-1.5  rounded-lg py-0.5 flex gap-1 items-center justify-start cursor-pointer`}>
                     <Monitor style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} size={Device !== 'Desktop' ? 8 : 12} />
                     <span style={{
                        fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`,
-                       fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                       fontFamily: Weights.SemiBold, 
                     }} className={`font-semibold `}>Display</span>
                 </div>
 
@@ -77,31 +60,23 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                     style={{
                         color: ActiveSec === 'Apps' ? COMMON_COLORS.White : ThemeColors.primaryText,
                         backgroundColor: ActiveSec === 'Apps' ? AccentColors.CODE : '',
-                        '--hover': ActiveSec === 'Apps' ? AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        '--hover': ActiveSec === 'Apps' ? AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray, 
                     }}
 
                     className={`HOVER_CLASS w-[80%] pl-1.5   rounded-lg py-0.5 flex gap-1 items-center justify-start cursor-pointer`}>
                     <LayoutGrid style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} size={Device !== 'Desktop' ? 8 : 12} />
                     <span style={{
                        fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`
-                       ,fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                       ,fontFamily: Weights.SemiBold, 
                     }} className={`font-semibold `}>Apps</span>
                 </div>
             </div>
 
             {/* Content */}
             <div style={{
-                borderColor: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                borderColor: ThemeColors.thirdText, 
             }} className={` flex flex-col items-center justify-center gap-2  w-6/10 h-full border-t-[0.5px]`}>
 
                 <div className='flex gap-2'>
@@ -111,9 +86,7 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                           fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`
                             , fontFamily : Weights.SemiBold, color: COMMON_COLORS.White,
                             backgroundColor: AccentColors.CODE,
-                            '--hover': AccentColors.Hover_Clr, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            '--hover': AccentColors.Hover_Clr, 
                         }}
                         className={`HOVER_CLASS flex items-center justify-center font-semibold cursor-pointer ${Device !== 'Desktop' ? 'px-1 py-0.5 ' : 'px-1.5 py-0.5 '}  rounded `}>
                         Primary</button>
@@ -122,28 +95,20 @@ const AccentPreviewBody = ({ ThemeColors, AccentColors, Device, Theme }) => {
                         style={{
                          fontSize : Device !=='Desktop'?`${(Sizes.ExtraSmall.slice(0,-3))*0.8}rem`:`${(Sizes.ExtraSmall.slice(0,-3))*1.2}rem`,  fontFamily : Weights.SemiBold, color: ThemeColors.primaryText,
                             borderColor: ThemeColors.thirdText,
-                            '--hover': ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            '--hover': ThemeColors.third, 
                         }}
                         className={`HOVER_CLASS border flex items-center justify-center font-semibold cursor-pointer ${Device !== 'Desktop' ? 'px-1 py-0.5 ' : 'px-1.5 py-0.5  '}    rounded `}>
                         Second</button>
                 </div>
                 <Monitor size={Device !== 'Desktop' ? 14 : 22} style={{
-                    color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: AccentColors.CODE, 
                 }} />
                 <div className='w-1/2 flex flex-col gap-1'>
                     <div style={{
-                        backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        backgroundColor: ThemeColors.bg, 
                     }} className={` rounded w-3/5 ${Device !== 'Desktop' ? 'h-2' : 'h-2'}`}></div>
                     <div style={{
-                        backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        backgroundColor: ThemeColors.bg, 
                     }} className={` rounded w-full ${Device !== 'Desktop' ? 'h-2' : 'h-2.5'}`}></div>
                 </div>
             </div>

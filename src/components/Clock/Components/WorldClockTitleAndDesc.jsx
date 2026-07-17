@@ -14,21 +14,16 @@ const WorldClockTitleAndDesc = ({Name,Description}) => {
     const Theme = useSelector((store) => store.wallpaper.theme.Clock);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Clock)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
         <div className={`flex justify-between items-center`}>
             <div id='DetailElement' className='flex flex-col gap-0.5'>
                 <span style={{
-                    fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 
                 }} className={`select-none font-semibold  ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>{Name} </span>
                 <span style={{
-                    fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
                 }} className={`select-none ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
                     {Description}
                 </span>
@@ -37,9 +32,7 @@ const WorldClockTitleAndDesc = ({Name,Description}) => {
                 style={{
                     fontFamily: Weights.SemiBold,
                     color: AccentColors.CODE,
-                    transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    
                 }}
                 className='select-none font-semibold active:scale-95'>
                 <span style={{ fontSize: Sizes.Regular }}>Edit</span>

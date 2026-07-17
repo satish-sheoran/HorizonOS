@@ -1,5 +1,5 @@
 export const OS_NAME = 'Horizon OS';
-export const OS_VERSION = '1.0.10.0 HRZNNV';
+export const OS_VERSION = '1.1.0 HRZN Motion';
 
 export const SECTIONS = [
     // About Us
@@ -496,14 +496,14 @@ export const SETTINGS_FACTORY_RESET_OPTIONS = [
 export const AnimationSpeedAndType = [
     {
         Name: 'Normal',
-        Speed: '300ms',
+        Speed: '400ms',
         icon: 'Gauge',
         RefreshRate: '60 Hz',
         Description: 'Smooth and fluid for the best experience.'
     },
     {
         Name: 'Faster',
-        Speed: '150ms',
+        Speed: '200ms',
         icon: 'Rabbit',
         RefreshRate: '90 Hz',
         Description: 'Fast animation for better experinece.'

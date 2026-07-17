@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { CSS_EASING } from '../constants/Settings'
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper"
@@ -11,7 +10,7 @@ import ClockTab from '../components/Clock/ClockTab'
 import Alarms from '../components/Clock/Alarms'
 import WorldClock from '../components/Clock/WorldClock'
 import TimeTools from '../components/Clock/TimeTools'
-import { useEffect, useLayoutEffect, useState } from "react";
+import {  useLayoutEffect, useState } from "react";
 
 const AllTabs = {
     ClockTab,
@@ -33,8 +32,6 @@ const Clock = () => {
     const Theme = useSelector((store) => store.wallpaper.theme.Clock);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Clock)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
-    const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     const [ClockAllTabsWidth, setClockAllTabsWidth] = useState(0)
     const [ClockAllTabsHeight, setClockAllTabsHeight] = useState(0)
@@ -53,9 +50,7 @@ const Clock = () => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                backgroundColor: ThemeColors.bg, 
             }}
             className={`overflow-hidden w-full h-full flex flex-col`}>
             {Device === 'Desktop' || Device === 'Tablet' ? <WindowControls id='clock' Theme={Theme} ThemeColors={ThemeColors} /> : <MobileCntrls id='clock' Theme={Theme} ThemeColors={ThemeColors} />}
@@ -65,9 +60,7 @@ const Clock = () => {
 
                 <section className={`h-full flex flex-col  overflow-hidden`}>
                     <div style={{
-                        paddingLeft: !fullScreen ? '' : `${Math.floor(ClockAllTabsWidth)}px`, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        paddingLeft: !fullScreen ? '' : `${Math.floor(ClockAllTabsWidth)}px`, 
                     }} className={`absolute inset-0  overflow-hidden`}>
 
                         {Clock_Options.map(({ option, desc, fileName }, idx) => {
@@ -90,17 +83,13 @@ const Clock = () => {
                 <footer id='ClockAllTabs'
                     style={{
                         
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
 
                     }}
                     className={`absolute ${!fullScreen ? 'w-full h-fit bottom-0 left-0 px-[2.5%] pb-[2.5%] items-center' : 'border-r w-fit h-full left-0 top-0'} flex  justify-center bg-transparent`}
                 >
                     <div style={{
-                       borderColor: ThemeColors.third, backgroundColor: !fullScreen ? ThemeColors.header : '', boxShadow: !fullScreen ? '0 1px 8px rgba(0,0,0,0.15)' : '', transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                       borderColor: ThemeColors.third, backgroundColor: !fullScreen ? ThemeColors.header : '', boxShadow: !fullScreen ? '0 1px 8px rgba(0,0,0,0.15)' : '', 
                     }}
                         className={`${Device !== 'Mobile' ? 'w-fit' : 'w-full border'} ${fullScreen ? 'h-fit flex-col' : ''} p-2.5 rounded-2xl flex justify-between items-center  gap-2`}>
 
@@ -117,9 +106,7 @@ const Clock = () => {
                                         backgroundColor: ClockSec.option === option ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr : '',
                                         '--hover': ClockSec.option === option ?
                                             ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
-                                        transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+                                        
                                     }}
                                     className={`HOVER_CLASS px-3 py-2.5 font-semibold rounded-xl flex ${!fullScreen ? 'flex-col justify-center items-center' : 'w-full justify-start items-center'} gap-1  `}>
 

@@ -1,11 +1,12 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { CSS_EASING } from '../../../constants/Settings'
 import { ACCENT_COLORS } from '../../../constants/style'
 import { useDispatch, useSelector } from 'react-redux'
 import { BadgeCheck, Blocks, Check, Fullscreen, Search, Ticket, Tickets, Triangle, X } from 'lucide-react'
-import { setopenTaskManager } from '../../../redux/features/NotesStrorage'
+import { setopenTaskManager, addTask, removeTask } from '../../../redux/features/NotesStrorage'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+
 
 const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
 
@@ -14,16 +15,64 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { fullScreen } = useSelector((store) => store.windowApps?.apps['notes'])
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const Device = useSelector((store) => store.Device.currDevice);
     const isopenTaskManager = useSelector(store => store.Notes.openTaskManager)
+    const CurrentEditingTask = useSelector(store => store.Notes.CurrentEditingTask)
+    //fn
+    const GetTimeNDate = () => {
+        let date = new Date();
+        // date
+        let dateCreate = date.toDateString()
+        //Time 
+        let TimeArray = date.toLocaleTimeString().split(':');
+        let hr = TimeArray[0] > 12 ? TimeArray[0] - 12 === 0 ? 12 : TimeArray[0] - 12 : TimeArray[0]
+        let min = TimeArray[1];
+        let AMPM = TimeArray[0] > 12 ? 'PM' : 'AM'
+        return { TimeStamp: Date.now(), Time: `${hr} : ${min} ${AMPM}`, Date: dateCreate, }
+    }
+
+    const UsedispatchTask = () => {
+        Object.keys(CurrentEditingTask).length !== 0 ?
+            dispatch(addTask({
+                id: CurrentEditingTask.id,
+                NewTask: Task,
+                Time: CreationDateNTime.Time,
+                Date: CreationDateNTime.Date,
+                TimeStamp: CreationDateNTime.TimeStamp,
+                Category: 'Personal'
+            }))
+            :
+            dispatch(addTask({
+                Task,
+                Time: CreationDateNTime.Time,
+                Date: CreationDateNTime.Date,
+                TimeStamp: CreationDateNTime.TimeStamp,
+                Category: 'Personal'
+            }))
+    }
 
     //states
     const [Task, setTask] = useState('')
+    const [CreationDateNTime, setCreationDateNTime] = useState(() => GetTimeNDate())
 
     //refs
     const TaskRef = useRef(null)
+
+    useEffect(() => {
+        if (Object.keys(CurrentEditingTask).length !== 0) {
+            setCreationDateNTime(() => {
+                return { Time: CurrentEditingTask.Time, Date: CurrentEditingTask.Date, TimeStamp: CurrentEditingTask.TimeStamp }
+            });
+            setTask(CurrentEditingTask?.Task)
+            return;
+        }
+        setCreationDateNTime(() => GetTimeNDate())
+        setTask('')
+        return;
+
+    }, [isopenTaskManager])
+
 
     // auto increasing height of title and desc textarea based on content height
     const handleSize = (el) => {
@@ -44,21 +93,6 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
             ease: Animation ?? 'back.out(1.7)'
         })
 
-        // gsap.fromTo(
-        //     TaskRef.current,
-        //     {
-        //         scale: 0.8,
-        //         opacity: 0,
-        //         y: 40,
-        //     },
-        //     {
-        //         scale: 1,
-        //         opacity: 1,
-        //         y: 0,
-        //         duration: Speed,
-        //         ease: Animation ?? "back.out(1.7)"
-        //     }
-        // )
 
     }, [isopenTaskManager])
 
@@ -66,99 +100,64 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
         <div className={`${isopenTaskManager ? 'block' : 'hidden'}  absolute top-0 left-0 inset-0  `}>
 
             <div
-                onClick={() => dispatch(setopenTaskManager({ shouldOpen: false }))}
-                style={{ backgroundColor: Theme !== 'dark' ? 'bg-[rgba(0,0,0,0.35)]' : 'bg-[rgba(255,255,255,0.35)]' }}
+                onClick={() => {
+                    if (Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()) dispatch(removeTask({ Taskid: CurrentEditingTask.id }))
+                    UsedispatchTask()
+                    dispatch(setopenTaskManager({ shouldOpen: false }))
+                    setTask('')
+                }}
+                style={{ backgroundColor: Theme !== 'dark' ? 'bg-[rgba(0,0,0,0.35)]' : 'bg-[rgba(255,255,255,0.35)]', }}
                 className='w-full h-full relative flex items-end jusitfy-center overflow-hidden  backdrop-blur-[1.5px] '>
 
                 <div
                     ref={TaskRef}
                     onClick={(e) => e.stopPropagation()} style={{
-                        backgroundColor: ThemeColors.header, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        backgroundColor: ThemeColors.header,
                     }} className={`absolute  flex flex-col gap-2 items-center w-[calc(100%-60px)]
-        max-w-225 py-2 px-2 overflow-hidden max-h-3/4 rounded-2xl  bottom-3.5 left-1/2 -translate-x-1/2`}>
+        max-w-180 py-2 px-2 overflow-hidden max-h-3/4 rounded-2xl  bottom-3.5 left-1/2 -translate-x-1/2`}>
 
                     <header className={`py-2 flex w-full justify-between items-center rounded-2xl ${Device !== 'Desktop' ? 'px-[4%]' : 'px-[4.5%]'}`}>
-                        <h3
-                            onClick={() => dispatch(setopenTaskManager({ shouldOpen: false }))}
+                        <button
+                            disabled={Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()}
+                            onClick={() => {
+                                dispatch(setopenTaskManager({ shouldOpen: false }))
+                                if (!Task.trim()) return;
+
+                                UsedispatchTask()
+                                setTask('')
+                            }}
                             style={{
-                                color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE,
+                                color: (Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()) ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').Hover_Clr : ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE,
                                 '--hover': ThemeColors.bg,
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+
                             }}
                             className={`HOVER_CLASS border rounded-full p-0.5 ${Device === 'Mobile' ? 'active:scale-105' : 'hover:scale-105'}`}>
                             <X />
-                        </h3>
-                        <h3
-                            onClick={() => dispatch(setopenTaskManager({ shouldOpen: false }))}
+                        </button>
+                        <button
+                            disabled={Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()}
+                            onClick={() => {
+                                dispatch(setopenTaskManager({ shouldOpen: false }))
+                                if (!Task.trim()) return
+                                UsedispatchTask()
+                                setTask('')
+                            }}
                             style={{
-                                color: ThemeColors.primaryText,
+                                color: (Object.keys(CurrentEditingTask).length !== 0 && !Task.trim()) ? ThemeColors.secText : ThemeColors.primaryText,
                                 fontFamily: Weights.SemiBold,
                                 fontSize: Sizes.Regular,
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+
                             }}
-                            className={`HOVER_CLASS flex items-center gap-1.5 ${Device === 'Mobile' ? 'active:scale-105' : 'hover:scale-105'}`}>
+                            className={`select-none HOVER_CLASS flex items-center gap-1.5 ${Device === 'Mobile' ? 'active:scale-105' : 'hover:scale-105'}`}>
                             <BadgeCheck strokeWidth={2} />
                             <span>Save</span>
-                        </h3>
+                        </button>
                     </header>
 
                     {/* hr */}
-
                     <hr
                         style={{
-                            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
-                        }}
-                        className={` w-9/10 mx-auto`} />
-
-
-                    {/* cateogry selection */}
-                    <section className={`py-2 flex items-center justify-start rounded-2xl w-full ${Device !== 'Desktop' ? 'px-[4%]' : 'px-[4.5%]'}`}>
-                        <p style={{
-                            color: ThemeColors.primaryText,
-                            fontFamily: Weights.SemiBold,
-                            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
-                        }}
-
-                            className={`flex items-center gap-1.5 w-1/2`}>
-                            <Blocks size={22} />
-                            <span>Category</span>
-                        </p>
-                        <p style={{
-                            color: ThemeColors.primaryText,
-                            fontFamily: Weights.SemiBold,
-                            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
-                        }}
-
-                            className={`flex items-center gap-2 w-1/2`}>
-                            <span>Personal</span>
-                            <Triangle style={{
-                                color: ThemeColors.secText, transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
-                            }} className='rotate-180 ' size={12} fill={ThemeColors.secText} />
-                        </p>
-                    </section>
-
-                    {/* hr */}
-                    <hr
-                        style={{
-                            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            borderColor: ThemeColors.third,
                         }}
                         className={`w-9/10 mx-auto`} />
 
@@ -173,9 +172,7 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                                 backgroundColor: ThemeColors.header,
                                 fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.76}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                                 '--placeholder': ThemeColors.thirdText,
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+
                             }}
                             className={`rounded-2xl shrink-0 focus:border p-2 font-semibold w-full h-fit  resize-none  outline-none 
                     `}
@@ -184,12 +181,12 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                             onInput={(e) => handleSize(e.target)}
                         ></textarea>
                     </div>
+
                     {/* hr */}
+
                     <hr
                         style={{
-                            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            borderColor: ThemeColors.third,
                         }}
                         className={` w-9/10 mx-auto`} />
 
@@ -199,18 +196,13 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
                             color: ThemeColors.primaryText,
                             fontFamily: Weights.SemiBold,
                             fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
-                        }}>Created : Today , 4:01 PM</p>
-                        <p style={{
-                            color: ThemeColors.primaryText,
-                            fontFamily: Weights.SemiBold,
-                            fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
-                        }}>Updated : Just Now</p>
+
+                        }} className='flex gap-0.5'>
+                            <span>
+                                Created :
+                            </span>
+                            <span>{`${CreationDateNTime.Date}, ${CreationDateNTime.Time}`}</span>
+                        </p>
                     </div>
                 </div>
             </div>

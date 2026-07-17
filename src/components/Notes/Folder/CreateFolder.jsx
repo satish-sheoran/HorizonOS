@@ -10,7 +10,6 @@ const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch()
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const [opencreateFolderPopUp, setOpencreateFolderPopUp] = useState(false)
     const isNotesOpen = useSelector((store) => store.windowApps.apps['notes'].isOpen);
@@ -35,9 +34,7 @@ const CreateFolder = ({ Theme, AccentColors, ThemeColors }) => {
                     background: ThemeColors.third,
                     '--hover': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : ThemeColors.grayish,
-                    transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    
                 }}
                 className={`HOVER_CLASS create-folder`}>
                 <p className='plus-icon-div'>

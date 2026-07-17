@@ -10,7 +10,6 @@ const Categories = ({ Theme, ThemeColors, AccentColors }) => {
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const activeCategory = useSelector((store) => store.Notes.activeCategory)
     const categories = useSelector(store => store.Notes.allCategories) // all categories for notes app
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
@@ -26,9 +25,7 @@ const Categories = ({ Theme, ThemeColors, AccentColors }) => {
                             color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.thirdText,
                             '--hover': ThemeColors.third,
                             '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }}
                         className={`${activeCategory === category ? '' : 'HOVER_CLASS'} select-none shrink-0 h-fit   px-3.5 py-1 rounded-lg  active:scale-95
                                 ${activeCategory === category ? ' font-bold' : 'font-semibold'}

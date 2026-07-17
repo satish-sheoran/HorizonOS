@@ -23,9 +23,7 @@ const ToggleButton = ({ Device, Theme, action, performAction, isActionActive, Th
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray
-                , transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                , 
             }}
             className={`HOVER_CLASS active:scale-97 border  select-none  font-semibold rounded-2xl flex items-center justify-between 
                 ${Device !== 'Desktop' ? `px-3 py-2.5` : `px-2.5 py-2`}
@@ -37,16 +35,12 @@ const ToggleButton = ({ Device, Theme, action, performAction, isActionActive, Th
                     backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue
                         :
                         ThemeColors.bg,
-                    transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    
                 }}
                 className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full `}>
 
                 <div style={{
-                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation],
+                    backgroundColor: COMMON_COLORS.White,
                     transition : `transform ${Speed} ${CSS_EASING[Animation]}`,
                     transform : `${isActionActive?'translateX(1.5rem)':'translateX(0)'}`
                 }} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full 

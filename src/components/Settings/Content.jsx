@@ -20,7 +20,6 @@ const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors
 
     const dispatch = useDispatch()
     const activePanel = useSelector((store) => store.Settings.activePanel)
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     const setShowContentFalse = () => setShowContent(false)
@@ -28,9 +27,7 @@ const Content = ({ currDevice, activeSection, setShowContent, Theme, ThemeColors
 
     return (
         <section style={{
-            transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            
         }} className={`relative h-full  flex flex-col ${(currDevice === 'Desktop' || currDevice === 'Tablet') ? 'grow' : 'w-full'}`}>
 
 

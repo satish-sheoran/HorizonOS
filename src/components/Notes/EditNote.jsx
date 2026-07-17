@@ -17,7 +17,6 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { open, NoteId } = useSelector((store) => store.Notes.EditNoteOpen)
     const Notes = useSelector(store => store.Notes.Notes);
@@ -103,24 +102,18 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
 
     return (
         <div ref={EditTaskContainer} style={{
-            backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            backgroundColor: ThemeColors.bg, 
         }} className={`edit-task-container absolute flex w-full h-full left-0 top-0 flex-col gap-2.5 pt-2 pb-4  overflow-hidden `}>
 
             {/* nav icons */}
             <div style={{
-                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                color: ThemeColors.primaryText, 
             }} className={`edit-tasks-controls flex items-center justify-between ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 {/* arrow icon and cateogry */}
                 <div className={`flex gap-4 items-center`}>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} className='active:scale-93' onPointerUp={() => {
                         setCatOpen(false)
                         dispatch(manageEditNote({ open: false }))
@@ -137,18 +130,14 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
                             if (!isSetCatOpen) setCatOpen(true);
                         }}
                         style={{
-                            backgroundColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            backgroundColor: ThemeColors.third, 
                         }}
                         className={`cursor-pointer select-none relative px-3.5 py-1  rounded-xl flex items-center gap-2  
                         `}>
                         <FolderClosed size={20} />
                         <div
                             style={{
-                               fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+                               fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                             }}
                             className={`select-none flex gap-2 font-semibold `}>{currCategory}</div>
 
@@ -166,9 +155,7 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
                                      fontSize : Sizes.Small ,   fontFamily: Weights.SemiBold,
                                         color: currCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
                                         backgroundColor: currCategory === category ? AccentColors.CODE : ThemeColors.header,
-                                        transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+                                        
                                     }}
                                     className={`font-semibold  flex justify-between items-center  px-4 py-1.5  `}>
                                     {category} <Check size={20} className={`${category === currCategory ? '' : 'hidden'}`} />
@@ -181,28 +168,20 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
 
                 {/* other its nav icons */}
                 <div style={{
-                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.primaryText, 
                 }} className={` flex items-center gap-3 `}>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Undo2 size={27} />
                     </button>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} className='active:scale-93 ' onPointerUp={() => toast.info('Functionality will be added soon')}>
                         <Redo2 size={27} />
                     </button>
                     <button style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} className='active:scale-93 ' onPointerUp={() => {
                         setCatOpen(false)
                         dispatch(manageEditNote({ open: false }))
@@ -219,9 +198,7 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
 
             {/* textarea inputs */}
             <div style={{
-                transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                
             }} className={`edit-task-desc-parent flex flex-col gap-2 pl-3 min-h-0 grow rounded-lg overflow-y-auto  ${Device !== 'Desktop' ? 'px-(--padding-lg)' : 'px-(--padding-xl)'}`}>
 
                 <textarea spellCheck={false}
@@ -231,9 +208,7 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
                     style={{
                       fontSize : Sizes.Regular,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                         '--placeholder': ThemeColors.thirdText,
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }}
                     className={` newTask-title rounded-lg shrink-0 p-1 font-semibold  h-fit resize-none  outline-none  
                     `}
@@ -243,9 +218,7 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
                 ></textarea>
 
                 <div style={{
-                   fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                   fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
                 }} className=" shrink-0 date-charCount flex gap-3 ">
                     <span>{formattedDate} {formattedTime}</span>
                     |
@@ -260,9 +233,7 @@ const EditNote = ({ Theme, ThemeColors, AccentColors }) => {
                     style={{
                        fontSize : Sizes.Regular, fontFamily: Weights.Regular, color: ThemeColors.secText,
                         '--placeholder': ThemeColors.thirdText,
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }}
                     className={` newTask-desc rounded-lg  shrink-0 grow h-fit p-1 resize-none outline-none `}
                     placeholder='Start typing'

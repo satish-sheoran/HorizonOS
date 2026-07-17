@@ -20,7 +20,6 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
   const Theme = useSelector((store) => store.wallpaper.theme.Clock);
   const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Clock)
   const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
   const [WallpaperTheme, setWallpaperTheme] = useState('')
@@ -54,9 +53,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
   return (
     <section style={{
       paddingBottom: `${Math.floor(ClockAllTabsHeight) * 1.1}px`,
-      transitionProperty: 'color, background-color, border-color, font-size',
-      transitionDuration: Speed,
-      transitionTimingFunction: CSS_EASING[Animation]
+      
     }}
       className={`overflow-cloclTab w-full h-full grow px-[2.5%] ${Device === 'Mobile' ? 'pt-[4%]' : 'pt-[1.5%]'} overflow-y-auto  overflow-x-hidden flex flex-col gap-2`}>
 
@@ -65,14 +62,10 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
         {/* Title and desc */}
         <div className='flex flex-col gap-0.5'>
           <span style={{
-            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.3}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 
           }} className={` font-semibold  ${Device !== 'Desktop' ? `px-3` : `px-2.5`}`}>Clock </span>
           <span style={{
-            fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
           }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
             Manage your time effectively.
           </span>
@@ -81,16 +74,12 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
 
         {/* body */}
         <div style={{
-          transitionProperty: 'color, background-color, border-color, font-size',
-          transitionDuration: Speed,
-          transitionTimingFunction: CSS_EASING[Animation]
+          
         }} className={` ${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? 'flex flex-col' : 'grid grid-cols-2 '} gap-5 rounded-2xl items-center select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
           {/* clock */}
           <div style={{
-            backgroundColor: ThemeColors.header, borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            backgroundColor: ThemeColors.header, borderColor: DeviceTheme !== 'dark' ? ThemeColors.third : ThemeColors.sec, 
           }} className={`${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? '' : 'h-full'} border flex items-center justify-center py-5 rounded-2xl w-full `}>
             <div
               style={{
@@ -100,9 +89,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
                 backgroundRepeat: 'no-repeat',
                 borderColor: ThemeColors.sec,
                 boxShadow: DeviceTheme !== 'dark' ? '0 1px 12px rgba(0,0,0,0.15), 0 0 5px rgba(0,0,0,0.5)' : '0 1px 12px rgba(255,255,255,0.15) , 0 0 5px rgba(255,255,255,0.5)',
-                transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                
 
               }}
               className={`shrink-0 relative border-2 ${Device !== 'Desktop' ? 'w-55 h-55' : 'w-40 h-40'} rounded-full flex items-center justify-center`}>
@@ -112,9 +99,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
                   style={{
                     transform: `rotate(${30 * val}deg)`,
                     textAlign: 'center',
-                    transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    
                   }}
                   className={` absolute inset-1`}>
                   <span style={{
@@ -123,32 +108,24 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
                     fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.9}rem`,
                     display: 'inline-block',
                     transform: `rotate(${-30 * val}deg)`,
-                    transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    
                   }} className={``}>{val}</span>
                 </p>
               })}
 
               <p style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                backgroundColor: ThemeColors.bg, 
               }} className={`absolute ${Device !== 'Desktop' ? 'p-2' : 'p-1.5'} rounded-full z-2`}></p>
               <div className='hourHand absolute flex justify-center items-end'>
                 <p style={{
-                  borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                  transitionDuration: Speed,
-                  transitionTimingFunction: CSS_EASING[Animation]
+                  borderColor: ThemeColors.bg, 
                 }}
                   className={`absolute border rounded-full ${Device !== 'Desktop' ? 'h-10' : 'h-7.5'} w-0.5 bg-transparent`}></p>
               </div>
 
               <div className='minHand absolute flex justify-center items-end'>
                 <p style={{
-                  borderColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                  transitionDuration: Speed,
-                  transitionTimingFunction: CSS_EASING[Animation]
+                  borderColor: ThemeColors.bg, 
                 }}
                   className={`border bg-transparent absolute rounded-full w-1 ${Device !== 'Desktop' ? 'h-13.75' : 'h-11.25'} `}></p>
               </div>
@@ -181,31 +158,23 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
                     '--active': Theme !== 'dark' ?
                       Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                       :
-                      COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                      COMMON_COLORS.Gray, 
                   }}
                   className={`w-full HOVER_CLASS border active:scale-95 rounded-2xl  flex gap-2 justify-between items-center 
               ${Device !== 'Desktop' ? `p-3` : `p-2.5`} ${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? '' : 'h-full'}`}>
 
                   <div className={`w-full ${(Device === 'Mobile' || (Device === 'Tablet' && !fullScreen)) ? '' : 'flex-col items-center'} flex gap-3`}>
                     <div style={{
-                      backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).Bg_Clr, color: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).COLOR, transitionProperty: 'color, background-color, border-color, font-size',
-                      transitionDuration: Speed,
-                      transitionTimingFunction: CSS_EASING[Animation]
+                      backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).Bg_Clr, color: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).COLOR,
                     }} className={`p-2 w-fit rounded-full  flex items-center justify-center`}>
                       {ICON && <ICON strokeWidth={2} />}
                     </div>
                     <div className={`flex flex-col gap-0.5 text-left`}>
                       <span style={{
-                        color: ThemeColors.primaryText,fontSize: `${(Sizes.Small.slice(0, -3)) * 1.1}rem`, fontFamily: Weights.Bold, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        color: ThemeColors.primaryText,fontSize: `${(Sizes.Small.slice(0, -3)) * 1.1}rem`, fontFamily: Weights.Bold, 
                       }}>{name}</span>
                       <p style={{
-                        fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.2}rem`, fontFamily: Weights.Regular, 
                       }} className='flex gap-1 items-center'>
                         <span style={{color: ACCENT_COLORS.find(({ COLOR }) => COLOR === clr).CODE }}>{active}</span>
                         <span style={{color: ThemeColors.thirdText }}>{extra}</span>
@@ -214,9 +183,7 @@ const ClockTab = ({ ClockAllTabsWidth, ClockAllTabsHeight, Name, Description }) 
                   </div>
 
                   {!fullScreen && Device !== 'Desktop' && <div style={{
-                    color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: ThemeColors.thirdText, 
                   }}>
                     <ChevronRight />
                   </div>}

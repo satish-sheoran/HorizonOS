@@ -15,7 +15,6 @@ const WindowWrapper = (Component, windowKey) => {
         const ref = useRef(null);
         const draggableref = useRef(null);
         const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-        const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
 
         /*  animation */
         useGSAP(() => {
@@ -77,9 +76,7 @@ const WindowWrapper = (Component, windowKey) => {
 
         return <section ref={ref}
             style={{
-                borderColor: COMMON_COLORS.LightWhite, zIndex, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                borderColor: COMMON_COLORS.LightWhite, zIndex, 
             }}
             className={`${fullScreen ? `${windowKey}-full` : windowKey} 
  ${(Device === 'Desktop' || Device === 'Tablet') ? `border-[1.5px] ${fullScreen ? '' : 'rounded-3xl'} ` : ''}  

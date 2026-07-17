@@ -16,6 +16,7 @@ export const FactoryReset = () => {
     localStorage.removeItem('Categories')
     localStorage.removeItem('storedSettings')
     localStorage.removeItem('Calculation')
+    localStorage.removeItem('Tasks')
 }
 
 export const useDispatchResetAll = () => {

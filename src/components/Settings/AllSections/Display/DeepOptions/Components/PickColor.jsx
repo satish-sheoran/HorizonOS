@@ -10,33 +10,24 @@ const PickColor = ({ Theme, Device, fullScreen, ThemeColors, AccentColors }) => 
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
 
     return (
         <div style={{
             borderColor: ThemeColors.bg,
-            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            color: ThemeColors.primaryText, 
         }} className={` border ${Device !== 'Desktop' ? `p-3` : `p-2.5`} rounded-2xl  flex justify-between items-center`}>
             <div className={`flex gap-3 items-center`}>
                 <Palette size={30} style={{
-                    color: AccentColors.CODE, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    color: AccentColors.CODE, 
                 }} strokeWidth={2.5} />
                 <p className='flex flex-col gap-0.5 max-w-[70%]'>
                     <span style={{
-                       fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                       fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 
                     }} className={`font-semibold `}>Custom Colour</span>
                     <span style={{
-                      fontSize : Sizes.ExtraSmall,  fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                      fontSize : Sizes.ExtraSmall,  fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
                     }} >Pick a custom colour that reflects your style.</span>
                 </p>
             </div>
@@ -47,9 +38,7 @@ const PickColor = ({ Theme, Device, fullScreen, ThemeColors, AccentColors }) => 
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                    COMMON_COLORS.Gray, 
             }} className={`HOVER_CLASS p-2 cursor-pointer rounded-xl border-2 `}>
                 <Pen size={22} strokeWidth={2} />
             </div>

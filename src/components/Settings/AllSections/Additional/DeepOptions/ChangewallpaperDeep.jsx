@@ -14,7 +14,6 @@ const ChangewallpaperDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeCo
     const [currentPreview, setNewPreview] = useState('')
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const activeWallpaper = useSelector(store => store.wallpaper.src)
 
@@ -28,9 +27,7 @@ const ChangewallpaperDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeCo
 
     return (
         <section style={{
-            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            borderColor: ThemeColors.third, 
         }} className={`deep-changeWallpaper-option flex flex-col py-[2.5%] gap-2 select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
 
             {

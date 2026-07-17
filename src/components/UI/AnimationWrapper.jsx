@@ -9,7 +9,6 @@ const AnimationWrapper = ({ children, activePanel, Section, fullScreen, Device, 
 
     const Animref = useRef(null)
     const Queries = SECTIONS.find(({ Section: Sec }) => Sec === Section).Queries;
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
 
@@ -26,9 +25,7 @@ const AnimationWrapper = ({ children, activePanel, Section, fullScreen, Device, 
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                backgroundColor: ThemeColors.bg,
             }}
             className={`${activePanel !== '' ? '' : 'hidden'}  overflow-hidden absolute flex inset-0 `} ref={Animref}>
 

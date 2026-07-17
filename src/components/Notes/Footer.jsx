@@ -1,6 +1,6 @@
 import { Check, FolderInput, Lock, PinOff, TextAlignStart, Trash, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab, setStartDeletingNotes } from "../../redux/features/NotesStrorage";
+import { setActiveTab, setStartDeletingNotes, setstartDeletingTasks } from "../../redux/features/NotesStrorage";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import ConfirmDeletePopUp from './Folder/ConfirmDeletePopUp'
@@ -17,20 +17,20 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const Device = useSelector((store) => store.Device.currDevice);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletedNotes = useSelector(store => store.Notes.deletedNotes);
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false); //used to open delete pop up to delete notes 
-
+    const startDeletingTasks = useSelector(store => store.Notes.startDeletingTasks); //used for tasks deletion
+    const deletedTasks = useSelector(store => store.Notes.deletedTasks) //used for tasks deletion
 
     // animation for entry of cntrls of nots (delete,close editing etc.)
     useGSAP(() => {
         const elems = document.querySelectorAll('.note-cntrl-btns')
         if (!elems) return;
 
-        if (isDeleteNoteOpen) {
+        if (isDeleteNoteOpen || startDeletingTasks) {
             gsap.fromTo(elems, {
                 scale: 0.5
             }, {
@@ -41,17 +41,15 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
         }
 
 
-    }, [isDeleteNoteOpen])
+    }, [isDeleteNoteOpen, startDeletingTasks])
 
     return (
         <footer style={{
-            transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
-        }} className={`${!isDeleteNoteOpen ? 'px-[25%]' : ''} z-20 `}>
-            <div className='pb-1'>
+
+        }} className={`${(!isDeleteNoteOpen && !startDeletingTasks) ? 'px-[25%]' : ''} z-20 `}>
+            <div className={`pb-1 flex ${(!isDeleteNoteOpen && !startDeletingTasks) ? '' : Device !== 'Mobile' ? 'justify-around' : ''} `}>
                 {
-                    isDeleteNoteOpen === false ?
+                    (isDeleteNoteOpen === false && startDeletingTasks === false) ?
                         <>
                             <button
                                 onClick={() => {
@@ -62,9 +60,7 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
                                     style={{
                                         backgroundColor: activeTab === 'Notes' ? ThemeColors.primaryText : ThemeColors.grayish,
                                         '--stroke': ThemeColors.primaryText,
-                                        transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+
                                     }}
                                     className={`  
                         rounded px-[1.2px] 
@@ -72,14 +68,12 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
 
                                 <span
                                     style={{
-                                        fontSize : Sizes.Small ,fontFamily: Weights.SemiBold,
+                                        fontSize: Sizes.Small, fontFamily: Weights.SemiBold,
                                         color: activeTab === 'Notes' ? ThemeColors.primaryText
                                             :
                                             ThemeColors.grayish,
-                                        transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
-                                    }}
+
+                                    }} className="select-none"
                                 >Notes</span>
                             </button>
 
@@ -91,39 +85,32 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
                                 <Check size={22} strokeWidth={2} style={{
                                     backgroundColor: activeTab !== 'Notes' ? ThemeColors.primaryText : ThemeColors.grayish,
                                     '--strokeClr': ThemeColors.primaryText,
-                                    transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
+
                                 }} className={`
                         rounded ${Theme != 'dark' ? 'stroke-(--primary-light-clr)' : 'stroke-(--bg-dark-app-body)'}`} />
                                 <span style={{
-                                  fontSize : Sizes.Small ,  fontFamily: Weights.SemiBold,
+                                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold,
                                     color: activeTab !== 'Notes' ? ThemeColors.primaryText
                                         :
                                         ThemeColors.grayish,
-                                    transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
-                                }} className={`
-                                               
-                        `}>Tasks</span>
+
+                                }} className={`select-none`}>Tasks</span>
                             </button>
                         </>
                         :
                         <>
                             <button style={{
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+
                             }}
                                 className="note-cntrl-btns active:scale-95"
-                                onClick={() => dispatch(setStartDeletingNotes({ start: false }))}
+                                onClick={() => {
+                                    if (startDeletingTasks) dispatch(setstartDeletingTasks({ start: false }))
+                                    dispatch(setStartDeletingNotes({ start: false }))
+                                }}
 
                             >
                                 <X style={{
-                                    transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
+
                                 }} size={22} strokeWidth={2} className={`
                         rounded px-[1.2px]   
                         ${Theme != 'dark' ?
@@ -133,28 +120,22 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
                         `} />
 
                                 <span style={{
-                                  fontSize : Sizes.Small ,  fontFamily: Weights.SemiBold,
-                                    color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
-                                }} className={` 
+                                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold,
+                                    color: ThemeColors.primaryText,
+                                }} className={` select-none
                          `}>Close</span>
 
                             </button>
 
                             <button style={{
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+
                             }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => toast.info('Feature Coming Soon')}
 
                             >
                                 <PinOff style={{
-                                    transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
+
                                 }} size={22} strokeWidth={2} className={`
                                     
                         rounded px-[1.2px]  
@@ -165,26 +146,20 @@ ${Theme != 'dark' ?
                         `} />
 
                                 <span style={{
-                                  fontSize : Sizes.Small , fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
-                                }} >Unpin</span>
+                                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+                                }} className="select-none" >Unpin</span>
 
                             </button>
 
                             <button style={{
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+
                             }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => toast.info('Feature Coming Soon')}
 
                             >
                                 <FolderInput style={{
-                                    transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
+
                                 }} size={22} strokeWidth={2} className={`
                                      
                         rounded px-[1.2px] 
@@ -195,32 +170,33 @@ ${Theme != 'dark' ?
                         `} />
 
                                 <span style={{
-                                   fontSize : Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
-                                }} >Move to</span>
+                                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+                                }} className="select-none">Move to</span>
 
                             </button>
 
                             <button style={{
-                                transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+
                             }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => {
-                                    if (deletedNotes.length === 0) {
-                                        toast.info("Select notes to delete !")
+                                    if (startDeletingTasks) {
+                                        if (deletedTasks.length !== 0) {
+                                            setOpenDeletePopUp(true);
+                                            return;
+                                        }
+                                        toast.info("Select Tasks to delete !")
                                         return;
-                                    } else {
-                                        setOpenDeletePopUp(true);
                                     }
+                                    if (deletedNotes.length !== 0) {
+                                        setOpenDeletePopUp(true);
+                                        return;
+                                    }
+                                    toast.info("Select notes to delete !")
                                 }}
                             >
                                 <Trash style={{
-                                    transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
+
                                 }} size={22} strokeWidth={2} className={`
                         rounded px-[1.2px]   
 ${Theme != 'dark' ?
@@ -229,17 +205,15 @@ ${Theme != 'dark' ?
                                         'stroke-(--primary-light-clr)'}                        `} />
 
                                 <span style={{
-                                  fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                                    transitionDuration: Speed,
-                                    transitionTimingFunction: CSS_EASING[Animation]
-                                }} >Delete</span>
+                                    fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
+                                }} className="select-none">Delete</span>
 
                             </button>
                         </>
                 }
             </div>
 
-            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn='Notes' Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
+            {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn={startDeletingTasks ? 'Tasks' : 'Notes'} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
 
         </footer>
     )

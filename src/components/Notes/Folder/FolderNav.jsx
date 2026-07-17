@@ -13,7 +13,6 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false);
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const startDeletingCat = useSelector((store) => store.Notes.startDeletingCat);
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
@@ -34,9 +33,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
 
     return (
         <div style={{
-            color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            color: ThemeColors.primaryText, 
         }} className={`folder-nav `}>
 
             {/* if start editing then show cancel button to exit editing mode else just show button to go back to tasks area */}
@@ -49,9 +46,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                         style={{
                             fontFamily : Weights.Regular,
                             color: AccentColors.CODE,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }}
                         className={`active:scale-95`}>
                         <span style={{fontSize : Sizes.Regular}}>Cancel</span>
@@ -60,9 +55,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                     <button onClick={() => {
                         dispatch(setOpenManageFolder({ open: false }));
                     }} style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} className='pr-9.5 pb-1  active:scale-95'>
                         <ArrowLeft strokeWidth={2} />
                     </button>
@@ -83,9 +76,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                 }}
                     style={{
                         color: AccentColors.CODE,
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }}
                     className='active:scale-95'>
                     <Trash2 strokeWidth={2} />
@@ -95,9 +86,7 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                     style={{
                         fontFamily : Weights.Regular,
                         color: AccentColors.CODE,
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }}
                     className='active:scale-95'>
                     <span style={{fontSize : Sizes.Regular}}>Edit</span>

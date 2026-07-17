@@ -35,6 +35,31 @@ const getNotes = () => {
     }
 };
 
+const getTasks = () => {
+    try {
+        const stored = JSON.parse(localStorage.getItem('Tasks'));
+        return Array.isArray(stored) ? stored.filter(({ Task }) => Task.trim()) : [
+            {
+                id: "@#$RSP",
+                Category: 'Personal',
+                Time: '12 : 26 AM',
+                Date: 'Sat Jul 18 2026',
+                TimeStamp: 1784314786118
+            }
+        ];
+    } catch {
+        return [
+            {
+                id: "@#$RSP",
+                Category: 'Personal',
+                Time: '12 : 26 AM',
+                Date: 'Sat Jul 18 2026',
+                TimeStamp: 1784314786118
+            }
+        ];
+    }
+}
+
 
 const NotesSlice = createSlice({
     name: 'Notes',
@@ -53,7 +78,11 @@ const NotesSlice = createSlice({
         CreateNoteOpen: false, // it is used to track if create task pop up is open or not
         Notes: getNotes(),// all notes 
         EditNoteOpen: { open: false, NoteId: '' },
-        openTaskManager: false
+        openTaskManager: false,
+        Tasks: getTasks() ?? [],
+        CurrentEditingTask: {},
+        startDeletingTasks: false,
+        deletedTasks: []
     },
     reducers: {
         addNote(state, action) {
@@ -160,12 +189,13 @@ const NotesSlice = createSlice({
             const { start } = action.payload;
             if (typeof start !== "boolean") return;
             state.startDeletingCat = start;
-
+            if (start === false) state.deletedCategories = []
         },
         setStartDeletingNotes(state, action) {
             const { start } = action.payload;
             if (typeof start !== "boolean") return;
             state.startDeletingNotes = start;
+            if (start === false) state.deletedNotes = []
         },
         manageDeletedCategories(state, action) {
             const { category } = action.payload;
@@ -208,6 +238,7 @@ const NotesSlice = createSlice({
             if (!noteId) return;
             if (noteId === 'Empty Trash') { //if app is closed or user exits delete mode without deleting cateogry.
                 state.deletedNotes = [];
+                return;
             }
 
             if (state.deletedNotes.includes(noteId)) {
@@ -246,11 +277,100 @@ const NotesSlice = createSlice({
                 state.CreateNoteOpen = false,
                 state.Notes = getNotes(),
                 state.EditNoteOpen = { open: false, NoteId: '' }
+            state.openTaskManager = false
+            state.Tasks = [],
+                state.CurrentEditingTask = {}
         },
         setopenTaskManager(state, action) {
             const { shouldOpen } = action.payload
             if (typeof shouldOpen !== 'boolean') return
             state.openTaskManager = shouldOpen
+        },
+        addTask(state, action) {
+            if (action.payload.id) {
+                const { NewTask, Time, Date, TimeStamp, Category } = action.payload
+                const idx = state.Tasks.findIndex(({ id }) => id === action.payload.id)
+                if (idx === -1) return
+                state.Tasks[idx] = { ...state.Tasks[idx], Task: NewTask }
+                state.CurrentEditingTask = {}
+                localStorage.setItem('Tasks', JSON.stringify(state.Tasks));
+                return;
+            }
+            const { Task, Time, Date, TimeStamp, Category } = action.payload
+            if (!Task.trim()) return
+            const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
+            let id;
+
+            id = Array.from({ length: 7 }, () =>
+                chars[Math.floor(Math.random() * chars.length)]
+            ).join("");
+
+            let idExists = state.Notes.some((notes) => notes.id === id); //checking if id exists 
+            // ensure unique id 
+            while (idExists) {
+                id = Array.from({ length: 7 }, () =>
+                    chars[Math.floor(Math.random() * chars.length)]
+                ).join("");
+                idExists = state.Notes.some((notes) => notes.id === id); //now check if it exists or not again 
+            }
+
+
+            state.Tasks.push({ id, Task, Time, Date, TimeStamp, Category: 'Personal' })
+            localStorage.setItem('Tasks', JSON.stringify(state.Tasks));
+
+        },
+        changeTaskCategory(state, action) {
+            const { Taskid, TaskCategory } = action.payload
+
+            const idx = state.Tasks.findIndex(({ id, Category }) => id === Taskid && Category !== TaskCategory)
+            if (idx === -1) return;
+            state.Tasks[idx] = { ...state.Tasks[idx], Category: TaskCategory }
+            localStorage.setItem('Tasks', JSON.stringify(state.Tasks));
+        },
+        setCurrentEditingTask(state, action) {
+            const { EditTask } = action.payload;
+            const isTaskPresent = state.Tasks.find(({ Category, id }) => EditTask.Category === Category && id === EditTask.id)
+            if (!isTaskPresent) return;
+            state.CurrentEditingTask = EditTask;
+        },
+        removeTask(state, action) {
+            const { Taskid } = action.payload
+            if (!Taskid) return;
+            state.Tasks = state.Tasks.filter(({ id }) => id !== Taskid)
+            state.CurrentEditingTask = {}
+            localStorage.setItem('Tasks', JSON.stringify(state.Tasks))
+        },
+        deleteTasks(state, action) {
+            const { Id } = action.payload;
+            if (!Id) return;
+
+            if (Array.isArray(Id)) {
+                state.Tasks = state.Tasks.filter(({ id }) => !Id.includes(id));  //filtering Tasks which are present in Ids
+
+            } else {
+                state.Task = state.Tasks.filter(({ id }) => id !== Id); //remove single Task which is passed id
+
+            }
+            state.deletedTasks = []; // after deleting  empty the deletedTasks array to remove the deleted Tasks from the array as now they are deleted
+
+            //saving updated categories and notes to local storage
+            localStorage.setItem('Tasks', JSON.stringify(state.Tasks))
+        },
+        setstartDeletingTasks(state, action) {
+            const { start } = action.payload
+            if (typeof start !== 'boolean') return;
+            state.startDeletingTasks = start
+            if (start === false) state.deletedTasks = []
+        },
+        addTaskTodeletedTasksArray(state, action) {
+            const { Taskid } = action.payload;
+            if (Taskid === 'Empty Trash') { //if app is closed or user exits delete mode without deleting cateogry.
+                state.deletedTasks = [];
+                return;
+            }
+            const Task = state.Tasks.find(({ id }) => id === Taskid)
+            if (!Task) return;
+            state.deletedTasks.includes(Taskid) ? state.deletedTasks = state.deletedTasks.filter((val) => val !== Taskid) : state.deletedTasks.push(Taskid)
         }
     }
 })
@@ -271,6 +391,13 @@ export const {
     manageDeletedNotes,
     removeNotes,
     ResetNotesApp,
-    setopenTaskManager
+    addTask,
+    setopenTaskManager,
+    removeTask,
+    changeTaskCategory,
+    setCurrentEditingTask,
+    deleteTasks,
+    setstartDeletingTasks,
+    addTaskTodeletedTasksArray
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

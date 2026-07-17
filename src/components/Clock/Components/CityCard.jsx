@@ -15,7 +15,6 @@ const CityCard = () => {
     const Theme = useSelector((store) => store.wallpaper.theme.Clock);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Clock)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
@@ -28,9 +27,7 @@ const CityCard = () => {
                     '--active': Theme !== 'dark' ?
                         Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                         :
-                        COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                        COMMON_COLORS.Gray, 
                 }}
                 className={`HOVER_CLASS flex justify-between items-center w-full ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
                 {/* img and location */}
@@ -38,38 +35,28 @@ const CityCard = () => {
                     <img className={`rounded-full w-10 h-10  object-cover object-center`} src="/HorizonOS.svg" alt="" />
                     <div className={`flex flex-col gap-0.5`}>
                         <span style={{
-                            color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, 
                         }}
                             className={`select-none`}
                         >New York</span>
                         <span style={{
-                            color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`, fontFamily: Weights.Regular, 
                         }} className={`select-none`}>USA</span>
                     </div>
                 </div>
                 {/* Time */}
                 <div className='flex flex-col gap-0.5'>
                     <p style={{
-                        color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        color: ThemeColors.primaryText, fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.95}rem`, fontFamily: Weights.SemiBold, 
                     }} className={`select-none`}>10:30 AM</p>
                     <p style={{
-                        color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`, fontFamily: Weights.Regular, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        color: ThemeColors.thirdText, fontSize: `${(Sizes.Small.slice(0, -3)) * 0.9}rem`, fontFamily: Weights.Regular, 
                     }} className={`select-none`}>Today , - 4:30</p>
                 </div>
             </div>
             <hr
                 style={{
-                    borderColor: ThemeColors.sec, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    borderColor: ThemeColors.sec, 
                 }}
                 className={`w-8/10 mx-auto`} />
         </>

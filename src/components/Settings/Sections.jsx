@@ -12,15 +12,12 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const Device = useSelector(store => store.Device.currDevice)
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
 
     return (
         <section style={{
-            borderColor: ThemeColors.third, transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            borderColor: ThemeColors.third, 
         }} className={`py-1 overflow-y-auto ${(currDevice === 'Desktop' || currDevice === 'Tablet') ? 'min-w-1/4 border-r' : 'w-full'} h-full  flex flex-col items-center`}>
 
             {SECTIONS?.map(({ Section, Icon }, idx) => {
@@ -42,9 +39,7 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
                                 AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
                             '--active': (currDevice === 'Desktop' || currDevice === 'Tablet') && activeSection === Section ?
                                 AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }}
                         className={`HOVER_CLASS py-2 relative w-full rounded-2xl ${currDevice !== 'Desktop' ? 'px-[4%]' : 'px-[4.5%]'} active:scale-97`}>
                         {/*JUST wrapper used to add scale during active so user feels the click*/}
@@ -53,9 +48,7 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
                         <div className="flex w-full items-center justify-between">
                             <div style={{
                                 fontSize: currDevice ==='Mobile'?Sizes.Regular:Sizes.Small,
-                                fontFamily: Weights.SemiBold, transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+                                fontFamily: Weights.SemiBold, 
                             }} className={`font-semibold flex gap-1.5 items-center `}>
                                 {SectionIcon && <SectionIcon className='shrink-0' />}
                                 {Section}

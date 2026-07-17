@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CSS_EASING } from '../constants/Settings'
 import WindowControls from "../components/WindowControls";
 import MobileCntrls from "../components/MobileCntrl";
 import WindowWrapper from "../hoc/WindowWrapper"
@@ -11,7 +10,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CreateNote from "../components/Notes/CreateNote";
-import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote, setopenTaskManager } from "../redux/features/NotesStrorage";
+import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote, setopenTaskManager, addTaskTodeletedTasksArray, setstartDeletingTasks } from "../redux/features/NotesStrorage";
 import EditNote from "../components/Notes/EditNote";
 import ManageTask from "../components/Notes/TaskComponents/ManageTask";
 
@@ -23,7 +22,6 @@ const Notes = () => {
     const dispatch = useDispatch()
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const currDevice = useSelector((store) => store.Device.currDevice);
     const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Notes)
@@ -40,8 +38,10 @@ const Notes = () => {
                 dispatch(setOpenManageFolder({ open: false }))
                 dispatch(setStartDeletingCat({ start: false }))
                 dispatch(setStartDeletingNotes({ start: false }))
+                dispatch(setstartDeletingTasks({ start: false }))
                 dispatch(manageEditNote({ open: false }))
                 dispatch(setopenTaskManager({ shouldOpen: false }))
+                dispatch(addTaskTodeletedTasksArray({ Taskid: 'Empty Trash' }))
             }
             closeAll();
         }
@@ -62,9 +62,7 @@ const Notes = () => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                backgroundColor: ThemeColors.bg, 
             }}
             className={`w-full h-full flex flex-col `}>
 

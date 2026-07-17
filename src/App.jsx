@@ -10,7 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAutoTheme } from "./utils/AutoSetTheme";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { useEffect, useState } from "react";
-import {setDevice} from './redux/features/DeviceSet'
+import { setDevice } from './redux/features/DeviceSet'
+import { CSS_EASING } from "./constants/Settings";
 gsap.registerPlugin(Draggable, useGSAP)
 gsap.registerPlugin(MotionPathPlugin)
 gsap.registerPlugin(Flip)
@@ -18,11 +19,12 @@ gsap.registerPlugin(Flip)
 const App = () => {
 
   const dispatch = useDispatch()
-
   const Device = useSelector(store => store.Device.currDevice)
- 
   const theme = useSelector(store => store.wallpaper.theme.Settings)
   const ThemeColors = useSelector(store => store.wallpaper.ThemeColors.Settings)
+  const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
+  const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+
 
   const useUpdateDevice = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -40,11 +42,16 @@ const App = () => {
     }, [])
 
     useEffect(() => {
-      dispatch(setDevice({width : width}))
+      dispatch(setDevice({ width: width }))
     }, [width])
 
   }
   useUpdateDevice();
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--Speed',Speed)
+    document.documentElement.style.setProperty('--easing',CSS_EASING[Animation])
+  }, [Speed, Animation])
 
   return (
     <>

@@ -21,50 +21,36 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray,
-                transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                
             }}
             className={`HOVER_CLASS flex justify-between items-center border  active:scale-97 rounded-2xl ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
             <div className={`flex items-end gap-2`}>
                 <div style={{
-                    backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    backgroundColor: ThemeColors.thirdText, color: COMMON_COLORS.White, 
                 }} className={` w-9 h-9 flex items-center justify-center overflow-hidden rounded-xl`}>
                     <img style={{
-                        transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        
                     }} className={` object-cover object-center  ${Title == 'Settings' || Title == 'Clock' ? 'w-7 h-7' : 'w-9 h-9'}`} src={Logo} alt={Title} />
                 </div>
                 <p className={`flex flex-col `}>
                     <span style={{
-                        fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 
                     }} className={` font-semibold`}>{Title}</span>
                     <span style={{
-                        fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, transitionProperty: 'color, background-color, border-color, font-size',
-                        transitionDuration: Speed,
-                        transitionTimingFunction: CSS_EASING[Animation]
+                        fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
                     }} >{Detail}</span>
                 </p>
             </div>
 
             <button
                 style={{
-                    backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation]
+                    backgroundColor: isActionActive ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue : ThemeColors.bg, 
                 }}
                 className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full `}>
 
                 <div style={{
-                    backgroundColor: COMMON_COLORS.White, transitionProperty: 'color, background-color, border-color, font-size',
-                    transitionDuration: Speed,
-                    transitionTimingFunction: CSS_EASING[Animation],
+                    backgroundColor: COMMON_COLORS.White,
                     transition: `transform ${Speed} ${CSS_EASING[Animation]}`,
                     transform: `${isActionActive ? 'translateX(1.5rem)' : 'translateX(0)'}`
                 }} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full `}></div>

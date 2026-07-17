@@ -20,17 +20,13 @@ const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
                 '--active': Theme !== 'dark' ?
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
-                    COMMON_COLORS.Gray, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                    COMMON_COLORS.Gray, 
             }}
             className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
             `}>
             <span> {Option}</span>
             <span style={{
-              fontSize : Sizes.Small, fontFamily : Weights.Regular, color: ThemeColors.grayish, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+              fontSize : Sizes.Small, fontFamily : Weights.Regular, color: ThemeColors.grayish, 
             }}>
                 {Refreshrate}
             </span>

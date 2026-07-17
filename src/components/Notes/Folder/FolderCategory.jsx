@@ -13,7 +13,6 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
     const dispatch = useDispatch();
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const categories = useSelector(store => store.Notes.allCategories) // all categories for notes app
     const activeCategory = useSelector((store) => store.Notes.activeCategory)
@@ -31,9 +30,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
 
     return (
         <div style={{
-            transitionProperty: 'color, background-color, border-color, font-size',
-            transitionDuration: Speed,
-            transitionTimingFunction: CSS_EASING[Animation]
+            
         }} className={`overflow-y-auto rounded-2xl folder-category-list
         ${folderContentWidth >= 768 ?
                 `${folderContentWidth >= 1200 ? 'grid-cols-3' : 'grid-cols-2'}`
@@ -65,9 +62,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.primaryText,
                             '--hover': ThemeColors.header,
                             '--active': ThemeColors.header,
-                            transitionProperty: 'color, background-color, border-color, font-size',
-                            transitionDuration: Speed,
-                            transitionTimingFunction: CSS_EASING[Animation]
+                            
                         }}
                         className={`border px-4 
                             ${activeCategory === category ? 'font-bold' : 'font-semibold HOVER_CLASS'}
@@ -75,9 +70,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             `}>
                         <Check strokeWidth={2.5}
                             style={{
-                                color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent', transitionProperty: 'color, background-color, border-color, font-size',
-                                transitionDuration: Speed,
-                                transitionTimingFunction: CSS_EASING[Animation]
+                                color: activeCategory === category ? COMMON_COLORS.Yellow : 'transparent', 
                             }}
                             className={`select-none `} /> {/* on hidden,it do not reserve space so used text-transparent */}
 
@@ -89,9 +82,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             startDeletingCat === true && category !== 'All' && category !== 'Uncategorized' ?
                                 <span
                                     style={{
-                                        backgroundColor: deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg, transitionProperty: 'color, background-color, border-color, font-size',
-                                        transitionDuration: Speed,
-                                        transitionTimingFunction: CSS_EASING[Animation]
+                                        backgroundColor: deletedCategories?.includes(category) ? COMMON_COLORS.Orange : ThemeColors.bg, 
                                     }}
                                     className={` rounded-full w-5.5 h-5.5 flex items-center justify-center
                                 `}>

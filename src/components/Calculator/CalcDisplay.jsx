@@ -6,7 +6,6 @@ const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, A
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
-    const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
@@ -41,9 +40,7 @@ const CalcDisplay = ({ inputRef, result, calcBtnClck, currDevice, ThemeColors, A
             style={{
                 fontSize: result.length <= 25 ? Sizes.ExtraLarge : Sizes.Large,
                 fontFamily: Weights.SemiBold,
-                color: ThemeColors.primaryText, transitionProperty: 'color, background-color, border-color, font-size',
-                transitionDuration: Speed,
-                transitionTimingFunction: CSS_EASING[Animation]
+                color: ThemeColors.primaryText, 
             }}
         >
         </textarea >
