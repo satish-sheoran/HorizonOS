@@ -17,21 +17,30 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Speed } = useSelector(store => store.wallpaper.AnimationTypeNSpeed) //animation speed
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-    const taskAnimRef = useRef(null);
-    const isFirstRun = useRef(true);
-    const { activeTab, Tasks } = useSelector(store => store.Notes) // notes tab Or task tab for notes app
+    const { activeTab } = useSelector(store => store.Notes) // notes tab Or task tab for notes app
+    const personalTasks = useSelector(store => store.Notes.Tasks?.filter(({ Category }) => Category === 'Personal'))
+    const CompletedTasks = useSelector(store => store.Notes.Tasks?.filter(({ Category }) => Category === 'Completed'))
     const startDeletingTasks = useSelector(store => store.Notes.startDeletingTasks);
     const deletedTasks = useSelector(store => store.Notes.deletedTasks)
 
     // state
     const [showCompletedTasks, setshowCompletedTasks] = useState(true) //used to expand the tasks to show to user
+    const [ChangedCatTaskId, setChangedCatTaskId] = useState('')
+
 
     //  refs
-    const CompletedRef = useRef(null) //used to appy property to expand/close Tasks showcase
+    const isFirstRun = useRef(true);
+    const taskAnimRef = useRef(null);
+    const CompletedRef = useRef(null) //used to apply property to expand/close Tasks showcase
+    const ChangedCatTask = useRef(null) //used to animate line-through the task just completed
+
 
     const { Handlers, isLongPress } = useLongPress(() => {
         if (!startDeletingTasks) dispatch(setstartDeletingTasks({ start: true }));
     }) //custom hook to trigger if user did long press
+
+
+    //  useEffect,useGSAP OR useLayouteffects 
 
     // animation for opening/closing of Tasks
     useLayoutEffect(() => {
@@ -41,9 +50,10 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
             scaleY: showCompletedTasks ? 1 : 0,
             transformOrigin: 'top center',
             duration: 0.25,
-            ease: Animation ?? 'back.out'
+            ease: Animation ?? 'back.out(3)'
         })
     }, [showCompletedTasks])
+
 
     useGSAP(() => {
         if (!taskAnimRef.current) return;
@@ -61,15 +71,42 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
             });
         }
 
+        // for appearing tasks with an animation
+        if (activeTab !== 'Notes') {
+            const elems = document.querySelectorAll('.Individualtask');
+            elems.forEach(task => {
+                gsap.from(task, {
+                    scale: 0,
+                    opacity: 0,
+                    duration: 0.65,
+                    stagger: 0.05,
+                    ease: "back.out(1.7)"
+                });
+            })
+        }
+
     }, [activeTab])
 
+    useLayoutEffect(() => {
+        if (!ChangedCatTask.current) return;
+
+        gsap.from(ChangedCatTask.current, {
+            scaleX: 0,
+            transformOrigin: 'left',
+            ease: Animation ?? 'back.out(3)',
+            duration: 0.35
+        })
+
+        ChangedCatTask.current = null
+        setChangedCatTaskId('')
+    }, [CompletedTasks, personalTasks])
 
     return (
         <section ref={taskAnimRef}
             style={{
                 fontSize: Sizes.Small,
                 fontFamily: Weights.SemiBold,
-                color: ThemeColors.grayish, 
+                color: ThemeColors.grayish,
             }}
             className={`absolute inset-0 select-none flex `}>
 
@@ -81,16 +118,16 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                     <div
                         className={`flex w-fit px-1.5 py-1 gap-2 items-center rounded-xl`}>
                         <Triangle style={{
-                            color: ThemeColors.secText, 
+                            color: ThemeColors.secText,
                         }} className={`rotate-180`} size={12} fill={ThemeColors.primaryText} />
                         <span style={{ color: ThemeColors.primaryText, fontFamily: Weights.Bold, fontSize: `${(Sizes.Small.slice(0, -3)) * 1.1}rem` }}>
                             Personal
                         </span>
                     </div>
                     <div className={`overflow-hidden flex flex-col gap-2`}>
-                        {Tasks.map(({ id, Category, Task, Time, Date, TimeStamp }) => {
-                            return (Task??'').trim() && Category === 'Personal' &&
-                                <button
+                        {personalTasks.map(({ id, Category, Task, Time, Date, TimeStamp }) => {
+                            return (Task ?? '').trim() &&
+                                <button ref={ChangedCatTaskId === id ? ChangedCatTask : null}
                                     {...(!startDeletingTasks ? Handlers : {})} //adding long press handler only if delete mode is off
                                     onClick={(e) => {
                                         if (isLongPress.current) {
@@ -109,25 +146,26 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                                         borderColor: ThemeColors.third,
                                         '--hover': ThemeColors.third,
                                         '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                                        
+
                                     }}
-                                    className={`w-full border HOVER_CLASS p-3 rounded-2xl flex  ${startDeletingTasks?'justify-between gap-2':'justify-start gap-4'} items-center`}>
+                                    className={`Individualtask w-full border HOVER_CLASS p-3 rounded-2xl flex  ${startDeletingTasks ? 'justify-between gap-2' : 'justify-start gap-4'} items-center`}>
                                     <div
                                         onClick={(e) => {
+                                            setChangedCatTaskId(id)
                                             e.stopPropagation()
                                             dispatch(changeTaskCategory({ Taskid: id, TaskCategory: 'Completed' }))
                                         }}
                                         style={{
                                             color: ThemeColors.secText,
                                             borderColor: ThemeColors.bg,
-                                            
+
                                         }} className='w-5 h-5 rounded border-2 '></div>
 
                                     <p className={`text-left grow  max-w-8/10 line-clamp-5`}>{Task}</p>
                                     {/* absolute button used to delete note */}
                                     {startDeletingTasks === true && <span
                                         style={{
-                                            backgroundColor: !startDeletingTasks ? ThemeColors.header : deletedTasks.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, 
+                                            backgroundColor: !startDeletingTasks ? ThemeColors.header : deletedTasks.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg,
                                         }}
                                         className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
                                                                     `}>
@@ -145,23 +183,24 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                         onClick={() => setshowCompletedTasks((old) => !old)}
                         className={`w-fit px-1.5 py-1 flex gap-2 items-center rounded-xl`}>
                         <Triangle style={{
-                            color: ThemeColors.secText, 
+                            color: ThemeColors.secText,
                         }} className={`${showCompletedTasks ? 'rotate-180' : 'rotate-0'}  `} size={12} fill={ThemeColors.primaryText} />
 
-                        <p style={{ color: ThemeColors.primaryText, fontFamily: Weights.Bold, fontSize: `${(Sizes.Small.slice(0, -3)) * 1.1}rem` ,}} className='flex gap-1'>
+                        <p style={{ color: ThemeColors.primaryText, fontFamily: Weights.Bold, fontSize: `${(Sizes.Small.slice(0, -3)) * 1.1}rem`, }} className='flex gap-1'>
                             Completed
                             <span>
-                                {Tasks.filter(({ Category }) => Category === 'Completed').length}
+                                {CompletedTasks?.length}
                             </span>
                         </p>
                     </div>
 
                     <div ref={CompletedRef} className={`overflow-hidden flex flex-col gap-1`}>
-                        {Tasks.map(({ id, Category, Task, Time, Date, TimeStamp }) => {
-                            return (Task??'').trim() && Category === 'Completed' &&
-                                <button
+                        {CompletedTasks.map(({ id, Category, Task, Time, Date, TimeStamp }) => {
+                            return (Task ?? '').trim() &&
+                                <button ref={ChangedCatTaskId === id ? ChangedCatTask : null}
                                     {...(!startDeletingTasks ? Handlers : {})} //adding long press handler only if delete mode is off
                                     onClick={(e) => {
+
                                         if (isLongPress.current) {
                                             e.preventDefault(); // stop accidental click behavior
 
@@ -170,6 +209,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                                             dispatch(addTaskTodeletedTasksArray({ Taskid: id }));
                                             return; // 🚨 STOP here
                                         }
+
                                         dispatch(setCurrentEditingTask({ EditTask: { id, Category, Task, Time, Date, TimeStamp } }))
                                         dispatch(setopenTaskManager({ shouldOpen: true }))
                                     }}
@@ -178,18 +218,19 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                                         borderColor: ThemeColors.third,
                                         '--hover': ThemeColors.third,
                                         '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                                        
+
                                     }}
-                                    className='w-full border HOVER_CLASS p-3 rounded-2xl flex gap-2 justify-between items-center'>
+                                    className='Individualtask w-full border HOVER_CLASS p-3 rounded-2xl flex gap-2 justify-between items-center'>
                                     <div className={`w-fit`}>
                                         <div onClick={(e) => {
+                                            setChangedCatTaskId(id)
                                             e.stopPropagation()
                                             dispatch(changeTaskCategory({ Taskid: id, TaskCategory: 'Personal' }))
                                         }}
                                             style={{
                                                 color: ThemeColors.secText,
                                                 borderColor: ThemeColors.bg,
-                                                
+
                                             }} className='w-5 h-5 rounded border-2 flex items-center justify-center'>
                                             <Check strokeWidth={2} />
                                         </div>
@@ -198,7 +239,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                                     {/* absolute button used to delete note */}
                                     {startDeletingTasks === true && <span
                                         style={{
-                                            backgroundColor: !startDeletingTasks ? ThemeColors.header : deletedTasks.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, 
+                                            backgroundColor: !startDeletingTasks ? ThemeColors.header : deletedTasks.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg,
                                         }}
                                         className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
                                                                     `}>

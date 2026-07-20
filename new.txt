@@ -3,7 +3,12 @@
 
 
 What i did for this commit :
-fix : Fixed undefined error comes due to no Key named Task in default Task
+feat : add note search,version details page and launch animations
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
+
+
+TASKS FOR NEXT COMMIT :
+1. Implement Versions showcase
+4 implement auto scroll to show category 

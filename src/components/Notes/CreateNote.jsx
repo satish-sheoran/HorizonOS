@@ -53,7 +53,7 @@ const CreateNote = ({ Theme, ThemeColors, AccentColors }) => {
             y: isNewNoteOpen ? '0%' : "100%",
             scale: isNewNoteOpen ? 1 : 0.8,
             opacity: isNewNoteOpen ? 1 : 0,
-            duration: 0.3,
+            duration: 0.35,
             ease: Animation ?? 'sine.inOut'
         })
 

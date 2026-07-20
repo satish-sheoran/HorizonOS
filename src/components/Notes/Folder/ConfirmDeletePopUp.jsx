@@ -60,7 +60,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
                     <span style={{
                         fontSize: Sizes.Small,
                         color: ThemeColors.thirdText
-                    }}>Delete {WorkingOn === 'Notes' ? deletedNotes.length : WorkingOn === 'Tasks' ? deletedTasks.length : deletedCategories.length} items ?</span>
+                    }}>Delete {WorkingOn === 'Notes' ? deletedNotes?.length : WorkingOn === 'Tasks' ? deletedTasks.length : deletedCategories?.length} items ?</span>
 
                     <div className={`w-full flex items-center gap-2`}>
 

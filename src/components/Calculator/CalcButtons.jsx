@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { CALC_BTNS } from "../../constants";
 import { COMMON_COLORS } from "../../constants/style";
 import { CSS_EASING } from "../../constants/Settings";
 import { useSelector } from "react-redux";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) => {
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const isCalculatorOpen = useSelector((store) => store.windowApps.apps['calculator'].isOpen);
+
+
+    useLayoutEffect(() => {
+        const buttons = document.querySelectorAll('.calcButtons')
+        if (!buttons) return;
+
+        buttons.forEach((button) => {
+            gsap.from(button, {
+                scale: 0,
+                opacity: 0,
+                duration: 0.35,
+                stagger: 0.05,
+                ease: "back.out"
+            })
+        })
+
+    }, [isCalculatorOpen])
+
     return (
         <>
             {
@@ -25,9 +46,9 @@ const CalcButtons = ({ ThemeColors, AccentColors, calcBtnClck, Device, Theme }) 
                             backgroundColor: symbol === '=' ? AccentColors.CODE : ThemeColors.header,
                             '--hover': symbol === '=' ? AccentColors.Hover_Clr : ThemeColors.third,
                             '--active': symbol === '=' ? AccentColors.Hover_Clr : ThemeColors.third,
-                            
+
                         }}
-                        className={`${AccentColors.HOVER}  
+                        className={`calcButtons ${AccentColors.HOVER}  
                               ${Device === 'Mobile' ? 'sm:rounded-xl rounded-4xl' : Device === 'Tablet' ? 'rounded-3xl' : 'rounded-2xl'}  py-1  font-bold  active:scale-95  
 `}
                         onClick={() => calcBtnClck(symbol)}

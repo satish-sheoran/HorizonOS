@@ -5,6 +5,7 @@ import { setOpenManageFolder } from "../../redux/features/NotesStrorage";
 import { CSS_EASING } from '../../constants/Settings'
 
 const SettingNFolder = ({ Theme, ThemeColors, AccentColors }) => {
+    
     const dispatch = useDispatch();
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app

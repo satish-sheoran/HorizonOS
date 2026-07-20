@@ -348,7 +348,42 @@ html {
             transparent 360deg);
 
     border-radius: inherit;
+    animation: RotateAnim 4s linear infinite;
+}
 
+/* Rotate Anim for white and dark theme without shadow */
+.RotateAnimationBlack::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    box-shadow:
+        0 0 10px rgba(49, 49, 49, 0.2),
+        0 0 20px rgba(37, 37, 37, 0.15),
+        0 0 40px rgba(36, 35, 35, 0.1);
+    background: conic-gradient(from var(--angle),
+            transparent 0deg 220deg,
+            rgba(255, 255, 255, .1) 260deg,
+            white 330deg,
+            transparent 360deg);
+
+    border-radius: inherit;
+    animation: RotateAnim 4s linear infinite;
+}
+.RotateAnimationWhite::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    box-shadow:
+        0 0 10px rgba(131, 130, 130, 0.2),
+        0 0 20px rgba(121, 119, 119, 0.15),
+        0 0 40px rgba(122, 121, 121, 0.1);
+    background: conic-gradient(from var(--angle),
+            transparent 0deg 220deg,
+            rgba(20, 20, 20, 0.1) 260deg,
+            rgb(22, 21, 21) 330deg,
+            transparent 360deg);
+
+    border-radius: inherit;
     animation: RotateAnim 4s linear infinite;
 }
 

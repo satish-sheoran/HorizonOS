@@ -132,7 +132,7 @@ const ManageappsDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeColors,
         <div className={`flex ${Device !== 'Desktop' ? 'justify-between' : 'justify-center gap-5'}`}>
 
           <div className={`flex gap-3`}>
-            <img className={`w-12 h-12 object-cover object-center`} src='/public/HorizonOS-Photoroom.png' alt="" />
+            <img className={`w-12 h-12 object-cover object-center`} src='/HorizonOS-Photoroom.png' alt="" />
             <div className={`flex flex-col gap-1`}>
               <span style={{fontSize :!fullScreen? `${(Sizes.Small.slice(0,-3))*0.85}rem` : `${(Sizes.Small.slice(0,-3))*0.7}rem`, color: ThemeColors.secText, fontFamily: Weights.SemiBold }} className={` font-semibold`}>Total Apps</span>
               <div className={`flex gap-1 items-baseline h-fit`}>

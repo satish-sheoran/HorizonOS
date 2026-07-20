@@ -88,9 +88,9 @@ const ManageTask = ({ Theme, AccentColors, ThemeColors }) => {
             scale: TaskRef ? 0 : 1,
         }, {
             scale: TaskRef ? 1 : 0,
-            duration: 0.35,
+            duration: 0.45,
             force3D: true, //to make animation a bit smooth as it deals with scales (forcw3D)
-            ease: Animation ?? 'back.out(1.7)'
+            ease: Animation ?? 'back.out(3)'
         })
 
 

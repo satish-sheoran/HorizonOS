@@ -1,16 +1,18 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { OS_NAME, OS_VERSION, CSS_EASING } from '../../../../constants/Settings'
+import { OS_NAME, CSS_EASING } from '../../../../constants/Settings'
 import AboutSections from './AboutSections'
 import AnimationWrapper from '../../../UI/AnimationWrapper'
 import AboutHorizonOS from './DeepOptions/AboutHorizonOS'
 import Factoryreset from './DeepOptions/Factoryreset'
 import SettingQueries from '../../SettingQueries'
+import VersionDetails from './DeepOptions/VersionDetails'
 
 const DEEP_OPTIONS = {
   AboutHorizonOS,
   Factoryreset,
+  VersionDetails
 }
 
 const AboutUs = ({ Section, Theme, ThemeColors, AccentColors, Queries, SubSections, DeepSection }) => {

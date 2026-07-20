@@ -23,7 +23,7 @@ const WindowWrapper = (Component, windowKey) => {
 
             gsap.fromTo(el,
                 { scale: 0.8, opacity: 0, y: 40 },
-                { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: Animation ?? 'power3.out' }
+                { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: Animation || 'back.out(3)' }
             )
         }, [isOpen])
 

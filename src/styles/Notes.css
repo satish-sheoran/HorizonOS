@@ -20,10 +20,10 @@
         @apply absolute inset-0 overflow-hidden flex flex-col px-(--padding-lg) md:px-(--padding-xl);
 
         nav {
-            @apply flex flex-col mb-2 gap-(--gap-xs);
+            @apply flex justify-between items-center mb-2 gap-(--gap-xs);
 
             .setting-n-folders {
-                @apply h-full relative z-20 flex items-center justify-end gap-(--gap-md) pt-(--padding-sm);
+                @apply h-full relative z-20 flex items-center justify-center gap-(--gap-md) ;
 
                 .note-icons {
                     @apply cursor-pointer hover:scale-[1.15] active:scale-100;

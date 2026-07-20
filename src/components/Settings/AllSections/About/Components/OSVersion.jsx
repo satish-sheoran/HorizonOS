@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { COMMON_COLORS } from '../../../../../constants/style';
-import { OS_VERSION, CSS_EASING } from '../../../../../constants/Settings';
+import {  CSS_EASING } from '../../../../../constants/Settings';
+import { VERSION_HISTORY } from '../../../../../constants/versionHistory';
 
 const OSVersion = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors }) => {
 
@@ -27,7 +28,7 @@ const OSVersion = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColor
 
             <span style={{fontSize : Sizes.Small ,fontFamily : Weights.SemiBold}} className={`font-semibold`}>{Option}</span>
             <span style={{fontSize : Sizes.Small ,fontFamily : Weights.Regular, color: COMMON_COLORS.Blue }}>
-                {OS_VERSION}
+                {VERSION_HISTORY[0].version}
             </span>
 
         </div>

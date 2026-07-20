@@ -1,6 +1,7 @@
 import React from 'react'
-import { OS_NAME, OS_VERSION, CSS_EASING } from '../../../../../constants/Settings'
+import { OS_NAME, CSS_EASING } from '../../../../../constants/Settings'
 import { useSelector } from 'react-redux'
+import { VERSION_HISTORY } from '../../../../../constants/versionHistory'
 
 const HorizonOS = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
 
@@ -22,7 +23,7 @@ const HorizonOS = ({ Theme, Device, fullScreen, GrandParentSection, Options, Sec
 
       <span style={{
         fontSize: Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, 
-      }} className='select-none cursor-default '>{OS_VERSION} </span>
+      }} className='select-none cursor-default '>{`${VERSION_HISTORY[0]?.version} HRZN ${VERSION_HISTORY[0]?.codename}`} </span>
     </div>
   )
 }

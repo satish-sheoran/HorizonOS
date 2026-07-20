@@ -12,7 +12,11 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { useEffect, useState } from "react";
 import { setDevice } from './redux/features/DeviceSet'
 import { CSS_EASING } from "./constants/Settings";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+
 gsap.registerPlugin(Draggable, useGSAP)
+gsap.registerPlugin(ScrollToPlugin)
 gsap.registerPlugin(MotionPathPlugin)
 gsap.registerPlugin(Flip)
 
@@ -49,8 +53,8 @@ const App = () => {
   useUpdateDevice();
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--Speed',Speed)
-    document.documentElement.style.setProperty('--easing',CSS_EASING[Animation])
+    document.documentElement.style.setProperty('--Speed', Speed)
+    document.documentElement.style.setProperty('--easing', CSS_EASING[Animation])
   }, [Speed, Animation])
 
   return (

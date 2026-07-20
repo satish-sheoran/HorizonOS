@@ -1,5 +1,4 @@
 export const OS_NAME = 'Horizon OS';
-export const OS_VERSION = '1.1.0 HRZN Motion';
 
 export const SECTIONS = [
     // About Us
@@ -60,6 +59,12 @@ export const SECTIONS = [
                         Toggleable: false,
                         action: null
                     },
+                    {
+                        Option: 'HRZN Timeline',
+                        FileName: 'HRZNTimeline',
+                        Toggleable: false,
+                        action: null
+                    }
                 ]
             },
         ],
@@ -73,9 +78,13 @@ export const SECTIONS = [
             FileName: 'Factoryreset',
             SubSections: null,
             Options: null
+        }, {
+            Section: 'HRZN Timeline',
+            FileName: 'VersionDetails',
+            SubSections: null,
+            Options: null
         }]
     },
-
     // Display
     {
         Section: 'Display',
@@ -496,14 +505,14 @@ export const SETTINGS_FACTORY_RESET_OPTIONS = [
 export const AnimationSpeedAndType = [
     {
         Name: 'Normal',
-        Speed: '400ms',
+        Speed: '450ms',
         icon: 'Gauge',
         RefreshRate: '60 Hz',
         Description: 'Smooth and fluid for the best experience.'
     },
     {
         Name: 'Faster',
-        Speed: '200ms',
+        Speed: '300ms',
         icon: 'Rabbit',
         RefreshRate: '90 Hz',
         Description: 'Fast animation for better experinece.'
@@ -532,7 +541,7 @@ export const AnimationsName = [
     },
     {
         Name: 'Back Out',
-        Animation: 'back.out(1.7)',
+        Animation: 'back.out(3)',
         icon: 'Redo',
         description: 'Slightly overshoots before setting into place.'
     },
@@ -553,7 +562,7 @@ export const AnimationsName = [
 export const CSS_EASING = {
     'sine.inOut': 'cubic-bezier(0.455, 0.05, 0.55, 0.95)',
     "expo.out": 'cubic-bezier(0.19, 1, 0.22, 1)',
-    "back.out(1.7)": 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+    "back.out(3)": 'cubic-bezier(0.34, 1.56, 0.64, 1)',
     'power2.out': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 }
 

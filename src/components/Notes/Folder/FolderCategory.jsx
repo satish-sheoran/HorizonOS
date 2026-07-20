@@ -74,7 +74,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                             }}
                             className={`select-none `} /> {/* on hidden,it do not reserve space so used text-transparent */}
 
-                        <span style={{fontSize : Sizes.Small}} className="select-none">{category.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
+                        <span style={{fontSize : Sizes.Small}} className="select-none">{category?.length >= 17 ? category.slice(0, 17) + '...' : category}</span>
 
 
                         {/* count and selection area to delete cateogries */}
@@ -89,7 +89,7 @@ const FolderCategory = ({ Theme, AccentColors, ThemeColors }) => {
                                     {deletedCategories?.includes(category) && <Check style={{ color: COMMON_COLORS.White }} className='rounded-full' strokeWidth={3} size={17} />}
                                 </span>
                                 :
-                                <span style={{fontSize : Sizes.Small}} className='select-none'>{category === 'All' ? Notes.length : Notes.filter(note => note.category === category).length}</span>
+                                <span style={{fontSize : Sizes.Small}} className='select-none'>{category === 'All' ? Notes?.length : Notes?.filter(note => note.category === category)?.length}</span>
                         }
 
 

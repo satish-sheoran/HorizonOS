@@ -7,6 +7,7 @@ import { CSS_EASING } from '../../../constants/Settings'
 import { formatDateTime } from '../../../utils/formatTime'
 import { manageDeletedNotes, manageEditNote, setStartDeletingNotes } from '../../../redux/features/NotesStrorage'
 import useLongPress from '../../../hooks/Use-long-press';
+import gsap from 'gsap';
 
 
 const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
@@ -19,16 +20,19 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
+    const { activeTab } = useSelector(store => store.Notes) // notes tab Or task tab for notes app
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletingNotes = useSelector(store => store.Notes.deletedNotes)
     const activeCategory = useSelector(store => store.Notes.activeCategory) // notes tab Or task tab for notes app
+    const searchInputVal = useSelector(store => store.Notes.searchInputVal)
     // all notes in the app
-    const Notes = useSelector(store => activeCategory === 'All' ? store.Notes.Notes : store.Notes.Notes.filter(note => note.category === activeCategory)) //notes based on active category
+    const Notes = useSelector(store => activeCategory === 'All' ? store.Notes.Notes : store.Notes.Notes?.filter(note => note.category === activeCategory)) //notes based on active category
 
-
-    const ContainerRef = useRef(null)
+    // useStates
     const [cols, setCols] = useState(1)
 
+    //refs
+    const ContainerRef = useRef(null)
 
     const { Handlers, isLongPress } = useLongPress(() => {
         if (!isDeleteNoteOpen) dispatch(setStartDeletingNotes({ start: true }));
@@ -67,22 +71,38 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
         };
     }, [isFactoryResetting])
 
+    useLayoutEffect(() => {
+        // for appearing tasks with an animation
+        if (activeTab === 'Notes') {
+            const elems = document.querySelectorAll('.IndividualNote');
+            elems.forEach(task => {
+                gsap.from(task, {
+                    scale: 0.5,
+                    opacity: 0,
+                    duration: 0.55,
+                    stagger: 0.05,
+                    ease: "back.out(1.7)"
+                });
+            })
+        }
+
+    }, [activeTab, activeCategory])
 
     return (
         <div ref={ContainerRef} style={{
-            
+
         }} className={` flex-1  AllNotes-container  overflow-y-auto    
         `}
         >
             {
-                Notes.length > 0 ?
+                Notes?.length > 0 ?
                     <Masonry
                         breakpointCols={cols}
                         className="flex gap-2.5 w-full h-full "
                         columnClassName="flex flex-col gap-2.5"
                     >
                         {Notes.map(({ title, id, desc, timeStamp }) => (
-                            <button
+                             <button id={`Note-${id}`}
                                 {...(!isDeleteNoteOpen ? Handlers : {})} //adding long press handler only if delete mode is off
 
 
@@ -106,16 +126,16 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header,
                                     '--hover': ThemeColors.third,
                                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
-                                    
+
 
                                 }}
-                                className={`border HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
+                                className={`IndividualNote border HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
                         `}>
                                 <h3
                                     style={{
                                         fontSize: Sizes.Regular,
                                         fontFamily: Weights.SemiBold,
-                                        color: ThemeColors.primaryText, 
+                                        color: ThemeColors.primaryText,
                                     }}
 
                                     className={`break-all
@@ -128,7 +148,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     style={{
                                         fontSize: Sizes.Small,
                                         fontFamily: Weights.Regular,
-                                        color: ThemeColors.secText, 
+                                        color: ThemeColors.secText,
                                     }}
                                     className={`break-all
  select-none  line-clamp-4 font-[650]
@@ -140,7 +160,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     <span style={{
                                         fontSize: Sizes.ExtraSmall,
                                         fontFamily: Weights.Regular,
-                                        color: ThemeColors.thirdText, 
+                                        color: ThemeColors.thirdText,
                                     }}
                                         className={`block whitespace-nowrap text-ellipsis select-none 
                                              
@@ -154,7 +174,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                         isDeleteNoteOpen === true &&
                                         <span
                                             style={{
-                                                backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg, 
+                                                backgroundColor: deletingNotes?.includes(id) ? COMMON_COLORS.Yellow : ThemeColors.bg,
                                             }}
                                             className={`rounded-full w-4.5 h-4.5 flex items-center justify-center
                                 `}>
@@ -172,7 +192,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                     (
                         <div style={{
                             fontFamily: Weights.SemiBold,
-                            color: ThemeColors.grayish, 
+                            color: ThemeColors.grayish,
                         }} className={`select-none w-full h-full flex flex-col items-center justify-center`}>
                             <NotebookPen size={30} />
                             <span style={{ fontSize: Sizes.Small }}>No notes here yet</span>

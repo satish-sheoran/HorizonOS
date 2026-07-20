@@ -38,11 +38,11 @@ const getNotes = () => {
 const getTasks = () => {
     try {
         const stored = JSON.parse(localStorage.getItem('Tasks'));
-        return Array.isArray(stored) ? stored.filter(({ Task }) => (Task??'').trim()) : [
+        return Array.isArray(stored) ? stored.filter(({ Task }) => (Task ?? '').trim()) : [
             {
                 id: "@#$RSP",
                 Category: 'Personal',
-                Task : 'Welcome To Tasks. This is a default Task.',
+                Task: 'Welcome To Tasks. This is a default Task.',
                 Time: '12 : 26 AM',
                 Date: 'Sat Jul 18 2026',
                 TimeStamp: 1784314786118
@@ -53,7 +53,7 @@ const getTasks = () => {
             {
                 id: "@#$RSP",
                 Category: 'Personal',
-                Task : 'Welcome To Tasks. This is a default Task.',
+                Task: 'Welcome To Tasks. This is a default Task.',
                 Time: '12 : 26 AM',
                 Date: 'Sat Jul 18 2026',
                 TimeStamp: 1784314786118
@@ -84,7 +84,8 @@ const NotesSlice = createSlice({
         Tasks: getTasks() ?? [],
         CurrentEditingTask: {},
         startDeletingTasks: false,
-        deletedTasks: []
+        deletedTasks: [],
+        searchInputVal: ''
     },
     reducers: {
         addNote(state, action) {
@@ -132,6 +133,7 @@ const NotesSlice = createSlice({
             const { tab } = action.payload;
             if (!tab) return;
             state.activeTab = tab;
+            state.Notes = getNotes()
         },
         setActiveCategory(state, action) {
             const { category } = action.payload;
@@ -299,7 +301,7 @@ const NotesSlice = createSlice({
                 return;
             }
             const { Task, Time, Date, TimeStamp, Category } = action.payload
-            if (!(Task??'').trim()) return
+            if (!(Task ?? '').trim()) return
             const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
             let id;
 
@@ -373,6 +375,22 @@ const NotesSlice = createSlice({
             const Task = state.Tasks.find(({ id }) => id === Taskid)
             if (!Task) return;
             state.deletedTasks.includes(Taskid) ? state.deletedTasks = state.deletedTasks.filter((val) => val !== Taskid) : state.deletedTasks.push(Taskid)
+        },
+        setSearchInputVal(state, action) {
+            const { inputVal } = action.payload;
+
+            if (typeof inputVal === 'boolean' || inputVal === undefined || typeof inputval === 'object') return;
+            state.searchInputVal = inputVal;
+
+            // for Notes
+            let hasSearch = (state.activeTab === 'Notes' && (state.searchInputVal ?? '').trim());
+            let AllNotes;
+            if (state.activeTab === 'Notes') AllNotes = getNotes()
+            if (!hasSearch) state.Notes = AllNotes
+            if (hasSearch) {
+                state.Notes = AllNotes.filter(({ title, desc }) => title.includes(state.searchInputVal) || desc.includes(state.searchInputVal))
+            }
+
         }
     }
 })
@@ -400,6 +418,7 @@ export const {
     setCurrentEditingTask,
     deleteTasks,
     setstartDeletingTasks,
-    addTaskTodeletedTasksArray
+    addTaskTodeletedTasksArray,
+    setSearchInputVal
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

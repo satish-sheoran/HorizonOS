@@ -7,12 +7,14 @@ import AboutHorizonOS from '../Components/AboutHorizonOS'
 import FactoryReset from '../Components/FactoryReset'
 import ToggleButton from '../../../../UI/ToggleButton'
 import { useSelector } from 'react-redux'
+import HRZNTimeline from '../Components/HRZNTimeline'
 
 const OSDetails_OPTIONS = {
     OSVersion,
     Developer,
     AboutHorizonOS,
-    FactoryReset
+    FactoryReset,
+    HRZNTimeline
 }
 
 const OsDetails = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {

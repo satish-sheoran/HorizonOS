@@ -83,7 +83,7 @@ const WorldClock = ({ ClockAllTabsHeight, ClockAllTabsWidth, Name, Description }
   return (
     <section style={{
       paddingBottom: `${Math.floor(ClockAllTabsHeight) * 1.1}px`,
-      backgroundImage: `url(${'/public/world.svg'})`,
+      backgroundImage: `url(${'/world.svg'})`,
       
     }}
       className={`bg-cover bg-center overflow-cloclTab w-full h-full grow px-[2.5%] pt-[1.5%] overflow-y-auto overflow-x-hidden flex flex-col gap-2`}>
