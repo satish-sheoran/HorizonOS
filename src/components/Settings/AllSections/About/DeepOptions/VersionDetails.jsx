@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState, version } from 'react'
 import { CSS_EASING } from '../../../../../constants/Settings'
 import { ACCENT_COLORS, COMMON_COLORS, LIGHT_THEME_COLORS } from '../../../../../constants/style'
 import { useSelector } from 'react-redux'
@@ -19,19 +19,6 @@ const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors,
     // Refs
     const versionRef = useRef(null) //used to animate the upto date section
     const updateRef = useRef(null) //used to animate the upto date section
-
-    // Animations 
-    useLayoutEffect(() => {
-        if (!versionRef.current) return;
-
-        gsap.to(versionRef.current, {
-            height: showUpdateDetails ? 'auto' : 0,
-            opacity: showUpdateDetails ? 1 : 0,
-            duration: 0.3,
-            ease: 'back.out(3)',
-        })
-    }, [showUpdateDetails])
-
 
     return (
         <section style={{
@@ -169,8 +156,15 @@ const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors,
                     onClick={() => {
                         let state = Flip.getState(updateRef.current)
 
-                        setshowUpdateDetails(old => !old)
+                        if (!versionRef.current) return;
+                        gsap.to(versionRef.current, {
+                            height: showUpdateDetails ? 'auto' : 0,
+                            opacity: showUpdateDetails ? 1 : 0,
+                            duration: 0.3,
+                            ease: 'back.out(3)',
+                        })
 
+                        setshowUpdateDetails(old => !old)
                         requestAnimationFrame(() => {
                             Flip.from(state, {
                                 ease: 'back.out(3)',
@@ -186,7 +180,7 @@ const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors,
                         fontSize: Sizes.Small,
                         '--hover': ACCENT_COLORS?.find(({ COLOR }) => COLOR === 'Blue')?.Hover_Clr
                     }}
-                    className='z-9999 p-1 HOVER_CLR_CLASS hover:scale-105'>{showUpdateDetails ? 'Less Details' : 'More Details'}</button>
+                    className='z-9999 p-1 HOVER_CLR_CLASS hover:scale-105'>{!showUpdateDetails ? 'Less Details' : 'More Details'}</button>
             </section>
 
 

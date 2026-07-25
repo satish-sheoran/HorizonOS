@@ -28,9 +28,8 @@ const ResetSettings = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentC
           :
           COMMON_COLORS.Gray,
         
-      }}
-      className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between $
-            ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+      }} id='ResetSettingQuery'
+      className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
       <span>{Option}</span>
       <ChevronRight />
     </div>

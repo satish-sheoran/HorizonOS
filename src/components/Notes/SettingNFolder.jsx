@@ -1,7 +1,6 @@
-import { toast } from "react-toastify";
 import { FolderClosed, Settings } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenManageFolder } from "../../redux/features/NotesStrorage";
+import { setOpenManageFolder, setopenSettings } from "../../redux/features/NotesStrorage";
 import { CSS_EASING } from '../../constants/Settings'
 
 const SettingNFolder = ({ Theme, ThemeColors, AccentColors }) => {
@@ -22,7 +21,7 @@ const SettingNFolder = ({ Theme, ThemeColors, AccentColors }) => {
                     
                 }} className={`note-icons   ${isOpen === true ? "opacity-0 pointer-events-none" : 'opacity-100'}`} />
             </button> : ''}
-            <button onClick={() => toast.info("This functionality will be available soon.")}>
+            <button onClick={() => dispatch(setopenSettings({open : true}))}>
                 <Settings className="note-icons" />
             </button>
         </div>

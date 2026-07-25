@@ -25,7 +25,7 @@ const LearnToBackup = ({ Device, Theme, fullScreen, ThemeColors, AccentColors })
             <div className={`flex flex-col`}>
                 <span
                     style={{
-                     fontSize : Sizes.Small ,  fontFamily : Weights.SemiBold , color: Theme !== 'dark' ? ThemeColors.primaryText : ThemeColors.secText, 
+                     fontSize : `${(Sizes.Small.slice(0,-3))*0.85}rem` ,  fontFamily : Weights.SemiBold , color: Theme !== 'dark' ? ThemeColors.primaryText : ThemeColors.secText, 
                     }}
                     className={`font-semibold`}>It's recommended to back up important files before proceeding.</span>
 

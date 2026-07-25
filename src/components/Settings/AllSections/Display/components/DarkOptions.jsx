@@ -26,10 +26,8 @@ const DarkOptions = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentCol
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray, 
-            }}
-            className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between 
-            ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
-            `}>
+            }} id='ThemeChangeQuery'
+            className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
             <span>{Option}</span>
             <ChevronRight />
         </div>

@@ -76,7 +76,9 @@ const WindowWrapper = (Component, windowKey) => {
 
         return <section ref={ref}
             style={{
-                borderColor: COMMON_COLORS.LightWhite, zIndex, 
+            // border: '1px solid hsla(0, 1%, 37%, 0.3)',
+            zIndex,
+                borderColor: COMMON_COLORS.LightWhite, 
             }}
             className={`${fullScreen ? `${windowKey}-full` : windowKey} 
  ${(Device === 'Desktop' || Device === 'Tablet') ? `border-[1.5px] ${fullScreen ? '' : 'rounded-3xl'} ` : ''}  

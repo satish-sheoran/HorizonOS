@@ -56,13 +56,13 @@ const FolderNav = ({ Theme, AccentColors, ThemeColors }) => {
                         dispatch(setOpenManageFolder({ open: false }));
                     }} style={{
                         
-                    }} className='pr-9.5 pb-1  active:scale-95'>
+                    }} className='active:scale-95'>
                         <ArrowLeft strokeWidth={2} />
                     </button>
             }
 
 
-            <span style={{fontSize : Sizes.Large}} className="select-none">Folders</span>
+            <span style={{fontSize : Sizes.Large,fontFamily : Weights.SemiBold}} className="select-none">Folders</span>
 
             {/* if start editing then show delete button,else show edit button  */}
             {startDeletingCat === true ?

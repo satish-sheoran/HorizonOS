@@ -14,7 +14,7 @@ const AppsOptions = ({ Theme, Device, fullScreen, ThemeColors, AccentColors, Par
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <section style={{
+        <section id='Apps' style={{
             borderColor: ThemeColors.third, 
         }} className={`app-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
 

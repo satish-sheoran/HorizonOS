@@ -24,7 +24,7 @@ const ToggleButton = ({ Device, Theme, action, performAction, isActionActive, Th
                     :
                     COMMON_COLORS.Gray
                 , 
-            }}
+            }} id={action ==='12hr format'?'TimeFormatQuery':''}
             className={`HOVER_CLASS active:scale-97 border  select-none  font-semibold rounded-2xl flex items-center justify-between 
                 ${Device !== 'Desktop' ? `px-3 py-2.5` : `px-2.5 py-2`}
                 `}>

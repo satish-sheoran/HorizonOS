@@ -27,10 +27,8 @@ const FactoryReset = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentCo
                     Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
                     :
                     COMMON_COLORS.Gray, 
-            }}
-            className={`HOVER_CLASS active:scale-97 border rounded-2xl  select-none font-semibold flex items-center justify-between 
-                                           ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
-                                           `}>
+            }} id='FactoryResetQuery'
+            className={`HOVER_CLASS active:scale-97 border rounded-2xl  select-none font-semibold flex items-center justify-between ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
             <span style={{ fontSize : Sizes.Small ,fontFamily: Weights.SemiBold }} className='font-semibold'>{Option}</span>
             <span style={{

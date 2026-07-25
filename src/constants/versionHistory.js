@@ -1,6 +1,19 @@
 export const VERSION_HISTORY = [
     {
-        version: '1.1.2',
+        version: '1.2',
+        codename: 'NoteDown',
+        clr : 'Purple',
+        releaseDate: '2026-07-25',
+        type: 'Major',
+        changes: [
+            { icon: 'SquarePen', iconClr: 'Blue', change: "Added customizable Notes settings." },
+            { icon: 'FolderSync', iconClr: 'Green', change: "Move notes between cateogries." },
+            { icon: 'LayoutPanelLeft', iconClr: 'Purple', change: "Grid/List layout &  many other options." },
+            { icon: 'Bug', iconClr: 'Red', change: "Bug fixes and improve user experience." }
+        ]
+    },
+    {
+        version: '1.1.4',
         codename: 'Motion',
         clr : 'Blue',
         releaseDate: '2026-07-21',

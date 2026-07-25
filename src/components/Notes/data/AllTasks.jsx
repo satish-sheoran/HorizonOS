@@ -161,7 +161,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
 
                                         }} className='w-5 h-5 rounded border-2 '></div>
 
-                                    <p className={`text-left grow  max-w-8/10 line-clamp-5`}>{Task}</p>
+                                    <p className={`text-left grow max-w-8/10 line-clamp-5`}>{Task}</p>
                                     {/* absolute button used to delete note */}
                                     {startDeletingTasks === true && <span
                                         style={{
@@ -220,7 +220,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                                         '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
 
                                     }}
-                                    className='Individualtask w-full border HOVER_CLASS p-3 rounded-2xl flex gap-2 justify-between items-center'>
+                                    className={`Individualtask w-full  HOVER_CLASS p-3 rounded-2xl flex  ${startDeletingTasks ? 'justify-between gap-2' : 'justify-start gap-4'} items-center`}>
                                     <div className={`w-fit`}>
                                         <div onClick={(e) => {
                                             setChangedCatTaskId(id)
@@ -235,7 +235,7 @@ const AllTasks = ({ Theme, AccentColors, ThemeColors }) => {
                                             <Check strokeWidth={2} />
                                         </div>
                                     </div>
-                                    <p className={`line-through text-left grow max-w-8/10 line-clamp-5`}>{Task}</p>
+                                    <p className={`line-through text-left grow  max-w-8/10 line-clamp-5`}>{Task}</p>
                                     {/* absolute button used to delete note */}
                                     {startDeletingTasks === true && <span
                                         style={{

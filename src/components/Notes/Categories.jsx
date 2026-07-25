@@ -47,7 +47,7 @@ const Categories = ({ Theme, ThemeColors, AccentColors }) => {
                         style={{
                             fontSize: `${(Sizes.Small.slice(0,-3))*1.1}rem`,
                             fontFamily: activeCategory === category ? Weights.Bold : Weights.SemiBold,
-                            backgroundColor: activeCategory === category ? AccentColors.CODE : '',
+                            backgroundColor: activeCategory === category ? AccentColors.CODE : ThemeColors.header,
                             color: activeCategory === category ? COMMON_COLORS.White : ThemeColors.thirdText,
                             '--hover': ThemeColors.third,
                             '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,

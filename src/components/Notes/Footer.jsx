@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { COMMON_COLORS, DARK_THEME_COLORS, LIGHT_THEME_COLORS } from "../../constants/style";
 import { CSS_EASING } from '../../constants/Settings'
+import MoveTo from "./MoveTo";
 
 
 const Footer = ({ Theme, ThemeColors, AccentColors }) => {
@@ -21,9 +22,11 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
     const activeTab = useSelector(store => store.Notes.activeTab) // notes tab Or task tab for notes app
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletedNotes = useSelector(store => store.Notes.deletedNotes);
-    const [openDeletePopUp, setOpenDeletePopUp] = useState(false); //used to open delete pop up to delete notes 
     const startDeletingTasks = useSelector(store => store.Notes.startDeletingTasks); //used for tasks deletion
     const deletedTasks = useSelector(store => store.Notes.deletedTasks) //used for tasks deletion
+
+    const [openDeletePopUp, setOpenDeletePopUp] = useState(false); //used to open delete pop up to delete notes 
+    const [openMoveToPop, setopenMoveToPop] = useState(false)
 
     // animation for entry of cntrls of nots (delete,close editing etc.)
     useGSAP(() => {
@@ -47,7 +50,7 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
         <footer style={{
 
         }} className={`${(!isDeleteNoteOpen && !startDeletingTasks) ? 'px-[25%]' : ''} z-20 `}>
-            <div className={`pb-1 flex ${(!isDeleteNoteOpen && !startDeletingTasks) ? '' : Device !== 'Mobile' ? 'justify-around' : ''} `}>
+            <div className={`pb-1 flex ${(!isDeleteNoteOpen && !startDeletingTasks) ? '' : Device !== 'Mobile' || activeTab !== 'Notes' ? 'justify-around' : ''} `}>
                 {
                     (isDeleteNoteOpen === false && startDeletingTasks === false) ?
                         <>
@@ -127,53 +130,47 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
 
                             </button>
 
-                            <button style={{
-
-                            }}
+                            {activeTab === 'Notes' && <button style={{ color: ThemeColors.primaryText }}
                                 className="note-cntrl-btns active:scale-95"
                                 onClick={() => toast.info('Feature Coming Soon')}
 
                             >
                                 <PinOff style={{
 
-                                }} size={22} strokeWidth={2} className={`
-                                    
-                        rounded px-[1.2px]  
-${Theme != 'dark' ?
-                                        'stroke-(--primary-dark-clr)'
-                                        :
-                                        'stroke-(--primary-light-clr)'}
-                        `} />
+                                }} size={22} strokeWidth={2} className={`rounded px-[1.2px]${Theme != 'dark' ? 'stroke-(--primary-dark-clr)' : 'stroke-(--primary-light-clr)'} `} />
 
                                 <span style={{
                                     fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                                 }} className="select-none" >Unpin</span>
 
-                            </button>
+                            </button>}
 
-                            <button style={{
+                            {activeTab === 'Notes' && <button style={{
 
                             }}
                                 className="note-cntrl-btns active:scale-95"
-                                onClick={() => toast.info('Feature Coming Soon')}
+                                onClick={() => {
+                                    if (deletedNotes.length !== 0) {
+                                        setopenMoveToPop(true)
+                                        return;
+                                    }
+                                    toast.info("Select Notes to Move !")
+
+                                }}
 
                             >
                                 <FolderInput style={{
 
-                                }} size={22} strokeWidth={2} className={`
-                                     
-                        rounded px-[1.2px] 
-${Theme != 'dark' ?
-                                        'stroke-(--primary-dark-clr)'
-                                        :
-                                        'stroke-(--primary-light-clr)'}
-                        `} />
+                                }} size={22} strokeWidth={2} className={`rounded px-[1.2px] ${Theme != 'dark' ?
+                                    'stroke-(--primary-dark-clr)'
+                                    :
+                                    'stroke-(--primary-light-clr)'}`} />
 
                                 <span style={{
                                     fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
                                 }} className="select-none">Move to</span>
 
-                            </button>
+                            </button>}
 
                             <button style={{
 
@@ -214,6 +211,14 @@ ${Theme != 'dark' ?
             </div>
 
             {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn={startDeletingTasks ? 'Tasks' : 'Notes'} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
+
+            {openMoveToPop === true && <MoveTo
+                openMoveToPop={openMoveToPop}
+                setopenMoveToPop={setopenMoveToPop}
+                Theme={Theme}
+                ThemeColors={ThemeColors}
+                AccentColors={AccentColors}
+            />}
 
         </footer>
     )

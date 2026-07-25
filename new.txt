@@ -2,13 +2,17 @@
 2. how to remove web page not secure 
 
 
-What i did for this commit :
-feat : add note search,version details page and launch animations
+What i have did for this commit :
+feat(Notes) : add customizable notes settings
+
+- Move to,sorting, notes view settings
+- Reset notes settings,notes and task clear settins inside notes apps
+- sync of all settings and fixed some bugs
+
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
+ in orientation rotated , the OS is not showing perfectly
 
-
-TASKS FOR NEXT COMMIT :
-1. Implement Versions showcase
-4 implement auto scroll to show category 
+Notes Appremaing :
+1 pin note 

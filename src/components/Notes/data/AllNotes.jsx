@@ -19,13 +19,13 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-    const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes'])
+    const { isOpen, fullScreen } = useSelector((store) => store.windowApps.apps['notes']);
+    const NotesViewStyle = useSelector(store => store.Notes.NotesViewStyle)
     const { activeTab } = useSelector(store => store.Notes) // notes tab Or task tab for notes app
     const isDeleteNoteOpen = useSelector(store => store.Notes.startDeletingNotes);
     const deletingNotes = useSelector(store => store.Notes.deletedNotes)
     const activeCategory = useSelector(store => store.Notes.activeCategory) // notes tab Or task tab for notes app
     const searchInputVal = useSelector(store => store.Notes.searchInputVal)
-    // all notes in the app
     const Notes = useSelector(store => activeCategory === 'All' ? store.Notes.Notes : store.Notes.Notes?.filter(note => note.category === activeCategory)) //notes based on active category
 
     // useStates
@@ -97,14 +97,13 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
             {
                 Notes?.length > 0 ?
                     <Masonry
-                        breakpointCols={cols}
+                        breakpointCols={NotesViewStyle==='List view'?1:cols}
                         className="flex gap-2.5 w-full h-full "
                         columnClassName="flex flex-col gap-2.5"
                     >
                         {Notes.map(({ title, id, desc, timeStamp }) => (
-                             <button id={`Note-${id}`}
+                            <button id={`Note-${id}`}
                                 {...(!isDeleteNoteOpen ? Handlers : {})} //adding long press handler only if delete mode is off
-
 
                                 onClick={(e) => {
                                     if (isLongPress.current) {
@@ -118,18 +117,17 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
 
                                     dispatch(manageEditNote({ open: true, NoteId: id }));
                                 }}
-                                // on click works as want but not opening edit mode on mobile only
 
                                 key={id}
                                 style={{
                                     borderColor: ThemeColors.third,
-                                    backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header,
+                                    // backgroundColor: Theme !== 'dark' ? ThemeColors.header : ThemeColors.header,
                                     '--hover': ThemeColors.third,
                                     '--active': Theme !== 'dark' ? COMMON_COLORS.White : COMMON_COLORS.Gray,
 
 
                                 }}
-                                className={`IndividualNote border HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
+                                className={`${Theme !== 'dark' ? "liquid-glass-black-btn" : 'liquid-glass-white-btn'} IndividualNote border HOVER_CLASS  relative w-full Individual-note h-fit  flex flex-col gap-2 rounded-2xl p-3 text-left cursor-pointer active:scale-95                             
                         `}>
                                 <h3
                                     style={{

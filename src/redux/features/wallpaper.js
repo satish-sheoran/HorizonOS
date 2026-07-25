@@ -60,6 +60,7 @@ const getStoredSettings = () => {
 
             const Font = FONT_FAMILY.find(font => font.Name === storedSettings?.Font?.Name) || undefined;
 
+            const FontSize = FONT_SIZES.find(({ SizeType }) => SizeType === storedSettings?.FontSize?.SizeType)
 
             return {
                 src,
@@ -73,8 +74,11 @@ const getStoredSettings = () => {
                 AnimationTypeNSpeed: AnimationTypeNSpeed,
                 AnimationName: AnimationName,
                 Font: Font,
+                FontSize
             }
         }
+
+        return undefined;
     } catch {
         return undefined
     }

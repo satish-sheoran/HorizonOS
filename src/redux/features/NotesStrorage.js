@@ -62,6 +62,24 @@ const getTasks = () => {
     }
 }
 
+const getViewStyleAndSort = () => {
+    try {
+        const storedSettings = JSON.parse(localStorage.getItem('storedSettings'));
+        if (typeof storedSettings === 'object' && !Array.isArray(storedSettings) && storedSettings !== null) {
+            const NoteSortMethod = storedSettings?.NoteSortMethod;
+
+            return {
+                NotesViewStyle: storedSettings?.NotesViewStyle ?? undefined,
+                NoteSortMethod: (NoteSortMethod !== 'Earliest' && NoteSortMethod !== 'Latest' && NoteSortMethod !== 'A-Z' && NoteSortMethod !== 'Z-A') ? undefined : NoteSortMethod
+            }
+        }
+        return undefined
+    }
+    catch {
+        return undefined;
+    }
+}
+
 
 const NotesSlice = createSlice({
     name: 'Notes',
@@ -78,14 +96,18 @@ const NotesSlice = createSlice({
         deletedCategories: [], // tracks categories selected to delete
         deletedNotes: [], // tracks notes selected to delete
         CreateNoteOpen: false, // it is used to track if create task pop up is open or not
-        Notes: getNotes(),// all notes 
+        Notes: getNotes() ?? [],// all notes 
         EditNoteOpen: { open: false, NoteId: '' },
         openTaskManager: false,
         Tasks: getTasks() ?? [],
         CurrentEditingTask: {},
         startDeletingTasks: false,
         deletedTasks: [],
-        searchInputVal: ''
+        searchInputVal: '',
+        usedQuery: { open: false, queryId: '' },
+        openSettings: false,
+        NotesViewStyle: getViewStyleAndSort()?.NotesViewStyle ?? 'Grid view',
+        NoteSortMethod: getViewStyleAndSort()?.NoteSortMethod ?? 'Earliest'
     },
     reducers: {
         addNote(state, action) {
@@ -253,8 +275,15 @@ const NotesSlice = createSlice({
 
         },
         removeNotes(state, action) {
+
             const { NotesIds } = action.payload;
             if (!NotesIds) return;
+
+            if (NotesIds === 'Empty Trash') { //if app is closed or user exits delete mode without deleting cateogry.
+                state.Notes = [];
+                localStorage.setItem('Notes', JSON.stringify(state.Notes))
+                return;
+            }
 
             if (Array.isArray(NotesIds)) {
                 state.Notes = state.Notes.filter(({ id }) => !NotesIds.includes(id)); //if multiple notes ID is passed as array then filter all the notes which are in the array
@@ -300,6 +329,7 @@ const NotesSlice = createSlice({
                 localStorage.setItem('Tasks', JSON.stringify(state.Tasks));
                 return;
             }
+
             const { Task, Time, Date, TimeStamp, Category } = action.payload
             if (!(Task ?? '').trim()) return
             const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
@@ -309,13 +339,13 @@ const NotesSlice = createSlice({
                 chars[Math.floor(Math.random() * chars.length)]
             ).join("");
 
-            let idExists = state.Notes.some((notes) => notes.id === id); //checking if id exists 
+            let idExists = state?.Tasks?.some((task) => task.id === id); //checking if id exists 
             // ensure unique id 
             while (idExists) {
                 id = Array.from({ length: 7 }, () =>
                     chars[Math.floor(Math.random() * chars.length)]
                 ).join("");
-                idExists = state.Notes.some((notes) => notes.id === id); //now check if it exists or not again 
+                idExists = state.Tasks.some((task) => task.id === id); //now check if it exists or not again 
             }
 
 
@@ -348,6 +378,12 @@ const NotesSlice = createSlice({
             const { Id } = action.payload;
             if (!Id) return;
 
+            if (Id === 'Empty Trash') { //if app is closed or user exits delete mode without deleting cateogry.
+                state.Tasks = [];
+                localStorage.setItem('Tasks', JSON.stringify(state.Tasks))
+                return;
+            }
+
             if (Array.isArray(Id)) {
                 state.Tasks = state.Tasks.filter(({ id }) => !Id.includes(id));  //filtering Tasks which are present in Ids
 
@@ -359,6 +395,25 @@ const NotesSlice = createSlice({
 
             //saving updated categories and notes to local storage
             localStorage.setItem('Tasks', JSON.stringify(state.Tasks))
+        },
+        MoveNotes(state, action) {
+            const { Id, newCat } = action.payload;
+
+            if (!Id || !newCat || newCat === 'All' || newCat === 'Uncategorized') return;
+
+            if (Array.isArray(Id)) {
+                state.Notes.forEach((note, idx) => {
+                    if (Id.includes(note.id)) {
+                        state.Notes[idx] = { ...state.Notes[idx], category: newCat }
+                    }
+                });
+
+            }
+            state.deletedNotes = []; // after deleting  empty the deletedTasks array to remove the deleted Tasks from the array as now they are deleted
+            state.startDeletingNotes = false;
+
+            //saving updated categories and notes to local storage
+            localStorage.setItem('Notes', JSON.stringify(state.Notes))
         },
         setstartDeletingTasks(state, action) {
             const { start } = action.payload
@@ -391,6 +446,52 @@ const NotesSlice = createSlice({
                 state.Notes = AllNotes.filter(({ title, desc }) => title.includes(state.searchInputVal) || desc.includes(state.searchInputVal))
             }
 
+        },
+        setusedQuery(state, action) {
+            const { open, queryId } = action.payload
+
+            if (typeof open !== 'boolean') return
+            state.usedQuery = { open, queryId }
+        },
+        setopenSettings(state, action) {
+            const { open } = action.payload
+            if (typeof open !== 'boolean') return
+            state.openSettings = open;
+
+        },
+        changeNotesViewStyle(state, action) {
+            const { style } = action.payload;
+            if (style !== 'Grid view' && style !== 'List view') return;
+            state.NotesViewStyle = style;
+
+            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+            const updatedSettings = { ...storedSettings, NotesViewStyle: state.NotesViewStyle };
+            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+        },
+        changeSortNotesMethod(state, action) {
+            const { method } = action.payload;
+
+            if (method !== 'A-Z' && method !== 'Z-A' && method !== 'Latest' && method !== 'Earliest') return;
+
+            state.NoteSortMethod = method;
+            if (method === 'Latest') state.Notes = state.Notes.sort((a, b) => b.timeStamp - a.timeStamp)
+            if (method === 'Earliest') state.Notes = state.Notes.sort((a, b) => a.timeStamp - b.timeStamp)
+            if (method === 'A-Z') state.Notes = state.Notes.sort((a, b) => a.title.localeCompare(b.title))
+            if (method === 'Z-A') state.Notes = state.Notes.sort((a, b) => b.title.localeCompare(a.title))
+            localStorage.setItem('Notes', JSON.stringify(state.Notes));
+
+            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+            const updatedSettings = { ...storedSettings, NoteSortMethod: state.NoteSortMethod };
+            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+        },
+        ResetNotesSettings(state) {
+            state.activeTab = 'Notes'
+            state.category = 'All'
+            state.NotesViewStyle = 'Grid view'
+            state.NoteSortMethod = 'Earliest'
+            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+            const updatedSettings = { ...storedSettings, NotesViewStyle: state.NotesViewStyle ,NoteSortMethod : state.NoteSortMethod};
+            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
         }
     }
 })
@@ -407,10 +508,12 @@ export const {
     setStartDeletingNotes,
     manageDeletedCategories,
     setCreateNoteOpen,
+    setusedQuery,
     manageEditNote,
     manageDeletedNotes,
     removeNotes,
     ResetNotesApp,
+    MoveNotes,
     addTask,
     setopenTaskManager,
     removeTask,
@@ -419,6 +522,10 @@ export const {
     deleteTasks,
     setstartDeletingTasks,
     addTaskTodeletedTasksArray,
-    setSearchInputVal
+    setSearchInputVal,
+    setopenSettings,
+    changeNotesViewStyle,
+    changeSortNotesMethod,
+    ResetNotesSettings
 } = NotesSlice.actions;
 export default NotesSlice.reducer;

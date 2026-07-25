@@ -10,9 +10,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CreateNote from "../components/Notes/CreateNote";
-import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote, setopenTaskManager, addTaskTodeletedTasksArray, setstartDeletingTasks } from "../redux/features/NotesStrorage";
+import { setCreateNoteOpen, setOpenManageFolder, setStartDeletingCat, setStartDeletingNotes, manageEditNote, setopenTaskManager, addTaskTodeletedTasksArray, setstartDeletingTasks, setopenSettings } from "../redux/features/NotesStrorage";
 import EditNote from "../components/Notes/EditNote";
 import ManageTask from "../components/Notes/TaskComponents/ManageTask";
+import NoteSetting from "../components/Notes/NoteSetting";
 
 
 /* flex-1 means grow , shrink (if needed) and min-h-0 all together*/
@@ -42,6 +43,7 @@ const Notes = () => {
                 dispatch(manageEditNote({ open: false }))
                 dispatch(setopenTaskManager({ shouldOpen: false }))
                 dispatch(addTaskTodeletedTasksArray({ Taskid: 'Empty Trash' }))
+                dispatch(setopenSettings({ open: false }));
             }
             closeAll();
         }
@@ -62,7 +64,7 @@ const Notes = () => {
     return (
         <div
             style={{
-                backgroundColor: ThemeColors.bg, 
+                backgroundColor: ThemeColors.bg,
             }}
             className={`w-full h-full flex flex-col `}>
 
@@ -77,6 +79,7 @@ const Notes = () => {
 
                 {/* manage folder  which appears when openNotesFolder variable value changes to true in store  */}
                 <Folders Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                <NoteSetting Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
 
                 <div ref={notesBody} className="notes-body translate-x-0">
                     <Navbar Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />

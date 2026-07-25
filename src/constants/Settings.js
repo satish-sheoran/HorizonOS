@@ -91,8 +91,8 @@ export const SECTIONS = [
         FileName: 'Display',
         Icon: 'Monitor',
         Queries: [
-            { query: 'Change Wallpaper' },
-            { query: 'Change Time Format' }
+            { query: 'Change Wallpaper',queryId : 'WallpaperQuery', ParentSection: 'Additional Settings' },
+            { query: 'Change Time Format',queryId : 'TimeFormatQuery', ParentSection: 'Additional Settings' }
         ],
         SubSections: [
             {
@@ -242,8 +242,8 @@ export const SECTIONS = [
         FileName: 'Apps',
         Icon: 'LayoutGrid',
         Queries: [
-            { query: 'Reset Settings' },
-            { query: 'Different Theme For Apps' }
+            { query: 'Reset Settings',queryId : 'ResetSettingQuery', ParentSection: 'Additional Settings' },
+            { query: 'Different Theme For Apps',queryId : 'ThemeChangeQuery', ParentSection: 'Display' }
         ],
         SubSections: [
             {
@@ -298,7 +298,7 @@ export const SECTIONS = [
         FileName: 'AdditionalSettings',
         Icon: 'HousePlus',
         Queries: [
-            { query: 'Factory Reset' },
+            { query: 'Factory Reset', queryId : 'FactoryResetQuery',ParentSection: 'About Us' },
         ],
         SubSections: [
             {

@@ -1,1 +1,0 @@
-2. in orientation rotated , the OS is not showing perfectly

@@ -86,7 +86,7 @@ export const ACCENT_COLORS = [
 export const LIGHT_THEME_COLORS = {
     Name: 'LIGHT_THEME_COLORS',
     header: '#FFFFFF',
-    bg: '#F3F4F6',
+    bg: 'rgb(247, 248, 253)',
     primary: '#FFFFFF',
     sec: '#F3F4F6',
     third: 'rgb(233,233,235)',

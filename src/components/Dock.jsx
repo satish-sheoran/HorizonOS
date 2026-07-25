@@ -10,7 +10,7 @@ const Dock = ({ RecievedWidth }) => {
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
 
     return (
-        <nav className={`dock glass flex justify-between  rounded-3xl items-center 
+        <nav  className={`liquid-glass dock  flex justify-between  rounded-3xl items-center 
         ${RecievedWidth ?
                 ''
                 :
@@ -20,19 +20,19 @@ const Dock = ({ RecievedWidth }) => {
 
             {dockApps.map(({ id, name, icon, canOpen }) => {
                 return <button style={{
-                    backgroundColor: COMMON_COLORS.White, 
+                    backgroundColor: COMMON_COLORS.White,
                 }}
                     key={id} className={`app-icon active:scale-90 ${canOpen ? 'opacity-100' : 'opacity-70'} overflow-hidden`}
                     onClick={() => toggleApp({ id, canOpen })} >
 
 
                     <img style={{
-                        
+
                     }} className={`w-full h-full object-cover object-center rounded-(--border-radius-md) ${id == 'settings' || id == 'clock' ? 'scale-80' : 'scale-100'}`} src={icon} alt={name} />
 
                     {/* it is just to show blackish feel when app is clicked to opened */}
                     <div style={{
-                        
+
                     }} className='absolute bg-black w-full h-full rounded-(--border-radius-md) top-0 left-0 opacity-0 active:opacity-40'></div>
 
 

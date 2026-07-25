@@ -17,7 +17,7 @@ const AdditionalSections = ({ Theme, Device, fullScreen, ThemeColors, AccentColo
     return (
         <section style={{
             borderColor: ThemeColors.third, 
-        }} className={`additional-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
+        }} id='Additional Settings' className={`additional-overflow-area flex flex-col gap-2 ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto pb-5 p-[2.5%]'}`}>
 
             {
                 CurrSection?.map(({ Section, FileName, Options }, idx) => {

@@ -74,7 +74,7 @@ const Search = ({ Theme, ThemeColors, AccentColors }) => {
                 spellCheck={false}
                 onFocus={() => setisFocused(true)}
                 onBlur={() => setisFocused(false)}
-                placeholder="Search City..."
+                placeholder="Search Note..."
                 style={{
                     backgroundColor: ThemeColors.header,
                     borderColor: isFocused ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE : ThemeColors.third,

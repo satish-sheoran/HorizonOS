@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-import { deleteTasks, removeCategory, removeNotes, setStartDeletingCat, setStartDeletingNotes, setstartDeletingTasks } from '../../../redux/features/NotesStrorage';
+import { deleteTasks, removeCategory, removeNotes, ResetNotesSettings, setStartDeletingCat, setStartDeletingNotes, setstartDeletingTasks } from '../../../redux/features/NotesStrorage';
 import { toast } from 'react-toastify';
-import { COMMON_COLORS } from '../../../constants/style';
+import { ACCENT_COLORS, COMMON_COLORS } from '../../../constants/style';
 import { CSS_EASING } from '../../../constants/Settings'
+import { RemoveFromAdvanceDarkMode, setFontSize } from '../../../redux/features/wallpaper';
 
 const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Theme, AccentColors, ThemeColors }) => {
 
@@ -45,22 +46,27 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
 
 
                 <div ref={DeletPopElem}
-                onClick={(e)=>e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                     style={{
                         backgroundColor: ThemeColors.bg,
+                        borderColor: ACCENT_COLORS?.find(({ COLOR }) => COLOR === 'Red')?.CODE
                     }}
-                    className={`border ${device === 'Mobile' ? 'w-[calc(100%-30px)] px-4' : 'w-75 px-3'} h-auto  rounded-2xl py-3.5  gap-2.5  flex flex-col items-center`}>
+                    className={`border ${device === 'Mobile' ? 'w-[calc(100%-30px)] px-4' : 'w-75 px-3'} h-auto  rounded-2xl py-3.5  gap-2  flex flex-col items-center`}>
 
                     <span style={{
-                        fontSize: Sizes.Regular,
+                        fontSize: `${((Sizes.Regular.slice(0, -3))) * 1.05}rem`,
                         color: ThemeColors.primaryText,
                         fontFamily: Weights.SemiBold,
-                    }} className={`font-semibold `}>Delete {WorkingOn === 'Notes' ? 'Notes' : WorkingOn === 'Tasks' ? 'Tasks' : 'folder'}</span>
+                    }} className={`font-semibold `}>{WorkingOn === 'Reset Note Settings' ? 'Restore Default Settings' :
+                        `Delete ${WorkingOn === 'Notes' ? 'Notes' : WorkingOn === 'Tasks' ? 'Tasks' : 'folder'}`
+                        }</span>
 
                     <span style={{
                         fontSize: Sizes.Small,
                         color: ThemeColors.thirdText
-                    }}>Delete {WorkingOn === 'Notes' ? deletedNotes?.length : WorkingOn === 'Tasks' ? deletedTasks.length : deletedCategories?.length} items ?</span>
+                    }}>{WorkingOn === 'Reset Note Settings' ? "Your notes and tasks wont'be affected." :
+                        `Delete ${WorkingOn === 'Notes' ? deletedNotes?.length : WorkingOn === 'Tasks' ? deletedTasks.length : deletedCategories?.length} items ?`
+                        }</span>
 
                     <div className={`w-full flex items-center gap-2`}>
 
@@ -102,7 +108,15 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
                                     dispatch(setstartDeletingTasks({ start: false }))
                                     setOpenDeletePopUp(false); //after delete close the pop up
 
-                                    toast.info('Notes Deleted Successfully')
+                                    toast.info('Tasks Deleted Successfully')
+                                    return;
+                                }
+                                if (WorkingOn === 'Reset Note Settings') {
+                                    dispatch(ResetNotesSettings())
+                                    dispatch(setFontSize({Size : 'Default'}))
+                                    dispatch(RemoveFromAdvanceDarkMode({ App: 'Notes' }))
+                                    toast.info('Settings are Restored.')
+                                    setOpenDeletePopUp(false); //after delete close the pop up
                                     return;
                                 }
 
@@ -121,7 +135,10 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
                                 '--active': COMMON_COLORS.LightRed
                                 ,
                             }}
-                            className={`HOVER_CLASS grow ${device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}   font-bold rounded-lg select-none   active:scale-96`}>DELETE</button>
+                            className={`HOVER_CLASS grow ${device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}   font-bold rounded-lg select-none   active:scale-96`}>{
+                                WorkingOn === 'Reset Note Settings' ? 'Restore' : 'DELETE'
+                            }
+                        </button>
                     </div>
 
 
