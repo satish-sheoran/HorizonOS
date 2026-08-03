@@ -1,5 +1,18 @@
 export const VERSION_HISTORY = [
     {
+        version: '1.3',
+        codename: 'Chronos',
+        clr : 'Orange',
+        releaseDate: '2026-08-03',
+        type: 'Minor',
+        changes: [
+            { icon: 'Clock', iconClr: 'Blue', change: "Introduced a redesigned Timer section with smooth animations." },
+            { icon: 'Timer', iconClr: 'Orange', change: "Added fully functional Stopwatch with start,pause,reset and all supports." },
+            { icon: 'Trash', iconClr: 'Red', change: "Implemented timer deletion with animated transitions." },
+            { icon: 'Sparkles', iconClr: 'Purple', change: "Refined the clock app UIO and  improve overall user experience." }
+        ]
+    },
+    {
         version: '1.2',
         codename: 'NoteDown',
         clr : 'Purple',

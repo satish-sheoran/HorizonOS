@@ -84,19 +84,34 @@ export const ACCENT_COLORS = [
 
 
 export const LIGHT_THEME_COLORS = {
+    // Name: 'LIGHT_THEME_COLORS',
+    // header: '#FFFFFF',
+    // bg: 'rgb(247, 248, 253)',
+    // primary: '#FFFFFF',
+    // sec: '#F3F4F6',
+    // third: 'rgb(233,233,235)',
+
+    // primaryText: 'rgb(1,1,1)',
+    // secText: '#666666',
+    // thirdText: '#8F8F8F',
+
+    // grayish: 'rgb(128,128,128)',
+    // blackBg: '#252525',
+
     Name: 'LIGHT_THEME_COLORS',
     header: '#FFFFFF',
-    bg: 'rgb(247, 248, 253)',
+    bg: '#F4F8FF',
     primary: '#FFFFFF',
-    sec: '#F3F4F6',
-    third: 'rgb(233,233,235)',
+    sec: '#EAF1FF',
+    third: '#D6E5FF',
 
-    primaryText: 'rgb(1,1,1)',
-    secText: '#666666',
-    thirdText: '#8F8F8F',
+    primaryText: '#0A0A0A',
+    secText: '#4F5D75',
+    thirdText: '#7B879D',
 
-    grayish: 'rgb(128,128,128)',
-    blackBg: '#252525',
+    grayish: '#8A94A6',
+    blackBg: '#1A2B4A',
+    accent: '#0057FF'
 }
 
 export const DARK_THEME_COLORS = {
@@ -114,6 +129,25 @@ export const DARK_THEME_COLORS = {
 
     grayish: 'rgb(145,145,145)',
     whiteBg: '#FFFFFF',
+
+
+
+    // header: '#1B1E26',
+    // bg: '#23262F',
+
+    // primary: '#111318',
+    // sec: '#1A1D24',
+    // third: '#2B2F39',
+
+    // primaryText: '#FFFFFF',
+    // secText: '#E3E5E8',
+    // thirdText: '#AEB4BF',
+
+    // grayish: '#7F8794',
+    // whiteBg: '#FFFFFF',
+
+    // accent: '#23262F'
+
 }
 
 export const COMMON_COLORS = {

@@ -5,15 +5,15 @@ import { Clock_Options } from "../../constants/Clock";
 const ClockSlice = createSlice({
     name: 'Clock',
     initialState: {
-        ActiveTab: Clock_Options.find(({ option }) => option === 'Clock')
+        ActiveTab: Clock_Options.find(({ option }) => option === 'World Clock')
     },
     reducers: {
         setActiveTab(state, action) {
             const { option } = action.payload
-            state.ActiveTab = Clock_Options.find(({ option: OPTION }) => OPTION === option) ?? Clock_Options.find(({ option }) => option === 'Clock')
+            state.ActiveTab = Clock_Options.find(({ option: OPTION }) => OPTION === option) ?? Clock_Options.find(({ option }) => option === 'World Clock')
         },
         ResetClock(state) {
-            state.ActiveTab = Clock_Options.find(({ option }) => option === 'Clock')
+            state.ActiveTab = Clock_Options.find(({ option }) => option === 'World Clock')
         }
     }
 })

@@ -113,8 +113,8 @@ const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors,
 
                                     if (!change) return null;
 
-                                    return <p key={idx} className='flex gap-2 justify-start'>
-                                        <Icon style={{ color: ACCENT_COLORS?.find(({ COLOR }) => COLOR === iconClr)?.CODE ?? iconClr }} size={15} strokeWidth={2} />
+                                    return <p key={idx} className='flex gap-3 items-center justify-start'>
+                                        <Icon style={{ color: ACCENT_COLORS?.find(({ COLOR }) => COLOR === iconClr)?.CODE ?? iconClr }} size={20} strokeWidth={2.5} />
                                         <span style={{
                                             color: ThemeColors.secText,
                                             fontFamily: Weights.SemiBold,
