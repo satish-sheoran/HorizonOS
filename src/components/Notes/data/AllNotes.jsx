@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Check, NotebookPen } from 'lucide-react'
+import { Check, NotebookPen, Pin } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Masonry from "react-masonry-css";
 import { COMMON_COLORS } from '../../../constants/style'
@@ -101,10 +101,9 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                         className="flex gap-2.5 w-full h-full "
                         columnClassName="flex flex-col gap-2.5"
                     >
-                        {Notes.map(({ title, id, desc, timeStamp }) => (
+                        {Notes.map(({ title, id, desc,pin, timeStamp }) => (
                             <button id={`Note-${id}`}
                                 {...(!isDeleteNoteOpen ? Handlers : {})} //adding long press handler only if delete mode is off
-
                                 onClick={(e) => {
                                     if (isLongPress.current) {
                                         e.preventDefault(); // stop accidental click behavior
@@ -154,9 +153,9 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                     {title && desc ? desc : 'No Text'} {/* if title and desc exist, display desc; otherwise, display 'No Text' */}
                                 </p>
 
-                                <div className='flex items-center justify-between gap-1 overflow-hidden'>
+                                <div className='flex items-center justify-start gap-1 overflow-hidden'>
                                     <span style={{
-                                        fontSize: Sizes.ExtraSmall,
+                                        fontSize: isDeleteNoteOpen ? `${(Sizes.ExtraSmall.slice(0, -3)) * 0.85}rem` : Sizes.ExtraSmall,
                                         fontFamily: Weights.Regular,
                                         color: ThemeColors.thirdText,
                                     }}
@@ -166,6 +165,7 @@ const AllNotes = ({ Theme, AccentColors, ThemeColors }) => {
                                             `}>
                                         {formatDateTime(timeStamp)}
                                     </span>
+                                    {pin && <span><Pin style={{ color : AccentColors.CODE, rotate : '45deg'}} strokeWidth={2.5} size={15} /></span>}
 
                                     {/* absolute button used to delete note */}
                                     {

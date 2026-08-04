@@ -19,7 +19,8 @@ const getNotes = () => {
                 category: 'Uncategorized',
                 title: 'Welcome to Notes App Default Note',
                 desc: 'This is your first note, you can edit or delete it. You can also create new notes and organize them into categories. Enjoy using the app!',
-                timeStamp: Date.now()
+                timeStamp: Date.now(),
+                pin: false
             },
         ];
     } catch {
@@ -29,7 +30,8 @@ const getNotes = () => {
                 category: 'Uncategorized',
                 title: 'Welcome to Notes App Default Note',
                 desc: 'This is your first note, you can edit or delete it. You can also create new notes and organize them into categories. Enjoy using the app!',
-                timeStamp: Date.now()
+                timeStamp: Date.now(),
+                pin: false
             },
         ];
     }
@@ -148,8 +150,43 @@ const NotesSlice = createSlice({
 
             timeStamp = Date.now();
 
-            state.Notes.push({ id, category, title, desc, timeStamp });
+            state.Notes.push({ id, category, title, desc, timeStamp, pin: false });
             localStorage.setItem('Notes', JSON.stringify(state.Notes))
+        },
+        ManageNotesPin(state, action) {
+            const { NotesId, pin } = action.payload
+
+            if (Array.isArray(NotesId)) {
+                state.Notes = state.Notes.map(({ id, pin: oldPin }) => NotesId.includes(id) ? { ...state.Notes.find(note => note.id === id), pin } : { ...state.Notes.find(note => note.id === id), pin: oldPin ?? false });
+
+            } else {
+                const idx = state.Notes.findIndex(({ id }) => id === NotesId);
+                state.Notes[idx] = { ...state.Notes[idx], pin };
+            }
+            state.deletedNotes = [];
+            state.startDeletingNotes = false
+
+
+            if (state.NoteSortMethod === 'Latest') state.Notes = state.Notes.sort((a, b) => {
+                if (a.pin !== b.pin) return b.pin - a.pin;
+               return b.timeStamp - a.timeStamp
+            })
+            if (state.NoteSortMethod === 'Earliest') state.Notes = state.Notes.sort((a, b) =>{
+                if (a.pin !== b.pin) return b.pin - a.pin;
+                 return a.timeStamp - b.timeStamp
+                })
+            if (state.NoteSortMethod === 'A-Z') state.Notes = state.Notes.sort((a, b) => {
+                if (a.pin !== b.pin) return b.pin - a.pin;
+                return a.title.localeCompare(b.title)
+            })
+            if (state.NoteSortMethod === 'Z-A') state.Notes = state.Notes.sort((a, b) => {
+                if (a.pin !== b.pin) return b.pin - a.pin;
+                return b.title.localeCompare(a.title)
+            })
+            localStorage.setItem('Notes', JSON.stringify(state.Notes));
+
+            localStorage.setItem('Notes', JSON.stringify(state.Notes))
+
         },
         setActiveTab(state, action) {
             const { tab } = action.payload;
@@ -474,10 +511,22 @@ const NotesSlice = createSlice({
             if (method !== 'A-Z' && method !== 'Z-A' && method !== 'Latest' && method !== 'Earliest') return;
 
             state.NoteSortMethod = method;
-            if (method === 'Latest') state.Notes = state.Notes.sort((a, b) => b.timeStamp - a.timeStamp)
-            if (method === 'Earliest') state.Notes = state.Notes.sort((a, b) => a.timeStamp - b.timeStamp)
-            if (method === 'A-Z') state.Notes = state.Notes.sort((a, b) => a.title.localeCompare(b.title))
-            if (method === 'Z-A') state.Notes = state.Notes.sort((a, b) => b.title.localeCompare(a.title))
+            if (method === 'Latest') state.Notes = state.Notes.sort((a, b) => {
+                if (a.pin !== b.pin) return b.pin - a.pin;
+               return b.timeStamp - a.timeStamp
+            })
+            if (method === 'Earliest') state.Notes = state.Notes.sort((a, b) =>{
+                if (a.pin !== b.pin) return b.pin - a.pin;
+                 return a.timeStamp - b.timeStamp
+                })
+            if (method === 'A-Z') state.Notes = state.Notes.sort((a, b) => {
+                if (a.pin !== b.pin) return b.pin - a.pin;
+                return a.title.localeCompare(b.title)
+            })
+            if (method === 'Z-A') state.Notes = state.Notes.sort((a, b) => {
+                if (a.pin !== b.pin) return b.pin - a.pin;
+                return b.title.localeCompare(a.title)
+            })
             localStorage.setItem('Notes', JSON.stringify(state.Notes));
 
             const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
@@ -490,7 +539,7 @@ const NotesSlice = createSlice({
             state.NotesViewStyle = 'Grid view'
             state.NoteSortMethod = 'Earliest'
             const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
-            const updatedSettings = { ...storedSettings, NotesViewStyle: state.NotesViewStyle ,NoteSortMethod : state.NoteSortMethod};
+            const updatedSettings = { ...storedSettings, NotesViewStyle: state.NotesViewStyle, NoteSortMethod: state.NoteSortMethod };
             localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
         }
     }
@@ -498,6 +547,7 @@ const NotesSlice = createSlice({
 
 export const {
     addNote,
+    ManageNotesPin,
     setActiveTab,
     setActiveCategory,
     setOpenManageFolder,

@@ -2,15 +2,8 @@
 2. how to remove web page not secure 
 
 
-What i have did for this commit :
-feat(clock): Implement stopwatch section full functional
- 
-- Implemented completed UI and functionality of stopwatch
-- Added Design,Animation and Delete functionality of Timer section
-
-TODO : To add custom timer
-- functionality of timer dropping
-- features to add when timer ends and make the timer section fully functional
+What i did for this commit :
+feat(Notes) : Added Notes Pin functionality
 
 
 
@@ -22,5 +15,3 @@ TODO in Timers :
 custom timer set,
 what happes when timer ends feature,
 
-Notes Appremaing :
-1 pin note 

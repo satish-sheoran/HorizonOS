@@ -1,8 +1,8 @@
-import { Check, FolderInput, Lock, PinOff, TextAlignStart, Trash, X } from "lucide-react";
+import { Check, FolderInput, Lock, Pin, PinOff, TextAlignStart, Trash, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab, setStartDeletingNotes, setstartDeletingTasks } from "../../redux/features/NotesStrorage";
+import { setActiveTab, setStartDeletingNotes, setstartDeletingTasks, ManageNotesPin } from "../../redux/features/NotesStrorage";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ConfirmDeletePopUp from './Folder/ConfirmDeletePopUp'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -24,9 +24,12 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
     const deletedNotes = useSelector(store => store.Notes.deletedNotes);
     const startDeletingTasks = useSelector(store => store.Notes.startDeletingTasks); //used for tasks deletion
     const deletedTasks = useSelector(store => store.Notes.deletedTasks) //used for tasks deletion
+    const Notes = useSelector(store => store.Notes.Notes) //notes
 
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false); //used to open delete pop up to delete notes 
     const [openMoveToPop, setopenMoveToPop] = useState(false)
+
+    
 
     // animation for entry of cntrls of nots (delete,close editing etc.)
     useGSAP(() => {
@@ -132,16 +135,23 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
 
                             {activeTab === 'Notes' && <button style={{ color: ThemeColors.primaryText }}
                                 className="note-cntrl-btns active:scale-95"
-                                onClick={() => toast.info('Feature Coming Soon')}
+                                onClick={() => {
+                                    dispatch(ManageNotesPin({
+                                        NotesId: deletedNotes,
+                                        pin: Notes.some((note) => deletedNotes.includes(note.id) && note.pin) ? false : true
+                                    }))
 
+                                }}
                             >
-                                <PinOff style={{
+                                {
+                                    Notes.some((note) => deletedNotes.includes(note.id) && note.pin) ?
+                                        <PinOff size={22} strokeWidth={2} className={`rounded px-[1.2px]${Theme != 'dark' ? 'stroke-(--primary-dark-clr)' : 'stroke-(--primary-light-clr)'} `} /> :
+                                        <Pin size={22} strokeWidth={2} className={`rounded px-[1.2px]${Theme != 'dark' ? 'stroke-(--primary-dark-clr)' : 'stroke-(--primary-light-clr)'} `} />
+                                }
 
-                                }} size={22} strokeWidth={2} className={`rounded px-[1.2px]${Theme != 'dark' ? 'stroke-(--primary-dark-clr)' : 'stroke-(--primary-light-clr)'} `} />
-
-                                <span style={{
+                                < span style={{
                                     fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
-                                }} className="select-none" >Unpin</span>
+                                }} className="select-none" >{Notes.some((note) => deletedNotes.includes(note.id) && note.pin) ? 'Unpin' : 'pin'}</span>
 
                             </button>}
 
@@ -212,15 +222,17 @@ ${Theme != 'dark' ?
 
             {openDeletePopUp === true && <ConfirmDeletePopUp openDeletePopUp={openDeletePopUp} setOpenDeletePopUp={setOpenDeletePopUp} WorkingOn={startDeletingTasks ? 'Tasks' : 'Notes'} Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} />}
 
-            {openMoveToPop === true && <MoveTo
-                openMoveToPop={openMoveToPop}
-                setopenMoveToPop={setopenMoveToPop}
-                Theme={Theme}
-                ThemeColors={ThemeColors}
-                AccentColors={AccentColors}
-            />}
+            {
+                openMoveToPop === true && <MoveTo
+                    openMoveToPop={openMoveToPop}
+                    setopenMoveToPop={setopenMoveToPop}
+                    Theme={Theme}
+                    ThemeColors={ThemeColors}
+                    AccentColors={AccentColors}
+                />
+            }
 
-        </footer>
+        </footer >
     )
 }
 

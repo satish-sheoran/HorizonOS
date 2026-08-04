@@ -122,7 +122,6 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                             <div
                                 ref={(el) => {
                                     if (el) {
-                                        ;
                                         TimersRef.current[id] = el
                                     } else {
                                         delete TimersRef.current[id];

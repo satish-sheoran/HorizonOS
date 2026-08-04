@@ -83,8 +83,8 @@ const Notes = () => {
 
                 <div ref={notesBody} className="notes-body translate-x-0">
                     <Navbar Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
-                    <Content Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
-                    <Footer Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                    <Content  Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
+                    <Footer  Theme={Theme} AccentColors={AccentColors} ThemeColors={ThemeColors} />
                 </div>
 
                 {/*  pop up which opens create And Edit Note   */}

@@ -5,7 +5,7 @@ const Content = ({Theme,ThemeColors,AccentColors}) => {
 
     return (
         <div className="content">
-            <NotesArea Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} /> 
+            <NotesArea  Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} /> 
             <AllTasks Theme={Theme} ThemeColors={ThemeColors} AccentColors={AccentColors} /> 
         </div>
     )
