@@ -9,6 +9,7 @@ import { CSS_EASING } from '../../../../../constants/Settings'
 
 const ResetSettings = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors }) => {
 
+  const dispatch = useDispatch()
   const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -16,8 +17,8 @@ const ResetSettings = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentC
   return (
     <div
       onClick={() => {
+        toast.info('Coming Soon...')
         // dispatch(setActivePanel({ panel: Option }))
-        toast.info('Coming Soon !')
       }}
       style={{
       fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,

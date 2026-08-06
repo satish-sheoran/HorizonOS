@@ -28,7 +28,7 @@ const ChangewallpaperDeep = ({ Name, Section, Device, fullScreen, Theme, ThemeCo
     return (
         <section style={{
             borderColor: ThemeColors.third, 
-        }} className={`deep-changeWallpaper-option flex flex-col py-[2.5%] gap-2 select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto   px-[2.5%]'}`}>
+        }} className={`deep-changeWallpaper-option flex flex-col py-[2.5%] gap-2 select-none ${Device !== 'Desktop' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-7/10 h-full overflow-y-auto  px-[2.5%]'}`}>
 
             {
                 DeepSubSection?.map(({ Section: DeepSubName, FileName }) => {

@@ -2,7 +2,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.3.2',
         codename: 'Chronos',
-        clr : 'Orange',
+        clr: 'Orange',
         releaseDate: '2026-08-04',
         type: 'Minor',
         changes: [
@@ -16,7 +16,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.2',
         codename: 'NoteDown',
-        clr : 'Purple',
+        clr: 'Purple',
         releaseDate: '2026-07-25',
         type: 'Major',
         changes: [
@@ -29,7 +29,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.1.4',
         codename: 'Motion',
-        clr : 'Blue',
+        clr: 'Blue',
         releaseDate: '2026-07-21',
         type: 'Minor',
         changes: [
@@ -42,7 +42,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.1.0',
         codename: 'Productivity',
-        clr : 'Yellow',
+        clr: 'Yellow',
         releaseDate: '2026-07-18',
         type: 'Major',
         changes: [
@@ -58,7 +58,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.0.4',
         codename: 'Restore',
-        clr : 'Orange',
+        clr: 'Orange',
         releaseDate: '2026-07-12',
         type: 'Feature',
         changes: [
@@ -72,7 +72,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.0.3',
         codename: 'Notebook',
-        clr : 'Blue',
+        clr: 'Blue',
         releaseDate: '2026-05-02',
         type: 'Feature',
         changes: [
@@ -86,7 +86,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.0.2',
         codename: 'Calculate',
-        clr : 'Green',
+        clr: 'Green',
         releaseDate: '2026-04-22',
         type: 'Feature',
         changes: [
@@ -97,7 +97,7 @@ export const VERSION_HISTORY = [
     },
     {
         version: '1.0.1',
-        clr : 'Pink',
+        clr: 'Pink',
         codename: 'Canvas',
         releaseDate: '2026-04-15',
         type: 'Feature',
@@ -111,7 +111,7 @@ export const VERSION_HISTORY = [
     {
         version: '1.0.0',
         codename: 'Genesis',
-        clr : 'Purple',
+        clr: 'Purple',
         releaseDate: '2026-04-01',
         type: 'Major',
         changes: [
@@ -124,3 +124,20 @@ export const VERSION_HISTORY = [
         ]
     }
 ]
+
+
+
+// {
+//         version: '1.4',
+//         codename: 'ControlOS',
+//         clr : 'Blue',
+//         releaseDate: '2026-08-06',
+//         type: 'Major',
+//         changes: [
+//             { icon: 'Setting2', iconClr: 'Blue', change: "Fully functional Developer option." },
+//             { icon: 'RotateCcw', iconClr: 'Orange', change: "Reset individual app data." },
+//             { icon: 'FileDown', iconClr: 'Green', change: "Export system state." },
+//             { icon: 'FlaskConical', iconClr: 'Purple', change: "Experimental features support." },
+//             { icon: 'Bug', iconClr: 'Red', change: "Debug logging controls." },
+//         ]
+//     },

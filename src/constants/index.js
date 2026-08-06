@@ -284,3 +284,50 @@ export const ALL_APPS = [
 ]
 
 export const OS_Storage = '8.0 GB'
+
+
+export const RESET_DETAILS = [
+    {
+        App: 'Calculator',
+        Logo: '/assets/icons/calculator.webp',
+        Description: 'Reset calculations and preferences',
+        DataSize : '100KB',
+        ResetsDetail: [
+            'Calculation history',
+            'Theme & appearance',
+        ]
+    },
+    {
+        App: 'Notes',
+        Logo: '/assets/icons/notes.webp',
+        Description: 'Reset notes, categories, tasks and preferences',
+        DataSize : '5MB',
+        ResetsDetail: [
+            'All notes, tasks and categories',
+            'Notes app settings',
+            'Theme & preferences',
+        ]
+    },
+    {
+        App: 'Settings',
+        Logo: '/assets/icons/settings.webp',
+        Description: 'Reset all settings and preferences',
+        DataSize : '3.4MB',
+        ResetsDetail: [
+            'Wallpaper & appearance',
+            'Accent colors, Animations and Refresh Rate',
+            'System settings and preferences',
+
+        ]
+    },
+    {
+        App: 'Clock',
+        Logo: '/assets/icons/clock.webp',
+        Description: 'Reset clocks, alarms and preferences',
+        DataSize : '50KB',
+        ResetsDetail: [
+            'World clocks and alarms',
+            'Theme & preferences',
+        ]
+    }
+]

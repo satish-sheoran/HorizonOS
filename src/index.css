@@ -302,6 +302,8 @@ img {
 .notes-setting-overflow,
 #stopwatch-overflow-area,
 #AllTimersOverflow-parent,
+.deep-resetSetting-option,
+.deep-developerOption,
 body,
 html {
     scrollbar-width: none;

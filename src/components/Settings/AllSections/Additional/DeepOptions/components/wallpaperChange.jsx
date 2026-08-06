@@ -27,7 +27,7 @@ const wallpaperChange = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
                 style={{
                   borderColor: ThemeColors.third,  backgroundColor: ThemeColors.header, 
                 }}
-                className={`border w-full grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} rounded-2xl gap-2 select-none overflow-x-auto 
+                className={`border w-full grid ${Device !== 'Desktop' ? 'grid-cols-2' : 'grid-cols-3'} rounded-2xl gap-2 select-none 
                            ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                        `} >
                 {

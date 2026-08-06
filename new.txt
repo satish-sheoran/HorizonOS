@@ -3,8 +3,10 @@
 
 
 What i did for this commit :
-feat(Notes) : Added Notes Pin functionality
+feat(settings) : Add Reset Settings and Developer Options section
 
+- Added design of Reset Settings and Developer options sections
+ TODO : Functionality Remaining to Add
 
 
 FIXES And ADDITION TO CALC:

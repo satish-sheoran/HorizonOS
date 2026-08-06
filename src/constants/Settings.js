@@ -358,12 +358,24 @@ export const SECTIONS = [
             }, {
                 Section: 'Developer options',
                 FileName: 'DeveloperoptionsDeep',
-                SubSections: null,
+                SubSections: [
+                    {
+                        Section: 'Developer Options',
+                        FileName: 'DeveloperOptions',
+                        Options: null
+                    }
+                ],
                 Options: null
             }, {
                 Section: 'Reset settings',
                 FileName: 'ResetsettingsDeep',
-                SubSections: null,
+                SubSections: [
+                    {
+                        Section: 'Reset Settings',
+                        FileName: 'ResetSettings',
+                        Options: null
+                    }
+                ],
                 Options: []
             }
 

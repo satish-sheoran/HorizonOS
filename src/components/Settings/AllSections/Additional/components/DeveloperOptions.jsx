@@ -1,14 +1,15 @@
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toast } from 'react-toastify'
 import { setActivePanel } from '../../../../../redux/features/SettingsSlice'
 import { COMMON_COLORS } from '../../../../../constants/style'
 import { CSS_EASING } from '../../../../../constants/Settings'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 const DeveloperOptions = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentColors }) => {
 
+  const dispatch =useDispatch()
   const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -17,8 +18,8 @@ const DeveloperOptions = ({ Theme, Option, fullScreen, Device, ThemeColors, Acce
   return (
     <div
       onClick={() => {
+        toast.info('Coming Soon...')
         // dispatch(setActivePanel({ panel: Option }))
-        toast.info('Coming Soon !')
       }
       }
       style={{
