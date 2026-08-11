@@ -9,7 +9,7 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
     const Device = useSelector((store) => store.Device.currDevice);
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
-
+    const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
 
 
     return (
@@ -46,9 +46,14 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                             color: ThemeColors.primaryText,
                             backgroundColor: ACCENT_COLORS?.find(({ COLOR }) => COLOR === 'Slate_Gray')?.Bg_Clr,
                             fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.9}rem`,
-                            fontFamily: Weights.SemiBold
+                            fontFamily: Weights.SemiBold,
+                            '--hover': ThemeColors.third,
+                            '--active': Theme !== 'dark' ?
+                                Device !== 'Desktop' ? ThemeColors.third : COMMON_COLORS.White
+                                :
+                                COMMON_COLORS.Gray,
                         }}
-                        className={`cursor-pointer w-1/2 rounded-2xl py-2 flex items-center gap-1 justify-center`}>
+                        className={`HOVER_CLASS active:scale-97 cursor-pointer w-1/2 rounded-2xl py-2 flex items-center gap-1 justify-center`}>
                         <span>{!start ? <Undo2 size={18} strokeWidth={2.5} /> :
                             <Flag size={18} strokeWidth={2.5} />}</span>
                         <span>{!start ? 'Reset' : 'Lap'}</span>
@@ -76,9 +81,9 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                             backgroundColor: !start ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').Bg_Clr :
                                 ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').Bg_Clr,
                             color: !start ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE :
-                                ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE
+                                ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE,
                         }}
-                        className={`cursor-pointer rounded-2xl py-2 w-1/2  flex items-center gap-1 justify-center`}>
+                        className={` active:scale-97 cursor-pointer rounded-2xl py-2 w-1/2  flex items-center gap-1 justify-center`}>
                         <span>{!start ? <Play size={18} strokeWidth={2.5} /> :
                             <Pause size={18} strokeWidth={2.5} />}</span>
                         <span>{!start ? 'Start' : 'Stop'}</span>
@@ -95,12 +100,12 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                                 startTimeRef.current = performance.now();
                                 clearInterval(timeIntrvlRef.current);
                                 timeIntrvlRef.current = setInterval(handleTimeInc, 25);
-
+                                if (EnableDebugLogs) console.log('StopWatch Started')
                             } else {
                                 // pause
                                 setstart(false);
                                 elapsedRef.current += performance.now() - startTimeRef.current;
-
+                                if (EnableDebugLogs) console.log('Stopwatch Stopped')
                                 clearInterval(timeIntrvlRef.current);
                             }
                         }}

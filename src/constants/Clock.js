@@ -2,14 +2,14 @@ export const Clock_Options = [
     {
         option: 'World Clock',
         fileName: 'WorldClock',
-        desc: 'View time in different Cities around the World.',
+        desc: 'Track time around the world.',
         icon: 'Globe',
 
     },
     {
         option: 'Alarms',
         fileName: 'Alarms',
-        desc: 'Manage your alarms with ease.',
+        desc: 'Wake up on time, everytime.',
         icon: 'Bell',
 
     },

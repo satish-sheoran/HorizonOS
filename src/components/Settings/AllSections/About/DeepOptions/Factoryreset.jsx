@@ -17,6 +17,7 @@ const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, A
   const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+  const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
 
   const ResetRef = useRef(null)
 
@@ -39,7 +40,7 @@ const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, A
 
   return (
     <div style={{
-      borderColor: ThemeColors.third, 
+      borderColor: ThemeColors.third,
     }} className={` deep-factory-reset py-[2.5%]  select-none ${Device === 'Mobile' ? 'w-full' : !fullScreen ? 'w-full' : 'border-r w-full h-full overflow-y-auto   px-[2.5%]'}`}>
 
       <div className={`flex flex-col gap-2`}>
@@ -78,7 +79,7 @@ const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, A
             fontSize: Sizes.Regular,
             color: ThemeColors.primaryText,
             fontFamily: Weights.SemiBold,
-            
+
           }} className={`font-semibold `}>Factory Reset</span>
 
           <span style={{
@@ -96,7 +97,7 @@ const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, A
                 backgroundColor: Theme !== 'dark' ? COMMON_COLORS.LightWhite : ThemeColors.grayish,
                 '--hover': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
                 '--active': Theme !== 'dark' ? COMMON_COLORS.grayishDark : COMMON_COLORS.LightWhite,
-                
+
               }}
               className={`${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'} HOVER_CLASS w-[calc(50%-2px)]   font-bold select-none  active:scale-96 rounded-lg 
                          `}>Cancel</button>
@@ -104,6 +105,7 @@ const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, A
             <button
               onClick={() => {
                 dispatch(startingFactoryReset({ Start: true }))
+                if (EnableDebugLogs) console.log('Factory Resetting HorizonOS')
                 setopenResetOverlay(false)
               }}
               style={{
@@ -113,7 +115,7 @@ const Factoryreset = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, A
                 color: COMMON_COLORS.White,
                 '--hover': COMMON_COLORS.LightRed,
                 '--active': COMMON_COLORS.LightRed
-                , 
+                ,
               }}
               className={`HOVER_CLASS grow ${Device !== 'Desktop' ? 'py-3.5' : 'py-2.5'}   font-bold rounded-lg select-none   active:scale-96`}>Reset Now</button>
           </div>

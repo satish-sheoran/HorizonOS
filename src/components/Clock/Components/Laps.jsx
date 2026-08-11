@@ -14,13 +14,13 @@ const Laps = ({ Theme, ThemeColors, AccentColors, laps, setLaps }) => {
                     backgroundColor: ThemeColors.header,
                     borderColor: ThemeColors.third
                 }}
-                className={`border select-none flex flex-col rounded-2xl p-[3%] w-full gap-3`}>
+                className={`border select-none flex flex-col rounded-2xl p-[3%] w-full`}>
                 {/* controls */}
                 <div style={{
                     color: ThemeColors.primaryText,
                     fontFamily: Weights.SemiBold,
                     fontSize: `${(Sizes.Small.slice(0, -3)) * 0.95}rem`
-                }} className='w-full flex justify-between items-center'>
+                }} className='mb-3 w-full flex justify-between items-center'>
                     <span>Laps</span>
                     <span>Time</span>
                     <span>Total</span>
@@ -32,8 +32,9 @@ const Laps = ({ Theme, ThemeColors, AccentColors, laps, setLaps }) => {
                     return <div key={idx} style={{
                         color: ThemeColors.primaryText,
                         fontFamily: Weights.Regular,
-                        fontSize: `${(Sizes.Small.slice(0, -3)) * 0.95}rem`
-                    }} className={`flex justify-between items-center`}>
+                        fontSize: `${(Sizes.Small.slice(0, -3)) * 0.95}rem`,
+                        borderColor : ThemeColors.third
+                    }} className={`border-t ${idx===laps.length-1?'border-b':''} flex justify-between items-center py-2`}>
                         <p style={{
                             color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
                             backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr,

@@ -21,7 +21,9 @@ const MoveTo = ({ openMoveToPop, setopenMoveToPop, Theme, AccentColors, ThemeCol
     const MoveAbleNotes = useSelector((store) => store.Notes.deletedNotes); //notes which are selected to move
     const MoveTasks = useSelector(store => store.Notes.deletedTasks) // used to move Tasks
     const MoveToElem = useRef(null);
+    const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
 
+    //states
     const [newMoveCategory, setnewMoveCategory] = useState(activeCategory)
 
     useGSAP(() => {
@@ -113,6 +115,7 @@ const MoveTo = ({ openMoveToPop, setopenMoveToPop, Theme, AccentColors, ThemeCol
                             onClick={() => {
                                 dispatch(MoveNotes({ newCat: newMoveCategory, Id: MoveAbleNotes }))
                                 toast.info(`Moved to ${newMoveCategory}`)
+                                if (EnableDebugLogs) console.log(`Notes Moved to ${newMoveCategory}`)
                                 setopenMoveToPop(false)
                             }}
                             style={{

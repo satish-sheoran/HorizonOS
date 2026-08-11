@@ -20,20 +20,31 @@ const DeviceSection = ({ Theme, Device, fullScreen, GrandParentSection, Options,
   const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
   const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
   const is12HRFormat = useSelector((store) => store.Device.isTime12HourFormat)
-  const TimeFormat = () => dispatch(setTimeFormat())
+  const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+ 
+  const TimeFormat = () => {
+    dispatch(setTimeFormat())
+    if (EnableDebugLogs) {
+      if (is12HRFormat) {
+        console.log('12Hr format Disabled')
+      } else {
+        console.log('12Hr format Enabled')
+      }
+    }
+  }
 
 
   return (
     <div className={`flex flex-col w-full  gap-2`}>
 
       <span style={{
-       fontSize : Sizes.Small , fontFamily: Weights.Regular, color: ThemeColors.grayish, 
+        fontSize: Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish,
       }} className='select-none'>{Section}</span>
 
       {/* DISPLAYING ALL OPTIONS  OF ADDITIONAL SECTIONS */}
       <div style={{
-      borderColor: ThemeColors.third,  backgroundColor: ThemeColors.header, 
+        borderColor: ThemeColors.third, backgroundColor: ThemeColors.header,
       }} className={`border w-full p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
         {
           Options?.map(({ Option, FileName, Toggleable, action }, idx) => {

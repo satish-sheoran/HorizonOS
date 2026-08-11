@@ -14,24 +14,36 @@ const ThemeComponent = {
 
 const Theme = ({ Theme, Device, fullScreen, GrandParentSection, Options, Section, ThemeColors, AccentColors }) => {
 
-    const dispatch = useDispatch()
-    const performAction = () => dispatch(setAutoTheme())
+    const dispatch = useDispatch();
+
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const isAutoTheme = useSelector((store) => store.wallpaper.isAutoTheme)
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
+    const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
+
+    const performAction = () => {
+        if (EnableDebugLogs) {
+            if (!isAutoTheme) {
+                console.log('Auto Theme Enabled')
+            } else {
+                console.log('Auto Theme Disabled')
+            }
+            dispatch(setAutoTheme())
+        }
+    }
 
     return (
         <div className={`flex flex-col w-full gap-2`}>
 
             <span style={{
-               fontSize : Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish, 
+                fontSize: Sizes.Small, fontFamily: Weights.Regular, color: ThemeColors.grayish,
             }} className='select-none'>{Section}</span>
 
             {/* DISPLAYING ALL OPTIONS THEME,DARK  MODE OPTIONS AND AUTOMATIC THEME */}
 
             <div style={{
-               borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
+                borderColor: ThemeColors.third, backgroundColor: ThemeColors.header,
             }} className={`border p-[2.5%] flex flex-col rounded-2xl  gap-2 `}>
                 {
                     Options?.map(({ Option, FileName, Toggleable, action }, idx) => {

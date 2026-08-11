@@ -10,6 +10,7 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { fullScreen } = useSelector((store) => store.windowApps?.apps['clock'])
+    const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
 
     // states
     const [startDeletingTimers, setstartDeletingTimers] = useState(false)
@@ -102,7 +103,11 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                 </p>
                 <p
                     onClick={() => setopenAddTimer(true)}
-                    style={{ backgroundColor: ThemeColors.header, borderColor: ThemeColors.third }}
+                    style={{
+                        color: ThemeColors.primaryText,
+                        backgroundColor: ThemeColors.header,
+                        borderColor: ThemeColors.third
+                    }}
                     className={`border active:scale-97 rounded-full flex items-center justify-center w-10 h-10`}><Plus size={22} strokeWidth={2.5} /></p>
             </div>
 
@@ -182,6 +187,7 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
 
                                     <div className={`w-full flex flex-col`}>
                                         <span style={{
+                                            color : ThemeColors.primaryText,
                                             fontSize: `${(Sizes.ExtraLarge.slice(0, -3)) * 1.2}rem`,
                                             fontFamily: Weights.SemiBold
                                         }}>
@@ -190,6 +196,7 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                             {RemainingTime?.sec !== 0 ? `${String(RemainingTime?.sec).padStart(2, '0')}` : '00'}
                                         </span>
                                         <span style={{
+                                            color : ThemeColors.primaryText,
                                             fontSize: Sizes.Small,
                                             fontFamily: Weights.Regular
                                         }}>{hr !== 0 ? `${String(hr).padStart(2, '0')} hr` : ''} {min !== 0 ? `${String(min).padStart(2, '0')} min` : ''} {sec !== 0 ? `${String(sec).padStart(2, '0')} sec` : ''}</span>
@@ -240,7 +247,7 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                             ease: Animation ?? 'sine.inOut'
                                         })
 
-                                    }} className={`p-1 flex items-center justify-center rounded-full active:scale-95`}><ChevronRight strokeWidth={2} />
+                                    }} style={{color : ThemeColors.primaryText}} className={`p-1 flex items-center justify-center rounded-full active:scale-95`}><ChevronRight strokeWidth={2} />
                                     </span>
                                 }
                             </div>
@@ -262,6 +269,7 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                     let old = [...AllTimers]
                                     old.splice(idx, 1)
                                     setAllTimers(old)
+                                    if(EnableDebugLogs) console.log(`Timer Deleted`)
 
                                     // const tl = gsap.timeline()
                                     //     tl.to(Object.values(deleteBoxes.current), {
@@ -292,16 +300,16 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                         <p style={{
                             fontFamily: Weights.SemiBold,
                             color: ThemeColors.grayish,
-                            fontSize: `${(Sizes.Small.slice(0,-3))*1.2}rem`
+                            fontSize: `${(Sizes.Small.slice(0, -3)) * 1.2}rem`
                         }}>No timers yet</p>
                         <p style={{
                             fontFamily: Weights.Regular,
                             color: ThemeColors.grayish,
-                            fontSize: `${(Sizes.ExtraSmall.slice(0,-3))*1.15}rem`
+                            fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 1.15}rem`
                         }}>
                             Tap <span style={{
                                 fontFamily: Weights.SemiBold,
-                            }}>+ </span> 
+                            }}>+ </span>
                             to create a new timer.
                         </p>
                     </div>

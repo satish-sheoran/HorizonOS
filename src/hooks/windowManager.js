@@ -23,6 +23,7 @@ export function useWindowManager() {
 
     const dispatch = useDispatch();
     const apps = useSelector((store) => store.windowApps.apps)
+    const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
 
     const toggleApp = ({ id, canOpen }) => {
         if (!canOpen) return;
@@ -30,9 +31,11 @@ export function useWindowManager() {
         const window = apps[id];
 
         if (window.isOpen) {
+            if (EnableDebugLogs) console.log(`[App] ${id} closed`)
             dispatch(closeWindow({ windowKey: id }))
         } else {
             dispatch(openWindow({ windowKey: id }))
+            if (EnableDebugLogs) console.log(`[App] ${id} opened`)
         }
     }
 

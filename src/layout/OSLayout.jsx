@@ -14,6 +14,7 @@ import { FactoryReset, useDispatchResetAll } from '../utils/Reset';
 import { ACCENT_COLORS, COMMON_COLORS, DARK_THEME_COLORS } from '../constants/style';
 import { CSS_EASING } from '../constants/Settings';
 import { CircleCheck, LayoutGrid, Link, RefreshCw, Settings, ShieldCheck, Shuffle } from 'lucide-react';
+import FPSCounter from '../components/Settings/AllSections/Additional/DeepOptions/components/FPSCounter';
 
 const OSLayout = () => {
     const dispatch = useDispatch()
@@ -21,8 +22,8 @@ const OSLayout = () => {
     // getting wallapaper src from one of store's Slice
     const src = useSelector((store) => store.wallpaper.src)
     const isFactoryResetting = useSelector(store => store.Device.startFactoryReset)
-    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Calculator)
-    const Theme = useSelector((store) => store.wallpaper.theme.Calculator)
+    const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Settings)
+    const Theme = useSelector((store) => store.wallpaper.theme.Settings)
     const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
@@ -96,6 +97,15 @@ const OSLayout = () => {
                     <SettingsWindow />
                     <ClockWindow />
                     <NotesWindow />
+
+                    {/* FPS Counter */}
+                     <FPSCounter  
+                    ThemeColors={ThemeColors}
+                    Theme={Theme}
+                    AccentColors={AccentColors}
+                    Device={Device}
+                    />
+
                 </div>
             </div>
 
@@ -145,8 +155,8 @@ const OSLayout = () => {
                     </div>
 
                     {/* white line updater */}
-                    <div style={{ borderColor: ThemeColors.bg , '--width' : Device !=='Mobile'?'400px':'240px'}} className={`Updater overflow-hidden relative ${Device !=='Mobile'?'w-100':'w-60'}  max-w-[400px] h-3 border rounded-lg`}></div>
-                
+                    <div style={{ borderColor: ThemeColors.bg, '--width': Device !== 'Mobile' ? '400px' : '240px' }} className={`Updater overflow-hidden relative ${Device !== 'Mobile' ? 'w-100' : 'w-60'}  max-w-[400px] h-3 border rounded-lg`}></div>
+
 
                     {/* data safe */}
                     <div
@@ -154,7 +164,7 @@ const OSLayout = () => {
                             borderColor: ThemeColors.third,
                             '--hover': DARK_THEME_COLORS.bg,
                             '--active': DARK_THEME_COLORS.bg,
-                            
+
                         }}
                         className={`mt-10 HOVER_CLASS active:scale-97 border rounded-xl  select-none font-semibold flex items-center justify-between 
                              gap-2  ${Device !== 'Desktop' ? `px-3 py-1.5` : `px-3 py-2`}

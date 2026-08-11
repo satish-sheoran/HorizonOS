@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState, version } from 'react'
+import React, {  useRef, useState } from 'react'
 import { CSS_EASING } from '../../../../../constants/Settings'
 import { ACCENT_COLORS, COMMON_COLORS, LIGHT_THEME_COLORS } from '../../../../../constants/style'
 import { useSelector } from 'react-redux'
@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { Flip } from 'gsap/Flip';
 
 const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors, AccentColors }) => {
+   
     // redux values
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
@@ -47,7 +48,7 @@ const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors,
                         if (!version || !codename || !releaseDate || !type || !changes) return null;
 
                         return idx === 0 && <div key={idx} style={{
-                            borderColor: idx === 0 ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE : ThemeColors.third,
+                            borderColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE ,
                             backgroundColor: ThemeColors.header,
                         }} className={`versionDetailBox border flex  items-center ${Device != 'Mobile' ? 'gap-6' : 'flex-col gap-4'}  rounded-2xl  select-none ${Device !== 'Desktop' ? `p-3` : `p-2.5`} `}>
 
@@ -79,12 +80,6 @@ const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors,
                                     className='rounded-full overflow-hidden flex flex-col items-center justify-center w-23 h-23 border-2'>
                                     <img className='w-20 h-20 object-cover object-center' src={Theme !== 'dark' ? '/HorizonBlack.webp' : '/HorizonWhite.webp'} alt="" />
                                 </div>
-
-                                {/* <span style={{
-                                            color: ThemeColors.primaryText,
-                                            fontFamily: Weights.SemiBold,
-                                            fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.9}rem`
-                                        }}>{version}</span> */}
 
                                 <div className='flex flex-col gap-1'>
                                     {idx === 0 && <p style={{
@@ -129,6 +124,7 @@ const VersionDetails = ({ Name, Section, Theme, Device, fullScreen, ThemeColors,
                 }
 
             </section>
+
 
             {/* update and details */}
             <section ref={updateRef} className={`min-h-1/2 flex flex-col gap-3 items-center justify-center`}>

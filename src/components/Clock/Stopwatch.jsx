@@ -7,7 +7,7 @@ import StopWatchControls from './Components/StopWatchControls'
 import * as Icons from 'lucide-react'
 import { ACCENT_COLORS } from '../../constants/style'
 
-const Stopwatch = ({ icon,  Name, Description }) => {
+const Stopwatch = ({ icon, Name, Description }) => {
 
     let Icon = Icons[icon]
     const { fullScreen } = useSelector((store) => store.windowApps?.apps['clock'])
@@ -108,7 +108,7 @@ const Stopwatch = ({ icon,  Name, Description }) => {
                     {/* timer */}
                     <div style={{
                         backgroundColor: ThemeColors.header,
-                        borderColor : ThemeColors.third
+                        borderColor: ThemeColors.third
                     }} className={`border justify-center p-[3%] min-h-[25vh] py-2 flex flex-col gap-2 items-center rounded-2xl`}>
 
                         {/* time */}

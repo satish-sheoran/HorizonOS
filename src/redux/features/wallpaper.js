@@ -181,68 +181,78 @@ const wallpaperSlice = createSlice({
         },
 
         setAnimationTypeNSpeed(state, action) {
-            const Animation = action.payload.Animation;
-            state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === Animation) || AnimationSpeedAndType.find(({ Name }) => Name === 'Normal');
-            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
-            const updatedSettings = { ...storedSettings, AnimationTypeNSpeed: state.AnimationTypeNSpeed };
-            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
-        },
+            if (action.payload.DisableManageDevOps) {
+                const isDisabled = state.AnimationTypeNSpeed.Name === 'Disabled'
+                state.AnimationTypeNSpeed = isDisabled ? AnimationSpeedAndType.find(({ Name }) => Name === 'Normal') : AnimationSpeedAndType.find(({ Name }) => Name === 'Disabled');
 
-        setAnimationName(state, action) {
-            const Animation = action.payload.Animation
-            state.AnimationName = AnimationsName.find(({ Name }) => Name === Animation) || AnimationsName.find(({ Name }) => Name === 'Linear')
-
-            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
-            const updatedSettings = { ...storedSettings, AnimationName: state.AnimationName };
-            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
-        },
-
-        setFontFamily(state, action) {
-            const Family = FONT_FAMILY.find(font => font.Name === action.payload.FontFamily);
-            if (!Family) return;
-            state.Font = Family;
-
-            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
-            const updatedSettings = { ...storedSettings, Font: state.Font };
-            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
-        },
-
-        setFontSize(state, action) {
-            const Size = FONT_SIZES.find(size => size.SizeType === action.payload.Size);
-            if (!Size) return;
-            state.FontSize = Size;
-
-            const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
-            const updatedSettings = { ...storedSettings, FontSize: state.FontSize };
-            localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
-        },
-        ResetAllStyle(state) {
-            state.src = window.innerWidth <= 768 ?
-                Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile'])?.url
-                :
-                Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop'])?.url,
-
-                state.theme = ALL_APPS.reduce((acc, { name, theme }) => {
-                    acc[name] = theme;
-                    return acc;
-                }, {}),
-
-                state.ThemeColors = ALL_APPS.reduce((acc, { name, theme }) => {
-                    acc[name] = theme === 'dark' ? DARK_THEME_COLORS : LIGHT_THEME_COLORS;
-                    return acc;
-                }, {}),
-                state.AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue'),
-                state.isAutoTheme = false,
-                state.AdvanceDarkMode = [],
-
-                state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
-                state.AnimationName = AnimationsName.find(({ Name }) => Name === 'Back Out'),
-
-
-                state.Font = FONT_FAMILY.find(font => font.Name === 'Poppins'),
-                state.FontSize = FONT_SIZES.find(({ SizeType }) => SizeType === 'Default')
+                const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+                const updatedSettings = { ...storedSettings, AnimationTypeNSpeed: state.AnimationTypeNSpeed };
+                localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+            
+            return;
         }
+            const Animation = action.payload.Animation;
+        state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === Animation) || AnimationSpeedAndType.find(({ Name }) => Name === 'Normal');
+        const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+        const updatedSettings = { ...storedSettings, AnimationTypeNSpeed: state.AnimationTypeNSpeed };
+        localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+    },
+
+    setAnimationName(state, action) {
+        const Animation = action.payload.Animation
+        state.AnimationName = AnimationsName.find(({ Name }) => Name === Animation) || AnimationsName.find(({ Name }) => Name === 'Linear')
+
+        const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+        const updatedSettings = { ...storedSettings, AnimationName: state.AnimationName };
+        localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+    },
+
+    setFontFamily(state, action) {
+        const Family = FONT_FAMILY.find(font => font.Name === action.payload.FontFamily);
+        if (!Family) return;
+        state.Font = Family;
+
+        const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+        const updatedSettings = { ...storedSettings, Font: state.Font };
+        localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+    },
+
+    setFontSize(state, action) {
+        const Size = FONT_SIZES.find(size => size.SizeType === action.payload.Size);
+        if (!Size) return;
+        state.FontSize = Size;
+
+        const storedSettings = JSON.parse(localStorage.getItem('storedSettings')) || {};
+        const updatedSettings = { ...storedSettings, FontSize: state.FontSize };
+        localStorage.setItem('storedSettings', JSON.stringify(updatedSettings));
+    },
+    ResetAllStyle(state) {
+        state.src = window.innerWidth <= 768 ?
+            Wallpapers['mobile'].find(item => item.id == DEFAULT_WALLPAPER['mobile'])?.url
+            :
+            Wallpapers['desktop'].find(item => item.id == DEFAULT_WALLPAPER['desktop'])?.url,
+
+            state.theme = ALL_APPS.reduce((acc, { name, theme }) => {
+                acc[name] = theme;
+                return acc;
+            }, {}),
+
+            state.ThemeColors = ALL_APPS.reduce((acc, { name, theme }) => {
+                acc[name] = theme === 'dark' ? DARK_THEME_COLORS : LIGHT_THEME_COLORS;
+                return acc;
+            }, {}),
+            state.AccentColors = ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue'),
+            state.isAutoTheme = false,
+            state.AdvanceDarkMode = [],
+
+            state.AnimationTypeNSpeed = AnimationSpeedAndType.find(({ Name }) => Name === 'Normal'),
+            state.AnimationName = AnimationsName.find(({ Name }) => Name === 'Back Out'),
+
+
+            state.Font = FONT_FAMILY.find(font => font.Name === 'Poppins'),
+            state.FontSize = FONT_SIZES.find(({ SizeType }) => SizeType === 'Default')
     }
+}
 })
 
 export const { setWallpaper, changeTheme, setAutoTheme, setAdvanceDarkMode, AddToAdvanceDarkMode, RemoveFromAdvanceDarkMode, setAccentColor, setAnimationTypeNSpeed, setAnimationName, setFontFamily, setFontSize, ResetAllStyle } = wallpaperSlice.actions;

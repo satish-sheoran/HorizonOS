@@ -16,5 +16,6 @@ export const store = configureStore({
         Notes : NotesReducer,
         Settings : SettingsReducer,
         Clock : ClockReducer
-    }
+    },
+    devTools : true
 })

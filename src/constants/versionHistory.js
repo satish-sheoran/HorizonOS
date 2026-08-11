@@ -1,5 +1,18 @@
 export const VERSION_HISTORY = [
     {
+        version: '1.4',
+        codename: 'ControlOS',
+        clr: 'Blue',
+        releaseDate: '2026-08-11',
+        type: 'Minor',
+        changes: [
+            { icon: 'Settings2', iconClr: 'Blue', change: "Fully functional Developer options." },
+            { icon: 'RotateCcw', iconClr: 'Orange', change: "Reset individual app data." },
+            { icon: 'FlaskConical', iconClr: 'Purple', change: "Experimental features support." },
+            { icon: 'SquareChevronRight', iconClr: 'Red', change: "Debug logging controls." }
+        ]
+    },
+    {
         version: '1.3.2',
         codename: 'Chronos',
         clr: 'Orange',
@@ -124,20 +137,3 @@ export const VERSION_HISTORY = [
         ]
     }
 ]
-
-
-
-// {
-//         version: '1.4',
-//         codename: 'ControlOS',
-//         clr : 'Blue',
-//         releaseDate: '2026-08-06',
-//         type: 'Major',
-//         changes: [
-//             { icon: 'Setting2', iconClr: 'Blue', change: "Fully functional Developer option." },
-//             { icon: 'RotateCcw', iconClr: 'Orange', change: "Reset individual app data." },
-//             { icon: 'FileDown', iconClr: 'Green', change: "Export system state." },
-//             { icon: 'FlaskConical', iconClr: 'Purple', change: "Experimental features support." },
-//             { icon: 'Bug', iconClr: 'Red', change: "Debug logging controls." },
-//         ]
-//     },

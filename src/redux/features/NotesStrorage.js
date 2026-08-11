@@ -169,12 +169,12 @@ const NotesSlice = createSlice({
 
             if (state.NoteSortMethod === 'Latest') state.Notes = state.Notes.sort((a, b) => {
                 if (a.pin !== b.pin) return b.pin - a.pin;
-               return b.timeStamp - a.timeStamp
+                return b.timeStamp - a.timeStamp
             })
-            if (state.NoteSortMethod === 'Earliest') state.Notes = state.Notes.sort((a, b) =>{
+            if (state.NoteSortMethod === 'Earliest') state.Notes = state.Notes.sort((a, b) => {
                 if (a.pin !== b.pin) return b.pin - a.pin;
-                 return a.timeStamp - b.timeStamp
-                })
+                return a.timeStamp - b.timeStamp
+            })
             if (state.NoteSortMethod === 'A-Z') state.Notes = state.Notes.sort((a, b) => {
                 if (a.pin !== b.pin) return b.pin - a.pin;
                 return a.title.localeCompare(b.title)
@@ -513,12 +513,12 @@ const NotesSlice = createSlice({
             state.NoteSortMethod = method;
             if (method === 'Latest') state.Notes = state.Notes.sort((a, b) => {
                 if (a.pin !== b.pin) return b.pin - a.pin;
-               return b.timeStamp - a.timeStamp
+                return b.timeStamp - a.timeStamp
             })
-            if (method === 'Earliest') state.Notes = state.Notes.sort((a, b) =>{
+            if (method === 'Earliest') state.Notes = state.Notes.sort((a, b) => {
                 if (a.pin !== b.pin) return b.pin - a.pin;
-                 return a.timeStamp - b.timeStamp
-                })
+                return a.timeStamp - b.timeStamp
+            })
             if (method === 'A-Z') state.Notes = state.Notes.sort((a, b) => {
                 if (a.pin !== b.pin) return b.pin - a.pin;
                 return a.title.localeCompare(b.title)

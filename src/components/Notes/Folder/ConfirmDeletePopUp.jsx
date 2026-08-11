@@ -21,6 +21,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
     const deletedCategories = useSelector((store) => store.Notes.deletedCategories); //categories which are selected to delete
     const deletedNotes = useSelector((store) => store.Notes.deletedNotes); //notes which are selected to delete
     const deletedTasks = useSelector(store => store.Notes.deletedTasks) // used to delete Tasks
+    const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
 
     useGSAP(() => {
         if (!DeletPopElem.current) return;
@@ -99,7 +100,7 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
                                     setOpenDeletePopUp(false); //after delete close the pop up
 
                                     toast.info('Notes Deleted Successfully')
-
+                                    if (EnableDebugLogs) console.log('Notes Deleted')
                                     return;
                                 }
                                 if (WorkingOn === 'Tasks') {
@@ -109,21 +110,23 @@ const ConfirmDeletePopUp = ({ openDeletePopUp, setOpenDeletePopUp, WorkingOn, Th
                                     setOpenDeletePopUp(false); //after delete close the pop up
 
                                     toast.info('Tasks Deleted Successfully')
+                                    if (EnableDebugLogs) console.log('Tasks Deleted')
                                     return;
                                 }
                                 if (WorkingOn === 'Reset Note Settings') {
                                     dispatch(ResetNotesSettings())
-                                    dispatch(setFontSize({Size : 'Default'}))
+                                    dispatch(setFontSize({ Size: 'Default' }))
                                     dispatch(RemoveFromAdvanceDarkMode({ App: 'Notes' }))
                                     toast.info('Settings are Restored.')
                                     setOpenDeletePopUp(false); //after delete close the pop up
+                                    if (EnableDebugLogs) console.log(' [App] Notes Setting Restored')
                                     return;
                                 }
 
                                 dispatch(removeCategory({ category: deletedCategories }));
                                 dispatch(setStartDeletingCat({ start: false })); // exit delete mode after deleting category/categories
                                 toast.info('Categories Deleted Successfully')
-
+                                if (EnableDebugLogs) console.log('Categories Deleted')
                                 setOpenDeletePopUp(false); //after delete close the pop up
                             }}
                             style={{

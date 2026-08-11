@@ -25,11 +25,13 @@ const Footer = ({ Theme, ThemeColors, AccentColors }) => {
     const startDeletingTasks = useSelector(store => store.Notes.startDeletingTasks); //used for tasks deletion
     const deletedTasks = useSelector(store => store.Notes.deletedTasks) //used for tasks deletion
     const Notes = useSelector(store => store.Notes.Notes) //notes
+    
 
+    // states
     const [openDeletePopUp, setOpenDeletePopUp] = useState(false); //used to open delete pop up to delete notes 
     const [openMoveToPop, setopenMoveToPop] = useState(false)
 
-    
+
 
     // animation for entry of cntrls of nots (delete,close editing etc.)
     useGSAP(() => {

@@ -3,11 +3,10 @@
 
 
 What i did for this commit :
-feat(settings) : Add Reset Settings and Developer Options section
+feat : Added functionality of Reset Settings and Developer options
 
-- Added design of Reset Settings and Developer options sections
- TODO : Functionality Remaining to Add
-
+- Functionality to Reset All OR Individual Apps is now possible
+- Functinlaity to Options like Show FPS Count,Enable experimental features etc.
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
@@ -16,4 +15,3 @@ style symbols in textarea of calc, redefined propeerly and fix number max length
 TODO in Timers : 
 custom timer set,
 what happes when timer ends feature,
-

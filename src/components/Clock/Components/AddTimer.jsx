@@ -9,7 +9,7 @@ const AddTimer = ({ openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, s
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { fullScreen } = useSelector((store) => store.windowApps?.apps['clock'])
-
+    const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
     //refs
     const dragRef = useRef(null)
 
@@ -76,7 +76,7 @@ const AddTimer = ({ openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, s
                 left: 0,
             }}
             className={`${fullScreen ? 'px-[1.5%] pt-[1%]' : 'px-[2.5%] pt-[1.5%]'} inset-0 absolute z-5  shrink-0  `}>
-            <div style={{backgroundColor: ThemeColors.header}} className={`p-[2.5%] rounded-2xl flex flex-col gap-4 w-full h-full overflow-hidden`}>
+            <div style={{ backgroundColor: ThemeColors.header }} className={`p-[2.5%] rounded-2xl flex flex-col gap-4 w-full h-full overflow-hidden`}>
                 {/* timer set area */}
                 <div>Custom Timer</div>
 
@@ -87,7 +87,7 @@ const AddTimer = ({ openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, s
                         color: ThemeColors.primaryText,
                     }}>Presets</span>
                     {/* presets times */}
-                    <div className='flex w-full gap-3 overflow-y-auto '>
+                    <div className='PresetTimers-overflow flex w-full gap-3 overflow-y-auto '>
                         {
                             [
                                 { time: 30, type: 'sec' },
@@ -134,6 +134,7 @@ const AddTimer = ({ openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, s
                                             start: true,
                                             id
                                         })
+                                        if (EnableDebugLogs) console.log(`Timer of ${time} ${type} added`)
                                         setopenAddTimer(false)
                                         setAllTimers(old)
                                     }}

@@ -16,17 +16,17 @@ const PickAccentColor = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
       <div className='flex flex-col gap-0.5'>
 
         <span style={{
-          fontSize : Sizes.Small ,fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 
+          fontSize: Sizes.Small, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
         }} className={` font-semibold ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>{Name}</span>
         <span style={{
-        fontSize : Sizes.ExtraSmall , fontFamily: Weights.Regular, color: ThemeColors.thirdText, 
+          fontSize: Sizes.ExtraSmall, fontFamily: Weights.Regular, color: ThemeColors.thirdText,
         }} className={` ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>Choose an accent colour for button,highlights,and active elements.</span>
 
       </div>
 
 
       <div style={{
-       borderColor: ThemeColors.third, backgroundColor: ThemeColors.header, 
+        borderColor: ThemeColors.third, backgroundColor: ThemeColors.header,
       }} className={`border flex flex-col gap-4 rounded-2xl  select-none ${Device !== 'Desktop' ? `px-3 py-4` : `p-2.5`}`} >
 
         {/* COLORS LOOP */}

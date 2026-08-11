@@ -304,6 +304,7 @@ img {
 #AllTimersOverflow-parent,
 .deep-resetSetting-option,
 .deep-developerOption,
+.PresetTimers-overflow,
 body,
 html {
     scrollbar-width: none;

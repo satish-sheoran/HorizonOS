@@ -7,9 +7,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setAccentColor } from '../../../../../../redux/features/wallpaper'
 
 const AllColors = ({ Theme, fullScreen, Device, ThemeColors, AccentColors }) => {
+
   const dispatch = useDispatch()
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-
+  const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
 
   return (
     <div className={`flex flex-wrap items-center justify-between  gap-3`}>
@@ -17,13 +18,16 @@ const AllColors = ({ Theme, fullScreen, Device, ThemeColors, AccentColors }) => 
       {ACCENT_COLORS?.map(({ COLOR, CODE }) => {
 
         return <button key={COLOR}
-          onClick={() => dispatch(setAccentColor({ Color: COLOR }))}
+          onClick={() => {
+            dispatch(setAccentColor({ Color: COLOR }))
+            if (EnableDebugLogs) console.log(`Accent Color Changed to ${COLOR}`)
+          }}
 
           style={{
-            backgroundColor: CODE, outlineColor: CODE, borderColor: ThemeColors.header, 
+            backgroundColor: CODE, outlineColor: CODE, borderColor: ThemeColors.header,
           }} className={` flex items-center justify-center ${Device !== 'Desktop' ? 'size-13' : 'size-13'}  rounded-full ${AccentColors.COLOR === COLOR ? 'border-2 outline-3' : ''}`}>
           {AccentColors.COLOR === COLOR && <div style={{
-            color: ThemeColors.header, 
+            color: ThemeColors.header,
           }}
             className={` rounded-full items-center justify-center`}>
             <Check strokeWidth={2.5} />

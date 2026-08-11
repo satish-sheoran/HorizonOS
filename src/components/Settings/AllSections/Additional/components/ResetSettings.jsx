@@ -17,8 +17,8 @@ const ResetSettings = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentC
   return (
     <div
       onClick={() => {
-        toast.info('Coming Soon...')
-        // dispatch(setActivePanel({ panel: Option }))
+        // toast.info('Coming Soon...')
+        dispatch(setActivePanel({ panel: Option }))
       }}
       style={{
       fontSize : Sizes.Small,  fontFamily: Weights.SemiBold, color: ThemeColors.primaryText,
