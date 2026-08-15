@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { CSS_EASING } from '../../constants/Settings'
 import { ACCENT_COLORS, COMMON_COLORS } from '../../constants/style'
-import { Clock, Dot, EllipsisVertical, Plus, Search, SearchAlert, SlidersHorizontal } from 'lucide-react'
 import CityCard from './Components/CityCard'
 import WorldClockTitleAndDesc from './Components/WorldClockTitleAndDesc'
 import { GetCities } from '../../API/GetCities'
 import { Flip } from 'gsap/Flip'
 import Loader from '../Loader'
+import MyWorldClocks from './Components/MyWorldClocks'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { X } from 'lucide-react'
+import { WORLD_CITIES } from '../../constants/Clock'
 import { toast } from 'react-toastify'
 
 const WorldClock = ({ icon, Name, Description }) => {
@@ -24,13 +28,33 @@ const WorldClock = ({ icon, Name, Description }) => {
   const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
   const ExperimentalFeatures = useSelector(store => store.Settings.ExperimentalFeatures)
+  const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
+
+
   //states
-  const [inputSearch, setInputSearch] = useState('')
-  const [IsFocused, setisFocused] = useState('')
+  const [startDeletingWorldClocks, setstartDeletingWorldClocks] = useState(false)
+  const [AddedClocks, setAddedClocks] = useState([])
+  const [showAddClockPage, setshowAddClockPage] = useState(false)
+
+  //refs
+  const addWorldClockRef = useRef(null)
+
+  useGSAP(() => {
+    if (!addWorldClockRef.current) return;
+
+    gsap.fromTo(addWorldClockRef.current, {
+      yPercent: showAddClockPage ? 100 : 0
+    }, {
+      yPercent: showAddClockPage ? 0 : 100,
+      duration: 0.2,
+      ease: 'sine.out'
+    })
+
+  }, [showAddClockPage])
 
   return (
     <section
-      className={`select-none w-full h-full flex flex-col pb-[12vh] gap-2 ${fullScreen ? 'px-[1.5%] pt-[1%]' : 'px-[2.5%] pt-[1.5%]'} `}>
+      className={`pb-[12vh] relative select-none w-full h-full flex flex-col  gap-2 ${fullScreen ? 'px-[1.5%] pt-[1%]' : 'px-[2.5%] pt-[1.5%]'} `}>
 
       <div id='worldClock-overflow-area' className=' grow min-h-0 overflow-y-auto flex flex-col overflow-x-hidden'>
         {/* Title and desc */}
@@ -38,129 +62,93 @@ const WorldClock = ({ icon, Name, Description }) => {
 
 
         {/* body */}
-        <div className='relative mt-4 flex flex-col gap-3 h-full'>
+        <div className='relative mt-4 flex flex-col gap-2 h-full'>
 
           {/* map img */}
           {/* <div></div> */}
 
+          <MyWorldClocks
+            startDeletingWorldClocks={startDeletingWorldClocks}
+            setstartDeletingWorldClocks={setstartDeletingWorldClocks}
+            AddedClocks={AddedClocks}
+            setAddedClocks={setAddedClocks}
+            setshowAddClockPage={setshowAddClockPage}
+          />
+        </div >
 
-          {/* search area */}
-          <div className={`flex items-center w-full gap-2`}>
-            <div
-              style={{
-                backgroundColor: ThemeColors.header,
-                borderColor: IsFocused ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').CODE : ThemeColors.third,
-                fontSize: Device !== 'Desktop' ? Sizes.Small : `${(Sizes.Small.slice(0, -3)) * 1.1}rem`,
-                color: ThemeColors.primaryText,
-                fontFamily: Weights.SemiBold,
-              }}
-              className={`flex items-center gap-1 border grow overflow-hidden rounded-2xl py-2.5 ${Device !== 'Desktop' ? 'px-3' : 'px-2.5'}`}>
-              <Search style={{ color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').Hover_Clr }} strokeWidth={2.5} />
-              <input
-                value={inputSearch}
-                onChange={(e) => setInputSearch(e.target.value)}
-                type="text"
-                spellCheck={false}
-                onFocus={() => setisFocused(true)}
-                onBlur={() => setisFocused(false)}
-                placeholder="Search cities..."
-                maxLength={60}
-                className={`grow font-semibold outline-none focus:ring-0  focus:outline-none`}
-              />
-            </div>
+      </div >
+
+      {/* add new world clock */}
+      <section id='addNewWorldClock-overflow' ref={addWorldClockRef} className={`absolute inset-0 top-0 left-0 overflow-hidden px-2 pt-2`}>
+        <div style={{ backgroundColor: ThemeColors.header, borderColor: ThemeColors.third }} className={`relative pb-[12vh] w-full h-full flex rounded-t-2xl border-t border-l border-r flex-col gap-1 overflow-y-auto `}>
+          <div
+            style={{ borderColor: ThemeColors.third }}
+            className={`${Device !== 'Desktop' ? `px-3 py-2` : `px-2.5 py-1.5`} border-b sticky top-0 left-0 w-full flex items-center gap-2 backdrop-blur-2xl backdrop-saturate-150
+          ${Theme !== 'dark' ?
+                'bg-white/6 border-white/[0.14] '
+                :
+                'bg-black/4 border-black/8'
+              }`}>
             <p
-              onClick={() => toast.info('Adding soon...')}
+              onClick={() => setshowAddClockPage(false)}
               style={{
+                color: ThemeColors.primaryText,
                 backgroundColor: ThemeColors.header,
                 borderColor: ThemeColors.third,
-                color: ThemeColors.thirdText
-              }}
-              className={`h-full flex items-center justify-center py-1.5 px-2.5 rounded-2xl border active:scale-95`}>
-              <SlidersHorizontal strokeWidth={2.5} size={22} />
+                '--hover': ThemeColors.bg,
+                '--active': ThemeColors.bg,
+              }} className={`cursor-pointer HOVER_CLASS border active:scale-95 rounded-full p-1 flex items-center justify-between`}>
+              <X size={Device !== 'Desktop' ? 18 : 20} strokeWidth={2.5} />
             </p>
+
+            <p style={{
+              color: ThemeColors.primaryText,
+              fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.75}rem`,
+              fontFamily: Weights.SemiBold
+            }} className={`grow text-center`}>Choose a city</p>
           </div>
 
-          {/* added cities */}
-          {ExperimentalFeatures && <section className={`select-none flex flex-col gap-2`}>
-            <div
-              style={{
-                borderColor: ThemeColors.third,
-                backgroundColor: ThemeColors.header
-              }}
-              className={`border rounded-2xl overflow-hidden flex gap-4 items-center justify-between ${Device !== 'Desktop' ? `px-3 py-4` : `px-2.5 py-3.5`}`}>
+          <div className={`flex flex-col ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+            {WORLD_CITIES.map(({ city, countryCode, country, gmtOffset, timeZone }, idx) => {
 
-              <div className={`flex items-center gap-0.5`}>
-                <span style={{ color: ThemeColors.primaryText }}><Clock size={35} strokeWidth={2.5} /></span>
-                <div className={`flex items-start gap-0`}>
-                  <Dot style={{
-                    color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE
-                  }} size={30} strokeWidth={2.5} />
+              let isAlreadyAdded = AddedClocks.find(({ city: cityName }) => city === cityName);
+              let CurrCharCode = idx !== 0 ? city.charCodeAt(0):2
+              let LastCharCode = idx !== 0 ? WORLD_CITIES[idx - 1].city.charCodeAt(0) : 1
 
-                  <div className={`flex flex-col`}>
-                    <div className={`flex gap-2`}>
-
-                      <span style={{
-                        color: ThemeColors.primaryText,
-                        fontFamily: Weights.Bold,
-                        fontSize: Sizes.Small
-                      }}>New Delhi</span>
-
-                      <p style={{
-                        color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
-                        backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').Bg_Clr,
-                        fontFamily: Weights.SemiBold,
-                        fontSize: Sizes.ExtraSmall
-                      }} className={`px-1 py-0.5 flex items-center justify-center rounded-lg`}>Local</p>
-                    </div>
-                    <span style={{
-                      color: ThemeColors.thirdText,
-                      fontFamily: Weights.Regular,
-                      fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 0.95}rem`
-                    }}>India</span>
-                    <span style={{
-                      color: ThemeColors.thirdText,
-                      fontFamily: Weights.SemiBold,
-                      fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 0.95}rem`
-                    }}>Wed, 7 Aug</span>
-                  </div>
-                </div>
-
-              </div>
-
-              <div className={`flex items-center gap-1`}>
-                <div className={`flex flex-col items-end`}>
-                  <div className={`flex items-end gap-1`}>
-                    <span style={{
-                      color: ThemeColors.primaryText,
-                      fontFamily: Weights.SemiBold,
-                      fontSize: Sizes.ExtraLarge
-                    }}>09 : 41</span>
-                    <p style={{
-                      color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
-                      fontFamily: Weights.SemiBold,
-                      fontSize: Sizes.Small
-                    }} className={`mb-1`}>AM</p>
-
-                  </div>
-
-                  <span style={{
-                    color: ThemeColors.thirdText,
-                    fontFamily: Weights.SemiBold,
-                    fontSize: `${(Sizes.ExtraSmall.slice(0, -3)) * 0.95}rem`
-                  }}>UTC +5:30</span>
-                </div>
-                <p onClick={() => toast.info('Adding Soon...')} className={`flex items-center justify-center rounded-full p-0.5`}>
-                  <EllipsisVertical style={{color : ThemeColors.primaryText}} size={20} strokeWidth={2.5} />
+              return  <div key={city} className={` flex flex-col`}>
+                <p 
+                style={{color : AccentColors.CODE}}
+                className={`${Device !== 'Desktop' ? `px-3` : `px-2.5`} ${CurrCharCode - LastCharCode === 1 ?
+                  Device !== 'Desktop' ? `mt-4` : `mt-3.5`
+                  : ''}`}>
+                  {CurrCharCode - LastCharCode === 1 ? city[0] : ''}
                 </p>
-
+              {!isAlreadyAdded &&<div 
+                onClick={() => {
+                  setAddedClocks(old => [...old, { city, countryCode, country, gmtOffset, timeZone }])
+                  setshowAddClockPage(false)
+                }}
+                className={`cursor-pointer HOVER_CLASS flex flex-col gap-2 border-b ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
+                style={{
+                  borderColor: ThemeColors.third,
+                  '--hover': ThemeColors.bg,
+                  '--active': ThemeColors.bg,
+                  color: ThemeColors.primaryText,
+                  fontSize: `${(Sizes.Regular.slice(0, -3)) * 0.75}rem`,
+                  fontFamily: Weights.SemiBold
+                }}
+              >
+                <span>
+                  {city},{country}
+                </span>
               </div>
-            </div>
-          </section>}
-
+            }
+              </div>
+            })}
+          </div>
         </div>
+      </section>
 
-
-      </div>
     </section >
   )
 }

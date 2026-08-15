@@ -115,7 +115,7 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                             color: !start ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE :
                                 ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE
                         }}
-                        className={` cursor-pointerp-1.5  rounded-full`}>
+                        className={` cursor-pointer p-2  rounded-full`}>
                         {!start ? <Play strokeWidth={2.5} /> :
                             <Pause strokeWidth={2.5} />}
                     </button>
@@ -127,7 +127,7 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                         color: ThemeColors.primaryText,
                         backgroundColor: ACCENT_COLORS?.find(({ COLOR }) => COLOR === 'Slate_Gray')?.Bg_Clr,
                     }}
-                        className={`cursor-pointer p-1.5 rounded-full`}><Flag strokeWidth={2.5} /></button>
+                        className={`cursor-pointer p-2 rounded-full`}><Flag strokeWidth={2.5} /></button>
 
                     {/* reset btn */}
                     <button
@@ -148,7 +148,7 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                         }} style={{
                             color: ThemeColors.primaryText,
                             backgroundColor: ACCENT_COLORS?.find(({ COLOR }) => COLOR === 'Slate_Gray')?.Bg_Clr,
-                        }} className={`cursor-pointer p-1.5 rounded-full`}><Undo2 strokeWidth={2.5} /></button>
+                        }} className={`cursor-pointer p-2 rounded-full`}><Undo2 strokeWidth={2.5} /></button>
                 </>
             }
         </div>

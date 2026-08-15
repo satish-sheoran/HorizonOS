@@ -137,3 +137,9 @@ export const VERSION_HISTORY = [
         ]
     }
 ]
+
+
+// new version changes :
+// [
+//             { icon: 'Globe2', iconClr: 'Blue', change: "View time across multiple time zones." },
+// ]

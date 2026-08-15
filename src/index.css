@@ -305,6 +305,8 @@ img {
 .deep-resetSetting-option,
 .deep-developerOption,
 .PresetTimers-overflow,
+#worldClock-overflow-area,
+#addNewWorldClock-overflow,
 body,
 html {
     scrollbar-width: none;

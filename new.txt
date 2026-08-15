@@ -3,10 +3,7 @@
 
 
 What i did for this commit :
-feat : Added functionality of Reset Settings and Developer options
-
-- Functionality to Reset All OR Individual Apps is now possible
-- Functinlaity to Options like Show FPS Count,Enable experimental features etc.
+feat(clock) : Added world clock features with full functionality
 
 FIXES And ADDITION TO CALC:
 style symbols in textarea of calc, redefined propeerly and fix number max length
