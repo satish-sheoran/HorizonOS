@@ -79,7 +79,7 @@ const WorldClock = ({ icon, Name, Description }) => {
       </div >
 
       {/* add new world clock */}
-      <section id='addNewWorldClock-overflow' ref={addWorldClockRef} className={`absolute inset-0 top-0 left-0 overflow-hidden px-2 pt-2`}>
+      <section id='addNewWorldClock-overflow' ref={addWorldClockRef} className={`z-5 absolute inset-0 top-0 left-0 overflow-hidden px-2 pt-2`}>
         <div style={{ backgroundColor: ThemeColors.header, borderColor: ThemeColors.third }} className={`relative pb-[12vh] w-full h-full flex rounded-t-2xl border-t border-l border-r flex-col gap-1 overflow-y-auto `}>
           <div
             style={{ borderColor: ThemeColors.third }}

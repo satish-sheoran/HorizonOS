@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { ACCENT_COLORS, COMMON_COLORS } from '../../../constants/style'
 import gsap from 'gsap'
 
-const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, openAddTimer, setopenAddTimer }) => {
+const MyTimers = ({ RemainingTimeArray, setRemainingTimeArray, TimersRemainingTimeRef, ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, openAddTimer, setopenAddTimer }) => {
 
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
@@ -20,10 +20,10 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
     const deleteSymbols = useRef({})
     const deleteBoxes = useRef({})
 
-
     //whenever add new timer opens ,just close all the edit mode options and reset the delete symbols and boxes
     useEffect(() => {
         setstartDeletingTimers(false)
+        if (!TimersRef.current || !deleteSymbols.current || !deleteBoxes.current) return;
         const timeLine = gsap.timeline()
         timeLine.to(Object.values(deleteSymbols.current), {
             scale: 0,
@@ -52,6 +52,7 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                 <p
                     onClick={() => {
                         if (!startDeletingTimers) {
+                            if (!TimersRef.current || !deleteSymbols.current) return;
                             const timeLine = gsap.timeline()
                             timeLine.to(Object.values(TimersRef.current), {
                                 paddingLeft: '12%',
@@ -64,6 +65,8 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                 ease: 'sine.inOut'
                             })
                         } else {
+                            if (!TimersRef.current || !deleteSymbols.current) return;
+
                             const timeLine = gsap.timeline()
                             timeLine.to(Object.values(deleteSymbols.current), {
                                 scale: 0,
@@ -114,7 +117,16 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
             {/* timers */}
             <section id='AllTimersOverflow-parent' className={`flex flex-col w-full grow overflow-y-auto`}>
                 {AllTimers.length > 0 ?
-                    AllTimers.map(({ RemainingTime, Timer: { hr, min, sec }, start, id }, idx) => {
+
+                    AllTimers.map(({ id, type, paused, time }, idx) => {
+                        let ms = RemainingTimeArray?.find(({ id: ID }) => id == ID)?.remainingTime;
+                        const totalSec = Math.floor(ms / 1000)
+                        let sec = totalSec % 60;
+
+                        let min = Math.floor(totalSec / 60) % 60;
+                        let hr = Math.floor(totalSec / 3600) % 60;
+
+
                         return <div
                             key={id}
                             style={{
@@ -132,10 +144,50 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                         delete TimersRef.current[id];
                                     }
                                 }}
+
                                 onClick={() => {
-                                    let old = [...AllTimers]
-                                    old[idx].start = !start;
-                                    setAllTimers(old)
+                                    const timer = TimersRemainingTimeRef?.current?.find(
+                                        timer => timer.id === id
+                                    );
+
+                                    if (!timer) return;
+
+                                    // TIMER HAS FINISHED
+                                    if (timer.remainingTime <= 0) {
+                                        timer.paused = true;
+
+                                        setAllTimers(old =>
+                                            old.map(timer =>
+                                                timer.id === id
+                                                    ? { ...timer, paused: true }
+                                                    : timer
+                                            )
+                                        );
+
+                                        return;
+                                    }
+                                    // PAUSE TIMER
+                                    if (!timer.paused) {
+                                        timer.paused = true;
+                                    }
+                                    // RESUME TIMER
+                                    else {
+                                        timer.duration = timer.remainingTime;
+                                        timer.startTime = performance.now();
+                                        timer.paused = false;
+                                    }
+
+                                    setAllTimers(old =>
+                                        old.map(currtimer =>
+                                            currtimer.id === id
+                                                ? {
+                                                    ...currtimer,
+                                                    paused: timer.paused
+                                                }
+                                                : currtimer
+                                        )
+                                    );
+
                                 }}
 
                                 className={`relative shrink-0 p-[2.5%] w-full flex justify-between items-center gap-0.5`}>
@@ -187,19 +239,19 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
 
                                     <div className={`w-full flex flex-col`}>
                                         <span style={{
-                                            color : ThemeColors.primaryText,
+                                            color: ThemeColors.primaryText,
                                             fontSize: `${(Sizes.ExtraLarge.slice(0, -3)) * 1.2}rem`,
                                             fontFamily: Weights.SemiBold
                                         }}>
-                                            {RemainingTime?.hr !== 0 ? `${String(RemainingTime?.hr).padStart(2, '0')}:` : ''}
-                                            {RemainingTime?.min !== 0 ? `${String(RemainingTime?.min).padStart(2, '0')}:` : '00:'}
-                                            {RemainingTime?.sec !== 0 ? `${String(RemainingTime?.sec).padStart(2, '0')}` : '00'}
+                                            {hr > 0 && `${String(hr).padStart(2, 0)} hr`} {min > 0 && `${String(min).padStart(2, 0)} min`} {`${String(sec).padStart(2, 0)} sec`}
                                         </span>
                                         <span style={{
-                                            color : ThemeColors.primaryText,
+                                            color: ThemeColors.primaryText,
                                             fontSize: Sizes.Small,
                                             fontFamily: Weights.Regular
-                                        }}>{hr !== 0 ? `${String(hr).padStart(2, '0')} hr` : ''} {min !== 0 ? `${String(min).padStart(2, '0')} min` : ''} {sec !== 0 ? `${String(sec).padStart(2, '0')} sec` : ''}</span>
+                                        }}>
+                                            {type === 'hr' ? `${String(time).padStart(2, '0')} hr` : ''} {type === 'min' ? `${String(time).padStart(2, '0')} min` : ''} {type === 'sec' ? `${String(time).padStart(2, '0')} sec` : ''}
+                                        </span>
 
                                     </div>
                                 </div>
@@ -210,13 +262,14 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                     }}
                                     className={`outline-2 rounded-full flex items-center justify-center w-12 h-12`}>
                                     {
-                                        start ?
+                                        !paused ?
                                             <Pause size={22} strokeWidth={2.5} /> :
                                             <Play size={22} strokeWidth={2.5} />
                                     }
                                 </button>
                                     :
                                     <span onClick={() => {
+                                        if (!TimersRef.current[id] || !deleteSymbols.current[id]) return;
                                         const timeLine = gsap.timeline()
                                         // animation of delete symbol and timer padding left
                                         timeLine.to(TimersRef.current[id], {
@@ -247,7 +300,7 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                             ease: Animation ?? 'sine.inOut'
                                         })
 
-                                    }} style={{color : ThemeColors.primaryText}} className={`p-1 flex items-center justify-center rounded-full active:scale-95`}><ChevronRight strokeWidth={2} />
+                                    }} style={{ color: ThemeColors.primaryText }} className={`p-1 flex items-center justify-center rounded-full active:scale-95`}><ChevronRight strokeWidth={2} />
                                     </span>
                                 }
                             </div>
@@ -264,24 +317,20 @@ const MyTimers = ({ ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, o
                                     delete deleteBoxes.current[id];
                                     delete TimersRef.current[id];
                                     delete deleteSymbols.current[id];
+                                    TimersRemainingTimeRef.current = TimersRemainingTimeRef.current.filter(({ id: ID }) => id !== ID)
+
                                     TimersRef?.current[id]?.closest('div')?.remove()
+
+                                    setRemainingTimeArray((old) => {
+                                        return old.filter(({ id: ID }) => ID !== id)
+                                    })
 
                                     let old = [...AllTimers]
                                     old.splice(idx, 1)
                                     setAllTimers(old)
-                                    if(EnableDebugLogs) console.log(`Timer Deleted`)
+                                    if (EnableDebugLogs) console.log(`Timer Deleted`)
 
-                                    // const tl = gsap.timeline()
-                                    //     tl.to(Object.values(deleteBoxes.current), {
-                                    //         scale: 0,
-                                    //         opacity: 0,
-                                    //         duration: 0.1,
-                                    //         ease: 'sine.inOut'
-                                    //     }).to(Object.values(TimersRef.current), {
-                                    //         paddingRight: '2.5%',
-                                    //         duration: 0.2,
-                                    //         ease: Animation ?? 'sine.inOut'
-                                    //     })
+
                                 }}
                                 style={{
                                     color: COMMON_COLORS.White,

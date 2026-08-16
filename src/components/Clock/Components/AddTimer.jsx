@@ -1,73 +1,12 @@
-import React, { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux';
 import { ACCENT_COLORS } from '../../../constants/style';
-import { Draggable } from 'gsap/Draggable';
-import gsap from 'gsap';
 
-const AddTimer = ({ openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, setopenAddTimer, addTimerRef, hasTimers }) => {
+const AddTimer = ({ setRemainingTimeArray, updateAllTimers, UpdateRemainingTimeInterval, updateAllTimerInterval, updateRemainingTime, TimersRemainingTimeRef, openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, setopenAddTimer, addTimerRef, hasTimers }) => {
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { fullScreen } = useSelector((store) => store.windowApps?.apps['clock'])
     const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
-    //refs
-    const dragRef = useRef(null)
-
-
-    useEffect(() => {
-        const parent = document.querySelector('#TimerParent')
-
-        const panel = addTimerRef.current;
-        const panelHeight = panel.offsetHeight;
-
-        // Start hidden
-        gsap.set(panel, {
-            y: panel.offsetHeight
-        });
-
-        dragRef.current = Draggable.create(panel, {
-            type: "y",
-            bounds: {
-                minY: 0,
-                maxY: panelHeight
-            },
-            onDragEnd() {
-                if (this.y >= panelHeight * 0.5) {
-                    // Close
-                    setopenAddTimer(false);
-
-                    gsap.to(panel, {
-                        y: panelHeight, // hide
-                        duration: 0.25,
-                        ease: "back.out"
-                    });
-                } else {
-                    // Open back
-                    gsap.to(panel, {
-                        y: 0,
-                        duration: 0.25,
-                        ease: "back.out"
-                    });
-                }
-            }
-
-        })[0];
-
-        return () => dragRef.current?.kill();
-    }, [])
-
-
-    useEffect(() => {
-        if (!dragRef.current) return;
-
-        if (openAddTimer) {
-            dragRef.current.enable()
-        } else {
-            dragRef.current.disable();
-            gsap.set(addTimerRef.current, { y: openAddTimer ? 0 : '100%' })
-
-        }
-    }, [openAddTimer])
 
     return (
         <section ref={addTimerRef}
@@ -131,34 +70,42 @@ const AddTimer = ({ openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, s
                                     onClick={() => {
                                         let old = AllTimers ?? [];
                                         //unique id
-                                        const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&";
-                                        let id;
-                                        id = Array.from({ length: 7 }, () =>
-                                            chars[Math.floor(Math.random() * chars.length)]
-                                        ).join("");
+                                        let id = Date.now();
 
-                                        let idExists = old?.some(({ id: TimerId }) => TimerId === id); //checking if id exists 
-                                        // ensure unique id 
-                                        while (idExists) {
-                                            id = Array.from({ length: 7 }, () =>
-                                                chars[Math.floor(Math.random() * chars.length)]
-                                            ).join("");
-                                            idExists = old?.some(({ id: TimerId }) => TimerId === id); //now check if it exists or not again 
-                                        }
                                         old.push({
-                                            Timer: {
-                                                hr: type === 'hr' ? time : 0,
-                                                min: type === 'min' ? time : 0,
-                                                sec: type === 'sec' ? time : 0,
-                                            },
-                                            RemainingTime: {
-                                                hr: type === 'hr' ? time : 0,
-                                                min: type === 'min' ? time : 0,
-                                                sec: type === 'sec' ? time : 0,
-                                            },
-                                            start: true,
-                                            id
+                                            id,
+                                            type,
+                                            paused: false,
+                                            time
                                         })
+                                        const duration = type === 'hr' ?
+                                            time * 60 * 60 * 1000 :
+                                            type === 'min' ?
+                                                time * 60 * 1000 :
+                                                time * 1000
+                                        TimersRemainingTimeRef.current.push(
+                                            ...TimersRemainingTimeRef.current,
+                                            {
+                                                id,
+                                                startTime: performance.now(),
+                                                paused: false,
+                                                duration,
+                                                remainingTime: duration
+
+                                            })
+                                        setRemainingTimeArray(TimersRemainingTimeRef.current)
+
+
+                                        //closing old intervals
+                                        clearInterval(UpdateRemainingTimeInterval.current)
+                                        clearInterval(updateAllTimerInterval.current)
+
+
+                                        //starting intervals
+                                        UpdateRemainingTimeInterval.current = setInterval(updateRemainingTime, 25)
+                                        updateAllTimerInterval.current = setInterval(updateAllTimers, 1000)
+
+
                                         if (EnableDebugLogs) console.log(`Timer of ${time} ${type} added`)
                                         setopenAddTimer(false)
                                         setAllTimers(old)

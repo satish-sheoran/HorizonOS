@@ -28,11 +28,50 @@ const Timers = ({ icon, Name, Description }) => {
   // states
   const [AllTimers, setAllTimers] = useState([]) //used to store all timers started/paused and which page to show
   const [openAddTimer, setopenAddTimer] = useState(false)
+  const [RemainingTimeArray, setRemainingTimeArray] = useState([])
 
   const hasTimers = AllTimers.length > 0;
 
   //refs
   const addTimerRef = useRef(null)
+  const TimersRemainingTimeRef = useRef([])
+  const UpdateRemainingTimeInterval = useRef(null);
+  const updateAllTimerInterval = useRef(null)
+
+  // fn to update remaining time
+  const updateRemainingTime = () => {
+
+    for (const timer of TimersRemainingTimeRef.current) {
+      
+      if (timer.paused) continue;
+      const now = performance.now();
+      const elapsed = now - timer.startTime;
+
+      timer.remainingTime = Math.max(0, timer.duration - elapsed);
+      if (timer.remainingTime <= 0) {
+        timer.remainingTime = 0
+        timer.paused = true;
+        setAllTimers((timers) => {
+          return timers.map((currtimer) => {
+            if (currtimer.id === timer.id) return { ...currtimer, paused: true }
+            else {
+              return { ...currtimer }
+            }
+          })
+        })
+      }
+      
+    }
+  }
+
+  //fn to update timers for displaying
+  const updateAllTimers = () => {
+    setRemainingTimeArray(
+      TimersRemainingTimeRef.current.map(timer => ({
+        ...timer
+      }))
+    );
+  }
 
   useEffect(() => {
     if (!hasTimers) {
@@ -88,8 +127,11 @@ const Timers = ({ icon, Name, Description }) => {
             AccentColors={AccentColors}
             AllTimers={AllTimers}
             setAllTimers={setAllTimers}
+            TimersRemainingTimeRef={TimersRemainingTimeRef} // it will store remaining time
             openAddTimer={openAddTimer}
             setopenAddTimer={setopenAddTimer}
+            RemainingTimeArray={RemainingTimeArray}
+            setRemainingTimeArray={setRemainingTimeArray}
           />
 
           <AddTimer
@@ -98,9 +140,16 @@ const Timers = ({ icon, Name, Description }) => {
             AccentColors={AccentColors}
             AllTimers={AllTimers}
             setAllTimers={setAllTimers}
+            TimersRemainingTimeRef={TimersRemainingTimeRef} // it will store remaining time
             setopenAddTimer={setopenAddTimer}
             addTimerRef={addTimerRef}
             openAddTimer={openAddTimer}
+            setRemainingTimeArray={setRemainingTimeArray}
+
+            UpdateRemainingTimeInterval={UpdateRemainingTimeInterval}
+            updateAllTimerInterval={updateAllTimerInterval}
+            updateRemainingTime={updateRemainingTime}
+            updateAllTimers={updateAllTimers}
           />
 
 

@@ -142,4 +142,5 @@ export const VERSION_HISTORY = [
 // new version changes :
 // [
 //             { icon: 'Globe2', iconClr: 'Blue', change: "View time across multiple time zones." },
+//             { icon: 'Timer', iconClr: 'Purple', change: "Countdown Timer : PLay, Pause, and Track timers with synchronized countdown and automatic completion." },
 // ]
