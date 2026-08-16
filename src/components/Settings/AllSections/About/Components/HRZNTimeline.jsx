@@ -28,7 +28,7 @@ const HRZNTimeline = ({ Theme, Option, fullScreen, Device, ThemeColors, AccentCo
                     :
                     COMMON_COLORS.Gray,
             }}
-            className={`HOVER_CLASS active:scale-97 border rounded-2xl  select-none font-semibold flex items-center justify-between 
+            className={`HOVER_CLASS active:scale-95 border rounded-2xl  select-none font-semibold flex items-center justify-between 
                                            ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
                                            `}>
 

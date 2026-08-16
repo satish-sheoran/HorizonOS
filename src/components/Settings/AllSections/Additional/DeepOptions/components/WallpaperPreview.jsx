@@ -51,7 +51,7 @@ const WallpaperPreview = ({ Name, Theme, ThemeColors, AccentColors, Device, full
                     style={{
                         borderColor: ThemeColors.bg, backgroundImage: `url(${currentPreview || activeWallpaper})`,
                     }}
-                    className={`shrink-0 rounded-2xl ${Device !== 'Desktop' ? 'min-w-1/3' : 'min-w-[40%]'} h-full bg-center bg-cover border active:scale-97`}
+                    className={`shrink-0 rounded-2xl ${Device !== 'Desktop' ? 'min-w-1/3' : 'min-w-[40%]'} h-full bg-center bg-cover border active:scale-95`}
                 >
                     {/* icons */}
                     <div className={`flex items-center justify-end rounded-2xl gap-1 px-2 py-1`}>

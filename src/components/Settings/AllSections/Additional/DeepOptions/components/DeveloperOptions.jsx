@@ -52,7 +52,7 @@ const DeveloperOptions = ({ Name, Theme, ThemeColors, AccentColors, Device, full
             :
             COMMON_COLORS.Gray,
         }}
-        className={`HOVER_CLASS active:scale-97 flex items-center justify-between border rounded-2xl overflow-hidden ${Device !== 'Desktop' ? 'p-3' : 'p-2.5'}`}>
+        className={`HOVER_CLASS active:scale-95 flex items-center justify-between border rounded-2xl overflow-hidden ${Device !== 'Desktop' ? 'p-3' : 'p-2.5'}`}>
         <div className={`flex items-center gap-2 max-w-[85%]`}>
           <p
             style={{

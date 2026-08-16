@@ -46,7 +46,7 @@ const ChooseAnimation = ({ Name, Theme, ThemeColors, AccentColors, Device, fullS
                                 :
                                 COMMON_COLORS.Gray,
                         }}
-                        className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
+                        className={`outline-none overflow-hidden HOVER_CLASS active:scale-95 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
                     >
                         <div className={`flex items-center gap-3`}>
                             {Icon && <Icon style={{

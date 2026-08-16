@@ -11,7 +11,7 @@ const Toolbar = ({ performAction, Theme, ThemeColors, AccentColors }) => {
 
             <span style={{
                 color: ThemeColors.primaryText, 
-            }} className={`active:scale-97`} onClick={performAction}>
+            }} className={`active:scale-95`} onClick={performAction}>
                 <ArrowLeft size={27} strokeWidth={2} className={`w-full h-full`} />
             </span>
 

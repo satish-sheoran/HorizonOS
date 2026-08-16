@@ -31,7 +31,7 @@ const LearnToBackup = ({ Device, Theme, fullScreen, ThemeColors, AccentColors })
 
                 <div style={{
                     color: COMMON_COLORS.Blue, 
-                }} className='active:scale-97 cursor-pointer  flex gap-1 items-center'>
+                }} className='active:scale-95 cursor-pointer  flex gap-1 items-center'>
                     <span
                         onClick={() => toast.error('This link is currently unavailable')}
                         style={{
@@ -39,7 +39,7 @@ const LearnToBackup = ({ Device, Theme, fullScreen, ThemeColors, AccentColors })
                             '--hover': ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').Hover_Clr,
                             '--active': ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Blue').Hover_Clr, 
                         }}
-                        className={`HOVER_CLR_CLASS active:scale-97 cursor-pointer `}>Learn how to back up your data </span>
+                        className={`HOVER_CLR_CLASS active:scale-95 cursor-pointer `}>Learn how to back up your data </span>
                     <ExternalLink strokeWidth={2} size={14} /></div>
             </div>
 

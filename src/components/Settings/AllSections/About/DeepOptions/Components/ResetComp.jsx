@@ -41,7 +41,7 @@ const ResetComp = ({ Device, Theme, fullScreen, ThemeColors, AccentColors ,setop
             onClick={()=>setopenResetOverlay(true)}
             style={{
                fontSize : Sizes.Small , fontFamily : Weights.SemiBold ,backgroundColor: COMMON_COLORS.Red, color: COMMON_COLORS.White, 
-            }} className={`active:scale-97  cursor-pointer rounded-xl font-semibold px-2 py-1.5`}>Reset Now</button>
+            }} className={`active:scale-95  cursor-pointer rounded-xl font-semibold px-2 py-1.5`}>Reset Now</button>
 
         </div>
     )

@@ -28,7 +28,7 @@ const Animation = ({ Option, fullScreen, Device, Theme, ThemeColors, AccentColor
                     :
                     COMMON_COLORS.Gray, 
             }}
-            className={`HOVER_CLASS active:scale-97  border select-none  font-semibold rounded-2xl  flex items-center justify-between 
+            className={`HOVER_CLASS active:scale-95  border select-none  font-semibold rounded-2xl  flex items-center justify-between 
              ${Device !== 'Desktop' ? `p-3` : `p-2.5`}
  `}>
             <span>{Option}</span>

@@ -111,7 +111,7 @@ const MyTimers = ({ RemainingTimeArray, setRemainingTimeArray, TimersRemainingTi
                         backgroundColor: ThemeColors.header,
                         borderColor: ThemeColors.third
                     }}
-                    className={`border active:scale-97 rounded-full flex items-center justify-center w-10 h-10`}><Plus size={22} strokeWidth={2.5} /></p>
+                    className={`border active:scale-95 rounded-full flex items-center justify-center w-10 h-10`}><Plus size={22} strokeWidth={2.5} /></p>
             </div>
 
             {/* timers */}
@@ -240,14 +240,14 @@ const MyTimers = ({ RemainingTimeArray, setRemainingTimeArray, TimersRemainingTi
                                     <div className={`w-full flex flex-col`}>
                                         <span style={{
                                             color: ThemeColors.primaryText,
-                                            fontSize: `${(Sizes.ExtraLarge.slice(0, -3)) * 1.2}rem`,
+                                            fontSize: startDeletingTimers ? `${(Sizes.ExtraLarge.slice(0, -3)) * 0.75}rem` : `${(Sizes.ExtraLarge.slice(0, -3)) * 0.9}rem`,
                                             fontFamily: Weights.SemiBold
                                         }}>
                                             {hr > 0 && `${String(hr).padStart(2, 0)} hr`} {min > 0 && `${String(min).padStart(2, 0)} min`} {`${String(sec).padStart(2, 0)} sec`}
                                         </span>
                                         <span style={{
                                             color: ThemeColors.primaryText,
-                                            fontSize: Sizes.Small,
+                                            fontSize: startDeletingTimers ?`${(Sizes.Small.slice(0, -3)) * 0.9}rem`: Sizes.Small,
                                             fontFamily: Weights.Regular
                                         }}>
                                             {type === 'hr' ? `${String(time).padStart(2, '0')} hr` : ''} {type === 'min' ? `${String(time).padStart(2, '0')} min` : ''} {type === 'sec' ? `${String(time).padStart(2, '0')} sec` : ''}

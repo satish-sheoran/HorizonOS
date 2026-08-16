@@ -53,7 +53,7 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                                 :
                                 COMMON_COLORS.Gray,
                         }}
-                        className={`HOVER_CLASS active:scale-97 cursor-pointer w-1/2 rounded-2xl py-2 flex items-center gap-1 justify-center`}>
+                        className={`HOVER_CLASS active:scale-95 cursor-pointer w-1/2 rounded-2xl py-2 flex items-center gap-1 justify-center`}>
                         <span>{!start ? <Undo2 size={18} strokeWidth={2.5} /> :
                             <Flag size={18} strokeWidth={2.5} />}</span>
                         <span>{!start ? 'Reset' : 'Lap'}</span>
@@ -83,7 +83,7 @@ const StopWatchControls = ({ start, setstart, ThemeColors, Theme, AccentColors, 
                             color: !start ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE :
                                 ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Red').CODE,
                         }}
-                        className={` active:scale-97 cursor-pointer rounded-2xl py-2 w-1/2  flex items-center gap-1 justify-center`}>
+                        className={` active:scale-95 cursor-pointer rounded-2xl py-2 w-1/2  flex items-center gap-1 justify-center`}>
                         <span>{!start ? <Play size={18} strokeWidth={2.5} /> :
                             <Pause size={18} strokeWidth={2.5} />}</span>
                         <span>{!start ? 'Start' : 'Stop'}</span>

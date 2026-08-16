@@ -41,7 +41,7 @@ const Sections = ({ currDevice, Theme, activeSection, setShowContent, ThemeColor
                                 AccentColors.Hover_Clr : Theme !== 'dark' ? ThemeColors.third : COMMON_COLORS.Gray,
                             
                         }}
-                        className={`HOVER_CLASS py-2 relative w-full rounded-2xl ${currDevice !== 'Desktop' ? 'px-[4%]' : 'px-[4.5%]'} active:scale-97`}>
+                        className={`HOVER_CLASS py-2 relative w-full rounded-2xl ${currDevice !== 'Desktop' ? 'px-[4%]' : 'px-[4.5%]'} active:scale-95`}>
                         {/*JUST wrapper used to add scale during active so user feels the click*/}
 
 

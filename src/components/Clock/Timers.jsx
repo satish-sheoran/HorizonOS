@@ -23,7 +23,7 @@ const Timers = ({ icon, Name, Description }) => {
   const ThemeColors = useSelector((store) => store.wallpaper.ThemeColors.Clock)
   const AccentColors = useSelector((store) => store.wallpaper.AccentColors)
   const { Animation } = useSelector(store => store.wallpaper.AnimationName) //animation name
-
+  const ExperimentalFeatures = useSelector(store => store.Settings.ExperimentalFeatures)
 
   // states
   const [AllTimers, setAllTimers] = useState([]) //used to store all timers started/paused and which page to show
@@ -42,7 +42,7 @@ const Timers = ({ icon, Name, Description }) => {
   const updateRemainingTime = () => {
 
     for (const timer of TimersRemainingTimeRef.current) {
-      
+
       if (timer.paused) continue;
       const now = performance.now();
       const elapsed = now - timer.startTime;
@@ -60,7 +60,7 @@ const Timers = ({ icon, Name, Description }) => {
           })
         })
       }
-      
+
     }
   }
 
@@ -93,7 +93,7 @@ const Timers = ({ icon, Name, Description }) => {
 
 
   return (
-    <section id='TimerParent' className={`select-none  w-full h-full flex flex-col pb-[12vh] gap-2`}>
+    <section id='TimerParent' className={`relative select-none  w-full h-full flex flex-col pb-[12vh] gap-2`}>
 
       <div id='timer-overflow-area' className='flex flex-col grow min-h-0 overflow-y-auto overflow-x-hidden'>
         {/* Title and desc */}
@@ -118,10 +118,10 @@ const Timers = ({ icon, Name, Description }) => {
 
 
         {/* body */}
-        <div className='relative  mt-4 flex flex-col gap-3 w-full h-full overflow-hidden '>
+        <div className='mt-4 flex flex-col gap-3 w-full h-full overflow-hidden '>
 
 
-          <MyTimers
+          {ExperimentalFeatures && <MyTimers
             ThemeColors={ThemeColors}
             Theme={Theme}
             AccentColors={AccentColors}
@@ -132,9 +132,9 @@ const Timers = ({ icon, Name, Description }) => {
             setopenAddTimer={setopenAddTimer}
             RemainingTimeArray={RemainingTimeArray}
             setRemainingTimeArray={setRemainingTimeArray}
-          />
+          />}
 
-          <AddTimer
+          {ExperimentalFeatures && <AddTimer
             ThemeColors={ThemeColors}
             Theme={Theme}
             AccentColors={AccentColors}
@@ -150,9 +150,11 @@ const Timers = ({ icon, Name, Description }) => {
             updateAllTimerInterval={updateAllTimerInterval}
             updateRemainingTime={updateRemainingTime}
             updateAllTimers={updateAllTimers}
-          />
+          />}
 
-
+          {!ExperimentalFeatures && <div style={{color : ThemeColors.thirdText,fontFamily : Weights.SemiBold,fontSize : Sizes.Small}} className={`flex items-center justify-center w-full h-full overflow-hidden`}>
+            Enable Experimental Feature to View!
+            </div>}
         </div>
       </div>
     </section>

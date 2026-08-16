@@ -46,7 +46,7 @@ const FontFamily = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScreen
                                 COMMON_COLORS.Gray,
 
                         }}
-                        className={`outline-none overflow-hidden HOVER_CLASS active:scale-97 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
+                        className={`outline-none overflow-hidden HOVER_CLASS active:scale-95 border rounded-2xl  select-none flex justify-between items-center ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}
                     >
                         <div className={`flex flex-col gap-0.5 text-left`}>
                             <span style={{ fontSize: Sizes.Small, fontFamily: Weights.Bold, }} className={`font-bold `}>{Font}</span>

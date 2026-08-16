@@ -3,10 +3,9 @@
 
 
 What i did for this commit :
-feat(clock) : Add synchronized countdown timer 
+Fix small issues and added Timer to Experimental
 
-- Fully functional countdown timer ,Play,Pause,Delete
-- Multiple timers can be Added and properly synchronized
+- User need to enable Experimental features to view timer 
 
 TODO : Add custom timer functionality and Saving Timers after section change,app Close Or OS reload
 

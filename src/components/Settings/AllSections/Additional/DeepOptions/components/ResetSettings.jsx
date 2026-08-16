@@ -107,7 +107,7 @@ const ResetSettings = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScr
                     borderColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').Hover_Clr,
                     backgroundColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Orange').Bg_Clr,
                 }}
-                className={`active:scale-97 border flex items-center gap-4 px-[2.5%] py-[1%] rounded-2xl backdrop-blur-lg
+                className={`active:scale-95 border flex items-center gap-4 px-[2.5%] py-[1%] rounded-2xl backdrop-blur-lg
         `}
             >
                 <div style={{
@@ -138,7 +138,7 @@ const ResetSettings = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScr
                     style={{
                         borderColor: ThemeColors.third,
                     }}
-                    className={`active:scale-97 border w-full flex flex-col rounded-2xl select-none overflow-hidden`} >
+                    className={`active:scale-95 border w-full flex flex-col rounded-2xl select-none overflow-hidden`} >
 
                     <div
                         onClick={() => {
@@ -253,7 +253,7 @@ const ResetSettings = ({ Name, Theme, ThemeColors, AccentColors, Device, fullScr
                                     :
                                     COMMON_COLORS.Gray,
                             }}
-                            className={`HOVER_CLASS active:scale-97 flex items-center gap-2 border rounded-xl px-2 py-1`}>
+                            className={`HOVER_CLASS active:scale-95 flex items-center gap-2 border rounded-xl px-2 py-1`}>
                             <Database
                                 style={{
                                     color: ACCENT_COLORS.find(({ COLOR }) => COLOR == 'Blue').CODE,

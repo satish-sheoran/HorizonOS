@@ -28,7 +28,7 @@ const ResetSetting = ({ Theme, AccentColors, ThemeColors }) => {
                         :
                         COMMON_COLORS.Gray,
                 }}
-                className={`mb-4 HOVER_CLASS active:scale-97 border rounded-2xl  select-none font-semibold flex items-center justify-between ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+                className={`mb-4 HOVER_CLASS active:scale-95 border rounded-2xl  select-none font-semibold flex items-center justify-between ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
                 <p className={`w-fit flex flex-col gap-0.5 font-semibold`}>
                     <span style={{

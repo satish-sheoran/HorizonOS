@@ -1,12 +1,20 @@
 import { useSelector } from 'react-redux';
 import { ACCENT_COLORS } from '../../../constants/style';
+import { X } from 'lucide-react';
 
-const AddTimer = ({ setRemainingTimeArray, updateAllTimers, UpdateRemainingTimeInterval, updateAllTimerInterval, updateRemainingTime, TimersRemainingTimeRef, openAddTimer, ThemeColors, Theme, AccentColors, AllTimers, setAllTimers, setopenAddTimer, addTimerRef, hasTimers }) => {
+const AddTimer = ({
+    setRemainingTimeArray, updateAllTimers, UpdateRemainingTimeInterval,
+    updateAllTimerInterval, updateRemainingTime, TimersRemainingTimeRef,
+    openAddTimer, ThemeColors, Theme,
+    AccentColors, AllTimers, setAllTimers,
+    setopenAddTimer, addTimerRef, hasTimers
+}) => {
 
     const { Name: FontName, Weights } = useSelector(store => store.wallpaper.Font);
     const { Sizes } = useSelector(store => store.wallpaper.FontSize) //font sizes
     const { fullScreen } = useSelector((store) => store.windowApps?.apps['clock'])
     const EnableDebugLogs = useSelector(store => store.Settings.EnableDebugLogs)
+    const Device = useSelector((store) => store.Device.currDevice);
 
     return (
         <section ref={addTimerRef}
@@ -15,9 +23,22 @@ const AddTimer = ({ setRemainingTimeArray, updateAllTimers, UpdateRemainingTimeI
                 left: 0,
             }}
             className={`${fullScreen ? 'px-[1.5%] pt-[1%]' : 'px-[2.5%] pt-[1.5%]'} inset-0 absolute z-5  shrink-0  `}>
-            <div style={{ backgroundColor: ThemeColors.header }} className={`p-[2.5%] rounded-2xl flex flex-col gap-4 w-full h-full overflow-hidden`}>
+            <div style={{ backgroundColor: ThemeColors.header }} className={`p-[2.5%] rounded-t-2xl flex flex-col gap-4 w-full h-full overflow-hidden`}>
+                <div className={`flex items-center justify-between`}>
+                    <p
+                        onClick={() => setopenAddTimer(false)}
+                        style={{
+                            color: ThemeColors.primaryText,
+                            backgroundColor: ThemeColors.header,
+                            borderColor: ThemeColors.third,
+                            '--hover': ThemeColors.bg,
+                            '--active': ThemeColors.bg,
+                        }} className={`cursor-pointer HOVER_CLASS border active:scale-95 rounded-full p-1 flex items-center justify-between`}>
+                        <X size={Device !== 'Desktop' ? 18 : 20} strokeWidth={2.5} />
+                    </p>
+                </div>
                 {/* timer set area */}
-                <div style={{
+                {/* <div style={{
                     color: ThemeColors.primaryText
                 }} className={`flex justify-between gap-4 max-h-[20vh] overflow-hidden`}>
                     <div className={`grow flex flex-col gap-2 h-full border border-red-400 overflow-y-auto`}>
@@ -42,7 +63,8 @@ const AddTimer = ({ setRemainingTimeArray, updateAllTimers, UpdateRemainingTimeI
                             })
                         }
                     </div>
-                </div>
+                </div> */}
+                <div style={{ color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Yellow').CODE }}>Custom Timer Adding Soon...</div>
 
                 <div className={`flex flex-col gap-2`}>
                     <span style={{

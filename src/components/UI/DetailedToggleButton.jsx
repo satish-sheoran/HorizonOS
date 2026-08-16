@@ -23,7 +23,7 @@ const DetailedToggleButton = ({ isActionActive, performAction, Device, ThemeColo
                     COMMON_COLORS.Gray,
                 
             }}
-            className={`HOVER_CLASS flex justify-between items-center border  active:scale-97 rounded-2xl ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
+            className={`HOVER_CLASS flex justify-between items-center border  active:scale-95 rounded-2xl ${Device !== 'Desktop' ? `p-3` : `p-2.5`}`}>
 
             <div className={`flex items-end gap-2`}>
                 <div style={{

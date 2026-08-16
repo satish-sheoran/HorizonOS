@@ -14,7 +14,7 @@ const HorizonOS = ({ Theme, Device, fullScreen, GrandParentSection, Options, Sec
     <div style={{
       borderColor: ThemeColors.third,
       backgroundColor: ThemeColors.header, 
-    }} className={`border active:scale-97  shrink-0 w-full h-60 flex flex-col items-center justify-center  rounded-2xl`}>
+    }} className={`border active:scale-95  shrink-0 w-full h-60 flex flex-col items-center justify-center  rounded-2xl`}>
 
       <p style={{
         fontSize: `${(Sizes.ExtraLarge.slice(0, -3)) * 1.7}rem`, fontFamily: Weights.SemiBold, color: ThemeColors.primaryText, 

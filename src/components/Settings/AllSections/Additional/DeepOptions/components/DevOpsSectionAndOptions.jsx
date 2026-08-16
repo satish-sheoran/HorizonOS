@@ -105,7 +105,7 @@ const DevOpsSectionAndOptions = ({ Theme, ThemeColors, AccentColors, DevOptionsP
                                         :
                                         COMMON_COLORS.Gray,
                                 }}
-                                className={`HOVER_CLASS active:scale-97 flex border items-center justify-between rounded-2xl ${Device !== 'Desktop' ? 'p-3' : 'p-2.5'} overflow-hidden`}
+                                className={`HOVER_CLASS active:scale-95 flex border items-center justify-between rounded-2xl ${Device !== 'Desktop' ? 'p-3' : 'p-2.5'} overflow-hidden`}
                             >
                                 <div
                                     className={`flex gap-1.5 items-center max-w-[83%]`}

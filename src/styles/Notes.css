@@ -78,7 +78,7 @@
             @apply flex-1 flex flex-col gap-2 px-(--padding-lg) md:px-(--padding-xl) min-h-0;
 
             .create-folder {
-                @apply w-full font-semibold rounded-xl flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-97 mt-1;
+                @apply w-full font-semibold rounded-xl flex flex-col items-center justify-center gap-0.5 py-2.5 active:scale-95 mt-1;
 
                 .plus-icon-div {
                     @apply bg-(--bg-minimize) rounded-full p-1 flex items-center justify-center;
@@ -91,7 +91,7 @@
 
 
                 button {
-                    @apply w-full h-fit outline-none rounded-2xl flex items-center justify-between p-2.5 active:scale-97;
+                    @apply w-full h-fit outline-none rounded-2xl flex items-center justify-between p-2.5 active:scale-95;
                     touch-action: pan-y;
                     /* Allow vertical scrolling on touch devices */
                 }

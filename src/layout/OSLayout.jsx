@@ -166,7 +166,7 @@ const OSLayout = () => {
                             '--active': DARK_THEME_COLORS.bg,
 
                         }}
-                        className={`mt-10 HOVER_CLASS active:scale-97 border rounded-xl  select-none font-semibold flex items-center justify-between 
+                        className={`mt-10 HOVER_CLASS active:scale-95 border rounded-xl  select-none font-semibold flex items-center justify-between 
                              gap-2  ${Device !== 'Desktop' ? `px-3 py-1.5` : `px-3 py-2`}
                                            `}>
 
