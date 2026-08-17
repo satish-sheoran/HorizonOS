@@ -23,7 +23,7 @@ const AddTimer = ({
                 left: 0,
             }}
             className={`${fullScreen ? 'px-[1.5%] pt-[1%]' : 'px-[2.5%] pt-[1.5%]'} inset-0 absolute z-5  shrink-0  `}>
-            <div style={{ backgroundColor: ThemeColors.header }} className={`p-[2.5%] rounded-t-2xl flex flex-col gap-4 w-full h-full overflow-hidden`}>
+            <div style={{ backgroundColor: ThemeColors.header,borderColor : ThemeColors.third }} className={`border p-[2.5%] rounded-t-2xl flex flex-col gap-4 w-full h-full overflow-hidden`}>
                 <div className={`flex items-center justify-between`}>
                     <p
                         onClick={() => setopenAddTimer(false)}

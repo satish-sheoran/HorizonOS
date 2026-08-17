@@ -6,6 +6,7 @@ import { ACCENT_COLORS, COMMON_COLORS } from '../../constants/style'
 import { Flip } from 'gsap/Flip'
 import gsap from 'gsap'
 import { useRef } from 'react'
+import MyAlarms from './Components/MyAlarms'
 
 const Alarms = ({ icon, Name, Description }) => {
 
@@ -59,73 +60,27 @@ const Alarms = ({ icon, Name, Description }) => {
         {/* body */}
         {ExperimentalFeatures && <div className='relative mt-4 flex flex-col gap-3 h-full'>
 
-          {/* alarms */}
-          <section className={`flex flex-col gap-2 w-full `}>
-            <div
+          {/* add,edit options */}
+          <div className={`${fullScreen ? 'px-[1.5%] pt-[1%]' : 'px-[2.5%] pt-[1.5%]'} w-full flex items-center justify-between`}>
+            <p
               style={{
-                borderColor: ThemeColors.third,
-                backgroundColor: ThemeColors.header
+                color: ThemeColors.primaryText,
+                backgroundColor: ThemeColors.header,
+                borderColor: ThemeColors.third
               }}
-              className={`border overflow-hidden  rounded-2xl ${Device !== 'Desktop' ? `px-3 py-4` : `px-2.5 py-3.5`}`}>
-              <div
-                style={{
-                  borderColor: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE
-                }}
-                className={`border-l-2 rounded pl-2 flex gap-4 items-center justify-between`}> {/*wrapper*/}
-                <div className='flex flex-col gap-0.5'>
-                  <p className={`flex items-end gap-1`}>
-                    <span style={{
-                      color: ThemeColors.primaryText,
-                      fontFamily: Weights.SemiBold,
-                      fontSize: `${(Sizes.ExtraLarge.slice(0, -3)) * 1.2}rem`
-                    }}>09 : 41</span>
-                    <p style={{
-                      color: ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Purple').CODE,
-                      fontFamily: Weights.SemiBold,
-                      fontSize: Sizes.Small
-                    }} className={`mb-1`}>AM</p>
-
-                  </p>
-
-                  <span
-                    style={{
-                      color: ThemeColors.thirdText,
-                      fontFamily: Weights.Regular,
-                      fontSize: `${(Sizes.Small.slice(0, -3)) * 0.8}rem`
-                    }}
-                  >Good Morning</span> {/*lable or note of alarm */}
-                  <span
-                    style={{
-                      color: ThemeColors.thirdText,
-                      fontFamily: Weights.SemiBold,
-                      fontSize: `${(Sizes.Small.slice(0, -3)) * 0.85}rem`
-                    }}
-                  >Everyday</span>{/* day of alarm play */}
-                </div>
-
-                {/* right side ,toggle  */}
-                <div>
-                  <button
-                    style={{
-                      backgroundColor: true ? Theme !== 'dark' ? ACCENT_COLORS.find(({ COLOR }) => COLOR === 'Green').CODE : COMMON_COLORS.Blue
-                        :
-                        ThemeColors.bg,
-
-                    }}
-                    className={`outline-none cursor-pointer relative  w-14 h-7 p-1.5  rounded-full `}>
-
-                    <div style={{
-                      backgroundColor: COMMON_COLORS.White,
-                      transition: `transform 0.3s ${CSS_EASING[Animation]}`,
-                      transform: `${true ? 'translateX(1.5rem)' : 'translateX(0)'}`
-                    }} className={`theme-toggle-circle w-5 h-5 absolute top-1  rounded-full 
-                    `}></div>
-
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
+              className={`${true ? '' : 'opacity-0'} border flex items-center justify-center rounded-2xl px-3 py-1`}>
+              {!true ? 'Cancel' : 'Edit'}
+            </p>
+            <p
+              style={{
+                color: ThemeColors.primaryText,
+                backgroundColor: ThemeColors.header,
+                borderColor: ThemeColors.third
+              }}
+              className={`border active:scale-95 rounded-full flex items-center justify-center w-10 h-10`}><Icons.Plus size={22} strokeWidth={2.5} /></p>
+          </div>
+          {/* alarms */}
+          <MyAlarms />
 
           {/* default msg  */}
           <div ref={AlarmMsgRef}
