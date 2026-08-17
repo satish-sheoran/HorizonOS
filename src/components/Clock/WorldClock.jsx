@@ -12,7 +12,6 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { X } from 'lucide-react'
 import { WORLD_CITIES } from '../../constants/Clock'
-import { toast } from 'react-toastify'
 
 const WorldClock = ({ icon, Name, Description }) => {
 

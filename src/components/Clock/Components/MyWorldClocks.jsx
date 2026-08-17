@@ -3,7 +3,6 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { ACCENT_COLORS, COMMON_COLORS } from '../../../constants/style'
 import { Clock, Dot, EllipsisVertical, Minus, Plus, Search, SearchAlert, SlidersHorizontal, Trash2 } from 'lucide-react'
-import { useGSAP } from '@gsap/react'
 
 
 const MyWorldClocks = ({ setshowAddClockPage,startDeletingWorldClocks, setstartDeletingWorldClocks, AddedClocks, setAddedClocks }) => {
